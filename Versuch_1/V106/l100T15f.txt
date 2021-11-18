@@ -1,5 +1,5 @@
-#Messung    #T
-#           #s
+#Messung    T
+#           s
 1           9.96
 2           9.94
 3           9.73

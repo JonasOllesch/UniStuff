@@ -1,5 +1,5 @@
-#Messung            #T
-#Feder bei 0.528m    #s
+#Messung            T
+#Feder bei 0.528m   s
 1                   9.68
 2                   9.56
 3                   9.15

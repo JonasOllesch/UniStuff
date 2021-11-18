@@ -1,5 +1,5 @@
-#Messung    #T
-#           #s
+#Messung    T
+#           s
 1           8.21
 2           8.13
 3           8.30
