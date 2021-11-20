@@ -1,8 +1,12 @@
 import matplotlib.pyplot as plt
 import numpy as np
+from uncertainties import ufloat
+import scipy.constants as const
+import sympy
 
-x = np.linspace(0, 10, 1000)
-y = x ** np.sin(x)
+
+#erster Plot für das erste freie Pendel, zumindest versuche ich das zu plotten :)
+x,y = np.genfromtxt('l070T15f.txt', unpack=True)
 
 plt.subplot(1, 2, 1)
 plt.plot(x, y, label='Kurve')

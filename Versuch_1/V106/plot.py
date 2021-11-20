@@ -3,11 +3,11 @@ import numpy as np
 from uncertainties import ufloat
 import scipy.constants as const
 import sympy
+from scipy.stats import linregress
 
 # do list
 #Schwebungsdauer mit den gemessenen verleichen
 #Fehlerfortpflanzung für irgendwie alles xD
-
 
 #Dauer von   1. erstes freies Pendel                2. zweites freies Pendel        3.gekoppelte T plus             4.gekoppelte T minus            5.gekoppelte Pendel Schwingung  6.gekoppelte Pendel Schwebung
 Werte = np.array([[np.genfromtxt('l070T15f.txt')/5, np.genfromtxt('l070T25f.txt')/5, np.genfromtxt('l070Tp5g.txt')/5,np.genfromtxt('l070Tm5g.txt')/5,np.genfromtxt('l070T_5g.txt')/5,np.genfromtxt('l070Ts_g.txt')],
@@ -102,11 +102,36 @@ print(FehlerausFortpflanzung, " Fehlerfortpflanzung")
 
 #print(fk)
 
-plt.subplot(1, 2, 1)
+#plt.subplot(1, 2, 1)
 #plt.plot(x, erstesfreiesPendel, label='Die Periodendauer eins freien Fadenpendes')
-plt.xlabel(r'')
-plt.ylabel(r'')
+
+
+
+#erster Plot für das erste freie Pendel, zumindest versuche ich das zu plotten :)
+x= np.linspace(0,10, 10)
+y = np.genfromtxt('l070T15f.txt', unpack=True)
+
+#Fehlerbalken und Mittelwert, obwohl du den schon hast lel
+
+errY= np.std(y)/np.sqrt(len(y))
+print(errY)
+plt.errorbar(x, y, xerr=0, yerr=errY, fmt='o', markersize=3)
+plt.xlim(0,10)
+plt.ylim(8,9)
+plt.xticks([0,1,2,3,4,5,6,7,8,9,10])
+plt.yticks(np.arange(8,9.1, step=0.1))
+plt.xlabel('Anzahl der Messungen')
+plt.ylabel(r'$T_+$/\,\si{s}')
 plt.legend(loc='best')
+#klappt :)
+
+#Lineare Regression erstes freies Pendel
+
+b,a,r,p,std= linregress(x,y)
+plt.plot(x, b*x+a, 'g')
+
+
+
 
 #plt.subplot(1, 2, 2)
 #plt.plot(x, z, label='Plot 2')
