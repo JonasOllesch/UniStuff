@@ -1,26 +1,17 @@
 import matplotlib.pyplot as plt
 import numpy as np
 from uncertainties import ufloat
+import scipy.constants as const
+import sympy
 
 # do list
-# w+
-# w-
-# kopplungskonstante k                                      (Haken)
-# Schwebungsdauer                                            (Haken)
 #Schwebungsdauer mit den gemessenen verleichen
 #Fehlerfortpflanzung für irgendwie alles xD
 
-#erstesfreiesPendel = np.genfromtxt('l070T15f.txt', unpack =True) #x Zahl der Messung, erstesfreiesPendel Periodendauer x5 des Pendels 
-#erstesfreiesPendel *= (1/5) #Werte duruch 5 teilen
-#MeanerstesfreiesPendel = np.mean(erstesfreiesPendel)
-#print(np.mean(erstesfreiesPendel))
-#print("erstesfreiesPendel")
-#stdMean = np.std(erstesfreiesPendel) 
-#print("stdMeanerstesfreiesPendel")
-#print(stdMean)         
+
 #Dauer von   1. erstes freies Pendel                2. zweites freies Pendel        3.gekoppelte T plus             4.gekoppelte T minus            5.gekoppelte Pendel Schwingung  6.gekoppelte Pendel Schwebung
 Werte = np.array([[np.genfromtxt('l070T15f.txt')/5, np.genfromtxt('l070T25f.txt')/5, np.genfromtxt('l070Tp5g.txt')/5,np.genfromtxt('l070Tm5g.txt')/5,np.genfromtxt('l070T_5g.txt')/5,np.genfromtxt('l070Ts_g.txt')],
-              [np.genfromtxt('l100T15f.txt')/5, np.genfromtxt('l100T25f.txt')/5, np.genfromtxt('l100Tp5g.txt')/5,np.genfromtxt('l100Tm5g.txt')/5,np.genfromtxt('l100T_5g.txt')/5,np.genfromtxt('l100Ts_g.txt')]])
+                    [np.genfromtxt('l100T15f.txt')/5, np.genfromtxt('l100T25f.txt')/5, np.genfromtxt('l100Tp5g.txt')/5,np.genfromtxt('l100Tm5g.txt')/5,np.genfromtxt('l100T_5g.txt')/5,np.genfromtxt('l100Ts_g.txt')]])
 print(Werte)  
 Mittelwerte = [[1, 2, 3, 4, 5, 6], [1, 2, 3, 4, 5, 6]]
 
@@ -57,16 +48,59 @@ print(Ts, " Ts")
 langTs =Ts = (Mittelwerte[1][2]* Mittelwerte[1][3]) / (Mittelwerte[1][2]- Mittelwerte[1][3])
 print(Ts, " langTs")
 
-# in der Form gemessen wp wm ws theoretische KREIS-Frequenzen wp wm ws
-# in der zweiten Spalte das gleich für das lange Pendel 
-Schwingungsfrequenzen = [[1, 2, 3, 4, 5, 6], [1, 2, 3, 4, 5, 6]]
-for i in range (0,2):
-    for j in range(0,2):
-          Schwingungsfrequenzen[j][i] = 1/Mittelwerte[j][i]
-for j in range(0,2):
-    Schwingungsfrequenzen[j][2] = 1/Mittelwerte[j][5]
-print(Schwingungsfrequenzen)
+#in der Form gemessen wp wm ws 
+#n der zweiten Spalte das gleich für das lange Pendel 
+Frequenzen = [[1, 2, 3], [1, 2, 3]]
 
+for j in range(0,2):
+        Frequenzen[j][0] = (2*np.pi)/Mittelwerte[j][2]  #wp
+        Frequenzen[j][1] = (2*np.pi)/Mittelwerte[j][3]  #wm
+        Frequenzen[j][2] = (2*np.pi)/Mittelwerte[j][5]  #ws
+
+print(Frequenzen, " frequenzen")
+kausw = [[1], [1]]
+for j in range(0,2):
+    kausw[j][0] = (Frequenzen[j][1]**2-Frequenzen[j][0]**2) / (Frequenzen[j][1]**2 + Frequenzen[j][0]**2)
+
+print(kausw, " kausw")
+
+Eigenfrequenzen = [[1,2,3],[1,2,3]]     #theoretische Frequenzen der Schwingungen
+
+Eigenfrequenzen[0][0] = np.sqrt(9.81/0.7) #wp
+Eigenfrequenzen[1][0] = np.sqrt(9.81/1)     #wp lang
+
+Eigenfrequenzen[0][1] = np.sqrt((9.81/0.7) + (2*k/0.7))     #wm
+Eigenfrequenzen[1][1] = np.sqrt((9.81/0.7) + (2*langk/0.7)) #wm lang
+
+for j in range (0,2):
+    Eigenfrequenzen[j][2] = Eigenfrequenzen[j][0]-Eigenfrequenzen[j][1] 
+
+print(Eigenfrequenzen, " Eigenfrequenzen") #WARUM die Schwebungsfrequenz negativ ?!?
+
+#Fehlerfortpflanzung for k
+Tp , Tm = sympy.var('Tp ,Tm')
+
+fk = (Tp**2 - Tm**2 )/ (Tp**2 +Tm**2)
+fk_Tp = fk.diff(Tp)
+fk_Tm = fk.diff(Tm)
+
+FehlerausFortpflanzung = [[1,2], [1,2]]    
+for j in range(0,2):
+    FehlerausFortpflanzung[j][0]= (fk_Tp.evalf(subs={Tp:Mittelwerte[j][2], Tm:Mittelwerte[j][3]})*Standardabweichung[j][2])**2+ (fk_Tm.evalf(subs={Tp:Mittelwerte[j][2], Tm:Mittelwerte[j][3]})*Standardabweichung[j][3])**2
+    FehlerausFortpflanzung[j][0]= sympy.sqrt(FehlerausFortpflanzung[j][0])
+
+fTs = (Tp*Tm)/(Tp-Tm) #für Ts
+fTs_Tp = fTs.diff(Tp)
+fTs_Tm = fTs.diff(Tm)
+
+
+for j in range(0,2):
+    FehlerausFortpflanzung[j][1] = (fTs_Tp.evalf(subs={Tp:Mittelwerte[j][2], Tm:Mittelwerte[j][3]})*Standardabweichung[j][2])**2+ (fTs_Tm.evalf(subs={Tp:Mittelwerte[j][2], Tm:Mittelwerte[j][3]})*Standardabweichung[j][3])**2
+    FehlerausFortpflanzung[j][1]= sympy.sqrt(FehlerausFortpflanzung[j][1])
+
+print(FehlerausFortpflanzung, " Fehlerfortpflanzung")
+
+#print(fk)
 
 plt.subplot(1, 2, 1)
 #plt.plot(x, erstesfreiesPendel, label='Die Periodendauer eins freien Fadenpendes')
