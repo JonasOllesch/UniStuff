@@ -6,7 +6,7 @@ import sympy
 from scipy.stats import linregress
 
 # do list
-#Schwebungsdauer mit den gemessenen verleichen
+#Schwebungsdauer mit den gemessenen vergleichen
 #Fehlerfortpflanzung für irgendwie alles xD
 
 #Dauer von   1. erstes freies Pendel                2. zweites freies Pendel        3.gekoppelte T plus             4.gekoppelte T minus            5.gekoppelte Pendel Schwingung  6.gekoppelte Pendel Schwebung
@@ -102,33 +102,44 @@ print(FehlerausFortpflanzung, " Fehlerfortpflanzung")
 
 #print(fk)
 
-#plt.subplot(1, 2, 1)
-#plt.plot(x, erstesfreiesPendel, label='Die Periodendauer eins freien Fadenpendes')
-
-
-
 #erster Plot für das erste freie Pendel, zumindest versuche ich das zu plotten :)
-x= np.linspace(0,10, 10)
-y = np.genfromtxt('l070T15f.txt', unpack=True)
+x= np.linspace(1,10,10)
+y = np.genfromtxt('l070T1f.txt', unpack=True)
 
 #Fehlerbalken und Mittelwert, obwohl du den schon hast lel
 
 errY= np.std(y)/np.sqrt(len(y))
-print(errY)
-plt.errorbar(x, y, xerr=0, yerr=errY, fmt='o', markersize=3)
-plt.xlim(0,10)
-plt.ylim(8,9)
-plt.xticks([0,1,2,3,4,5,6,7,8,9,10])
-plt.yticks(np.arange(8,9.1, step=0.1))
-plt.xlabel('Anzahl der Messungen')
-plt.ylabel(r'$T_+$/\,\si{s}')
-plt.legend(loc='best')
-#klappt :)
+plt.errorbar(x, y, xerr=0, yerr=errY, fmt='o', label='erstes Pendel', markersize=3)
 
 #Lineare Regression erstes freies Pendel
 
 b,a,r,p,std= linregress(x,y)
 plt.plot(x, b*x+a, 'g')
+
+#Für das zweite Pendel
+y = np.genfromtxt('l070T2f.txt', unpack=True)
+
+errY= np.std(y)/np.sqrt(len(y))
+plt.errorbar(x, y, xerr=0, yerr=errY, fmt='o', label='zweites Pendel', markersize=3)
+
+#Lineare Regression zweites freies Pendel
+
+b,a,r,p,std= linregress(x,y)
+plt.plot(x, b*x+a, 'r')
+
+#Achsenbeschriftungen und Legende
+
+plt.xlim(1,10.05)
+plt.ylim(1.6,1.8)
+plt.xticks(np.arange(1,10.05, step=1))
+plt.yticks(np.arange(1.6,1.81, step=0.05))
+plt.xlabel('Anzahl der Messungen')
+plt.ylabel(r'$T_i$/\,\si{s}')
+plt.legend(loc='best')
+#klappt :)
+
+
+
 
 
 

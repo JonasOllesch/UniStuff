@@ -1,5 +1,4 @@
-#Messung    T
-#           s
+#Messung    T/s
 8.46
 8.54
 8.72
