@@ -4,6 +4,7 @@ from uncertainties import ufloat
 import scipy.constants as const
 import sympy
 from scipy.stats import linregress
+import uncertainties.unumpy as unp
 
 # do list
 #Schwebungsdauer mit den gemessenen vergleichen
@@ -14,6 +15,16 @@ Werte = np.array([[np.genfromtxt('l070T15f.txt')/5, np.genfromtxt('l070T25f.txt'
                     [np.genfromtxt('l100T15f.txt')/5, np.genfromtxt('l100T25f.txt')/5, np.genfromtxt('l100Tp5g.txt')/5,np.genfromtxt('l100Tm5g.txt')/5,np.genfromtxt('l100T_5g.txt')/5,np.genfromtxt('l100Ts_g.txt')]])
 print(Werte)  
 Mittelwerte = [[1, 2, 3, 4, 5, 6], [1, 2, 3, 4, 5, 6]]
+Werte_ = [[1, 2, 3, 4, 5, 6], [1, 2, 3, 4, 5, 6]]
+
+
+
+for j in range(0, 2):
+    for i in range(0, 6):
+        Werte_[j][i] = ufloat(np.mean(Werte[j][i]), np.std(Werte[j][i]))
+
+print(Werte_, "Mittelwert mit Standartabweichung")
+#o = ufloat(np.mean(Array), np.std(Array))
 
 for j in range(0,2):
 
@@ -27,7 +38,7 @@ for j in range(0,2):
 
     for i in range(0, 6):
         Standardabweichung[j][i]= np.std(Werte[j][i])
-#print(Standardabweichung)
+print(Standardabweichung)
 
 StandardabweichungMittelwert = [[1, 2, 3, 4, 5, 6], [1, 2, 3, 4, 5, 6]]
 for j in range(0,2):
@@ -66,7 +77,7 @@ print(kausw, " kausw")
 
 Eigenfrequenzen = [[1,2,3],[1,2,3]]     #theoretische Frequenzen der Schwingungen
 
-Eigenfrequenzen[0][0] = np.sqrt(9.81/0.7) #wp
+Eigenfrequenzen[0][0] = np.sqrt(9.81/0.7)   #wp
 Eigenfrequenzen[1][0] = np.sqrt(9.81/1)     #wp lang
 
 Eigenfrequenzen[0][1] = np.sqrt((9.81/0.7) + (2*k/0.7))     #wm
@@ -139,9 +150,12 @@ plt.legend(loc='best')
 #klappt :)
 
 
+#np.savetxt('3.txt', np.column_stack([data_x, data_y]), header='x y')
+np.savetxt('build/Mittelwerte.txt',np.column_stack([Mittelwerte]), header='1. erstes freies Pendel  2. zweites freies Pendel 3.gekoppelte T plus 4.gekoppelte T minus  5.gekoppelte Pendel Schwingung  6.gekoppelte Pendel Schwebung')
+np.savetxt('build/Standardabweichungen.txt',np.column_stack([Standardabweichung]), header='1. erstes freies Pendel  2. zweites freies Pendel 3.gekoppelte T plus 4.gekoppelte T minus  5.gekoppelte Pendel Schwingung  6.gekoppelte Pendel Schwebung')
+np.savetxt('build/StandardabweichungMittelwert.txt',np.column_stack([StandardabweichungMittelwert]), header='1. erstes freies Pendel  2. zweites freies Pendel 3.gekoppelte T plus 4.gekoppelte T minus  5.gekoppelte Pendel Schwingung  6.gekoppelte Pendel Schwebung')
 
-
-
+np.savetxt('build/Frequenzen.txt',np.column_stack([Frequenzen]),header='Frequenzen  wp wm ws ')
 
 
 #plt.subplot(1, 2, 2)
