@@ -15,30 +15,51 @@ Werte = np.array([[np.genfromtxt('l070T15f.txt')/5, np.genfromtxt('l070T25f.txt'
                     [np.genfromtxt('l100T15f.txt')/5, np.genfromtxt('l100T25f.txt')/5, np.genfromtxt('l100Tp5g.txt')/5,np.genfromtxt('l100Tm5g.txt')/5,np.genfromtxt('l100T_5g.txt')/5,np.genfromtxt('l100Ts_g.txt')]])
 print(Werte)  
 Mittelwerte = [[1, 2, 3, 4, 5, 6], [1, 2, 3, 4, 5, 6]]
-Werte_ = [[1, 2, 3, 4, 5, 6], [1, 2, 3, 4, 5, 6]]
+Mittelwerte_ = [[1, 2, 3, 4, 5, 6], [1, 2, 3, 4, 5, 6]]
+
 
 
 
 for j in range(0, 2):
     for i in range(0, 6):
-        Werte_[j][i] = ufloat(np.mean(Werte[j][i]), np.std(Werte[j][i]))
+        Mittelwerte_[j][i] = ufloat(np.mean(Werte[j][i]), np.std(Werte[j][i]))
+print(Mittelwerte_, "Mittelwerte_ mit Standartabweichung")
 
-print(Werte_, "Mittelwert mit Standartabweichung")
-#o = ufloat(np.mean(Array), np.std(Array))
+k_ = [[1],[1]]
+for j in range (0,2):
+    k_[j][0] = (Mittelwerte_[j][2]**2 - Mittelwerte_[j][3]**2)/(Mittelwerte_[j][2]**2 + Mittelwerte_[j][3]**2)
+
+print(k_ , " k_")
+
+Ts_= [[1],[1]]
+for j in range(0,2):
+    Ts_[j][0]= Mittelwerte_[j][2]*Mittelwerte_[j][3]/(Mittelwerte_[j][2]-Mittelwerte_[j][3])
+print(Ts_ , " Ts_")
+    
+
+Frequenzen_ = [[1, 2, 3], [1, 2, 3]]
+
+for j in range(0,2):
+        Frequenzen_[j][0] = (2*np.pi)/Mittelwerte_[j][2]  #wp
+        Frequenzen_[j][1] = (2*np.pi)/Mittelwerte_[j][3]  #wm
+        Frequenzen_[j][2] = (2*np.pi)/Mittelwerte_[j][5]  #ws
+
+print(Frequenzen_, " frequenzen_")
+
 
 for j in range(0,2):
 
     for i in range(0, 6):
         Mittelwerte[j][i]= np.mean(Werte[j][i])
 
-print(Mittelwerte)
+#print(Mittelwerte)
 
 Standardabweichung = [[1, 2, 3, 4, 5, 6], [1, 2, 3, 4, 5, 6]]
 for j in range(0,2):
 
     for i in range(0, 6):
         Standardabweichung[j][i]= np.std(Werte[j][i])
-print(Standardabweichung)
+#print(Standardabweichung)
 
 StandardabweichungMittelwert = [[1, 2, 3, 4, 5, 6], [1, 2, 3, 4, 5, 6]]
 for j in range(0,2):
@@ -95,6 +116,9 @@ fk = (Tp**2 - Tm**2 )/ (Tp**2 +Tm**2)
 fk_Tp = fk.diff(Tp)
 fk_Tm = fk.diff(Tm)
 
+
+
+
 FehlerausFortpflanzung = [[1,2], [1,2]]    
 for j in range(0,2):
     FehlerausFortpflanzung[j][0]= (fk_Tp.evalf(subs={Tp:Mittelwerte[j][2], Tm:Mittelwerte[j][3]})*Standardabweichung[j][2])**2+ (fk_Tm.evalf(subs={Tp:Mittelwerte[j][2], Tm:Mittelwerte[j][3]})*Standardabweichung[j][3])**2
@@ -103,6 +127,7 @@ for j in range(0,2):
 fTs = (Tp*Tm)/(Tp-Tm) #für Ts
 fTs_Tp = fTs.diff(Tp)
 fTs_Tm = fTs.diff(Tm)
+
 
 
 for j in range(0,2):
@@ -151,12 +176,18 @@ plt.legend(loc='best')
 
 
 #np.savetxt('3.txt', np.column_stack([data_x, data_y]), header='x y')
+
+#print(f'Das Ergebnis ist {result:.2f}')
+#print('{:.1u}, {:.3uf}, {:.2uL}, {:0.2ue}'.format(a,a,a,a))
+# 0.024626+/-0.000003, 0.02462631+/-0.00000335, 0.0246263 \pm 0.0000034, (2.46263+/-0.00034)e-02
+
+print('{:.1u}, {:.3uf}, {:.2uL}, {:0.2ue}'.format(Mittelwerte_[0][0],Mittelwerte_[0][0],Mittelwerte_[0][0],Mittelwerte_[0][0]))
+
 np.savetxt('build/Mittelwerte.txt',np.column_stack([Mittelwerte]), header='1. erstes freies Pendel  2. zweites freies Pendel 3.gekoppelte T plus 4.gekoppelte T minus  5.gekoppelte Pendel Schwingung  6.gekoppelte Pendel Schwebung')
 np.savetxt('build/Standardabweichungen.txt',np.column_stack([Standardabweichung]), header='1. erstes freies Pendel  2. zweites freies Pendel 3.gekoppelte T plus 4.gekoppelte T minus  5.gekoppelte Pendel Schwingung  6.gekoppelte Pendel Schwebung')
 np.savetxt('build/StandardabweichungMittelwert.txt',np.column_stack([StandardabweichungMittelwert]), header='1. erstes freies Pendel  2. zweites freies Pendel 3.gekoppelte T plus 4.gekoppelte T minus  5.gekoppelte Pendel Schwingung  6.gekoppelte Pendel Schwebung')
 
 np.savetxt('build/Frequenzen.txt',np.column_stack([Frequenzen]),header='Frequenzen  wp wm ws ')
-
 
 #plt.subplot(1, 2, 2)
 #plt.plot(x, z, label='Plot 2')
