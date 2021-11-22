@@ -6,10 +6,6 @@ import sympy
 from scipy.stats import linregress
 import uncertainties.unumpy as unp
 
-# do list
-#Schwebungsdauer mit den gemessenen vergleichen
-#Fehlerfortpflanzung für irgendwie alles xD
-
 #Dauer von   1. erstes freies Pendel                2. zweites freies Pendel        3.gekoppelte T plus             4.gekoppelte T minus            5.gekoppelte Pendel Schwingung  6.gekoppelte Pendel Schwebung
 Werte = np.array([[np.genfromtxt('l070T15f.txt')/5, np.genfromtxt('l070T25f.txt')/5, np.genfromtxt('l070Tp5g.txt')/5,np.genfromtxt('l070Tm5g.txt')/5,np.genfromtxt('l070T_5g.txt')/5,np.genfromtxt('l070Ts_g.txt')],
                     [np.genfromtxt('l100T15f.txt')/5, np.genfromtxt('l100T25f.txt')/5, np.genfromtxt('l100Tp5g.txt')/5,np.genfromtxt('l100Tm5g.txt')/5,np.genfromtxt('l100T_5g.txt')/5,np.genfromtxt('l100Ts_g.txt')]])
@@ -56,19 +52,6 @@ for j in range(0,2):
     for i in range(0, 6):
         Mittelwerte[j][i]= np.mean(Werte[j][i])
 
-#print(Mittelwerte)
-
-
-
-#Eigenfrequenzen_ = [[1,2,3],[1,2,3]]     #theoretische Frequenzen der Schwingungen
-
-#Eigenfrequenzen_[0][0] = sympy.sqrt(9.81/0.7)   #wp
-#Eigenfrequenzen_[1][0] = sympy.sqrt(9.81/1)     #wp lang
-
-#Eigenfrequenzen_[0][1] = sympy.sqrt((9.81/0.7) + (2*k_[0][0]/0.7))     #wm
-#Eigenfrequenzen_[1][1] = sympy.sqrt((9.81/1) + (2*k_[1][0]/1)) #wm lang
-
-#print(Eigenfrequenzen_, " Eigenfrequenzen")
 Standardabweichung = [[1, 2, 3, 4, 5, 6], [1, 2, 3, 4, 5, 6]]
 for j in range(0,2):
 
@@ -123,6 +106,12 @@ for j in range (0,2):
     Eigenfrequenzen[j][2] = Eigenfrequenzen[j][0]-Eigenfrequenzen[j][1] 
 
 print(Eigenfrequenzen, " Eigenfrequenzen") #WARUM die Schwebungsfrequenz negativ ?!?
+
+relativeAbweichung = [[1,2,3],[1,2,3]]
+
+for j in range (0,2):
+    for i in range (0,3):
+        relativeAbweichung[j][i] = (Frequenzen[j][i]-Eigenfrequenzen[j][i])*100/Eigenfrequenzen[j][i]
 
 #Fehlerfortpflanzung for k
 Tp , Tm = sympy.var('Tp ,Tm')
@@ -227,3 +216,4 @@ np.savetxt('build/Frequenzen.txt',np.column_stack([Frequenzen]),header='Frequenz
 # in matplotlibrc leider (noch) nicht möglich
 #plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
 plt.savefig('build/plot.pdf')
+print(relativeAbweichung, " relative Abweichung der w in wp, wm und ws")
