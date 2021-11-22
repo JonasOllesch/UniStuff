@@ -27,7 +27,7 @@ Für eine verknüpfte Messgröße $f(x_1,...,x_N)$ gilt die Gaußsche Fehlerfort
 \newpage
 
 \subsection{Messung der Einzelfrequenzen}
-In Tabelle \ref{tab:freiePendel}  werden die unabhängigen Periodendauern der beiden Pendel aufgetragen.
+In \autoref{tab:freiePendel} werden die unabhängigen Periodendauern der beiden Pendel aufgetragen.
 
 \begin{table}[H]
   \centering
@@ -38,9 +38,11 @@ In Tabelle \ref{tab:freiePendel}  werden die unabhängigen Periodendauern der be
     \toprule
     \multicolumn{1}{c}{Pendellänge} & \multicolumn{4}{c} {$l= 70 \, \unit{\centi\meter}$} 
     & \multicolumn{4}{c}{$l = 100 \, \unit{\centi\meter}$} \\
-    \cmidrule(lr){2-3}\cmidrule(lr){3-5}
-    {Messung} & {$5T_1 \mathbin{/} \unit{\second}$} & {$T_1 \mathbin{/} \unit{\second}$} & {$5T_2 \mathbin{/} \unit{\second}$} & {$T_2 \mathbin{/} \unit{\second}$} & 
-    {$5T_1 \mathbin{/} \unit{\second}$} & {$T_1 \mathbin{/} \unit{\second}$} & {$5T_2 \mathbin{/} \unit{\second}$} & {$T_2 \mathbin{/} \unit{\second}$}\\
+    \cmidrule(lr){2-5}\cmidrule(lr){5-9}
+    {Messung} & {$5T_1 \mathbin{/} \unit{\second}$} & {$T_1 \mathbin{/} \unit{\second}$} 
+    & {$5T_2 \mathbin{/} \unit{\second}$} & {$T_2 \mathbin{/} \unit{\second}$} & 
+    {$5T_1 \mathbin{/} \unit{\second}$} & {$T_1 \mathbin{/} \unit{\second}$} 
+    & {$5T_2 \mathbin{/} \unit{\second}$} & {$T_2 \mathbin{/} \unit{\second}$}\\
     1 & 8.21 & 1.642 & 8.46 & 1.692 & 9.96  & 1.992 & 9.90  & 1.980 \\
     2 & 8.13 & 1.626 & 8.54 & 1.708 & 9.94  & 1.988 & 10.06 & 2.012 \\
     3 & 8.30 & 1.660 & 8.72 & 1.744 & 9.73  & 1.946 & 9.90  & 1.980 \\
@@ -68,7 +70,7 @@ Daraus ergeben sich mit \eqref{eq:mean}, \eqref{eq:std} und \eqref{eq:unc}:
     {$σ_{T_1}$}   & 0.0137 & 0.0327\\
     {$ΔT_1$}      & \\
     {$\bar{T}_2$} & 1.689 & 1.984 \\
-    {$σ_{T_2}$}   & 0.0385 & 2.269\\
+    {$σ_{T_2}$}   & 0.0385 & 0.0227\\
     {$ΔT_2$}      & \\
     \bottomrule
   \end{tabular}
@@ -77,7 +79,83 @@ Daraus ergeben sich mit \eqref{eq:mean}, \eqref{eq:std} und \eqref{eq:unc}:
 
 
 \subsection{Gleichphasige Schwingung}
-Tabelle 2
+\autoref{tab:GleichphasigeSchwingung} enthält die Messdaten für die gleichphasigie Schwingung.
+
+\newpage
+
+\begin{table}[H]
+  \centering
+  \caption{Periodendauern bei der gleichphasigen Schwingung}
+  \label{tab:GleichphasigeSchwingung}
+  \sisetup{table-format=1.2}
+  \begin{tabular}{S[table-format=2.0] S S[table-format=1.3] S[table-format=2.2] S[table-format=1.3]}
+    \toprule
+    \multicolumn{1}{c}{Pendellänge} & \multicolumn{2}{c} {$l= 70 \, \unit{\centi\meter}$}
+    & \multicolumn{2}{c}{$l = 100 \, \unit{\centi\meter}$} \\
+    \cmidrule{2-3}\cmidrule{4-5} 
+    {Messung} & {$5T_+ \mathbin{/} \unit{\second}$} & {$T_+ \mathbin{/} \unit{\second}$} 
+    & {$5T_+ \mathbin{/} \unit{\second}$} & {$T_+ \mathbin{/} \unit{\second}$} \\
+    1 & 8.92 & 1.784 & 9.69 & 1.938 \\
+    2 & 8.32 & 1.664 & 9.91 & 1.982 \\
+    3 & 8.26 & 1.652 & 10.17& 2.034 \\
+    4 & 8.68 & 1.736 & 9.79 & 1.958 \\
+    5 & 8.54 & 1.708 & 9.80 & 1.960 \\
+    6 & 9.13 & 1.826 & 9.81 & 1.962 \\
+    7 & 8.04 & 1.608 & 10.15& 2.030 \\
+    8 & 8.28 & 1.656 & 9.76 & 1.952 \\
+    9 & 8.49 & 1.698 & 9.91 & 1.982 \\
+   10 & 8.47 & 1.694 & 9.92 & 1.984 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+Erneut werden Mittelwert, Standardabweichung und Unsicherheit berechnet.
+
+Daraus ergeben sich mit \eqref{eq:mean}, \eqref{eq:std} und \eqref{eq:unc}:
+\begin{table}[H]
+  \centering
+  \caption{Mittelwerte, Standardabweichungen und Unsicherheiten der unabhängigen Periodendauern}
+  \sisetup{table-format=1.3}
+  \begin{tabular}{S S S}
+    \toprule
+    & {$l=70 \, \unit{\centi\meter}$} & { $l=100 \, \unit{\centi\meter}$} \\
+    \midrule
+    {$\bar{T}_+$} & 1.7025 & 1.9781\\
+    {$σ_{T_+}$}   & 0.0619 & 0.0303\\
+    {$ΔT_+$}      & \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+
+\subsection{Gegenphasige Schwingung}
+In Tabelle \autoref{tab:GegenphasigeSchwingung} finden sich die Periodendauern der gegenphasigen Schwingung.
+
+\begin{table}[H]
+  \centering
+  \caption{Periodendauern bei der gekoppelten Schwingungen}
+  \label{tab:GegenphasigeSchwingung}
+  \sisetup{table-format=1.2}
+  \begin{tabular}{S[table-format=2.0] S S[table-format=1.3] S[table-format=2.2] S[table-format=1.3]}
+    \toprule
+    \multicolumn{1}{c}{Pendellänge} & \multicolumn{2}{c} {$l= 70 \, \unit{\centi\meter}$}
+    & \multicolumn{2}{c}{$l = 100 \, \unit{\centi\meter}$} \\
+    \cmidrule{2-3}\cmidrule{4-5} 
+    {Messung} & {$5T_- \mathbin{/} \unit{\second}$} & {$T_- \mathbin{/} \unit{\second}$} 
+    & {$5T_- \mathbin{/} \unit{\second}$} & {$T_- \mathbin{/} \unit{\second}$} \\
+    1 & 8.83 & 1.420 & 8.83 \\
+    2 & 9.24 & 1.432 & 9.24 \\
+    3 & 9.37 & 1.570 & 9.37 \\
+    4 & 9.11 & 1.614 & 9.11 \\
+    5 & 9.44 & 1.520 & 9.44 \\
+    6 & 9.18 & 1.548 & 9.18 \\
+    7 & 9.40 & 1.510 & 9.40 \\
+    8 & 9.13 & 1.540 & 9.13 \\
+    9 & 9.47 & 1.566 & 9.47 \\
+   10 & 9.17 & 1.544 & 9.17 \\
+   \bottomrule
+  \end{tabular}
+\end{table}
 
 
 %Tabelle für den ersten Messvorgang
@@ -110,30 +188,6 @@ Tabelle 2
 Bei allen Einträgen abgesehen von der Schwebungsdauer handelt es sich um über fünf Perioden gemessene Werte, es folgt eine Tabelle mit den einfachen Periodendauern, die zwar auf drei,
 aufgrund des unvermeidlichen menschlichen Fehlers bei der Messung auch auf zwei Nachkommastellen genau angegeben werden könnten. 
 \newpage
-
-\begin{table}
-  \centering
-  \caption{Perioden- und Schwebungsdauern der Pendel im ersten Messvorgang}
-  \label{tab:Messvorgang 2}
-  \sisetup{table-format=1.3}
-  \begin{tabular}{S[table-format=2.0] S S S S S S[table-format=2.2]}
-      \toprule
-      {Messung} & {$T_1 \mathbin{/} \unit{\second}$} & {$T_2 \mathbin{/} \unit{\second}$} 
-      & {$T_+ \mathbin{/} \unit{\second}$} & {$T_- \mathbin{/} \unit{\second}$} & {$T \mathbin{/} \unit{\second}$} & {$T_s \mathbin{/} \unit{\second}$} \\
-      \midrule 
-       1 & 1.642 & 1.692 & 1.784 & 1.420 & 1.586 & 18.12 \\  
-       2 & 1.626 & 1.708 & 1.664 & 1.432 & 1.440 & 17.95 \\ 
-       3 & 1.660 & 1.744 & 1.652 & 1.570 & 1.588 & 18.51 \\ 
-       4 & 1.646 & 1.658 & 1.736 & 1.614 & 1.486 & 18.33 \\ 
-       5 & 1.664 & 1.732 & 1.708 & 1.520 & 1.632 & 18.36 \\ 
-       6 & 1.652 & 1.668 & 1.826 & 1.548 & 1.446 & 17.40 \\ 
-       7 & 1.650 & 1.694 & 1.608 & 1.510 & 1.542 & 18.29 \\ 
-       8 & 1.648 & 1.658 & 1.656 & 1.540 & 1.604 & 16.81 \\ 
-       9 & 1.680 & 1.724 & 1.698 & 1.566 & 1.454 & 16.99 \\ 
-      10 & 1.660 & 1.612 & 1.694 & 1.544 & 1.614 & 17.47 \\ 
-      \bottomrule
-  \end{tabular}
-\end{table}
 
 Aus diesen Messwerten lassen sich nun die einzelnen Mittelwerte und Fehler berechnen. Dabei gilt
 
