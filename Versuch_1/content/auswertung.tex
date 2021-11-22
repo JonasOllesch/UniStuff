@@ -251,29 +251,35 @@ die Messfrequenzen durch den Index $m$ gekennzeichnet.
 Mit $l_1=70 \, \unit{\centi\meter}$ für die erste und $l_2= 100 \, \unit{\centi\meter}$ für die zweite Messung folgt für die Theoriewerte der Frequenzen aus \eqref{eq:omega}, \eqref{eq:omega+}, \eqref{eq:omega-} und \eqref{eq:omegaS}:
 
 \begin{align}
-\omega_1 & = x & \omega_2 & = x \nonumber\\
-\omega_{+,1} & = x & \omega_{+,2} & = x \nonumber\\
-\omega_{-,1} & = x & \omega_{-,2} & = x \nonumber\\
-\omega_{S,1} & = x & \omega_{S,2} & = x \nonumber \text{.}
+\omega_1 & = \omega_{+,1} = 3.744 \, \unit{\hertz}   & \omega_2 & = \omega_{+,2} = 3.132 \, \unit{\hertz} \nonumber\\
+\omega_{-,1} & = 3.785            \, \unit{\hertz}   & \omega_{-,2} & = 3.154            \, \unit{\hertz} \nonumber \\
+\omega_{S,1} & = -0.041           \, \unit{\hertz}   & \omega_{S,2} & = -0.0218          \, \unit{\hertz} \nonumber \text{.}
 \end{align}
 
-Die Messfrequenzen ergeben sich dann zu
+Über die Mittelwerte der Periodendauern ergeben sich die Messfrequenzen zu
 \begin{align}
-\omega_{1,1} & = \frac{2π}{T_{1,1}}   = 3.802 \pm 0.032     \,\unit{\hertz}& \omega_{1,2} & =  \frac{2π}{T_{1,2}}         = 3.166 \pm 0.052 \,\unit{\hertz}   \nonumber\\
-\omega_{2,1} & = \frac{2π}{T_{2,1}}  = 3.720 \pm 0.085      \,\unit{\hertz}& \omega_{2,2} & =  \frac{2π}{T_{2,2}}         = 3.167 \pm 0.036 \,\unit{\hertz}   \nonumber\\
-\omega_{+,1} & = \frac{2π}{T_{+,1}}  = 3.69 \pm 0.13        \,\unit{\hertz}& \omega_{+,2} & =  \frac{2π}{T_{+,2}}         = 3.176 \pm 0.049 \,\unit{\hertz}   \nonumber\\
-\omega_{-,1} & = \frac{2π}{T_{-,1}}  = 4.12 \pm 0.15        \,\unit{\hertz}& \omega_{-,2} & =  \frac{2π}{T_{-,2}}         = 3.402 \pm 0.068 \,\unit{\hertz}   \nonumber\\
-\omega_{S,1} & = \frac{2π}{T_{S,1}} = 0.353 \pm 0.011       \,\unit{\hertz}& \omega_{S,2} & =   \frac{2π}{T_{S,2}}        = 0.2261 \pm 0.0036 \,\unit{\hertz} \nonumber \text{.}
+\omega_{1,1} & = \frac{2π}{\bar{T}_{1,1}}   = 3.802 \pm 0.032     \,\unit{\hertz}& \omega_{1,2} & =  \frac{2π}{\bar{T}_{1,2}}         = 3.166 \pm 0.052 \,\unit{\hertz}   \nonumber\\
+\omega_{2,1} & = \frac{2π}{\bar{T}_{2,1}}  = 3.720 \pm 0.085      \,\unit{\hertz}& \omega_{2,2} & =  \frac{2π}{\bar{T}_{2,2}}         = 3.167 \pm 0.036 \,\unit{\hertz}   \nonumber\\
+\omega_{+,1} & = \frac{2π}{\bar{T}_{+,1}}  = 3.690 \pm 0.13        \,\unit{\hertz}& \omega_{+,2} & =  \frac{2π}{\bar{T}_{+,2}}         = 3.176 \pm 0.049 \,\unit{\hertz}   \nonumber\\
+\omega_{-,1} & = \frac{2π}{\bar{T}_{-,1}}  = 4.120 \pm 0.15        \,\unit{\hertz}& \omega_{-,2} & =  \frac{2π}{\bar{T}_{-,2}}         = 3.402 \pm 0.068 \,\unit{\hertz}   \nonumber\\
+\omega_{S,1} & = \frac{2π}{\bar{T}_{S,1}} =  0.353 \pm 0.011       \,\unit{\hertz}& \omega_{S,2} & =  \frac{2π}{\bar{T}_{S,2}}        = 0.2261 \pm 0.0036 \,\unit{\hertz} \nonumber \text{.}
 \end{align} 
 
+Mit \eqref{eq:Kopplungsgrad} lässt sich abschließend noch der Kopplungsgrad der Federn berechnen.
+So ergibt
+\begin{equation}
+  K_1 = 0.1088 \pm 0.0515 \nonumber
+\end{equation} für die erste und
+\begin{equation}
+  K_2 = 0.0686 \pm 0.0251
+\end{equation} für die zweite Messung.
 
-
-\begin{figure}
-  \centering
-  \includegraphics{plot.pdf}
-  \caption{Periodendauer der beiden Pendel mit einer Pendellänge von 70 cm.}
-  \label{fig:plot}
-\end{figure}
+%\begin{figure}
+%  \centering
+%  \includegraphics{plot.pdf}
+%  \caption{Periodendauer der beiden Pendel mit einer Pendellänge von 70 cm.}
+%  \label{fig:plot}
+%\end{figure}
 
 
 %Siehe \autoref{fig:plot}! blaaaaaaaaaaaaaaaaaaaaa

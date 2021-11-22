@@ -143,39 +143,39 @@ print(FehlerausFortpflanzung, " Fehlerfortpflanzung")
 #print(fk)
 
 #erster Plot für das erste freie Pendel, zumindest versuche ich das zu plotten :)
-x= np.linspace(1,10,10)
-y = np.genfromtxt('l070T1f.txt', unpack=True)
+#x= np.linspace(1,10,10)
+#y = np.genfromtxt('l070T1f.txt', unpack=True)
 
 #Fehlerbalken und Mittelwert, obwohl du den schon hast lel
 
-errY= np.std(y)/np.sqrt(len(y))
-plt.errorbar(x, y, xerr=0, yerr=errY, fmt='o', label='erstes Pendel', markersize=3)
+#errY= np.std(y)/np.sqrt(len(y))
+#plt.errorbar(x, y, xerr=0, yerr=errY, fmt='o', label='erstes Pendel', markersize=3)
 
 #Lineare Regression erstes freies Pendel
 
-b,a,r,p,std= linregress(x,y)
-plt.plot(x, b*x+a, 'g')
+#b,a,r,p,std= linregress(x,y)
+#plt.plot(x, b*x+a, 'g')
 
 #Für das zweite Pendel
-y = np.genfromtxt('l070T2f.txt', unpack=True)
+#y = np.genfromtxt('l070T2f.txt', unpack=True)
 
-errY= np.std(y)/np.sqrt(len(y))
-plt.errorbar(x, y, xerr=0, yerr=errY, fmt='o', label='zweites Pendel', markersize=3)
+#errY= np.std(y)/np.sqrt(len(y))
+#plt.errorbar(x, y, xerr=0, yerr=errY, fmt='o', label='zweites Pendel', markersize=3)
 
 #Lineare Regression zweites freies Pendel
 
-b,a,r,p,std= linregress(x,y)
-plt.plot(x, b*x+a, 'r')
+#b,a,r,p,std= linregress(x,y)
+#plt.plot(x, b*x+a, 'r')
 
 #Achsenbeschriftungen und Legende
 
-plt.xlim(1,10.05)
-plt.ylim(1.6,1.8)
-plt.xticks(np.arange(1,10.05, step=1))
-plt.yticks(np.arange(1.6,1.81, step=0.05))
-plt.xlabel('Anzahl der Messungen')
-plt.ylabel(r'$T_i$/\,\si{s}')
-plt.legend(loc='best')
+#plt.xlim(1,10.05)
+#plt.ylim(1.6,1.8)
+#plt.xticks(np.arange(1,10.05, step=1))
+#plt.yticks(np.arange(1.6,1.81, step=0.05))
+#plt.xlabel('Anzahl der Messungen')
+#plt.ylabel(r'$T_i$/\,\si{s}')
+#plt.legend(loc='best')
 #klappt :)
 
 
