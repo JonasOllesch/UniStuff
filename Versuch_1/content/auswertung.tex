@@ -1,15 +1,38 @@
 \section{Auswertung}
 \label{sec:Auswertung}
+Zur Auswertung der Messdaten benötigt man den Mittelwert, die Standardabweichung und die Unsicherheit. Dabei gilt
+\begin{equation}
+  \bar{x}=\dfrac{1}{N}\sum_{i=1}^N x_i
+  \label{eq:mean}
+\end{equation}
+für den Mittelwert $\bar{x}$ einer N-Messungen großen Messreihe der Größe $x$
+\begin{equation}
+σ=\sqrt{\dfrac{1}{N-1}\sum_{i=1}^N(x_i-\bar{x})^2} 
+\label{eq:std} 
+\end{equation}
+für die Standardabweichung $σ$ und
+\begin{equation}
+  Δx=\dfrac{σ}{\sqrt{N}}
+  \label{eq:unc} 
+\end{equation}
+für die Unsicherheit $Δx$ der Messgröße $x$. \\
 
+Für eine verknüpfte Messgröße $f(x_1,...,x_N)$ gilt die Gaußsche Fehlerfortpflanzung mit
+\begin{equation}
+Δf(x_1,...,x_N)=\sqrt{\sum_{i=1}^N (\frac{\partial f}{\partial x_i}Δx_i)^2}
+\label{eq:gaussF}
+\end{equation}
 %T_1 und T_2
 
-\subsection{Messungen der Einzelfrequenzen}
-In Tabelle 1 werden die unabhängigen Periodendauern der beiden Pendel aufgetragen.
+\newpage
 
-\begin{table}
+\subsection{Messung der Einzelfrequenzen}
+In Tabelle \ref{tab:freiePendel}  werden die unabhängigen Periodendauern der beiden Pendel aufgetragen.
+
+\begin{table}[H]
   \centering
   \caption{Periodendauern der einzelnen Pendel}
-  \label{unabhängigeMessung}
+  \label{tab:freiePendel}
   \sisetup{table-format=1.2}
   \begin{tabular}{S[table-format=2.0] S S[table-format=1.3] S[table-format=2.2] S[table-format=1.3] S[table-format=2.2] S[table-format=1.3] S[table-format=2.2] S[table-format=1.3]}
     \toprule
@@ -31,6 +54,31 @@ In Tabelle 1 werden die unabhängigen Periodendauern der beiden Pendel aufgetrag
     \bottomrule
   \end{tabular}
 \end{table}
+
+Daraus ergeben sich mit \eqref{eq:mean}, \eqref{eq:std} und \eqref{eq:unc}:
+\begin{table}[H]
+  \centering
+  \caption{Mittelwerte, Standardabweichungen und Unsicherheiten der Periodendauern}
+  \sisetup{table-format=1.3}
+  \begin{tabular}{S S S}
+    \toprule
+    & {$l=70 \, \unit{\centi\meter}$} & { $l=100 \, \unit{\centi\meter}$} \\
+    \midrule
+    {$\bar{T}_1$} & 1.653 & 1.984\\
+    {$σ_{T_1}$}   & 0.0137 & 0.0327\\
+    {$ΔT_1$}      & \\
+    {$\bar{T}_2$} & 1.689 & 1.984 \\
+    {$σ_{T_2}$}   & 0.0385 & 2.269\\
+    {$ΔT_2$}      & \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+
+
+\subsection{Gleichphasige Schwingung}
+Tabelle 2
+
 
 %Tabelle für den ersten Messvorgang
 
@@ -88,24 +136,7 @@ aufgrund des unvermeidlichen menschlichen Fehlers bei der Messung auch auf zwei 
 \end{table}
 
 Aus diesen Messwerten lassen sich nun die einzelnen Mittelwerte und Fehler berechnen. Dabei gilt
-\begin{equation}
-  \bar{x}=\dfrac{1}{N}\sum_{i=1}^N x_i
-\end{equation}
-für den Mittelwert einer N-Messungen großen Messreihe der Größe $x$
-\begin{equation}
-σ=\sqrt{\dfrac{1}{N-1}\sum_{i=1}^N(x_i-\bar{x})^2}  
-\end{equation}
-für die Standardabweichung $σ$ und
-\begin{equation}
-  Δx=\dfrac{σ}{\sqrt{N}} 
-\end{equation}
-für die Unsicherheit $Δx$ der Messgröße $x$. \\
 
-Für eine verknüpfte Messgröße $f(x_1,...,x_N)$ gilt die Gaußsche Fehlerfortpflanzung mit
-\begin{equation}
-Δf(x_1,...,x_N)=\sqrt{\sum_{i=1}^N (\frac{\partial f}{\partial x_i}Δx_i)^2}
-\label{eq:gaussF}
-\end{equation}
 
 \newpage
 %Mittelwerte 
