@@ -58,6 +58,17 @@ for j in range(0,2):
 
 #print(Mittelwerte)
 
+
+
+#Eigenfrequenzen_ = [[1,2,3],[1,2,3]]     #theoretische Frequenzen der Schwingungen
+
+#Eigenfrequenzen_[0][0] = sympy.sqrt(9.81/0.7)   #wp
+#Eigenfrequenzen_[1][0] = sympy.sqrt(9.81/1)     #wp lang
+
+#Eigenfrequenzen_[0][1] = sympy.sqrt((9.81/0.7) + (2*k_[0][0]/0.7))     #wm
+#Eigenfrequenzen_[1][1] = sympy.sqrt((9.81/1) + (2*k_[1][0]/1)) #wm lang
+
+#print(Eigenfrequenzen_, " Eigenfrequenzen")
 Standardabweichung = [[1, 2, 3, 4, 5, 6], [1, 2, 3, 4, 5, 6]]
 for j in range(0,2):
 
@@ -106,7 +117,7 @@ Eigenfrequenzen[0][0] = np.sqrt(9.81/0.7)   #wp
 Eigenfrequenzen[1][0] = np.sqrt(9.81/1)     #wp lang
 
 Eigenfrequenzen[0][1] = np.sqrt((9.81/0.7) + (2*k/0.7))     #wm
-Eigenfrequenzen[1][1] = np.sqrt((9.81/0.7) + (2*langk/0.7)) #wm lang
+Eigenfrequenzen[1][1] = np.sqrt((9.81/1) + (2*langk/1)) #wm lang
 
 for j in range (0,2):
     Eigenfrequenzen[j][2] = Eigenfrequenzen[j][0]-Eigenfrequenzen[j][1] 
