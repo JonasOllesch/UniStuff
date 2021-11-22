@@ -5,7 +5,7 @@
 
 \begin{table}
   \centering
-  \caption{Perioden- und Schwebungsdauern der Pendel im ersten Messvorgang}
+  \caption{Fünffache Periodendauern und Schwebungsdauer der Pendel im ersten Messvorgang}
   \label{tab:Messvorgang 1}
   \sisetup{table-format=1.2}
   \begin{tabular}{S[table-format=2.0] S S S S S S[table-format=2.2]}
@@ -33,7 +33,7 @@ aufgrund des unvermeidlichen menschlichen Fehlers bei der Messung auch auf zwei 
 
 \begin{table}
   \centering
-  \caption{Perioden- und Schwebungsdauern der Pendel im zweiten Messvorgang}
+  \caption{Perioden- und Schwebungsdauern der Pendel im ersten Messvorgang}
   \label{tab:Messvorgang 2}
   \sisetup{table-format=1.3}
   \begin{tabular}{S[table-format=2.0] S S S S S S[table-format=2.2]}
@@ -55,19 +55,57 @@ aufgrund des unvermeidlichen menschlichen Fehlers bei der Messung auch auf zwei 
   \end{tabular}
 \end{table}
 
-Aus diesen Messwerten lassen sich nun die einzelnen Mittelwerte und Fehler berechnen. Dabei gelten
+Aus diesen Messwerten lassen sich nun die einzelnen Mittelwerte und Fehler berechnen. Dabei gilt
 \begin{equation}
-  \bar{x}=\dfrac{1}{N}\sum_{i=0}^N x_i
+  \bar{x}=\dfrac{1}{N}\sum_{i=1}^N x_i
 \end{equation}
 für den Mittelwert einer N-Messungen großen Messreihe der Größe $x$
 \begin{equation}
-σ=\dfrac{1}{N-1}\sqrt{\sum_{i=0}^N(x_i-\bar{x})}  
+σ=\sqrt{\dfrac{1}{N-1}\sum_{i=1}^N(x_i-\bar{x})^2}  
 \end{equation}
 für die Standardabweichung $σ$ und
 \begin{equation}
   Δx=\dfrac{σ}{\sqrt{N}} 
 \end{equation}
-für die Unsicherheit $Δx$ der Messgröße $x$.
+für die Unsicherheit $Δx$ der Messgröße $x$. \\
+
+Für eine verknüpfte Messgröße $f(x_1,...,x_N)$ gilt die Gaußsche Fehlerfortpflanzung mit
+\begin{equation}
+Δf(x_1,...,x_N)=\sqrt{\sum_{i=1}^N (\frac{\partial f}{\partial x_i}Δx_i)^2}
+\label{eq:gaussF}
+\end{equation}
+
+
+Es ergeben sich für den ersten bzw. zweiten Messvorgang:
+\begin{align}
+  \bar{T}_{1,1} & = x  & \bar{T}_{1,2} & = y \\
+  \bar{T}_{2,1} & = x  & \bar{T}_{2,2} & = y \\ 
+  \bar{T}_{+,1} & = x  & \bar{T}_{+,2} & = y \\
+  \bar{T}_{-,1} & = x  & \bar{T}_{-,2} & = y \\
+  \bar{T}_{,1}  & = x  & \bar{T}_{,2}  & = y \\
+  \bar{T}_{S,1} & = x  & \bar{T}_{S,2} & = y 
+\end{align}
+
+Die Theoriewerte der Schwingfrequenzen sind gegeben durch
+
+\begin{align}
+  \omega   & = \frac{2π}{T}     =   \sqrt{\frac{g}{l}} \\
+  \omega_+ & = \frac{2π}{T_+} =   \sqrt{\frac{g}{l}} \\
+  \omega_- & = \frac{2π}{T_-} =\sqrt{\frac{g+2K}{l}} \\
+  \omega_S & = \frac{2π}{T_S} =  \omega_+ -\omega_- \text{,}
+\end{align}
+über die Berechnung mit den Mittelwerten der Periodendauern ergeben sich die Messfrequenzen. Dabei seien die Theoriewerte durch den Index $t$
+die Messfrequenzen durch den Index $m$ gekennzeichnet.
+
+Die theoretischen Frequenzen ergeben sich zu
+\begin{align}
+\omega_1 & = \sqrt{\frac{g}{l_1}} = \\
+\omega_2 & = \sqrt{\frac{g}{l_2}} = \\
+\omega_+ & = \sqrt{\frac{g}{l}} = \\
+\omega_- & = \sqrt{\frac{g+2K}{l}} = \\
+\omega_S & = \omega_+ -\omega_- =
+\end{align} 
+
 
 
 \begin{figure}
