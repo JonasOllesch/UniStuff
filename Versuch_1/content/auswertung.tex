@@ -26,6 +26,8 @@ Für eine verknüpfte Messgröße $f(x_1,...,x_N)$ gilt die Gaußsche Fehlerfort
 
 \newpage
 
+%Einzelfrequenzen
+
 \subsection{Messung der Einzelfrequenzen}
 In \autoref{tab:freiePendel} werden die unabhängigen Periodendauern der beiden Pendel aufgetragen.
 
@@ -77,11 +79,12 @@ Daraus ergeben sich mit \eqref{eq:mean}, \eqref{eq:std} und \eqref{eq:unc}:
 \end{table}
 
 
+\newpage
+
+%Gleichphasige Schwingung
 
 \subsection{Gleichphasige Schwingung}
 \autoref{tab:GleichphasigeSchwingung} enthält die Messdaten für die gleichphasigie Schwingung.
-
-\newpage
 
 \begin{table}[H]
   \centering
@@ -111,10 +114,9 @@ Daraus ergeben sich mit \eqref{eq:mean}, \eqref{eq:std} und \eqref{eq:unc}:
 
 Erneut werden Mittelwert, Standardabweichung und Unsicherheit berechnet.
 
-Daraus ergeben sich mit \eqref{eq:mean}, \eqref{eq:std} und \eqref{eq:unc}:
 \begin{table}[H]
   \centering
-  \caption{Mittelwerte, Standardabweichungen und Unsicherheiten der unabhängigen Periodendauern}
+  \caption{Mittelwerte, Standardabweichungen und Unsicherheiten der gleichphasigen Periodendauern}
   \sisetup{table-format=1.3}
   \begin{tabular}{S S S}
     \toprule
@@ -127,13 +129,16 @@ Daraus ergeben sich mit \eqref{eq:mean}, \eqref{eq:std} und \eqref{eq:unc}:
   \end{tabular}
 \end{table}
 
+\newpage
+
+%Gegenphasige Schwingung
 
 \subsection{Gegenphasige Schwingung}
 In Tabelle \autoref{tab:GegenphasigeSchwingung} finden sich die Periodendauern der gegenphasigen Schwingung.
 
 \begin{table}[H]
   \centering
-  \caption{Periodendauern bei der gekoppelten Schwingungen}
+  \caption{Periodendauern bei der gegenphasigen Schwingungen}
   \label{tab:GegenphasigeSchwingung}
   \sisetup{table-format=1.2}
   \begin{tabular}{S[table-format=2.0] S S[table-format=1.3] S[table-format=2.2] S[table-format=1.3]}
@@ -143,19 +148,93 @@ In Tabelle \autoref{tab:GegenphasigeSchwingung} finden sich die Periodendauern d
     \cmidrule{2-3}\cmidrule{4-5} 
     {Messung} & {$5T_- \mathbin{/} \unit{\second}$} & {$T_- \mathbin{/} \unit{\second}$} 
     & {$5T_- \mathbin{/} \unit{\second}$} & {$T_- \mathbin{/} \unit{\second}$} \\
-    1 & 8.83 & 1.420 & 8.83 \\
-    2 & 9.24 & 1.432 & 9.24 \\
-    3 & 9.37 & 1.570 & 9.37 \\
-    4 & 9.11 & 1.614 & 9.11 \\
-    5 & 9.44 & 1.520 & 9.44 \\
-    6 & 9.18 & 1.548 & 9.18 \\
-    7 & 9.40 & 1.510 & 9.40 \\
-    8 & 9.13 & 1.540 & 9.13 \\
-    9 & 9.47 & 1.566 & 9.47 \\
-   10 & 9.17 & 1.544 & 9.17 \\
+    1 & 7.10 & 1.420 & 8.83 & 1.766 \\
+    2 & 7.16 & 1.432 & 9.24 & 1.848 \\
+    3 & 7.85 & 1.570 & 9.37 & 1.874 \\
+    4 & 8.07 & 1.614 & 9.11 & 1.822 \\
+    5 & 7.60 & 1.520 & 9.44 & 1.888 \\
+    6 & 7.74 & 1.548 & 9.18 & 1.836 \\
+    7 & 7.55 & 1.510 & 9.40 & 1.880 \\
+    8 & 7.70 & 1.540 & 9.13 & 1.826 \\
+    9 & 7.83 & 1.566 & 9.47 & 1.894 \\
+   10 & 7.72 & 1.544 & 9.17 & 1.834 \\
    \bottomrule
   \end{tabular}
 \end{table}
+
+%Unsicherheiten u.s.w.
+
+\begin{table}[H]
+  \centering
+  \caption{Mittelwerte, Standardabweichungen und Unsicherheiten der gegenphasigen Periodendauern}
+  \sisetup{table-format=1.3}
+  \begin{tabular}{S S S}
+    \toprule
+    & {$l=70 \, \unit{\centi\meter}$} & { $l=100 \, \unit{\centi\meter}$} \\
+    \midrule
+    {$\bar{T}_-$} & 1.526 & 1.847\\
+    {$σ_{T_-}$}   & 0.0571 & 0.0369\\
+    {$ΔT_-$}      & \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\newpage
+
+%Gekoppelte Schwingung
+
+\subsection{Gekoppelte Schwingungen}
+
+In \autoref{tab:gekoppelteSchwingung} sind schlussendlich die Schwebungsdauer und die Schwingfrequenz für die gekoppelte Schwingung aufgetragen.
+
+\begin{table}[H]
+  \centering
+  \caption{Periodendauern bei der gegenphasigen Schwingungen}
+  \label{tab:gekoppelteSchwingung}
+  \sisetup{table-format=1.2}
+  \begin{tabular}{S[table-format=2.0] S S[table-format=1.3] S[table-format=2.2] S[table-format=2.2] S[table-format=1.3] S[table-format=2.2]}
+    \toprule
+    \multicolumn{1}{c}{Pendellänge} & \multicolumn{3}{c} {$l= 70 \, \unit{\centi\meter}$}
+    & \multicolumn{3}{c}{$l = 100 \, \unit{\centi\meter}$} \\
+    \cmidrule{2-4}\cmidrule{5-7} 
+    {Messung} & {$5T \mathbin{/} \unit{\second}$} & {$T \mathbin{/} \unit{\second}$} & {$T_S \mathbin{/} \unit{\second}$} 
+    & {$5T \mathbin{/} \unit{\second}$} & {$T \mathbin{/} \unit{\second}$} & {$T_S \mathbin{/} \unit{\second}$} \\
+    1 & 7.93 & 1.586 & 18.12 & 9.68 & 1.936 & 27.64 \\
+    2 & 7.20 & 1.440 & 17.95 & 9.56 & 1.912 & 28.10 \\
+    3 & 7.94 & 1.588 & 18.51 & 9.15 & 1.830 & 27.42 \\
+    4 & 7.43 & 1.486 & 18.33 & 9.29 & 1.858 & 27.42 \\
+    5 & 8.16 & 1.632 & 18.36 & 9.25 & 1.850 & 27.74 \\
+    6 & 7.23 & 1.446 & 17.40 & 9.44 & 1.888 & 27.89 \\
+    7 & 7.71 & 1.542 & 18.29 & 9.30 & 1.860 & 27.03 \\
+    8 & 8.02 & 1.604 & 16.81 & 9.14 & 1.828 & 27.73 \\
+    9 & 7.27 & 1.454 & 16.99 & 9.69 & 1.938 & 28.60 \\
+   10 & 8.07 & 1.614 & 17.47 & 9.85 & 1.970 & 28.37 \\
+   \bottomrule
+  \end{tabular}
+\end{table}
+
+%Unsicherheiten u.s.w.
+
+\begin{table}[H]
+  \centering
+  \caption{Mittelwerte, Standardabweichungen und Unsicherheiten der gegenphasigen Periodendauern}
+  \sisetup{table-format=1.3}
+  \begin{tabular}{S S[table-format=2.2] S[table-format=2.2]}
+    \toprule
+    & {$l=70 \, \unit{\centi\meter}$} & { $l=100 \, \unit{\centi\meter}$} \\
+    \midrule
+    {$\bar{T}$} & 1.539 & 1.887 \\
+    {$σ_{T}$}   & 0.0718 & 0.04710\\
+    {$ΔT$}      & \\
+    {$\bar{T}_S$} & 17.823 & 27.794 \\
+    {$σ_{T_S}$}   & 0.5799 & 0.4448 \\
+    {$ΔT_S$}      & \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+
+
 
 
 %Tabelle für den ersten Messvorgang
