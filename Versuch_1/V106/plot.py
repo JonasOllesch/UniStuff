@@ -23,7 +23,7 @@ Mittelwerte_ = [[1, 2, 3, 4, 5, 6], [1, 2, 3, 4, 5, 6]]
 for j in range(0, 2):
     for i in range(0, 6):
         Mittelwerte_[j][i] = ufloat(np.mean(Werte[j][i]), np.std(Werte[j][i]))
-print(Mittelwerte_, "Mittelwerte_ mit Standartabweichung")
+#print(Mittelwerte_, "Mittelwerte_ mit Standartabweichung")
 
 k_ = [[1],[1]]
 for j in range (0,2):
@@ -180,9 +180,17 @@ plt.legend(loc='best')
 #print(f'Das Ergebnis ist {result:.2f}')
 #print('{:.1u}, {:.3uf}, {:.2uL}, {:0.2ue}'.format(a,a,a,a))
 # 0.024626+/-0.000003, 0.02462631+/-0.00000335, 0.0246263 \pm 0.0000034, (2.46263+/-0.00034)e-02
+for j in range(0,2):
+    for i in range(0,6):
+        print('{:.2uL}'.format(Mittelwerte_[j][i]) , "[j],[i]=",  j ," ", i)
 
-print('{:.1u}, {:.3uf}, {:.2uL}, {:0.2ue}'.format(Mittelwerte_[0][0],Mittelwerte_[0][0],Mittelwerte_[0][0],Mittelwerte_[0][0]))
 
+for j in range(0,2):
+    for i in range(0,6):
+        Mittelwerte_[j][i] = '{:.2uL}'.format(Mittelwerte_[j][i])
+
+
+print(Mittelwerte_)
 np.savetxt('build/Mittelwerte.txt',np.column_stack([Mittelwerte]), header='1. erstes freies Pendel  2. zweites freies Pendel 3.gekoppelte T plus 4.gekoppelte T minus  5.gekoppelte Pendel Schwingung  6.gekoppelte Pendel Schwebung')
 np.savetxt('build/Standardabweichungen.txt',np.column_stack([Standardabweichung]), header='1. erstes freies Pendel  2. zweites freies Pendel 3.gekoppelte T plus 4.gekoppelte T minus  5.gekoppelte Pendel Schwingung  6.gekoppelte Pendel Schwebung')
 np.savetxt('build/StandardabweichungMittelwert.txt',np.column_stack([StandardabweichungMittelwert]), header='1. erstes freies Pendel  2. zweites freies Pendel 3.gekoppelte T plus 4.gekoppelte T minus  5.gekoppelte Pendel Schwingung  6.gekoppelte Pendel Schwebung')
