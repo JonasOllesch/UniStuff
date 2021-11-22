@@ -24,25 +24,38 @@ Unter diesen Drehmomenten ergibt sich mit dem Trägheitsmoment $J=mL^2$ der Pend
 
 So stellen sich je nach Anfangsbedingung unterschiedliche Schwingmoden ein. Dabei unterscheidet man gleichsinnige, gegensinnige und gekoppelte Schwingungen. \\
 
-Für \textbf{gleichsinnige Schwingungen}, sprich $\phi_1=\phi_2$, stellt sich für zwei identische Pendel die bereits aus der Schwingung einzelner Pendel bekannte Frequenz \\ 
-$\omega_+=\sqrt{\dfrac{g}{l}}$ mit der Periodendauer $T_+ = 2\pi \omega_+ = 2\pi \sqrt{\dfrac{l}{g}}$ ein.
 \newpage
 
+Für \textbf{gleichphasige Schwingungen}, sprich $\phi_1=\phi_2$, stellt sich für zwei identische Pendel die bereits aus der Schwingung einzelner Pendel bekannte Frequenz \\ 
+$\omega_+=\sqrt{\dfrac{g}{l}}$ mit der Periodendauer 
+\begin{equation}
+T_+ = 2\pi \omega_+ = 2\pi \sqrt{\dfrac{l}{g}} \text{ein.}
+\label{eq:T_+}
+\end{equation}
+
 \noindent Bei entgegengesetzten Anfangsauslenkungen ($\phi_1=-\phi_2$) spricht man von einer \\ 
-\textbf{entgegengesetzten Schwingung}. Die Schwingfrequenz $\omega_-$ ergibt sich dann zu \\
+\textbf{gegenphasige Schwingung}. Die Schwingfrequenz $\omega_-$ ergibt sich dann zu \\
 $\omega_- = \sqrt{\dfrac{g+2K}{l}}$, wobei $K$ die Kopplungskonstante der Feder darstellt.
-Die Periodendauer ist dann $T_- = 2 \pi \omega_- = 2 \pi \sqrt{\dfrac{l}{g+2K}}$. \\
+Die Periodendauer ist dann 
+\begin{equation}
+    T_- = 2 \pi \omega_- = 2 \pi \sqrt{\dfrac{l}{g+2K}}\text{.}
+\label{eq:T_-}
+\end{equation}
 
 \textbf{Gekoppelte Schwingungen} bezeichnen Schwingungen, bei denen für eine der Anfangsauslenkungen $\phi_n = 0$ gilt. Eines der Pendel befindet sich also zu Beginn in Ruhe.
 Das schwingende Pendel beginnt, seine Energie auf das ruhende Pendel zu übertragen, seine Amplitude nimmt also langsam ab, während die des zunächst ruhenden Pendels immer weiter zunimmt und ihr Maximum erreicht, sobald das andere Pendel ruht.
 Dieser Vorgang der Energieübertragung wiederholt sich immer wieder, die Zeit zwischen zwei Ruhezeiten eines Pendels wird dabei als Schwebungsdauer $T_S$ mit der Schwebungsfrequenz $\omega_S$ bezeichnet. \\
-Dabei gilt \\
+Dabei gilt $\omega_S= \omega_+ -\omega_-$ und
+\begin{equation}
+    T_S = \dfrac{T_+ T_-}{T_+ - T_-} \text{.}
+\label{eq:T_S}
+\end{equation}
 
-\noindent $T_S = \dfrac{T_+ T_-}{T_+ - T_-}$ und $\omega_S= \omega_+ -\omega_-$. \\
-
-\noindent Die Kopplung $K$ der beiden Pendel ist dabei definiert als \\
-
-\noindent $K := \dfrac{\omega_-^2-\omega_+^2}{\omega_-^2 + \omega_+^2} = \dfrac{T_+^2 - T_-^2}{T_+^2 + T_-^2}$.
+\noindent Der Kopplungsgrad $K$ der beiden Pendel ist dabei definiert als
+\begin{equation} 
+    K := \dfrac{\omega_-^2-\omega_+^2}{\omega_-^2 + \omega_+^2} = \dfrac{T_+^2 - T_-^2}{T_+^2 + T_-^2} \text{.}
+\label{eq:Kopplungsgrad}
+\end{equation}
 
 
 
