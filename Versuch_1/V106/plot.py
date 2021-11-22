@@ -37,12 +37,16 @@ for j in range(0,2):
 print(Ts_ , " Ts_")
     
 
-Frequenzen_ = [[1, 2, 3], [1, 2, 3]]
+Frequenzen_ = [[1, 2, 3,4,5], [1, 2, 3,4,5]]
 
 for j in range(0,2):
         Frequenzen_[j][0] = (2*np.pi)/Mittelwerte_[j][2]  #wp
         Frequenzen_[j][1] = (2*np.pi)/Mittelwerte_[j][3]  #wm
         Frequenzen_[j][2] = (2*np.pi)/Mittelwerte_[j][5]  #ws
+        Frequenzen_[j][3] = (2*np.pi)/Mittelwerte_[j][0]  #w1
+        Frequenzen_[j][4] = (2*np.pi)/Mittelwerte_[j][1]  #w2
+
+
 
 print(Frequenzen_, " frequenzen_")
 
@@ -183,6 +187,12 @@ plt.legend(loc='best')
 for j in range(0,2):
     for i in range(0,6):
         print('{:.2uL}'.format(Mittelwerte_[j][i]) , "[j],[i]=",  j ," ", i)
+
+print("Frequenzen: ")
+for j in range(0,2):
+    for i in range(0,5):
+        print('{:.2uL}'.format(Frequenzen_[j][i]) , "[j],[i]=",  j ," ", i)
+
 
 
 for j in range(0,2):
