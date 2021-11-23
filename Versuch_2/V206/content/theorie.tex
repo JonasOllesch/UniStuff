@@ -13,7 +13,7 @@ Dabei bezeichnet das Verhältnis von abgegebener Wärme und aufgewandter Arbeit 
 
 \begin{equation}
     \label{eq:effideal}
-    ν_{ideal} = \dfrac{Q_1}{W}
+    ν_{ideal} = \dfrac{Q_1}{W} \, \text{.}
 \end{equation}
 
 Unter der Annahme, dass es sich bei der Wärmeübertragung um einen vollständig reversiblen Prozess handelt und dass sich die Temperaturen der Reservoire während des Prozesses näherungsweise nicht ändern, lässt sich aus
@@ -23,15 +23,26 @@ $\int{\mathrm{dQ}\dfrac{1}{T_i}}=0$ die Beziehung
     \label{eq:rever}
     \dfrac{Q_1}{T_1} - \dfrac{Q_2}{T_2} = 0
 \end{equation}
-herleiten. \\
-
+herleiten.
 Daraus lässt sich nun mit \eqref{eq:q1ideal}
 
 \begin{equation}
-    Q_1= W +\dfrac{T_2}{T_1}Q_1 \\
+    Q_1 = W +\dfrac{T_2}{T_1}Q_1
+\end{equation}
     
-    \text{folgern und es ergibt sich aus \eqref{eq:effideal} \\
+folgern und es ergibt sich aus \eqref{eq:effideal}
+\begin{equation}
+    ν_{ideal} = \dfrac{Q_1}{W} = \dfrac{T_1}{T_1-T_2} \, \text{.}
+\end{equation}
 
-    ν_{ideal}=
+\newpage
+
 Dabei ist aber zu beachten, dass es sich bei den hier aufgeführten Gleichungen lediglich um idealisierte Annahmen handeln, die aufgrund unvermeidbarer Verluste realer Wärmepumpen nicht verhindert werden können.
+Für reale Wärmepumpen gelten die Aussagen
+
+\begin{align}
+    \dfrac{Q_1}{T_1} - \dfrac{Q_2}{T_2} > 0 \\
+    ν_{real} < \dfrac{T_1}{T_1-T_2} 
+\end{align}
+    
 
