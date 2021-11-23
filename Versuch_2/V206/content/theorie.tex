@@ -1,4 +1,27 @@
 \section{Theorie}
 \label{sec:Theorie}
+Nach dem zweiten Hauptsatz der Thermodynamik kann Wärme nicht ohne äußere Arbeit aus einem Gebiet niedrigerer Temperatur in ein Gebiet höherer Temperatur übergehen. Will man diesen Vorgang umkehren, so lässt sich
+eine \textbf{Wärmepumpe} verwenden. Mit ihr ist es möglich, Energie aus einem kälteren System in ein wärmeres zu übertragen. Dabei errechnet sich die an das wärmere Reservoir abgegebene Wärmemenge $Q_1$ 
+aus der Summe der aufgewandten Arbeit $W$ und der dem kälteren Reservoir entzogenen Wärmemenge $Q_2$.
 
-\cite{sample}
+\begin{equation}
+    \label{eq:q1ideal}
+    Q_1= W + Q_2
+\end{equation}
+
+Dabei bezeichnet das Verhältnis von abgegebener Wärme und aufgewandter Arbeit den Wirkungsgrad
+
+\begin{equation}
+    \label{eq:effideal}
+    ν_{ideal} = \dfrac{Q_1}{W}
+\end{equation}
+
+Unter der Annahme, dass es sich bei der Wärmeübertragung um einen vollständig reversiblen Prozess handelt und dass sich die Temperaturen der Reservoire während des Prozesses näherungsweise nicht ändern, lässt sich aus
+$\int{\mathrm{dQ}\dfrac{1}{T_i}}=0$ die Beziehung
+
+\begin{equation}
+    \dfrac{Q_1}{T_1} - \dfrac{Q_2}{T_2} = 0
+\end{equation}
+
+herleiten. Dabei ist aber zu beachten, dass es sich bei den hier aufgeführten Gleichungen lediglich um idealisierte Annahmen handeln, die aufgrund unvermeidbarer Verluste realer Wärmepumpen nicht verhindert werden können.
+
