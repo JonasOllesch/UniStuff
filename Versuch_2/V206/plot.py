@@ -8,6 +8,9 @@ import uncertainties.unumpy as unp
 from pandas import read_csv
 from scipy.optimize import curve_fit
 
+# import pandas as pd 
+#daten = pd.read_csv("daten", sep=',', index_col=0)
+#print(daten.to_latex())
 #output = ("Werte")    
 #my_file = open(output + '.txt', "w") 
 #for i in range(0, 32):
@@ -37,6 +40,7 @@ y = Werte[:,1]
 # choose the input and output variables
 # curve fit
 popt, _ = curve_fit(objective, x, y)
+print(_, "unterstrich")
 # summarize the parameter values
 a, b, c = popt
 print('y = %.5f a * (x ** 2) + %.5f *b + %.5f c' % (a, b,c))
@@ -49,9 +53,15 @@ print(x_line)
 y_line = objective(x_line, a, b,c)
 print(y_line)
 # create a line plot for the mapping function
-pyplot.plot(x_line, y_line, '--', color='red')
-pyplot.show()
 
+#plt.xlabel(r'$\alpha \mathbin{/} \unit{\ohm}$')
+
+plt.xlabel(r'$\alpha \mathbin{/} \unit{\ohm}$')
+plt.ylabel(r'$y \mathbin{/} \unit{\micro\joule}$')
+plt.legend(loc='best')
+
+plt.plot(x_line, y_line, '--', color='red')
+plt.show()
 
 #print(Werte[0,:])  von links nach rechts
 #print(Werte[1,:]) von links nach rechts
@@ -59,20 +69,9 @@ pyplot.show()
 #print(Werte[:,0]) von oben nach unten
 #print(Werte[:,1]) von oben nach unten
 
-
-
-
-
 #x = np.linspace(0, 10, 1000)
 #y = x ** np.sin(x)
-
 #plt.subplot(1, 2, 1)
-#plt.plot(x, y, label='Kurve')
-#plt.xlabel(r'$\alpha \mathbin{/} \unit{\ohm}$')
-#plt.ylabel(r'$y \mathbin{/} \unit{\micro\joule}$')
-#plt.legend(loc='best')
-#
-#plt.subplot(1, 2, 2)
 #plt.plot(x, y, label='Kurve')
 #plt.xlabel(r'$\alpha \mathbin{/} \unit{\ohm}$')
 #plt.ylabel(r'$y \mathbin{/} \unit{\micro\joule}$')
