@@ -54,7 +54,7 @@ y_line = objective(x_line, a, b,c)
 print(y_line)
 # create a line plot for the mapping function
 plt.xlabel('Anzahl der Messungen')
-plt.ylabel(r'$\alpha \mathbin{/} \unit{\ohm}$')
+plt.ylabel(r'$T_1 \mathbin{/}\unit{\celsius}$')
 plt.show()
 plt.savefig('build/plot.pdf')
 
