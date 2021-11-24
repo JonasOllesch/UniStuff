@@ -53,15 +53,18 @@ print(x_line)
 y_line = objective(x_line, a, b,c)
 print(y_line)
 # create a line plot for the mapping function
-
-#plt.xlabel(r'$\alpha \mathbin{/} \unit{\ohm}$')
-
-plt.xlabel(r'$\alpha \mathbin{/} \unit{\ohm}$')
-plt.ylabel(r'$y \mathbin{/} \unit{\micro\joule}$')
-plt.legend(loc='best')
-
-plt.plot(x_line, y_line, '--', color='red')
+plt.xlabel('Anzahl der Messungen')
+plt.ylabel(r'$T_i$/\,\si{s}')
 plt.show()
+plt.savefig('build/plot.pdf')
+
+#plt.xlim(1,10.05)
+#plt.ylim(1.6,1.8)
+#plt.xticks(np.arange(1,10.05, step=1))
+#plt.yticks(np.arange(1.6,1.81, step=0.05))
+#plt.xlabel('Anzahl der Messungen')
+#plt.ylabel(r'$T_i$/\,\si{s}')
+#plt.legend(loc='best')
 
 #print(Werte[0,:])  von links nach rechts
 #print(Werte[1,:]) von links nach rechts
