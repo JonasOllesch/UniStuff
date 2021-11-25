@@ -1,6 +1,6 @@
 #Wärmekapazität der Kupferspule 750 j/k , Masse ca 3 Liter i guess bei W müsste der erste Wert null sein aber vielleicht sie so der Plot besser aus
 #Zeit       T1          T2          Pb          pa      W
-0           21.4        21.4        3.2         4.7     115
+0           21.4        21.4        3.2         4.7     0
 1           22.0        21.3        5.0         3.0     115
 2           23.3        23.3        5.2         3.2     115
 3           24.6        18.8        5.5         3.4     120

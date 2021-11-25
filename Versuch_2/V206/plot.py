@@ -6,7 +6,14 @@ import sympy
 from scipy.stats import linregress
 import uncertainties.unumpy as unp
 from pandas import read_csv
+import scipy
+import math
+
 from scipy.optimize import curve_fit
+from numpy import arange
+from scipy.optimize import curve_fit
+
+
 
 # import pandas as pd 
 #daten = pd.read_csv("daten", sep=',', index_col=0)
@@ -27,14 +34,14 @@ Werte[:,4] = Werte[:,4]+ 1
 print('\n')
 print(Werte)
 
+#für plot 	1	2	3	4	5
+#			a	a	a	a	a
+#			b	b	b	b	b
+#			c	c	c	c	c
+FehlerderKurven = [[1,2,3,4,5],[1,2,3,4,5],[1,2,3,4,5]]
+prams = [[1,2,3,4,5],[1,2,3,4,5],[1,2,3,4,5]]
 
 
-
-# fit a straight line to the economic data
-from numpy import arange
-from pandas import read_csv
-from scipy.optimize import curve_fit
-from matplotlib import pyplot
 
 # define the true objective function
 def objective(x, a, b, c):
@@ -60,10 +67,20 @@ y_line = objective(x_line, a, b,c)
 print(y_line)
 # create a line plot for the mapping function
 pyplot.plot(x_line, y_line, '--', color='red')
-pyplot.xlabel(r'$t \mathbin{/} \unit{\minute}$')
-pyplot.ylabel(r'$T_1 \mathbin{/}\unit{\celsius}$')
-pyplot.show()
+#pyplot.xlabel(r'$t \mathbin{/} \unit{\minute}$')
+#pyplot.ylabel(r'$T_1 \mathbin{/}\unit{\celsius}$')
+#pyplot.show()
 pyplot.savefig('build/plot_1.pdf')
+for i in range (0,3):
+	FehlerderKurven[i][0]= _[i][i]
+
+prams[0][0]= a
+prams[1][0]= b
+prams[2][0]= c
+
+
+print(_, " _<- da steht ein Unterstrich")
+print(FehlerderKurven, " Fehler-Matrix")
 
 pyplot.clf()
 #der zweite Plot
@@ -77,79 +94,109 @@ x_line = arange(min(x), max(x), 1)
 print(x_line)
 y_line = objective(x_line, a, b,c)
 print(y_line)
-pyplotlot.plot(x_line, y_line, '--', color='red')
-pyplot.xlabel(r'$t \mathbin{/} \unit{\minute}$')
-pyplot.ylabel(r'$T_1 \mathbin{/}\unit{\celsius}$')
-pyplot.show()
+pyplot.plot(x_line, y_line, '--', color='red')
+#pyplot.xlabel(r'$t \mathbin{/} \unit{\minute}$')
+#pyplot.ylabel(r'$T_1 \mathbin{/}\unit{\celsius}$')
+#pyplot.show()
 pyplot.savefig('build/plot_2.pdf')
+for i in range (0,3):
+	FehlerderKurven[i][1]= _[i][i]
 
-
+prams[0][1]= a
+prams[1][1]= b
+prams[2][1]= c
 
 
 pyplot.clf()
 #der dritte Plot
 y = Werte[:,3]
+
 popt, _ = curve_fit(objective, x, y)
+a, b, c = popt
 print('y = %.5f a * (x ** 2) + %.5f *b + %.5f c' % (a, b,c))
 pyplot.scatter(x, y)
-x_line = arange(min(x), max(x), 0.5)
+x_line = arange(min(x), max(x), 1)
 y_line = objective(x_line, a, b,c)
 pyplot.plot(x_line, y_line, '--', color='red')
-pyplot.xlabel(r'$t \mathbin{/} \unit{\minute}$')
-pyplot.ylabel(r'$T_b \mathbin{/}\unit{\bar}$')
-pyplot.show()
+#pyplot.xlabel(r'$t \mathbin{/} \unit{\minute}$')
+#pyplot.ylabel(r'$P_b \mathbin{/}\unit{\bar}$')
+#pyplot.show()
 pyplot.savefig('build/plot_3.pdf')
+for i in range (0,3):
+	FehlerderKurven[i][2]= _[i][i]
 
+prams[0][2]= a
+prams[1][2]= b
+prams[2][2]= c
 pyplot.clf()
 #der vierte Plot
+
 y = Werte[:,4]
+
 popt, _ = curve_fit(objective, x, y)
+a, b, c = popt
 print('y = %.5f a * (x ** 2) + %.5f *b + %.5f c' % (a, b,c))
 pyplot.scatter(x, y)
-x_line = arange(min(x), max(x), 0.5)
+x_line = arange(min(x), max(x), 1)
 y_line = objective(x_line, a, b,c)
 pyplot.plot(x_line, y_line, '--', color='red')
-pyplot.xlabel(r'$t \mathbin{/} \unit{\minute}$')
-pyplot.ylabel(r'$T_a \mathbin{/}\unit{\bar}$')
-pyplot.show()
+#pyplot.xlabel(r'$t \mathbin{/} \unit{\minute}$')
+#pyplot.ylabel(r'$P_a \mathbin{/}\unit{\bar}$')
+#pyplot.show()
 pyplot.savefig('build/plot_4.pdf')
+for i in range (0,3):
+	FehlerderKurven[i][3]= _[i][i]
 
+
+prams[0][3]= a
+prams[1][3]= b
+prams[2][3]= c	
 pyplot.clf()
 #der fünfte Plot
+
 y = Werte[:,5]
+
 popt, _ = curve_fit(objective, x, y)
+a, b, c = popt
 print('y = %.5f a * (x ** 2) + %.5f *b + %.5f c' % (a, b,c))
 pyplot.scatter(x, y)
-x_line = arange(min(x), max(x), 0.5)
+x_line = arange(min(x), max(x), 1)
 y_line = objective(x_line, a, b,c)
 pyplot.plot(x_line, y_line, '--', color='red')
-pyplot.xlabel(r'$t \mathbin{/} \unit{\minute}$')
-pyplot.ylabel(r'$T_a \mathbin{/}\unit{\bar}$')
-pyplot.show()
+#pyplot.xlabel(r'$t \mathbin{/} \unit{\minute}$')
+#pyplot.ylabel(r'$W \mathbin{/}\unit{\watt}$')
+#pyplot.show()
 pyplot.savefig('build/plot_5.pdf')
+for i in range (0,3):
+	FehlerderKurven[i][4]= _[i][i]
 
-#pyplot.xlim(1,10.05)
-#pyplot.ylim(1.6,1.8)
-#pyplot.xticks(np.arange(1,10.05, step=1))
-#pyplot.yticks(np.arange(1.6,1.81, step=0.05))
-#pyplot.xlabel('Anzahl der Messungen')
-#pyplot.ylabel(r'$T_i$/\,\si{s}')
-#pyplot.legend(loc='best')
 
-#print(Werte[0,:])  von links nach rechts
-#print(Werte[1,:]) von links nach rechts
+prams[0][4]= a
+prams[1][4]= b
+prams[2][4]= c
 
-#print(Werte[:,0]) von oben nach unten
-#print(Werte[:,1]) von oben nach unten
+print(prams, " <- Prarmeter")
+#print(FehlerderKurven, " Fehlerkurven")
+for j in range(0,3):
+	for i in range(0,5):
+		FehlerderKurven[j][i] = np.sqrt(FehlerderKurven[j][i])
 
-#x = np.linspace(0, 10, 1000)
-#y = x ** np.sin(x)
-#pyplot.subplot(1, 2, 1)
-#pyplot.plot(x, y, label='Kurve')
-#pyplot.xlabel(r'$\alpha \mathbin{/} \unit{\ohm}$')
-#pyplot.ylabel(r'$y \mathbin{/} \unit{\micro\joule}$')
-#pyplot.legend(loc='best')
-#
-# in matplotlibrc leider (noch) nicht möglich
-#pyplot.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
-#pyplot.savefig('build/plot.pdf')
+print(FehlerderKurven, " das sind auch Fehler")
+
+x = sympy.var('x')
+# Aufgabe b
+T1 = prams[0][0]* (x**2) +prams[1][0]*x + prams[2][0]
+T1_ = T1.diff(x)
+
+T2 = prams[0][1]* (x**2) +prams[1][1]*x + prams[2][1]
+T2_ = T2.diff(x)
+
+w = prams[0][4]* (x**2) +prams[1][4]*x + prams[2][4]
+W =	w.integrate(x)
+print(W)
+ #integrate(expr,(x,0,oo) )
+#Aufgabe c
+Auswertung=[[1,2,3,4],[1,2,3,4]]
+for i in range(0,4):
+		Auswertung[0][i]=	T1.evalf(subs={x:((i*10)+5)})
+		Auswertung[1][i]=	T2.evalf(subs={x:((i*10)+5)})
