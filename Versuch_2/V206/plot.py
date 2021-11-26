@@ -29,18 +29,11 @@ Werte = np.array(np.genfromtxt('Werte.txt'))
 #Zeit T1    T2     pb      pa      W
 
 print(Werte)
-Werte[:,0] = Werte[:,0]*60
 Werte[:,3] = Werte[:,3]+ 1
 Werte[:,4] = Werte[:,4]+ 1
 print('\n')
 print(Werte)
 
-#für plot 	1	2	3	4	5
-#			a	a	a	a	a
-#			b	b	b	b	b
-#			c	c	c	c	c
-FehlerderKurven = [[1,2,3,4,5],[1,2,3,4,5],[1,2,3,4,5]]
-prams = [[1,2,3,4,5],[1,2,3,4,5],[1,2,3,4,5]]
 
 
 
@@ -48,7 +41,7 @@ prams = [[1,2,3,4,5],[1,2,3,4,5],[1,2,3,4,5]]
 def objective(x, a, b, c):
 	return a* (x**2) + b*x + c
 
-x = Werte[:,0]/60
+x = Werte[:,0]
 y = Werte[:,1]
 # load the dataset
 # choose the input and output variables
@@ -73,16 +66,9 @@ pyplot.xlabel(r'$t \mathbin{/} \unit{\minute}$')
 pyplot.ylabel(r'$T_1 \mathbin{/}\unit{\celsius}$')
 #pyplot.show()
 pyplot.savefig('build/plot_1.pdf')
-for i in range (0,3):
-	FehlerderKurven[i][0]= _[i][i]
-
-prams[0][0]= a
-prams[1][0]= b
-prams[2][0]= c
 
 
-#print(_, " _<- da steht ein Unterstrich")
-#print(FehlerderKurven, " Fehler-Matrix")
+
 
 pyplot.clf()
 #der zweite Plot
@@ -97,16 +83,10 @@ print(x_line)
 y_line = objective(x_line, a, b,c)
 print(y_line)
 pyplot.plot(x_line, y_line, '--', color='red')
-pyplot.xlabel(r'$t \mathbin{/} \unit{\second}$')
+pyplot.xlabel(r'$t \mathbin{/} \unit{\minute}$')
 pyplot.ylabel(r'$T_2 \mathbin{/}\unit{\celsius}$')
 #pyplot.show()
 pyplot.savefig('build/plot_2.pdf')
-for i in range (0,3):
-	FehlerderKurven[i][1]= _[i][i]
-
-prams[0][1]= a
-prams[1][1]= b
-prams[2][1]= c
 
 
 pyplot.clf()
@@ -120,16 +100,11 @@ pyplot.scatter(x, y)
 x_line = arange(min(x), max(x), 1)
 y_line = objective(x_line, a, b,c)
 pyplot.plot(x_line, y_line, '--', color='red')
-pyplot.xlabel(r'$t \mathbin{/} \unit{\second}$')
+pyplot.xlabel(r'$t \mathbin{/} \unit{\minute}$')
 pyplot.ylabel(r'$p_b \mathbin{/}\unit{\bar}$')
 #pyplot.show()
 pyplot.savefig('build/plot_3.pdf')
-for i in range (0,3):
-	FehlerderKurven[i][2]= _[i][i]
 
-prams[0][2]= a
-prams[1][2]= b
-prams[2][2]= c
 pyplot.clf()
 #der vierte Plot
 
@@ -142,22 +117,15 @@ pyplot.scatter(x, y)
 x_line = arange(min(x), max(x), 1)
 y_line = objective(x_line, a, b,c)
 pyplot.plot(x_line, y_line, '--', color='red')
-pyplot.xlabel(r'$t \mathbin{/} \unit{\second}$')
+pyplot.xlabel(r'$t \mathbin{/} \unit{\minute}$')
 pyplot.ylabel(r'$p_a \mathbin{/}\unit{\bar}$')
 #pyplot.show()
 pyplot.savefig('build/plot_4.pdf')
-for i in range (0,3):
-	FehlerderKurven[i][3]= _[i][i]
-
-
-prams[0][3]= a
-prams[1][3]= b
-prams[2][3]= c	
+	
 pyplot.clf()
 #der fünfte Plot
 
 y = Werte[:,5]
-
 popt, _ = curve_fit(objective, x, y)
 a, b, c = popt
 print('y = %.5f a * (x ** 2) + %.5f *b + %.5f c' % (a, b,c))
@@ -165,17 +133,45 @@ pyplot.scatter(x, y)
 x_line = arange(min(x), max(x), 1)
 y_line = objective(x_line, a, b,c)
 pyplot.plot(x_line, y_line, '--', color='red')
-pyplot.xlabel(r'$t \mathbin{/} \unit{\second}$')
+pyplot.xlabel(r'$t \mathbin{/} \unit{\minute}$')
 pyplot.ylabel(r'$W \mathbin{/}\unit{\watt}$')
 #pyplot.show()
 pyplot.savefig('build/plot_5.pdf')
-for i in range (0,3):
-	FehlerderKurven[i][4]= _[i][i]
 
 
-prams[0][4]= a
-prams[1][4]= b
-prams[2][4]= c
+#---------------------------------
+
+
+#für plot 	1	2	3	4	5
+#			a	a	a	a	a
+#			b	b	b	b	b
+#			c	c	c	c	c
+FehlerderKurven = [[1,2,3,4,5],[1,2,3,4,5],[1,2,3,4,5]]
+prams = [[1,2,3,4,5],[1,2,3,4,5],[1,2,3,4,5]]
+
+
+Werte[:,0] = Werte[:,0]*60
+x = Werte[:,0]
+for i in range (1,6):
+	y = Werte[:,i]
+	popt, _ = curve_fit(objective, x, y)
+	a, b, c = popt
+	print('y = %.5f a * (x ** 2) + %.5f + b * x + %.5f c' % (a, b,c))
+	prams[0][i-1] = a
+	prams[1][i-1] = b
+	prams[2][i-1] = c
+		
+
+
+
+
+#for i in range (0,3):
+#	FehlerderKurven[i][4]= _[i][i]
+#
+#
+#prams[0][4]= a
+#prams[1][4]= b
+#prams[2][4]= c
 
 #print(prams, " <- Prarmeter")
 #print(FehlerderKurven, " Fehlerkurven")
@@ -183,7 +179,7 @@ for j in range(0,3):
 	for i in range(0,5):
 		FehlerderKurven[j][i] = np.sqrt(FehlerderKurven[j][i])
 
-#print(FehlerderKurven, " das sind auch Fehler")
+print(FehlerderKurven, " das sind auch Fehler")
 
 x = sympy.var('x')
 # Aufgabe b
