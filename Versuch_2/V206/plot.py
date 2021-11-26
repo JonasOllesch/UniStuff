@@ -48,7 +48,7 @@ prams = [[1,2,3,4,5],[1,2,3,4,5],[1,2,3,4,5]]
 def objective(x, a, b, c):
 	return a* (x**2) + b*x + c
 
-x = Werte[:,0]
+x = Werte[:,0]/60
 y = Werte[:,1]
 # load the dataset
 # choose the input and output variables
@@ -69,7 +69,7 @@ print(y_line)
 # create a line plot for the mapping function
 
 pyplot.plot(x_line, y_line, '--', color='red')
-pyplot.xlabel(r'$t \mathbin{/} \unit{\second}$')
+pyplot.xlabel(r'$t \mathbin{/} \unit{\minute}$')
 pyplot.ylabel(r'$T_1 \mathbin{/}\unit{\celsius}$')
 #pyplot.show()
 pyplot.savefig('build/plot_1.pdf')
