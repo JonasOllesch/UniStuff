@@ -79,14 +79,14 @@ prams[1][0]= b
 prams[2][0]= c
 
 
-print(_, " _<- da steht ein Unterstrich")
-print(FehlerderKurven, " Fehler-Matrix")
+#print(_, " _<- da steht ein Unterstrich")
+#print(FehlerderKurven, " Fehler-Matrix")
 
 pyplot.clf()
 #der zweite Plot
 y = Werte[:,2]
 popt, _ = curve_fit(objective, x, y)
-print(_, "unterstrich")
+#print(_, "unterstrich")
 a, b, c = popt
 print('y = %.5f a * (x ** 2) + %.5f *b + %.5f c' % (a, b,c))
 pyplot.scatter(x, y)
@@ -175,13 +175,13 @@ prams[0][4]= a
 prams[1][4]= b
 prams[2][4]= c
 
-print(prams, " <- Prarmeter")
+#print(prams, " <- Prarmeter")
 #print(FehlerderKurven, " Fehlerkurven")
 for j in range(0,3):
 	for i in range(0,5):
 		FehlerderKurven[j][i] = np.sqrt(FehlerderKurven[j][i])
 
-print(FehlerderKurven, " das sind auch Fehler")
+#print(FehlerderKurven, " das sind auch Fehler")
 
 x = sympy.var('x')
 # Aufgabe b
@@ -192,11 +192,22 @@ T2 = prams[0][1]* (x**2) +prams[1][1]*x + prams[2][1]
 T2_ = T2.diff(x)
 
 w = prams[0][4]* (x**2) +prams[1][4]*x + prams[2][4]
-W =	w.integrate(x)
-print(W)
+#W =	w.integrate(x)
+#print(W)
  #integrate(expr,(x,0,oo) )
 #Aufgabe c
 Auswertung=[[1,2,3,4],[1,2,3,4]]
+Ap=[1,2,3,4]
 for i in range(0,4):
-		Auswertung[0][i]=	T1.evalf(subs={x:((i*10)+5)})
-		Auswertung[1][i]=	T2.evalf(subs={x:((i*10)+5)})
+		Ap[i] = (i*8)+2
+		Auswertung[0][i]=	T1.evalf(subs={x:Ap[i]})
+		Auswertung[1][i]=	T2.evalf(subs={x:Ap[i]})
+
+Gueteziffer = [[1,2,3,4],[1,2,3,4]]
+
+#v = (m1*cw+ mc*ck)/N *T1
+for i in range (0,4):
+	Gueteziffer[0][i] = ((3*4180+750+750)*T1_.evalf(subs={x:Ap[i]}))/w.evalf(subs={x:Ap[i]})
+	Gueteziffer[1][i] = ((3*4180+750+750)*T2_.evalf(subs={x:Ap[i]}))/w.evalf(subs={x:Ap[i]})
+
+print(Gueteziffer)
