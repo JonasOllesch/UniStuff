@@ -67,6 +67,7 @@ print(x_line)
 y_line = objective(x_line, a, b,c)
 print(y_line)
 # create a line plot for the mapping function
+
 pyplot.plot(x_line, y_line, '--', color='red')
 pyplot.xlabel(r'$t \mathbin{/} \unit{\second}$')
 pyplot.ylabel(r'$T_1 \mathbin{/}\unit{\celsius}$')
