@@ -62,8 +62,8 @@ print(y_line)
 # create a line plot for the mapping function
 
 pyplot.plot(x_line, y_line, '--', color='red')
-pyplot.xlabel(r'$t \mathbin{/} \unit{\minute}$')
-pyplot.ylabel(r'$T_1 \mathbin{/}\unit{\celsius}$')
+#pyplot.xlabel(r'$t \mathbin{/} \unit{\minute}$')
+#pyplot.ylabel(r'$T_1 \mathbin{/}\unit{\celsius}$')
 #pyplot.show()
 pyplot.savefig('build/plot_1.pdf')
 
@@ -83,8 +83,8 @@ print(x_line)
 y_line = objective(x_line, a, b,c)
 print(y_line)
 pyplot.plot(x_line, y_line, '--', color='red')
-pyplot.xlabel(r'$t \mathbin{/} \unit{\minute}$')
-pyplot.ylabel(r'$T_2 \mathbin{/}\unit{\celsius}$')
+#pyplot.xlabel(r'$t \mathbin{/} \unit{\minute}$')
+#pyplot.ylabel(r'$T_2 \mathbin{/}\unit{\celsius}$')
 #pyplot.show()
 pyplot.savefig('build/plot_2.pdf')
 
@@ -100,8 +100,8 @@ pyplot.scatter(x, y)
 x_line = arange(min(x), max(x), 1)
 y_line = objective(x_line, a, b,c)
 pyplot.plot(x_line, y_line, '--', color='red')
-pyplot.xlabel(r'$t \mathbin{/} \unit{\minute}$')
-pyplot.ylabel(r'$p_b \mathbin{/}\unit{\bar}$')
+#pyplot.xlabel(r'$t \mathbin{/} \unit{\minute}$')
+#pyplot.ylabel(r'$p_b \mathbin{/}\unit{\bar}$')
 #pyplot.show()
 pyplot.savefig('build/plot_3.pdf')
 
@@ -117,8 +117,8 @@ pyplot.scatter(x, y)
 x_line = arange(min(x), max(x), 1)
 y_line = objective(x_line, a, b,c)
 pyplot.plot(x_line, y_line, '--', color='red')
-pyplot.xlabel(r'$t \mathbin{/} \unit{\minute}$')
-pyplot.ylabel(r'$p_a \mathbin{/}\unit{\bar}$')
+#pyplot.xlabel(r'$t \mathbin{/} \unit{\minute}$')
+#pyplot.ylabel(r'$p_a \mathbin{/}\unit{\bar}$')
 #pyplot.show()
 pyplot.savefig('build/plot_4.pdf')
 	
@@ -133,15 +133,15 @@ pyplot.scatter(x, y)
 x_line = arange(min(x), max(x), 1)
 y_line = objective(x_line, a, b,c)
 pyplot.plot(x_line, y_line, '--', color='red')
-pyplot.xlabel(r'$t \mathbin{/} \unit{\minute}$')
-pyplot.ylabel(r'$W \mathbin{/}\unit{\watt}$')
+#pyplot.xlabel(r'$t \mathbin{/} \unit{\minute}$')
+#pyplot.ylabel(r'$W \mathbin{/}\unit{\watt}$')
 #pyplot.show()
 pyplot.savefig('build/plot_5.pdf')
 
 
 #---------------------------------
 
-
+#	f von	T1  T2  pb 	pa  W
 #für plot 	1	2	3	4	5
 #			a	a	a	a	a
 #			b	b	b	b	b
@@ -160,25 +160,11 @@ for i in range (1,6):
 	prams[0][i-1] = a
 	prams[1][i-1] = b
 	prams[2][i-1] = c
-		
-
-
-
-
-#for i in range (0,3):
-#	FehlerderKurven[i][4]= _[i][i]
-#
-#
-#prams[0][4]= a
-#prams[1][4]= b
-#prams[2][4]= c
-
-#print(prams, " <- Prarmeter")
-#print(FehlerderKurven, " Fehlerkurven")
-for j in range(0,3):
-	for i in range(0,5):
-		FehlerderKurven[j][i] = np.sqrt(FehlerderKurven[j][i])
-
+	
+	FehlerderKurven[0][i-1] =np.sqrt(_[0][0])
+	FehlerderKurven[1][i-1] =np.sqrt(_[1][1])
+	FehlerderKurven[2][i-1] =np.sqrt(_[2][2])
+	
 print(FehlerderKurven, " das sind auch Fehler")
 
 x = sympy.var('x')
@@ -202,10 +188,19 @@ for i in range(0,4):
 		Auswertung[1][i]=	T2.evalf(subs={x:Ap[i]})
 
 Gueteziffer = [[1,2,3,4],[1,2,3,4]]
-
+#Aufgabe d
 #v = (m1*cw+ mc*ck)/N *T1
+IdGueteziffer = [[1,2,3,4],[1,2,3,4]]
+for i in range (0,4):
+	IdGueteziffer[0][i]=((T1.evalf(subs={x:Ap[i]}))/(T1.evalf(subs={x:Ap[i]})-T2.evalf(subs={x:Ap[i]})))
+
 for i in range (0,4):
 	Gueteziffer[0][i] = ((3*4180+750)*T1_.evalf(subs={x:Ap[i]}))/w.evalf(subs={x:Ap[i]})
-	Gueteziffer[1][i] = ((3*4180+750)*T2_.evalf(subs={x:Ap[i]}))/w.evalf(subs={x:Ap[i]})
+	#Gueteziffer[1][i] = ((3*4180+750)*T2_.evalf(subs={x:Ap[i]}))/w.evalf(subs={x:Ap[i]})
 
+print(IdGueteziffer)
 print(Gueteziffer)
+
+for i in range(0,4):
+	print(((Gueteziffer[0][i]-IdGueteziffer[0][i])/IdGueteziffer[0][i])*100, " Abweichungen der Güteziffer")
+#Aufgabe e
