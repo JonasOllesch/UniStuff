@@ -50,12 +50,12 @@ popt, _ = curve_fit(objective, x, y)
 print(_, "unterstrich")
 # summarize the parameter values
 a, b, c = popt
-print('y = %.5f a * (x ** 2) + %.5f *b + %.5f c' % (a,b,c))
+print('y = %.5f a * (x ** 2) + %.5f *b* x + %.5f c' % (a,b,c))
 # plot input vs output
 pyplot.scatter(x, y, label=r'$T_1$', s=15)
 pyplot.legend()
 # define a sequence of inputs between the smallest and largest known inputs
-x_line = arange(min(x), max(x), 1)
+x_line = arange(min(x), max(x)+1, 1)
 print(x_line)
 # calculate the output for the range
 y_line = objective(x_line, a, b,c)
@@ -69,10 +69,10 @@ y = Werte[:,2]
 popt, _ = curve_fit(objective, x, y)
 #print(_, "unterstrich")
 a, b, c = popt
-print('y = %.5f a * (x ** 2) + %.5f *b + %.5f c' % (a, b,c))
+print('y = %.5f a * (x ** 2) + %.5f *b* x + %.5f c' % (a, b,c))
 pyplot.scatter(x, y, color='green', label=r'$T_2$', s= 15)
 pyplot.legend()
-x_line = arange(min(x), max(x), 1)
+x_line = arange(min(x), max(x)+1, 1)
 print(x_line)
 y_line = objective(x_line, a, b,c)
 print(y_line)
@@ -93,10 +93,10 @@ y = Werte[:,3]
 
 popt, _ = curve_fit(objective, x, y)
 a, b, c = popt
-print('y = %.5f a * (x ** 2) + %.5f *b + %.5f c' % (a, b,c))
+print('y = %.5f a * (x ** 2) + %.5f *b* x  + %.5f c' % (a, b,c))
 pyplot.scatter(x, y, s= 15, label=r'$p_b$')
 pyplot.legend()
-x_line = arange(min(x), max(x), 1)
+x_line = arange(min(x), max(x)+1, 1)
 y_line = objective(x_line, a, b,c)
 pyplot.plot(x_line, y_line, '--', color='red')
 #pyplot.xlabel(r'$t \mathbin{/} \unit{\minute}$')
@@ -111,10 +111,10 @@ y = Werte[:,4]
 
 popt, _ = curve_fit(objective, x, y)
 a, b, c = popt
-print('y = %.5f a * (x ** 2) + %.5f *b + %.5f c' % (a, b,c))
+print('y = %.5f a * (x ** 2) + %.5f *b * x + %.5f c' % (a, b,c))
 pyplot.scatter(x, y, color='green',s=15, label=r'$p_a$')
 pyplot.legend()
-x_line = arange(min(x), max(x), 1)
+x_line = arange(min(x), max(x)+1, 1)
 y_line = objective(x_line, a, b,c)
 pyplot.plot(x_line, y_line, '--', color='red')
 pyplot.grid()
@@ -137,7 +137,7 @@ popt, _ = curve_fit(objective, x, y)
 a, b, c = popt
 print('y = %.5f a * (x ** 2) + %.5f *b + %.5f c' % (a, b,c))
 pyplot.scatter(x, y, s=15)
-x_line = arange(min(x), max(x), 1)
+x_line = arange(min(x), max(x)+1, 1)
 y_line = objective(x_line, a, b,c)
 pyplot.plot(x_line, y_line, '--', color='red')
 pyplot.grid()

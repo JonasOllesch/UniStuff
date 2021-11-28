@@ -6,7 +6,7 @@ Es folgt eine Tabelle mit den aufgenommenen Messdaten.
 \begin{table}[H]
   \centering
   \caption{Veränderung der Reservoirtemperaturen und -drücke sowie der Leistung im Messverlauf.}
-  \label{tab:freiePendel}
+  \label{tab:Messdaten}
   \sisetup{table-format=2.1}
   \begin{tabular}{S[table-format=2.0] S S S S S[table-format=3.0]}
     \toprule
@@ -60,6 +60,28 @@ Es folgt eine Tabelle mit den aufgenommenen Messdaten.
   \caption{Temperaturverlauf in den Reservoiren.}
   \label{fig:plot1}
 \end{figure}
+
+Als Ansatz zur Approximation der Temperaturverläufe wurde eine quadratische Näherung der Form 
+\begin{equation}
+  T(t)=At^2+Bt+C
+\end{equation}
+verwendet.
+
+In der folgenden Tabelle seien die Parameter $A, B, C$ der Näherung für $T_1(t), T_2(t)$ dargestellt.
+
+\begin{table}[H]
+  \centering
+  \label{tab:ApproxTemp}
+  \sisetup{table-format=1.5}
+  \begin{tabular}{S S S S[table-format=2.5]}
+    \toprule
+    & {$A \mathbin{/} \unit{\dfrac{\celsius}{\minute^2}}$} & {$B \mathbin{/} \unit{\dfrac{\celsius}{\minute}}$} & {$C \mathbin{/} \unit{\celsius}$} \\
+    \midrule
+    {$T_1$} & {-0.01756} & 1.50604 & 20.45657 \\
+    {$T_2$} & 0.01510 & {-1.29451} & 22.77799 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
 
 \subsection{Bestimmung der Differenzenquotienten}
 
