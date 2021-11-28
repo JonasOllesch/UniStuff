@@ -146,7 +146,7 @@ pyplot.yticks(np.arange(0,130,step = 20))
 pyplot.xlim(0,31.5)
 pyplot.ylim(0,130)
 pyplot.xlabel(r'$t \mathbin{/} \unit{\minute}$')
-pyplot.ylabel(r'$W \mathbin{/}\unit{\watt}$')
+pyplot.ylabel(r'$N \mathbin{/}\unit{\watt}$')
 #pyplot.show()
 pyplot.savefig('build/plot_5.pdf')
 

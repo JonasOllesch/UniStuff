@@ -2,10 +2,10 @@
 \label{sec:Auswertung}
 
 %Tabelle mit Messdaten
-
+Es folgt eine Tabelle mit den aufgenommenen Messdaten.
 \begin{table}[H]
   \centering
-  \caption{Veränderung der Reservoirtemperaturen und -drücke sowie der Arbeit im Messverlauf.}
+  \caption{Veränderung der Reservoirtemperaturen und -drücke sowie der Leistung im Messverlauf.}
   \label{tab:freiePendel}
   \sisetup{table-format=2.1}
   \begin{tabular}{S[table-format=2.0] S S S S S[table-format=3.0]}
@@ -13,7 +13,7 @@
     {$t \mathbin{/} \unit{\minute}$} 
     & {$T_1 \mathbin{/} \unit{\celsius}$} & {$T_2 \mathbin{/} \unit{\celsius}$} 
     & {$p_b \mathbin{/} \unit{\bar}$} & {$p_a \mathbin{/} \unit{\bar}$} 
-    & {$W \mathbin{/} \unit{\joule}$} \\
+    & {$N \mathbin{/} \unit{\watt}$} \\
     \midrule
      0 & 21.4 & 21.4 &  3.2 & 4.7 &   0 \\
      1 & 22.0 & 21.3 &  5.0 & 3.0 & 115 \\
@@ -51,31 +51,24 @@
   \end{tabular}
 \end{table}
 
-%\begin{figure}
-%  \centering
-%  \includegraphics{plot.pdf}
-%  \caption{Zeitlicher Temperaturverlauf im wärmeren Reservoir.}
-%  \label{fig:plot}
-%\end{figure}
-
+\subsection{Temperaturverläufe und nicht lineare Approximation}
 %erster Plot
 
-\begin{figure}
+\begin{figure}[H]
   \centering
   \includegraphics{plot_1.pdf}
   \caption{Temperaturverlauf in den Reservoiren.}
   \label{fig:plot1}
 \end{figure}
 
-%zweiter Plot
+\subsection{Bestimmung der Differenzenquotienten}
 
-%\begin{figure}
-%  \centering
-%  \includegraphics{plot_2.pdf}
-%  \caption{Zeitlicher Temperaturverlauf im kälteren Reservoir.}
-%  \label{fig:plot2}
-%\end{figure}
+\subsection{Bestimmung des Massendurchsatzes}
 
+\subsection{Bestimmung der mechanischen Kompressorleistung}
+
+
+\subsection{Sonstige Plots}
 %3. Plot
 
 \begin{figure}
@@ -90,6 +83,6 @@
 \begin{figure}
   \centering
   \includegraphics{plot_5.pdf}
-  \caption{Zeitlicher Verlauf der Arbeit.}
+  \caption{Zeitlicher Verlauf der Leistung.}
   \label{fig:plot5}
 \end{figure}

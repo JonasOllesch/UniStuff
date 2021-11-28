@@ -9,7 +9,7 @@ aus der Summe der aufgewandten Arbeit $W$ und der dem kälteren Reservoir entzog
     Q_1= W + Q_2
 \end{equation}
 
-Dabei bezeichnet das Verhältnis von abgegebener Wärme und aufgewandter Arbeit den Wirkungsgrad
+Dabei bezeichnet das Verhältnis von abgegebener Wärme und aufgewandter Arbeit die Güteziffer
 
 \begin{equation}
     \label{eq:effideal}
@@ -71,7 +71,7 @@ Zur genauen Auswertung des Versuches ist die Bestimmung einiger Kenngrößen der
 
 \subsubsection{Bestimmung von $ν_{real}$}
 
-Für den realen Wirkungsgrad $ν_{real}$ gilt
+Für die reale Güteziffer $ν_{real}$ gilt
 
 \begin{equation}
     ν_{real} = \dfrac{ΔQ_1}{ΔtN},
@@ -120,9 +120,15 @@ Daraus lässt sich folgern
 
 \begin{equation}
     A_m=-p_aV_a^κ\int_{V_a}^{V_b} V^{-κ} \text{d}V = 
-    \dfrac{1}{κ-1}p_aV_a^κ \left (V_b^{κ-1}-V_a^{-κ+1} \right)=
-    \dfrac{1}{κ-1} \left (p_b \left (\dfrac{p_a}{p_b} \right)^{\dfrac{1}{κ}}-p_a \right) \dfrac{1}{ρ}\dfrac{Δm}{Δt} \nonumber,
+    \dfrac{1}{κ-1}p_aV_a^κ \left (V_b^{κ-1}-V_a^{-κ+1} \right)= \dfrac{1}{κ-1} \left(p_b\left(\dfrac{p_a}{p_b}\right)^{\dfrac{1}{κ}}-p_a\right)V_a
+     \nonumber
 \end{equation}
-wobei $ρ$ die Gasdichte, also beim Druck $p_a$ darstellt.
+und für die Kompressorleistung
+
+\begin{equation}
+    N_{mech}= \dfrac{ΔA_m}{Δt} = \dfrac{1}{κ-1} \left(p_b\left(\dfrac{p_a}{p_b}\right)^{\dfrac{1}{κ}}-p_a\right) \dfrac{ΔV_a}{Δt} = 
+    \dfrac{1}{κ-1} \left (p_b \left(\dfrac{p_a}{p_b} \right)^{\dfrac{1}{κ}}-p_a \right) \dfrac{1}{ρ}\dfrac{Δm}{Δt},
+\end{equation}
+wobei $ρ$ die Gasdichte beim Druck $p_a$ darstellt.
     
 
