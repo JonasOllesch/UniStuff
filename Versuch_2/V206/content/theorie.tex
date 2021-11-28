@@ -48,5 +48,56 @@ Für reale Wärmepumpen gilt lediglich
 Wie sich an \eqref{eq:effTdiff} und \eqref{eq:effreal} erkennen lässt, arbeiten Wärmepumpen deutlich effizienter, wenn die Temperaturdifferenz der einzelnen Reservoire möglichst gering ist, da so der Nenner $T_1-T_2$
 gegen $0$ konvergiert und der Ausdruck somit gegen $\infty \,$ geht. Daraus folgt aber gleichzeitig, dass die Pumpe mit voranschreitender Zeit und somit wachsender Temperaturdifferenz ineffizienter wird. Je wärmer also
 Reservoir 1 und je kälter Reservoir 2, desto mehr Arbeit muss aufgewandt werden, um Reservoir 1 weiter zu erhitzen.
+
+\subsection{Funktionsweise und Aufbau einer Wärmepumpe}
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.7]{Abb_1.pdf}
+    \caption{Schematische Darstellung einer Wärmepumpe \cite{ap02}.} 
+    \label{fig:abb1}
+\end{figure}
+
+Die Wärmepumpe nutzt die Eigenschaft von Stoffen, der Umgebung beim Verdampfen Wärme zu entziehen und diese beim Kondensieren wieder an seine Umgebung abzugeben, um den Wärmetransport vom kälteren in das wärmere Reservoir
+zu ermöglichen. Das dazu verwendete Gas sollte dabei eine möglichst hohe Kondensationswärme besitzen. Der Kreislauf wird dabei vom Kompressor in Gang gesetzt, das Gas durchströmt das Drosselventil und die Reservoire.
+Aufgrund des hohen Strömungswiderstandes am Drosselventil baut sich eine Druckdifferenz $p_b-p_a$ auf.
+Die Pumpe ist dabei so aufgebaut, dass das Gas in Reservoir 1 der Temperatur $T_1$ und dem Druck $p_b$ flüssig und in Reservoir 2 der Temperatur $T_2$ und dem Druck $p_a$ mit $T_1 > T_2$ und $p_b > p_a$ gasförmig ist.
+Das bei $p_b$ verflüssige Gas verdampft nach dem Eintritt in Reservoir 2 und entzieht diesem Wärme, woraufhin es im Kompressor komprimiert wird und anschließend in Reservoir 1 wieder flüssig wird und die aufgenomme Wärme
+an dieses abgibt.
+
+\subsection{Bestimmung wichtiger Kenngrößen}
+
+Zur genauen Auswertung des Versuches ist die Bestimmung einiger Kenngrößen der Wärmepumpe notwendig.
+
+\subsubsection{Bestimmung von $ν_{real}$}
+
+Für den realen Wirkungsgrad $ν_{real}$ gilt
+
+\begin{equation}
+    ν_{real} = \dfrac{ΔQ_1}{ΔtN},
+\end{equation}
+wobei $N$ die über das Zeitintervall $Δt$ gemittelte Leistungsaufnahme des Kompressors, die am Wattmeter angezeigt wird, darstellt. 
+Der Differenzenquotient $\dfrac{ΔQ_1}{Δt}$ beschreibt dabei die im Zeitintervall gewonnene Wärmemenge $Q_1$. Er ergibt sich zu
+
+\begin{equation}
+    ν_{real} = \dfrac{ΔQ_1}{ΔtN} = (m_1c_w + m_kc_k)\dfrac{ΔT_1}{ΔtN}
+    \label{eq:effrealdiffquo}
+\end{equation}
+
+\subsubsection{Bestimmung des Massendurchsatzes}
+
+Analog zu \eqref{eq:effrealdiffquo} lässt sich auch der Differenzenquotient $\dfrac{ΔQ_2}{Δt}$, als Reservoir 2 im Intervall $Δt$ entnommene Wärmemenge, und damit der Massendurchsatz berechnen.
+Es gilt
+
+\begin{equation}
+    \dfrac{ΔQ_2}{Δt} = (m_2c_w +m_kc_k)\dfrac{ΔT_2}{Δt}.
+\end{equation}
+
+Ist nun die Verdampfungswärme $L\dfrac{Δm}{Δt}$, ergibt sich
+
+\begin{equation}
+    \dfrac{Δm}{Δt} = \dfrac{1}{L}\dfrac{ΔQ_2}{Δt}.
+\end{equation}
+
     
 

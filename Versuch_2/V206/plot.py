@@ -52,7 +52,8 @@ print(_, "unterstrich")
 a, b, c = popt
 print('y = %.5f a * (x ** 2) + %.5f *b + %.5f c' % (a,b,c))
 # plot input vs output
-pyplot.scatter(x, y)
+pyplot.scatter(x, y, label=r'$T_1$', s=15)
+pyplot.legend()
 # define a sequence of inputs between the smallest and largest known inputs
 x_line = arange(min(x), max(x), 1)
 print(x_line)
@@ -62,31 +63,28 @@ print(y_line)
 # create a line plot for the mapping function
 
 pyplot.plot(x_line, y_line, '--', color='red')
-pyplot.xlabel(r'$t \mathbin{/} \unit{\minute}$')
-pyplot.ylabel(r'$T_1 \mathbin{/}\unit{\celsius}$')
-#pyplot.show()
-pyplot.savefig('build/plot_1.pdf')
 
-
-
-
-pyplot.clf()
 #der zweite Plot
 y = Werte[:,2]
 popt, _ = curve_fit(objective, x, y)
 #print(_, "unterstrich")
 a, b, c = popt
 print('y = %.5f a * (x ** 2) + %.5f *b + %.5f c' % (a, b,c))
-pyplot.scatter(x, y)
+pyplot.scatter(x, y, color='green', label=r'$T_2$', s= 15)
+pyplot.legend()
 x_line = arange(min(x), max(x), 1)
 print(x_line)
 y_line = objective(x_line, a, b,c)
 print(y_line)
 pyplot.plot(x_line, y_line, '--', color='red')
+pyplot.grid()
+pyplot.xticks(np.arange(0,31,step=5))
+pyplot.yticks(np.arange(-5,51,step=5))
+pyplot.xlim(0,31)
+pyplot.ylim(-5,51)
 pyplot.xlabel(r'$t \mathbin{/} \unit{\minute}$')
-pyplot.ylabel(r'$T_2 \mathbin{/}\unit{\celsius}$')
-#pyplot.show()
-pyplot.savefig('build/plot_2.pdf')
+pyplot.ylabel(r'$T \mathbin{/}\unit{\celsius}$')
+pyplot.savefig('build/plot_1.pdf')
 
 
 pyplot.clf()
@@ -96,16 +94,17 @@ y = Werte[:,3]
 popt, _ = curve_fit(objective, x, y)
 a, b, c = popt
 print('y = %.5f a * (x ** 2) + %.5f *b + %.5f c' % (a, b,c))
-pyplot.scatter(x, y)
+pyplot.scatter(x, y, s= 15, label=r'$p_b$')
+pyplot.legend()
 x_line = arange(min(x), max(x), 1)
 y_line = objective(x_line, a, b,c)
 pyplot.plot(x_line, y_line, '--', color='red')
-pyplot.xlabel(r'$t \mathbin{/} \unit{\minute}$')
-pyplot.ylabel(r'$p_b \mathbin{/}\unit{\bar}$')
+#pyplot.xlabel(r'$t \mathbin{/} \unit{\minute}$')
+#pyplot.ylabel(r'$p_b \mathbin{/}\unit{\bar}$')
 #pyplot.show()
-pyplot.savefig('build/plot_3.pdf')
 
-pyplot.clf()
+
+#pyplot.clf()
 #der vierte Plot
 
 y = Werte[:,4]
@@ -113,14 +112,22 @@ y = Werte[:,4]
 popt, _ = curve_fit(objective, x, y)
 a, b, c = popt
 print('y = %.5f a * (x ** 2) + %.5f *b + %.5f c' % (a, b,c))
-pyplot.scatter(x, y)
+pyplot.scatter(x, y, color='green',s=15, label=r'$p_a$')
+pyplot.legend()
 x_line = arange(min(x), max(x), 1)
 y_line = objective(x_line, a, b,c)
 pyplot.plot(x_line, y_line, '--', color='red')
+pyplot.grid()
+pyplot.xticks(np.arange(0,31,step=5))
+pyplot.yticks(np.arange(0,13,step=1))
+pyplot.xlim(0,31)
+pyplot.ylim(0,13)
 pyplot.xlabel(r'$t \mathbin{/} \unit{\minute}$')
-pyplot.ylabel(r'$p_a \mathbin{/}\unit{\bar}$')
+pyplot.ylabel(r'$p \mathbin{/}\unit{\bar}$')
+
+pyplot.savefig('build/plot_2.pdf')
 #pyplot.show()
-pyplot.savefig('build/plot_4.pdf')
+#pyplot.savefig('build/plot_4.pdf')
 	
 pyplot.clf()
 #der fünfte Plot
@@ -133,6 +140,7 @@ pyplot.scatter(x, y)
 x_line = arange(min(x), max(x), 1)
 y_line = objective(x_line, a, b,c)
 pyplot.plot(x_line, y_line, '--', color='red')
+pyplot.grid()
 pyplot.xlabel(r'$t \mathbin{/} \unit{\minute}$')
 pyplot.ylabel(r'$W \mathbin{/}\unit{\watt}$')
 #pyplot.show()
