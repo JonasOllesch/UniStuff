@@ -86,7 +86,7 @@ Der Differenzenquotient $\dfrac{ΔQ_1}{Δt}$ beschreibt dabei die im Zeitinterva
 
 \subsubsection{Bestimmung des Massendurchsatzes}
 
-Analog zu \eqref{eq:effrealdiffquo} lässt sich auch der Differenzenquotient $\dfrac{ΔQ_2}{Δt}$, als Reservoir 2 im Intervall $Δt$ entnommene Wärmemenge, und damit der Massendurchsatz berechnen.
+Analog zu \eqref{eq:effrealdiffquo} lässt sich auch der Differenzenquotient $\dfrac{ΔQ_2}{Δt}$, als Reservoir 2 im Intervall $Δt$ entnommene Wärmemenge $Q_2$, und damit der Massendurchsatz berechnen.
 Es gilt
 
 \begin{equation}
@@ -99,5 +99,30 @@ Ist nun die Verdampfungswärme $L\dfrac{Δm}{Δt}$, ergibt sich
     \dfrac{Δm}{Δt} = \dfrac{1}{L}\dfrac{ΔQ_2}{Δt}.
 \end{equation}
 
+\newpage
+
+\subsubsection{Bestimmung der machanischen Kompressorleistung $N_{mech}$}
+
+Für die Verringerung eines Gasvolumens von $V_a$ auf $V_b$ gilt für die Arbeit des Kompressors allgemein
+
+\begin{equation}
+    A_m= -\int_{V_a}^{V_b} p \, \text{d}V.
+\end{equation}
+
+Unter der Annahme, dass die Kompression des Gases näherungsweise adiabatisch verlaufe, gilt für den Zusammenhang zwischen Druck und Volumen nach der Poissonschen Gleichung
+
+\begin{equation}
+    p_aV_a^κ=p_bV_b^κ=pV^κ
+\end{equation}
+mit dem Verhältnis $κ > 1$ der molaren und spezifischen Wärmekapazitäten $c_p$ und $c_v$.
+
+Daraus lässt sich folgern
+
+\begin{equation}
+    A_m=-p_aV_a^κ\int_{V_a}^{V_b} V^{-κ} \text{d}V = 
+    \dfrac{1}{κ-1}p_aV_a^κ \left (V_b^{κ-1}-V_a^{-κ+1} \right)=
+    \dfrac{1}{κ-1} \left (p_b \left (\dfrac{p_a}{p_b} \right)^{\dfrac{1}{κ}}-p_a \right) \dfrac{1}{ρ}\dfrac{Δm}{Δt} \nonumber,
+\end{equation}
+wobei $ρ$ die Gasdichte, also beim Druck $p_a$ darstellt.
     
 
