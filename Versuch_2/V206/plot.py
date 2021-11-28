@@ -28,11 +28,11 @@ from scipy.optimize import curve_fit
 Werte = np.array(np.genfromtxt('Werte.txt'))
 #Zeit T1    T2     pb      pa      W
 
-print(Werte)
+#print(Werte)
 Werte[:,3] = Werte[:,3]+ 1
 Werte[:,4] = Werte[:,4]+ 1
-print('\n')
-print(Werte)
+#print('\n')
+#print(Werte)
 
 
 
@@ -82,8 +82,8 @@ pyplot.xticks(np.arange(0,31,step=5))
 pyplot.yticks(np.arange(-5,51,step=5))
 pyplot.xlim(0,31)
 pyplot.ylim(-5,51)
-pyplot.xlabel(r'$t \mathbin{/} \unit{\minute}$')
-pyplot.ylabel(r'$T \mathbin{/}\unit{\celsius}$')
+#pyplot.xlabel(r'$t \mathbin{/} \unit{\minute}$')
+#pyplot.ylabel(r'$T \mathbin{/}\unit{\celsius}$')
 pyplot.savefig('build/plot_1.pdf')
 
 
@@ -122,8 +122,8 @@ pyplot.xticks(np.arange(0,31,step=5))
 pyplot.yticks(np.arange(0,13,step=1))
 pyplot.xlim(0,31)
 pyplot.ylim(0,13)
-pyplot.xlabel(r'$t \mathbin{/} \unit{\minute}$')
-pyplot.ylabel(r'$p \mathbin{/}\unit{\bar}$')
+#pyplot.xlabel(r'$t \mathbin{/} \unit{\minute}$')
+#pyplot.ylabel(r'$p \mathbin{/}\unit{\bar}$')
 
 pyplot.savefig('build/plot_2.pdf')
 #pyplot.show()
@@ -145,8 +145,8 @@ pyplot.xticks(np.arange(0,31, step = 5))
 pyplot.yticks(np.arange(0,130,step = 20))
 pyplot.xlim(0,31.5)
 pyplot.ylim(0,130)
-pyplot.xlabel(r'$t \mathbin{/} \unit{\minute}$')
-pyplot.ylabel(r'$W \mathbin{/}\unit{\watt}$')
+#pyplot.xlabel(r'$t \mathbin{/} \unit{\minute}$')
+#pyplot.ylabel(r'$W \mathbin{/}\unit{\watt}$')
 #pyplot.show()
 pyplot.savefig('build/plot_5.pdf')
 
@@ -219,51 +219,69 @@ for i in range(0,4):
 #	Tmp[i]= (ufloat(prams[0][4],Fehler[0][4])*Ap[i]**2+ ufloat(prams[1][4],Fehler[1][4])*Ap[i] +ufloat(prams[2][4],Fehler[2][4]))
 #print(Tmp, " tmp")
 print(Gueteziffer, "Gueteziffer")
+IdGueteziffer = [1,2,3,4]
+T1 = [1,2,3,4]
+T2 = [1,2,3,4]
 
+for i in range(0,4):
+	
+	T1[i]= (ufloat(prams[0][0],Fehler[0][0])*Ap[i]**2+ ufloat(prams[1][0],Fehler[1][0])*Ap[i] +ufloat(prams[2][0],Fehler[2][0]))
+	T2[i]= (ufloat(prams[0][1],Fehler[0][1])*Ap[i]**2+ ufloat(prams[1][1],Fehler[1][1])*Ap[i] +ufloat(prams[2][1],Fehler[2][1]))
+	IdGueteziffer[i]= T1[i]/(T1[i]-T2[i])
 
+print(IdGueteziffer, " die ideale Güteziffer")
 #Aufgabe e
 
 x = Werte[:,1]
 y = Werte[:,3]
 def objective(x, l):
-	return 5.51*np.exp(-l/(8.314*x))
+	return 5.51*np.exp(-l/(8.31446261815324*x))
 popt, _ = curve_fit(objective, x, y)
+_[0][0] =np.sqrt(_[0][0])
 l = popt
 print(l, _, " Die Konstante L")
 L = ufloat(l,_)
 
-popt, _ = curve_fit(lambda t, l: 5.51 * np.exp(-l/(8.314 * t)), x, y) #da kommit zum Glück genau das gleich raus
-print(popt, _)
+#popt, _ = curve_fit(lambda t, l: 5.51 * np.exp(-l/(8.31446261815324 * t)), x, y) #da kommit zum Glück genau das gleich raus
+#print(popt, _)
+
+pyplot.clf()
+x_line = arange(min(x), max(x), 1)
+y_line = objective(x_line,l)
+pyplot.plot(x_line, y_line, '--', color='red')
+pyplot.scatter(x, y, s=15)
+pyplot.show
+pyplot.savefig('build/Test.pdf')
 
 Mdurchsatz=[1,2,3,4]
 
 for i in range(0,4):
 	Mdurchsatz[i]=((3*4180+750)*Diffentialquotienten[1][i])/L
 
-
-
-print(Mdurchsatz, "<- Massendruchsatz")
+print(" Massendurchsatz in g pro sek")
+for i in range(0,4):
+	print(Mdurchsatz[i]*1000)
 
 
 #Aufgabe f
 #pb und pa an Ap[i] auswerten
 pb=[1,2,3,4]
 pa=[1,2,3,4]
-T2=[1,2,3,4]
+#T2=[1,2,3,4]
 for i in range(0,4):
 	pb[i]= (ufloat(prams[0][2],Fehler[0][2])*Ap[i]**2+ ufloat(prams[1][2],Fehler[1][2])*Ap[i] +ufloat(prams[2][2],Fehler[2][2]))
 	pa[i]= (ufloat(prams[0][3],Fehler[0][3])*Ap[i]**2+ ufloat(prams[1][3],Fehler[1][3])*Ap[i] +ufloat(prams[2][3],Fehler[2][3]))
-	T2[i]= (ufloat(prams[0][1],Fehler[0][1])*Ap[i]**2+ ufloat(prams[1][1],Fehler[1][1])*Ap[i] +ufloat(prams[2][1],Fehler[2][1]))
+#	T2[i]= (ufloat(prams[0][1],Fehler[0][1])*Ap[i]**2+ ufloat(prams[1][1],Fehler[1][1])*Ap[i] +ufloat(prams[2][1],Fehler[2][1]))
 
 
 
-print(pb)
-print(pa)
-print(T2)
+#print(pb)
+#print(pa)
+#print(T2)
 MArbeit=[1,2,3,4]
 for i in range(0,4):
-	MArbeit[i]= (((1/0.14)*(pb[i]*(pa[i]/pb[i]**(1/1.14)))-pa[i])*(T2[i]*1)*Mdurchsatz[i])/(5.51*273.15*pa[i])
-print(MArbeit)
+	MArbeit[i]= (((1/0.14)*(pb[i]*((pa[i]/pb[i])**(1/1.14))-pa[i]))*(T2[i]*10000)*Mdurchsatz[i])/(5.51*273.15*pa[i])
+print(MArbeit, " die mechanische Leistung")
 
 #ist ziemlich wenig aber egalxD
 """
@@ -346,11 +364,9 @@ for i in range(0,4):
 	print(((Gueteziffer[0][i]-IdGueteziffer[0][i])/IdGueteziffer[0][i])*100, " Abweichungen der Güteziffer")
 #Aufgabe e
 
-#im Vergleich zu Altprotokoll haben wir ungefähr einen Faktor von 1000 
-# Wasser hat einen Wert von 45,054 	bei T = 0°c also ist unser wahrscheinlich besser :)
 LWert = [1,2,3,4]
 for i in range(0,4):
-	LWert[i]= -(math.log(pb.evalf(subs={x:Ap[i]})/5,51))*8.314462*T1.evalf(subs={x:Ap[i]})
+	LWert[i]= -(math.log(pb.evalf(subs={x:Ap[i]})/5,51))*8.31446261815324462*T1.evalf(subs={x:Ap[i]})
 Lmittel = np.mean(LWert[:])
 print(LWert)
 print(Lmittel)
