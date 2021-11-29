@@ -132,6 +132,22 @@ Als Zeitpunkte wurden dienen dabei $t_i = 380i \, \unit{\second}$ mit $i=1,2,3,4
 
 \subsection{Bestimmung des Massendurchsatzes}
 
+Damit der Massendurchsatz mit Formel \eqref{eq:Massendurch} berechnet werden kann muss zunächst die Verdampfungswärme $L$ bestimmt werden.
+Dazu wird die Funktion 
+\begin{equation}
+  \rho = \rho_0 e^{-L/R T_1}
+\end{equation}
+zu den Messdaten von $T_1$ und $P_b$ gefittet. Aus dem Fit kann der Parameter $L$ abgelesen werden.\\
+
+\begin{equation}
+  L = (30437.843 \pm 301.574) \unit{\dfrac{\joule}{\mol}}
+\end{equation}
+Nun wird Formel \eqref{ep:Massendurch2} in \eqref{eq:Massendurch} eingesetzt und es ergibt sich
+\begin{equation}
+  \dfrac{\text{d}T_2}{\text{d}t} = (m_2c_w +m_kc_k)\dfrac{\text{d}T_2}{\text{d}t}\dfrac{L}
+\end{equation}
+
+
 \subsection{Bestimmung der mechanischen Kompressorleistung}
 
 Nach \eqref{eq:kompressorleistung} ergibt, wenn der Differenzenquotient erneut als Diefferenzialquotient geschrieben wird.
