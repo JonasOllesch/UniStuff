@@ -230,7 +230,16 @@ for i in range(0,4):
 	IdGueteziffer[i]= T1[i]/(T1[i]-T2[i])
 
 print(IdGueteziffer, " die ideale Güteziffer")
+ra = [1,2,3,4]
+for i in range(0,4):
+	ra[i] = ((Gueteziffer[i]-IdGueteziffer[i])/IdGueteziffer[i])*100
+
+print(ra)
+
+
 #Aufgabe e
+
+
 
 x = Werte[:,1]
 y = Werte[:,3]

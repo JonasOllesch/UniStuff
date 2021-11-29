@@ -114,18 +114,22 @@ Als Zeitpunkte wurden dienen dabei $t_i = 380i \, \unit{\second}$ mit $i=1,2,3,4
 
 \subsection{Bestimmung der Güteziffer}
 
+Die Funktionen $N$ und $\dfrac{\text{d}m}{\text{d}t}$ wurden an den vier Stellen ausgewertet und es ergeben sich mit Formel \label{eq:effrealdiffquo} die folgenden Werte.
+
+
+
 \begin{table}[H]
   \centering
   \label{tab:gueteziffer}
   \sisetup{table-format=1.4}
-  \begin{tabular}{S S S[table-format=2.4]}
+  \begin{tabular}{S S S S[table-format=2.4]}
     \toprule
-    & {$ν_{gemessen}$} & {$ν_{ideal}$} \\
+    & {$ν_{gemessen}$} &  {$ν_{ideal}$} & {$ν_{relativ}$} \\
     \midrule
-    {$t_1 = 380  \, \unit{\second}$} & {$2.5350 \pm 0.3077$} & {$21.4415 \pm 0.7211$} \\
-    {$t_2 = 760  \, \unit{\second}$} & {$1.8935 \pm 0.3386$} & {$11.1015 \pm 0.3060$} \\
-    {$t_3 = 1140 \, \unit{\second}$} & {$1.4804 \pm 0.3983$} & {$8.07909 \pm 0.2406$} \\
-    {$t_4 = 1520 \, \unit{\second}$} & {$1.1743 \pm 0.4879$} & {$6.72375 \pm 0.2339$} \\
+    {$t_1 = 380  \, \unit{\second}$} & {$2.5350 \pm 0.3077$} & {$21.4415 \pm 0.7211$} &  {$88.1772 \pm 0.7211$} \\
+    {$t_2 = 760  \, \unit{\second}$} & {$1.8935 \pm 0.3386$} & {$11.1015 \pm 0.3060$} &   {$82.9436 \pm 3.0863$}\\            
+    {$t_3 = 1140 \, \unit{\second}$} & {$1.4804 \pm 0.3983$} & {$8.07909 \pm 0.2406$} &  {$81.6768 \pm 4.9605$}\\
+    {$t_4 = 1520 \, \unit{\second}$} & {$1.1743 \pm 0.4879$} & {$6.72375 \pm 0.2339$} &  {$82.5352\pm 7.2818$}\\
     \bottomrule
   \end{tabular}
 \end{table}
@@ -144,9 +148,9 @@ zu den Messdaten von $T_1$ und $P_b$ gefittet. Aus dem Fit kann der Parameter $L
 \end{equation}
 Nun wird Formel \eqref{eq:Massendurch2} in \eqref{eq:Massendurch} eingesetzt und es ergibt sich
 \begin{equation}
-  \dfrac{\text{d}m}{\text{d}t} = (m_2c_w +m_kc_k)\dfrac{\text{d}T_2}{\text{d}tL}
+  \dfrac{\text{d}m}{\text{d}t} = (m_2c_w +m_kc_k)\dfrac{\text{d}T_2}{\text{d}tL}.
 \end{equation}
-.\\
+\\
 An den Auswertungspunkten sind die folgneden Werte gegeben.
 \begin{table}[H]
   \centering
