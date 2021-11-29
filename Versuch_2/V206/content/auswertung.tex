@@ -67,7 +67,7 @@ Als Ansatz zur Approximation der Temperaturverläufe wurde eine quadratische Nä
 \end{equation}
 verwendet.
 
-In der folgenden Tabelle seien die Parameter $A, B$ und $C$ der Näherungen für $T_1(t)$ und $T_2(t)$ dargestellt.
+\noindent In der folgenden Tabelle seien die Parameter $A, B$ und $C$ der Näherungen für $T_1(t)$ und $T_2(t)$ dargestellt.
 
 \begin{table}[H]
   \centering
@@ -84,16 +84,17 @@ In der folgenden Tabelle seien die Parameter $A, B$ und $C$ der Näherungen für
     \bottomrule
   \end{tabular}
 \end{table}
-
 Bei Betrachtung der Kurvenparameter ist, abgesehen von den Vorzeichen, wie erwartet eine große Ähnlichkeit zwischen den
 beiden Temperaturkurven zu beobachten.
+
+\newpage
 
 \subsection{Bestimmung der Differenzenquotienten}
 
 Mithilfe der Näherungen für die Temperaturverläufe lassen sich die Differenzenquotienten $\dfrac{ΔT_i}{Δt}$ als Diefferenzialquotienten
 $\dfrac{\text{d}T_i}{\text{d}t}$ schreiben.
 Zur Bestimmung der Diefferenzialquotienten wurden vier Zeitpunkte mit einem Abstand von je 380 Sekunden gewählt.
-Als Zeitpunkte wurden dienen dabei $t_i = 380i$ mit $i \in [1,4]$.
+Als Zeitpunkte wurden dienen dabei $t_i = 380i \, \unit{\second}$ mit $i=1,2,3,4$.
 
 \begin{table}[H]
   \centering
@@ -103,14 +104,15 @@ Als Zeitpunkte wurden dienen dabei $t_i = 380i$ mit $i \in [1,4]$.
     \toprule
     & {$\dfrac{\text{d}T_1}{\text{d}t}$} & {$\dfrac{\text{d}T_2}{\text{d}t}$} \\
     \midrule
-    {$t_1$} & {$0.02139 \pm 0.00035$} \\
-    {$t_2$} & {$0.01769 \pm 0.00042$} \\
-    {$t_3$} & {$0.01398 \pm 0.00050$} \\
-    {$t_4$} & {$0.01027 \pm 0.00061$} \\
+    {$t_1 = 380  \, \unit{\second}$} & {$0.02139 \pm 0.00035$} & {$-0.018387 \pm 0.00085$} \\
+    {$t_2 = 760  \, \unit{\second}$} & {$0.01769 \pm 0.00042$} & {$-0.015110 \pm 0.00101$} \\
+    {$t_3 = 1140 \, \unit{\second}$} & {$0.01398 \pm 0.00050$} & {$-0.012012 \pm 0.00123$} \\
+    {$t_4 = 1520 \, \unit{\second}$} & {$0.01027 \pm 0.00061$} & {$-0.008824 \pm 0.00148$} \\
     \bottomrule
   \end{tabular}
 \end{table}
 
+\subsection{Bestimmung der Güteziffer}
 
 \subsection{Bestimmung des Massendurchsatzes}
 
@@ -132,8 +134,17 @@ Nun wird Formel \eqref{ep:Massendurch2} in \eqref{eq:Massendurch} eingesetzt und
 
 \subsection{Bestimmung der mechanischen Kompressorleistung}
 
+Nach \eqref{eq:kompressorleistung} ergibt, wenn der Differenzenquotient erneut als Diefferenzialquotient geschrieben wird.
+\begin{equation}
+N_{mech}= \dfrac{\text{d}A_m}{\text{d}t} = \dfrac{1}{κ-1} \left(p_b\left(\dfrac{p_a}{p_b}\right)^{\dfrac{1}{κ}}-p_a\right) \dfrac{\text{d}V_a}{\text{d}t} = 
+    \dfrac{1}{κ-1} \left (p_b \left(\dfrac{p_a}{p_b} \right)^{\dfrac{1}{κ}}-p_a \right) \dfrac{1}{ρ}\dfrac{\text{d}m}{\text{d}t}
+\end{equation}
 
 \subsection{Sonstige Plots}
+
+In diesem Abschnitt befinden sich lediglich sonstige Plots, die der Vollständigkeit halber zwar enthalten sind, zur 
+Bestimmung vorangegangener Größen aber nicht von großer Bedeutung sind.
+
 %3. Plot
 
 \begin{figure}

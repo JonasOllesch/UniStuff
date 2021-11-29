@@ -147,8 +147,6 @@ pyplot.xlim(0,31.5)
 pyplot.ylim(0,130)
 pyplot.xlabel(r'$t \mathbin{/} \unit{\minute}$')
 pyplot.ylabel(r'$N \mathbin{/}\unit{\watt}$')
-
-#pyplot.show()
 pyplot.savefig('build/plot_5.pdf')
 
 
