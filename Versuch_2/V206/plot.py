@@ -247,7 +247,7 @@ L = ufloat(l,_)
 #print(popt, _)
 
 pyplot.clf()
-x_line = arange(min(x), max(x), 1)
+x_line = arange(min(x), max(x)+1, 1)
 y_line = objective(x_line,l)
 pyplot.plot(x_line, y_line, '--', color='red')
 pyplot.scatter(x, y, s=15)
