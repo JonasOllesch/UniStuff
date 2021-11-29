@@ -204,10 +204,10 @@ for j in range (0,2):
 		Diffentialquotienten[j][i] = ufloat(prams[0][j],Fehler[0][j])*2*Ap[i]+ ufloat(prams[1][j],Fehler[1][j])
 
 #for i in range (0,4):	
-#	print(ufloat(prams[0][1],Fehler[0][1])*Ap[i]**2+ ufloat(prams[1][1],Fehler[1][1])*Ap[i] +ufloat(prams[2][1],Fehler[2][1]))
+#print(ufloat(prams[0][1],Fehler[0][1])*Ap[i]**2+ ufloat(prams[1][1],Fehler[1][1])*Ap[i] +ufloat(prams[2][1],Fehler[2][1]))
 
 
-#print(Diffentialquotienten, " Diffentialquotienten")
+print(Diffentialquotienten, " Diffentialquotienten")
 
 
 #Aufgabe d
