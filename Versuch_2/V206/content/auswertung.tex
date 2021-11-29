@@ -114,6 +114,22 @@ Als Zeitpunkte wurden dienen dabei $t_i = 380i \, \unit{\second}$ mit $i=1,2,3,4
 
 \subsection{Bestimmung der Güteziffer}
 
+\begin{table}[H]
+  \centering
+  \label{tab:gueteziffer}
+  \sisetup{table-format=1.5}
+  \begin{tabular}{S S S}
+    \toprule
+    & {$ν_{gemessen}$} & {$ν_{ideal}$} \\
+    \midrule
+    {$t_1 = 380  \, \unit{\second}$} & {$2.53498 \pm 0.30770$} & {$21.44151 \pm 0.721128$} \\
+    {$t_2 = 760  \, \unit{\second}$} & {$1.89352 \pm 0.33863$} & {$11.10148 \pm 0.305990$} \\
+    {$t_3 = 1140 \, \unit{\second}$} & {$1.48035 \pm 0.39833$} & {$8.079086 \pm 0.240640$} \\
+    {$t_4 = 1520 \, \unit{\second}$} & {$1.17429 \pm 0.48791$} & {$6.723754 \pm 0.233941$} \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
 \subsection{Bestimmung des Massendurchsatzes}
 
 \subsection{Bestimmung der mechanischen Kompressorleistung}
@@ -123,6 +139,25 @@ Nach \eqref{eq:kompressorleistung} ergibt, wenn der Differenzenquotient erneut a
 N_{mech}= \dfrac{\text{d}A_m}{\text{d}t} = \dfrac{1}{κ-1} \left(p_b\left(\dfrac{p_a}{p_b}\right)^{\dfrac{1}{κ}}-p_a\right) \dfrac{\text{d}V_a}{\text{d}t} = 
     \dfrac{1}{κ-1} \left (p_b \left(\dfrac{p_a}{p_b} \right)^{\dfrac{1}{κ}}-p_a \right) \dfrac{1}{ρ}\dfrac{\text{d}m}{\text{d}t}
 \end{equation}
+
+Es ergeben sich:
+
+\begin{table}[H]
+  \centering
+  \label{tab:kompressorleistung}
+  \sisetup{table-format=1.5}
+  \begin{tabular}{S S}
+    \toprule
+    & {$N_{mech} \mathbin{/} \unit{\watt}$} \\
+    \midrule
+    {$t_1 = 380  \, \unit{\second}$} & {$ 8.02016 \pm 0.76821$} \\
+    {$t_2 = 760  \, \unit{\second}$} & {$10.97285 \pm 1.24397$} \\
+    {$t_3 = 1140 \, \unit{\second}$} & {$11.34321 \pm 1.79709$} \\
+    {$t_4 = 1520 \, \unit{\second}$} & {$9.819427 \pm 2.30669$} \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
 
 \subsection{Sonstige Plots}
 
