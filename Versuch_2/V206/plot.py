@@ -1,3 +1,4 @@
+#Werte die noch verwendet werden gerundet in eine txt schreiben
 import matplotlib.pyplot as pyplot
 import numpy as np
 from uncertainties import ufloat
@@ -257,9 +258,8 @@ Mdurchsatz=[1,2,3,4]
 for i in range(0,4):
 	Mdurchsatz[i]=((3*4180+750)*Diffentialquotienten[1][i])/L
 
-print(" Massendurchsatz in g pro sek")
-for i in range(0,4):
-	print(Mdurchsatz[i]*1000)
+print(" Massendurchsatz in kg pro sek")
+print(Mdurchsatz)
 
 
 #Aufgabe f

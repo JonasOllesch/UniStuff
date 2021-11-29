@@ -126,11 +126,26 @@ zu den Messdaten von $T_1$ und $P_b$ gefittet. Aus dem Fit kann der Parameter $L
 \begin{equation}
   L = (30437.843 \pm 301.574) \unit{\dfrac{\joule}{\mol}}
 \end{equation}
-Nun wird Formel \eqref{ep:Massendurch2} in \eqref{eq:Massendurch} eingesetzt und es ergibt sich
+Nun wird Formel \eqref{eq:Massendurch2} in \eqref{eq:Massendurch} eingesetzt und es ergibt sich
 \begin{equation}
-  \dfrac{\text{d}T_2}{\text{d}t} = (m_2c_w +m_kc_k)\dfrac{\text{d}T_2}{\text{d}t}\dfrac{L}
+  \dfrac{\text{d}m}{\text{d}t} = (m_2c_w +m_kc_k)\dfrac{\text{d}T_2}{\text{d}tL}
 \end{equation}
-
+.\\
+An den Auswertungspunkten sind die folgneden Werte gegeben.
+\begin{table}[H]
+  \centering
+  \sisetup{table-format=1.5}
+  \begin{tabular}{S S}
+    \toprule
+    & {$\dfrac{\text{d}m}{\text{d}t}  \left[\unit{\dfrac{\kilogram}{\second}}\right]$}  \\
+    \midrule
+    {$t_1 = 380  \, \unit{\second}$} & {$8.0284 \pm 0.3799$}  \\
+    {$t_2 = 760  \, \unit{\second}$} & {$6.6366 \pm 0.4451$}  \\
+    {$t_3 = 1140 \, \unit{\second}$} & {$5.2447 \pm 0.5381$}  \\
+    {$t_4 = 1520 \, \unit{\second}$} & {$3.8528 \pm 0.6470$}  \\
+    \bottomrule
+  \end{tabular}
+\end{table}
 
 \subsection{Bestimmung der mechanischen Kompressorleistung}
 
