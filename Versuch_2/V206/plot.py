@@ -12,7 +12,6 @@ import math
 
 from scipy.optimize import curve_fit
 from numpy import arange
-from scipy.optimize import curve_fit
 
 
 
@@ -63,7 +62,7 @@ y_line = objective(x_line, a, b,c)
 print(y_line)
 # create a line plot for the mapping function
 
-pyplot.plot(x_line, y_line, '--', color='red')
+pyplot.plot(x_line, y_line, '--', color='red',label="Ausgleichskurve " r'$T_1$')
 
 #der zweite Plot
 y = Werte[:,2]
@@ -77,7 +76,7 @@ x_line = arange(min(x), max(x)+1, 1)
 print(x_line)
 y_line = objective(x_line, a, b,c)
 print(y_line)
-pyplot.plot(x_line, y_line, '--', color='red')
+pyplot.plot(x_line, y_line, '--', color='red', label="Ausgleichskurve " r'$T_2$' )
 pyplot.grid()
 pyplot.xticks(np.arange(0,31,step=5))
 pyplot.yticks(np.arange(-5,51,step=5))
