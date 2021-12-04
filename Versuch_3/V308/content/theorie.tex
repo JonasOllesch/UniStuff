@@ -4,6 +4,7 @@ Wenn sich Ladungen bewegen, erzeugen sie Magnetfelder. Die magnetische Flussdich
 dieses Magnetfeldes ist definiert als
 
 \begin{equation}
+    \label{eq:BmuH}
     \vec{B}=μ\vec{H},
 \end{equation}
 mit der \textbf{magnetischen Feldstärke $\vec{H}$} und der \textbf{Permeabilität $μ$}.
@@ -51,6 +52,26 @@ Einzelfelder der Spulen zu
 Das Feld ist auf der Symmetrieachse, entlang dieser sich der Feldgradient zu
 \begin{equation}
     \dfrac{\text{d}B}{\text{d}x} = -3μ_0R^2I\dfrac{x}{(R^2+x^2)^{3/2}}
-\end{equation}
+\end{equation} ergibt.
+
+Bei ferromagntischen Materialien findet sich auch ohne äußeres Magnetfeld ein \textbf{magnetisches Moment $\vec{M}$}. Sind diese \textbf{magnetischen Momente} in bestimmten Bereichen parallel zueinander ausgerichtet, wird
+von Weiß'schen Bezirken gesprochen. Ein äußeres Magnetfeld führt zur Vergrößerung der Weiß'schen Bezirke, sorgt also dafür, dass sich die \textbf{magnetischen Momente} den äußeren Feldlinien entsprechend ausrichten.\\
+
+Aufgrund der hohen relativen Permeabilität $μ_r$ ferromagntischer Stoffe besteht nicht länger ein linearer Zusammenhang zwischen $\vec{B}$ und $\vec{H}$, wie er in \eqref{eq:BmuH} beschrieben ist.
+Dieser Magnetfeldverlauf lässt sich in einer Hysteresekurve in Äbhängigkeit vom äußeren Magnetfeld bzw. dem fließenden Strom darstellen. So ist zunächst $B(H=0)=0$. Wird nun ein äußeres Magnetfeld angelegt, steigt die Magnetisierung
+auf Sättigungswert $B_s$ an. Diesen Anstieg nennt man \textit{Neukurve}. Bei Anlegen eines Gegenfeldes kehrt sich die Magnetisierung um. Auch ohne äußeres Feld bleibt jetzt eine Restmagnetisierung zurück, die \textit{Remanenz}.
+Diese Remanenz kann durch ein \textit{Koerzitivkraft $H_c$} genanntes Gegenfeld wieder aufgehoben werden.
+Wird das Gegenfeld weiter erhöht, wird auch die Magnetisierung negativ, bis sie den Sättigungswert $-B_s$ erreicht. Eine erneute Umkehr des äußeren Feldes sorgt nun für die Entstehung eine dritten Kurve,
+die erneut bis zum Sättigungswert $B_s$ läuft.\\
+ 
+Insgesamt ensteht so eine ursprungsymmetrische Kurve, die \textit{Hysteresekurve}, hier in \autoref{fig:Hystereseschema} dargestellt.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics{Hystereseschema.pdf}
+    \caption{Schematische Darstellung einer Hysteresekurve\cite{ap03}.}
+    \label{fig:Hystereseschema}
+  \end{figure}
+
 
 
