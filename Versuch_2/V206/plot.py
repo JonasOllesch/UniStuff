@@ -4,7 +4,6 @@ import numpy as np
 from uncertainties import ufloat
 import scipy.constants as const
 import sympy
-from scipy.stats import linregress
 import uncertainties.unumpy as unp
 from pandas import read_csv
 import scipy
@@ -263,6 +262,26 @@ pyplot.scatter(x, y, s=15)
 #pyplot.show
 
 #pyplot.savefig('build/Test.pdf')
+pyplot.clf()
+x = Werte[:,1]
+y = Werte[:,3]
+def objective2(x, l,b):
+	return -l*x + b
+popt, _ = curve_fit(objective2, x, y)
+_[0][0] =np.sqrt(_[0][0])
+l,b = popt
+
+
+x_line = np.arange(min(x), max(x)+1, 1)
+y_line = objective2(x_line,l,b)
+pyplot.plot(x_line, y_line, '--', color='red')
+pyplot.scatter(x, y, s=15)
+pyplot.xlabel(r'$T_1 \mathbin{/} \unit{\kelvin}$')
+pyplot.ylabel(r'$p_b \mathbin{/}\unit{\pascal}$')
+pyplot.show
+pyplot.savefig('build/Test.pdf')
+
+
 
 Mdurchsatz=[1,2,3,4]
 
