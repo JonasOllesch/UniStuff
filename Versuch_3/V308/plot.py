@@ -10,7 +10,7 @@ y = WerteHysterese[:,1]
 pyplot.scatter(x, y, s=15)
 pyplot.legend()
 #pyplot.plot(x, y, '--', color='red')
-pyplot.show()
+#pyplot.show()
 pyplot.savefig('build/Hystereseplot.pdf')
 
 WerteHysterese = np.array(np.genfromtxt('WerteHysterese.txt'))
@@ -31,7 +31,7 @@ y = WertelangeSpule[:,1]
 pyplot.scatter(x, y, s=15)
 pyplot.legend()
 #pyplot.plot(x, y, '--', color='red')
-pyplot.show()
+#pyplot.show()
 pyplot.savefig('build/langeSpule.pdf')
 pyplot.clf()
 
@@ -48,7 +48,7 @@ y = WerteSpulenPaar10[:,1]
 pyplot.scatter(x, y, s=15)
 pyplot.legend()
 #pyplot.plot(x, y, '--', color='red')
-pyplot.show()
+#pyplot.show()
 pyplot.savefig('build/WerteSpulenPaar10.pdf')
 pyplot.clf()
 
@@ -64,7 +64,7 @@ y = WerteSpulenPaar20[:,1]
 pyplot.scatter(x, y, s=15)
 pyplot.legend()
 #pyplot.plot(x, y, '--', color='red')
-pyplot.show()
+#pyplot.show()
 pyplot.savefig('build/WerteSpulenPaar20.pdf')
 pyplot.clf()
 
@@ -81,7 +81,7 @@ y = WerteSpulenPaar15[:,1]
 pyplot.scatter(x, y, s=15)
 pyplot.legend()
 #pyplot.plot(x, y, '--', color='red')
-pyplot.show()
+#pyplot.show()
 pyplot.savefig('build/WerteSpulenPaar15.pdf')
 pyplot.clf()
 
