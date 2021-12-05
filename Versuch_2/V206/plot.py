@@ -62,7 +62,7 @@ y_line = objective(x_line, a, b,c)
 print(y_line)
 # create a line plot for the mapping function
 
-pyplot.plot(x_line, y_line, '--', color='red',label="Ausgleichskurve " r'$T_1$')
+pyplot.plot(x_line, y_line, '--', color='red',label= r"$Reg T_1$ " r'$T_1$')
 
 #der zweite Plot
 y = Werte[:,2]
@@ -71,12 +71,12 @@ popt, _ = curve_fit(objective, x, y)
 a, b, c = popt
 print('y = %.5f a * (x ** 2) + %.5f *b* x + %.5f c' % (a, b,c))
 pyplot.scatter(x, y, color='green', label=r'$T_2$', s= 15)
-pyplot.legend()
+
 x_line = arange(min(x), max(x)+1, 1)
 print(x_line)
 y_line = objective(x_line, a, b,c)
 print(y_line)
-pyplot.plot(x_line, y_line, '--', color='red', label="Ausgleichskurve " r'$T_2$' )
+pyplot.plot(x_line, y_line, '--', color='gray', label=r"$Reg T_2$ " r'$T_2$' )
 pyplot.grid()
 pyplot.xticks(np.arange(0,31,step=5))
 pyplot.yticks(np.arange(-5,51,step=5))
@@ -84,6 +84,7 @@ pyplot.xlim(0,31)
 pyplot.ylim(-5,51)
 pyplot.xlabel(r'$t \mathbin{/} \unit{\minute}$')
 pyplot.ylabel(r'$T \mathbin{/}\unit{\celsius}$')
+pyplot.legend()
 pyplot.savefig('build/plot_1.pdf')
 
 
@@ -183,8 +184,8 @@ for i in range (0,5):
 	Fehler[1][i] =np.sqrt(_[1][1])
 	Fehler[2][i] =np.sqrt(_[2][2])
 
-print(Fehler, " das sind Fehler")
-print(prams, " Parameter")
+#print(Fehler, " das sind Fehler")
+#print(prams, " Parameter")
 
 #Aufgabe c
 #die vier Zeipunkt wählen  t = i*380
@@ -202,7 +203,7 @@ for j in range (0,2):
 #print(ufloat(prams[0][1],Fehler[0][1])*Ap[i]**2+ ufloat(prams[1][1],Fehler[1][1])*Ap[i] +ufloat(prams[2][1],Fehler[2][1]))
 
 
-print(Diffentialquotienten, " Diffentialquotienten")
+#print(Diffentialquotienten, " Diffentialquotienten")
 
 
 #Aufgabe d
@@ -214,7 +215,7 @@ for i in range(0,4):
 #for i in range(0,4):
 #	Tmp[i]= (ufloat(prams[0][4],Fehler[0][4])*Ap[i]**2+ ufloat(prams[1][4],Fehler[1][4])*Ap[i] +ufloat(prams[2][4],Fehler[2][4]))
 #print(Tmp, " tmp")
-print(Gueteziffer, "Gueteziffer")
+#print(Gueteziffer, "Gueteziffer")
 IdGueteziffer = [1,2,3,4]
 T1 = [1,2,3,4]
 T2 = [1,2,3,4]
@@ -225,7 +226,7 @@ for i in range(0,4):
 	T2[i]= (ufloat(prams[0][1],Fehler[0][1])*Ap[i]**2+ ufloat(prams[1][1],Fehler[1][1])*Ap[i] +ufloat(prams[2][1],Fehler[2][1]))
 	IdGueteziffer[i]= T1[i]/(T1[i]-T2[i])
 
-print(IdGueteziffer, " die ideale Güteziffer")
+#print(IdGueteziffer, " die ideale Güteziffer")
 ra = [1,2,3,4]
 for i in range(0,4):
 	ra[i] = ((Gueteziffer[i]-IdGueteziffer[i])/IdGueteziffer[i])*100
@@ -239,24 +240,29 @@ print(ra)
 
 x = Werte[:,1]
 y = Werte[:,3]
+
 def objective(x, l):
-	return 5.51*np.exp(-l/(8.31446261815324*x))
+	return 5.51*np.exp(-l/((8.31446261815324 * x)))
 popt, _ = curve_fit(objective, x, y)
 _[0][0] =np.sqrt(_[0][0])
 l = popt
-print(l, _, " Die Konstante L")
+#print(l, _, " Die Konstante L")
 L = ufloat(l,_)
 
-#popt, _ = curve_fit(lambda t, l: 5.51 * np.exp(-l/(8.31446261815324 * t)), x, y) #da kommit zum Glück genau das gleich raus
-#print(popt, _)
 
-pyplot.clf()
+#popt, _ = curve_fit(lambda t, l: 5.51 * np.exp(-l/(8.31446261815324 * t)), x, y) #da kommit zum Glück genau das gleich raus
+#_[0][0] =np.sqrt(_[0][0])
+
+
 x_line = arange(min(x), max(x)+1, 1)
 y_line = objective(x_line,l)
 pyplot.plot(x_line, y_line, '--', color='red')
 pyplot.scatter(x, y, s=15)
-pyplot.show
-pyplot.savefig('build/Test.pdf')
+#pyplot.xlabel(r'T_1 \mathbin{/} \unit{\pascal}$')
+#pyplot.ylabel(r'$p_b \mathbin{/}\unit{\kelvin}$')
+#pyplot.show
+
+#pyplot.savefig('build/Test.pdf')
 
 Mdurchsatz=[1,2,3,4]
 
@@ -285,6 +291,8 @@ for i in range(0,4):
 MArbeit=[1,2,3,4]
 for i in range(0,4):
 	MArbeit[i]= (((1/0.14)*(pb[i]*((pa[i]/pb[i])**(1/1.14))-pa[i]))*(T2[i]*10000)*Mdurchsatz[i])/(5.51*273.15*pa[i])
+	print((T2[i]*10000)/(5.51*273.15*pa[i]), " das rho fur " , i)
+
 print(MArbeit, " die mechanische Leistung")
 
 #ist ziemlich wenig aber egalxD

@@ -137,7 +137,7 @@ Die Funktionen $N$ und $\dfrac{\text{d}m}{\text{d}t}$ wurden an den vier Stellen
 
 \subsection{Bestimmung des Massendurchsatzes}
 
-Damit der Massendurchsatz mit Formel \eqref{eq:Massendurch} berechnet werden kann muss zunächst die Verdampfungswärme $L$ bestimmt werden.
+Damit der Massendurchsatz mit \eqref{eq:Massendurch} berechnet werden kann muss zunächst die Verdampfungswärme $L$ bestimmt werden.
 Dazu wird die Funktion 
 \begin{equation}
   \rho = \rho_0 e^{-L/R T_1}
@@ -147,13 +147,25 @@ zu den Messdaten von $T_1$ und $P_b$ gefittet. Aus dem Fit kann der Parameter $L
 \begin{equation}
   L = (30437.843 \pm 301.574) \unit{\dfrac{\joule}{\mol}}
 \end{equation}
-Nun wird Formel \eqref{eq:Massendurch2} in \eqref{eq:Massendurch} eingesetzt und es ergibt sich
+
+Nun wird \eqref{eq:Massendurch2} in \eqref{eq:Massendurch} eingesetzt und es ergibt sich
 \begin{equation}
   \dfrac{\text{d}m}{\text{d}t} = (m_2c_w +m_kc_k)\dfrac{\text{d}T_2}{\text{d}tL}.
 \end{equation}
-\\
-An den Auswertungspunkten sind die folgneden Werte gegeben.
+Dabei ist $m_2c$ die Masse des Wassers, $c_w$ die Wärmekapazitäten von Wasser 4180 $\unit{\dfrac{\joule}{\mol\kelvin}}$ und $m_l c_k = 750 \unit{\dfrac{\joule}{\kelvin}}$ die Wärmekapazitäten der Kupferspule der Wärmepumpe.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics{Test.pdf}
+  \caption{Temperatur und Druckverlauf}
+  \label{fig:plot3}
+\end{figure}
+
+
+
+In \autoref{tab:massendurch3} ist der Massendurchsatz zu den vier gewählten Zeitpunkten dargestellt.
 \begin{table}[H]
+  \label{tab:massendurch3}
   \centering
   \sisetup{table-format=1.5}
   \begin{tabular}{S S}
@@ -166,6 +178,7 @@ An den Auswertungspunkten sind die folgneden Werte gegeben.
     {$t_4 = 1520 \, \unit{\second}$} & {$3.8528 \pm 0.6470$}  \\
     \bottomrule
   \end{tabular}
+  \caption{Massendurchsatz zu verschiedenen Zeitpunkten}
 \end{table}
 
 \subsection{Bestimmung der mechanischen Kompressorleistung}
@@ -175,46 +188,52 @@ Nach \eqref{eq:kompressorleistung} ergibt, wenn der Differenzenquotient erneut a
 N_{mech}= \dfrac{\text{d}A_m}{\text{d}t} = \dfrac{1}{κ-1} \left(p_b\left(\dfrac{p_a}{p_b}\right)^{\dfrac{1}{κ}}-p_a\right) \dfrac{\text{d}V_a}{\text{d}t} = 
     \dfrac{1}{κ-1} \left (p_b \left(\dfrac{p_a}{p_b} \right)^{\dfrac{1}{κ}}-p_a \right) \dfrac{1}{ρ}\dfrac{\text{d}m}{\text{d}t}.
 \end{equation}
+mit 
 
-Es ergeben sich:
+\begin{equation*}
+\rho = \dfrac{\rho_0 T_0 p_a}{T_2 p_0}.
+\end{equation*}
+
+Es folgt die \autoref{tab:kompressorleistung2}
 
 \begin{table}[H]
   \centering
-  \label{tab:kompressorleistung}
+  \label{tab:kompressorleistung2}
   \sisetup{table-format=1.4}
-  \begin{tabular}{S S}
+  \begin{tabular}{S S S}
     \toprule
-    & {$N_{mech} \mathbin{/} \unit{\watt}$} \\
+    & {$\rho$}&{$N_{mech} \mathbin{/} \unit{\watt}$} \\
     \midrule
-    {$t_1 = 380  \, \unit{\second}$} & {$ 8.0202 \pm 0.7682$} \\
-    {$t_2 = 760  \, \unit{\second}$} & {$10.9729 \pm 1.2440$} \\
-    {$t_3 = 1140 \, \unit{\second}$} & {$11.3432 \pm 1.7971$} \\
-    {$t_4 = 1520 \, \unit{\second}$} & {$9.81943 \pm 2.3067$} \\
+    {$t_1 = 380  \, \unit{\second}$} & {$0.0046 \pm 0.0001$} & {$ 8.0202 \pm 0.7682$} \\
+    {$t_2 = 760  \, \unit{\second}$} & {$0.0053 \pm 0.0004$} & {$10.9729 \pm 1.2440$} \\
+    {$t_3 = 1140 \, \unit{\second}$} & {$0.0060 \pm 0.0008$} & {$11.3432 \pm 1.7971$} \\
+    {$t_4 = 1520 \, \unit{\second}$} & {$0.0066 \pm 0.0014$} & {$9.81943 \pm 2.3067$} \\
     \bottomrule
   \end{tabular}
+  \caption{Die mechanische Kompressorleistung}
 \end{table}
 
-\newpage
+%\newpage
 
-\subsection{Sonstige Plots}
-
-In diesem Abschnitt befinden sich lediglich sonstige Plots, die der Vollständigkeit halber zwar enthalten sind, zur 
-Bestimmung vorangegangener Größen aber nicht von großer Bedeutung sind.
+%\subsection{Sonstige Plots}
+%
+%In diesem Abschnitt befinden sich lediglich sonstige Plots, die der Vollständigkeit halber zwar enthalten sind, zur 
+%Bestimmung vorangegangener Größen aber nicht von großer Bedeutung sind.
 
 %3. Plot
 
-\begin{figure}
-  \centering
-  \includegraphics{plot_2.pdf}
-  \caption{Zeitlicher Druckverlauf in den Reservoiren.}
-  \label{fig:plot3}
-\end{figure}
+%\begin{figure}
+%  \centering
+%  \includegraphics{plot_2.pdf}
+%  \caption{Zeitlicher Druckverlauf in den Reservoiren.}
+%  \label{fig:plot3}
+%\end{figure}
 
 %5. Plot
 
-\begin{figure}
-  \centering
-  \includegraphics{plot_5.pdf}
-  \caption{Zeitlicher Verlauf der Leistung.}
-  \label{fig:plot5}
-\end{figure}
+%\begin{figure}
+%  \centering
+%  \includegraphics{plot_5.pdf}
+%  \caption{Zeitlicher Verlauf der Leistung.}
+%  \label{fig:plot5}
+%\end{figure}
