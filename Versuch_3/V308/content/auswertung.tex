@@ -3,22 +3,31 @@
 
 %lange Spule Plot
 In \autoref{fig:langeSpule} ist die magnetische Flussdichte in Abhängigkeit der Tiefe $x$ dargestellt. Die Tiefe
-wird dabei vom linken Rand der Spule gemessen. Der mittlere Spulendurchmesser beträgt dabei $d=41 \unit{\milli\meter}$
-mit einer Windungszahl von $n=300$.
+wird dabei vom linken Rand der Spule gemessen. Der mittlere Spulendurchmesser beträgt dabei $d=41 \unit{\milli\meter}$, 
+die Länge $l=0,18 \unit{\unit}$ mit einer Windungszahl von $n=300$.
 \begin{figure}[H]
     \centering
     \includegraphics{build/langeSpule.pdf}
-    \caption{Magnetische Flussdichte in Abhängigkeit der Tiefe x bei einem Strom von $I= 1,4 \, \unit{\ampere}$.}
+    \caption{Magnetische Flussdichte in Abhängigkeit der Tiefe x bei einem Strom von $I= 1 \, \unit{\ampere}$.}
     \label{fig:langeSpule}
   \end{figure}
 
-%Theoriewerte
+Der Messwert in der Mitte der Spule wird nun mit dem Theoriewert verglichen.
+Dabei ergibt der Theoriewert nach \eqref{LangB} mit $l=0,18 \unit{\meter}$, $N=300$ und $I= 1\unit{\ampere}$
+\begin{equation*}
+  B_{theo}= 0.00209 \unit{\tesla},
+\end{equation*}
+der nächste Messwert liegt, aufgrund der nur begrenzt langen Hallsonde, bei $x=0,06\unit{\meter}$ und lautet
+\begin{equation*}
+  B_{mess} = 0.0277 \unit{\tesla}\,.
+\end{equation*}
+Da das Feld im Inneren der langen Spule in der Theorie homogen ist, sollte der Messunterschied zur tatsächlichen Spulenmitte
+gering sein. 
 
-Es folgt ein Vergleich der Messwerte mit den Theoriewerten, die über \eqref{eq:BFeld} bestimmt werden.
-Die Mess- und Theoriewerte seien dabei in der folgenden Tabelle dargestellt.
+
 
 %Helmholtzspulenpaar Plot
-
+Die Messdaten des Spulenpaares wurden zu drei unterschiedlichen Längen gemessen.
   \begin{figure}[H]
     \centering
     \includegraphics{build/SpulenPaar10.pdf}
