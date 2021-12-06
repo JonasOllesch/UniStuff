@@ -7,12 +7,14 @@ WerteHysterese[:,1] = WerteHysterese[:,1] / 1000 #von mT in T umrechnen
 x = WerteHysterese[:,0]
 y = WerteHysterese[:,1]
 
-pyplot.scatter(x, y, color='blue',s=15, label=r'$B$')
+pyplot.scatter(x, y, color='blue',s=10, label=r'$B$')
 pyplot.legend()
-pyplot.grid()
+#pyplot.grid()
 pyplot.xlabel(r'$I \mathbin{/} \unit{\ampere}$')
 pyplot.ylabel(r'$B \mathbin{/}\unit{\tesla}$')
-##pyplot.show()
+#pyplot.show()
+pyplot.xlim(-10,10)
+pyplot.xticks(np.arange(-10,10.1,1))
 pyplot.savefig('build/Hystereseplot.pdf')
 pyplot.clf()
 
@@ -22,7 +24,7 @@ WertelangeSpule[:,1] = WertelangeSpule[:,1] / 1000 #von mT in T umrechnen
 WertelangeSpule[:,0] = WertelangeSpule[:,0] / 100 # von cm in m
 
 x = WertelangeSpule[:,0]
-y = WertelangeSpule[:,1]
+y = -WertelangeSpule[:,1]
 
 pyplot.scatter(x, y, color='blue',s=15, label=r'$B$')
 pyplot.legend()
@@ -30,7 +32,7 @@ pyplot.grid()
 pyplot.xlabel(r'$M \mathbin{/} \unit{\meter}$')
 pyplot.ylabel(r'$B \mathbin{/}\unit{\tesla}$')
 #pyplot.show()
-pyplot.savefig('build/langeSpule.pdf')
+pyplot.savefig('build/langeSpule.pdf', bbox_inches='tight')
 pyplot.clf()
 
 #-----------------------------------
