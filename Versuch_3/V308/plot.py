@@ -36,10 +36,10 @@ pyplot.ylabel(r'$B \mathbin{/}\unit{\tesla}$')
 pyplot.xlim(-10,10)
 pyplot.xticks(np.arange(-10,10.1,1))
 pyplot.ylim(-1,1)
-pyplot.yticks(np.arange(-1,1,0.2))
+pyplot.yticks(np.arange(-1,1,0.25))
 pyplot.savefig('build/Hystereseplot.pdf')
 pyplot.clf()
-print("Hysterese Ende")
+#print("Hysterese Ende")
 #-----------------------------------
 
 
@@ -59,7 +59,7 @@ pyplot.ylabel(r'$B \mathbin{/}\unit{\tesla}$')
 #x = np.linspace(0.00001,0.7,1000)
 #pyplot.plot(x,((300*4*np.pi*(10**(-7)))*(1/0.18))*x/x,color='red',label="Theorie")
 #pyplot.legend("Theorie")
-print(((300*4*np.pi*(10**(-7)))*(1/0.18)) , " der exakte Wert")
+#print(((300*4*np.pi*(10**(-7)))*(1/0.18)) , " der exakte Wert")
 
 pyplot.savefig('build/langeSpule.pdf', bbox_inches='tight')
 pyplot.clf()
