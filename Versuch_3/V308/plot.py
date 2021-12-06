@@ -7,17 +7,39 @@ WerteHysterese[:,1] = WerteHysterese[:,1] / 1000 #von mT in T umrechnen
 x = WerteHysterese[:,0]
 y = WerteHysterese[:,1]
 
-pyplot.scatter(x, y, color='blue',s=10, label=r'$B$')
+x_ =[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19]
+y_ =[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19]
+for i in range(11,31):
+    y_[i-11] =y[i]
+    x_[i-11] = x[i] 
+pyplot.scatter(x_, y_, color='blue',s=10, label="Hysterese 2")
+
+x_ =[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]
+y_ =[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]
+for i in range(31,51):
+    y_[i-31] =y[i]
+    x_[i-31] = x[i] 
+pyplot.scatter(x_, y_, color='red',s=10, label="Hysterese 3")
+
+
+x_ = [0,1,2,3,4,5,6,7,8,9,10]
+y_ = [0,1,2,3,4,5,6,7,8,9,10]
+for i in range(0,11):
+    y_[i] =y[i]
+    x_[i] = x[i] 
+pyplot.scatter(x_, y_, color='#4dff00',s=10, label="Neukurve")
 pyplot.legend()
-#pyplot.grid()
+pyplot.grid()
 pyplot.xlabel(r'$I \mathbin{/} \unit{\ampere}$')
 pyplot.ylabel(r'$B \mathbin{/}\unit{\tesla}$')
 #pyplot.show()
 pyplot.xlim(-10,10)
 pyplot.xticks(np.arange(-10,10.1,1))
+pyplot.ylim(-1,1)
+pyplot.yticks(np.arange(-1,1,0.2))
 pyplot.savefig('build/Hystereseplot.pdf')
 pyplot.clf()
-
+print("Hysterese Ende")
 #-----------------------------------
 
 
@@ -28,7 +50,7 @@ WertelangeSpule[:,0] = WertelangeSpule[:,0] / 100 # von cm in m
 x = WertelangeSpule[:,0]
 y = -WertelangeSpule[:,1]
 
-pyplot.scatter(x, y, color='blue',s=15, label=r'$B$')
+pyplot.scatter(x, y, color='blue',s=15, label="Messung")
 pyplot.legend()
 pyplot.grid()
 pyplot.xlabel(r'$M \mathbin{/} \unit{\meter}$')
@@ -54,7 +76,7 @@ WerteSpulenPaar10[:,0] = WerteSpulenPaar10[:,0] / 100 # von cm in m
 x = WerteSpulenPaar10[:,0]
 y = WerteSpulenPaar10[:,1]
 
-pyplot.scatter(x, y, color='blue',s=15, label=r'$B$')
+pyplot.scatter(x, y, color='blue',s=15, label="Messung")
 pyplot.legend()
 pyplot.grid()
 pyplot.xlabel(r'$M \mathbin{/} \unit{\meter}$')
@@ -75,7 +97,7 @@ WerteSpulenPaar20[:,0] = WerteSpulenPaar20[:,0] / 100 # von cm in m
 x = WerteSpulenPaar20[:,0]
 y = WerteSpulenPaar20[:,1]
 
-pyplot.scatter(x, y, color='blue',s=15, label=r'$B$')
+pyplot.scatter(x, y, color='blue',s=15, label="Messung")
 pyplot.legend()
 pyplot.grid()
 pyplot.xlabel(r'$M \mathbin{/} \unit{\meter}$')
@@ -96,7 +118,7 @@ WerteSpulenPaar15[:,0] = WerteSpulenPaar15[:,0] / 100 # von cm in m
 x = WerteSpulenPaar15[:,0]
 y = WerteSpulenPaar15[:,1]
 
-pyplot.scatter(x, y, color='blue',s=10, label=r'$B$')
+pyplot.scatter(x, y, color='blue',s=10, label="Messung")
 pyplot.legend()
 pyplot.grid()
 pyplot.xlabel(r'$M \mathbin{/} \unit{\meter}$')
