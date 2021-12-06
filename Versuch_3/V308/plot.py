@@ -137,7 +137,7 @@ WerteSpulenPaar15 = np.array(np.genfromtxt('WerteSpulenPaar15.txt'))
 WerteSpulenPaar15[:,1] = WerteSpulenPaar15[:,1] / 1000 #von mT in T umrechnen
 WerteSpulenPaar15[:,0] = WerteSpulenPaar15[:,0] / 100 # von cm in m
 #print(WerteSpulenPaar15)
-x = WerteSpulenPaar15[:,0]+0.0155
+x = WerteSpulenPaar15[:,0]+0.015#5
 y = WerteSpulenPaar15[:,1]
 
 pyplot.scatter(x, y, color='blue',s=10, label="Messung")
@@ -159,7 +159,7 @@ WerteSpulenPaar20 = np.array(np.genfromtxt('WerteSpulenPaar20.txt'))
 WerteSpulenPaar20[:,1] = WerteSpulenPaar20[:,1] / 1000 #von mT in T umrechnen
 WerteSpulenPaar20[:,0] = WerteSpulenPaar20[:,0] / 100 # von cm in m
 
-x = WerteSpulenPaar20[:,0]+0.02173
+x = WerteSpulenPaar20[:,0]+0.015#2173
 y = WerteSpulenPaar20[:,1]
 
 pyplot.scatter(x, y, color='blue',s=15, label="Messung")
@@ -181,7 +181,7 @@ WerteSpulenPaar10 = np.array(np.genfromtxt('WerteSpulenPaar10.txt'))
 WerteSpulenPaar10[:,1] = WerteSpulenPaar10[:,1] / 1000 #von mT in T umrechnen
 WerteSpulenPaar10[:,0] = WerteSpulenPaar10[:,0] / 100 # von cm in m
 
-x = WerteSpulenPaar10[:,0]+0.01825
+x = WerteSpulenPaar10[:,0]+0.015#825
 y = WerteSpulenPaar10[:,1]
 
 pyplot.scatter(x, y, color='blue',s=15, label="Messung")
