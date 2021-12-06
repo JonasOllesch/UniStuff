@@ -12,7 +12,7 @@ pyplot.legend()
 pyplot.grid()
 pyplot.xlabel(r'$I \mathbin{/} \unit{\ampere}$')
 pyplot.ylabel(r'$B \mathbin{/}\unit{\tesla}$')
-pyplot.show()
+#pyplot.show()
 pyplot.savefig('build/Hysteresplot.pdf')
 pyplot.clf()
 
@@ -29,7 +29,7 @@ pyplot.legend()
 pyplot.grid()
 pyplot.xlabel(r'$M \mathbin{/} \unit{\meter}$')
 pyplot.ylabel(r'$B \mathbin{/}\unit{\tesla}$')
-pyplot.show()
+#pyplot.show()
 pyplot.savefig('build/WertelangeSpule.pdf')
 pyplot.clf()
 
@@ -46,7 +46,7 @@ pyplot.legend()
 pyplot.grid()
 pyplot.xlabel(r'$M \mathbin{/} \unit{\meter}$')
 pyplot.ylabel(r'$B \mathbin{/}\unit{\tesla}$')
-pyplot.show()
+#pyplot.show()
 pyplot.savefig('build/WerteSpulenPaar10.pdf')
 pyplot.clf()
 #-----------------------------------
@@ -62,7 +62,7 @@ pyplot.legend()
 pyplot.grid()
 pyplot.xlabel(r'$M \mathbin{/} \unit{\meter}$')
 pyplot.ylabel(r'$B \mathbin{/}\unit{\tesla}$')
-pyplot.show()
+#pyplot.show()
 pyplot.savefig('build/WerteSpulenPaar20.pdf')
 pyplot.clf()
 #-----------------------------------
@@ -78,7 +78,30 @@ pyplot.legend()
 pyplot.grid()
 pyplot.xlabel(r'$M \mathbin{/} \unit{\meter}$')
 pyplot.ylabel(r'$B \mathbin{/}\unit{\tesla}$')
-pyplot.show()
+#pyplot.show()
 pyplot.savefig('build/WerteSpulenPaar15.pdf')
 pyplot.clf()
 
+#theorie für die lange Spule
+BinlangeSpule = 4*np.pi*300*4/(0.18)
+#theorie für das Spulenpaar für 10
+BSpulenpaar = [0,1,2,3,4,5,6,7,8,9,10,11,12,13]
+x = [0,1,2,3,4,5,6,7,8,9,10,11,12,13]
+for i in range(0,14):
+    x[i]= x[i]/100
+print(x)
+for i in range(0,14):
+    BSpulenpaar[i] = ((100*4*np.pi*10**(-7))*4/2)*(0.0625)**2*x[i]/((0.0625**2+x[i]**2)**(3/2))
+pyplot.scatter(x, BSpulenpaar, color='red',s=15, label=r'$Theorie$')
+
+x = WerteSpulenPaar10[:,0]
+y = WerteSpulenPaar10[:,1]
+
+pyplot.scatter(x, y, color='blue',s=15, label=r'$B$')
+pyplot.legend()
+pyplot.grid()
+pyplot.xlabel(r'$M \mathbin{/} \unit{\meter}$')
+pyplot.ylabel(r'$B \mathbin{/}\unit{\tesla}$')
+#pyplot.show()
+pyplot.savefig('build/Test.pdf')
+pyplot.clf()
