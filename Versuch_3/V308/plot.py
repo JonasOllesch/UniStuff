@@ -53,8 +53,12 @@ y = -WertelangeSpule[:,1]
 pyplot.scatter(x, y, color='blue',s=15, label="Messung")
 pyplot.legend()
 pyplot.grid()
-pyplot.xlabel(r'$M \mathbin{/} \unit{\meter}$')
+pyplot.xlabel(r'$x \mathbin{/} \unit{\meter}$')
 pyplot.ylabel(r'$B \mathbin{/}\unit{\tesla}$')
+pyplot.xticks(np.arange(0,0.08,0.01))
+pyplot.yticks(np.arange(0,0.0031,0.0005))
+pyplot.xlim(0,0.08)
+pyplot.ylim(0,0.003)
 #pyplot.show()
 #x = np.linspace(0.00001,0.7,1000)
 #pyplot.plot(x,((300*4*np.pi*(10**(-7)))*(1/0.18))*x/x,color='red',label="Theorie")
@@ -79,32 +83,41 @@ y = WerteSpulenPaar10[:,1]
 pyplot.scatter(x, y, color='blue',s=15, label="Messung")
 pyplot.legend()
 pyplot.grid()
-pyplot.xlabel(r'$M \mathbin{/} \unit{\meter}$')
+pyplot.xlabel(r'x \unit{\meter}$')
 pyplot.ylabel(r'$B \mathbin{/}\unit{\tesla}$')
+pyplot.xticks(np.arange(0,0.131,0.01))
+pyplot.yticks(np.arange(0,0.0051,0.0005))
+pyplot.xlim(0,0.13)
+pyplot.ylim(0,0.005)
 #pyplot.show()
 pyplot.savefig('build/SpulenPaar10.pdf')
 pyplot.clf()
 #-----------------------------------
-x = np.linspace(0,0.26,1000)
-pyplot.plot(x,((100*4*np.pi*(10**(-7)))*(4/2))*((0.0625)**2)/((0.0625**2+x**2)**(3/2))+((100*4*np.pi*(10**(-7)))*(4/2))*((0.0625)**2)/((0.0625**2+(x-0.20)**2)**(3/2)),color='red',label="Theorie")
+x = np.linspace(0,0.13,1000)
+pyplot.plot(x,((100*4*np.pi*(10**(-7)))*(4/2))*((0.0625)**2)/((0.0625**2+(x)**2)**(3/2))+((100*4*np.pi*(10**(-7)))*(4/2))*((0.0625)**2)/((0.0625**2+(x-0.10)**2)**(3/2)),color='red',label="Theorie")
 pyplot.legend("Theorie")
 
+WerteSpulenPaar10 = np.array(np.genfromtxt('WerteSpulenPaar10.txt'))
+WerteSpulenPaar10[:,1] = WerteSpulenPaar10[:,1] / 1000 #von mT in T umrechnen
+WerteSpulenPaar10[:,0] = WerteSpulenPaar10[:,0] / 100 # von cm in m
 
-WerteSpulenPaar20 = np.array(np.genfromtxt('WerteSpulenPaar20.txt'))
-WerteSpulenPaar20[:,1] = WerteSpulenPaar20[:,1] / 1000 #von mT in T umrechnen
-WerteSpulenPaar20[:,0] = WerteSpulenPaar20[:,0] / 100 # von cm in m
-
-x = WerteSpulenPaar20[:,0]
-y = WerteSpulenPaar20[:,1]
+x = WerteSpulenPaar10[:,0]+0.015#825
+y = WerteSpulenPaar10[:,1]
 
 pyplot.scatter(x, y, color='blue',s=15, label="Messung")
 pyplot.legend()
 pyplot.grid()
-pyplot.xlabel(r'$M \mathbin{/} \unit{\meter}$')
+pyplot.xlabel(r'$x \mathbin{/} \unit{\meter}$')
 pyplot.ylabel(r'$B \mathbin{/}\unit{\tesla}$')
+pyplot.xticks(np.arange(0,0.131,0.01))
+pyplot.yticks(np.arange(0,0.0051,0.0005))
+pyplot.xlim(0,0.13)
+pyplot.ylim(0,0.0055)
+
 #pyplot.show()
-pyplot.savefig('build/SpulenPaar20.pdf')
+pyplot.savefig('build/SpulenPaar10korrektur.pdf')
 pyplot.clf()
+
 #-----------------------------------
 x = np.linspace(0,0.23,1000)
 pyplot.plot(x,((100*4*np.pi*(10**(-7)))*(4/2))*((0.0625)**2)/((0.0625**2+x**2)**(3/2))+((100*4*np.pi*(10**(-7)))*(4/2))*((0.0625)**2)/((0.0625**2+(x-0.15)**2)**(3/2)),color='red',label="Theorie")
@@ -121,8 +134,13 @@ y = WerteSpulenPaar15[:,1]
 pyplot.scatter(x, y, color='blue',s=10, label="Messung")
 pyplot.legend()
 pyplot.grid()
-pyplot.xlabel(r'$M \mathbin{/} \unit{\meter}$')
+pyplot.xlabel(r'x \unit{\meter}$')
 pyplot.ylabel(r'$B \mathbin{/}\unit{\tesla}$')
+pyplot.xticks(np.arange(0,0.2316,0.05))
+pyplot.yticks(np.arange(0,0.0051,0.0005))
+pyplot.xlim(0,0.235)
+pyplot.ylim(0,0.005)
+
 #pyplot.show()
 pyplot.savefig('build/SpulenPaar15.pdf')
 pyplot.clf()
@@ -143,8 +161,12 @@ y = WerteSpulenPaar15[:,1]
 pyplot.scatter(x, y, color='blue',s=10, label="Messung")
 pyplot.legend()
 pyplot.grid()
-pyplot.xlabel(r'$M \mathbin{/} \unit{\meter}$')
+pyplot.xlabel(r'x \unit{\meter}$')
 pyplot.ylabel(r'$B \mathbin{/}\unit{\tesla}$')
+pyplot.xticks(np.arange(0,0.2316,0.05))
+pyplot.yticks(np.arange(0,0.0051,0.0005))
+pyplot.xlim(0,0.235)
+pyplot.ylim(0,0.005)
 #pyplot.show()
 pyplot.savefig('build/SpulenPaar15korrektur.pdf')
 pyplot.clf()
@@ -165,30 +187,38 @@ y = WerteSpulenPaar20[:,1]
 pyplot.scatter(x, y, color='blue',s=15, label="Messung")
 pyplot.legend()
 pyplot.grid()
-pyplot.xlabel(r'$M \mathbin{/} \unit{\meter}$')
+pyplot.xlabel(r'x \unit{\meter}$')
 pyplot.ylabel(r'$B \mathbin{/}\unit{\tesla}$')
+pyplot.xticks(np.arange(0,0.251,0.05))
+pyplot.yticks(np.arange(0,0.0046,0.0005))
+pyplot.xlim(0,0.235)
 #pyplot.show()
 pyplot.savefig('build/SpulenPaar20korrektur.pdf')
 pyplot.clf()
 
 
 #-----------------------------------
-x = np.linspace(0,0.13,1000)
-pyplot.plot(x,((100*4*np.pi*(10**(-7)))*(4/2))*((0.0625)**2)/((0.0625**2+(x)**2)**(3/2))+((100*4*np.pi*(10**(-7)))*(4/2))*((0.0625)**2)/((0.0625**2+(x-0.10)**2)**(3/2)),color='red',label="Theorie")
+x = np.linspace(0,0.26,1000)
+pyplot.plot(x,((100*4*np.pi*(10**(-7)))*(4/2))*((0.0625)**2)/((0.0625**2+x**2)**(3/2))+((100*4*np.pi*(10**(-7)))*(4/2))*((0.0625)**2)/((0.0625**2+(x-0.20)**2)**(3/2)),color='red',label="Theorie")
 pyplot.legend("Theorie")
 
-WerteSpulenPaar10 = np.array(np.genfromtxt('WerteSpulenPaar10.txt'))
-WerteSpulenPaar10[:,1] = WerteSpulenPaar10[:,1] / 1000 #von mT in T umrechnen
-WerteSpulenPaar10[:,0] = WerteSpulenPaar10[:,0] / 100 # von cm in m
 
-x = WerteSpulenPaar10[:,0]+0.015#825
-y = WerteSpulenPaar10[:,1]
+WerteSpulenPaar20 = np.array(np.genfromtxt('WerteSpulenPaar20.txt'))
+WerteSpulenPaar20[:,1] = WerteSpulenPaar20[:,1] / 1000 #von mT in T umrechnen
+WerteSpulenPaar20[:,0] = WerteSpulenPaar20[:,0] / 100 # von cm in m
+
+x = WerteSpulenPaar20[:,0]
+y = WerteSpulenPaar20[:,1]
 
 pyplot.scatter(x, y, color='blue',s=15, label="Messung")
 pyplot.legend()
 pyplot.grid()
-pyplot.xlabel(r'$M \mathbin{/} \unit{\meter}$')
+pyplot.xlabel(r'x \unit{\meter}$')
 pyplot.ylabel(r'$B \mathbin{/}\unit{\tesla}$')
+pyplot.xticks(np.arange(0,0.251,0.05))
+pyplot.yticks(np.arange(0,0.0046,0.0005))
+pyplot.xlim(0,0.235)
+
 #pyplot.show()
-pyplot.savefig('build/SpulenPaar10korrektur.pdf')
+pyplot.savefig('build/SpulenPaar20.pdf')
 pyplot.clf()
