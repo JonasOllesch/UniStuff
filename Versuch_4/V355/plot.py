@@ -8,6 +8,13 @@ import math
 from scipy.optimize import curve_fit
 from numpy import arange
 
+
+#to do list
+#Auswertung:
+#   a "ns" berechnen und mit den Theoriewerten berechnen
+#   b ν- und ν+ mit den Theoriewerten vergleichen
+#   c aus t_1 und t_2 mit dem theoretischen ν- und ν+ vergleichen und vielleicht mit denen aus b wenn man noch Lust hat
+
 # Werte einlesen und in Si Einheiten konvertieren
 Messung_a = np.array(np.genfromtxt('a.txt'))
 Messung_a[:,0]= Messung_a[:,0]*(10**-9)
