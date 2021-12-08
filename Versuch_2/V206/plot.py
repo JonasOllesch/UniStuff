@@ -26,7 +26,7 @@ from numpy import arange
 
 Werte = np.array(np.genfromtxt('Werte.txt'))
 #Zeit T1    T2     pb      pa      W
-
+#t1,t2,pb,p1,w  = np.genfromtxt('Werte.txt')
 #print(Werte)
 Werte[:,3] = Werte[:,3]+ 1
 Werte[:,4] = Werte[:,4]+ 1
@@ -309,8 +309,8 @@ for i in range(0,4):
 #print(T2)
 MArbeit=[1,2,3,4]
 for i in range(0,4):
-	MArbeit[i]= (((1/0.14)*(pb[i]*((pa[i]/pb[i])**(1/1.14))-pa[i]))*(T2[i]*10000)*Mdurchsatz[i])/(5.51*273.15*pa[i])
-	print((T2[i]*10000)/(5.51*273.15*pa[i]), " das rho fur " , i)
+	MArbeit[i]= (((1/0.14)*(pb[i]*((pa[i]/pb[i])**(1/1.14))-pa[i]))*(T2[i]*100000)*Mdurchsatz[i])/(5.51*273.15*pa[i])
+	print((5.51*273.15*pa[i])/(T2[i]*100000), " das rho fur " , i)
 
 print(MArbeit, " die mechanische Leistung")
 
