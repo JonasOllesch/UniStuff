@@ -26,7 +26,7 @@ from numpy import arange
 
 Werte = np.array(np.genfromtxt('Werte.txt'))
 #Zeit T1    T2     pb      pa      W
-
+#t1,t2,pb,p1,w  = np.genfromtxt('Werte.txt')
 #print(Werte)
 Werte[:,3] = Werte[:,3]+ 1
 Werte[:,4] = Werte[:,4]+ 1
