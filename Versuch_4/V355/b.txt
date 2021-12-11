@@ -1,4 +1,10 @@
+<<<<<<< HEAD
 # C_k wieder in nF obviously    ν+ und ν- in kHz
+||||||| d4151ac
+# C_k wieder in nF obviously    ν- und ν+ in kHz
+=======
+# C_k wieder in nF obviously    ν+ und ν- in kHz oder vielleicht doch andersrum
+>>>>>>> d75bb64c7e97b1f0c52a51a51fb93ff2ab471d8e
 12          36.29                   38.10
 9.99        36.44                   38.59
 8.18        35.89                   36.63
