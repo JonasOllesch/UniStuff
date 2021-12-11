@@ -1,4 +1,4 @@
-# C_k wieder in nF obviously    ν- und ν+ in kHz
+# C_k wieder in nF obviously    ν+ und ν- in kHz
 12          36.29                   38.10
 9.99        36.44                   38.59
 8.18        35.89                   36.63

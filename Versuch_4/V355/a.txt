@@ -1,4 +1,4 @@
-#die Messung der a, ich habe keine Ahnung für was diese Messung war deswegen heißt die Datei einfach a
+#die Messung der a, ich habe keine Ahnung für was diese Messung war deswegen heißt die Datei einfach a 
 #input bei 400Hz 
 #C_k in nF          Schwingungen in einer Schwebung
 12                  16
@@ -9,3 +9,4 @@
 2.86                4
 2.19                3
 0.997               1
+#wir haben wahrscheinlich nur über eine halbe Periode gemessen :(
