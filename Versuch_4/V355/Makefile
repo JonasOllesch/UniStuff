@@ -8,7 +8,7 @@ build/plot.pdf: plot.py ../matplotlibrc ../header-matplotlib.tex | build
 	TEXINPUTS=$$(pwd)/..: MATPLOTLIBRC=../matplotlibrc python plot.py
 
 # hier weitere Abhängigkeiten für build/V355.pdf deklarieren:
-build/V355.pdf: build/plot.pdf SchwingkreisAbb.pdf
+build/V355.pdf: build/plot.pdf SchwingkreisAbb.pdf SchwebungAbb.pdf SinSchwingkreisAbb.pdf
 
 build/V355.pdf: FORCE | build
 	# to find header and bib files in the main directory
