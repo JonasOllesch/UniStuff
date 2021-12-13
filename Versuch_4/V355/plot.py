@@ -61,7 +61,7 @@ del dieWurzel
 n_t =[0]*8
 for i in range(0,len(n_t)):
     n_t[i] = (v_pt[i]+v_mt[i])/(2*(v_mt[i]-v_pt[i]))
-#print(n_t, " n_t")
+print(n_t, " n_t")
 Arel = [0]*8
 for i in range(0,len(Arel)):
     Arel[i] = unp.nominal_values(abs((Messung_a[i][1]-n_t[i])/n_t[i]))
