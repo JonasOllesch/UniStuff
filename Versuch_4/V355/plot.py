@@ -87,12 +87,18 @@ for i in range(0,8):
     Messung_t[i][0] = Messung_t[i][0]**-1
     Messung_t[i][1] = Messung_t[i][1]**-1
 
-
 output = ("Werte")    
 my_file = open(output + '.txt', "w") 
 for i in range(0, 8):
     my_file.write(str("{"))
+    my_file.write(" ")
     my_file.write(str(Messung_a[i][0]*10**9))
+    my_file.write(" ")
     my_file.write(str("&"))
-    my_file.write(str(v_mt[i]*10**3))
+    my_file.write(" ")
+    my_file.write(str(v_mt[i]*10**-3))
+    my_file.write(" ")
+    my_file.write(str(Messung_b[i][2]*10**-3))
+    
+
     my_file.write("\n")
