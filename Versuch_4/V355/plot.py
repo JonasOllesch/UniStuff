@@ -26,8 +26,8 @@ Messung_b[:,2]= Messung_b[:,2]*(10**3)
 
 Messung_c = np.array(np.genfromtxt('c.txt'))
 Messung_c[:,0]= Messung_c[:,0]*(10**-9)
-Messung_c[:,1]= Messung_c[:,1]*(10**-3)
-Messung_c[:,2]= Messung_c[:,2]*(10**-3)
+Messung_c[:,1]= Messung_c[:,1]/1000
+Messung_c[:,2]= Messung_c[:,2]/1000
 #theoretische Werte für ν- und ν+ berechnen
 
 C_k = [12,9.99,8.18,6.86,4.74,2.86,2.19,0.997]
@@ -84,8 +84,17 @@ for i in range(0,8):
     Messung_t[i][0] = Messung_c[i][1]
     Messung_t[i][1] = Messung_c[i][2]
 
-    Messung_t[i][0] = Messung_t[i][0]**-1
-    Messung_t[i][1] = Messung_t[i][1]**-1
+    Messung_t[i][0] = 1/Messung_t[i][0]
+    Messung_t[i][1] = 1/Messung_t[i][1]
+
+for i in range(0,8):
+    print(Messung_t[i][0])
+
+print("pause")
+
+for i in range(0,8):
+    print(Messung_t[i][1])
+
 
 output = ("Werte")    
 my_file = open(output + '.txt', "w") 
