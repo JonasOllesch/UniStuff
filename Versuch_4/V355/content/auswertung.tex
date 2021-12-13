@@ -3,15 +3,16 @@
 Zunächst wurde die Resonanzfrequenz bestimmt. Der auf dem Oszilloskop dargestellte Spannungsverlauf wurde dabei bei
 einer Frequenz von 
 \begin{equation*}
-    f = 35,78 \unit{\mega\hertz}
-\end{equation*} maximal.
+    ν = 35,78 \, \unit{\mega\hertz}
+\end{equation*} maximal. Bei dieser Frequenz handelt es sich also um die Resonanzfrequenz.
 
 \subsection{a) Bestimmung des Verhältnisses von Schwingungs und Schwebungsfrequenz}
 \label{subsec:c}
 
-In \autoref{tab:SchwebSchwingVerh} ist die Anzahl $n$ der Schwingungsmaxima pro Schwebungsperiode dargestellt.
+In \autoref{tab:SchwebSchwingVerh} ist die Anzahl $n$ der Schwingungsmaxima pro Schwebungsperiode bei 
+verschiedenen Kopplungskapazitäten dargestellt.
 
-\begin{table}
+\begin{table}[H]
     \centering
     \sisetup{table-format=2.0}
     \begin{tabular}{S[table-format=1.3] S}
@@ -30,4 +31,31 @@ In \autoref{tab:SchwebSchwingVerh} ist die Anzahl $n$ der Schwingungsmaxima pro 
     \end{tabular}
     \caption{Verhältnis der Schwingung- und Schwebungsmaxima bei unterschiedlichen Kopllungswiderständen.}
     \label{tab:SchwebSchwingVerh}
+\end{table}
+
+\subsection{c) Frequenzabhängigkeit des Stromverlaufes mit Wobbelgenerator}
+
+Um den Stromverlauf in Frequenzabhängigkeit zu bestimmen, wurde der zeitliche Abstand der Spannungsmaxima auf dem Oszilloskop
+gemessen. Die aufgenommenen Messdaten sind in \autoref{tab:Maximaabstand} aufgeführt. Dabei ist $t_1$ der Abstand des kleinen
+zum ersten großen und $t_2$ der Abstand des kleinen zum zweiten großen Peak. 
+
+\begin{table}[H]
+    \centering
+    \sisetup{table-format=1.0}
+    \begin{tabular}{S[table-format=1.3] S S}
+        \toprule
+        {$C_k \mathbin{/} \unit{\nano\farad}$} & {$t_1 \mathbin{/} \unit{\milli\second}$} & {$t_2 \mathbin{/} \unit{\milli\second}$}\\
+        \midrule
+        12      &    3.4     &    4.2 \\
+        9.99    &    3.5     &    4.2 \\
+        8.18    &    3.6     &    4.2 \\
+        6.86    &    3.5     &    4.2 \\  
+        4.74    &    3.6     &    4.6 \\
+        2.86    &    3.5     &    5.2 \\
+        2.19    &    3.5     &    5.6 \\
+        0.997   &    3.5     &    5.8 \\
+        \bottomrule
+    \end{tabular}
+    \caption{Zeitliche Abstände des kleinen Peak zu den beiden großen Maxima.}
+    \label{tab:Maximaabstand}
 \end{table}
