@@ -72,8 +72,8 @@ Brel_vp= [0]*8
 Brel_vm= [0]*8
 
 for i in range(0,len(Brel_vp)):
-    Brel_vp[i] = unp.nominal_values(abs((Messung_b[i][1]-v_pt[i])/v_pt[i]))
-    Brel_vm[i] = unp.nominal_values(abs((Messung_b[i][2]-v_mt[i])/v_mt[i]))
+    Brel_vp[i] = unp.nominal_values(abs((Messung_b[i][1]-v_pt[i])/v_pt[i]))*100
+    Brel_vm[i] = unp.nominal_values(abs((Messung_b[i][2]-v_mt[i])/v_mt[i]))*100
 
 print(Brel_vm)  #irgendwie steht hier noch ein "array im array lol"
 print('\n')
@@ -116,6 +116,20 @@ my_file = open(output + '.txt', "w")
 #
 #    my_file.write("\n")
 
+
+for i in range (0,8):
+    my_file.write(str(v_pt[i]*10**-3))
+    my_file.write("\n")
+for i in range (0,8):
+    my_file.write(str(Messung_b[i][1]*10**-3))
+    my_file.write("\n")
 for i in range(0,8):
-    print(np.round(Messung_b[i][2]*10**-3))
-    print("\n")
+    my_file.write(str(Brel_vm[i]))
+    my_file.write(str("\n"))
+
+
+
+#for i in range(0,8):
+#    print(np.round(Messung_b[i][0]*(10**-3),2))
+#    print("\n")
+
