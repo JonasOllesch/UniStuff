@@ -86,6 +86,3 @@ for i in range(0,8):
 
     Messung_t[i][0] = Messung_t[i][0]**-1
     Messung_t[i][1] = Messung_t[i][1]**-1
-
-    
-    
