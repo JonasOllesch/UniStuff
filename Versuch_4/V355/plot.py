@@ -98,16 +98,24 @@ for i in range(0,8):
 
 output = ("Werte")    
 my_file = open(output + '.txt', "w") 
-for i in range(0, 8):
-    my_file.write(str("{"))
-    my_file.write(" ")
-    my_file.write(str(Messung_a[i][0]*10**9))
-    my_file.write(" ")
-    my_file.write(str("&"))
-    my_file.write(" ")
-    my_file.write(str(v_mt[i]*10**-3))
-    my_file.write(" ")
-    my_file.write(str(Messung_b[i][2]*10**-3))
-    
+#for i in range(0, 8):
+#    my_file.write(str("{"))
+#    my_file.write(" ")
+#    my_file.write(str(Messung_a[i][0]*10**9))
+#    my_file.write(" ")
+#    my_file.write(str("&"))
+#    my_file.write(" ")
+#    my_file.write(str(v_mt[i]*10**-3))
+#    my_file.write(str("&"))
+#    my_file.write(" ")
+#    my_file.write(str(Messung_b[i][2]*10**-3))
+#    my_file.write(str("&"))
+#    my_file.write(" ")
+#
+#
+#
+#    my_file.write("\n")
 
-    my_file.write("\n")
+for i in range(0,8):
+    print(np.round(Messung_b[i][2]*10**-3))
+    print("\n")
