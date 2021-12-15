@@ -84,23 +84,48 @@ I_Zylinder_t = (0.3677/2)*(((97.6/2)*10**-3)**2)
 
 #die Puppe
 #die Messwerte mitteln
-Kopf_b = ufloat(np.mean(Messung_e[:,1]), np.std(Messung_e[:,1]))
-Arm_b = ufloat(np.mean(Messung_e[:,2]), np.std(Messung_e[:,2]))
-Torso_b = ufloat(np.mean(Messung_e[:,3]), np.std(Messung_e[:,3]))
-Bein_b = ufloat(np.mean(Messung_e[:,4]), np.std(Messung_e[:,4]))
+Kopf_r = ufloat(np.mean(Messung_e[:,1]/2), np.std(Messung_e[:,1]))
+Arm_r = ufloat(np.mean(Messung_e[:,2]/2), np.std(Messung_e[:,2]))
+Torso_r = ufloat(np.mean(Messung_e[:,3]/2), np.std(Messung_e[:,3]))
+Bein_r = ufloat(np.mean(Messung_e[:,4]/2), np.std(Messung_e[:,4]))
 
-Kopf_l =ufloat(43.1*10**-3, 0.0001)                     #eine kleine Abweichung damit es eine gibt
+Kopf_l =ufloat(43.1*10**-3, 0.0001)                     #eine kleine Abweichung, damit es eine gibt
 Arm_l = ufloat((128.8+ 129.6)/2*10**-3,0.0001)
 Torso_l = ufloat(87.4*10**-3,0.0001)
 Bein_l = ufloat((146+146.6)/2*10**-3,0.0001)
+#Kopf, Arm, Torso, Bein
+#           Radius, Länge, Volumen, Masse, Träg-mo Tuppe, Träg-mo Skuppe
+#Wichtig Werte für ein Arm/Bein
+Puppenmaße =[[Kopf_r,Kopf_l,0,      0,      0,            0],[Arm_r,Arm_l,0,0,0,0],[Torso_r,Torso_l,0,0,0,0],[Bein_r,Bein_l,0,0,0,0]]
+for i in range(0,4):
+    Puppenmaße[i][2] = Puppenmaße[i][1]*Puppenmaße[i][0]**2*np.pi
 
-print(T_k)
-#print(Kopf_b)
-#print(Arm_b)
-#print(Torso_b)
-#print(Bein_b)
-#print('\n')
-#print(Kopf_l)
-#print(Arm_l)
-#print(Torso_l)
-#print(Bein_l)
+G_Volumen = Puppenmaße[0][2]+Puppenmaße[1][2]*2+Puppenmaße[2][2]+Puppenmaße[3][2]*2# Wichtig das Ding hat zweit Arme und Beine
+
+#Masse berechnen
+G_Masse = ufloat(0.1674,0.00001)
+for i in range(0,4):
+    Puppenmaße[i][3]=Puppenmaße[i][2]*G_Masse/G_Volumen
+#G_Masse_tmp =   Puppenmaße[0][3]+Puppenmaße[1][3]*2+Puppenmaße[2][3]+Puppenmaße[3][3]*2
+
+
+#wie haben jetzt einzelne Funktionen yay
+#Trägheitsmoment eines Zylinder durch seine Symmetrieachse
+def Trä_Mo_Zy_pSa(Radius,Masse):
+    return (Masse*Radius**2)/2
+#Trägheitsmoment eines Zylinder senkrecht zur Symmetrieachse
+def Trä_Mo_Zy_sSa(Radius,Länge,Masse):
+    return Masse*((Radius**2)/4 + (Länge**2)/12)
+def Steiner(Trägheitmoment,Masse,Verschiebung):
+    return Trägheitmoment+ Masse*Verschiebung**2
+
+
+Puppenmaße[0][4] = Trä_Mo_Zy_pSa(Puppenmaße[0][0], Puppenmaße[0][3])
+Puppenmaße[2][5] = Trä_Mo_Zy_pSa(Puppenmaße[2][0], Puppenmaße[2][3])
+    
+#for j in range(0,6):
+#    for i in range(0,4):
+#        print(Puppenmaße[i][j],i, " ", j)
+
+
+# für die Tuppe
