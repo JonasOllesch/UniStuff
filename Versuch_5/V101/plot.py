@@ -6,6 +6,16 @@ import math
 from scipy.optimize import curve_fit
 from numpy import arange
 
+#wie haben jetzt einzelne Funktionen yay
+#Trägheitsmoment eines Zylinder durch seine Symmetrieachse
+def Trä_Mo_Zy_pSa(Radius,Masse):
+    return (Masse*Radius**2)/2
+#Trägheitsmoment eines Zylinder senkrecht zur Symmetrieachse
+def Trä_Mo_Zy_sSa(Radius,Länge,Masse):
+    return Masse*((Radius**2)/4 + (Länge**2)/12)
+def Steiner(Trägheitmoment,Masse,Verschiebung):
+    return Trägheitmoment+ Masse*Verschiebung**2
+
 Messung_a = np.array(np.genfromtxt('Messung_a.txt'))
 #print(math.sin(math.pi))# <-- das ist anscheinend nicht null aber math arbeitet in Bogenmaß
 #print(np.sin(np.pi))      #    np wohl auch
@@ -35,7 +45,7 @@ Messung_f[:,2] = Messung_f[:,2]/3
 
 Messung_g = np.array(np.genfromtxt('Messung_g.txt'))
 Messung_g[:,1] = Messung_g[:,1]/3
-Messung_g[:,1] = Messung_g[:,1]/3
+Messung_g[:,2] = Messung_g[:,2]/3
 
 #Bestimmung der Winkelrichtgröße
 WinRgtmp = [0,1,2,3,4,5,6,7,8,9]
@@ -101,26 +111,17 @@ for i in range(0,4):
     Puppenmaße[i][2] = Puppenmaße[i][1]*Puppenmaße[i][0]**2*np.pi
 
 G_Volumen = Puppenmaße[0][2]+Puppenmaße[1][2]*2+Puppenmaße[2][2]+Puppenmaße[3][2]*2# Wichtig das Ding hat zweit Arme und Beine
-
+#print(G_Volumen, " das Gesamtvolumen")
 #Masse berechnen
 G_Masse = ufloat(0.1674,0.00001)
 for i in range(0,4):
     Puppenmaße[i][3]=Puppenmaße[i][2]*G_Masse/G_Volumen
 #G_Masse_tmp =   Puppenmaße[0][3]+Puppenmaße[1][3]*2+Puppenmaße[2][3]+Puppenmaße[3][3]*2
 
-
-#wie haben jetzt einzelne Funktionen yay
-#Trägheitsmoment eines Zylinder durch seine Symmetrieachse
-def Trä_Mo_Zy_pSa(Radius,Masse):
-    return (Masse*Radius**2)/2
-#Trägheitsmoment eines Zylinder senkrecht zur Symmetrieachse
-def Trä_Mo_Zy_sSa(Radius,Länge,Masse):
-    return Masse*((Radius**2)/4 + (Länge**2)/12)
-def Steiner(Trägheitmoment,Masse,Verschiebung):
-    return Trägheitmoment+ Masse*Verschiebung**2
-
-
 Puppenmaße[0][4] = Trä_Mo_Zy_pSa(Puppenmaße[0][0], Puppenmaße[0][3])
+Puppenmaße[0][5] = Trä_Mo_Zy_pSa(Puppenmaße[0][0], Puppenmaße[0][3])
+
+Puppenmaße[2][4] = Trä_Mo_Zy_pSa(Puppenmaße[2][0], Puppenmaße[2][3])
 Puppenmaße[2][5] = Trä_Mo_Zy_pSa(Puppenmaße[2][0], Puppenmaße[2][3])
 
 TmArm_tmp = Trä_Mo_Zy_sSa(Puppenmaße[1][0],Puppenmaße[1][1], Puppenmaße[1][3])
@@ -128,11 +129,39 @@ Puppenmaße[1][4]= Steiner(TmArm_tmp, Puppenmaße[1][3], Puppenmaße[2][0]) #EIN
 Puppenmaße[1][5] = Puppenmaße[1][4]                                      #Tuppe und Skuppe sind gleich
 del TmArm_tmp
 
-#TmBei_tmp = Trä_Mo_Zy_pSa(Pu, Masse)
+TmBei_tmp = Trä_Mo_Zy_pSa(Puppenmaße[3][0], Puppenmaße[3][3])
+Puppenmaße[3][4] = Steiner(TmBei_tmp, Puppenmaße[3][3], Puppenmaße[3][0])# Verschibung um den Radius eines Beins
+del TmBei_tmp
 
+TmBei_tmp2 = Trä_Mo_Zy_sSa(Puppenmaße[3][0], Puppenmaße[3][1], Puppenmaße[3][3])
+Puppenmaße[3][5] = Steiner(TmBei_tmp2, Puppenmaße[3][3], Puppenmaße[3][1]+Puppenmaße[2][0])
+
+del TmBei_tmp2
 #for j in range(0,6):
+#    print('\n')
 #    for i in range(0,4):
 #        print(Puppenmaße[i][j],i, " ", j)
 
+Tm_T_Puppe_t = Puppenmaße[0][4]+Puppenmaße[1][4]*2+Puppenmaße[2][4]+Puppenmaße[3][4]*2
+Tm_S_Puppe_t = Puppenmaße[0][5]+Puppenmaße[1][5]*2+Puppenmaße[2][5]+Puppenmaße[3][5]*2
 
-# für die Tuppe
+#Mittelwerte und Standartabweichung der Puppe
+#T_Puppe, S_Puppe
+#T für 90, T für 120, I_90, I_120
+Trägheit_e = [[0,1,2,3],[4,5,6,7]]
+
+for i in range(0,2):
+    Trägheit_e[0][i]= ufloat(np.mean(Messung_f[:,i+1]),np.std(Messung_f[:,i+1]))
+    Trägheit_e[1][i]= ufloat(np.mean(Messung_g[:,i+1]),np.std(Messung_g[:,i+1]))
+
+for j in range(0,2):
+    for i in range(0,2):
+        Trägheit_e[j][i+2]= Trägheit_e[j][i]**2*Winkelrichtgröße/(4*np.pi**2)
+
+rel_Verhältnis_90 = Trägheit_e[0][2]/Trägheit_e[1][2]#Verhältnis von der T-Puppe und der S-Puppe
+rel_Verhältnis_120 = Trägheit_e[0][3]/Trägheit_e[1][3]
+
+rel_Verhältnis_theorie = Tm_T_Puppe_t/Tm_S_Puppe_t
+
+rel_Abw_Ver_90 = (rel_Verhältnis_90-rel_Verhältnis_theorie)/rel_Verhältnis_theorie
+rel_Abw_Ver_120 = (rel_Verhältnis_120-rel_Verhältnis_theorie)/rel_Verhältnis_theorie
