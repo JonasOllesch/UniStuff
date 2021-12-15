@@ -122,7 +122,14 @@ def Steiner(Trägheitmoment,Masse,Verschiebung):
 
 Puppenmaße[0][4] = Trä_Mo_Zy_pSa(Puppenmaße[0][0], Puppenmaße[0][3])
 Puppenmaße[2][5] = Trä_Mo_Zy_pSa(Puppenmaße[2][0], Puppenmaße[2][3])
-    
+
+TmArm_tmp = Trä_Mo_Zy_sSa(Puppenmaße[1][0],Puppenmaße[1][1], Puppenmaße[1][3])
+Puppenmaße[1][4]= Steiner(TmArm_tmp, Puppenmaße[1][3], Puppenmaße[2][0]) #EIN Arm wird um den Radius des Torsos verschoben
+Puppenmaße[1][5] = Puppenmaße[1][4]                                      #Tuppe und Skuppe sind gleich
+del TmArm_tmp
+
+#TmBei_tmp = Trä_Mo_Zy_pSa(Pu, Masse)
+
 #for j in range(0,6):
 #    for i in range(0,4):
 #        print(Puppenmaße[i][j],i, " ", j)
