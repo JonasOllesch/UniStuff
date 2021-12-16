@@ -165,3 +165,5 @@ rel_Verhältnis_theorie = Tm_T_Puppe_t/Tm_S_Puppe_t
 
 rel_Abw_Ver_90 = (rel_Verhältnis_90-rel_Verhältnis_theorie)/rel_Verhältnis_theorie
 rel_Abw_Ver_120 = (rel_Verhältnis_120-rel_Verhältnis_theorie)/rel_Verhältnis_theorie
+
+#Woooooooooooooooooooooooooooooooow
