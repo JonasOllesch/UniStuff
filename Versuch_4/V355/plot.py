@@ -87,17 +87,17 @@ for i in range(0,8):
     Messung_t[i][0] = 1/Messung_t[i][0]
     Messung_t[i][1] = 1/Messung_t[i][1]
 
-for i in range(0,8):
-    print(Messung_t[i][0])
+#for i in range(0,8):
+#    print(Messung_t[i][0])
 
-print("pause")
+#print("pause")
 
-for i in range(0,8):
-    print(Messung_t[i][1])
+#for i in range(0,8):
+#    print(Messung_t[i][1])
 
 
-output = ("Werte")    
-my_file = open(output + '.txt', "w") 
+#output = ("Werte")    
+#my_file = open(output + '.txt', "w") 
 #for i in range(0, 8):
 #    my_file.write(str("{"))
 #    my_file.write(" ")
@@ -117,16 +117,15 @@ my_file = open(output + '.txt', "w")
 #    my_file.write("\n")
 
 
-for i in range (0,8):
-    my_file.write(str(v_pt[i]*10**-3))
-    my_file.write("\n")
-for i in range (0,8):
-    my_file.write(str(Messung_b[i][1]*10**-3))
-    my_file.write("\n")
-for i in range(0,8):
-    my_file.write(str(Brel_vm[i]))
-    my_file.write(str("\n"))
-
+#for i in range (0,8):
+#    my_file.write(str(v_pt[i]*10**-3))
+#    my_file.write("\n")
+#for i in range (0,8):
+#    my_file.write(str(Messung_b[i][1]*10**-3))
+#    my_file.write("\n")
+#for i in range(0,8):
+#    my_file.write(str(Brel_vm[i]))
+#    my_file.write(str("\n"))
 
 
 #for i in range(0,8):

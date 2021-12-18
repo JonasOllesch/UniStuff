@@ -53,25 +53,53 @@ for i in range(0,len(WinRgtmp)):
     WinRgtmp[i] = (Messung_a[i][1]*0.2)/Messung_a[i][0]
 Winkelrichtgröße = ufloat(np.mean(WinRgtmp),np.std(WinRgtmp))
 del WinRgtmp
-
+#Eigenträgheitsmoment bestimmen
+print(Messung_b)
 #T² gegen a² auftragen
-x = [0,1,2,3,4,5,6,7,8,9]
-y = [0,1,2,3,4,5,6,7,8,9]
+xdata = [0,1,2,3,4,5,6,7,8,9]
+ydata = [0,1,2,3,4,5,6,7,8,9]
+y2data = [0,1,2,3,4,5,6,7,8,9]
+for i in range(0,10):
+    xdata[i]= Messung_b[i][0]**2
+    ydata[i]= Messung_b[i][1]**2
+print(xdata)
+print(ydata)
+def func(x, a, b):
+
+    return a * x +b
+
+#xdata = Messung_b[:,0]
+#y = Messung_b[:,1]
+#ydata = y
+popt, pcov = curve_fit(func, xdata, ydata)
+print( "popt:\n")
+print( popt )
+print( "pcov:\n")
+print( pcov )
+#pyplot.plot(xdata, func(xdata,popt[0],popt[1] ), label='fit: a=%5.3f, b=%5.3f' % tuple(popt))
+#pyplot.plot(xdata, ydata,color ='green')
+for i in range(0,10):
+    y2data[i]= func( xdata[i], popt[0], popt[1])
+
+pyplot.plot(xdata, y2data,color ='red', label='fit: a=%5.3f, b=%5.3f' % tuple(popt))
+
+print(popt)
+
+#B = ufloat(popt[1][1],np.sqrt(pcov[1][1]))
+#A = ufloat(popt[0][0],np.sqrt(pcov[0][0]))
+#print(A)
+#print(B)
 
 
-#for i in range(0,10):
-#    x[i]= Messung_b[i][0]**2
-#    y[i]= Messung_b[i][1]**2
-#
-#pyplot.scatter(x, y, color='blue',s=15, label="T² gegen a²")
-#pyplot.legend()
-#pyplot.grid()
-#pyplot.xlabel(r'$a² \mathbin{/}\unit{\meter^2}$')
-#pyplot.ylabel(r'$T² \mathbin{/}\unit{\second^2}$')
-##pyplot.show()
-#pyplot.savefig('build/T^2ga^2')
-#pyplot.clf()
+pyplot.scatter(xdata, ydata, color='blue',s=15, label="T² gegen a²")
+pyplot.legend()
+pyplot.grid()
+pyplot.xlabel(r'$a² \mathbin{/}\unit{\meter^2}$')
+pyplot.ylabel(r'$T² \mathbin{/}\unit{\second^2}$')
+pyplot.savefig('build/T^2ga^2')
+pyplot.clf()
 
+#I_eigen = (B*Winkelrichtgröße)
 
 #Trägheitmoment der Kugel
 T_k = ufloat(np.mean(Messung_c[:,1]),np.std(Messung_c[:,1]))
@@ -165,3 +193,4 @@ rel_Verhältnis_theorie = Tm_T_Puppe_t/Tm_S_Puppe_t
 
 rel_Abw_Ver_90 = (rel_Verhältnis_90-rel_Verhältnis_theorie)/rel_Verhältnis_theorie
 rel_Abw_Ver_120 = (rel_Verhältnis_120-rel_Verhältnis_theorie)/rel_Verhältnis_theorie
+
