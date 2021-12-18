@@ -1,5 +1,5 @@
 #die Messung mit den zwei kleinen Zylindern
-#d = 32 mm  h = 27.1 mm m = 222.7g für das richtige r muss h/2 auf alles addiert werden
+#d = 32 mm  h = 27.1 mm m = 222.7g für den richtigen Abstand muss h/2 auf alles addiert werden
 #Abstand in cm   3T in s bei 90°
 19              18.50
 20              19.62

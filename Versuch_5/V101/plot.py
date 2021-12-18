@@ -83,23 +83,28 @@ for i in range(0,10):
 
 pyplot.plot(xdata, y2data,color ='red', label='fit: a=%5.3f, b=%5.3f' % tuple(popt))
 
-print(popt)
+#print(popt)
 
-#B = ufloat(popt[1][1],np.sqrt(pcov[1][1]))
-#A = ufloat(popt[0][0],np.sqrt(pcov[0][0]))
-#print(A)
-#print(B)
+B = ufloat(popt[1],np.sqrt(pcov[1][1]))
+A = ufloat(popt[0],np.sqrt(pcov[0][0]))
+print(A)
+print(B)
 
 
 pyplot.scatter(xdata, ydata, color='blue',s=15, label="T² gegen a²")
 pyplot.legend()
 pyplot.grid()
-pyplot.xlabel(r'$a² \mathbin{/}\unit{\meter^2}$')
-pyplot.ylabel(r'$T² \mathbin{/}\unit{\second^2}$')
+#pyplot.xlabel(r'$a² \mathbin{/}\unit{\meter^2}$')
+#pyplot.ylabel(r'$T² \mathbin{/}\unit{\second^2}$')
 pyplot.savefig('build/T^2ga^2')
 pyplot.clf()
+m_klein = ufloat(0.2227,0.0001)
+r_klein = ufloat(0.016,0.001)
+h_klein = ufloat(0.0271,0.0001)
+print(B)
+print(Winkelrichtgröße)
 
-#I_eigen = (B*Winkelrichtgröße)
+I_eigen = (B*Winkelrichtgröße)/(4*np.pi**2)-2*m_klein*((r_klein**2)/4 + (h_klein**2)/12) # ist ziemlich klein und wird deswegen vernachlässigt
 
 #Trägheitmoment der Kugel
 T_k = ufloat(np.mean(Messung_c[:,1]),np.std(Messung_c[:,1]))
