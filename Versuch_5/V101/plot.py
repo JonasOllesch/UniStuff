@@ -139,8 +139,8 @@ Arm_l = ufloat((128.8+ 129.6)/2*10**-3,0.0001)
 Torso_l = ufloat(87.4*10**-3,0.0001)
 Bein_l = ufloat((146+146.6)/2*10**-3,0.0001)
 #Kopf, Arm, Torso, Bein
-#           Radius, Länge, Volumen, Masse, Träg-mo Tuppe, Träg-mo Skuppe
-#Wichtig Werte für ein Arm/Bein
+# Radius, Länge, Volumen, Masse, Träg-mo Tuppe, Träg-mo Skuppe
+#Wichtig Werte für ein Arm/Bein 
 Puppenmaße =[[Kopf_r,Kopf_l,0,      0,      0,            0],[Arm_r,Arm_l,0,0,0,0],[Torso_r,Torso_l,0,0,0,0],[Bein_r,Bein_l,0,0,0,0]]
 for i in range(0,4):
     Puppenmaße[i][2] = Puppenmaße[i][1]*Puppenmaße[i][0]**2*np.pi
@@ -264,4 +264,27 @@ my_file.write('\n')
 my_file.write(str("relative Abweichung des Zylinders"))
 my_file.write('\n')
 my_file.write(str(abs((I_Zylinder_e/I_Zylinder_t)*100 -100 )))
+my_file.write('\n')
+
+my_file.write(str("Länge der Kopfes"))
+my_file.write('\n')
+my_file.write(str(Puppenmaße[0][1]))
+my_file.write('\n')
+
+
+my_file.write(str("Länge der Arme"))
+my_file.write('\n')
+my_file.write(str(Puppenmaße[1][1]))
+my_file.write('\n')
+
+
+my_file.write(str("Länge des Trosos"))
+my_file.write('\n')
+my_file.write(str(Puppenmaße[2][1]))
+my_file.write('\n')
+
+
+my_file.write(str("Länge der Beine"))
+my_file.write('\n')
+my_file.write(str(Puppenmaße[3][1]))
 my_file.write('\n')

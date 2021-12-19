@@ -44,3 +44,11 @@ Trägheitmoment Zylinder t
 0.0004378277439999999
 relative Abweichung des Zylinders
 22+/-12
+Länge der Kopfes
+0.04310+/-0.00010
+Länge der Arme
+0.12920+/-0.00010
+Länge des Trosos
+0.08740+/-0.00010
+Länge der Beine
+0.14630+/-0.00010
