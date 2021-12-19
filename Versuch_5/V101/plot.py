@@ -213,6 +213,7 @@ for i in range(0,10):
 my_file.write(str("I_eigen"))    
 my_file.write('\n')
 my_file.write(str(I_eigen))
+my_file.write('\n')
 for i in range(0, 10):
     my_file.write(str(Messung_c[i][1]))
     my_file.write('\n')
