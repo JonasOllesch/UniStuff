@@ -62,8 +62,8 @@ y2data = [0,1,2,3,4,5,6,7,8,9]
 for i in range(0,10):
     xdata[i]= Messung_b[i][0]**2
     ydata[i]= Messung_b[i][1]**2
-print(xdata)
-print(ydata)
+#print(xdata)
+#print(ydata)
 def func(x, a, b):
 
     return a * x +b
@@ -72,11 +72,11 @@ def func(x, a, b):
 #y = Messung_b[:,1]
 #ydata = y
 popt, pcov = curve_fit(func, xdata, ydata)
-print( "popt:\n")
-print( popt )
-print( "pcov:\n")
-print( pcov )
-#pyplot.plot(xdata, func(xdata,popt[0],popt[1] ), label='fit: a=%5.3f, b=%5.3f' % tuple(popt))
+#print( "popt:\n")
+#print( popt )
+#print( "pcov:\n")
+#print( pcov )
+##pyplot.plot(xdata, func(xdata,popt[0],popt[1] ), label='fit: a=%5.3f, b=%5.3f' % tuple(popt))
 #pyplot.plot(xdata, ydata,color ='green')
 for i in range(0,10):
     y2data[i]= func( xdata[i], popt[0], popt[1])
@@ -87,8 +87,8 @@ pyplot.plot(xdata, y2data,color ='red', label='fit: a=%5.3f, b=%5.3f' % tuple(po
 
 B = ufloat(popt[1],np.sqrt(pcov[1][1]))
 A = ufloat(popt[0],np.sqrt(pcov[0][0]))
-print(A)
-print(B)
+#print(A)
+#print(B)
 
 
 pyplot.scatter(xdata, ydata, color='blue',s=15, label="T² gegen a²")
