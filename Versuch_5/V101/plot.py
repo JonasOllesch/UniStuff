@@ -81,7 +81,7 @@ popt, pcov = curve_fit(func, xdata, ydata)
 for i in range(0,10):
     y2data[i]= func( xdata[i], popt[0], popt[1])
 
-pyplot.plot(xdata, y2data,color ='red', label='fit: a=%5.3f, b=%5.3f' % tuple(popt))
+pyplot.plot(xdata, y2data,color ='red', label='lineare Regression')
 
 #print(popt)
 
@@ -91,17 +91,16 @@ A = ufloat(popt[0],np.sqrt(pcov[0][0]))
 #print(B)
 
 
-pyplot.scatter(xdata, ydata, color='blue',s=15, label="T² gegen a²")
+pyplot.scatter(xdata, ydata, color='blue',s=15, label="T² und a²")
 pyplot.legend()
 pyplot.grid()
 pyplot.xlabel(r'$a² \mathbin{/}\unit{\meter^2}$')
 pyplot.ylabel(r'$T² \mathbin{/}\unit{\second^2}$')
-pyplot.savefig('build/T^2ga^2.pdf')
+pyplot.savefig('build/T2ga2.pdf')
 pyplot.clf()
 m_klein = ufloat(0.2227,0.0001)
 r_klein = ufloat(0.016,0.001)
 h_klein = ufloat(0.0271,0.0001)
-print(B)
 print(Winkelrichtgröße)
 
 I_eigen = (B*Winkelrichtgröße)/(4*np.pi**2)-2*m_klein*((r_klein**2)/4 + (h_klein**2)/12) # ist ziemlich klein und wird deswegen vernachlässigt
@@ -198,5 +197,18 @@ rel_Verhältnis_theorie = Tm_T_Puppe_t/Tm_S_Puppe_t
 
 rel_Abw_Ver_90 = (rel_Verhältnis_90-rel_Verhältnis_theorie)/rel_Verhältnis_theorie
 rel_Abw_Ver_120 = (rel_Verhältnis_120-rel_Verhältnis_theorie)/rel_Verhältnis_theorie
+print(A)
+print(B)
 
+output = ("Auswertung")    
+my_file = open(output + '.txt', "w") 
+my_file.write(str(A))
+my_file.write('\n')
+my_file.write(str(B))
+#for i in range(0,10):
+#    my_file.write(str(Messung_b[i][1]*3))
+#    my_file.write('\n')
 #Woooooooooooooooooooooooooooooooow
+#for i in range(0, 8):
+#    my_file.write(str("{"))
+#    my_file.write(" ")
