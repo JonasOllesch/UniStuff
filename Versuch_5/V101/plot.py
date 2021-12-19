@@ -104,14 +104,14 @@ pyplot.clf()
 m_klein = ufloat(0.2227,0.0001)
 r_klein = ufloat(0.016,0.001)
 h_klein = ufloat(0.0271,0.0001)
-print(Winkelrichtgröße)
+#print(Winkelrichtgröße)
 
 I_eigen = (B*Winkelrichtgröße)/(4*np.pi**2)-2*m_klein*((r_klein**2)/4 + (h_klein**2)/12) # ist ziemlich klein und wird deswegen vernachlässigt
 
 #Trägheitmoment der Kugel
 T_k = ufloat(np.mean(Messung_c[:,1]),np.std(Messung_c[:,1]))
 I_Kugel_e = (T_k**2*Winkelrichtgröße)/((2*np.pi)**2) 
-I_Kugel_t = (2/5)*0.8113*((12.75/2)*10**-2)**2 # 4% ist doch gut
+I_Kugel_t = (2/5)*0.8113*((12.75/2)*10**-2)**2 
 
 #print(I_Kugel_e," I_Kugel_e")
 #print(I_Kugel_t," I_Kugel_t")
@@ -205,13 +205,62 @@ print(B)
 
 output = ("Auswertung")    
 my_file = open(output + '.txt', "w") 
-my_file.write(str(A))
+
+for i in range(0,10):
+    my_file.write(str(Messung_b[i][1]))
+    my_file.write('\n')
+
+my_file.write(str("I_eigen"))    
 my_file.write('\n')
-my_file.write(str(B))
-#for i in range(0,10):
-#    my_file.write(str(Messung_b[i][1]*3))
-#    my_file.write('\n')
-#Woooooooooooooooooooooooooooooooow
-#for i in range(0, 8):
-#    my_file.write(str("{"))
-#    my_file.write(" ")
+my_file.write(str(I_eigen))
+for i in range(0, 10):
+    my_file.write(str(Messung_c[i][1]))
+    my_file.write('\n')
+
+my_file.write(str( " Periodendauer Kugel"))
+
+my_file.write(str(T_k))
+my_file.write('\n')
+
+
+my_file.write(str("Trägheitmoment Kugel e"))
+my_file.write('\n')
+my_file.write(str(I_Kugel_e))
+my_file.write('\n')
+
+my_file.write(str("Trägheitmoment Kugel t"))
+my_file.write('\n')
+my_file.write(str(I_Kugel_t))
+my_file.write('\n')
+
+my_file.write(str("relative Abweichung der Kuglel"))
+my_file.write('\n')
+my_file.write(str(abs((I_Kugel_e/I_Kugel_t)*100 -100 )))
+my_file.write('\n')
+
+
+#---------------------------------------
+for i in range(0, 10):
+    my_file.write(str(Messung_d[i][1]))
+    my_file.write('\n')
+
+my_file.write(str(" Periodendauer Zylinder"))
+
+my_file.write(str(T_z))
+my_file.write('\n')
+
+
+my_file.write(str("Trägheitmoment Zylinder e"))
+my_file.write('\n')
+my_file.write(str(I_Zylinder_e))
+my_file.write('\n')
+
+my_file.write(str("Trägheitmoment Zylinder t"))
+my_file.write('\n')
+my_file.write(str(I_Zylinder_t))
+my_file.write('\n')
+
+my_file.write(str("relative Abweichung des Zylinders"))
+my_file.write('\n')
+my_file.write(str(abs((I_Zylinder_e/I_Zylinder_t)*100 -100 )))
+my_file.write('\n')
