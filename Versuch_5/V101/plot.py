@@ -198,12 +198,15 @@ rel_Verhältnis_120 = Trägheit_e[0][3]/Trägheit_e[1][3]
 
 rel_Verhältnis_theorie = Tm_T_Puppe_t/Tm_S_Puppe_t
 
-rel_Abw_Ver_90 = (rel_Verhältnis_90-rel_Verhältnis_theorie)/rel_Verhältnis_theorie
-rel_Abw_Ver_120 = (rel_Verhältnis_120-rel_Verhältnis_theorie)/rel_Verhältnis_theorie
+rel_Abw_Ver_90  = 100*(rel_Verhältnis_90/rel_Verhältnis_theorie)-100
+rel_Abw_Ver_120 = 100*(rel_Verhältnis_120/rel_Verhältnis_theorie)-100
 print(A)
 print(B)
 
 trägheitP1 = (Trägheit_e[0][2]+Trägheit_e[0][3])/2
+trägheitP2 = (Trägheit_e[1][2]+Trägheit_e[1][3])/2
+rel_Abw_Ver = (rel_Abw_Ver_90 + rel_Abw_Ver_120)/2
+
 output = ("Auswertung")    
 my_file = open(output + '.txt', "w") 
 
@@ -320,3 +323,45 @@ my_file.write(str("gemitteltes Trägheitsmoment in Position 1"))
 my_file.write('\n')
 my_file.write(str(trägheitP1))
 my_file.write('\n')
+
+
+my_file.write('\n')
+my_file.write(str("Schwingungsdauer bei 90° in Position 2"))
+my_file.write('\n')
+
+for i in range (0,10):
+    my_file.write(str(Messung_g[i][1]))
+    my_file.write('\n')
+
+
+my_file.write('\n')
+my_file.write(str("Schwingungsdauer bei 120° in Position 2"))
+my_file.write('\n')
+
+for i in range (0,10):
+    my_file.write(str(Messung_g[i][2]))
+    my_file.write('\n')
+
+my_file.write('\n')
+my_file.write(str("Trägheitsmomente in Position 2"))
+my_file.write('\n')
+my_file.write(str(Trägheit_e[1][2]))
+my_file.write('\n')
+my_file.write(str(Trägheit_e[1][3]))
+my_file.write('\n')
+
+my_file.write('\n')
+my_file.write(str("gemitteltes Trägheitsmoment in Position 2"))
+my_file.write('\n')
+my_file.write(str(trägheitP2))
+my_file.write('\n')
+
+my_file.write('\n')
+my_file.write(str('relatives Verhältnis der Puppenpositionen'))
+my_file.write('\n')
+my_file.write(str(rel_Abw_Ver_90))
+my_file.write('\n')
+my_file.write(str(rel_Abw_Ver_120))
+my_file.write('\n')
+
+

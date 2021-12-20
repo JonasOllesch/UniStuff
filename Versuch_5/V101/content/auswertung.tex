@@ -296,7 +296,7 @@ die Messwerte sind in \autoref{tab:Messung_f} aufgetragen.
       10& 0.710 & 0.597 \\
       \bottomrule
   \end{tabular}
-  \caption{Schwingungsdauern bei Auslenkungen von $\varphi = 90 \unit{\degree}$ und $\varphi = 120 \unit{\degree}$.}
+  \caption{Schwingungsdauern bei Auslenkungen von $\varphi = 90 \unit{\degree}$ und $\varphi = 120 \unit{\degree}$ in Position 1.}
   \label{tab:Messung_f}
 \end{table}
 
@@ -313,7 +313,7 @@ für $\varphi = 90 \, \unit{{\degree}}$ und
 für $\varphi = 120 \unit{\degree}$, erneut gemittelt also
 
 \begin{equation*}
-  I_{P_1} = (0.000219 \pm 0.000029) \, \unit{\newton\meter} \,.
+  I_{P_1,m} = (0.000219 \pm 0.000029) \, \unit{\newton\meter} \,.
 \end{equation*}
 
 Für die Berechnung des theoretischen Trägheitsmoments werden die einzelnen Körperteile als Zylinder approximiert. Dabei sei angenommen, dass die Drehachse genau durch den Mittelpunkt von Kopf und Torso verläuft, es gilt also
@@ -325,14 +325,66 @@ und
   I_{Torso,t} = \frac{1}{2} \, m_{Torso} \, R^2_{Torso} = ... \, \unit{\newton\meter} \,.
 \end{equation*}
 
-Die Arme sind je um $R_{Arme} + R_{Torso}$, die Beine um je $R_{Beine}$ zur Drehachse verschoben. Über den Satz von Steiner lassen sich jetzt die dazugehörigen Trägheitsmomente berechnen.
-Dabei sind die Beine vertikal und die Arme horizontal zur Drehachse verschoben. 
+Dabei sind die Beine vertikal um je $R_{Beine}$ und die Arme horizontal um $\frac{h_{Arme}}{2} + R_{Torso}$ zur Drehachse verschoben. 
+Über den Satz von Steiner lassen sich jetzt die dazugehörigen Trägheitsmomente berechnen.
 Es ergeben sich mithilfe der Zylinderträgheitsmomente aus \autoref{fig:trägmomSKZ}
 \begin{equation*}
-  I_{Arme,t} = I_{Arme,S} + m a^2 = m (\frac{R^2_{Arme}}{4} + \frac{h^2_{Arme}}{12}) + m (R_{Torso} + R_{Arme})^2 = ... \, \unit{\newton\meter}
+  I_{Arme,t} = I_{Arme,S} + m a^2 = m \left(\frac{R^2_{Arme}}{4} + \frac{h^2_{Arme}}{12} \right) + m \left(R_{Torso} + \frac{h_{Arme}}{2} \right)^2 = ... \, \unit{\newton\meter}
 \end{equation*}
 und
 \begin{equation*}
   I_{Beine,t} = I_{Beine,S} + m a^2 = \frac{1}{2} \, m_{Beine} \, R^2_{Beine} + m \, R^2_{Beine} = ... \, \unit{\newton\meter} \,.
 \end{equation*}
 
+Das Gesamtträgheitsmoment setzt sich dann aus der Summe der Einzelträgheitsmomente zu
+\begin{equation*}
+  I_{P_1,t} = ... \, \unit{\newton\meter}
+\end{equation*}
+zusammen.
+
+\subsubsection{Bestimmung des Trägheitsmoments in Position 2}
+\label{subsubsec:pos2}
+
+Analog wird nun für die zweite Puppenposition verfahren. 
+Nun sind die Arm horizontal nach hinten und die Beine horizontal nach vorne ausgerichtet. 
+In \autoref{tab:Messung_g} sind erneut die Schwingungsdauern dargestellt.
+
+\begin{table}[H]
+  \centering
+  \begin{tabular}{S[table-format=2.0] S[table-format=1.3] S}
+      \toprule
+      {Messung} & {$T \mathbin{/} \unit{\second}$ bei $\varphi = 90 \unit{\degree}$} & {$T \mathbin{/} \unit{\second}$ bei $\varphi = 120 \unit{\degree}$}\\
+      \midrule
+      1  & 0.903 & 0.833 \\
+      2  & 0.947 & 0.990 \\
+      3  & 0.993 & 0.907 \\
+      4  & 0.947 & 0.880 \\
+      5  & 0.903 & 0.863 \\
+      6  & 1.013 & 0.950 \\
+      7  & 1.013 & 1.013 \\
+      8  & 0.883 & 0.970 \\
+      9  & 0.947 & 0.993 \\
+      10 & 0.883 & 0.970 \\
+      \bottomrule
+  \end{tabular}
+  \caption{Schwingungsdauern bei Auslenkungen von $\varphi = 90 \, \unit{\degree}$ und $\varphi = 120 \, \unit{\degree}$ \\ in Position 2.}
+  \label{tab:Messung_g}
+\end{table}
+
+Aus den gemittelten Schwingungsdauern lassen sich wie schon in \autoref{subsubsec:pos1} die gemessenen Trägheitsmomente bestimmen und zu
+\begin{equation*}
+  I_{P_2,m} = 0.00045 \pm 0.00006
+\end{equation*}
+mitteln.
+
+Zur Berechnung des Theoriewertes wird analog vorgegangen, es ändert sich lediglich das Trägheitsmoment der Beine, die nicht länger vertikal, sondern horizontal ausgerichtet sind.
+Mit 
+\begin{equation*}
+  I_{Beine,t} = I_{Beine,S} + m a^2 = m \left(\frac{R^2_{Beine}}{4} + \frac{h^2_{Beine}}{12} \right) + m \left(\frac{h_{Beine}}{2} \right)^2 = ... \, \unit{\newton\meter}
+\end{equation*}
+ergibt sich aus der Summe der Einzelträgheitsmomente
+\begin{equation*}
+  I_{P_2,t} = ... \, \unit{\newton\meter} \,.
+\end{equation*} \\
+
+Zum Vergleich der experimentellen und theoretischen Werte werden im Folgenden insbesondere die Verhältnisse der Trägheitsmomente der einzelnen Positionen betrachtet. % Die können noch nicht stimmen...
