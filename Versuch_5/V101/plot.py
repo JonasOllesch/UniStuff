@@ -13,8 +13,13 @@ def Trä_Mo_Zy_pSa(Radius,Masse):
 #Trägheitsmoment eines Zylinder senkrecht zur Symmetrieachse
 def Trä_Mo_Zy_sSa(Radius,Länge,Masse):
     return Masse*((Radius**2)/4 + (Länge**2)/12)
-def Steiner(Trägheitmoment,Masse,Verschiebung):
-    return Trägheitmoment+ Masse*Verschiebung**2
+
+def Steiner(Trägheitsmoment,Masse,Verschiebung):
+    return Trägheitsmoment+ Masse*Verschiebung**2
+
+#Trägheitsmoment experimentell
+def Trä_Mo_exp(Schwingungsdauer, Winkelrichtgröße):
+    return Schwingungsdauer**2/(4*(np.pi)**2)*Winkelrichtgröße
 
 Messung_a = np.array(np.genfromtxt('Messung_a.txt'))
 #print(math.sin(math.pi))# <-- das ist anscheinend nicht null aber math arbeitet in Bogenmaß
@@ -107,7 +112,7 @@ h_klein = ufloat(0.0271,0.0001)
 #print(Winkelrichtgröße)
 
 I_eigen = (B*Winkelrichtgröße)/(4*np.pi**2)-2*m_klein*((r_klein**2)/4 + (h_klein**2)/12) # ist ziemlich klein und wird deswegen vernachlässigt
-
+print(I_eigen)
 #Trägheitmoment der Kugel
 T_k = ufloat(np.mean(Messung_c[:,1]),np.std(Messung_c[:,1]))
 I_Kugel_e = (T_k**2*Winkelrichtgröße)/((2*np.pi)**2) 
@@ -159,18 +164,27 @@ Puppenmaße[0][5] = Trä_Mo_Zy_pSa(Puppenmaße[0][0], Puppenmaße[0][3])
 Puppenmaße[2][4] = Trä_Mo_Zy_pSa(Puppenmaße[2][0], Puppenmaße[2][3])
 Puppenmaße[2][5] = Trä_Mo_Zy_pSa(Puppenmaße[2][0], Puppenmaße[2][3])
 
-TmArm_tmp = Trä_Mo_Zy_sSa(Puppenmaße[1][0],Puppenmaße[1][1], Puppenmaße[1][3])
-Puppenmaße[1][4]= Steiner(TmArm_tmp, Puppenmaße[1][3], Puppenmaße[2][0]) #EIN Arm wird um den Radius des Torsos verschoben
+#TmArm_tmp = Trä_Mo_Zy_sSa(Puppenmaße[1][0],Puppenmaße[1][1], Puppenmaße[1][3])
+TmArm_tmp = Trä_Mo_Zy_sSa(Arm_r,Arm_l, Puppenmaße[1][3])
+
+#Puppenmaße[1][4]= Steiner(TmArm_tmp, Puppenmaße[1][3], Puppenmaße[2][0] + Arm_l/2) #EIN Arm wird um den Radius des Torsos verschoben #### Hier müsste auch noch die halbe Länge des Arms drauf!!!!
+Puppenmaße[1][4]= Steiner(TmArm_tmp, Puppenmaße[1][3], Torso_r + Arm_l/2)
 Puppenmaße[1][5] = Puppenmaße[1][4]                                      #Tuppe und Skuppe sind gleich
 del TmArm_tmp
 
-TmBei_tmp = Trä_Mo_Zy_pSa(Puppenmaße[3][0], Puppenmaße[3][3])
-Puppenmaße[3][4] = Steiner(TmBei_tmp, Puppenmaße[3][3], Puppenmaße[3][0]) # Verschiebung um den Radius eines Beins
+
+#TmBei_tmp = Trä_Mo_Zy_pSa(Puppenmaße[3][0], Puppenmaße[3][3])
+TmBei_tmp = Trä_Mo_Zy_pSa(Bein_r, Puppenmaße[3][3])
+#Puppenmaße[3][4] = Steiner(TmBei_tmp, Puppenmaße[3][3], Puppenmaße[3][0]) # Verschiebung um den Radius eines Beins
+Puppenmaße[3][4] = Steiner(TmBei_tmp, Puppenmaße[3][3], Bein_r)
 del TmBei_tmp
 
-TmBei_tmp2 = Trä_Mo_Zy_sSa(Puppenmaße[3][0], Puppenmaße[3][1], Puppenmaße[3][3])
-Puppenmaße[3][5] = Steiner(TmBei_tmp2, Puppenmaße[3][3], Puppenmaße[3][1]+Puppenmaße[2][0])
+#TmBei_tmp2 = Trä_Mo_Zy_sSa(Puppenmaße[3][0], Puppenmaße[3][1], Puppenmaße[3][3])
 
+TmBei_tmp2 = Trä_Mo_Zy_sSa(Bein_r, Bein_l, Puppenmaße[3][3])
+
+#Puppenmaße[3][5] = Steiner(TmBei_tmp2, Puppenmaße[3][3], Puppenmaße[3][1]+Puppenmaße[2][0])
+Puppenmaße[3][5] = Steiner(TmBei_tmp2, Puppenmaße[3][3], Torso_r+Bein_l/2)  # Ich bin der Meinung, das müsste so sein, eigentlich sollte das das gleiche sein
 del TmBei_tmp2
 #for j in range(0,6):
 #    print('\n')
@@ -179,6 +193,14 @@ del TmBei_tmp2
 
 Tm_T_Puppe_t = Puppenmaße[0][4]+Puppenmaße[1][4]*2+Puppenmaße[2][4]+Puppenmaße[3][4]*2
 Tm_S_Puppe_t = Puppenmaße[0][5]+Puppenmaße[1][5]*2+Puppenmaße[2][5]+Puppenmaße[3][5]*2
+
+for i in range (0,4):
+    print(Puppenmaße[i][4], '\n')
+
+for i in range (0,4):
+    print(Puppenmaße[i][5], '\n')
+print(Tm_T_Puppe_t)
+print(Tm_S_Puppe_t)
 
 #Mittelwerte und Standardabweichung der Puppe
 #T_Puppe, S_Puppe
@@ -191,21 +213,31 @@ for i in range(0,2):
 
 for j in range(0,2):
     for i in range(0,2):
-        Trägheit_e[j][i+2]= Trägheit_e[j][i]**2*Winkelrichtgröße/(4*np.pi**2)
+        #Trägheit_e[j][i+2]= Trägheit_e[j][i]**2*Winkelrichtgröße/(4*np.pi**2)
+        Trägheit_e[j][i+2] = Trä_Mo_exp(Trägheit_e[j][i], Winkelrichtgröße) # Hoffentlich das gleiche
+
+########
 
 rel_Verhältnis_90 =  Trägheit_e[0][2]/Trägheit_e[1][2] #Verhältnis von der T-Puppe und der S-Puppe
 rel_Verhältnis_120 = Trägheit_e[0][3]/Trägheit_e[1][3]
+#print(rel_Verhältnis_90, 'Rel 90' )
+#print(rel_Verhältnis_120, 'Rel 120')
 
-rel_Verhältnis_theorie = Tm_T_Puppe_t/Tm_S_Puppe_t
 
-rel_Abw_Ver_90  = 100*(rel_Verhältnis_90/rel_Verhältnis_theorie)-100
-rel_Abw_Ver_120 = 100*(rel_Verhältnis_120/rel_Verhältnis_theorie)-100
-print(A)
-print(B)
+#rel_Abw_Ver_90  = (rel_Verhältnis_theorie/rel_Verhältnis_90)
+#rel_Abw_Ver_120 = (rel_Verhältnis_theorie/rel_Verhältnis_120)
 
 trägheitP1 = (Trägheit_e[0][2]+Trägheit_e[0][3])/2
 trägheitP2 = (Trägheit_e[1][2]+Trägheit_e[1][3])/2
-rel_Abw_Ver = (rel_Abw_Ver_90 + rel_Abw_Ver_120)/2
+rel_Verhältnis_m = trägheitP1/trägheitP2
+rel_Verhältnis_t = Tm_T_Puppe_t/Tm_S_Puppe_t
+print(rel_Verhältnis_m, 'Verhältnis m')
+print(rel_Verhältnis_t, 'Verhältnis t')
+
+
+d_p1 = abs(100*(trägheitP1/Tm_T_Puppe_t -1))
+d_p2 = abs(100*(trägheitP2/Tm_S_Puppe_t - 1))
+d_ges = abs(100*(d_p1/d_p2 - 1))
 
 output = ("Auswertung")    
 my_file = open(output + '.txt', "w") 
@@ -249,7 +281,7 @@ for i in range(0, 10):
     my_file.write(str(Messung_d[i][1]))
     my_file.write('\n')
 
-my_file.write(str(" Periodendauer Zylinder"))
+my_file.write(str("Periodendauer Zylinder"))
 
 my_file.write(str(T_z))
 my_file.write('\n')
@@ -268,6 +300,26 @@ my_file.write('\n')
 my_file.write(str("relative Abweichung des Zylinders"))
 my_file.write('\n')
 my_file.write(str(abs((I_Zylinder_e/I_Zylinder_t)*100 -100 )))
+my_file.write('\n')
+
+my_file.write(str("Radius der Kopfes"))
+my_file.write('\n')
+my_file.write(str(Puppenmaße[0][0]))
+my_file.write('\n')
+
+my_file.write(str("Radius der Arme"))
+my_file.write('\n')
+my_file.write(str(Puppenmaße[1][0]))
+my_file.write('\n')
+
+my_file.write(str("Radius der Torso"))
+my_file.write('\n')
+my_file.write(str(Puppenmaße[2][0]))
+my_file.write('\n')
+
+my_file.write(str("Radius der Beine"))
+my_file.write('\n')
+my_file.write(str(Puppenmaße[3][0]))
 my_file.write('\n')
 
 my_file.write(str("Länge der Kopfes"))
@@ -357,11 +409,18 @@ my_file.write(str(trägheitP2))
 my_file.write('\n')
 
 my_file.write('\n')
+my_file.write(str('Abweichung Position 1'))
+my_file.write('\n')
+my_file.write(str(d_p1))
+
+my_file.write('\n')
+my_file.write(str('Abweichung Position 2'))
+my_file.write('\n')
+my_file.write(str(d_p2))
+
+my_file.write('\n')
 my_file.write(str('relatives Verhältnis der Puppenpositionen'))
 my_file.write('\n')
-my_file.write(str(rel_Abw_Ver_90))
-my_file.write('\n')
-my_file.write(str(rel_Abw_Ver_120))
-my_file.write('\n')
+my_file.write(str(d_ges))
 
 

@@ -93,8 +93,13 @@ Mithilfe von \eqref{eq:trägüschwi} lässt sich das Eigenträgheitsmoment zu
 \end{equation*}
 bestimmen.
 
-% Hast du den Theoriewert für das Eigenträgheitsmoment irgendwo? :D
-% Ne gibt es da denn überhaupt einen. Da hätte man doch das Gewicht der Apperatur und so messen müssen...
+Die Unsicherheit berechnet sich dabei aus der Gaußschen Fehlerfortpflanzung mit
+\begin{equation}
+  Δf(x_1,...,x_N) = \sqrt{\sum_{i=1}^N \left(\frac{\partial f}{\partial x_i}Δx_i\right)^2}
+  \label{eq:gaußfehler}
+\end{equation}
+berechnen.
+
 \begin{figure}[H]
   \centering
   \includegraphics{build/T2ga2.pdf}
@@ -146,12 +151,12 @@ Wie in \autoref{fig:trägmomSKZ} zu sehen, ergibt sich der Theoriewert des Träg
 \end{equation}
 zu
 \begin{equation*}
-  I_{K,t} = 0,00131 \, \unit{\newton\meter}. %die theorischen Werten haben keine Unsicherheit aber wenn die noch eine bekommen sollen, dann kann man da bestimmt noch was machen xD
+  I_{K,t} = 0,00131 \, \unit{\newton\meter}. % die theorischen Werten haben keine Unsicherheit aber wenn die noch eine bekommen sollen, dann kann man da bestimmt noch was machen xD
 \end{equation*}
 
 Die relative Abweichung des gemessenen und theoretischen Wertes beträgt dann
 \begin{equation*}
-  \left|\frac{I_{K,m}}{I_{K,t}} * 100 - 100 \right| = (4 \pm 13) \% \,. %wenn ich die mit dem GTR berechne kommt da irgendwas mit 5 raus ...
+  \left|\frac{I_{K,m}}{I_{K,t}} * 100 - 100 \right| = 5,344 \% \,.
 \end{equation*}
 
 
@@ -162,7 +167,7 @@ Die relative Abweichung des gemessenen und theoretischen Wertes beträgt dann
 Analog zur Bestimmung des Trägheitsmoments der Kugel wird nun für den Zylinder vorgegangen. Mit einer Masse von $367,7 \,\unit{\gram}$, einer Höhe von $h = 9,74 \,\unit{\centi\meter}$
 und einem Durchmesser von $d = 9,67 \,\unit{\centi\meter}$ ergeben sich für zehn Messungen die in \autoref{tab:Messung_d} dargestellten Schwingungsdauern.
 
-\begin{table}[H] % Auch hier lieber noch 1T :D
+\begin{table}[H]
   \centering
   \begin{tabular}{S[table-format=2.0] S[table-format=1.2]}
       \toprule
@@ -206,7 +211,7 @@ eines aufrecht zur Drehachse stehenden Zylinders ergibt sich für den Theoriewer
 
 Die Abweichung beträgt dann
 \begin{equation*}
-  \left|\frac{I_{Z,m}}{I_{Z,t}} * 100 - 100 \right| = (22 \pm 12) \% \,.
+  \left|\frac{I_{Z,m}}{I_{Z,t}} * 100 - 100 \right| = 20,930 \% \,.
 \end{equation*}
 
 \subsection{Trägheitsmoment einer Holzpuppe}
@@ -214,24 +219,25 @@ Die Abweichung beträgt dann
 
 Abschließend soll das Trägheitsmoment einer Holzpuppe in zwei unterschiedlichen Positionen bestimmt werden. Dazu wurden zunächst die einzelnen Körperteile abgemessen.
 Für die Längen $l$ ergaben sich die in \autoref{tab:Messung_e1} aufgetragenen Werte, die je zehnfach gemessenen Durchmesser $d$ der einzelnen Körperteile finden sich in \autoref{tab:Messung_e2}.
+Dabei sei eine Unsicherheit von $1 \, \unit{\milli\meter}$ anzunehmen.
 
 \begin{table}[H]
   \centering
   \begin{tabular}{S[table-format=2.0] S[table-format=2.2]}
       \toprule
-      {Körperteil} & {$l \mathbin{/} \unit{\centi\meter}$}\\
+      {Körperteil} & {$l \mathbin{/} \unit{\meter}$}\\
       \midrule
-        {Kopf}  & 4.31  \\
-        {Arme}  & 12.92 \\
-        {Torso} & 8.74 \\
-        {Beine} & 14.63 \\
+        {Kopf}  & {$0.04310 \pm 0.00010$} \\
+        {Arme}  & {$0.12920 \pm 0.00010$} \\
+        {Torso} & {$0.08740 \pm 0.00010$} \\
+        {Beine} & {$0.14630 \pm 0.00010$} \\
       \bottomrule
   \end{tabular}
   \caption{Längen der einzelnen Puppenkörperteile.}
   \label{tab:Messung_e1}
 \end{table}
 
-\begin{table}[H] % Auch hier lieber noch 1T :D
+\begin{table}[H]
   \centering
   \sisetup{table-format=1.2}
   \begin{tabular}{S[table-format=2.0] S S S S}
@@ -254,26 +260,27 @@ Für die Längen $l$ ergaben sich die in \autoref{tab:Messung_e1} aufgetragenen 
   \label{tab:Messung_e2}
 \end{table}
 
-Nach Mittelung der gemessenen Durchmesser ergeben sich die in \autoref{tab:Messung_e3} dargestellten Werte.
+Nach Mittelung der gemessenen Durchmesser ergeben sich die in \autoref{tab:Messung_e3} dargestellten Radien.
 
 \begin{table}[H]
   \centering
   \begin{tabular}{S[table-format=2.0] S[table-format=2.2]}
       \toprule
-      {Körperteil} & {$\bar{d} \mathbin{/} \unit{\centi\meter}$}\\
+      {Körperteil} & {$\bar{d} \mathbin{/} \unit{\meter}$}\\
       \midrule
-        {Kopf}  & {$0.04310 \pm 0.00010$} \\ % Das hier KANN nicht stimmen, da müssen wir nochmal gucken :D
-        {Arme}  & {$0.12920 \pm 0.00010$} \\ % Das hier KANN nicht stimmen, da müssen wir nochmal gucken :D
-        {Torso} & {$0.08740 \pm 0.00010$}\\ % Das hier KANN nicht stimmen, da müssen wir nochmal gucken :D
-        {Beine} & {$0.14630 \pm 0.00010$} \\ % Das hier KANN nicht stimmen, da müssen wir nochmal gucken :D
+        {Kopf}  & 0.0120 \pm 0.0050 \\
+        {Arme}  & 0.0061 \pm 0.0020 \\
+        {Torso} & 0.0153 \pm 0.0035 \\
+        {Beine} & 0.0062 \pm 0.0025 \\
       \bottomrule
   \end{tabular}
-  \caption{Gemittelte Durchmesser der einzelnen Puppenkörperteile.}
+  \caption{Gemittelte Radien der einzelnen Puppenkörperteile.}
   \label{tab:Messung_e3}
 \end{table}
 
 \subsubsection{Bestimmung des Trägheitsmoments in Position 1}
 \label{subsubsec:pos1}
+
 Zunächst soll das Trägheitsmoment der Holzpuppe mit seitlich ausgestreckten Armen bestimmt werden.
 Erneut werden dazu zehnfach die Schwingungsdauern gemessen, diesmal jedoch sowohl für eine Auslenkung von $\varphi = 90 \unit{\degree}$ als auch $\varphi = 120 \unit{\degree}$,
 die Messwerte sind in \autoref{tab:Messung_f} aufgetragen.
@@ -313,34 +320,36 @@ für $\varphi = 90 \, \unit{{\degree}}$ und
 für $\varphi = 120 \unit{\degree}$, erneut gemittelt also
 
 \begin{equation*}
-  I_{P_1,m} = (0.000219 \pm 0.000029) \, \unit{\newton\meter} \,.
+  I_{P_1,m} = (0.00022 \pm 0.00003) \, \unit{\newton\meter} \,.
 \end{equation*}
 
 Für die Berechnung des theoretischen Trägheitsmoments werden die einzelnen Körperteile als Zylinder approximiert. Dabei sei angenommen, dass die Drehachse genau durch den Mittelpunkt von Kopf und Torso verläuft, es gilt also
 \begin{equation*}
-  I_{Kopf,t} = \frac{1}{2} \, m_{Kopf} \, R^2_{Kopf} = ... \, \unit{\newton\meter}
+  I_{Kopf,t} = \frac{1}{2} \, m_{Kopf} \, R^2_{Kopf}
 \end{equation*}
 und
 \begin{equation*}
-  I_{Torso,t} = \frac{1}{2} \, m_{Torso} \, R^2_{Torso} = ... \, \unit{\newton\meter} \,.
+  I_{Torso,t} = \frac{1}{2} \, m_{Torso} \, R^2_{Torso} \,.
 \end{equation*}
 
 Dabei sind die Beine vertikal um je $R_{Beine}$ und die Arme horizontal um $\frac{h_{Arme}}{2} + R_{Torso}$ zur Drehachse verschoben. 
 Über den Satz von Steiner lassen sich jetzt die dazugehörigen Trägheitsmomente berechnen.
 Es ergeben sich mithilfe der Zylinderträgheitsmomente aus \autoref{fig:trägmomSKZ}
 \begin{equation*}
-  I_{Arme,t} = I_{Arme,S} + m a^2 = m \left(\frac{R^2_{Arme}}{4} + \frac{h^2_{Arme}}{12} \right) + m \left(R_{Torso} + \frac{h_{Arme}}{2} \right)^2 = ... \, \unit{\newton\meter}
+  I_{Arme,t} = I_{Arme,S} + m a^2 = m \left(\frac{R^2_{Arme}}{4} + \frac{h^2_{Arme}}{12} \right) + m \left(R_{Torso} + \frac{h_{Arme}}{2} \right)^2
 \end{equation*}
 und
 \begin{equation*}
-  I_{Beine,t} = I_{Beine,S} + m a^2 = \frac{1}{2} \, m_{Beine} \, R^2_{Beine} + m \, R^2_{Beine} = ... \, \unit{\newton\meter} \,.
+  I_{Beine,t} = I_{Beine,S} + m a^2 = \frac{1}{2} \, m_{Beine} \, R^2_{Beine} + m \, R^2_{Beine}\,.
 \end{equation*}
 
 Das Gesamtträgheitsmoment setzt sich dann aus der Summe der Einzelträgheitsmomente zu
 \begin{equation*}
-  I_{P_1,t} = ... \, \unit{\newton\meter}
+  I_{P_1,t} = (0.00028 \pm 0.00015) \, \unit{\newton\meter}
 \end{equation*}
 zusammen.
+
+\newpage
 
 \subsubsection{Bestimmung des Trägheitsmoments in Position 2}
 \label{subsubsec:pos2}
@@ -380,23 +389,35 @@ mitteln.
 Zur Berechnung des Theoriewertes wird analog vorgegangen, es ändert sich lediglich das Trägheitsmoment der Beine, die nicht länger vertikal, sondern horizontal ausgerichtet sind.
 Mit 
 \begin{equation*}
-  I_{Beine,t} = I_{Beine,S} + m a^2 = m \left(\frac{R^2_{Beine}}{4} + \frac{h^2_{Beine}}{12} \right) + m \left(\frac{h_{Beine}}{2} \right)^2 = ... \, \unit{\newton\meter}
+  I_{Beine,t} = I_{Beine,S} + m a^2 = m \left(\frac{R^2_{Beine}}{4} + \frac{h^2_{Beine}}{12} \right) + m \left(\frac{h_{Beine}}{2} \right)^2
 \end{equation*}
 ergibt sich aus der Summe der Einzelträgheitsmomente
 \begin{equation*}
-  I_{P_2,t} = ... \, \unit{\newton\meter} \,.
+  I_{P_2,t} = (0.00066 \pm 0.00023) \, \unit{\newton\meter} \,.
 \end{equation*} \\
 
-Zum Vergleich der experimentellen und theoretischen Werte werden im Folgenden insbesondere die Verhältnisse der Trägheitsmomente der einzelnen Positionen betrachtet. % Die können noch nicht stimmen...
-Es ergibt sich mit
+\subsection{Abweichungen von Theorie und Messung}
+
+Die Abweichungen von Theorie und Messung belaufen sich auf
+
 \begin{equation*}
-  d_m= \frac{I_{P_1,m}}{I_{P_2,m}} = ... 
+  100 * \left(\frac{I_{P_1,m}}{I_{P_1,t}} - 1\right) = 21,429 \%
 \end{equation*}
 und
 \begin{equation*}
-  d_t = \frac{I_{P_1,t}}{I_{P_2,t}} = ...
+  100 * \left(\frac{I_{P_2,m}}{I_{P_2,t}} - 1\right) = 31,818 \% \,.
 \end{equation*}
 
+Zum Vergleich der experimentellen und theoretischen Werte werden im Folgenden insbesondere die Verhältnisse der Trägheitsmomente $\frac{I_{P_1}}{I_{P_2}}$ der einzelnen Positionen betrachtet.
+Es ergibt sich mit
 \begin{equation*}
-  d_{ges} = 100 * \frac{d_m}{d_t} - 100 = ... \% \,.
+  d_{m}= \frac{I_{P_1,m}}{I_{P_2,m}} = 0,489
+\end{equation*}
+und
+\begin{equation*}
+  d_{t} = \frac{I_{P_1,t}}{I_{P_2,t}} = 0,424 
+\end{equation*}
+die relative Abweichung von
+\begin{equation*}
+  d_{ges} = 100*(\frac{d_m}{d_t}-1) = 15,252 \,\% \,.
 \end{equation*}

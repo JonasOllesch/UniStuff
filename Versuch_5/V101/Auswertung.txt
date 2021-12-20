@@ -37,13 +37,21 @@ relative Abweichung der Kuglel
 0.7733333333333333
 0.7966666666666667
 0.8166666666666668
- Periodendauer Zylinder0.82+/-0.05
+Periodendauer Zylinder0.82+/-0.05
 Trägheitmoment Zylinder e
 0.00034+/-0.00005
 Trägheitmoment Zylinder t
 0.0004378277439999999
 relative Abweichung des Zylinders
 22+/-12
+Radius der Kopfes
+0.012+/-0.005
+Radius der Arme
+0.0061+/-0.0020
+Radius der Torso
+0.0153+/-0.0035
+Radius der Beine
+0.0062+/-0.0025
 Länge der Kopfes
 0.04310+/-0.00010
 Länge der Arme
@@ -115,6 +123,9 @@ Trägheitsmomente in Position 2
 gemitteltes Trägheitsmoment in Position 2
 0.00045+/-0.00006
 
+Abweichung Position 1
+(2+/-4)e+01
+Abweichung Position 2
+31+/-26
 relatives Verhältnis der Puppenpositionen
-(6+/-7)e+02
-(8+/-8)e+02
+(0.2+/-1.4)e+02
