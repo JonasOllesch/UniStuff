@@ -239,7 +239,7 @@ d_p1 = abs(100*(trägheitP1/Tm_T_Puppe_t -1))
 d_p2 = abs(100*(trägheitP2/Tm_S_Puppe_t - 1))
 d_ges = abs(100*(d_p1/d_p2 - 1))
 
-output = ("Auswertung")    
+output = ("build/Auswertung")    
 my_file = open(output + '.txt', "w") 
 
 for i in range(0,10):
