@@ -39,7 +39,7 @@ Dabei ist $\varphi$ die Auslenkung des Systems und $F$ die am im Abstand von $r 
 Aus den gemessenen Werten wurde der Mittelwert und die Standardabweichung berechnet.
 Für die Winkelrichtgröße ergibt sich dann  
 \begin{equation*}
-  D = 0,0203 \pm 0,0020 \,\unit{\newton\meter} \,.  
+  D = (0,0203 \pm 0,0020) \,\unit{\newton\meter} \,.  
 \end{equation*}
 
 \subsection{Bestimmung des Eigenträgheitsmoments}
@@ -72,10 +72,10 @@ sind also die Abstände bis zum Zylinderzentrum mit den dazugehörigen Schwingun
   \label{tab:Messung_b}
 \end{table}
 Für das Trägheitsmoment wird die Form $ I = T_D + 2I_z + 2m a^2$ angenommen. 
-Durch einsetzen in \eqref{eq:periodendauer} ergibt sich \eqref{eq:periodendauerqadrat}, dabei ist $I_z$ das Trägheitsmoment eines Zylinders, $m$ die Masse und $a$ der Abstand zur Rotationsachse.
+Durch einsetzen in \eqref{eq:periodendauer} ergibt sich \eqref{eq:periodendauerquadrat}, dabei ist $I_z$ das Trägheitsmoment eines Zylinders, $m$ die Masse und $a$ der Abstand zur Rotationsachse.
 \begin{equation}
   T^2 = 4 \pi^2 \frac{I_D}{D} + 8 \pi^2 \frac{m (\frac{R^2}{4} + \frac{h^2}{12})}{D}+ 8 \pi^2 \frac{m}{D} a^2 .
-  \label{eq:periodendauerqadrat}
+  \label{eq:periodendauerquadrat}
 \end{equation}
 In \autoref{fig:T2ga2} wird nun das Quadrat der Schwingungsdauer $T^2$ gegen das Abstandquadrat $a^2$ aufgetragen.
 Die dazu durchgeführte lineare Regression nimmt die Form $T^2 = A  a^2 + B $ mit den Parametern
@@ -87,14 +87,14 @@ Die dazu durchgeführte lineare Regression nimmt die Form $T^2 = A  a^2 + B $ mi
 \end{equation*}
 an.
 
-Mithilfe von \eqref{eq:periodendauer} lässt sich das Eigenträgheitsmoment zu
+Mithilfe von \eqref{eq:trägüschwi} lässt sich das Eigenträgheitsmoment zu
 \begin{equation*}
-  I_D = 0,0045 \pm 0,0008 \,\unit{\newton\meter} \,.
+  I_D = (0,0045 \pm 0,0008) \,\unit{\newton\meter} \,.
 \end{equation*}
 bestimmen.
 
 % Hast du den Theoriewert für das Eigenträgheitsmoment irgendwo? :D
-% Ne gibt es da denn überhaupt einen. Da hätte man doch das Gewicht der Aperatur und so messen müssen...
+% Ne gibt es da denn überhaupt einen. Da hätte man doch das Gewicht der Apperatur und so messen müssen...
 \begin{figure}[H]
   \centering
   \includegraphics{build/T2ga2.pdf}
@@ -131,12 +131,12 @@ Die Messung wird mit einer Auslenkung von $\varphi = \dfrac{π}{2} = 90 \,\unit{
 \end{table}
 Es ergibt sich die Periodendauer
 \begin{equation*}
-  T= 1,64 \pm 0,05 \, \unit{\second} \,.
+  T= (1,64 \pm 0,05) \, \unit{\second} \,.
 \end{equation*}
 
-Aus \eqref{eq:periodendauer} ergibt sich das Trägheitsmoment der Kugel zu
+Aus \eqref{eq:trägüschwi} ergibt sich das Trägheitsmoment der Kugel zu
 \begin{equation*}
-  I_{K,m} = 0,00138 \pm 0,00017\, \unit{\newton\meter}  \, .
+  I_{K,m} = (0,00138 \pm 0,00017)\, \unit{\newton\meter}  \, .
 \end{equation*} \\
 
 Wie in \autoref{fig:trägmomSKZ} zu sehen, ergibt sich der Theoriewert des Trägheitsmoments einer Kugel aus
@@ -186,12 +186,12 @@ und einem Durchmesser von $d = 9,67 \,\unit{\centi\meter}$ ergeben sich für zeh
 
 Gemittelt ergibt sich hier die Schwingungsdauer
 \begin{equation*}
-  T = 0,82 \pm 0,05 \, \unit{\second} \,.
+  T = (0,82 \pm 0,05) \, \unit{\second} \,.
 \end{equation*}
 
-Das experimentelle Trägheitsmoment lässt sich erneut aus \eqref{eq:periodendauer} zu
+Das experimentelle Trägheitsmoment lässt sich erneut aus \eqref{eq:trägüschwi} zu
 \begin{equation*}
-  I_{K,m} = 0,00034 \pm 0,00004 \, \unit{\newton\meter}
+  I_{K,m} = (0,00034 \pm 0,00004) \, \unit{\newton\meter}
 \end{equation*} 
 bestimmen. \\
 
@@ -262,14 +262,77 @@ Nach Mittelung der gemessenen Durchmesser ergeben sich die in \autoref{tab:Messu
       \toprule
       {Körperteil} & {$\bar{d} \mathbin{/} \unit{\centi\meter}$}\\
       \midrule
-        {Kopf}  & {$0.04310 \pm 0.00010$} \\
-        {Arme}  & {$0.12920 \pm 0.00010$} \\
-        {Torso} & {$0.08740 \pm 0.00010$}\\
-        {Beine} & {$0.14630 \pm 0.00010$} \\
+        {Kopf}  & {$0.04310 \pm 0.00010$} \\ % Das hier KANN nicht stimmen, da müssen wir nochmal gucken :D
+        {Arme}  & {$0.12920 \pm 0.00010$} \\ % Das hier KANN nicht stimmen, da müssen wir nochmal gucken :D
+        {Torso} & {$0.08740 \pm 0.00010$}\\ % Das hier KANN nicht stimmen, da müssen wir nochmal gucken :D
+        {Beine} & {$0.14630 \pm 0.00010$} \\ % Das hier KANN nicht stimmen, da müssen wir nochmal gucken :D
       \bottomrule
   \end{tabular}
   \caption{Gemittelte Durchmesser der einzelnen Puppenkörperteile.}
   \label{tab:Messung_e3}
 \end{table}
 
+\subsubsection{Bestimmung des Trägheitsmoments in Position 1}
+\label{subsubsec:pos1}
+Zunächst soll das Trägheitsmoment der Holzpuppe mit seitlich ausgestreckten Armen bestimmt werden.
+Erneut werden dazu zehnfach die Schwingungsdauern gemessen, diesmal jedoch sowohl für eine Auslenkung von $\varphi = 90 \unit{\degree}$ als auch $\varphi = 120 \unit{\degree}$,
+die Messwerte sind in \autoref{tab:Messung_f} aufgetragen.
+
+\begin{table}[H]
+  \centering
+  \begin{tabular}{S[table-format=2.0] S[table-format=1.3] S}
+      \toprule
+      {Messung} & {$T \mathbin{/} \unit{\second}$ bei $\varphi = 90 \unit{\degree}$} & {$T \mathbin{/} \unit{\second}$ bei $\varphi = 120 \unit{\degree}$}\\
+      \midrule
+      1 & 0.663 & 0.660 \\
+      2 & 0.533 & 0.663 \\
+      3 & 0.663 & 0.663 \\
+      4 & 0.623 & 0.663 \\
+      5 & 0.553 & 0.643 \\
+      6 & 0.597 & 0.753 \\
+      7 & 0.600 & 0.643 \\
+      8 & 0.597 & 0.667 \\
+      9 & 0.597 & 0.643 \\
+      10& 0.710 & 0.597 \\
+      \bottomrule
+  \end{tabular}
+  \caption{Schwingungsdauern bei Auslenkungen von $\varphi = 90 \unit{\degree}$ und $\varphi = 120 \unit{\degree}$.}
+  \label{tab:Messung_f}
+\end{table}
+
+Wie schon bei der Trägheitsmomentsbestimmung der anderen Körper kann nun erneut \eqref{eq:trägüschwi} genutzt werden, um das Trägheitsmoment zu berechnen.
+Aus den gemittelten Schwingungsdauern ergeben sich dann
+\begin{equation*}
+  I_{P_1,1} = (0.00019 \pm 0.00004) \, \unit{\newton\meter} 
+\end{equation*} 
+für $\varphi = 90 \, \unit{{\degree}}$ und
+
+\begin{equation*}
+  I_{P_1,2} = (0.000224 \pm 0.000034) \, \unit{\newton\meter} 
+\end{equation*}
+für $\varphi = 120 \unit{\degree}$, erneut gemittelt also
+
+\begin{equation*}
+  I_{P_1} = (0.000219 \pm 0.000029) \, \unit{\newton\meter} \,.
+\end{equation*}
+
+Für die Berechnung des theoretischen Trägheitsmoments werden die einzelnen Körperteile als Zylinder approximiert. Dabei sei angenommen, dass die Drehachse genau durch den Mittelpunkt von Kopf und Torso verläuft, es gilt also
+\begin{equation*}
+  I_{Kopf,t} = \frac{1}{2} \, m_{Kopf} \, R^2_{Kopf} = ... \, \unit{\newton\meter}
+\end{equation*}
+und
+\begin{equation*}
+  I_{Torso,t} = \frac{1}{2} \, m_{Torso} \, R^2_{Torso} = ... \, \unit{\newton\meter} \,.
+\end{equation*}
+
+Die Arme sind je um $R_{Arme} + R_{Torso}$, die Beine um je $R_{Beine}$ zur Drehachse verschoben. Über den Satz von Steiner lassen sich jetzt die dazugehörigen Trägheitsmomente berechnen.
+Dabei sind die Beine vertikal und die Arme horizontal zur Drehachse verschoben. 
+Es ergeben sich mithilfe der Zylinderträgheitsmomente aus \autoref{fig:trägmomSKZ}
+\begin{equation*}
+  I_{Arme,t} = I_{Arme,S} + m a^2 = m (\frac{R^2_{Arme}}{4} + \frac{h^2_{Arme}}{12}) + m (R_{Torso} + R_{Arme})^2 = ... \, \unit{\newton\meter}
+\end{equation*}
+und
+\begin{equation*}
+  I_{Beine,t} = I_{Beine,S} + m a^2 = \frac{1}{2} \, m_{Beine} \, R^2_{Beine} + m \, R^2_{Beine} = ... \, \unit{\newton\meter} \,.
+\end{equation*}
 

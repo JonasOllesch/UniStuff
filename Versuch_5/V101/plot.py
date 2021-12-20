@@ -54,7 +54,7 @@ for i in range(0,len(WinRgtmp)):
 Winkelrichtgröße = ufloat(np.mean(WinRgtmp),np.std(WinRgtmp))
 del WinRgtmp
 #Eigenträgheitsmoment bestimmen
-print(Messung_b)
+#print(Messung_b)
 #T² gegen a² auftragen
 xdata = [0,1,2,3,4,5,6,7,8,9]
 ydata = [0,1,2,3,4,5,6,7,8,9]
@@ -165,7 +165,7 @@ Puppenmaße[1][5] = Puppenmaße[1][4]                                      #Tupp
 del TmArm_tmp
 
 TmBei_tmp = Trä_Mo_Zy_pSa(Puppenmaße[3][0], Puppenmaße[3][3])
-Puppenmaße[3][4] = Steiner(TmBei_tmp, Puppenmaße[3][3], Puppenmaße[3][0])# Verschibung um den Radius eines Beins
+Puppenmaße[3][4] = Steiner(TmBei_tmp, Puppenmaße[3][3], Puppenmaße[3][0]) # Verschiebung um den Radius eines Beins
 del TmBei_tmp
 
 TmBei_tmp2 = Trä_Mo_Zy_sSa(Puppenmaße[3][0], Puppenmaße[3][1], Puppenmaße[3][3])
@@ -180,7 +180,7 @@ del TmBei_tmp2
 Tm_T_Puppe_t = Puppenmaße[0][4]+Puppenmaße[1][4]*2+Puppenmaße[2][4]+Puppenmaße[3][4]*2
 Tm_S_Puppe_t = Puppenmaße[0][5]+Puppenmaße[1][5]*2+Puppenmaße[2][5]+Puppenmaße[3][5]*2
 
-#Mittelwerte und Standartabweichung der Puppe
+#Mittelwerte und Standardabweichung der Puppe
 #T_Puppe, S_Puppe
 #T für 90, T für 120, I_90, I_120
 Trägheit_e = [[0,1,2,3],[4,5,6,7]]
@@ -193,7 +193,7 @@ for j in range(0,2):
     for i in range(0,2):
         Trägheit_e[j][i+2]= Trägheit_e[j][i]**2*Winkelrichtgröße/(4*np.pi**2)
 
-rel_Verhältnis_90 = Trägheit_e[0][2]/Trägheit_e[1][2]#Verhältnis von der T-Puppe und der S-Puppe
+rel_Verhältnis_90 =  Trägheit_e[0][2]/Trägheit_e[1][2] #Verhältnis von der T-Puppe und der S-Puppe
 rel_Verhältnis_120 = Trägheit_e[0][3]/Trägheit_e[1][3]
 
 rel_Verhältnis_theorie = Tm_T_Puppe_t/Tm_S_Puppe_t
@@ -203,6 +203,7 @@ rel_Abw_Ver_120 = (rel_Verhältnis_120-rel_Verhältnis_theorie)/rel_Verhältnis_
 print(A)
 print(B)
 
+trägheitP1 = (Trägheit_e[0][2]+Trägheit_e[0][3])/2
 output = ("Auswertung")    
 my_file = open(output + '.txt', "w") 
 
@@ -278,7 +279,7 @@ my_file.write(str(Puppenmaße[1][1]))
 my_file.write('\n')
 
 
-my_file.write(str("Länge des Trosos"))
+my_file.write(str("Länge des Torsos"))
 my_file.write('\n')
 my_file.write(str(Puppenmaße[2][1]))
 my_file.write('\n')
@@ -287,4 +288,35 @@ my_file.write('\n')
 my_file.write(str("Länge der Beine"))
 my_file.write('\n')
 my_file.write(str(Puppenmaße[3][1]))
+my_file.write('\n')
+
+my_file.write('\n')
+my_file.write(str("Schwingungsdauer bei 90° in Position 1"))
+my_file.write('\n')
+
+for i in range (0,10):
+    my_file.write(str(Messung_f[i][1]))
+    my_file.write('\n')
+
+
+my_file.write('\n')
+my_file.write(str("Schwingungsdauer bei 120° in Position 1"))
+my_file.write('\n')
+
+for i in range (0,10):
+    my_file.write(str(Messung_f[i][2]))
+    my_file.write('\n')
+
+my_file.write('\n')
+my_file.write(str("Trägheitsmomente in Position 1"))
+my_file.write('\n')
+my_file.write(str(Trägheit_e[0][2]))
+my_file.write('\n')
+my_file.write(str(Trägheit_e[0][3]))
+my_file.write('\n')
+
+my_file.write('\n')
+my_file.write(str("gemitteltes Trägheitsmoment in Position 1"))
+my_file.write('\n')
+my_file.write(str(trägheitP1))
 my_file.write('\n')
