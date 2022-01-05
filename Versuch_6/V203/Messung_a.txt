@@ -1,4 +1,4 @@
-# Wassertempetur in °C Druck in bar 
+# Wassertempetur in °C Druck in mbar 
 #ab 48 °C Heizung auf max gesetzt
 18          23
 19          37
