@@ -86,9 +86,10 @@ popt, pcov = curve_fit(func, xdata, ydata)
 for i in range(0,10):
     y2data[i]= func( xdata[i], popt[0], popt[1])
 
-pyplot.plot(xdata, y2data,color ='red', label='lineare Regression')
-
+tmpx = np.linspace(0.04, 0.091)
+tmpy = func(tmpx,popt[0],popt[1])
 #print(popt)
+pyplot.plot(tmpx, tmpy,color ='red', label='lineare Regression')
 
 B = ufloat(popt[1],np.sqrt(pcov[1][1]))
 A = ufloat(popt[0],np.sqrt(pcov[0][0]))
@@ -96,13 +97,13 @@ A = ufloat(popt[0],np.sqrt(pcov[0][0]))
 #print(B)
 
 
-pyplot.scatter(xdata, ydata, color='blue',s=15, label="T² und a²")
+pyplot.scatter(xdata, ydata, color='blue',s=15, label="Messwerte")
 pyplot.legend()
 pyplot.grid()
 pyplot.xlabel(r'$a² \mathbin{/}\unit{\meter^2}$')
 pyplot.ylabel(r'$T² \mathbin{/}\unit{\second^2}$')
 pyplot.xticks(np.arange(0.04, 0.091, 0.01))
-pyplot.xlim(0.04, 0.09)
+pyplot.xlim(0.04, 0.091)
 pyplot.ylim(35, 75)
 pyplot.savefig('build/T2ga2.pdf')
 pyplot.clf()
