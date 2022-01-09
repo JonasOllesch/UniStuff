@@ -29,5 +29,73 @@ Dabei verlassen die Moleküle der gemäß der Maxwellschen Geschwindigkeitsverte
 Durch Stöße mit den Gefäßwänden und der Flüssigkeitoberfläche entsteht ein vom Nulldruck des evakuierten Gefäßes abweichender Druck, die auf die Flüssigkeit treffenden Gasteilchen werden teilweise wieder eingefangen, sodass sich nach genügender Zeit ein Gleichgewicht
 zwischen phasenübergehenden Teilchen einstellt.
 Der dabei vorherrschende Druck wird als Sättigungsdampfdruck bezeichnet, der mit steigender Temperatur wächst und \textbf{nicht} vom Volumen des Gefäßes abhängt, also nicht der allgemeinen Gasgleichung folgt. 
-Diese Verdampfungswärme verschwindet in der Nähe des kritischen Punktes, allerdings existiert auch ein Temperaturbereich, in dem $L$ nahezu konstant ist, in dem die Bestimmung der Dampfdruckkurve und der Verdampfungswärme stattfinden soll.
+Diese Verdampfungswärme verschwindet in der Nähe des kritischen Punktes, allerdings existiert auch ein Temperaturbereich, in dem $L$ nahezu konstant ist, in dem die Bestimmung der Dampfdruckkurve und der Verdampfungswärme stattfinden soll. \\
+
+Ziel ist es nun, eine Differentialgleichung für die Dampfdruckkurve zu gewinnen.
+Dazu wird ein reversibler Kreisprozess für ein Mol eines Stoffes, der isotherm und isobar verdampft und anschließend wieder kondensiert, betrachtet.
+Ein solcher Vorgang ist in \autoref{fig:Kreisprozess} veranschaulicht.
+
+\begin{figure}
+    \centering
+    \includegraphics{Kreisprozess.pdf}
+    \caption{pV-Diagramm des Kreisprozesses der Verdampfung und Kondensation eines Stoffes\cite{ap06}.}
+    \label{fig:Kreisprozess}
+\end{figure}
+
+Dabei sei der Stoff im Ausgangspunkt $A$ der Temperatur $T$ und des Druckes $p$ flüssig und es werde eine Wärmemenge $\mathrm{d}Q_{AB}$ zugeführt.
+Der Stoff nimmt nun die Temperatur $T + \mathrm{d}T$ und den Druck $p + \mathrm{d}p$ an und befindet sich nun in Zustand $B$.
+Ist $C_F$ die Molwärme des Stoffes, gilt
+
+\begin{equation}
+    \mathrm{d}Q_{AB} = C_F \, \mathrm{d}T \,.
+    \label{eq:ArbeitAB}
+\end{equation}\\
+
+Durch Zufuhr der Verdampfungswärme
+\begin{equation}
+    L(T + \mathrm{d}T) = L(T) + \mathrm{d}L
+    \label{eq:WärmemengeAB}
+\end{equation}
+werde der Stoff nun isobar und isotherm verdampft, in Zustand $C$ liegt er also als des Volumens $V_D$ vor.
+Die dabei geleistete Arbeit ist durch
+\begin{equation}
+    -A_{BC} = (p + \mathrm{d}p)(V_D - V_F)
+    \label{eq:ArbeitBC}
+\end{equation}
+gegeben. \\
+
+Durch Wärmeentzug wird der Stoff wieder auf die Temperatur $T$ abgekühlt, er gibt die Wärmemenge
+\begin{equation}
+    -\mathrm{d}Q_{CD} = C_D \,\mathrm{d}T
+    \label{eq:WärmemengeCD}
+\end{equation}
+ab.
+
+Durch Zufuhr mechanischer Energie gelangt der Stoff unter der Arbeit
+\begin{equation}
+    -A_{DA} = p (V_D - V_F)
+    \label{eq:ArbeitDA}
+\end{equation} 
+erneut in den Ausgangspunkt $A$. \\
+
+Aus der Summe von \eqref{eq:ArbeitAB}, \eqref{eq:WärmemengeAB} und \eqref{eq:WärmemengeCD} ergibt sich dann
+
+\begin{equation}
+    \mathrm{d}Q_{ges} = C_F \, \mathrm{d}T - C_D \, \mathrm{d}T + L(T) + \mathrm{d}LO - L(T)
+    \label{eq:Wärmemengeges}
+\end{equation}.
+Mithilfe von \eqref{eq:ArbeitBC} und \eqref{eq:ArbeitDA} bestimmt sich die Gesamtarbeit zu
+\begin{equation}
+    A_{ges} = \mathrm{d}p (V_D - V_F) \,,
+\end{equation} nach dem ersten Hauptsatz gilt $\mathrm{d}Q_{ges} = A_{ges}$, womit sich \eqref{eq:Wärmemengeges} zu 
+
+\begin{equation}
+    (C_F - C_D) \mathrm{d}T + \mathrm{d}L = (V_D - V_F) \mathrm{d}p
+\end{equation} vereinfachen lässt. \\
+
+Nach dem zweiten Hauptsatz ist hier die Summe der reduzierten Wärmemenge null,
+
+\begin{equation}
+    \sum_i \frac{Q_i}{T_i} = \frac{C_F \mathrm{d}T}{T} + \frac{L + \mathrm{d}L}{T + \mathrm{d}T} - \frac{C_D \mathrm{d}T}{T} - \frac{L}{T} = 0 \,,
+\end{equation} da es sich um einen reversiblen Prozess handelt.
 
