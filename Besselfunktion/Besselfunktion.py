@@ -22,8 +22,8 @@ for i in range(0,gen-1):
             print('\n')
             i= i+2
 
-y2data = scipy.special.jv(2,xdata)
-pyplot.plot(xdata, y2data,color ='black', label="2.Ordnung K")
+#y2data = scipy.special.jv(2,xdata)
+#pyplot.plot(xdata, y2data,color ='black', label="2.Ordnung K")
 
 
 y3data = (func(xdata))*scipy.special.jv(1,xdata)-scipy.special.jv(0,xdata)
