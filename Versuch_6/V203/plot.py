@@ -32,7 +32,7 @@ Messung_b[:,0] = Messung_b[:,0]*(10**5)
 Messung_b[:,1] = Messung_b[:,1]+273.15
 p0 = 1016*100
 
-xdata=  [0]*83
+xdata =  [0]*83
 for i in range(0,83):
     xdata[i] = Messung_a[i][0]**-1
 ydata = [0]*83
@@ -76,29 +76,29 @@ for i in range(0,15):
 pyplot.scatter(x2data, y2data,color ='green', label="Messdaten",s=10,marker='x')
 popt, pcov = curve_fit(func_pol3, x2data, y2data)
 T = np.linspace(394.15,465.15)
-rho = func_pol3(T, popt[0], popt[1], popt[2], popt[3])
+p = func_pol3(T, popt[0], popt[1], popt[2], popt[3])
 
 a2 =ufloat(popt[0],np.sqrt(pcov[0][0]))         #die Parameter haben teilweise große Unterschiede zu denen aus dem Altprotokoll, aber der Fit sieht ziemlich gut aus
 b2 =ufloat(popt[1],np.sqrt(pcov[1][1]))
 c2 =ufloat(popt[2],np.sqrt(pcov[2][2]))     
 d2 =ufloat(popt[3],np.sqrt(pcov[3][3]))
-pyplot.plot(T, rho,label='pol 3')
+pyplot.plot(T, p,label='pol 3')
 
 
 pyplot.legend()
 pyplot.grid()
 #pyplot.xlabel(r'$a² \mathbin{/}\unit{\meter^2}$')
 pyplot.xlabel(r'$T \mathbin{/}\unit{\kelvin}$')
-pyplot.ylabel(r'$\rho \mathbin{/}\unit{\pascal}$')
+pyplot.ylabel(r'$p \mathbin{/}\unit{\pascal}$')
 
 pyplot.savefig('build/Messung_b')
 pyplot.clf()
 
 dpdt = func_pol3d(T, a2.nominal_value, b2.nominal_value, c2.nominal_value)
 
-wurzel = np.sqrt((scipy.constants.R*T/2)**2 - 0.9*rho)
+wurzel = np.sqrt((scipy.constants.R*T/2)**2 - 0.9*p)
 tmp = (scipy.constants.R*T)/2 
-tmp2 =  T/rho
+tmp2 =  T/p
 L2p = tmp2*(tmp + wurzel)*dpdt
 L2m = tmp2*(tmp - wurzel)*dpdt
 
