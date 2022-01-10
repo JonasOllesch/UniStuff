@@ -13,6 +13,10 @@ def writeW(Werte,Beschreibung):
     my_file.write('\n')
     return 0
 
+def writel(variable):
+    my_file.write(str(variable))
+    my_file.write('\n')
+
 def func_pol1(x, a, b):
     return a * x +b
 
@@ -50,6 +54,7 @@ pyplot.plot(x, y,label='lineare Regression')
 
 pyplot.legend()
 pyplot.grid()
+pyplot.xlim(0.00265,0.0035)
 pyplot.ylabel(r'$\ln{\frac{p}{p_0}}$')
 pyplot.xlabel(r'$\dfrac{1}{T}  \mathbin{/} \unit{\kelvin}^{-1}$')
 pyplot.tight_layout()
@@ -76,14 +81,17 @@ for i in range(0,15):
 
 pyplot.scatter(x2data, y2data,color ='red', label="Messdaten",s=10,marker='x')
 popt, pcov = curve_fit(func_pol3, x2data, y2data)
-T = np.linspace(394.15,465.15)
+T = np.linspace(390,470)
 p = func_pol3(T, popt[0], popt[1], popt[2], popt[3])
+
 
 a2 =ufloat(popt[0],np.sqrt(pcov[0][0]))         #die Parameter haben teilweise große Unterschiede zu denen aus dem Altprotokoll, aber der Fit sieht ziemlich gut aus
 b2 =ufloat(popt[1],np.sqrt(pcov[1][1]))
 c2 =ufloat(popt[2],np.sqrt(pcov[2][2]))     
 d2 =ufloat(popt[3],np.sqrt(pcov[3][3]))
 pyplot.plot(T, p,label='Regression')
+
+
 
 
 pyplot.legend()
@@ -128,6 +136,8 @@ pyplot.ylim(500,5000)
 pyplot.tight_layout()
 pyplot.savefig('build/L_negativ')
 pyplot.clf()
+
+
 #------------------------------------------------------------------------------------
 output = ("build/Auswertung")    
 my_file = open(output + '.txt', "w")
@@ -138,7 +148,14 @@ writeW(La, "La")
 writeW(Li, "Li")
 writeW(Li_in_eV, "Li in eV")
 
-writeW(a2, "a2")            
-writeW(b2, "b2")
-writeW(c2, "c2")
-writeW(d2, "d2")
+writeW(popt[0], "a2")
+writeW(np.sqrt(pcov[0][0]), "a2 Unsicherheit")
+
+writeW(popt[1], "b2")
+writeW(np.sqrt(pcov[1][1]), "b2 Unsicherheit")
+
+writeW(popt[2], "c2")
+writeW(np.sqrt(pcov[2][2]), "c2 Unsicherheit")
+
+writeW(popt[3], "d2")
+writeW((pcov[3][3]), "d2 Unsicherheit")
