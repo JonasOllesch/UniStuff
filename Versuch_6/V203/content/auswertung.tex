@@ -84,7 +84,7 @@ Dabei sind die Parameter gegeben durch
 
 \begin{align*}
 a & = (-4.24 \pm 0.04) \cdot 10^3 \, \unit{\kelvin}\\
-b & = 11.31 \pm 0.13 \,.
+b & = 11.31 \pm 0.13 \, \unit{\kelvin}.
 \end{align*}
 
 Aus dem Vergleich von \eqref{eq:lnp} und \eqref{eq:linreg} wird der Zusammenhang
@@ -102,24 +102,24 @@ Daraus bestimmt sich die Verdampfungswärme $L$ zu
 Die benötigte Energie, um das Volumen eines Mol des Wassers auf ein Mol Wasserdampf zu vergrößern, wird
 als äußere Wärmemenge bezeichnet und ist durch
 
-\begin{equation}
+\begin{equation*}
   L_a = W = pV = RT = 3101.295 \,\unit{\frac{\joule}{\mol}}
   \label{eq:äußereVW}
-\end{equation} gegeben.
+\end{equation*} gegeben.
 
 Aus der Differenz der Verdampfungswärme $L$ sowie der äußeren Verdampfungswärme $L_a$ ergibt sich die
 innere Verdampfungswärme $L_i$, die zur Überwindung der molekularen Bindungskräfte nötig ist, zu 
-\begin{equation}
+\begin{equation*}
   L_i = L - L_a = (3.214 \pm 0.035) \cdot 10^4 \,\unit{\frac{\joule}{\mol}} \,.
   \label{eq:innereVW}
-\end{equation} \\
+\end{equation*} \\
 
 Durch Division mit der Avogadrokonstante $N_A = 6.022 \cdot 10^{23} \,\unit{\mol}^{-1}$ ergibt sich
 mit $1 \,\unit{\electronvolt} = 1,602 \cdot 10^{-19} \,\unit{\joule}$
 
-\begin{equation}
+\begin{equation*}
   L_i = 0.333 \pm 0.004 \,\unit{\frac{\joule}{\mol}} \,.
-\end{equation}
+\end{equation*}
 
 \subsection{Messung bis 15 bar}
 Um die Temperaturabhängigkeit der Verdampfungswärme $L$ festzustellen, wird \eqref{eq:clauclapL} verwendet.
@@ -129,13 +129,14 @@ Mit \eqref{eq:approxV_D} und
   A = 0.9 \,\unit{\frac{\joule\cubic\meter}{\square\mol}}
 \end{equation*} folgt
 
-\begin{equation}
+\begin{equation*}
   V_D = \frac{RT}{2p} \pm \sqrt{\frac{R^2 T^2}{4 p^2} - \frac{A}{p}}\,.
-\end{equation} \\
+\end{equation*} \\
 
 Einsetzen in \eqref{eq:clauclapL} liefert nun
 
 \begin{align}
+  \nonumber
   L &= T \left(\frac{RT}{2p} \pm \sqrt{\frac{R^2 T^2}{4 p^2} - \frac{A}{p}} \right) 
   \frac{\mathrm{d}p}{\mathrm{d}T} \\
     &= \frac{T}{p} \left(\frac{RT}{2} \pm \sqrt{\left(\frac{R T}{2} \right)^2 - A p}\right) 
