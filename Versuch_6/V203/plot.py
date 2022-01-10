@@ -105,7 +105,7 @@ L2m = tmp2*(tmp - wurzel)*dpdt
 
 
 
-pyplot.scatter(T, L2p, color ='red', label="Messdaten p",s=10,marker='x')
+pyplot.scatter(T, L2p, color ='red', label="Messwerte",s=10,marker='x')
 pyplot.legend()
 pyplot.grid()
 pyplot.xlabel(r'$T \mathbin{/}\unit{\kelvin}$')
@@ -115,7 +115,7 @@ pyplot.savefig('build/L_positiv')
 pyplot.clf()
 
 
-pyplot.scatter(T, L2m,color ='red', label="Messdaten m",s=10,marker='x')
+pyplot.scatter(T, L2m,color ='red', label="Messwerte",s=10,marker='x')
 pyplot.legend()
 pyplot.grid()
 pyplot.xlabel(r'$T \mathbin{/}\unit{\kelvin}$')
