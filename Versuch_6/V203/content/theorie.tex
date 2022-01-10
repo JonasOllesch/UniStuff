@@ -119,6 +119,13 @@ Aus dem Vergleich von \eqref{eq:wärmemengegesgleich} und \eqref{eq:wärmemenges
     \label{eq:clausiusclapeyronschegleichung}
 \end{equation} die als Clausius-Clapeyronsche-Gleichung bezeichnet. \\
 
+nach $L$ umgestellt ergibt sich
+
+\begin{equation}
+    L = T(V_D - V_F) \frac{\mathrm{d}p}{\mathrm{d}T}
+    \label{eq:clauclapL}
+\end{equation}
+
 Liegt die Temperatur weit unter der kritischen Temperatur $T_{Kr}$, sind folgende Näherungen annehmbar:
 \begin{enumerate}
     \item Gegenüber $V_D$ ist $V_F$ vernachlässigbar.
@@ -137,10 +144,19 @@ Liegt die Temperatur weit unter der kritischen Temperatur $T_{Kr}$, sind folgend
 Mit Integration ergibt sich dann
 \begin{equation}
     \ln p = - \frac{L}{RT} + const
+    \label{eq:lnp}
 \end{equation} bzw.
 
 \begin{equation}
     p = p_0 e^{-\frac{L}{RT}}
-\end{equation}
+    \label{eq:p}
+\end{equation}\\
+
+Zur Berechnung von $V_D$ kann nicht die allgemeine Gasgleichung verwendet werden, eine bessere
+Näherung ist durch
+\begin{equation}
+    \left(p + \frac{A}{V^2_D}\right) V = R T
+    \label{eq:approxV_D}
+\end{equation} gegeben.
 
 

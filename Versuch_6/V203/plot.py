@@ -39,7 +39,7 @@ ydata = [0]*83
 for i in range(0,83):
     ydata[i]= np.log(Messung_a[i][1]/p0)
 
-pyplot.scatter(xdata, ydata,color ='blue', label="Messdaten",s=10,marker='x')
+pyplot.scatter(xdata, ydata,color ='red', label="Messdaten",s=10,marker='x')
 
 
 popt, pcov = curve_fit(func_pol1, xdata, ydata)
@@ -50,8 +50,9 @@ pyplot.plot(x, y,label='lineare Regression')
 
 pyplot.legend()
 pyplot.grid()
-pyplot.ylabel(r'$\log{\frac{p}{p_0}}$')
-pyplot.xlabel(r'$\dfrac{1}{T}  in \unit{\kelvin}⁻1$')
+pyplot.ylabel(r'$\ln{\frac{p}{p_0}}$')
+pyplot.xlabel(r'$\dfrac{1}{T}  \mathbin{/} \unit{\kelvin}^{-1}$')
+pyplot.tight_layout()
 pyplot.savefig('build/Messung_a')
 pyplot.clf()
 
@@ -73,7 +74,7 @@ y2data = [0]*15
 for i in range(0,15):
     y2data[i]= Messung_b[i][0]
 
-pyplot.scatter(x2data, y2data,color ='green', label="Messdaten",s=10,marker='x')
+pyplot.scatter(x2data, y2data,color ='red', label="Messdaten",s=10,marker='x')
 popt, pcov = curve_fit(func_pol3, x2data, y2data)
 T = np.linspace(394.15,465.15)
 p = func_pol3(T, popt[0], popt[1], popt[2], popt[3])
@@ -82,7 +83,7 @@ a2 =ufloat(popt[0],np.sqrt(pcov[0][0]))         #die Parameter haben teilweise g
 b2 =ufloat(popt[1],np.sqrt(pcov[1][1]))
 c2 =ufloat(popt[2],np.sqrt(pcov[2][2]))     
 d2 =ufloat(popt[3],np.sqrt(pcov[3][3]))
-pyplot.plot(T, p,label='pol 3')
+pyplot.plot(T, p,label='Regression')
 
 
 pyplot.legend()

@@ -3,19 +3,20 @@
 
 \subsection{Messung bis zu 1 bar}
 \label{subsec:Auswertung_a}
-Um die Verdampfungswärme $L$ zu bestimmen wird 
-%\eqref{eq:..} 
-verwendet. Wenn nun $\log{(\dfrac{\unit{p}}{\unit{p_0}})}$ gegen $\dfrac{1}{T}$ aufgetragen wird, kann die Verdampfungswärme $L$ durch eine einfache lineare Regression ausgerechnet werden. 
+Um die Verdampfungswärme $L$ zu bestimmen wird \eqref{eq:lnp} verwendet. 
 Der Umgebungsdruck $p_0$ wurde zu Begin des Experimentes gemessen und beträgt 
 
 \begin{equation*}
     p_0 = 1016 \cdot 10² \unit{\pascal}    \,.
-\end{equation*}
+\end{equation*} \\
+
+Die aufgenommenen Messwerte sind in \autoref{tab:Messung1} aufgetragen.
 
 \begin{table}[H]
     \centering
-    \caption{Druck bei weniger als ein Bar.}
-    \begin{tabular}{S S S S}
+    \caption{Druckmessung für $p \leq 1 \,\unit{\bar}$.}
+    \label{tab:Messung1}
+    \begin{tabular}{S[table-format=2.0] S[table-format=3.0] S[table-format=3.0] S[table-format=3.0]}
       \toprule
         {$T \mathbin{/} \unit{\celsius}$} & {$p \mathbin{/} \unit{\milli\bar}$} & {$T \mathbin{/} \unit{\celsius}$} & {$p \mathbin{/} \unit{\milli\bar}$}\\
       \midrule
@@ -64,3 +65,154 @@ Der Umgebungsdruck $p_0$ wurde zu Begin des Experimentes gemessen und beträgt
       \bottomrule
     \end{tabular}
   \end{table}
+
+Wenn nun $\ln{\left(\dfrac{p}{p_0} \right)}$ gegen $\dfrac{1}{T}$ aufgetragen wird, kann die Verdampfungswärme $L$ durch die in \autoref{fig:linreg1} dargestellte lineare Regression ausgerechnet werden, die durch
+
+\begin{equation}
+  y = a x + b
+  \label{eq:linreg}
+\end{equation} gegeben ist.
+
+\begin{figure}
+  \centering
+  \includegraphics{build/Messung_a.pdf}
+  \caption{Lineare Regression für $p \leq 1 \,\unit{\bar}$.}
+  \label{fig:linreg1}
+\end{figure}
+
+Dabei sind die Parameter gegeben durch 
+
+\begin{align*}
+a & = (-4.24 \pm 0.04) \cdot 10^3 \, \unit{\kelvin}\\
+b & = 11.31 \pm 0.13 \,.
+\end{align*}
+
+Aus dem Vergleich von \eqref{eq:lnp} und \eqref{eq:linreg} wird der Zusammenhang
+
+\begin{equation*}
+  a = - \frac{L}{R} \Leftrightarrow L = -a R
+\end{equation*} deutlich.
+
+Daraus bestimmt sich die Verdampfungswärme $L$ zu
+
+\begin{equation*}
+  L = (3.524 \pm 0.035) \cdot 10^4 \,\unit{\frac{\joule}{\mol}} \,.
+\end{equation*} \\
+
+Die benötigte Energie, um das Volumen eines Mol des Wassers auf ein Mol Wasserdampf zu vergrößern, wird
+als äußere Wärmemenge bezeichnet und ist durch
+
+\begin{equation}
+  L_a = W = pV = RT = 3101.295 \,\unit{\frac{\joule}{\mol}}
+  \label{eq:äußereVW}
+\end{equation} gegeben.
+
+Aus der Differenz der Verdampfungswärme $L$ sowie der äußeren Verdampfungswärme $L_a$ ergibt sich die
+innere Verdampfungswärme $L_i$, die zur Überwindung der molekularen Bindungskräfte nötig ist, zu 
+\begin{equation}
+  L_i = L - L_a = (3.214 \pm 0.035) \cdot 10^4 \,\unit{\frac{\joule}{\mol}} \,.
+  \label{eq:innereVW}
+\end{equation} \\
+
+Durch Division mit der Avogadrokonstante $N_A = 6.022 \cdot 10^{23} \,\unit{\mol}^{-1}$ ergibt sich
+mit $1 \,\unit{\electronvolt} = 1,602 \cdot 10^{-19} \,\unit{\joule}$
+
+\begin{equation}
+  L_i = 0.333 \pm 0.004 \,\unit{\frac{\joule}{\mol}} \,.
+\end{equation}
+
+\subsection{Messung bis 15 bar}
+Um die Temperaturabhängigkeit der Verdampfungswärme $L$ festzustellen, wird \eqref{eq:clauclapL} verwendet.
+Außerdem darf $V_F$ gegenüber $V_D$ vernachlässigt werden.
+Mit \eqref{eq:approxV_D} und 
+\begin{equation*}
+  A = 0.9 \,\unit{\frac{\joule\cubic\meter}{\square\mol}}
+\end{equation*} folgt
+
+\begin{equation}
+  V_D = \frac{RT}{2p} \pm \sqrt{\frac{R^2 T^2}{4 p^2} - \frac{A}{p}}\,.
+\end{equation} \\
+
+Einsetzen in \eqref{eq:clauclapL} liefert nun
+
+\begin{align}
+  L &= T \left(\frac{RT}{2p} \pm \sqrt{\frac{R^2 T^2}{4 p^2} - \frac{A}{p}} \right) 
+  \frac{\mathrm{d}p}{\mathrm{d}T} \\
+    &= \frac{T}{p} \left(\frac{RT}{2} \pm \sqrt{\left(\frac{R T}{2} \right)^2 - A p}\right) 
+    \frac{\mathrm{d}p}{\mathrm{d}T} \,. 
+    \label{eq:VWMess2}
+\end{align}
+
+\newpage
+
+Die von $p = 1 \,\unit{\bar}$ bis $p = 15 \,\unit{\bar}$ aufgenommenen Messwerte sind in 
+\autoref{tab:Messung2} aufgetragen.
+
+\begin{table}[H]
+  \centering
+  \caption{Messreihe für  $1 \,\unit{\bar} \leq p \leq 15 \,\unit{\bar} $.}
+  \label{tab:Messung2}
+  \begin{tabular}{S S}
+    \toprule
+    {$p \mathbin{/} \unit{\bar}$} & {$T \mathbin{/} \unit{\celsius}$} \\
+    \midrule
+     1 & 121 \\
+     2 & 134 \\
+     3 & 143 \\
+     4 & 152 \\
+     5 & 157 \\
+     6 & 162 \\
+     7 & 166 \\
+     8 & 171 \\
+     9 & 176 \\
+    10 & 179 \\
+    11 & 183 \\
+    12 & 187 \\
+    13 & 189 \\
+    14 & 191 \\
+    15 & 192 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+Zur Bestimmung von $\frac{\mathrm{d}p}{\mathrm{d}T}$ in \eqref{eq:VWMess2} wird ein Ausgleichspolynom
+3. Grades der Form
+\begin{equation*}
+  p(T) = a T^3 + b T^2 + c T + d
+\end{equation*} verwendet.
+
+Die Regression ist in \autoref{fig:linreg2} dargestellt.
+
+\begin{figure}
+  \centering
+  \includegraphics{build/Messung_b.pdf}
+  \caption{Lineare Regression für $1 \,\unit{\bar} \leq p \leq 15 \,\unit{\bar}$.}
+  \label{fig:linreg2}
+\end{figure}
+
+Werden $p(T)$ und 
+\begin{equation*}
+  \frac{\mathrm{d}p}{\mathrm{d}T} = 3 a T^2 + 2 b T + c
+\end{equation*} nun in \eqref{eq:VWMess2} eingesetzt, ergeben sich zwei mögliche Verläufe der 
+Verdampfungswärme.
+Wird die Wurzel addiert, ergibt sich der in \autoref{fig:L+}, bei Subtraktion der
+in \autoref{fig:L-} dargestellte Kurvenverlauf.
+
+\begin{figure}
+  \centering
+  \includegraphics{build/L_positiv.pdf}
+  \caption{Verlauf der Verdampfungswärme bei Addition der Wurzel.}
+  \label{fig:L+}
+\end{figure}
+
+\begin{figure}
+  \centering
+  \includegraphics{build/L_negativ.pdf}
+  \caption{Verlauf der Verdampfungswärme bei Subtraktion der Wurzel.}
+  \label{fig:L-}
+\end{figure}
+
+
+
+
+
