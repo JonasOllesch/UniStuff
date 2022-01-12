@@ -6,11 +6,17 @@ from scipy.optimize import curve_fit
 from numpy import arange
 import scipy.constants
 
-def writeW(Werte,Beschreibung):
+def writeW(Wert,Beschreibung):
     my_file.write(str(Beschreibung))
     my_file.write('\n')
-    my_file.write(str(Werte))
-    my_file.write('\n')
+    try:
+        for i in Wert:
+            my_file.write(str(i))
+            my_file.write('\n')
+    except:
+        my_file.write(str(Wert))
+        my_file.write('\n')
+
     return 0
 
 def writel(variable):
