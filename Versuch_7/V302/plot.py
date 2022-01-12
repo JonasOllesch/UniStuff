@@ -34,3 +34,10 @@ plt.legend(loc='best')
 # in matplotlibrc leider (noch) nicht möglich
 plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
 plt.savefig('build/plot.pdf')
+
+output = ("Kapazitätsbrücke_b")    
+my_file = open(output + '.txt', "w")
+
+for i in range(0,15):
+    my_file.write(str(2**i*10))
+    my_file.write('\n')
