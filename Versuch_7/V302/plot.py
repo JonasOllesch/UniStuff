@@ -6,8 +6,13 @@ from uncertainties import ufloat
 output = ("build/Auswertung")    
 my_file = open(output + '.txt', "w")
 def writeW(Wert,Beschreibung):
-    my_file.write(str(Beschreibung))
-    my_file.write('\n')
+    if Wert == None:
+        my_file.write(str(Beschreibung))
+        my_file.write('\n')
+        return 0
+    else:
+        my_file.write(str(Beschreibung))
+        my_file.write('\n')
     try:
         for i in Wert:
             my_file.write(str(i))
@@ -16,6 +21,7 @@ def writeW(Wert,Beschreibung):
         my_file.write(str(Wert))
         my_file.write('\n')
 
+    my_file.write('\n')
     return 0
 
 
@@ -33,8 +39,9 @@ def r_x_berechnen3(R2,R3,R4):
 
 def l_x_berechnen(L2,R3,R4):
     L2 = ufloat(L2,2*(L2/1000))
-    tmp = ufloat(R3/R4,(R3/R4)/200)
-    return L2*tmp
+    tmp = ufloat(R3,(R3)/200)
+    tmp2 = ufloat(R4,R4/200)
+    return L2 * (tmp /tmp2)
 
 def theorie_kurve(o):
     tmp = (o**2-1)**2
@@ -60,13 +67,14 @@ R1_2 = r_x_berechnen(664, 371, 629)
 writeW(None, "Wheatstone 12")
 writeW(R1_1, "Wheatstone Rx 1.1")
 writeW(R1_2, "Wheatstone Rx 1.2")
-
+writeW((R1_1+R1_2)/2, "Wheatstone Rx 12 Mittelwert")
 
 #zu Wert 14
 writeW(None, "14")
 R1_3 = r_x_berechnen(1000, 475, 525)
 R1_4 = r_x_berechnen(664, 576, 424)
 
+writeW((R1_3+R1_4)/2, "Wheatstone Rx 14 Mittelwert")
 
 #Induktivitätsmessbrücke
 #zu Wert 16
@@ -79,10 +87,13 @@ writeW(L3_1, "Induktivität Lx 3.1")
 
 R3_2 = r_x_berechnen(63, 871, 129)   
 L3_2 = l_x_berechnen(0.201, 871, 129)
-writeW(R3_2, "Induktivitäts Rx  3.2")
-writeW(L3_2, "Induktivität Lx 3.2")
+writeW(R3_2, "Induktivitäts Rx 3.2")
+writeW(L3_2, "Induktivitäts Lx 3.2")
 
-
+writeW((R3_1+R3_2)/2, "R gemittelt")
+writeW((L3_1+L3_2)/2, "L gemittelt")
+R_Ind = (R3_1+R3_2)/2
+L_Ind = (L3_1+L3_2)/2
 #Maxwellbrücke
 #zu Wert 16
 R_2_max = 332
@@ -90,10 +101,16 @@ R_3_max = 662
 R_4_max = 448
 C_4_max = 597*10**(-9)
 R_x_max = r_x_berechnen3(R_2_max, R_3_max, R_4_max)
-L_x_max = ufloat(R_2_max,R_2_max/500)*ufloat(R_3_max,3*R_3_max/100)*ufloat(R_4_max,3*R_4_max/100)
+L_x_max = ufloat(R_2_max,R_2_max/500)*ufloat(R_3_max,3*R_3_max/100)*ufloat(C_4_max,3*C_4_max/100)
 writeW(None, "Maxwellbrücke")
 writeW(R_x_max, "R_x_m")
 writeW(L_x_max, "L_x_max")
+
+vergR = R_Ind/R_4_max
+vergL = L_Ind/L_x_max
+
+writeW(vergR, "Vergleich von Rs")
+writeW(vergL, "Vergleich von Ls")
 #R_x_max = (R_2_max*R_3_max)/R_4_max
 #L_x_max = R_2_max*R_3_max*C_4_max
 
@@ -102,11 +119,18 @@ writeW(L_x_max, "L_x_max")
 #zu Wert 9
 R2_1 = r_x_berechnen3(281, 632, 368)
 C2_1 = r_x_berechnen3((750*10**-9), 368, 632)
-writeW(None, "Kapazitätsmessbrücke")
+writeW(None, "Kapazitätsmessbrücke zu Wert 9")
 writeW(R2_1, "Rx 2.1")
+writeW(C2_1, "Cx 2.1")
+
 
 R2_2 = r_x_berechnen(347, 582, 418)
 C2_2 = r_x_berechnen((597*10**-9), 418, 582)
+writeW(R2_2, "Rx 2.2")
+writeW(C2_2, "Cx 2.2")
+
+writeW((R2_1+R2_2)/2, "Rx Kapazität gemittelt")
+writeW((C2_1+C2_2)/2, "Cx Kapazität gemittelt")
 
 #Wien-Robinson-Brücke
 
@@ -138,10 +162,10 @@ pyplot.grid()
 pyplot.tight_layout()
 pyplot.savefig('build/Theorie.pdf')
 pyplot.clf()
+U_2 = (0.001/(2*np.sqrt(2)))/theorie_kurve(2)
+writeW(U_2, "U_2")
 
-U_2 = 0.001/theorie_kurve(2)
 k = U_2/U_s
-#---------------------------------------------------------------------------------
-writeW(U_s, "U_s")
-
 writeW(k, "Klirrfaktor")
+writeW(U_s, "Speisespannung")
+#---------------------------------------------------------------------------------
