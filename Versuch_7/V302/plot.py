@@ -85,10 +85,10 @@ L_x_max = R_2_max*R_3_max*C_4_max
 #Kapazitätsbrücke
 #zu Wert 9
 R2_1 = r_x_berechnen3(281, 632, 368)
-C2_1 = (750*10**-9)*(368/632)
+C2_1 = r_x_berechnen3((750*10**-9), 368, 632)
 
-R2_2 = r_x_berechnen3(347, 582, 418)
-C2_2 = (597*10**-9)*(418/582)
+R2_2 = r_x_berechnen(347, 582, 418)
+C2_2 = r_x_berechnen((597*10**-9), 418, 582)
 
 #Wien-Robinson-Brücke
 
