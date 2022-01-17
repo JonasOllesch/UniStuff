@@ -1,4 +1,4 @@
-import matplotlib.pyplot as plt
+import matplotlib.pyplot as pyplot
 import numpy as np
 
 output = ("build/Auswertung")    
@@ -21,6 +21,12 @@ def r_x_berchnen(R2,R3,R4):
 
 def l_x_berechnen(L2,R3,R4):
     return L2*(R3/R4)
+
+def theorie_kurve(o):
+    tmp = (o**2-1)**2
+    tmp2 = (1-o**2)**2
+    tmp3 = 9*(o**2)   
+    return  (1/9)*tmp/(tmp2+tmp3)
 #-------------------------------------------------------------------------------
 
 #Wheatstonemessbrücke
@@ -53,4 +59,24 @@ C_4_max = 597*10**(-9)
 
 R_x_max = (R_2_max*R_3_max)/R_4_max
 L_x_max = R_2_max*R_3_max*C_4_max
+
+#Kapazitätsbrücke
+#zu Wert 9
+R2_1 = r_x_berchnen(281, 632, 368)
+C2_1 = (750*10**-9)*(368/632)
+
+R2_2 = r_x_berchnen(347, 582, 418)
+C2_2 = (597*10**-9)*(418/582)
+
+x = np.linspace(0.1,100)
+y = theorie_kurve(x)
+pyplot.xscale('log')
+pyplot.plot(x, y,label='Theorie')
+
+
+pyplot.legend()
+pyplot.grid()
+pyplot.savefig('build/Theorie.pdf')
+pyplot.clf()
+
 #---------------------------------------------------------------------------------
