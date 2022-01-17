@@ -72,8 +72,6 @@ x = np.linspace(0.1,100)
 y = theorie_kurve(x)
 pyplot.xscale('log')
 pyplot.plot(x, y,label='Theorie')
-
-
 pyplot.legend()
 pyplot.grid()
 pyplot.savefig('build/Theorie.pdf')
