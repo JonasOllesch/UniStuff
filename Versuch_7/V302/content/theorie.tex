@@ -128,10 +128,12 @@ $R_2$ stellt dabei ebenfalls einen variablen Widerstand dar, um die durch $R_x$ 
 Es ergeben sich die Gleichungen
 \begin{equation}
     R_x = R_2 \frac{R_3}{R_4}
+    \label{eq:resxkapbrü}
 \end{equation}
 und 
 \begin{equation}
     C_x = C_2 \frac{R_4}{R_3}
+    \label{eq:kapxkapbrü}
 \end{equation}
 für den unbekannten Widerstand und die unbekannte Kapazität des Kondensators.
 
@@ -145,7 +147,7 @@ Auch hier müssen Wärmeverluste durch einen Widerstand $R_x$ kompensiert werden
 \begin{figure}[H]
     \centering
     \includegraphics{figures/Induktivitätsmessbrücke.pdf}
-    \caption{Induktivitätsmessbrücke\cite{ap07}.}
+    \caption{Induktivitätsmessbrücke für verlustbehaftete Spulen\cite{ap07}.}
     \label{fig:indumessbrü}
 \end{figure}
 
@@ -153,10 +155,77 @@ Analog folgen hier
 
 \begin{equation}
     R_x = R_2 \frac{R_3}{R_4}
+    \label{eq:resxindubrü}
 \end{equation}
 und
 \begin{equation}
     L_x = L_2 \frac{R_4}{R_3}\,.
+    \label{eq:induxindubrü}
 \end{equation}
 
 
+\subsection{Maxwell-Brücke}
+\label{subsec:maxwellbrü}
+
+Alternativ lässt sich zur Bestimmung von Induktivitäten die in \autoref{fig:maxwellbrü} dargestellte
+Schaltung verwendet.
+Bei dieser wird als Ersatz zur Induktivität $L_2$ in der Induktivitätsmessbrücke ein Kondensator
+der Kapazität $C_4$ gewählt, der Abgleich findet über $R_3$ und $R_4$ statt.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics{figures/Maxwell-Brücke.pdf}
+    \caption{Maxwell-Brücke für verlustbehaftete Spulen\cite{ap07}.}
+    \label{fig:maxwellbrü}
+\end{figure}
+
+Auch hier ergeben sich mit den bereits verwendeten Überlegungen
+
+\begin{equation}
+    R_x = R_2 \frac{R_3}{R_4}
+    \label{eq:resxmaxwell}
+\end{equation} für den unbekannten Verlustwiderstand und
+
+\begin{equation}
+    L_x = C_4 R_2 R_3
+    \label{eq:induxmaxwell}
+\end{equation} für die Induktivität der Spule.
+
+
+\subsection{Wien-Robinson-Brücke}
+\label{subsec:wienrobinson}
+
+Die in \autoref{fig:wienrobinson} dargestellte Wien-Robinson-Brücke enthält keine Abgleichelemente, 
+sondern dient als elektrischer Filter.
+Sie entfernt die durch $ω_0 = \frac{1}{R C}$ gegebene Kreisfrequenz und schwächt die umliegenden 
+Frequenzen stark ab. 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics{figures/Wien-Robinson-Brücke.pdf}
+    \caption{Die Wien-Robinson-Brücke im Schaltbild\cite{ap07}.}
+    \label{fig:wienrobinson}
+\end{figure}
+
+Mit $Ω = \frac{ω}{ω_0}$ gilt
+
+\begin{equation}
+    \left|\frac{U_{Br}}{U_S}\right|^2 = \frac{1}{9} \frac{(Ω^2 - 1)^2}{(1 - Ω^2) +9Ω^2} \,.
+\end{equation}
+
+Wird ein Sinusgenerator auf die auch Sperrfrequenz genannte Frequenz $ω_0$ eingestellt, bleiben nur
+noch von $ω_0$ verschiedene Frequenzen übrig, die Summe ihrer Amplituden über die Restspannung messen.
+Dieser \textbf{Oberwellengehalt} lässt sich durch den Klirrfaktor $k$ mit 
+\begin{equation}
+    k := \frac{\sqrt{U_2^2 + U_3^2 + ...}}{U_1}
+    \label{eq:klirrfaktor}
+\end{equation} darstellen, wobei $U_1$ die Amplitude der Grundwelle und $U_n$ die Amplitude der n-ten
+Oberwelle der Frequenz $n ν_0$ ist.
+Außerdem gilt
+\begin{equation}
+    U_2 = \frac{U_{Br}}{f(2)}
+    \label{eq:U2klirr}
+\end{equation}, dabei ist $f(2)$ die zu $U_2$ gehörige Frequenz.
+
+
+%% Eigentlich fertig
