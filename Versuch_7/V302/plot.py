@@ -18,11 +18,21 @@ def writeW(Wert,Beschreibung):
 
     return 0
 
-def r_x_berchnen(R2,R3,R4):
-    return R2*(R3/R4)
+def r_x_berechnen(R2,R3,R4):
+    R2 = ufloat(R2,2*(R2/1000))
+    tmp = ufloat(R3/R4,(R3/R4)/200)    
+    return R2*tmp
+
+
+def r_x_berechnen3(R2,R3,R4):
+    R2 = ufloat(R2,2*(R2/1000))
+    tmp = ufloat(R3/R4,3*(R3/R4)/100)    
+    return R2*tmp
 
 def l_x_berechnen(L2,R3,R4):
-    return L2*(R3/R4)
+    L2 = ufloat(L2,2*(L2/1000))
+    tmp = ufloat(R3/R4,(R3/R4)/200)
+    return L2*tmp
 
 def theorie_kurve(o):
     tmp = (o**2-1)**2
@@ -42,23 +52,24 @@ Messung_b[:,1] = Messung_b[:,1]/1000
 
 #Wheatstonemessbrücke
 #zu Wert 12
-R1_1 = r_x_berchnen(ufloat(1000,0.03), 282, 718)
-R1_2 = r_x_berchnen(664, 371, 629)
+
+R1_1 = r_x_berechnen(1000, 282, 718)
+R1_2 = r_x_berechnen(664, 371, 629)
 
 
 #zu Wert 14
-R1_3 = r_x_berchnen(1000, 475, 525)
-R1_4 = r_x_berchnen(664, 576, 424)
+R1_3 = r_x_berechnen(1000, 475, 525)
+R1_4 = r_x_berechnen(664, 576, 424)
 
 
 #Induktivitätsmessbrücke
 #zu Wert 16
-R3_1 = r_x_berchnen(49, 903, 97)
+R3_1 = r_x_berechnen(49, 903, 97)
 L3_1 = l_x_berechnen(0.146, 903, 97)
 
 
 
-R3_2 = r_x_berchnen(63, 871, 129)   
+R3_2 = r_x_berechnen(63, 871, 129)   
 L3_2 = l_x_berechnen(0.201, 871, 129)
 
 #Maxwellbrücke
@@ -73,10 +84,10 @@ L_x_max = R_2_max*R_3_max*C_4_max
 
 #Kapazitätsbrücke
 #zu Wert 9
-R2_1 = r_x_berchnen(281, 632, 368)
+R2_1 = r_x_berechnen3(281, 632, 368)
 C2_1 = (750*10**-9)*(368/632)
 
-R2_2 = r_x_berchnen(347, 582, 418)
+R2_2 = r_x_berechnen3(347, 582, 418)
 C2_2 = (597*10**-9)*(418/582)
 
 #Wien-Robinson-Brücke
