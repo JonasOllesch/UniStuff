@@ -26,7 +26,7 @@ def theorie_kurve(o):
     tmp = (o**2-1)**2
     tmp2 = (1-o**2)**2
     tmp3 = 9*(o**2)   
-    return  (1/9)*tmp/(tmp2+tmp3)
+    return  np.sqrt((1/9)*(tmp/(tmp2+tmp3)))
 #-------------------------------------------------------------------------------
 
 #Wheatstonemessbrücke
@@ -68,14 +68,19 @@ C2_1 = (750*10**-9)*(368/632)
 R2_2 = r_x_berchnen(347, 582, 418)
 C2_2 = (597*10**-9)*(418/582)
 
-x = np.linspace(0.1,100)
-y = theorie_kurve(x)
+x1=np.linspace(0.1,2,1000)
+x = np.linspace(2,100,1000)
+y1 = theorie_kurve(x1)
+y= theorie_kurve(x)
+pyplot.plot(x1, y1,color='blue')
+pyplot.plot(x, y,color='blue',label='Theorie')
 pyplot.xscale('log')
-pyplot.plot(x, y,label='Theorie')
-
+pyplot.xlabel(r'$\log{Ω}$')
+pyplot.ylabel(r'$\frac{U_{Br}}{U_S}$')
 
 pyplot.legend()
 pyplot.grid()
+pyplot.tight_layout()
 pyplot.savefig('build/Theorie.pdf')
 pyplot.clf()
 
