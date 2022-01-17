@@ -74,9 +74,12 @@ y1 = theorie_kurve(x1)
 y= theorie_kurve(x)
 pyplot.plot(x1, y1,color='blue')
 pyplot.plot(x, y,color='blue',label='Theorie')
+pyplot.xlim(0.1,100)
+pyplot.ylim(0,0.35)
 pyplot.xscale('log')
 pyplot.xlabel(r'$\log{Ω}$')
 pyplot.ylabel(r'$\frac{U_{Br}}{U_S}$')
+
 
 pyplot.legend()
 pyplot.grid()
