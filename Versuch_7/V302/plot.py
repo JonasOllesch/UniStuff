@@ -78,9 +78,12 @@ R_2_max = 332
 R_3_max = 662
 R_4_max = 448
 C_4_max = 597*10**(-9)
+R_x_max = r_x_berechnen3(R_2_max, R_3_max, R_4_max)
+L_x_max = ufloat(R_2_max,R_2_max/500)*ufloat(R_3_max,3*R_3_max/100)*ufloat(R_4_max,3*R_4_max/100)
 
-R_x_max = (R_2_max*R_3_max)/R_4_max
-L_x_max = R_2_max*R_3_max*C_4_max
+#R_x_max = (R_2_max*R_3_max)/R_4_max
+#L_x_max = R_2_max*R_3_max*C_4_max
+
 
 #Kapazitätsbrücke
 #zu Wert 9
@@ -110,7 +113,7 @@ U_s = np.mean(Messung_b[:,1])
 
 y = Messung_a[:,1]/U_s
 x= Messung_a[:,0]/161
-pyplot.scatter(x, y,s=8, c='red',marker='x')
+pyplot.scatter(x, y,s=8, c='red',marker='x',label="Messwerte")
 
 v_0_theorie = 1/(1000*(993*10**-9))
 real_Abw_v_0 = (161-v_0_theorie)/v_0_theorie 
@@ -119,8 +122,11 @@ pyplot.legend()
 pyplot.grid()
 pyplot.tight_layout()
 pyplot.savefig('build/Theorie.pdf')
+pyplot.clf()
 
-
-
+U_2 = 0.001/theorie_kurve(2)
+k = U_2/U_s
 #---------------------------------------------------------------------------------
 writeW(U_s, "U_s")
+
+writeW(k, "Klirrfaktor")
