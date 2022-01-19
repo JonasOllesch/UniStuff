@@ -1,7 +1,7 @@
 \section{Theorie}
 \label{sec:Theorie}
 
-Zur Bestimmung beliebiger unbekannter physikalisher Größen, die sich eindeutig als elektrischer Widerstand darstellen lassen, eignen sich vor allem Brückenschaltungen, die im Folgenden näher beschrieben werden sollen. 
+Zur Bestimmung beliebiger unbekannter physikalischer Größen, die sich eindeutig als elektrischer Widerstand darstellen lassen, eignen sich vor allem Brückenschaltungen, die im Folgenden näher beschrieben werden sollen. 
 In Brückenschaltungen nutzt man die von den Widerstandsverhältnissen abhängige Potentialdifferenz zwischen zwei getrennten stromdurchflossenen Leitern. Das grundsätzliche Schema einer solchen Brückenschaltung ist in \autoref{fig:prinzbrückscha} dargestellt.
 
 \begin{figure}[H]
@@ -14,15 +14,15 @@ In Brückenschaltungen nutzt man die von den Widerstandsverhältnissen abhängig
 Die Potentialdifferenz zwischen den Punkten A und B wird als \textbf{Brückenspannung} bezeichnet, zu deren Berechnung die Kirchhoffschen Gesetze genutzt werden.
 
 Mit 
-\begin{equation*}
+\begin{equation}
     \sum_kI_k = 0
     \label{eq:kirchhoff1}
-\end{equation*}
+\end{equation}
 und 
-\begin{equation*}
+\begin{equation}
     \sum_k E_k = \sum_k I_k R_k \,,
     \label{eq:kirchhoff2}
-\end{equation*} wobei $E_k$ die elektromotorische Kraft darstellt,
+\end{equation} wobei $E_k$ die elektromotorische Kraft darstellt,
 ergeben sich folgende Beziehungen:
 
 \begin{equation*}
@@ -52,15 +52,15 @@ Durch Ausnutzen von $I_2 = I_1$ und $I_3 = I_4$ ergibt sich in \eqref{eq:spannun
 \end{equation}
 mit \eqref{eq:spannungglei1} und \eqref{eq:spannungglei3} folgt dann
 
-\begin{equation*}
+\begin{equation}
     U = \frac{R_2 R_3 - R_1 R_4}{R_3 + R_4} I_1 \,,
     \label{eq:spannungglei4}
-\end{equation*}
+\end{equation}
 
 die sich mit $U_S = I_1 (R_1 + R_2)$ schlussendlich zu 
 
 \begin{equation}
-    U = \frac{R_2 R_3 - R_1 R_4}{(R_3 + R_4)(R_1 + R_2)} U_S
+    U = \frac{R_2 R_3 - R_1 R_4}{(R_3 + R_4)(R_1 + R_2)} U_{\text{S}}
     \label{eq:spannüberbrückspann}
 \end{equation} vereinfacht. \\
 
@@ -104,11 +104,11 @@ Die Wheatstonesche Messbrücke wird zur Bestimmung rein ohmscher Widerstände ve
 \end{figure}
 
 Mit der Abgleichbedingung \eqref{eq:abgleichbed} ergibt sich
-\begin{equation*}
-    R_x = R_2 \frac{R_3}{R_4} \,,
+\begin{equation}
+    R_x = R_2 \frac{R_3}{R_4} \,.
     \label{eq:resxWheatstone}
-\end{equation*}
-die Widerstände $R_3$ und $R_4$ sind dabei als Potentiometer ausgebildet.
+\end{equation}
+
 
 
 \subsection{Kapazitätsmessbrücke}
@@ -128,16 +128,11 @@ In \autoref{fig:kapamessbrü} ist eine solche Kapazitätsmessbrücke mit unbekan
 \end{figure}
 
 $R_2$ stellt dabei ebenfalls einen variablen Widerstand dar, um die durch $R_x$ auftrende Phasenverschiebung zu kompensieren.
-Es ergeben sich die Gleichungen
-\begin{equation*}
-    R_x = R_2 \frac{R_3}{R_4}
-    \label{eq:resxkapbrü}
-\end{equation*}
-und 
-\begin{equation*}
+Es ergibt sich erneut \eqref{eq:resxWheatstone} sowie
+\begin{equation}
     C_x = C_2 \frac{R_4}{R_3}
     \label{eq:kapxkapbrü}
-\end{equation*}
+\end{equation}
 für den unbekannten Widerstand und die unbekannte Kapazität des Kondensators.
 
 
@@ -154,18 +149,13 @@ Auch hier müssen Wärmeverluste durch einen Widerstand $R_x$ kompensiert werden
     \label{fig:indumessbrü}
 \end{figure}
 
-Analog folgen hier
-
-\begin{equation*}
-    R_x = R_2 \frac{R_3}{R_4}
-    \label{eq:resxindubrü}
-\end{equation*}
-und
-\begin{equation*}
+Analog folgen hier \eqref{eq:resxWheatstone} und
+\begin{equation}
     L_x = L_2 \frac{R_4}{R_3}\,.
     \label{eq:induxindubrü}
-\end{equation*}
+\end{equation}
 
+\newpage
 
 \subsection{Maxwell-Brücke}
 \label{subsec:maxwellbrü}
@@ -184,15 +174,12 @@ der Kapazität $C_4$ gewählt, der Abgleich findet über $R_3$ und $R_4$ statt.
 
 Auch hier ergeben sich mit den bereits verwendeten Überlegungen
 
-\begin{equation*}
-    R_x = R_2 \frac{R_3}{R_4}
-    \label{eq:resxmaxwell}
-\end{equation*} für den unbekannten Verlustwiderstand und
+\eqref{eq:resxWheatstone} für den unbekannten Verlustwiderstand und
 
-\begin{equation*}
+\begin{equation}
     L_x = C_4 R_2 R_3
     \label{eq:induxmaxwell}
-\end{equation*} für die Induktivität der Spule.
+\end{equation} für die Induktivität der Spule.
 
 
 \subsection{Wien-Robinson-Brücke}
@@ -212,24 +199,24 @@ Frequenzen stark ab.
 
 Mit $Ω = \frac{ω}{ω_0}$ gilt
 
-\begin{equation*}
+\begin{equation}
     \left|\frac{U_{Br}}{U_S}\right|^2 = \frac{1}{9} \frac{(Ω^2 - 1)^2}{(1 - Ω^2) +9Ω^2} \,.
     \label{eq:omegadingens}
-\end{equation*}
+\end{equation}
 
 Wird ein Sinusgenerator auf die auch Sperrfrequenz genannte Frequenz $ω_0$ eingestellt, bleiben nur
 noch von $ω_0$ verschiedene Frequenzen übrig, die Summe ihrer Amplituden über die Restspannung messen.
 Dieser \textbf{Oberwellengehalt} lässt sich durch den Klirrfaktor $k$ mit 
-\begin{equation*}
+\begin{equation}
     k := \frac{\sqrt{U_2^2 + U_3^2 + ...}}{U_1}
     \label{eq:klirrfaktor}
-\end{equation*} darstellen, wobei $U_1$ die Amplitude der Grundwelle und $U_n$ die Amplitude der n-ten
+\end{equation} darstellen, wobei $U_1$ die Amplitude der Grundwelle und $U_n$ die Amplitude der n-ten
 Oberwelle der Frequenz $n ν_0$ ist.
 Außerdem gilt
-\begin{equation*}
+\begin{equation}
     U_2 = \frac{U_{Br}}{f(2)}\,,
     \label{eq:U2klirr}
-\end{equation*} dabei ist $f(2)$ die zu $U_2$ gehörige Frequenz.
+\end{equation} dabei ist $f(2)$ die zu $U_2$ gehörige Frequenz.
 
 
 %% Eigentlich fertig

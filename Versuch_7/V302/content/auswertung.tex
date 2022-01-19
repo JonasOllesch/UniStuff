@@ -4,7 +4,7 @@
 \subsection{Wheatstonesche Brücke}
 
 Die zur Bestimmung von $R_x$ notwendigen Messdaten sind in \autoref{tab:wheatstone} dargestellt.
-Dabei ist $R_4$ durch $R_4 = 1000 - R_3$ gegeben.
+Dabei ist $R_4$ durch $R_4 = 1000 \,\unit{\ohm} - R_3$ gegeben.
 
 \begin{table}[H]
   \centering
@@ -27,8 +27,8 @@ Dabei ist $R_4$ durch $R_4 = 1000 - R_3$ gegeben.
   \end{tabular}
 \end{table}
 
-Nach \eqref{fig:wheatstonebrücke} lässt sich nun $R_x$ berechnen. 
-Der relative Fehler für $R_2$ beträgt dabei $0,2 \,\%$, für das Verhältnis $\frac{R_3}{R_4}$ beträgt er $0,5 \,\%$
+Nach \eqref{eq:resxWheatstone} lässt sich nun $R_x$ berechnen. 
+Der relative Fehler für $R_2$ beträgt dabei $0,2 \,\%$, für das Verhältnis $\frac{R_3}{R_4}$ beträgt er $0,5 \,\%$.
 Für Wert 12 ergibt sich dann für die beiden Messungen gemittelt
 \begin{equation*}
   R_x =(392,2 \pm 1,5) \,\unit{\ohm}
@@ -38,11 +38,12 @@ Für Wert 12 ergibt sich dann für die beiden Messungen gemittelt
   R_x = (903,4 \pm 3,4) \,\unit{\ohm} \,.
 \end{equation*}
 
+\newpage
 
 \subsection{Kapazitätsmessbrücke}
 
 Die zur Berechnung von $R_x$ und $C_x$ nötigen Messdaten sind in \autoref{tab:kapamessbrü}
-dargestellt. Erneut ist $R_4 = 1000 - R_3$, der relative Fehler von $C_2$ beträgt $0,2 \,\%$, für $R_2$
+dargestellt. Erneut ist $R_4 = 1000 \,\unit{\ohm} - R_3$, der relative Fehler von $C_2$ beträgt $0,2 \,\%$, für $R_2$
 beträgt er $3 \,\%$.
 
 \begin{table}[H]
@@ -61,14 +62,14 @@ beträgt er $3 \,\%$.
   \end{tabular}
 \end{table}
 
-Mit \eqref{eq:resxkapbrü} und \eqref{eq:kapxkapbrü} ergeben sich, erneut gemittelt,
+Mit \eqref{eq:resxWheatstone} und \eqref{eq:kapxkapbrü} ergeben sich, erneut gemittelt,
 
 \begin{equation*}
   R_x = (483 \pm 7) \,\unit{\ohm}
 \end{equation*}
 und
 \begin{equation*}
-  C_x = (4,33 \pm 0,07)10^{-7} \,\unit{\farad} \,.
+  C_x = (433 \pm 7) \cdot 10^{-9} \,\unit{\farad} \,.
 \end{equation*}
 
 
@@ -94,14 +95,48 @@ sich nicht.
   \end{tabular}
 \end{table}
 
-Mit \eqref{eq:resxindubrü} und \eqref{eq:induxindubrü} ergeben sich dann gemittelt
+Mit \eqref{eq:resxWheatstone} und \eqref{eq:induxindubrü} ergeben sich dann gemittelt
 
 \begin{equation*}
   R_x = (440,8 \pm 1,7) \,\unit{\ohm}
 \end{equation*} und
 
 \begin{equation*}
-  L_x = (1,358 \pm 0,007) \,\unit{\henry} \,.
+  L_x = (1,358 \pm 0,007) \,\unit{\milli\henry} \,.
+\end{equation*}
+
+
+\subsection{Maxwellbrücke}
+
+Nach \autoref{fig:maxwellbrü} wird die entsprechende Schaltung aufgebaut.  
+Die gemessenen Werte $C_4$, $R_2$, $R_3$ und $R_4$ sind dabei in \autoref{tab:maxwellbrü} dargestellt.
+
+\begin{table}[H]
+  \centering
+  \caption{Messungen der bekannten Widerstände $R_2$, $R_3$ und $R_4$ und der \\ Kapazität $C_4$.}
+  \label{tab:maxwellbrü}
+  \begin{tabular}{S S[table-format=3.1]}
+    \toprule
+    & {Messung 1} \\
+    \midrule
+    {Für Wert 16} \\
+    {$C_4 \mathbin{/} 10^{-9} \,\unit{\farad}$} &  597 \\
+                {$R_2 \mathbin{/} \unit{\ohm}$} &  332 \\
+                {$R_3 \mathbin{/} \unit{\ohm}$} &  662 \\
+                {$R_4 \mathbin{/} \unit{\ohm}$} &  448 \\
+  \end{tabular}
+\end{table}
+
+Mit \eqref{eq:resxWheatstone} und \eqref{eq:induxmaxwell} lassen sich der verbleibende Widerstand $R_x$ sowie die Induktivität $L_x$ bestimmen.
+
+Es ergeben sich
+
+\begin{equation*}
+  R_x = 491 \pm 15 \,\unit{\ohm} 
+\end{equation*} 
+und
+\begin{equation*}
+  L_x = 0,131 \pm 0.006 \,\unit{\henry} \,.
 \end{equation*}
 
 \newpage
@@ -113,7 +148,7 @@ Die Frequenzabhängigkeit der Brückenschaltung wird nach Frequenz $ν$ und Brü
 
 \begin{table}[H]
   \centering
-  \caption{Messungen der Frequenz $ν$ und Brückenspannung $U_{Br}$.}
+  \caption{Messungen der Frequenz $ν$ und Brückenspannung $U_{Br}$\,.}
   \label{tab:wienrobinson}
   \begin{tabular}{S[table-format=5.0] S[table-format=3.1]}
     \toprule
@@ -156,6 +191,8 @@ Die Frequenzabhängigkeit der Brückenschaltung wird nach Frequenz $ν$ und Brü
     30000 & 580   \\
   \end{tabular}
 \end{table}
+
+Das gemessene Minimum findet sich also bei einer Frequenz von $ν_0 = 161 \,\unit{\hertz}$ mit einer Spannung von $U_{Br}(ν_0) = 1 \,\unit{\milli\volt}$.
 
 Als theoretische Kreisfrequenz $ν_0 = \frac{ω_0}{2π} = \frac{R C}{2π}$ ergibt sich hier mit 
 $R = 1000 \,\unit{\ohm}$ und $C = 993 \cdot 10^{-9} \,\unit{\farad}$
@@ -207,11 +244,11 @@ $U_2$ berechnet sich dann über die effektiven Brückenspannung $U_{Br,eff} = \f
 an der Stelle $ν_0$ und $Ω = 2$. Es ergibt sich
 
 \begin{equation*}
-  U_2 = \frac{3,535*10^(-4) \,\unit{\volt}}{\sqrt{\frac{(2^2 - 1)^2}{9|(1-2^2)^2+9 \cdot 2^2|}}} = (2,371)*10^{-4} \,\unit{\volt}
+  U_2 = \frac{3,535 \cdot 10^{-4} \,\unit{\volt}}{\sqrt{\frac{(2^2 - 1)^2}{9((1-2^2)^2+9 \cdot 2^2)}}} = (2,371) \cdot 10^{-4} \,\unit{\volt}
 \end{equation*} und damit
 
 \begin{equation*}
-  k = \frac{U_2}{U_1} = 1,234*10^{-3} \,.
+  k = \frac{U_2}{U_1} = 1,234 \cdot 10^{-3} \,.
 \end{equation*}
 
 
