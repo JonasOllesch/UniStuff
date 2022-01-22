@@ -24,6 +24,8 @@ def func_pol1(x, a, b):
 def func_2(f,a):
     return 1/np.sqrt(1+(f*a)**2)
 
+def func_13(f,a,U_0):
+    return U_0/np.sqrt(1+(f*a)**2)
 
 Messung_a = np.array(np.genfromtxt('Messung_a.txt'))
 Messung_a[:,0]  = Messung_a[:,0]/1000
@@ -62,17 +64,52 @@ pyplot.clf()
 #-------------------------------------------------
 x2data = Messung_b[:,0]
 y2data = Messung_b[:,1]
-popt_b, pcov_b = curve_fit(func_2, x2data, y2data)
+popt_b, pcov_b = curve_fit(func_13, x2data, y2data)#U_0 sollte doch ein Messwert sein, aber bei dieser Messung haben wir uns den nicht aufgeschriben. Was im Altprotokoll steht ist sus und ergibt für micht keinen Sinn.
 x_ausgleich_b = np.logspace(1,5)
-y_ausgleich_b = func_2(x_ausgleich_b, popt_b[0])
+y_ausgleich_b = func_13(x_ausgleich_b, popt_b[0],popt_b[1])
 pyplot.scatter(x2data, y2data,s=8, c='red',marker='x',label="Messwerte")
 pyplot.plot(x_ausgleich_b, y_ausgleich_b,label='lineare Regression')
-#pyplot.xlim(-0.001,0.01)
-#pyplot.ylim(-5,0.8)
+pyplot.xlim(10,50000)
+pyplot.ylim(0,10)
+tmp =np.sqrt(popt_b[0])
+tmp2 =np.sqrt(pcov_b[0][0])
+writeW(ufloat(tmp,tmp2), "Tau 2")
+writeW(popt_b[0], "a2")
+writeW(popt_b[1], "b2")
+pyplot.xlabel(r'$f \mathbin{/} \unit{\hertz} $')
+pyplot.ylabel(r'$ U \mathbin{/} \unit{\volt} $')
+
 pyplot.xscale('log')
 pyplot.tight_layout()
 pyplot.legend()
 pyplot.grid()
 pyplot.savefig('build/Graph_b.pdf')
 pyplot.clf()
+#-----------------------------------------
+Messung_b2 = np.empty((8,4),float)
+for i in range(15,23):
+    for j in range(0,4):
+        Messung_b2[i-15][j]= Messung_b[i][j]
+writeW(Messung_b2, "b2")
 
+phi = (Messung_b2[:,2]/Messung_b2[:,3]) * 2*np.pi
+pyplot.scatter(Messung_b2[:,1],phi,s=8, c='red',marker='x',label="Messwerte")
+
+pyplot.xlabel(r'$\phi $')
+pyplot.ylabel(r'$ U \mathbin{/} \unit{\volt} $')
+
+pyplot.tight_layout()
+pyplot.legend()
+pyplot.grid()
+pyplot.savefig('build/Graph_b2.pdf')
+pyplot.clf()
+#-------------------------------------------
+fig, ax = pyplot.subplots(subplot_kw={'projection': 'polar'})
+ax.scatter(phi, Messung_b2[:,1],c='red',s=8,label ='Messwerte')
+ax.grid(True)
+
+
+pyplot.tight_layout()
+pyplot.legend()
+pyplot.savefig('build/Graph_c.pdf')
+pyplot.clf()
