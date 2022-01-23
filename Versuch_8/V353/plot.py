@@ -122,5 +122,3 @@ pyplot.legend()
 pyplot.savefig('build/Graph_c.pdf')
 pyplot.clf()
 #----------------------------------------
-#Auswertung
-writeW(tau_1/tau_2, "tau_1/tau_2")
