@@ -106,7 +106,7 @@ writeW(phi, "phi")
 popt_b2, pcov_b2 = curve_fit(func_11, frequenz, phi)
 x_ausgleich_b2 = np.logspace(3,5)
 y_ausgleich_b2 = func_11(x_ausgleich_b2, popt_b2[0])
-pyplot.plot(x_ausgleich_b2, y_ausgleich_b2,c='blue',label='Ausgeleichsfuntion')
+pyplot.plot(x_ausgleich_b2, y_ausgleich_b2,c='blue',label='Ausgeleichsfunktion')
 writeW(-popt_b2[0],"RC b2")
 writeW(-1/popt_b2[0],"1/RC b2")
 pyplot.xscale('log')
@@ -117,7 +117,7 @@ pyplot.savefig('build/Graph_b2.pdf')
 pyplot.clf()
 #-------------------------------------------
 fig, ax = pyplot.subplots(subplot_kw={'projection': 'polar'})
-ax.scatter(phi, Messung_b2[:,1],c='red',marker='x',s=8,label ='Ausgeleichsfuntion')
+ax.scatter(phi, Messung_b2[:,1],c='red',marker='x',s=8,label ='Messwerte')
 ax.grid(True)
 
 

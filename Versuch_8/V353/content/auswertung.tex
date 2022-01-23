@@ -1,12 +1,59 @@
 \section{Auswertung}
 \label{sec:Auswertung}
 
-\begin{figure}
+
+\begin{table}[H]
   \centering
-  \includegraphics{plot.pdf}
-  \caption{Plot.}
-  \label{fig:plot}
-\end{figure}
+  \caption{Entladekurve einer RC-Schwingkreises.}
+  \label{tab:Entladekurve}
+  \begin{tabular}{S S}
+    \toprule
+    {$T \mathbin{/} \unit{\milli\second} $} &  {$ U \mathbin{/} \unit{\milli\volt}$} \\
+    \midrule
+            0      &         18     \\
+            1      &         12     \\
+            2      &         7.5    \\
+            3      &         5      \\
+            4      &         3      \\
+            5      &         2      \\
+            6      &         1.5    \\
+            7      &         1      \\
+            8      &         0.5    \\
+            9      &         0.25   \\
+            10     &         0      \\
+  \end{tabular}
+\end{table}
 
-
-Siehe \autoref{fig:plot}!
+\begin{table}[H]
+  \centering
+  \caption{Phasenverschiebung eines RC-Schwingkreises.}
+  \label{tab:phasenver}
+  \begin{tabular}{S S S S}
+    \toprule
+    {$f \mathbin{/} \unit{\hertz}$} &  {$U \mathbin{/} \unit{\volt} $} & {$a \mathbin{/} \unit{\micro\meter} $}&{$b \mathbin{/} \unit{\micro\meter} $} \\
+    \midrule
+    40          &8.5                 &0                   & {-}       \\
+    50          &9                   &0                   & {-}       \\
+    80          &8.5                 &0                   & {-}       \\
+    160         &7.5                 &0                   & {-}       \\
+    300         &8                   &0                   & {-}       \\
+    600         &7.5                 &0                   & {-}       \\
+    1000        &8                   &0                   & {-}       \\
+    1500        &8                   &0                   & {-}       \\
+    2000        &7                   &0                   & {-}       \\
+    2500        &6.4                 &0                   & {-}       \\
+    3000        &5.6                 &0                   & {-}       \\
+    4000        &4.8                 &0                   & {-}       \\
+    5000        &4                   &0                   & {-}       \\
+    6000        &3.2                 &0                   & {-}       \\
+    7000        &3                   &0                   & {-}       \\
+    10000       &2.2                 &4                   &40         \\
+    11000       &2                   &4.6                 &40         \\
+    15000       &1.6                 &2                   &40         \\
+    20000       &1.2                 &1.5                 &22.5       \\
+    22000       &1                   &5                   &20         \\
+    25000       &0.8                 &2.5                 &20         \\
+    30000       &0.8                 &0                   &17         \\
+    40000       &0.4                 &0                   &12         \\
+  \end{tabular}
+\end{table}
