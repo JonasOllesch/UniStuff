@@ -32,7 +32,7 @@ Die Ausgleichsrechnung folgt dabei der Funktionsvorschrift
   \ln(\frac{U_C}{U_0}) = -\frac{1}{RC} t + b \,.
 \end{equation*}
 
-\begin{figure}
+\begin{figure}[H]
   \centering
   \includegraphics{build/Graph_a.pdf}
   \caption{Halblogarithmische Darstellung der Messwerte und Ausgleichskurve.}
@@ -41,7 +41,7 @@ Die Ausgleichsrechnung folgt dabei der Funktionsvorschrift
 
 Die Parameter ergeben sich damit zu 
 \begin{equation*}
-  RC = 0,00221 \pm 0,00007 \,\unit{\second}
+  RC = (0,00221 \pm 0,00007) \,\unit{\second}
 \end{equation*} 
 
 \begin{equation*}
@@ -85,11 +85,85 @@ Für die Wertepaare $(a,b)$ wurde nur dann die Periodendauer $b$ gemessen, wenn 
   \end{tabular}
 \end{table}
 
-Die Ausgleichskurve in \autoref{fig:ausgleichsb)} wurde dabei nach \eqref{eq:amplitudendingens} bestimmt.
+Die Ausgleichskurve in \autoref{fig:ausgleichsb)} wurde dabei nach \eqref{eq:amplitudendingens} mit der Form
+\begin{equation*}
+  U(\omega) = \frac{U_0}{\sqrt{1 + \omega^2 R^2 C^2}}
+\end{equation*}
+bestimmt.
 
-\begin{figure}
+\begin{figure}[H]
   \centering
   \includegraphics{build/Graph_b.pdf}
   \caption{Messwerte der Amplitude und Ausgleichskurve in Abhängigkeit von der Frequenz.}
   \label{fig:ausgleichsb)}
+\end{figure}
+
+Dabei ergeben sich 
+\begin{equation*}
+  U_0 = 8,334 \,\unit{\volt}
+\end{equation*}
+und
+\begin{equation*}
+  RC = (0,018897 \pm 0,000017) \,\unit{\second} \,.
+\end{equation*}
+
+Die Phasenverschiebungen seien nun in \autoref{fig:phasenverschiebungen} dargestellt.
+
+\begin{table}[H]
+  \centering
+  \caption{Phasenverschiebung $\varphi$ der Generator- und Kondensatorspannung.}
+  \label{fig:phasenverschiebungen}
+  \begin{tabular}{S S}
+    \toprule
+    {$ν \mathbin{/} \unit{\hertz} $} &  {$ \varphi \mathbin{/} rad$} \\
+    \midrule
+    40    & 0     \\ 
+    50    & 0     \\ 
+    80    & 0     \\ 
+    160   & 0     \\ 
+    300   & 0     \\ 
+    600   & 0     \\ 
+    1000  & 0     \\ 
+    1500  & 0     \\ 
+    2000  & 0     \\ 
+    2500  & 0     \\ 
+    3000  & 0     \\ 
+    4000  & 0     \\ 
+    5000  & 0     \\ 
+    6000  & 0     \\ 
+    7000  & 0     \\ 
+    10000 & 0.628 \\
+    11000 & 0.723 \\
+    15000 & 0.314 \\
+    20000 & 0.419 \\
+    22000 & 1.571 \\
+    25000 & 0.785 \\
+    30000 & 0     \\
+    40000 & 0     \\
+  \end{tabular}
+\end{table}
+
+Die Frequenzanhängigkeit der Phasenverschiebung sei in \autoref{fig:frequpha} aufgetragen.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics{build/Graph_b2.pdf}
+  \caption{Frequenzabhängigkeit der Phasenverschiebung und Ausgleichskurve.}
+  \label{fig:frequpha}
+\end{figure}
+
+Die Ausgleichsrechnung wurde dabei nach \eqref{eq:arctan} durchgeführt.
+
+Es ergibt sich
+\begin{equation*}
+  RC = (2,570 \pm 1,380) \cdot 10^{-5} \, \unit{\second} \,.
+\end{equation*}
+
+Abschließend sei in \autoref{fig:polarplot} der Polarplot der Phasenverschiebung gegen die Spannung dargestellt.
+
+\begin{figure}
+  \centering
+  \includegraphics{build/Graph_c.pdf}
+  \caption{Polarplot der Messdaten.}
+  \label{fig:polarplot}
 \end{figure}
