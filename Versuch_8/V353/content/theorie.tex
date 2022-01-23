@@ -120,6 +120,26 @@ Für $\omega t + \varphi  = \dfrac{\pi}{2}$ folgt aus \eqref{eq:U_0omegagedöns}
 Hier ist zu erkennen, dass $A(\omega)$ für niedrige Frequenzen $\omega \rightarrow 0$ gegen $U_0$ geht, für $\omega = \dfrac{1}{RC}$ $A(\omega) = \dfrac{U_0}{\sqrt{2}}$ gilt und $A(\omega)$ für hohe Frequenzen $\omega \rightarrow \infty$ gegen null geht.
 Der RC-Kreis lässt sich also als Tiefpass verwenden.
 
+Experimentell wird die Phasenverschiebung $\varphi$ dabei \autoref{fig:phasenversch} entsprechend ermittelt.
+
+\begin{figure}
+    \centering
+    \includegraphics{figures/Phasenverschiebung.pdf}
+    \caption{Messung der Phasenverschiebung zwischen der Generatorspannung und der Kondensatorspannung\cite{ap08}.}
+    \label{fig:phasenversch}
+\end{figure}
+Es gilt
+
+\begin{equation}
+    \varphi = 2 \pi \frac{a}{b} 
+    \label{eq:phasebogen}
+\end{equation} bzw.
+
+\begin{equation}
+    \varphi = 360 \frac{a}{b} \,.
+    \label{eq:phasegrad}
+\end{equation}
+
 \subsection{Der RC-Kreis als Integrator}
 
 Ist $\omega >> \dfrac{1}{RC}$, ist die Spannung $U_C$ proportional zu $\int U(t) \dif t$.
