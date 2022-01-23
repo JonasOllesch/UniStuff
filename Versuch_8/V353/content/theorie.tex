@@ -34,10 +34,10 @@ Angenommen, zu Beginn sei der Kondensator vollständig ungeladen, gelten die Ran
 
 Der Aufladevorgang wird dann, \eqref{eq:At} entsprechend, mit $τ := \dfrac{1}{RC}$ durch
 
-\begin{equation}
+\begin{equation*}
     Q(t) = C U_0 (1 - \text{e}^{-τ t})
     \label{eq:aufladung}
-\end{equation} beschrieben.
+\end{equation*} beschrieben.
 
 
 \subsubsection{Entladevorgang}
@@ -50,17 +50,17 @@ Zusammen mit der in einem Zeitintervall $\dif t$ fließende Ladung
     \label{eq:difQ}
 \end{equation} lässt sich die zeitliche Ladungsänderung auf die Form
 
-\begin{equation}
+\begin{equation*}
     \frac{\dif Q}{\dif t} = -\frac{1}{RC} Q(t)
-\end{equation} bringen.
+\end{equation*} bringen.
 
 Es gilt $Q(\infty) = 0$, da der Kondensator nach unendlicher Zeit entladen sein soll.
 
 Die Integration nach \eqref{eq:At} liefert nun
 
-\begin{equation}
+\begin{equation*}
     Q(t) = Q(0) \text{e}^{-τ t}\,,
-\end{equation} wobei $τ$ erneut die Zeitkonstante $\dfrac{1}{RC}$ darstellt.
+\end{equation*} wobei $τ$ erneut die Zeitkonstante $\dfrac{1}{RC}$ darstellt.
 
 
 \subsection{Relaxation mit periodischer Anregung}
@@ -87,10 +87,10 @@ Mit dem Ansatz
     U(t) = U_R(t) + U_C(t)
 \end{equation*} ergibt sich mithilfe von \eqref{eq:difQ}, hier
 
-\begin{equation}
+\begin{equation*}
     I(t) = \frac{\dif Q}{\dif t} = C \frac{\dif U_C}{\dif t} \,,
     \label{eq:It}
-\end{equation}
+\end{equation*}
 die für alle Zeitpunkte $t$ gültige Gleichung
 \begin{equation}
     U_0 \cos(\omega t) = - A \omega R C  \sin(\omega t + \varphi) + A(\omega) \cos(\omega t + \varphi) \,.
@@ -131,31 +131,32 @@ Experimentell wird die Phasenverschiebung $\varphi$ dabei \autoref{fig:phasenver
 \end{figure}
 Es gilt
 
-\begin{equation}
+\begin{equation*}
     \varphi = 2 \pi \frac{a}{b} 
     \label{eq:phasebogen}
-\end{equation} bzw.
-
-\begin{equation}
-    \varphi = 360 \frac{a}{b} \,.
-    \label{eq:phasegrad}
-\end{equation}
-
-\subsection{Der RC-Kreis als Integrator}
-
-Ist $\omega >> \dfrac{1}{RC}$, ist die Spannung $U_C$ proportional zu $\int U(t) \dif t$.
-
-Mit 
+\end{equation*} bzw.
 
 \begin{equation*}
-    U(t) = U_R(t) + U_C(t) = I(t) R + U_C(t)
-\end{equation*} ergibt sich mit \eqref{eq:It} und der Annahme, dass $|U_C| << |U_R|$ und $|U_C| << |U|$ 
+    \varphi = 360 \frac{a}{b} \,.
+    \label{eq:phasegrad}
+\end{equation*}
 
-\begin{equation}
-    U(t) = RC \,\frac{\dif U_C}{\dif t}
-\end{equation}
-bzw.
-\begin{equation}
-    U_C(t) = \frac{1}{RC} \int_0^t U(t') \dif t' \,.
-    \label{eq:intkondspann}
-\end{equation}
+%\subsection{Der RC-Kreis als Integrator}
+%
+%Ist $\omega >> \dfrac{1}{RC}$, ist die Spannung $U_C$ proportional zu $\int U(t) \dif t$.
+%
+%Mit 
+%
+%\begin{equation*}
+%    U(t) = U_R(t) + U_C(t) = I(t) R + U_C(t)
+%\end{equation*} ergibt sich mit \eqref{eq:It} und der Annahme, dass $|U_C| << |U_R|$ und $|U_C| << |U|$ 
+%
+%\begin{equation}
+%    U(t) = RC \,\frac{\dif U_C}{\dif t}
+%\end{equation}
+%bzw.
+%\begin{equation}
+%    U_C(t) = \frac{1}{RC} \int_0^t U(t') \dif t' \,.
+%    \label{eq:intkondspann}
+%\end{equation}
+%

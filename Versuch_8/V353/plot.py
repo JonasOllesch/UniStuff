@@ -106,12 +106,15 @@ pyplot.plot(x_ausgleich_b2, y_ausgleich_b2,c='blue',label='Ausgeleichsfunktion')
 writeW(-popt_b2[0],"RC b2")
 writeW(np.sqrt(pcov_b2[0][0]), "RC b2 unc")
 writeW(-1/popt_b2[0],"1/RC b2")
+pyplot.xlim(3000,50000)
 pyplot.xscale('log')
 pyplot.tight_layout()
 pyplot.legend()
 pyplot.grid()
 pyplot.savefig('build/Graph_b2.pdf')
 pyplot.clf()
+
+
 #-------------------------------------------
 fig, ax = pyplot.subplots(subplot_kw={'projection': 'polar'})
 ax.scatter(phi, Messung_b2[:,1],c='red',marker='x',s=8,label ='Messwerte')
@@ -121,5 +124,5 @@ pyplot.tight_layout()
 pyplot.legend()
 pyplot.savefig('build/Graph_c.pdf')
 pyplot.clf()
+
 #----------------------------------------
-#Auswertung
