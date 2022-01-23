@@ -27,6 +27,9 @@ def func_2(f,a):
 def func_13(f,a,U_0):
     return U_0/np.sqrt(1+(f*a)**2)
 
+def func_11(f,a):
+    return np.arctan(-f*a)
+
 Messung_a = np.array(np.genfromtxt('Messung_a.txt'))
 Messung_a[:,0]  = Messung_a[:,0]/1000
 Messung_a[:,1]  = Messung_a[:,1]/1000
@@ -73,9 +76,9 @@ pyplot.xlim(10,50000)
 pyplot.ylim(0,10)
 tmp =np.sqrt(popt_b[0])
 tmp2 =np.sqrt(pcov_b[0][0])
-writeW(ufloat(tmp,tmp2), "Tau 2")
-writeW(popt_b[0], "a2")
-writeW(popt_b[1], "b2")
+writeW(ufloat(tmp,tmp2), "RC 2")
+writeW(popt_b[0], "RC")
+writeW(popt_b[1], "U_0")
 pyplot.xlabel(r'$f \mathbin{/} \unit{\hertz} $')
 pyplot.ylabel(r'$ U \mathbin{/} \unit{\volt} $')
 
@@ -93,11 +96,20 @@ for i in range(15,23):
 writeW(Messung_b2, "b2")
 
 phi = (Messung_b2[:,2]/Messung_b2[:,3]) * 2*np.pi
-pyplot.scatter(Messung_b2[:,1],phi,s=8, c='red',marker='x',label="Messwerte")
+frequenz = Messung_b2[:,0]
+pyplot.scatter(Messung_b2[:,0],phi,s=8, c='red',marker='x',label="Messwerte")
 
-pyplot.xlabel(r'$\phi $')
-pyplot.ylabel(r'$ U \mathbin{/} \unit{\volt} $')
-
+pyplot.xlabel(r'$f \mathbin{/} \unit{\hertz} $')
+pyplot.ylabel(r'$ \phi $')
+writeW(Messung_b2, "b2")
+writeW(phi, "phi")
+popt_b2, pcov_b2 = curve_fit(func_11, frequenz, phi)
+x_ausgleich_b2 = np.logspace(3,5)
+y_ausgleich_b2 = func_11(x_ausgleich_b2, popt_b2[0])
+pyplot.plot(x_ausgleich_b2, y_ausgleich_b2,c='blue',label='Ausgeleichsfuntion')
+writeW(-popt_b2[0],"RC b2")
+writeW(-1/popt_b2[0],"1/RC b2")
+pyplot.xscale('log')
 pyplot.tight_layout()
 pyplot.legend()
 pyplot.grid()
@@ -105,7 +117,7 @@ pyplot.savefig('build/Graph_b2.pdf')
 pyplot.clf()
 #-------------------------------------------
 fig, ax = pyplot.subplots(subplot_kw={'projection': 'polar'})
-ax.scatter(phi, Messung_b2[:,1],c='red',s=8,label ='Messwerte')
+ax.scatter(phi, Messung_b2[:,1],c='red',marker='x',s=8,label ='Ausgeleichsfuntion')
 ax.grid(True)
 
 
