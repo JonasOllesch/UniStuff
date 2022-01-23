@@ -27,7 +27,7 @@ Der Prozess der Relaxation lässt sich konkret am Auf- und Entladevorgang eines 
     \label{fig:rckreis}
 \end{figure}
 
-\subsection{Aufladevorgang}
+\subsubsection{Aufladevorgang}
 
 Befindet sich der Schalter in Position 2, liegt am Kondensator die Spannung $U_0$ an.
 Angenommen, zu Beginn sei der Kondensator vollständig ungeladen, gelten die Randbedingungen $Q(0) = 0$ sowie $Q(\infty) = C U_0$ mit der Kapazität $C$ des Kondensators.
@@ -40,7 +40,7 @@ Der Aufladevorgang wird dann, \eqref{eq:At} entsprechend, mit $τ := \dfrac{1}{R
 \end{equation} beschrieben.
 
 
-\subsection{Entladevorgang}
+\subsubsection{Entladevorgang}
 
 Ist der Kondensator nun aufgeladen, zwischen den Kondensatorplatten liegt also die Spannung $U_C = \dfrac{Q}{C}$, wird der Schalter auf Position 1 gestellt.
 Nach dem ohmschen Gesetz fließt ein Strom $I_C = \dfrac{U_C}{R}$ durch den Widerstand, die Ladung am Kondensator versucht, sich auszugleichen.
@@ -119,6 +119,26 @@ Für $\omega t + \varphi  = \dfrac{\pi}{2}$ folgt aus \eqref{eq:U_0omegagedöns}
 
 Hier ist zu erkennen, dass $A(\omega)$ für niedrige Frequenzen $\omega \rightarrow 0$ gegen $U_0$ geht, für $\omega = \dfrac{1}{RC}$ $A(\omega) = \dfrac{U_0}{\sqrt{2}}$ gilt und $A(\omega)$ für hohe Frequenzen $\omega \rightarrow \infty$ gegen null geht.
 Der RC-Kreis lässt sich also als Tiefpass verwenden.
+
+Experimentell wird die Phasenverschiebung $\varphi$ dabei \autoref{fig:phasenversch} entsprechend ermittelt.
+
+\begin{figure}
+    \centering
+    \includegraphics{figures/Phasenverschiebung.pdf}
+    \caption{Messung der Phasenverschiebung zwischen der Generatorspannung und der Kondensatorspannung\cite{ap08}.}
+    \label{fig:phasenversch}
+\end{figure}
+Es gilt
+
+\begin{equation}
+    \varphi = 2 \pi \frac{a}{b} 
+    \label{eq:phasebogen}
+\end{equation} bzw.
+
+\begin{equation}
+    \varphi = 360 \frac{a}{b} \,.
+    \label{eq:phasegrad}
+\end{equation}
 
 \subsection{Der RC-Kreis als Integrator}
 
