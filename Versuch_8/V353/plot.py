@@ -47,10 +47,10 @@ y_ausgleich_a = func_pol1(x_ausgleich_a, popt_a[0], popt_a[1])
 pyplot.plot(x_ausgleich_a, y_ausgleich_a,label='lineare Regression')
 a1 = ufloat(popt_a[0],np.sqrt(pcov_a[0][0]))
 b1 = ufloat(popt_a[1],np.sqrt(pcov_a[1][1]))
-t = 1/a1
+tau_1 = a1
 writeW(a1, "Erste Messung a1")
 writeW(b1, "Erste Messung b1")
-writeW(t, "RC")
+
 pyplot.ylabel(r'$\ln{(\frac{U_c}{U_0})}$')
 pyplot.xlabel(r'${T}  \mathbin{/} \unit{\second}$')
 
@@ -107,7 +107,7 @@ popt_b2, pcov_b2 = curve_fit(func_11, frequenz, phi)
 x_ausgleich_b2 = np.logspace(3,5)
 y_ausgleich_b2 = func_11(x_ausgleich_b2, popt_b2[0])
 pyplot.plot(x_ausgleich_b2, y_ausgleich_b2,c='blue',label='Ausgeleichsfunktion')
-
+writeW(popt_b2[0], "Beschreibung")
 pyplot.xscale('log')
 pyplot.tight_layout()
 pyplot.legend()
