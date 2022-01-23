@@ -19,7 +19,7 @@ def writeW(Wert,Beschreibung):
     return 0
 
 def func_pol1(x, a, b):
-    return a * x +b
+    return -a * x +b
 
 def func_2(f,a):
     return 1/np.sqrt(1+(f*a)**2)
@@ -47,9 +47,10 @@ y_ausgleich_a = func_pol1(x_ausgleich_a, popt_a[0], popt_a[1])
 pyplot.plot(x_ausgleich_a, y_ausgleich_a,label='lineare Regression')
 a1 = ufloat(popt_a[0],np.sqrt(pcov_a[0][0]))
 b1 = ufloat(popt_a[1],np.sqrt(pcov_a[1][1]))
-
-tau_1 = a1
-
+t = 1/a1
+writeW(a1, "Erste Messung a1")
+writeW(b1, "Erste Messung b1")
+writeW(t, "RC")
 pyplot.ylabel(r'$\ln{(\frac{U_c}{U_0})}$')
 pyplot.xlabel(r'${T}  \mathbin{/} \unit{\second}$')
 
