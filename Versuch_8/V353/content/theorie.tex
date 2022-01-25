@@ -43,7 +43,7 @@ Der Aufladevorgang wird dann, \eqref{eq:At} entsprechend, mit $τ := \dfrac{1}{R
 \subsubsection{Entladevorgang}
 
 Ist der Kondensator nun aufgeladen, zwischen den Kondensatorplatten liegt also die Spannung $U_C = \dfrac{Q}{C}$, wird der Schalter auf Position 1 gestellt.
-Nach dem ohmschen Gesetz fließt ein Strom $I_C = \dfrac{U_C}{R}$ durch den Widerstand und die Ladung am Kondensator versucht sich auszugleichen.
+Nach dem ohmschen Gesetz fließt ein Strom $I_C = \dfrac{U_C}{R}$ durch den Widerstand und die Ladung am Kondensator versucht, sich auszugleichen.
 Zusammen mit der in einem Zeitintervall $\dif t$ fließenden Ladung
 \begin{equation}
     \dif Q = -I_C \,\dif t
@@ -75,8 +75,8 @@ Wie in \autoref{fig:sinspann} dargestellt, wird nun ein RC-Kreis betrachtet, an 
     \label{fig:sinspann}
 \end{figure}
 
-Ist die Frequenz $ω$ der Wechselspannung verschwindend gering gegen $τ$, also $ω << \frac{1}{RC}$, gilt näherungsweise $U_C(t) = U(t)$ für die Spannung $U_C$ am Kondensator.
-Für höhere Frequenzen ist die Auf- bzw. Entladung des Kondensators gegenüber der Generatorspannung stark phasenverschoben.
+Ist die Frequenz $ω$ der Wechselspannung verschwindend gering gegen $τ$, also $ω << \dfrac{1}{RC}$, gilt näherungsweise $U_C(t) = U(t)$ für die Spannung $U_C$ am Kondensator.
+Für höhere Frequenzen ist die Auf- bzw. Entladung des Kondensators gegenüber der Generatorspannung stark phasenverschoben. \\
 
 Mit dem Ansatz
 
@@ -98,7 +98,7 @@ die für alle Zeitpunkte $t$ gültige Gleichung
     \label{eq:U_0omegagedöns}
 \end{equation}
 
-So ergibt sich z.B. für $\omega t = \frac{\pi}{2}$
+So ergibt sich z.B. für $\omega t = \dfrac{\pi}{2}$
 
 \begin{equation*}
     \frac{\sin\varphi}{\cos\varphi} = \tan\varphi = -ω R C
@@ -124,21 +124,22 @@ Der RC-Kreis lässt sich also als Tiefpass verwenden.
 
 Experimentell wird die Phasenverschiebung $\varphi$ dabei \autoref{fig:phasenversch} entsprechend ermittelt.
 
-\begin{figure}
+\begin{figure}[H]
     \centering
     \includegraphics{figures/Phasenverschiebung.pdf}
     \caption{Messung der Phasenverschiebung zwischen der Generatorspannung und der Kondensatorspannung\cite{ap08}.}
     \label{fig:phasenversch}
 \end{figure}
+
 Es gilt
 
 \begin{equation*}
-    \varphi = 2 \pi \frac{a}{b} 
+    \varphi = 2 \pi \,\dfrac{a}{b} 
     \label{eq:phasebogen}
 \end{equation*} bzw.
 
 \begin{equation*}
-    \varphi = 360 \frac{a}{b} \,.
+    \varphi = 360 \,\dfrac{a}{b} \,.
     \label{eq:phasegrad}
 \end{equation*}
 

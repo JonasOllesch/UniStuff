@@ -51,7 +51,7 @@ tau_1 = a1
 writeW(a1, "Erste Messung a1")
 writeW(b1, "Erste Messung b1")
 
-pyplot.ylabel(r'$\ln{(\frac{U_c}{U_0})}$')
+pyplot.ylabel(r'$\ln{\left(\frac{U_c}{U_0} \right)}$')
 pyplot.xlabel(r'${T}  \mathbin{/} \unit{\second}$')
 
 pyplot.xlim(-0.001,0.01)
