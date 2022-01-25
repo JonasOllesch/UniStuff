@@ -1,4 +1,4 @@
-all: build/main.pdf
+all: build/Blatt_13.pdf
 
 # hier Python-Skripte:
 #build/plot.pdf: plot.py ../matplotlibrc ../header-matplotlib.tex | build
@@ -7,11 +7,11 @@ all: build/main.pdf
 #	# and set the matplotlibrc
 #	TEXINPUTS=$$(pwd)/..: MATPLOTLIBRC=../matplotlibrc python plot.py
 
-# hier weitere Abhängigkeiten für build/main.pdf deklarieren:
-#build/main.pdf: build/plot.pdf
+# hier weitere Abhängigkeiten für build/Blatt_13.pdf deklarieren:
+#build/Blatt_13.pdf: build/plot.pdf
 
-build/main.pdf: FORCE | build
-	# to find header and bib files in the main directory
+build/Blatt_13.pdf: FORCE | build
+	# to find header and bib files in the Blatt_13 directory
 	TEXINPUTS=..: \
 	BIBINPUTS=..: \
 	max_print_line=1048576 \
@@ -20,7 +20,7 @@ build/main.pdf: FORCE | build
 	  --output-directory=build \
 	  --interaction=nonstopmode \
 	  --halt-on-error \
-	main.tex
+	Blatt_13.tex
 
 build:
 	mkdir -p build
