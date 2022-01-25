@@ -1,0 +1,137 @@
+\section{Aufgabe 49:}
+
+Zu betrachten sei die Wärmeleitungsgleichung 
+
+\begin{equation*}
+    u_t - 5 u_{xx} = 0 \,, \quad x \in (0,\pi), \quad t \in (0,\infty)
+\end{equation*}
+
+mit den homogenen Dirichlet-Randbedingungen
+
+\begin{equation*}
+    u(0,t) = u(\pi,t) = 0 \,, \quad t \in (0,\infty)
+\end{equation*}
+
+und der Anfangsbedingung 
+
+\begin{equation*}
+    u(x,0) = 3 \sin x - 5 \sin (2x) \,, \quad x \in (0,\pi) \,.
+\end{equation*}
+
+\subsection{a)}
+
+Zunächst soll die Lösung $u$ des Anfangs-Randwertproblems bestimmt werden. \\
+
+Im Allgemeinen wird ein ARWP mit
+\begin{equation*}
+    u_t - c^2 u_{xx} = 0 \,, \quad x \in [0,L] \, \quad t \in [0,\infty]
+\end{equation*} 
+
+gelöst durch 
+
+\begin{equation*}
+    u(x,t) = \sum_{k=1}^\infty b_k \sin\left(\frac{k \pi}{L} x \right) e^{-c^2 \left(\frac{k\pi}{L}\right)^2 t} \,.
+\end{equation*} \\
+
+Mit der Anfangsbedingung $u(x,0) = f(x)$ gilt dabei
+
+\begin{equation*}
+    b_k = \frac{2}{L} \int_0^L f(x) \sin \left(\frac{k \pi}{L}x \right) \,\dif x \,.
+\end{equation*}
+
+Hier ist $L = \pi$, $f(x) = 3 \sin x - 5 \sin (2x)$, es ergibt sich:
+
+\begin{align*}
+    b_k &= \frac{2}{L}   \int_0^L f(x) \sin \left(\frac{k \pi}{L}x \right) \,\dif x \\
+        &= \frac{2}{\pi} \int_0^\pi (3 \sin x - 5 \sin (2x)) \sin (kx) \,\dif x  && || \quad \text{Linearität des Integrals} \\
+        &= \frac{6}{\pi} \int_0^\pi \sin x \sin (kx) \,\dif x - \frac{10}{\pi} \int_0^\pi \sin (2x) \sin (kx) \,\dif x
+\end{align*}
+
+\newpage
+
+Wir lösen nun das erste Integral: \\
+
+Mit 
+\begin{equation*}
+    \sin(α) \sin(β) = \frac{1}{2}(\cos(α-β) - \cos(α+β))
+\end{equation*}
+
+ergibt sich
+
+\begin{align*}
+    \frac{6}{\pi} \int_0^\pi \sin x \sin (kx) \,\dif x &=  \frac{6}{\pi} \int_0^\pi \frac{1}{2} (\cos((1-k)x) - \cos((1+k)x)) \,\dif x \\
+                                                     &=  \frac{3}{\pi} \left[\frac{1}{1-k}\sin((1-k)x) - \frac{1}{1+k} \sin((1+k)x)\right]_0^\pi && || \quad k \neq \pm 1 \\
+                                                     &= 0 \,.
+\end{align*} \\
+
+Analog folgt für das zweite Integral: 
+
+\begin{align*}
+    \frac{10}{\pi} \int_0^\pi \sin (2x) \sin (kx) \,\dif x &=     \frac{10}{\pi} \int_0^\pi \frac{1}{2} (\cos((2-k)x) - \cos((2+k)x)) \,\dif x \\
+                                                         &=     \frac{5}{\pi} \left[\frac{1}{2-k} \sin((2-k)x) - \frac{1}{2+k} \sin((2+k)x)\right]_0^\pi && || \quad k \neq \pm 2 \\
+                                                         &=     0 \,.
+\end{align*}
+
+Da $k \in \mathbb{N}$, ist $\sin((2+k)x) = \sin(nx)$ mit $n \in \mathbb{N}$, für $x=0$ bzw. $x=\pi$ ist \\ $\sin(nx) = \sin(0) = \sin(n\pi) = 0$. \\
+
+Also gilt auch für das gesamte Integral 
+
+\begin{align*}
+    b_k &= \frac{2}{L}   \int_0^L f(x) \sin \left(\frac{k \pi}{L}x \right) \,\dif x \\
+        &= 0  \quad \forall \,k \in \mathbb{N} \mathbin{/} \{1,2\} \,.
+\end{align*}
+
+Die Fälle $k = 1$ und $k = 2$ müssen nun seperat betrachtet werden.
+Dazu muss jeweils das Integral
+
+\begin{equation*}
+    \frac{2}{L} \int_0^L f(x) \sin \left(\frac{k \pi}{L}x \right) \,\dif x
+\end{equation*} mit explizitem $k$ berechnet werden. \\
+
+\newpage
+
+Für $k=1$:
+
+\begin{align*}
+    b_1 &= \frac{2}{\pi} \int_0^\pi (3 \sin x - 5 \sin (2x)) \sin \left(\frac{1\cdot \pi}{\pi}x \right) \,\dif x && || \quad \text{Linearität des Integrals}\\
+        &= \frac{6}{\pi} \int_0^\pi \sin^2 x \,\dif x - \frac{10}{\pi} \int_0^\pi \frac{1}{2} (\cos x - \cos (3x)) \,\dif x  && || \quad \frac{10}{\pi} \int_0^\pi \frac{1}{2} (\cos x - \cos (3x)) \,\dif x = 0\\
+        &= \frac{6}{\pi} \int_0^\pi \sin^2 x \,\dif x \\
+        &= \frac{6}{\pi} \int_0^\pi \frac{1}{2}(1-\cos(2x)) \,\dif x \\
+        &= \frac{3}{\pi} \left[x + \frac{1}{2} \sin(2x) \right]_0^\pi \\
+        &= 3
+\end{align*}
+
+Für $k=2$:
+
+\begin{align*}
+    b_2 &= \frac{2}{\pi} \int_0^\pi (3 \sin x - 5 \sin (2x)) \sin \left(\frac{2\cdot \pi}{\pi}x \right) \,\dif x && || \quad \text{Linearität des Integrals}\\
+        &= \frac{6}{\pi} \int_0^\pi \frac{1}{2}(\cos(-x) - \cos(3x)) \,\dif x - \frac{10}{\pi} \int_0^\pi \frac{1}{2} (1 - \cos(4x)) \,\dif x && || \quad \text{mit } \cos(-x) = \cos x \\
+        &= \frac{3}{\pi} \left[\sin x - \frac{1}{3} \sin (3x) \right]_0^\pi - \frac{5}{\pi} \left[x -\frac{1}{4} \sin(4x) \right]_0^\pi && || \quad \left[\sin x - \frac{1}{3} \sin (3x) \right]_0^\pi = 0 \\
+        &= -\frac{5}{\pi} \cdot \pi \\
+        &= -5
+\end{align*}
+
+Die Lösung $u$ der Wärmeleitungsgleichung ist also gegeben durch
+
+\begin{align*}
+    u(x,t) &= b_1 \sin x \cdot \text{exp}\left(-c^2\frac{1^2 \cdot \pi^2}{L^2}t\right) + b_2 \sin (2x) \cdot \text{exp}\left(-c^2\frac{2^2 \cdot \pi^2}{L^2}t\right) && || \,\, b_1 = 3\,,\,  b_2 =-5\,,\,  c^2 = 5\,,\, L = \pi \\
+           &= 3 \sin x e^{-5t} - 5 \sin(2x) e^{-20t} \,. 
+\end{align*}
+
+\newpage
+
+\subsection{b)}
+
+Gesucht ist nun $\lim_{t \rightarrow \infty} u(x,t)$. \\
+
+Als Summe zweier Exponentialfunktionen mit negativem Exponenten in $t$ ist der Grenzwert für $t \rightarrow \infty$ zwangsläufig null.
+
+\begin{align*}
+    \lim_{t \rightarrow \infty} u(x,t) &=  \lim_{t \rightarrow \infty} (3 \sin x e^{-5t} - 5 \sin(2x) e^{-20t}) \\
+                                       &=  3\sin x \lim_{t \rightarrow \infty} e^{-5t} - 5 \sin(2x) \lim_{t \rightarrow \infty} e^{-20t} \\
+                                       &= 0
+\end{align*}
+
+
+
+

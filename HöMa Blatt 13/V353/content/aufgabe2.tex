@@ -1,0 +1,81 @@
+\section{Aufgabe 50}
+
+Gegeben ist die Wärmeleitungsgleichung
+
+\begin{equation*}
+    u_t - 4u_{xx} = 0\,, \quad x \in (0,3)\,,\, t \in (0,\infty)
+\end{equation*}
+mit den homogenen Neumannrandbedingungen
+\begin{equation*}
+    u_x(0,t) = u_x(3,t) = 0\, \quad t \in (0,\infty)
+\end{equation*}
+und der Anfangsbedingung
+\begin{equation*}
+    u(x,0) = x^2-x\,, \quad x \in (0,3) \,.
+\end{equation*} \\
+
+Die Lösung des ARWP mit Neumannrandbedingungen ist gegeben durch
+
+\begin{equation*}
+    u(x,t) = \frac{a_0}{2} + \sum_{k=1}^\infty a_k \cos\left(\frac{k\pi}{L}x\right) e^{-c^2\left(\frac{k\pi}{L}\right)^2t} \,.
+\end{equation*} \\
+
+Dabei gilt mit der Anfangsbedingung $u(x,0) = f(x)$
+
+\begin{equation*}
+    \frac{a_0}{2} = \frac{1}{L} \int_0^Lf(x) \,\dif x = \lim_{t \rightarrow \infty} u(x,t)
+\end{equation*}
+und
+\begin{equation*}
+    a_k = \frac{2}{L} \int_0^L f(x) \cos\left(\frac{k\pi}{L}x \right) \,\dif x \,.
+\end{equation*} 
+
+\newpage
+
+Mit $L=3$ und $f(x) = x^2 - x$ ergeben sich hier
+
+\begin{align*}
+    a_k &= \frac{2}{3} \int_0^3 (x^2-x) \cos \left(\frac{k\pi}{3}x\right) \,\dif x && || \quad \text{Linearität des Integrals} \\
+        &= \frac{2}{3} \left(\int_0^3 x^2 \cos \left(\frac{k\pi}{3}x\right) \,\dif x  - \int_0^3 x \cos \left(\frac{k\pi}{3}x\right) \,\dif x\right)
+\end{align*} \\
+
+Betrachten wir erneut das erste Integral. Mit partieller Integration ergibt sich
+
+\begin{align*}
+    \frac{2}{3}\int_0^3 x^2 \cos \left(\frac{k\pi}{3}x\right) &= \frac{3}{k\pi} \left[x^2 \sin\left(\frac{k\pi}{3}x\right)\right]_0^3 - \frac{6}{k\pi} \int_0^3 x \sin\left(\frac{k\pi}{3}\right) \,\dif x && || \quad \left[x^2 \sin\left(\frac{k\pi}{3}x\right)\right]_0^3 = 0 \\
+                                                              &= \frac{4}{k\pi} \left(\frac{3}{k\pi} \left(\left[x \cos\left(\frac{k\pi}{3}x\right)\right]_0^3 -  \int_0^3 \cos\left(\frac{k\pi}{3}x\right) \,\dif x \right)\right) \\
+                                                              &= \frac{12}{k^2\pi^2} \left(3 \cos(k\pi) - \frac{3}{k\pi} \left[\sin\left(\frac{k\pi}{3}x\right)\right]_0^3\right) && || \quad \left[\sin\left(\frac{k\pi}{3}x\right)\right]_0^3 = 0 \\
+                                                              &= \frac{36}{k^2\pi^2} \cos(k\pi) && || \quad \cos(k\pi) = (-1)^k \text{ für } k \in \mathbb{N} \\
+                                                              &= \frac{36}{k^2\pi^2} (-1)^k \,.
+\end{align*} \\
+
+Im zweiten Integral ergibt sich mit partieller Integration
+
+\begin{align*}
+    - \frac{2}{3} \int_0^3 x \cos\left(\frac{k\pi}{3}x\right) \,\dif x &= - \frac{6}{k\pi} \left(\left[x\sin\left(\frac{k\pi}{3} x\right)\right]_0^3 - \int_0^3 \sin\left(\frac{k\pi}{3}x\right) \,\dif x\right) && || \quad \left[x\sin\left(\frac{k\pi}{3} x\right)\right]_0^3 = 0 \\
+                                                                       &= - \frac{6}{k^2\pi^2} \left[\cos\left(\frac{k\pi}{3}x\right)\right]_0^3 \\
+                                                                       &= - \frac{6}{k^2\pi^2} (\cos(k\pi) - \cos(0)) && || \cos(k\pi) = (-1)^k \text{ für } k \in \mathbb{N} \\
+                                                                       &= - \frac{6}{k^2\pi^2} ((-1)^k - 1) \,.
+\end{align*}
+
+Insgesamt folgt damit
+
+\begin{align*}
+    a_k &= \frac{2}{3} \int_0^3 (x^2-x) \cos \left(\frac{k\pi}{3}x\right) \,\dif x \\
+        &= \frac{36}{k^2\pi^2} (-1)^k - \frac{6}{k^2\pi^2} ((-1)^k - 1) \\
+        &= \frac{6}{k^2\pi^2}(5 \cdot (-1)^k + 1) \,.
+\end{align*}
+
+Nun $a_0$:
+
+\begin{align*}
+    a_0 &= \frac{1}{3}\int_0^3 (x^2-x) \,\dif x \\
+        &= \frac{1}{3} \left[\frac{1}{3}x^3 - \frac{1}{2}x^2\right]_0^3 \\
+        &= \frac{3}{2}
+\end{align*}
+
+Es ergibt sich also für $u(x,t)$:
+
+\begin{equation*}
+    u(x,t) = \frac{3}{2} + \frac{6}{\pi^2}\sum_{k=1}^\infty \frac{1}{k^2} (5 \cdot (-1)^k + 1) \cos\left(\frac{k\pi}{3}x\right) \text{exp}\left(-\frac{4k^2\pi^2}{9}t\right) \,.
+\end{equation*}
