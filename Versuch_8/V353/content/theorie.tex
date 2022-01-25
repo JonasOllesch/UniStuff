@@ -43,20 +43,21 @@ Der Aufladevorgang wird dann, \eqref{eq:At} entsprechend, mit $τ := \dfrac{1}{R
 \subsubsection{Entladevorgang}
 
 Ist der Kondensator nun aufgeladen, zwischen den Kondensatorplatten liegt also die Spannung $U_C = \dfrac{Q}{C}$, wird der Schalter auf Position 1 gestellt.
-Nach dem ohmschen Gesetz fließt ein Strom $I_C = \dfrac{U_C}{R}$ durch den Widerstand, die Ladung am Kondensator versucht, sich auszugleichen.
-Zusammen mit der in einem Zeitintervall $\dif t$ fließende Ladung
+Nach dem ohmschen Gesetz fließt ein Strom $I_C = \dfrac{U_C}{R}$ durch den Widerstand und die Ladung am Kondensator versucht sich auszugleichen.
+Zusammen mit der in einem Zeitintervall $\dif t$ fließenden Ladung
 \begin{equation}
     \dif Q = -I_C \,\dif t
     \label{eq:difQ}
 \end{equation} lässt sich die zeitliche Ladungsänderung auf die Form
 
-\begin{equation*}
+\begin{equation}
     \frac{\dif Q}{\dif t} = -\frac{1}{RC} Q(t)
-\end{equation*} bringen.
+    \label{eq:Qt}
+\end{equation} bringen.
 
-Es gilt $Q(\infty) = 0$, da der Kondensator nach unendlicher Zeit entladen sein soll.
+Es gilt $Q(\infty) = 0$, da der Kondensator nach unendlicher Zeit vollständig entladen sein soll.
 
-Die Integration nach \eqref{eq:At} liefert nun
+Die zeitliche Integration von \eqref{eq:Qt} liefert nun
 
 \begin{equation*}
     Q(t) = Q(0) \text{e}^{-τ t}\,,
