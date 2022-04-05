@@ -1,5 +1,4 @@
-#Winkel         Strom
-0               195
+#Winkel  in °       Strom  in myA
 5               56
 10              62
 15              67
