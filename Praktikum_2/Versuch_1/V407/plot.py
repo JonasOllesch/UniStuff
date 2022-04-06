@@ -1,19 +1,30 @@
 import matplotlib.pyplot as pyplot
 import numpy as np
+import uncertainties as unp
 from scipy.optimize import curve_fit
 from uncertainties import ufloat
-#To do list Brewster Winkel, Brechungsindex, Vergleich mit der Theorie, Theoriekurven,
+output = ("build/Auswertung")    
+my_file = open(output + '.txt', "w")
 
-#output = ("Messung_1")    
-#my_file = open(output + '.txt', "w")
-#
-#for i in range(0,21):
-#    my_file.write(str(i*5))
-#    my_file.write('\n')
+def writeW(Wert,Beschreibung):
+    my_file.write(str(Beschreibung))
+    my_file.write('\n')
+    try:
+        for i in Wert:
+            my_file.write(str(i))
+            my_file.write('\n')
+    except:
+        my_file.write(str(Wert))
+        my_file.write('\n')
+
+    return 0
+#To do list, Brechungsindex, Vergleich mit der Theorie, Theoriekurven,
+
+
 
 Messung_1 = np.array(np.genfromtxt('Messung_1.txt'))
 Messung_2 = np.array(np.genfromtxt('Messung_2.txt'))
-print(Messung_1)
+
 Messung_1[:,0] = Messung_1[:,0] * (np.pi/180)
 Messung_1[:,1] = Messung_1[:,1]* 1e-6
 
@@ -43,3 +54,49 @@ pyplot.legend()
 pyplot.grid()
 pyplot.savefig('build/Graph_a.pdf')
 pyplot.clf()
+
+#Brewsterwinkel der Brewsterwinkel wird bei 74.5 angesetzt
+n_b = np.tan(74.5*np.pi/180) #Brechungsindex aus Brewsterwinkel
+a_b = 74.5*np.pi/180
+
+
+E = [0]*17
+n_s= [0]*17
+
+#Aus senkrechtem Licht
+for i in range(0,17):
+    E[i] = np.sqrt(Messung_1[i][1]/I_0)
+#n_s[:,0] = ufloat(np.sqrt(1+ (4*np.sqrt(Messung_1[:,1]/I_0))*(np.cos(Messung_1[:,0]))^2/((np.sqrt(Messung_1[:,1]/I_0))-1)^2),(0))
+for i in range(0,17):
+    n_s[i] = np.sqrt(1+ (4*E[i] * (np.cos(Messung_1[i][0]))**2)/np.abs((E[i]-1)**2))
+
+
+n_s_ufloat = ufloat(np.mean(n_s[:]),np.std(n_s[:]))
+
+
+#Brechungsindex aus parallelem Licht
+E_p = [0]*25
+n_p = [0]*25
+for i in range(0,25):
+    E_p[i] = np.sqrt(Messung_2[i][1])
+
+E_0 = np.sqrt(I_0)
+
+for i in range(0,25):
+    tmp1 = (4*E_p[i]*np.cos(Messung_2[i][0]))/(E_p[i]+E_0)
+    tmp2 = (4*E_p[i]*np.cos(Messung_2[i][0]))/(E_p[i]+E_0)**2
+    n_p[i] = np.sqrt(1-tmp1 + tmp2)
+
+
+n_p_ufloat = ufloat(np.mean(n_p),np.std(n_p))
+
+
+
+Brech_ind_dur = (n_p_ufloat + n_s_ufloat + a_b)/3
+print(n_p)
+print(n_s)
+
+print(n_b)
+print(n_p_ufloat)
+print(n_s_ufloat)
+
