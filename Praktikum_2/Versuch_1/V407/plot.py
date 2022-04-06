@@ -23,20 +23,21 @@ Messung_2[:,1] = Messung_2[:,1] *1e-6
 pyplot.scatter(Messung_1[:,0]*(180/np.pi),Messung_1[:,1],s=8, c='red',marker='x',label="senkrechte Polarisation")
 pyplot.scatter(Messung_2[:,0]*(180/np.pi),Messung_2[:,1],s=8, c='blue',marker='+',label="parallele Polarisation")
 
-pyplot.ylabel(r'$I \mathbin{/} \unit{\ampere} $')
-pyplot.xlabel(r'$ \phi \mathbin{/} \unit{°} $')
+pyplot.ylabel(r'$I\mathbin{/} \unit{\ampere}$')
+pyplot.xlabel(r'$\varphi$')
 pyplot.tight_layout()
 pyplot.legend()
 pyplot.grid()
 pyplot.savefig('build/Graph.pdf')
 pyplot.clf()
-#Nullmessung phi = 0 ,offensichtlich A = 195 my bei parallel und senkrechtem Licht
+
+#Nullmessung phi = 0, offensichtlich A = 195 my bei parallel und senkrechtem Licht
 I_0 = 195 * 1e-6
-pyplot.scatter(Messung_1[:,0]*(180/np.pi),Messung_1[:,1]/I_0,s=8, c='red',marker='x',label="senkrechte Polarisation 1")
+pyplot.scatter(Messung_1[:,0]*(180/np.pi),Messung_1[:,1]/I_0,s=8, c='red',marker='x',label="senkrechte Polarisation")
 pyplot.scatter(Messung_2[:,0]*(180/np.pi),Messung_2[:,1]/I_0,s=8, c='blue',marker='+',label="parallele Polarisation")
 
-#pyplot.ylabel(r'$I \mathbin{/} \unit{\ampere} $')
-pyplot.xlabel(r'$ \phi \mathbin{/} \unit{°} $')
+pyplot.xlabel(r'$\varphi$')
+pyplot.ylabel(r'$I \mathbin{/} \unit{\ampere} $')
 pyplot.tight_layout()
 pyplot.legend()
 pyplot.grid()
