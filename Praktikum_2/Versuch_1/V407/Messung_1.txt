@@ -1,4 +1,4 @@
-#Winkel  in °       Strom  in myA
+#Winkel  in °       Strom  in myA senkrechtes Licht
 5               56
 10              62
 15              67

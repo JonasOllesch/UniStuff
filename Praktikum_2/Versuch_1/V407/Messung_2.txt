@@ -1,4 +1,4 @@
-#Winkel         Strom in myA
+#Winkel         Strom in myA paralleles Licht
 5               62
 10              62
 15              60
