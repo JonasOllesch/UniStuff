@@ -50,17 +50,18 @@ pyplot.scatter(Messung_1[:,0]*(180/np.pi),Messung_1[:,1]/I_0,s=8, c='red',marker
 pyplot.scatter(Messung_2[:,0]*(180/np.pi),Messung_2[:,1]/I_0,s=8, c='blue',marker='+',label="parallele Polarisation")
 #irgendwas ist hier noch falsch
 x = np.linspace(0,np.pi/2,1000)
-y = ((np.sqrt(3.7**2-(np.sin(x))**2-np.cos(x)))**4)/(3.7**2-1)**2
+y = ((np.sqrt(3.7**2-(np.sin(x))**2)-np.cos(x))**4)/(3.7**2-1)**2
 x = 180/np.pi *x
-pyplot.plot(x, y,label='senkrecht Theorie')
+pyplot.plot(x, y,c ='green',label='senkrecht Theorie')
 
 
 x = np.linspace(0,np.pi/2,1000)
 y = ((3.7**2*np.cos(x)-np.sqrt(3.7**2-np.sqrt(3.7**2-(np.sin(x)**2))))/((3.7**2*np.cos(x)+np.sqrt(3.7**2-np.sqrt(3.7**2-(np.sin(x)**2))))))**2
 x = 180/np.pi *x
-pyplot.plot(x, y,label='parallel Theorie')
+pyplot.plot(x, y, c='orange',label='parallel Theorie')
 
-
+pyplot.xlim(5,85)
+pyplot.ylim(0,1)
 pyplot.xlabel(r'$\varphi$')
 pyplot.ylabel(r'$I \mathbin{/} \unit{\ampere} $')
 pyplot.tight_layout()
