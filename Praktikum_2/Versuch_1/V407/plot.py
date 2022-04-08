@@ -34,7 +34,6 @@ pyplot.scatter(Messung_1[:,0]*(180/np.pi),Messung_1[:,1],s=8, c='red',marker='x'
 pyplot.scatter(Messung_2[:,0]*(180/np.pi),Messung_2[:,1],s=8, c='blue',marker='+',label="parallele Polarisation")
 
 
-
 pyplot.ylabel(r'$I\mathbin{/} \unit{\ampere}$')
 pyplot.xlabel(r'$\varphi$')
 pyplot.tight_layout()
