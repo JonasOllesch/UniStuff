@@ -35,7 +35,7 @@ pyplot.scatter(Messung_2[:,0]*(180/np.pi),Messung_2[:,1],s=8, c='blue',marker='+
 
 
 pyplot.ylabel(r'$I\mathbin{/} \unit{\ampere}$')
-pyplot.xlabel(r'$\varphi$')
+pyplot.xlabel(r'$alpha$')
 pyplot.tight_layout()
 pyplot.legend()
 pyplot.grid()
@@ -51,18 +51,18 @@ pyplot.scatter(Messung_2[:,0]*(180/np.pi),Messung_2[:,1]/I_0,s=8, c='blue',marke
 x = np.linspace(0,np.pi/2,1000)
 y = ((np.sqrt(3.7**2-(np.sin(x))**2)-np.cos(x))**4)/(3.7**2-1)**2
 x = 180/np.pi *x
-pyplot.plot(x, y,c ='green',label='senkrecht Theorie')
+pyplot.plot(x, y,c ='orange',label='senkrecht Theorie')
 
 
 x = np.linspace(0,np.pi/2,1000)
 y = ((3.7**2*np.cos(x)-np.sqrt(3.7**2-np.sqrt(3.7**2-(np.sin(x)**2))))/((3.7**2*np.cos(x)+np.sqrt(3.7**2-np.sqrt(3.7**2-(np.sin(x)**2))))))**2
 x = 180/np.pi *x
-pyplot.plot(x, y, c='orange',label='parallel Theorie')
+pyplot.plot(x, y, c='green',label='parallel Theorie')
 
 pyplot.xlim(5,85)
 pyplot.ylim(0,1)
-pyplot.xlabel(r'$\varphi$')
-pyplot.ylabel(r'$I \mathbin{/} \unit{\ampere} $')
+pyplot.xlabel(r'$\alpha$')
+pyplot.ylabel(r'$I$') #Hier gibt es keine Einheit mehr, weil das nur ein Intensitätsverhältnis ist
 pyplot.tight_layout()
 pyplot.legend()
 pyplot.grid()
@@ -110,7 +110,7 @@ Brech_ind_dur = (n_p_ufloat + n_s_ufloat + n_b)/3
 print(n_p)
 print(n_s)
 
-
+print('n_b = ')
 print(n_b)
 print(n_p_ufloat)
 print(n_s_ufloat)
