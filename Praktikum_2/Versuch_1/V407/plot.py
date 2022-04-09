@@ -76,43 +76,50 @@ a_b = 74.5*np.pi/180
 
 E = [0]*17
 n_s= [0]*17
+I_s_0 =[0]*17
 
 #Aus senkrechtem Licht
 for i in range(0,17):
     E[i] = np.sqrt(Messung_1[i][1]/I_0)
+    I_s_0[i] = Messung_1[i][1]/I_0
+
+writeW(I_s_0, "I_senkrecht / I_0")
 #n_s[:,0] = ufloat(np.sqrt(1+ (4*np.sqrt(Messung_1[:,1]/I_0))*(np.cos(Messung_1[:,0]))^2/((np.sqrt(Messung_1[:,1]/I_0))-1)^2),(0))
 for i in range(0,17):
     n_s[i] = np.sqrt(1+ (4*E[i] * (np.cos(Messung_1[i][0]))**2)/np.abs((E[i]-1)**2))
 
 
 n_s_ufloat = ufloat(np.mean(n_s[:]),np.std(n_s[:]))
-
+writeW(n_s, "Brechungsindex von senkrechtpolarisierten Licht ")
 
 #Brechungsindex aus parallelem Licht
 E_p = [0]*25
 n_p = [0]*25
+I_p_0 = [0]*25
+
 for i in range(0,25):
     E_p[i] = np.sqrt(Messung_2[i][1])
+    I_p_0[i] = Messung_2[i][1]/I_0
+
+writeW(I_p_0, "Intensität aus parallel polarisiertem Licht")
+
 
 E_0 = np.sqrt(I_0)
+print(E_p[0])
+print(Messung_2[0][0])
+print(E_0)
 
 for i in range(0,25):
     tmp1 = (4*E_p[i]*(np.cos(Messung_2[i][0])**2))/(E_p[i]+E_0)
     tmp2 = (4*E_p[i]*(np.cos(Messung_2[i][0])**2))/(E_p[i]+E_0)**2
     n_p[i] = np.sqrt(1-tmp1 + tmp2)
 
-
+writeW(n_p," Brechungsindizes aus  p-polarisierten Licht")
 n_p_ufloat = ufloat(np.mean(n_p),np.std(n_p))
 
 
 
 Brech_ind_dur = (n_p_ufloat + n_s_ufloat + n_b)/3
-print(n_p)
-print(n_s)
 
-print('n_b = ')
-print(n_b)
-print(n_p_ufloat)
-print(n_s_ufloat)
 print(Brech_ind_dur)
 
