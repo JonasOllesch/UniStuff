@@ -1,18 +1,9 @@
-# Messdaten für Aufgabe 5
-# d = 1/600 mm
-# grüner Laser
--19     0       19
-# roter Laser
--23     0       23
-# d = 1/300 mm
-# grüner Laser
--28     -18.5       9       0       9       18.5        28
-#roter Laser
--35     -22     -11     0       11      22      35
-# d = 1/100 mm
-# grüner Laser
--37     -29.5       -25     -22     -18.5       -15.5       -12.5       -9      -6      -3      0
-3       6           9      12.5    15.5        19          22.5       26      28
-# roter Laser
--31 	    -26.5       -22.5       -19      -15        -11     -7.5        -4      0
-4           7.5        11          15       19         23
+# Messdaten für Aufgabe 4
+# Einfallswinkel α              Brechungswinkel β/α?# Einfallswinkel α              Brechungswinkel β/α?
+# grüner Laser                                      # roter Laser
+28                              88                  28                              83
+30                              78                  30                              77
+35                              65                  35                              64
+40                              57                  40                              56
+45                              52                  45                              51
+50                              46                  50                              45
