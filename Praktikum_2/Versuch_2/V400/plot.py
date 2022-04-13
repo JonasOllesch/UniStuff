@@ -18,10 +18,14 @@ Messung_5a[:,1:] = Messung_5a[:,1:]*np.pi/180
 
 Messung_5b = np.array(np.genfromtxt('Messdaten/Messung_5b.txt'))
 Messung_5b[:,1:] = Messung_5b[:,1:]*np.pi/180
-print(Messung_5b)
+#print(Messung_5b)
 
 Messung_5c = np.array(np.genfromtxt('Messdaten/Messung_5c.txt'))
+Messung_5c[:,1] = Messung_5c[:,1]*np.pi/180
+#print(Messung_5c)
 Messung_5d = np.array(np.genfromtxt('Messdaten/Messung_5d.txt'))
+Messung_5d[:,1] = Messung_5d[:,1]*np.pi/180
+#print(Messung_5d)
 
 #print(Messung_1)
 #print(Messung_2)
@@ -80,19 +84,54 @@ delta_r_2 = (Messung_4[:,2]+Messung_4[:,3])-(beta1_r+beta2_r)
 #Aufgabe 5
 #a
 
-lambda_600 = [0]*2,[0]*2,[0]*2
-for i in range(1,3):
-    for j in range(0,3):
-        if Messung_5a[j][0] != 0:
-            lambda_600[j][i-1] = 1/600 * 1/1000 * np.sin(Messung_5a[j][i])/Messung_5a[j][0]
+lambda_600 = np.zeros((2, 2))
+lambda_600[:,0] = 1/600 * 1/1000 * np.sin(Messung_5a[:,1])/Messung_5a[:,0]
+lambda_600[:,1] = 1/600 * 1/1000 * np.sin(Messung_5a[:,2])/Messung_5a[:,0]
+
+
+
+lambda_600_g_ufloat = ufloat(np.mean(lambda_600[:,0]),np.std(lambda_600[:,0]))
+lambda_600_r_ufloat = ufloat(np.mean(lambda_600[:,1]),np.std(lambda_600[:,1]))
 
         
 #print(lambda_600)
 #b
-lambda_300 = [[0]*2]*8
-for j in range(0,7):
-    for i in range(1,3):
-        if Messung_5b[j][0] != 0:
-            lambda_300[j][i-1] = 1/300 * 1/1000 * np.sin(Messung_5b[j][i])/Messung_5b[j][0]
 
-print(lambda_300)
+
+lambda_300 = np.zeros((6, 2))
+#print(lambda_300)
+
+lambda_300[:,0] = 1/300 * 1/1000 * np.sin(Messung_5b[:,1])/Messung_5b[:,0]
+lambda_300[:,1] = 1/300 * 1/1000 * np.sin(Messung_5b[:,2])/Messung_5b[:,0]
+
+#print(lambda_300)
+lambda_300_g_ufloat = ufloat(np.mean(lambda_300[:,0]),np.std(lambda_300[:,0]))
+lambda_300_r_ufloat = ufloat(np.mean(lambda_300[:,1]),np.std(lambda_300[:,1]))
+#c
+lambda_100_g=np.zeros((19))
+lambda_100_g[:] = 1/100 * 1/1000 * np.sin(Messung_5c[:,1])/Messung_5c[:,0]
+#print(lambda_100_g)
+
+
+#d
+lambda_100_r=np.zeros((14))
+lambda_100_r[:] = 1/100 * 1/1000 * np.sin(Messung_5d[:,1])/Messung_5d[:,0]
+#print(lambda_100_r)
+
+lambda_100_g_ufloat = ufloat(np.mean(lambda_100_g[:]),np.std(lambda_100_g[:]))
+lambda_100_r_ufloat = ufloat(np.mean(lambda_100_r[:]),np.std(lambda_100_r[:]))
+
+print(lambda_600_g_ufloat)
+print(lambda_600_r_ufloat)
+print(lambda_600)
+
+#print(lambda_300_g_ufloat)
+#print(lambda_300_r_ufloat)
+#print(lambda_300)
+
+
+#print(lambda_100_g_ufloat)
+#print(lambda_100_r_ufloat)
+
+#print(lambda_100_g)
+#print(lambda_100_r)

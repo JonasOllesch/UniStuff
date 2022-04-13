@@ -2,5 +2,5 @@
 # d = 1/600 mm
 #Ordnung        grüner Laser       roter Laser
 -1              -19                 -23
-0               0                   0
+#0               0                   0
 1              19                  23
