@@ -49,13 +49,13 @@ pyplot.scatter(Messung_1[:,0]*(180/np.pi),Messung_1[:,1]/I_0,s=8, c='red',marker
 pyplot.scatter(Messung_2[:,0]*(180/np.pi),Messung_2[:,1]/I_0,s=8, c='blue',marker='+',label="parallele Polarisation")
 #irgendwas ist hier noch falsch
 x = np.linspace(0,np.pi/2,1000)
-y = ((np.sqrt(3.7**2-(np.sin(x))**2)-np.cos(x))**4)/(3.7**2-1)**2
+y = ((np.sqrt(3.572**2-(np.sin(x))**2)-np.cos(x))**4)/(3.572**2-1)**2
 x = 180/np.pi *x
 pyplot.plot(x, y,c ='orange',label='senkrecht Theorie')
 
 
 x = np.linspace(0,np.pi/2,1000)
-y = ((3.7**2*np.cos(x)-np.sqrt(3.7**2-np.sqrt(3.7**2-(np.sin(x)**2))))/((3.7**2*np.cos(x)+np.sqrt(3.7**2-np.sqrt(3.7**2-(np.sin(x)**2))))))**2
+y = ((3.572**2*np.cos(x)-np.sqrt(3.572**2-np.sqrt(3.572**2-(np.sin(x)**2))))/((3.572**2*np.cos(x)+np.sqrt(3.572**2-np.sqrt(3.572**2-(np.sin(x)**2))))))**2
 x = 180/np.pi *x
 pyplot.plot(x, y, c='green',label='parallel Theorie')
 
@@ -95,28 +95,43 @@ writeW(n_s, "Brechungsindex von senkrechtpolarisierten Licht ")
 #Brechungsindex aus parallelem Licht
 E_p = [0]*25
 n_p = [0]*25
-I_p_0 = [0]*25
+I_p_rel = [0]*25
 
 for i in range(0,25):
     E_p[i] = np.sqrt(Messung_2[i][1])
-    I_p_0[i] = Messung_2[i][1]/I_0
+    I_p_rel[i] = Messung_2[i][1]/I_0
 
-writeW(I_p_0, "Intensität aus parallel polarisiertem Licht")
+writeW(I_p_rel, "Intensität aus parallel polarisiertem Licht")
 
-
+E_p_rel = np.sqrt(I_p_rel)
 E_0 = np.sqrt(I_0)
-print(E_p[0])
-print(Messung_2[0][0])
-print(E_0)
+
+
 
 for i in range(0,25):
-    tmp1 = (4*E_p[i]*(np.cos(Messung_2[i][0])**2))/(E_p[i]+E_0)
-    tmp2 = (4*E_p[i]*(np.cos(Messung_2[i][0])**2))/(E_p[i]+E_0)**2
-    n_p[i] = np.sqrt(1-tmp1 + tmp2)
+    tmp1 = (E_p[i] + E_0)/(E_p[i]-E_0)
+    tmp2 = (E_p[i] + E_0)/((E_p[i]-E_0)*np.cos(Messung_2[i][0]))    
+    n_p[i] = np.sqrt(1/2* tmp2**2  +np.sqrt(1/4*tmp2**4-tmp1**2*np.tan(Messung_2[i][0])))
+writeW(n_p, "n_p")
+n_p_tmp = [0]*18
 
-writeW(n_p," Brechungsindizes aus  p-polarisierten Licht")
+for i in range(0,18):
+    n_p_tmp[i] = n_p[i]
+
+n_p = n_p_tmp
+print(n_p)
+#for i in range(0,25):
+#    tmp1 = (E_p_rel[i]+1)/((E_p_rel[i]-1)*np.cos(Messung_2[i][0]))
+#    tmp2 = np.sqrt(abs(np.cos(2*Messung_2[i][0])))/(np.sqrt(2))
+#    n_p[i] = np.sqrt((tmp1**2)/2 + np.sqrt(abs(tmp1*tmp2))) 
+
+#for i in range(0,25):
+#    tmp1 = (4*E_p[i]*(np.cos(Messung_2[i][0])**2))/(E_p[i]+E_0)
+#    tmp2 = (4*E_p[i]*(np.cos(Messung_2[i][0])**2))/(E_p[i]+E_0)**2
+#    n_p[i] = np.sqrt(1-tmp1 + tmp2)
+
 n_p_ufloat = ufloat(np.mean(n_p),np.std(n_p))
-
+print(n_p_ufloat)
 
 
 Brech_ind_dur = (n_p_ufloat + n_s_ufloat + n_b)/3
