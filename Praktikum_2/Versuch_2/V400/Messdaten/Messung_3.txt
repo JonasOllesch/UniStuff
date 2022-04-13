@@ -1,18 +1,13 @@
 # Messdaten für Aufgabe 4
-
 # Einfallswinkel α              Brechungswinkel β
-
 # grüner Laser
-
 28                              88
 30                              78
 35                              65
 40                              57
 45                              52
 50                              46
-
 # roter Laser
-
 28                              83
 30                              77
 35                              64

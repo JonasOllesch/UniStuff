@@ -1,6 +1,5 @@
 # Messdaten zu Aufgabe 2
 # Einfallswinkel α in °             Brechungswinkel β in °
-
 0                                   0
 10                                  7.5
 20                                  14
