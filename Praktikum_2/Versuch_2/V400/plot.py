@@ -45,8 +45,10 @@ n_b = np.sin(Messung_2[1:,0])/np.sin(Messung_2[1:,1])
 n_b_ufloat =ufloat(np.mean(n_b),np.std(n_b))
 v_b = (3*1e8)/n_b_ufloat
 #print(n_b)
-#print(n_b_ufloat)
-#print(v_b)
+print('Brechungsindex der Platte')
+print(n_b_ufloat)
+print('Lichtgeschwindigkeit in der Platte')
+print(v_b)
 n_plexiglas = n_b_ufloat
 
 #Aufgabe 3
@@ -55,8 +57,10 @@ beta = np.arcsin(np.sin(Messung_2[1:,0])/n_plexiglas.nominal_value)
 s_2 = 0.0585*np.sin(Messung_2[1:,0] -beta)/np.cos(beta) 
 #print("beta")
 #print(beta*180/np.pi)
-#print(s_1)
-#print(s_2)
+print('Strahlversätze s über Messdaten')
+print(s_1)
+print('Strahlversätze s über berechnetes β')
+print(s_2)
 s_1_ufloat= ufloat(np.mean(s_1),np.std(s_1))
 s_2_ufloat= ufloat(np.mean(s_2),np.std(s_2))
 
