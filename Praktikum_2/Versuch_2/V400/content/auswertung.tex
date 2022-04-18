@@ -160,19 +160,119 @@ Die Tabllen \autoref{tab:messung4a} und \autoref{tab:messung4b} zeigen die Einfa
   \delta = \left( \alpha_{1} + \alpha_{2} \right)- \left( \beta_{1} + \beta_{2} \right) \, .
   \label{eq:ablenkung}
 \end{equation}
+Für den Brechungsindex von Kronglas wird der Wert $ n = 1.555$ \cite{ap04} verwendet.
 
 \subsection{Beugung am Gitter}
 \label{subsec:Gitter}
-Mit Hilfe der Formel \eqref{eq:beugmaxgitter} kann aus den Messdaten die Wellenlänge des Laserlichts berechnet werden, welches auf das Gitter fällt.
+Mit Hilfe der Formel \eqref{eq:beugmaxgitter} kann aus den Messdaten die Wellenlänge des Laserlichts berechnet werden, welches auf das Gitter fällt. Die Werte befinden sich in \autoref{tab:messung5a_grun},\autoref{tab:messung5a_rot},\autoref{tab:messung5b_grun},\autoref{tab:messung5b_rot},\autoref{tab:messung5c_grun} und \autoref{tab:messung5c_rot}.
 \begin{table}[H]
   \centering
-  \caption{Beugung eines Lasers an einem 600 Linien $\mathbin{/} \unit{milli\meter}$.}
-  \label{tab:messung4a}
+  \caption{Beugung eines grünen Lasers an einem 600 Linien $\mathbin{/} \unit{\milli\meter}$.}
+  \label{tab:messung5a_grun}
   \begin{tabular}{S S S}
     \toprule
       {$  \text{k} $} & {$\varphi \mathbin{/} \unit{\degree} $}  & {$ \lambda \mathbin{/} \unit{\nano\meter}$} \\
     \midrule
+        1   & -19 & 542\\
+        -1  & 19  & 542\\
+  \bottomrule
+  \end{tabular}
+\end{table}
 
+\begin{table}[H]
+  \centering
+  \caption{Beugung eines roten Lasers an einem 600 Linien $\mathbin{/} \unit{\milli\meter}$.}
+  \label{tab:messung5a_rot}
+  \begin{tabular}{S S S}
+    \toprule
+      {$  \text{k} $} & {$\varphi \mathbin{/} \unit{\degree} $}  & {$ \lambda \mathbin{/} \unit{\nano\meter}$} \\
+    \midrule
+        1   & -23 & 651\\
+        -1  & 23  & 651\\
+  \bottomrule
+  \end{tabular}
+\end{table}
+
+Es folgen die Wellenlängen für ein 300 Linien $\mathbin{/} \unit{\milli\meter}$ Gitter daraus ergibt sich $ \lambda = 524 \pm 3.4 \, \unit{\nano\meter}$ für den grünen Laser und $ \lambda = 633 \pm 6 \, \unit{\nano\meter}$ für den roten Laser.
+\begin{table}[H]
+  \centering
+  \caption{Beugung eines grünen Lasers an einem 300 Linien $\mathbin{/} \unit{\milli\meter}$.}
+  \label{tab:messung5b_grun}
+  \begin{tabular}{S S S}
+    \toprule
+      {$  \text{k} $} & {$\varphi \mathbin{/} \unit{\degree} $}  & {$ \lambda \mathbin{/} \unit{\nano\meter}$} \\
+    \midrule
+        -3  & -28   & 521 \\
+        -2  & -18.5 & 528 \\
+        -1  & -9    & 521 \\
+        0   &  0    &  0  \\
+        1   & 9     & 521 \\ 
+        2   & 18.5  & 528 \\
+        3   & 28    & 521 \\  
+  \bottomrule
+  \end{tabular}
+\end{table}
+
+\begin{table}[H]
+  \centering
+  \caption{Beugung eines roten Lasers an einem 300 Linien $\mathbin{/} \unit{\milli\meter}$.}
+  \label{tab:messung5b_rot}
+  \begin{tabular}{S S S}
+    \toprule
+      {$  \text{k} $} & {$\varphi \mathbin{/} \unit{\degree} $}  & {$ \lambda \mathbin{/} \unit{\nano\meter}$} \\
+    \midrule
+        -3  & -35 & 637 \\
+        -2  & -22 & 624 \\
+        -1  &  -11  & 636 \\
+        0   &  0   & 0   \\
+        1   & 11   & 636 \\ 
+        2   & 22  & 624 \\
+        3   & 35  & 637 \\  
+  \bottomrule
+  \end{tabular}
+\end{table}
+
+
+Die Mittelwerte für die Wellenlänge für das 100 Linien $\mathbin{/} \unit{\milli\meter}$ sind $ \lambda = 536 \pm 18 \, \unit{\nano\meter}$ für den grünen Laser und $ \lambda = 653 \pm 19 \, \unit{\nano\meter}$ für den roten Laser.
+\begin{table}[H]
+  \centering
+  \caption{Beugung eines grünen Lasers an einem 100 Linien $\mathbin{/} \unit{\milli\meter}$.}
+  \label{tab:messung5c_grun}
+  \begin{tabular}{S S S S S S}
+    \toprule
+      {$  \text{k} $} & {$\varphi \mathbin{/} \unit{\degree} $}  & {$ \lambda \mathbin{/} \unit{\nano\meter}$} & {$  \text{k} $} & {$\varphi \mathbin{/} \unit{\degree} $}  & {$ \lambda \mathbin{/} \unit{\nano\meter}$} \\
+    \midrule
+    -10& -37      &601   &   0 &   0       &0  \\
+    -9 & -29.5    &547   &  1  & 3        &523 \\
+    -8 & -25      &528   &  2  & 6        &522 \\
+    -7 & -22      &535   &  3  & 9        &521 \\
+    -6 & -18.5    &528   &  4  & 12.5     &541 \\
+    -5 & -15.5    &534   &  5  & 15.5     &534 \\
+    -4 & -12.5    &541   &  6  & 19       &542 \\
+    -3 & -9       &521   &  7  & 22.5     &546 \\
+    -2 & -6       &522   &  8  & 26       &547 \\
+    -1 & -3       &523   &  9  & 28       &521 \\   
+  \bottomrule
+  \end{tabular}
+\end{table}
+
+
+\begin{table}[H]
+  \centering
+  \caption{Beugung eines roten Lasers an einem 100 Linien $\mathbin{/} \unit{\milli\meter}$.}
+  \label{tab:messung5c_rot}
+  \begin{tabular}{S S S S S S}
+    \toprule
+      {$  \text{k} $} & {$\varphi \mathbin{/} \unit{\degree} $}  & {$ \lambda \mathbin{/} \unit{\nano\meter}$} & {$  \text{k} $} & {$\varphi \mathbin{/} \unit{\degree} $}  & {$ \lambda \mathbin{/} \unit{\nano\meter}$} \\
+    \midrule
+        -8  &      -31    & 643     &0 &       0     & 0   \\
+        -7  &      -26.5  & 637     &1 &      4      & 697 \\ 
+        -6  &      -22.5  & 637     &2 &      7.5    & 652 \\
+        -5  &      -19    & 651     &3 &      11     & 636 \\
+        -4  &      -15    & 647     &4 &      15     & 647 \\
+        -3  &      -11    &636      &5 &      19     & 651 \\
+        -2  &      -7.5   & 652     &6 &      23     &651  \\
+        -1  &      -4     &697      &\dots&   \dots  & \dots   \\  
   \bottomrule
   \end{tabular}
 \end{table}

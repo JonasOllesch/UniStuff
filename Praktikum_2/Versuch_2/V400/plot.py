@@ -115,8 +115,8 @@ writeW(lambda_600_g_ufloat*1e9, "lambda_600_g_ufloat")
 writeW(lambda_600_r_ufloat*1e9, "lambda_600_r_ufloat")
 
 writeW(lambda_300*1e9, "Lambda 300")
-writeW(lambda_300_g_ufloat**1e9, "lambda_300_g_ufloat")
-writeW(lambda_300_r_ufloat**1e9, "lambda_300_r_ufloat")
+writeW(lambda_300_g_ufloat*1e9, "lambda_300_g_ufloat")
+writeW(lambda_300_r_ufloat*1e9, "lambda_300_r_ufloat")
 
 writeW(lambda_100_g*1e9, "labda_100_g")
 writeW(lambda_100_g_ufloat*1e9, "lambda_100_g_ufloat")
