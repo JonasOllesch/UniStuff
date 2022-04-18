@@ -8,10 +8,14 @@ my_file = open(output + '.txt', "w")
 def writeW(Wert,Beschreibung):
     my_file.write(str(Beschreibung))
     my_file.write('\n')
-    for i in Wert:
-        my_file.write(str(i))
+    try:
+        for i in Wert:
+            my_file.write(str(i))
+            my_file.write('\n')
+    except:
+        my_file.write(str(Wert))
         my_file.write('\n')
-        
+
     return 0
 
 Messung_1 = np.array(np.genfromtxt('Messdaten/Messung_1.txt'))
@@ -106,15 +110,15 @@ lambda_100_r[:] = 1/100 * 1/1000 * np.sin(Messung_5d[:,1])/Messung_5d[:,0]
 lambda_100_g_ufloat = ufloat(np.mean(lambda_100_g[:]),np.std(lambda_100_g[:]))
 lambda_100_r_ufloat = ufloat(np.mean(lambda_100_r[:]),np.std(lambda_100_r[:]))
 
-writeW(lambda_600, "Lambda 600")
-writeW(lambda_600_g_ufloat, "lambda_600_g_ufloat")
-writeW(lambda_600_r_ufloat, "lambda_600_r_ufloat")
+writeW(lambda_600*1e9, "Lambda 600")
+writeW(lambda_600_g_ufloat*1e9, "lambda_600_g_ufloat")
+writeW(lambda_600_r_ufloat*1e9, "lambda_600_r_ufloat")
 
-writeW(lambda_300, "Lambda 300")
-writeW(lambda_300_g_ufloat, "lambda_300_g_ufloat")
-writeW(lambda_300_r_ufloat, "lambda_300_r_ufloat")
+writeW(lambda_300*1e9, "Lambda 300")
+writeW(lambda_300_g_ufloat**1e9, "lambda_300_g_ufloat")
+writeW(lambda_300_r_ufloat**1e9, "lambda_300_r_ufloat")
 
-writeW(lambda_100_g, "labda_100_g")
-writeW(lambda_100_g_ufloat, "lambda_100_g_ufloat")
-writeW(lambda_100_r, "labda_100_r")
-writeW(lambda_100_r_ufloat, "lambda_100_r_ufloat")
+writeW(lambda_100_g*1e9, "labda_100_g")
+writeW(lambda_100_g_ufloat*1e9, "lambda_100_g_ufloat")
+writeW(lambda_100_r*1e9, "labda_100_r")
+writeW(lambda_100_r_ufloat*1e9, "lambda_100_r_ufloat")
