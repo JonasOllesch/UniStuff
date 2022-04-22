@@ -1,6 +1,6 @@
 die Koeffizienten der Ausgleichsfunktion der Plateaufunktion
-0.8466403162055132
-14433.415019762857
+0.8466403162055233
+14433.415019762853
 Näherung der Todzeit
 7.153271977655214e-07
 delta_q
