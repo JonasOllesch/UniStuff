@@ -1,6 +1,29 @@
 die Koeffizienten der Ausgleichsfunktion der Plateaufunktion
 0.8466403162055132
 14433.415019762857
+Beschreibung
+350.0
+360.0
+370.0
+380.0
+390.0
+400.0
+410.0
+420.0
+430.0
+440.0
+450.0
+460.0
+470.0
+480.0
+490.0
+500.0
+510.0
+520.0
+530.0
+540.0
+550.0
+560.0
 Näherung der Totzeit
 7.153271977655214e-07
 delta_q

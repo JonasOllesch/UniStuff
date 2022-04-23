@@ -42,6 +42,8 @@ koeffizienten_plateau = np.polyfit(Messung_1[:22,0],Messung_1[:22,2],1)
 y_plateau = np.polyval(koeffizienten_plateau,x_plateau)
 plt.plot(x_plateau,y_plateau,c='blue',label="Ausgleichsgerade")
 writeW(koeffizienten_plateau, "die Koeffizienten der Ausgleichsfunktion der Plateaufunktion")
+writeW(Messung_1[:22,0], "Beschreibung")
+
 
 plt.xlim(350,700)
 plt.ylim(14400,15800)
