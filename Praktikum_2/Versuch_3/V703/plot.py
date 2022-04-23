@@ -43,7 +43,7 @@ y_plateau = np.polyval(koeffizienten_plateau,x_plateau)
 plt.plot(x_plateau,y_plateau,c='blue',label="Ausgleichsgerade")
 writeW(koeffizienten_plateau, "die Koeffizienten der Ausgleichsfunktion der Plateaufunktion")
 
-plt.xlim(330,700)
+plt.xlim(350,700)
 plt.ylim(14400,15800)
 plt.tight_layout()
 plt.legend()
@@ -54,7 +54,7 @@ plt.clf()
 #Aufgabe c
 #zwei Quellen Methoden
 Totzeit = (22084+18864-40352)/(2*22084*18864) 
-writeW(Totzeit, "Näherung der Todzeit")
+writeW(Totzeit, "Näherung der Totzeit")
 
 
 #Aufgabe d
@@ -62,5 +62,5 @@ delta_Q = np.zeros(36)
 delta_Q[:] = 120*Messung_1[:,1]/Messung_1[:,2]
 writeW(delta_Q, "delta_q")
 delta_Q_in_elementarladung = np.zeros(36)
-delta_Q_in_elementarladung[:] = delta_Q[:]/(1.602176634*1e-16)
+delta_Q_in_elementarladung[:] = delta_Q[:]/(1.602176634e-19)
 writeW(delta_Q_in_elementarladung, "delta_Q_in_elementarladung")
