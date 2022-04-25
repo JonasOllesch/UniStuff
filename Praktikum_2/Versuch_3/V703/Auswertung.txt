@@ -1,6 +1,6 @@
 die Koeffizienten der Ausgleichsfunktion der Plateaufunktion
-0.8466403162055132
-14433.415019762857
+0.8466403162055233
+14433.415019762853
 Beschreibung
 350.0
 360.0
