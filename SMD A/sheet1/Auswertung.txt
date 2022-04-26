@@ -60001,7 +60001,7 @@
   Fehler  0.6666667
  x - Wert  10000000000.0
   Fehler  0.6666667
- Fehler von g(x) 64 None
+ Fehler von g(x) 32 None
  x - Wert  1.0
   Fehler  3.3306690738754696e-16
  x - Wert  1.0023055
@@ -60025,7 +60025,7 @@
  x - Wert  1.0232954
   Fehler  2.220446049250313e-16
  x - Wert  1.0256546
-  Fehler  2.220446049250313e-16
+  Fehler  2.220546049250313e-16
  x - Wert  1.0280192
   Fehler  1.1102230246251565e-16
  x - Wert  1.0303892
