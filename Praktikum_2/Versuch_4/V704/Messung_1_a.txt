@@ -1,12 +1,12 @@
 #die Messung mit dem Blei und dem Cs-135 einem Gamma Strahler N_0 = 845 über 900s
-#Dicke in mm        Teilchenzahl
-1.4                 10708       #100s Messdauer
-1.24                10348       #100s Messdauer
-1.18                9906        #100s Messdauer
-1.34                10048       #100s Messdauer
-1.16                10071       #100s Messdauer
-1.26                10430       #100s Messdauer
-1.14                10182       #100s Messdauer
-10.18               8357        #200s Messdauer
-10.20               9043        #200s Messdauer
-20.10               3375        #200s Messdauer
+#Dicke in mm        Teilchenzahl    Messdauer
+1.4                 10708           100
+1.24                10348           100
+1.18                9906            100
+1.34                10048           100
+1.16                10071           100
+1.26                10430           100
+1.14                10182           100
+10.18               8357            200
+10.20               9043            200
+20.10               3375            200
