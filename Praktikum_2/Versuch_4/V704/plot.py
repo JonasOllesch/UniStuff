@@ -122,13 +122,36 @@ Zählrate_2_poissonabw = np.sqrt(Messung_2[:,1])
 Aktivität_2 =Messung_2[:,1]/Messung_2[:,2]
 Aktivität_2_poissonabw = Zählrate_2_poissonabw[:]/Messung_2[:,2]
 plt.errorbar(Messung_2[:,0], Aktivität_2[:], xerr=Messung_2[:,3], yerr=Aktivität_2_poissonabw[:], fmt='o',marker='x',label="Messdaten")
+
+
+writeW(Messung_2[:6,0], "Test")
+writeW(Messung_2[6:,0], "Test")
+
+x_Ausgleich_2_1 = np.linspace(0,0.0005,10000)
+popt_21, pcov_21 = curve_fit(func_e, Messung_2[6:,0], Aktivität_2[6:])
+y_Ausgleich_2_1 = func_e(x_Ausgleich_2_1,popt_21[0] , popt_21[1])
+plt.plot(x_Ausgleich_2_1,y_Ausgleich_2_1,label="durchgehende Strahlungsintensität",c='r')
+
+
+
+x_Ausgleich_2_2 = np.linspace(0,0.0005,10000)
+popt_22, pcov_22 = curve_fit(func_e, Messung_2[:6,0], Aktivität_2[:6])
+y_Ausgleich_2_2 = func_e(x_Ausgleich_2_2,popt_22[0] , popt_22[1])
+plt.plot(x_Ausgleich_2_2,y_Ausgleich_2_2,label="Untergrundstrahlung",c='b')
+
+R_max= (ufloat(popt_22[1],np.sqrt(pcov_22[1][1]))-ufloat(popt_21[1],np.sqrt(pcov_21[1][1])))/(ufloat(popt_21[0],np.sqrt(pcov_21[0][0]))-ufloat(popt_22[0],np.sqrt(pcov_22[0][0])))
+writeW(R_max, "R_max in J")
+writeW(R_max/(1.602176634*10**-9), "R_max in eV")
+
+
 plt.xlabel(r'$ \text{Dicke D} \, \mathbin{/} \unit{\meter}$')
 plt.ylabel(r'$ \text{A} \cdot \unit{\second}  $')
 plt.yscale('log')
 plt.tight_layout()
 plt.legend()
 plt.grid()
-#plt.ylim(45,200)
-#plt.xlim(0,0.022)
+plt.ylim(0.1,100)
+plt.xlim(0,0.0005)
 plt.savefig('build/Graph_c.pdf')
 plt.clf()
+
