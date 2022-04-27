@@ -1,0 +1,8 @@
+Apsorptionskoeffizien 1 a
+-96.95835274868796
+Null Aktivität 1 a
+4.740244062296622
+Apsorptionskoeffizien 1 b
+-33.48398836618611
+Null Aktivität 1 b
+4.8270247937786195

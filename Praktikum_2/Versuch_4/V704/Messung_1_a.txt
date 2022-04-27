@@ -1,4 +1,4 @@
-#die Messung mit dem Blei und dem Cs-135 einem Gamma Strahler N_0 = 845 über 900s
+#die Messung mit dem Blei und dem Cs-135 einem Gamma Strahler N_0 = 845 über 900s. Die Dicke hat eine Abweichung von +/- 0.02 mm
 #Dicke in mm        Teilchenzahl    Messdauer
 1.4                 10708           100
 1.24                10348           100
