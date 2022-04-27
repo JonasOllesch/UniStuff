@@ -1,0 +1,13 @@
+#die Messung mit Al als Blende und dem Tc-99 als Strahler. Nullmessung XXXXX in 900s
+#Dicke im mum   #Abweichung  in mum   #Teilchenzahl #Messdauer
+482             1                       339         500s
+444             2                       335         500s
+400             1                       338         500s
+338             5                       299         400s
+302             1                       384         400s
+253             1                       288         300s
+200             1                       655         300s
+160             1                       1207        200s
+152             0.5                     1957        200s
+125             0                       1906        200s
+100             0                       8006        200s

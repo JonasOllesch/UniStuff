@@ -1,0 +1,9 @@
+#die Messung mit Kupfer und dem Cs-135 einem Gamma Strahler N_0 = 845 über 900s  bei allen Messungen +/- 0.02mm
+#Dicke in mm        Teilchenzahl
+0.7                 10948       #100s Messdauer
+0.62                11137       #100s Messdauer
+0.51                11065       #100s Messdauer
+0.54                10953       #100s Messdauer
+4.94                18462       #100s Messdauer
+20.00               9863        #200s Messdauer
+20.10               10257       #200s Messdauer
