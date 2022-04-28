@@ -66,7 +66,8 @@ popt, pcov = curve_fit(func_e, Messung_1_a[:,0], Aktivität_1_a_min_a0)
 y_Ausgleich_1_a = func_e(x_Ausgleich_1_a,popt[0] , popt[1])
 writeW(popt[0],"Apsorptionskoeffizien 1 a")
 writeW(popt[1],"Null Aktivität 1 a")
-
+writeW(np.sqrt(pcov[0][0]),"Apsorptionskoeffizien 1 a Abweichung")
+writeW(np.sqrt(pcov[1][1]),"Null Aktivität 1 a Abweichung")
 
 plt.plot(x_Ausgleich_1_a,y_Ausgleich_1_a,label="Ausgleichsgerade",c='r')
 plt.errorbar(Messung_1_a[:,0], Aktivität_1_a_min_a0[:], xerr=0.02*(10**-3), yerr=Aktivität_1_a_min_a0_poissonabw[:], fmt='o',marker='x',label="Messdaten")
@@ -124,8 +125,6 @@ Aktivität_2_poissonabw = Zählrate_2_poissonabw[:]/Messung_2[:,2]
 plt.errorbar(Messung_2[:,0], Aktivität_2[:], xerr=Messung_2[:,3], yerr=Aktivität_2_poissonabw[:], fmt='o',marker='x',label="Messdaten")
 
 
-writeW(Messung_2[:6,0], "Test")
-writeW(Messung_2[6:,0], "Test")
 
 x_Ausgleich_2_1 = np.linspace(0,0.0005,10000)
 popt_21, pcov_21 = curve_fit(func_e, Messung_2[6:,0], Aktivität_2[6:])
@@ -155,3 +154,8 @@ plt.xlim(0,0.0005)
 plt.savefig('build/Graph_c.pdf')
 plt.clf()
 
+writeW( Aktivität_a0," Aktivität_a0") 
+writeW (Aktivität_a0_abw,"Aktivität_a0_abw")
+
+writeW(Aktivität_1_a_min_a0, "Aktivität_1_a_min_a0")
+writeW(Aktivität_1_a_min_a0_poissonabw, "Aktivität_1_a_min_a0_poissonabw")
