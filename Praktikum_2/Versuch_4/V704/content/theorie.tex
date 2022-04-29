@@ -100,7 +100,7 @@ Elektronen, den Kernen sowie ihren elekrischen Feldern interagieren.
 Die dabei möglichen Annihilationsprozesse sowie der inelastischen
 und elastischen Streuung sind dabei in \autoref{fig:abb2} dargestellt.
 
-\begin{figure}
+\begin{figure}[H]
     \centering
     \includegraphics{figures/abb2.pdf}
     \caption{Tabellarische Darstellung der verschiedenen Wechselwirkungsmöglichkeiten von $\gamma$-Strahlung mit Materie\cite{ap04}.}
@@ -108,7 +108,15 @@ und elastischen Streuung sind dabei in \autoref{fig:abb2} dargestellt.
 \end{figure}
 
 Am wichtigsten sind dabei der Photoeffekt, der Comptoneffekt sowie
-die Paarbildung.
+die Paarbildung, deren Anteile abhängig von der Energie in \autoref{fig:abb4}
+dargestellt ist.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics{figures/abb4.pdf}
+    \caption{Absorptionskoeffizient $\mu$ in Abhängigkeit von der Energie am Beispiel von Germanium \cite{ap04}.}
+    \label{fig:abb4}
+\end{figure}
 
 Beim Photoeffekt wechselwirkt das Photon mit einem Hüllenelektron und
 wird dabei vernichtet; das Elektron wird aus seiner Bindung entfernt.
@@ -138,6 +146,144 @@ Der Wirkungsquerschnitt $\sigma_{\mathrm{com}}$ ist dabei gegeben durch
     \left(\frac{1 + \varepsilon}{\varepsilon^2} 
     \left[\frac{2(1 + \varepsilon)}{1 + 2 \varepsilon} -\frac{1}{\varepsilon}\right]
     + \frac{1}{2 \varepsilon} \ln(1 + 2 \varepsilon) 
-    - \frac{1 + 3 \varepsilon}{(1 + 2 \varepsilon)^2}\right)
+    - \frac{1 + 3 \varepsilon}{(1 + 2 \varepsilon)^2}\right) \,,
     \label{eq:wirkungsquercompton}
 \end{equation}
+wobei $\varepsilon$ mit
+\begin{equation*}
+    e := \frac{E_\gamma}{m_0 c^2}
+\end{equation*}
+das Verhältnis der Quantenenergie $E_\gamma$ zur Ruheenergie 
+des Elektrons darstellt.
+Dabei ist $r_\text{e}$ der 'klassische Elektronenradius' und durch
+\begin{equation*}
+    r_\text{e} = \frac{\text{e}_0^2}
+    {4 \pi \varepsilon_0 m_0 c^2} = 2,82 \cdot 10^{-15} \,\unit{\meter}
+\end{equation*}
+gegeben. \\
+
+Nach \eqref{eq:wirkungsquerschnitt} ergibt sich der Absorptionskoeffizient
+$\mu_{\text{com}}$, also der durch den Comptoneffekt bedingte
+Absorptionskoeffizient, zu
+\begin{equation*}
+    \mu_{\text{com}} = n \sigma_{text{com}} =  
+    \frac{z N_L \rho}{M} \sigma_{\text{com}} \,.
+\end{equation*} 
+
+Strebt nun die Energie gegen null, ergibt sich im Grenzwert
+der Thomsonsche Wirkungsquerschnitt $\sigma_{\text{Th}}$ mit
+
+\begin{equation*}
+    \lim_{\varepsilon \rightarrow 0} \sigma_{\text{com}} =
+    \frac{4}{3} \cdot 2 \pi r_{\text{e}}^2 \,.
+\end{equation*} \\
+
+Ist die Energie des $\gamma$-Quants größer als die 
+doppelte Ruhemasse des Elektrons, kann es im Prozess
+der Paarerzeugung unter Freisetzung eines Elektrons und
+Positrons vernichtet werden.
+Dabei wird von einem Stoßpartner der zur Initiation der Paarbildung
+fehlende Quantenimpuls übernommen.
+Zumeist handelt es sich bei diesen Stoßpartnern um die 
+Atomkerne des Absorbermaterials. \\
+
+Für den Wirkungsquerschnitt der Paarbildung gilt $\sigma_{\text{p} ~ z^2}$.
+
+
+\subsubsection*{Herkunft und Eigenschaften der $\beta$-Strahlung}
+
+Je nach Zerfallsprozess wird von $\beta^+$- bzw. 
+$\beta^-$-Strahlung gesprochen.
+
+Dabei entsteht $\beta^-$-Strahlung aus
+\begin{equation*}
+    \text{n} \rightarrow \text{p} + \text{e}^- + \bar{\nu}_e
+\end{equation*}
+und $\beta^+$- Strahlung aus
+\begin{equation*}
+    \text{p} \rightarrow \text{n} + \text{e}^+ + \nu_e \,.
+\end{equation*}
+
+Diese Zerfälle erklären auch das in \autoref{fig:abb5} kontinuierliche Emissionsspektrum
+eines $\beta$-Strahlers, da die bei der Umwandlung freiwerdende Energie
+gleichmäßtig auf das Elektron/Positron und das Anti-Elektron-Neutrino/Elektron-Neutrino
+verteilt.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics{figures/abb5.pdf}
+    \caption{Emissionsspektrum eines $\beta$-Strahlers \cite{ap04}.}
+    \label{fig:abb5}
+\end{figure}
+
+
+\subsubsection*{Wechselwirkung von $\beta$-Strahlung mit Materie}
+
+Die Wechselwirkungen von $\beta$-Strahulng mit Materie lässt sich
+im Grunde auf drei verschiedene Wechselwirkungen zurückführen.
+
+\subsubsection*{Rutherford-Streuung}
+
+Bei der Rutherford-Streuung interagieren die Elektronen mit 
+den Coulombfeldern der Absorberkerne, ihre Bahnen werden stark abgelenkt,
+die Strahlungsintensität des zunächst parallelen Strahls nimmt also ab,
+und sie erfahren eine geringe Bremsung.
+
+\subsection*{Bremsstrahlung}
+
+Bei dem Eintritt in das Coulombfeld eines Atomkerns erfahren
+alle geladenen Teilchen, also auch $\beta$-Teilchen, eine Beschleunigung.
+Dabei muss das Teilchen Energie in Form von Strahlung abgeben, die Bremsstrahlung genannt wird. \\
+
+Der Wirkungsquerschnitt $\sigma_{\text{Br}}$ der Bremsstrahlung lässt
+sich dabei aus
+\begin{equation*}
+    \sigma_{\text{Br}} = \alpha r_{\text{e}}^2 z^2
+\end{equation*}
+berechnen.
+
+Für die Energie, die ein $\beta$-Teilchen beim Absorberdurchgang
+durch die Bremsstrahlung verliert, ergibt sich
+\begin{equation*}
+    E_\text{Br}[\unit{\kilo\eV}] \approx 7 \cdot 10^{-7} z E_\beta^2 \,,
+\end{equation*}
+wobei $E_\beta$ die Energie des einfallenden $\beta$-Teilchens beschreibt.
+
+
+\subsubsection*{Ionisation und Anregung}
+
+Streut ein $\beta$-Teilchen inelastisch an den Elektronen des
+Absorbers, werden diese Elektronen angeregt oder vollständig aus dem 
+Atom gelöst.
+Mit der Ionisationsenergie $I$ ist der Energieverlust pro Absorberschichtdicke
+gegeben durch
+\begin{equation*}
+    \frac{\dif E}{\dif x} \approx - \frac{2 \pi r_\text{e}^2}{E_\beta} \frac{N_L \rho}{M}
+    \ln(\frac{E_\beta}{I}) \,.
+\end{equation*}
+
+
+\subsubsection*{Gestalt der Absorptionskurve}
+
+Für einen Absorber der Schichtdicke $D$ ist die Massenbelegung $R$ gegeben durch
+\begin{equation*}
+    R = \rho D \,.
+\end{equation*}
+
+Nach einer bestimmten Massenbelegung $R_{\text{max}}$ nimmt ein
+Detektor eine größtenteils schichtdickenunabhängige Intensität auf.
+Um $R_\text{max}$ mit der dazugehörigen Energie $E_\text{max}$ in
+Beziehung zu setzen, lässt sich
+
+\begin{equation}
+    E_\text{max} = 1,92 \sqrt{R_\text{max}^2 + 0,22 R_\text{max}}
+\end{equation}
+verwenden.
+
+Eine typische Absorptionskurve ist in \autoref{fig:abb6} dargestellt.
+\begin{figure}
+    \centering
+    \includegraphics{figures/abb6.pdf}
+    \caption{Absorptionskurve eines natürlichen $\beta$-Strahlers \cite{ap04}.}
+    \label{fig:abb6}
+\end{figure}

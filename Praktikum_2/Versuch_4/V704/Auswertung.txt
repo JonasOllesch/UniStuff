@@ -1,5 +1,5 @@
 Apsorptionskoeffizien 1 a
--96.95835274868796
+-9.695835274868796e+01
 Null Aktivität 1 a
 4.740244062296622
 Apsorptionskoeffizien 1 a Abweichung
@@ -7,7 +7,7 @@ Apsorptionskoeffizien 1 a Abweichung
 Null Aktivität 1 a Abweichung
 0.014235354574739865
 Apsorptionskoeffizien 1 b
--33.48398836618611
+-3.348398836618611e+01
 Null Aktivität 1 b
 4.8270247937786195
 R_max in J
@@ -17,7 +17,7 @@ R_max in eV
  Aktivität_a0
 0.9388888888888889
 Aktivität_a0_abw
-0.032298759674996964
+3.2298759674996964e-02
 Aktivität_1_a_min_a0
 106.14111111111112
 102.54111111111112
