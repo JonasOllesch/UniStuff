@@ -136,7 +136,7 @@ plt.plot(x_Ausgleich_2_1,y_Ausgleich_2_1,label="durchgehende Strahlungsintensit�
 x_Ausgleich_2_2 = np.linspace(0,0.0005,10000)
 popt_22, pcov_22 = curve_fit(func_e, Messung_2[:6,0], Aktivit채t_2[:6])
 y_Ausgleich_2_2 = func_e(x_Ausgleich_2_2,popt_22[0] , popt_22[1])
-plt.plot(x_Ausgleich_2_2,y_Ausgleich_2_2,label="Untergrundstrahlung",c='b')
+plt.plot(x_Ausgleich_2_2*2,6989*1000,y_Ausgleich_2_2,label="Untergrundstrahlung",c='b')
 
 R_max= (ufloat(popt_22[1],np.sqrt(pcov_22[1][1]))-ufloat(popt_21[1],np.sqrt(pcov_21[1][1])))/(ufloat(popt_21[0],np.sqrt(pcov_21[0][0]))-ufloat(popt_22[0],np.sqrt(pcov_22[0][0])))
 writeW(R_max, "R_max in J")
@@ -159,3 +159,8 @@ writeW (Aktivit채t_a0_abw,"Aktivit채t_a0_abw")
 
 writeW(Aktivit채t_1_a_min_a0, "Aktivit채t_1_a_min_a0")
 writeW(Aktivit채t_1_a_min_a0_poissonabw, "Aktivit채t_1_a_min_a0_poissonabw")
+
+writeW(popt_21, "popt_21")
+writeW(popt_22, "popt_21")
+
+#2,6989*1000
