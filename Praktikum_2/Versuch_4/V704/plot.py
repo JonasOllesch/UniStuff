@@ -170,10 +170,14 @@ writeW (Aktivität_a0_abw,"Aktivität_a0_abw")
 writeW(Aktivität_1_a_min_a0, "Aktivität_1_a_min_a0")
 writeW(Aktivität_1_a_min_a0_poissonabw, "Aktivität_1_a_min_a0_poissonabw")
 
+
+popt_21[1] = np.exp(popt_21[1])
+popt_22[1] = np.exp(popt_22[1])
+
+
 writeW(popt_21, "popt_21")
 writeW(popt_22, "popt_21")
 
-#2,6989*1000
 writeW(Aktivität_1_b_min_b0, "Aktivität_1_b_min_a0")
 writeW(Aktivität_1_b_min_b0_poissonabw, "Aktivität_1_b_min_a0_poissonabw")
 
