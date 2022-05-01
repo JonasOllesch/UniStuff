@@ -72,7 +72,7 @@ writeW(np.sqrt(pcov[1][1]),"Null Aktivität 1 a Abweichung")
 plt.plot(x_Ausgleich_1_a,y_Ausgleich_1_a,label="Ausgleichsgerade",c='r')
 plt.errorbar(Messung_1_a[:,0], Aktivität_1_a_min_a0[:], xerr=0.02*(10**-3), yerr=Aktivität_1_a_min_a0_poissonabw[:], fmt='o',marker='x',label="Messdaten")
 plt.xlabel(r'$ \text{Dicke D} \, \mathbin{/} \unit{\meter}$')
-plt.ylabel(r'$ \left( \text{A} - \text{A}_0 \right) \cdot \unit{\second}  $')
+plt.ylabel(r'$ \left(\text{A} - \text{A}_0 \right) \mathbin{/} \unit{\frac{1}{\second}}  $')
 plt.yscale('log')
 plt.tight_layout()
 plt.legend()
@@ -98,8 +98,11 @@ Aktivität_1_b_min_b0_poissonabw =Aktivität_1_b_poissonabw
 x_Ausgleich_1_b = np.linspace(0,0.022,10000)
 popt, pcov = curve_fit(func_e, Messung_1_b[:,0], Aktivität_1_b_min_b0)
 y_Ausgleich_1_b = func_e(x_Ausgleich_1_b,popt[0] , popt[1])
-writeW(popt[0],"Apsorptionskoeffizien 1 b")
+
+writeW(popt[0],"Apsorptionskoeffizient 1 b")
+writeW(np.sqrt(pcov[0][0]),"Apsorptionskoeffizien 1 b Abweichung")
 writeW(popt[1],"Null Aktivität 1 b")
+writeW(np.sqrt(pcov[1][1]),"Null Aktivität 1 b Abweichung")
 plt.plot(x_Ausgleich_1_b,y_Ausgleich_1_b,label="Ausgleichsgerade",c='r')
 plt.errorbar(Messung_1_b[:,0], Aktivität_1_b_min_b0[:], xerr=0.02*(10**-3), yerr=Aktivität_1_b_min_b0_poissonabw[:], fmt='o',marker='x',label="Messdaten")
 
@@ -122,6 +125,9 @@ plt.clf()#Dieser Plot sieht noch dümmer aus
 Zählrate_2_poissonabw = np.sqrt(Messung_2[:,1])
 Aktivität_2 =Messung_2[:,1]/Messung_2[:,2]
 Aktivität_2_poissonabw = Zählrate_2_poissonabw[:]/Messung_2[:,2]
+Aktivität_2_min_a0 = Aktivität_2 - Aktivität_20
+Aktivität_2_min_a0_poissonabw = Aktivität_2_poissonabw - Aktivität_20_abw
+
 plt.errorbar(Messung_2[:,0], Aktivität_2[:], xerr=Messung_2[:,3], yerr=Aktivität_2_poissonabw[:], fmt='o',marker='x',label="Messdaten")
 
 
@@ -131,16 +137,20 @@ popt_21, pcov_21 = curve_fit(func_e, Messung_2[6:,0], Aktivität_2[6:])
 y_Ausgleich_2_1 = func_e(x_Ausgleich_2_1,popt_21[0] , popt_21[1])
 plt.plot(x_Ausgleich_2_1,y_Ausgleich_2_1,label="durchgehende Strahlungsintensität",c='r')
 
-
-
 x_Ausgleich_2_2 = np.linspace(0,0.0005,10000)
 popt_22, pcov_22 = curve_fit(func_e, Messung_2[:6,0], Aktivität_2[:6])
 y_Ausgleich_2_2 = func_e(x_Ausgleich_2_2,popt_22[0] , popt_22[1])
 plt.plot(x_Ausgleich_2_2*2,6989*1000,y_Ausgleich_2_2,label="Untergrundstrahlung",c='b')
 
+writeW(popt_21, 'Ausgleichgerade 1')
+writeW(popt_22, 'Ausgleichgerade 2')
+
 R_max= (ufloat(popt_22[1],np.sqrt(pcov_22[1][1]))-ufloat(popt_21[1],np.sqrt(pcov_21[1][1])))/(ufloat(popt_21[0],np.sqrt(pcov_21[0][0]))-ufloat(popt_22[0],np.sqrt(pcov_22[0][0])))
-writeW(R_max, "R_max in J")
-writeW(R_max/(1.602176634*10**-9), "R_max in eV")
+writeW(R_max, "R_max in g/m^2")
+
+E_max = 1.92*np.sqrt(R_max.nominal_value**2 + 0.22*R_max.nominal_value)
+writeW(E_max, "E_max in J")
+writeW(E_max/6.242e+18, "E_max in eV")
 
 
 plt.xlabel(r'$ \text{Dicke D} \, \mathbin{/} \unit{\meter}$')
@@ -164,3 +174,8 @@ writeW(popt_21, "popt_21")
 writeW(popt_22, "popt_21")
 
 #2,6989*1000
+writeW(Aktivität_1_b_min_b0, "Aktivität_1_b_min_a0")
+writeW(Aktivität_1_b_min_b0_poissonabw, "Aktivität_1_b_min_a0_poissonabw")
+
+writeW(Aktivität_2_min_a0, "Aktivität_2_min_a0")
+writeW(Aktivität_2_min_a0_poissonabw, "Aktivität_2_min_a0_poissonabw")
