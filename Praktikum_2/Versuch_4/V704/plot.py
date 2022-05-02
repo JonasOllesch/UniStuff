@@ -79,6 +79,7 @@ plt.legend()
 plt.grid()
 plt.ylim(0,120)
 plt.xlim(1e-4,0.021)
+plt.yticks(np.arange(20, 100, step=10))
 plt.savefig('build/Graph_a.pdf')# Der Plot sieht ja so kacke aus aber da kann man nichts machen. Irgendwer hat halt dumme Messwerte augenommen.(Ich war es nicht ;))
 plt.clf()
 
@@ -115,6 +116,7 @@ plt.legend()
 plt.grid()
 plt.ylim(45,200)
 plt.xlim(0,0.022)
+plt.yticks(np.arange[20,30,40,60,100,160,200])
 plt.savefig('build/Graph_b.pdf')# Der Plot sieht ja so kacke aus aber da kann man nichts machen. Irgendwer hat halt dumme Messwerte augenommen.(Ich war es nicht ;))
 plt.clf()#Dieser Plot sieht noch dümmer aus
 
@@ -178,6 +180,11 @@ popt_22[1] = np.exp(popt_22[1])
 
 writeW(popt_21, "popt_21")
 writeW(popt_22, "popt_22")
+
+writeW(np.sqrt(pcov_21), "np.sqrt pcov_21")
+writeW(np.sqrt(pcov_22), "np.sqrt pcov_22")
+
+
 b_21 = ufloat(popt_21[1],np.sqrt(pcov_21[1][1]))
 b_22 = ufloat(popt_22[1],np.sqrt(pcov_22[1][1]))
 
