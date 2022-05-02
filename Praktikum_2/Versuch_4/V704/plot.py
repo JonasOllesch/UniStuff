@@ -47,7 +47,7 @@ Messung_2 = np.array(np.genfromtxt('Messung_2.txt'))
 Messung_2[:,0] = Messung_2[:,0]*(10**-6)
 Messung_2[:,3] = Messung_2[:,3]*(10**-6)
 
-
+writeW(np.sqrt(Messung_2), "Messung_2 Abweichung")
 
 
 Zählrate_1_a_poissonabw = np.sqrt(Messung_1_a[:,1])
@@ -128,19 +128,19 @@ Aktivität_2_poissonabw = Zählrate_2_poissonabw[:]/Messung_2[:,2]
 Aktivität_2_min_a0 = Aktivität_2 - Aktivität_20
 Aktivität_2_min_a0_poissonabw = Aktivität_2_poissonabw - Aktivität_20_abw
 
-plt.errorbar(Messung_2[:,0], Aktivität_2[:], xerr=Messung_2[:,3], yerr=Aktivität_2_poissonabw[:], fmt='o',marker='x',label="Messdaten")
+plt.errorbar(Messung_2[:,0]*2.6989*1000, Aktivität_2[:], xerr=Messung_2[:,3], yerr=Aktivität_2_poissonabw[:], fmt='o',marker='x',label="Messdaten")
 
 
 
-x_Ausgleich_2_1 = np.linspace(0,0.0005,10000)
-popt_21, pcov_21 = curve_fit(func_e, Messung_2[6:,0], Aktivität_2[6:])
+x_Ausgleich_2_1 = np.linspace(0,1.4,1000)
+popt_21, pcov_21 = curve_fit(func_e, Messung_2[6:,0]*2.6989*1000, Aktivität_2[6:])
 y_Ausgleich_2_1 = func_e(x_Ausgleich_2_1,popt_21[0] , popt_21[1])
 plt.plot(x_Ausgleich_2_1,y_Ausgleich_2_1,label="durchgehende Strahlungsintensität",c='r')
 
-x_Ausgleich_2_2 = np.linspace(0,0.0005,10000)
-popt_22, pcov_22 = curve_fit(func_e, Messung_2[:6,0], Aktivität_2[:6])
+x_Ausgleich_2_2 = np.linspace(0,1.4,1000)
+popt_22, pcov_22 = curve_fit(func_e, Messung_2[:6,0]*2.6989*1000, Aktivität_2[:6])
 y_Ausgleich_2_2 = func_e(x_Ausgleich_2_2,popt_22[0] , popt_22[1])
-plt.plot(x_Ausgleich_2_2*2,6989*1000,y_Ausgleich_2_2,label="Untergrundstrahlung",c='b')
+plt.plot(x_Ausgleich_2_2,y_Ausgleich_2_2,label="Untergrundstrahlung",c='b')#*2.6989*1000 muss da noch irgendwie rein
 
 writeW(popt_21, 'Ausgleichgerade 1')
 writeW(popt_22, 'Ausgleichgerade 2')
@@ -148,19 +148,20 @@ writeW(popt_22, 'Ausgleichgerade 2')
 R_max= (ufloat(popt_22[1],np.sqrt(pcov_22[1][1]))-ufloat(popt_21[1],np.sqrt(pcov_21[1][1])))/(ufloat(popt_21[0],np.sqrt(pcov_21[0][0]))-ufloat(popt_22[0],np.sqrt(pcov_22[0][0])))
 writeW(R_max, "R_max in g/m^2")
 
-E_max = 1.92*np.sqrt(R_max.nominal_value**2 + 0.22*R_max.nominal_value)
-writeW(E_max, "E_max in J")
-writeW(E_max/6.242e+18, "E_max in eV")
+E_max = 1.92*(R_max**2 + 0.22*R_max)**(1/2)
+writeW(E_max, "E_max in MeV")
+#writeW(E_max/(1.6*1e-19), "E_max in eV") 
+#writeW(E_max/6.242e+18, "E_max in eV") #Was soll das denn du willst doch in evolt umrechnen oder ? 
 
 
-plt.xlabel(r'$ \text{Dicke D} \, \mathbin{/} \unit{\meter}$')
+plt.xlabel(r'$ \text{Massenbelegung R} \, \mathbin{/} \dfrac{\unit{\kilo\gram}}{\unit{\meter²}}$')
 plt.ylabel(r'$ \text{A} \cdot \unit{\second}  $')
 plt.yscale('log')
 plt.tight_layout()
 plt.legend()
 plt.grid()
 plt.ylim(0.1,100)
-plt.xlim(0,0.0005)
+plt.xlim(0.2,1.4)
 plt.savefig('build/Graph_c.pdf')
 plt.clf()
 
@@ -176,7 +177,14 @@ popt_22[1] = np.exp(popt_22[1])
 
 
 writeW(popt_21, "popt_21")
-writeW(popt_22, "popt_21")
+writeW(popt_22, "popt_22")
+b_21 = ufloat(popt_21[1],np.sqrt(pcov_21[1][1]))
+b_22 = ufloat(popt_22[1],np.sqrt(pcov_22[1][1]))
+
+m_21 = ufloat(popt_21[0],np.sqrt(pcov_21[0][0]))
+m_22 = ufloat(popt_22[0],np.sqrt(pcov_22[0][0]))
+
+
 
 writeW(Aktivität_1_b_min_b0, "Aktivität_1_b_min_a0")
 writeW(Aktivität_1_b_min_b0_poissonabw, "Aktivität_1_b_min_a0_poissonabw")
