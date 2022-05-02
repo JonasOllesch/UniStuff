@@ -1,0 +1,70 @@
+\section{Theorie}
+\label{sec:theorie}
+
+
+Schallwellen sind longitudinale Wellen, die in der Form
+\begin{equation}
+    p(x, t) = p_0 + v_0 Z \cos(\omega t - k x)
+    \label{eq:druckwelle}
+\end{equation}
+als Druckschwankungen im Raum propagieren.
+
+Die akustische Impedanz $Z = c \rho$ beschreibt dabei den
+Widerstand, auf den Schallwellen im Medium der Dichte $\rho$
+erfahren.
+Dabei ist die Schallgeschwindigkeit $c$ materialabhängig, in einer
+Flüssigkeit z.B. bestimmen die Kompressibilität $\kappa$ 
+und Dichte über
+\begin{equation}
+    c_\text{Fl} = \sqrt{\frac{1}{\kappa \rho}}
+\end{equation}
+die Schallgeschwindigkeit. \\
+
+In Festkörpern bestehen Schallwellen dagegen nicht nur aus 
+Longitudinal-, sondern auch aus Transversalwellen.
+Hier gilt
+\begin{equation}
+    c_\text{Fk} = \sqrt{\frac{E}{\rho}} \,,
+\end{equation}
+wobei das Elastizitätsmodul $E$ anstelle der Kompressibilität
+$\kappa$ eine Rolle spielt. \\
+
+
+\subsection{Reflexion}
+
+Trifft eine Schallwelle auf eine Grenzfläche, wird ein Teil
+reflektiert, der andere wird transmittiert und teilweise
+absorbiert.
+Mit der akustischen Impedanz $Z_i$ des Mediums $i$ ergibt sich
+der Reflexionskoeffizient aus
+\begin{equation}
+    R = \left(\frac{Z_1 - Z_2}{Z_1 + Z_2}\right)^2 \,.
+    \label{eq:reflexkoeff}
+\end{equation}
+
+\subsection{Transmission und Absorption}
+
+Der Anteil der Welle, der nicht reflektiert, sondern 
+transmittiert wird, bestimmt sich dann aus
+
+\begin{equation}
+    T = 1 - R
+    \label{eq:transmisskoeff}
+\end{equation}
+
+
+Über eine Strecke $x$ verliert eine Schallwelle einen Teil ihrer
+Energie durch Absorption, mit einer Anfangsintensität $I_0$ gilt
+\begin{equation}
+    I(x) = I_0 \mathrm{e}^{-\alpha x} \,.
+\end{equation}
+
+Dabei ist $\alpha$ der Absorptionskoeffizient des Mediums.
+
+\subsection{Impuls-Echo-Verfahren}
+
+Mit einem piezo-elektrischen Kristall als Ultraschallsender und
+-empfänger, der in einem elektrischen Feld zu Schwingungen
+angeregt werden kann und Ultraschallwellen abstrahlt,
+
+
