@@ -116,7 +116,7 @@ plt.legend()
 plt.grid()
 plt.ylim(45,200)
 plt.xlim(0,0.022)
-plt.yticks(np.arange[20,30,40,60,100,160,200])
+plt.yticks([20,30,40,60,100,160,200])
 plt.savefig('build/Graph_b.pdf')# Der Plot sieht ja so kacke aus aber da kann man nichts machen. Irgendwer hat halt dumme Messwerte augenommen.(Ich war es nicht ;))
 plt.clf()#Dieser Plot sieht noch dümmer aus
 
