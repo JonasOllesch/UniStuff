@@ -9,6 +9,7 @@ da radioaktive Zerfälle poissonverteilt sind.
 
 %\subsection{$\gamma$-Strahler}
 \subsection{Gamma-Strahler}
+\label{sec:Gamma-Strahler}
 
 
 
@@ -77,13 +78,14 @@ Dabei sind in \autoref{tab:gammakupfer} die Messdaten für die unterschiedlichen
       \toprule
       {$D \mathbin{/} \unit{\milli\meter} $} & {$\text{Teilchenzahl}$} & {$\text{Zeit} \,t \mathbin{/} \unit{\second}$} &{$ \left(\text{A}- \text{A}_0 \right) \mathbin{/} \unit{\frac{1}{\second}}$} \\
       \midrule
-       0.70           &    {$  10948 \pm 104,63    $} &      100  	& {$108,54  \pm 1,05$} \\
-       0.62           &    {$  11137 \pm 105,53    $} &      100  	& {$110,43  \pm 1,06$} \\
-       0.51           &    {$  11065 \pm 105,19    $} &      100  	& {$109,71  \pm 1,05$} \\
-       0.54           &    {$  10953 \pm 104,66    $} &      100  	& {$108,59  \pm 1,05$} \\
-       4.94           &    {$  18462 \pm 135,87    $} &      100  	& {$183,68  \pm 1,36$} \\
-      20.00           &    {$   9863 \pm 99,31     $} &      200  	& {$ 48,38  \pm 0,50$} \\
-      20.10           &    {$  10257 \pm 101,28    $} &      200  	& {$ 50,35  \pm 0,51$} \\
+      {$ 0,70 \pm 0,02$}          &    {$  10948 \pm 104,63    $} &      100  	& {$108,54  \pm 1,05$} \\
+      {$ 0,62 \pm 0,02$}          &    {$  11137 \pm 105,53    $} &      100  	& {$110,43  \pm 1,06$} \\
+      {$ 0,51 \pm 0,02$}          &    {$  11065 \pm 105,19    $} &      100  	& {$109,71  \pm 1,05$} \\
+      {$ 0,54 \pm 0,02$}          &    {$  10953 \pm 104,66    $} &      100  	& {$108,59  \pm 1,05$} \\
+      {$ 4,94 \pm 0,02$}          &    {$  18462 \pm 135,87    $} &      100  	& {$183,68  \pm 1,36$} \\
+      {$ 9,94 \pm 0,02$}          &    {$  15284 \pm 123,63    $} &      100  	& {$75,856  \pm 0,62$} \\
+      {$20,00 \pm 0,02$}          &    {$   9863 \pm 99,31     $} &      200  	& {$ 48,38  \pm 0,50$} \\
+      {$20,10 \pm 0,02$}          &    {$  10257 \pm 101,28    $} &      200  	& {$ 50,35  \pm 0,51$} \\
       \bottomrule
     \end{tabular}
   \end{table}
@@ -92,29 +94,40 @@ Dabei sind in \autoref{tab:gammakupfer} die Messdaten für die unterschiedlichen
 
   \begin{figure}[H]
       \centering
-      \includegraphics{build/Graph_b.pdf}
+      \includegraphics{figures/GammaKupfer2.pdf}
       \caption{Ausgeleichsfunktion zur Bestimmung des Absorptionskoeffizienten mit Kupferabsorber.}
       \label{fig:plot2}
   \end{figure}
 
 Hier ergibt sich der Absorptionskoeffizient zu
 \begin{equation*}
-    \mu =  \left(33,484 \pm 22,824\right) \mathbin{/} \unit{\meter}
+    \mu =  \left(40,481 \pm 0,681\right) \mathbin{/} \unit{\meter}
 \end{equation*}
 und die Anfangsaktivität zu
 \begin{equation*}
-    A = (4,827 \pm 0,153) \, \unit{\frac{1}{\second}}
+    A = (112,295 \pm 1.00) \, \unit{\frac{1}{\second}}
 \end{equation*}
 
 Verglichen mit einem Theoriewert von % Hast du den Theoriewert irgendwo?
 
 \begin{equation*}
-    \mu_{\text{theo}} = ................ %sorry, aber ich habe echt keine Ahnung wie man den berechnen soll
+    \mu_{\text{theo}} = 63,2  \dfrac{1}{\unit{\meter}} %sorry, aber ich habe echt keine Ahnung wie man den berechnen soll
 \end{equation*}
 
 \subsection*{$\beta$-Strahler}
 
 Mithilfe der in \autoref{tab:beta} dargestellten Werte Wird erneut eine Regressionsrechnung durchgeführt. 
+
+Bei der zu Beginn über einen Zeitraum von $t = 900 \,\unit{\second}$ durchgeführten Nullmessung wurden
+\begin{equation*}
+    N_0  = 579 \pm 24
+\end{equation*}
+und die Nullaktivät
+
+\begin{equation*}
+    A_0  = 0,643 \pm 0,027 \dfrac{1}{\unit{\second}} \, .
+\end{equation*}
+
 \begin{table}[H]
     \centering
     \caption{Messwerte zum $\beta$-Strahler.}
@@ -168,8 +181,9 @@ Mit
 \end{align*} ergibt sich
 
 \begin{equation*}
-    R_\text{max} = \left( 0,54 \pm 0,14 \right) \, \dfrac{\unit{\gram}}{\unit{\cm²}} \,.
+    R_\text{max} = \left( 0,54 \pm 0,14 \right)  \unit{\meter} \,.
 \end{equation*}
+
 und damit nach \eqref{eq:Emax} eine Maximalenergie von
 \begin{equation*}
     E_\text{max} = \left(1,22 \pm 0,28 \right) \, \unit{\mega\eV}
