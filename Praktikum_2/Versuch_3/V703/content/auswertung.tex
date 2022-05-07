@@ -127,8 +127,8 @@ In \autoref{tab:messung4} sind dabei die Spannungen, Ströme, sowie die freigese
         {$U \mathbin{/} \unit{\volt}$} & {$I \mathbin{/} \unit{\micro\ampere}$} & {$\Delta Q \mathbin{/} 10^{-9}\unit{\coulomb}$} & {$10^{10} \, \frac{\Delta Q}{\text{e}}$} \\
       \midrule
       350  &  0.200 &  {$1,63 \pm 0,16$} &  {$1,02  \pm 0,10$}       \\
-      360  &  0.150 &  {$1,24 \pm 0,17$} &  {$77,30 \pm 0,10)$}       \\
-      370  &  0.175 &  {$1,42 \pm 0,16$} &  {$88,53 \pm 0,10)$}       \\
+      360  &  0.150 &  {$1,24 \pm 0,17$} &  {$0,77 \pm 0,10)$}       \\
+      370  &  0.175 &  {$1,42 \pm 0,16$} &  {$0,88 \pm 0,10)$}       \\
       380  &  0.200 &  {$1,61 \pm 0,16$} &  {$1,01 \pm 0,10$}       \\
       390  &  0.200 &  {$1,63 \pm 0,16$} &  {$1,02 \pm 0,10$}       \\
       400  &  0.220 &  {$1,77 \pm 0,16$} &  {$1,11 \pm 0,10$}       \\
@@ -165,3 +165,28 @@ In \autoref{tab:messung4} sind dabei die Spannungen, Ströme, sowie die freigese
     \bottomrule
     \end{tabular}
 \end{table}
+
+Im folgenden Graphen \autoref{fig:messung3g} ist $ \unit{\volt}$ gegen $\Delta Q \mathbin{/} \unit{\coulomb}$ aufgetragen.
+\begin{figure}[H]
+  \centering
+  \includegraphics{build/Graph_c}
+  \caption{Ladungsunterschied $\Delta Q \mathbin{/} \unit{\coulomb}$ in Spannungsabhängig sowie Ausgleichsgerade.}
+  \label{fig:messung3g}
+\end{figure}
+
+Die Ausgleichsgerade 
+
+\begin{equation*}
+   y = m x + b
+\end{equation*}
+
+hat die Koeffizienten
+
+\begin{equation*}
+  a = \left( 1,24 \cdot 10^{-11} \pm 0,40 \right) \unit{\dfrac{\coulomb}{\volt}}
+\end{equation*}
+und
+
+\begin{equation*}
+  b = \left( 2,92 \cdot 10^{-9} \pm 183,23 \right) \unit{\volt \, .}
+\end{equation*}
