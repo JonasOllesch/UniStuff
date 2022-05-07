@@ -4,6 +4,14 @@
 Es folgt die Auswertung der unterschiedlichen
 Versuchsteile mit allen relevanten Messdaten.
 
+Die Unsicherheit für abgeleitete Größen wurden mit der Fehlerfortpflanzung \eqref{eq:gaussf} berechnet bzw. mit dem "uncertainties" package der Programmiersparche Python.
+
+\begin{equation}
+Δf(x_1,...,x_N)=\sqrt{\sum_{i=1}^N (\frac{\partial f}{\partial x_i}Δx_i)^2}
+\label{eq:gaussF}
+\end{equation}
+
+
 \subsection{Charakteristik des Zählrohres}
 \label{subsec:charakteristik}
 
@@ -106,7 +114,7 @@ In \autoref{tab:messung3} sind dabei die Teilchenzahlen der beiden Einzelquellen
         \hline
         {$N_2$ in $\dfrac{1}{\unit{\second}}$}                             &  {$157,2 \pm 1,1$}    \\
         \hline
-        {$T \mathbin{/} \unit{\second}$}    &  {$(9 \pm 4) \cdot 10^{-05}$} \\
+        {$T \mathbin{/} \unit{\second}$}    &  {$(8,6 \pm 4) \cdot 10^{-05}$} \\
     \hline
     \end{tabular}
 \end{table}
@@ -115,8 +123,6 @@ In \autoref{tab:messung3} sind dabei die Teilchenzahlen der beiden Einzelquellen
 \subsection{Freigesetzte Ladung pro Teilchen}
 \label{subsec:ladung}
 
-Mithilfe des bereits bei der zu \autoref{subsec:charakteristik} gehörigen Messung aufgenommenen Stroms und \eqref{eq:teilchenstrom} wird die freigesetzte Ladung $\Delta Q$ berechnet.
-In \autoref{tab:messung4} sind dabei die Spannungen, Ströme, sowie die freigesetzten Ladungen, diese jeweils in $\unit{\coulomb}$ sowie in Elementarladungen $\text{e}$ aufgetragen.
 
 \begin{table}[H]
     \centering
