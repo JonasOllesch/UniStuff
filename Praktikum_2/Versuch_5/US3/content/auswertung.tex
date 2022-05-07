@@ -1,0 +1,196 @@
+\section{Auswertung}
+\label{sec:auswertung}
+
+Vor der Auswertung der aufgenommenen Messdaten werden zunächst nach \eqref{eq:dopplerwinkel} die Dopplerwinkel $\alpha_\theta$ bestimmt.
+Mit $c_L = 1800 \,\unit{\frac{\meter}{\second}}$ und $c_P = 2700 \,\unit{\frac{\meter}{\second}}$ergeben sich
+
+\begin{align*}
+    \alpha_{15°} &= 80,06 \,° \,,\\
+    \alpha_{30°} &= 70,53 \,° \,,\\
+    \alpha_{60°} &= 54,74 \,° \,. 
+\end{align*}
+
+\subsection{Bestimmung der Strömungsgeschwindigkeit}
+
+Unter Umstellung von \eqref{eq:dopplerversch} ergibt sich für die Strömungsgeschwindigkeit $v$ der Ausdruck
+\begin{equation}
+    v = \frac{\Delta\nu \,c}{2 \,\nu_0 \cos\alpha} \,.
+    \label{eq:momgeschwi}
+\end{equation}
+
+Die unterschiedlichen Strömungsgeschwindigkeiten für die verschiedenen Pumpleistungen und Dopplerwinkel sind dabei in \autoref{tab:1winkel1}, \autoref{tab:1winkel2} und \autoref{tab:1winkel3} dargestellt und jeweils gegen  
+$\frac{\Delta\nu}{\cos\alpha}$ geplottet. \\
+
+Dabei sind $\nu_0 = 2 \,\unit{\mega\hertz}$ sowie $c = c_L = 1800 \,\unit{\frac{\meter}{\second}}$ für alle drei Dopplerwinkel gegeben.
+Die Pumpleistung in $\%$ ergibt sich dabei aus
+\begin{equation*}
+    \frac{P_{\text{max}}}{P} \,,
+\end{equation*}
+wobei die maximale Umdrehungszahl der Pumpe $8600 \, \text{rpm}$ entspricht. \\
+
+\begin{figure} 
+    \begin{minipage}[t]{.5\textwidth}
+    \centering
+    \begin{table}[H]
+        \centering
+        \captionsetup{justification=centering}
+        \caption{Pumpleistungen, \\Frequenzverschiebungen und \\ Strömungsgeschwindigkeiten bei \\ einem Prismawinkel von $15 \,°$.}
+        \label{tab:1winkel1} 
+       \begin{tabular}{S S S}
+        \toprule 
+        {Pumpleistung $\mathbin{/}\%$} & {$\Delta \nu \mathbin{/} \unit{\hertz}$} & {$v \mathbin{/} \unit{\frac{\meter}{\second}}$}  \\
+        \midrule 
+        %% Hier könnten Ihre Werte stehen!!!!!
+        \bottomrule
+       \end{tabular} 
+    \end{table}
+    \end{minipage}
+    \begin{minipage}[t]{.5\textwidth} 
+        \centering
+        \vspace*{0pt}\rule{.95\textwidth}{12em} % Das hier durch \includegraphics{\build\graph1a.pdf} ersetzen, wie immer einfach
+        \captionsetup{justification=centering}
+        \captionof{figure}{Frequenzverschiebung $\frac{\Delta \nu}{\cos\alpha}$ \\ in Abhängigkeit der \\ Strömungsgeschwindigkeit $v$ \\ ($\alpha = 15 \,°$).} 
+        %\begin{figure}
+        %    \centering
+        %    \captionsetup{justification=centering}
+        %    \caption{Frequenzverschiebung $\frac{\Delta \nu}{\cos\alpha}$ \\ in Abhängigkeit der \\ Strömungsgeschwindigkeit $v$ \\ ($\alpha = 15 \,°$).} 
+        %    \label{fig:graph1a}
+        %\end{figure}
+    \end{minipage} 
+\end{figure} 
+
+
+\begin{figure} 
+    \begin{minipage}[t]{.5\textwidth}
+    \centering
+    \begin{table}[H]
+        \centering
+        \captionsetup{justification=centering}
+        \caption{Pumpleistungen, \\Frequenzverschiebungen und \\ Strömungsgeschwindigkeiten bei \\ einem Prismawinkel von $30 \,°$.}
+        \label{tab:1winkel2} 
+       \begin{tabular}{S S S}
+        \toprule 
+        {Pumpleistung $\mathbin{/}\%$} & {$\Delta \nu \mathbin{/} \unit{\hertz}$} & {$v \mathbin{/} \unit{\frac{\meter}{\second}}$}  \\
+        \midrule 
+        %% Hier könnten Ihre Werte stehen!!!!!
+        \bottomrule
+       \end{tabular} 
+    \end{table}
+    \end{minipage}
+    \begin{minipage}[t]{.5\textwidth} 
+        \centering
+        \vspace*{0pt}\rule{.95\textwidth}{12em} % Das hier durch \includegraphics{\build\graph1a.pdf} ersetzen, wie immer einfach
+        \captionsetup{justification=centering}
+        \captionof{figure}{Frequenzverschiebung $\frac{\Delta \nu}{\cos\alpha}$ \\ in Abhängigkeit der \\ Strömungsgeschwindigkeit $v$ \\ ($\alpha = 30 \,°$).}  
+        %\begin{figure}
+        %    \centering
+        %    \captionsetup{justification=centering}
+        %    \caption{Frequenzverschiebung $\frac{\Delta \nu}{\cos\alpha}$ \\ in Abhängigkeit der \\ Strömungsgeschwindigkeit $v$ \\ ($\alpha = 30 \,°$).}  
+        %    \label{fig:graph1b}
+        %\end{figure}
+    \end{minipage} 
+\end{figure} 
+
+\begin{figure} 
+    \begin{minipage}[t]{.5\textwidth}
+    \centering
+    \begin{table}[H]
+        \centering
+        \captionsetup{justification=centering}
+        \caption{Pumpleistungen, \\Frequenzverschiebungen und \\ Strömungsgeschwindigkeiten bei \\ einem Prismawinkel von $60 \,°$.}
+        \label{tab:1winkel3} 
+       \begin{tabular}{S S S}
+        \toprule 
+        {Pumpleistung $\mathbin{/}\%$} & {$\Delta \nu \mathbin{/} \unit{\hertz}$} & {$v \mathbin{/} \unit{\frac{\meter}{\second}}$}  \\
+        \midrule 
+        %% Hier könnten Ihre Werte stehen!!!!!
+        \bottomrule
+       \end{tabular} 
+    \end{table}
+    \end{minipage}
+    \begin{minipage}[t]{.5\textwidth} 
+        \centering
+        \vspace*{0pt}\rule{.95\textwidth}{12em} % Das hier durch \includegraphics{\build\graph1a.pdf} ersetzen, wie immer einfach
+        \captionsetup{justification=centering}
+        \captionof{figure}{Frequenzverschiebung $\frac{\Delta \nu}{\cos\alpha}$ \\ in Abhängigkeit der \\ Strömungsgeschwindigkeit $v$ \\ ($\alpha = 60 \,°$).}  
+        %\begin{figure}
+        %    \centering
+        %    \captionsetup{justification=centering}
+        %    \caption{Frequenzverschiebung $\frac{\Delta \nu}{\cos\alpha}$ \\ in Abhängigkeit der \\ Strömungsgeschwindigkeit $v$ \\ ($\alpha = 60 \,°$).}  
+        %    \label{fig:graph1c}
+        %\end{figure}
+    \end{minipage} 
+\end{figure} 
+
+\subsection{Streuintensität und Momentangeschwindigkeit}
+
+Die benötigten Momentangeschwindigkeiten berechnen sich erneut aus \eqref{eq:momgeschwi}, wieder gelten $\nu_0 = 2 \,\unit{\mega\hertz}$ und $c = c_L = 1800 \,\unit{\frac{\meter}{\second}}$.
+Die Messtiefe der Sonde, umgerechnet von $\unit{\micro\second}$ in $\unit{\milli\meter}$, die berechneten Geschwindikeiten $v$ sowie die Streuintensität $I$ für eine Pumpleistung von $70 \,\%$ bzw. $45 \,\%$ finden sich in \autoref{tab:2a} und \autoref{tab:2b}. \\
+
+Zusätzlich sind die Momentangeschwindigkeit und Streuintensitäten in Abhängigkeit der Messtiefe in \autoref{fig:graph2a} und \autoref{fig:graph2a} dargestellt.
+
+\begin{figure} 
+    \begin{minipage}[t]{.6\textwidth}
+    \centering
+    \begin{table}[H]
+        \centering
+        \captionsetup{justification=centering}
+        \caption{Messtiefen, \\ Momentangeschwindigkeiten $v$ \\ und Streuintensitäten $I$ \\ bei einer Pumpleistung von $70 \,\%$.}
+        \label{tab:2a} 
+       \begin{tabular}{S S S S}
+        \toprule 
+        {Messtiefe $\mathbin{/} \unit{\mu\second}$} & {Messtiefe $\mathbin{/} \unit{\milli\meter}$} & {$v \mathbin{/} \unit{\frac{\meter}{\second}} $} & {$I \mathbin{/} 1000 \cdot \unit{\dfrac{\volt^2}{\second}}$}  \\
+        \midrule 
+        %% Hier könnten Ihre Werte stehen!!!!!
+        \bottomrule
+       \end{tabular} 
+    \end{table}
+    \end{minipage}
+    \begin{minipage}[t]{.5\textwidth} 
+        \centering
+        \vspace*{0pt}\rule{.95\textwidth}{12em} % Das hier durch \includegraphics{\build\graph1a.pdf} ersetzen, wie immer einfach
+        \captionsetup{justification=centering}
+        \captionof{figure}{Momentangeschwindigkeit \\ und Streuintensität \\ in Abhängigkeit der Messtiefe.}  
+        %\begin{figure}
+        %    \centering
+        %    \captionsetup{justification=centering}
+        %    \caption{Momentangeschwindigkeit und Streuintensität in Abhängigkeit der Messtiefe.}  
+        %    \label{fig:graph1c}
+        %\end{figure}
+    \end{minipage} 
+\end{figure} 
+
+
+\begin{figure} 
+    \begin{minipage}[t]{.6\textwidth}
+    \centering
+    \begin{table}[H]
+        \centering
+        \captionsetup{justification=centering}
+        \caption{Messtiefen, \\ Momentangeschwindigkeiten $v$ \\ und Streuintensitäten $I$ \\ bei einer Pumpleistung von $45 \,\%$.}
+        \label{tab:2b} 
+       \begin{tabular}{S S S S}
+        \toprule 
+        {Messtiefe $\mathbin{/} \unit{\mu\second}$} & {Messtiefe $\mathbin{/} \unit{\milli\meter}$} & {$v \mathbin{/} \unit{\frac{\meter}{\second}} $} & {$I \mathbin{/} 1000 \cdot \unit{\dfrac{\volt^2}{\second}}$}  \\
+        \midrule 
+        %% Hier könnten Ihre Werte stehen!!!!!
+        \bottomrule
+       \end{tabular} 
+    \end{table}
+    \end{minipage}
+    \begin{minipage}[t]{.5\textwidth} 
+        \centering
+        \vspace*{0pt}\rule{.95\textwidth}{12em} % Das hier durch \includegraphics{\build\graph1a.pdf} ersetzen, wie immer einfach
+        \captionsetup{justification=centering}
+        \captionof{figure}{Momentangeschwindigkeit \\ und Streuintensität \\ in Abhängigkeit der Messtiefe.}  
+        %\begin{figure}
+        %    \centering
+        %    \captionsetup{justification=centering}
+        %    \caption{Momentangeschwindigkeit und Streuintensität in Abhängigkeit der Messtiefe.}  
+        %    \label{fig:graph1c}
+        %\end{figure}
+    \end{minipage} 
+\end{figure} 
+
+
+
