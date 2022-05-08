@@ -132,7 +132,7 @@ plt.clf()
 
 plt.scatter(Messung_2_b[1:,0],Messung_2_b[1:,1],s=8,c='b',label="Momentangeschwindigkeit")
 plt.xlabel(r'Messtiefe $\mathbin{/} \unit{\milli\meter}$')
-plt.ylabel(r'$I \mathbin{/} \unit{\dfrac{\meter}{\second}}$')
+plt.ylabel(r'$v \mathbin{/} \unit{\dfrac{\meter}{\second}}$')
 plt.tight_layout()
 plt.legend()
 plt.grid()
