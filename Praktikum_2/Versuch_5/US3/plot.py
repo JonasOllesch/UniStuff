@@ -149,3 +149,47 @@ writeW(Messung_2_b[:,1], "Messung_2_b Momentangeschwindigkeit in m/s")
 writeW(Messtiefe_bins, "Messtiefe_b in s")
 writeW(Messung_2_b[:,2], "Messung_2_b Intensität in V**2/s")
 
+#### Test Test
+
+fig, ax1 = plt.subplots()
+
+color = 'tab:red'
+ax1.set_xlabel(r'Messtiefe $\mathbin{/} \unit{\milli\meter}$')
+ax1.set_ylabel(r'$I \mathbin{/} 1000 \cdot \unit{\dfrac{\volt^2}{\second}}$')
+ax1.scatter(Messung_2_a[:,0],Messung_2_a[:,2],s=8,c=color,label="Streuintensität")
+ax1.tick_params(axis='y', labelcolor=color)
+plt.legend(loc='best')
+plt.grid()
+
+ax2 = ax1.twinx()  # instantiate a second axes that shares the same x-axis
+
+color = 'tab:blue'
+ax2.set_ylabel(r'$v \mathbin{/} \unit{\dfrac{\meter}{\second}}$')
+ax2.scatter(Messung_2_a[:,0],Messung_2_a[:,1],s=8,c=color,label="Momentangeschwindigkeit")
+ax2.tick_params(axis='y', labelcolor=color)
+plt.legend(loc='best')
+
+fig.tight_layout() 
+plt.savefig('build/Graph2a.pdf')
+
+
+fig, ax1 = plt.subplots()
+
+color = 'tab:red'
+ax1.set_xlabel(r'Messtiefe $\mathbin{/} \unit{\milli\meter}$')
+ax1.set_ylabel(r'$I \mathbin{/} 1000 \cdot \unit{\dfrac{\volt^2}{\second}}$')
+ax1.scatter(Messung_2_b[:,0],Messung_2_b[:,2],s=8,c=color,label="Streuintensität")
+ax1.tick_params(axis='y', labelcolor=color)
+plt.legend(loc='best')
+plt.grid()
+
+ax2 = ax1.twinx()  # instantiate a second axes that shares the same x-axis
+
+color = 'tab:blue'
+ax2.set_ylabel(r'$v \mathbin{/} \unit{\dfrac{\meter}{\second}}$')
+ax2.scatter(Messung_2_b[1:,0],Messung_2_b[1:,1],s=8,c=color,label="Momentangeschwindigkeit")
+ax2.tick_params(axis='y', labelcolor=color)
+plt.legend(loc='best')
+
+fig.tight_layout() 
+plt.savefig('build/Graph2b.pdf')
