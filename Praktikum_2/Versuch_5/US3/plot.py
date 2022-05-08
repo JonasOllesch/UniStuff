@@ -31,9 +31,9 @@ Messung_1_b = np.array(np.genfromtxt('Messung_1_b.txt'))
 Messung_1_c = np.array(np.genfromtxt('Messung_1_c.txt'))
 
 Messung_2_a = np.array(np.genfromtxt('Messung_2_a.txt'))
-Messung_2_a[:,0] = Messung_2_a[:,0]*10**(-3)    
+Messung_2_a[:,0] = Messung_2_a[:,0]*10**(-6)    
 Messung_2_b = np.array(np.genfromtxt('Messung_2_b.txt'))
-Messung_2_b[:,0] = Messung_2_b[:,0]*10**(-3)
+Messung_2_b[:,0] = Messung_2_b[:,0]*10**(-6)
 
 
 #Messreihe  A
@@ -96,10 +96,13 @@ plt.clf()
 
 #Messreihe B
 
-Messtiefe_ains = np.zeros(16)
-Messtiefe_ains[:] = Messung_2_a[:,0]/1800
-Messtiefe_bins = np.zeros(16)
-Messtiefe_bins[:] = Messung_2_b[:,0]/1800
+Messtiefe_ainm = np.zeros(16)
+Messtiefe_ainm[:] = Messung_2_a[:,0]*1800
+Messtiefe_binm = np.zeros(16)
+Messtiefe_binm[:] = Messung_2_b[:,0]*1800
+writeW(Messtiefe_ainm, "Messtiefe_ainm")
+writeW(Messtiefe_binm, "Messtiefe_binm")
+
 
 
 plt.scatter(Messung_2_a[:,0]*10**3,Messung_2_a[:,2],s=8,c='b',label="Streuintensität")
@@ -141,12 +144,12 @@ plt.savefig('build/Graph2b2.pdf')
 plt.clf()
 #writeW(Messung_2_a[:,0]*10**3, "Messung_2_a Messtiefe in mm")
 #writeW(Messung_2_a[:,1], "Messung_2_a Momentangeschwindigkeit in m/s")
-#writeW(Messtiefe_ains, "Messtiefe_a in s")
+#writeW(Messtiefe_ainm, "Messtiefe_a in s")
 #writeW(Messung_2_a[:,2], "Messung_2_a Intensität in V**2/s")
 
 writeW(Messung_2_b[:,0]*10**3, "Messung_2_b Messtiefe in mm")
 writeW(Messung_2_b[:,1], "Messung_2_b Momentangeschwindigkeit in m/s")
-writeW(Messtiefe_bins, "Messtiefe_b in s")
+writeW(Messtiefe_binm, "Messtiefe_b in s")
 writeW(Messung_2_b[:,2], "Messung_2_b Intensität in V**2/s")
 
 #### Test Test
@@ -154,7 +157,7 @@ writeW(Messung_2_b[:,2], "Messung_2_b Intensität in V**2/s")
 fig, ax1 = plt.subplots()
 
 color = 'tab:red'
-ax1.set_xlabel(r'Messtiefe $\mathbin{/} \unit{\milli\meter}$')
+ax1.set_xlabel(r'Messtiefe $\mathbin{/} \unit{\second}$')
 ax1.set_ylabel(r'$I \mathbin{/} 1000 \cdot \unit{\dfrac{\volt^2}{\second}}$')
 ax1.scatter(Messung_2_a[:,0],Messung_2_a[:,2],s=8,c=color,label="Streuintensität")
 ax1.tick_params(axis='y', labelcolor=color)
@@ -176,7 +179,7 @@ plt.savefig('build/Graph2a.pdf')
 fig, ax1 = plt.subplots()
 
 color = 'tab:red'
-ax1.set_xlabel(r'Messtiefe $\mathbin{/} \unit{\milli\meter}$')
+ax1.set_xlabel(r'Messtiefe $\mathbin{/} \unit{\second}$')
 ax1.set_ylabel(r'$I \mathbin{/} 1000 \cdot \unit{\dfrac{\volt^2}{\second}}$')
 ax1.scatter(Messung_2_b[:,0],Messung_2_b[:,2],s=8,c=color,label="Streuintensität")
 ax1.tick_params(axis='y', labelcolor=color)

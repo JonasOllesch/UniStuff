@@ -1,4 +1,4 @@
-#Messtiefe in mm  Momentangeschwindigkeit in m/s    Streuintensität V**2/s
+#Messtiefe in mus  Momentangeschwindigkeit in m/s    Streuintensität V**2/s
 12.0    0          14   
 12.5    44.6        53
 13.0    47.9        45
