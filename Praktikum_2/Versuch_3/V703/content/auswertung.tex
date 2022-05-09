@@ -4,13 +4,6 @@
 Es folgt die Auswertung der unterschiedlichen
 Versuchsteile mit allen relevanten Messdaten.
 
-Die Unsicherheit für abgeleitete Größen wurden mit der Fehlerfortpflanzung \eqref{eq:gaussf} berechnet bzw. mit dem "uncertainties" package der Programmiersparche Python.
-
-\begin{equation}
-Δf(x_1,...,x_N)=\sqrt{\sum_{i=1}^N (\frac{\partial f}{\partial x_i}Δx_i)^2}
-\label{eq:gaussF}
-\end{equation}
-
 
 \subsection{Charakteristik des Zählrohres}
 \label{subsec:charakteristik}
@@ -102,7 +95,7 @@ Die beträgt dabei ungefähr $2,5$ Kästchen, also
 Genauer kann sie jedoch über die Zwei-Quellen-Methode bestimmt werden.
 In \autoref{tab:messung3} sind dabei die Teilchenzahlen der beiden Einzelquellen sowie beider Quellen gemeinsam, erneut auf einem Intervall von $120 \,\unit{\second}$ mitsamt der nach \eqref{eq:totzeit} berechneten Totzeit dargestellt.
 
-\begin{table}[H] %% Der Wert der Totzeit stimmt hier nicht, dass war glaube ich das, was du Donnerstag gesagt hattest, oder? 
+\begin{table}[H]
     \centering
     \caption{Teilchenzahlen der Quellen sowie Totzeit $T$.}
     \label{tab:messung3}
@@ -118,7 +111,12 @@ In \autoref{tab:messung3} sind dabei die Teilchenzahlen der beiden Einzelquellen
     \hline
     \end{tabular}
 \end{table}
+Der Fehler der Totzeit lässt sich mit der Gaußschen-Fehlerfortpflanzung berechnen \eqref{eq:gausT}
 
+\begin{equation}
+    \Delta T  = \sqrt{  \left( \frac{N_{1+2}-N_1}{2 N_1 N_2^2} \cdot \Delta N_2 \right)^2 + \left( \frac{N_{1+2} - N_2}{2N_1^2 N_2} \Delta N_1 \right)^2 + \left(  \frac{1}{2 N_1 N_2} \Delta N_{1+2}    \right)^2                     }
+  \label{eq:gausT}
+\end{equation}
 
 \subsection{Freigesetzte Ladung pro Teilchen}
 \label{subsec:ladung}
@@ -171,6 +169,15 @@ In \autoref{tab:messung3} sind dabei die Teilchenzahlen der beiden Einzelquellen
     \bottomrule
     \end{tabular}
 \end{table}
+\newpage
+
+Der Fehler der pro einfallenden Teilchen freigesetzte Ladung lässt ebenfalls sich mit der Gaußschen-Fehlerfortpflanzung berechnen \eqref{eq:gausL}
+
+\begin{equation}
+    \Delta \left( \Delta Q \right) = \sqrt{  \left(   \frac{1}{N} \Delta I \right)^2   + \left( \frac{1}{N^2} \Delta N  \right)^2 }
+    \label{eq:gausL}
+\end{equation}
+
 
 Im folgenden Graphen \autoref{fig:messung3g} ist $ \unit{\volt}$ gegen $\Delta Q \mathbin{/} \unit{\coulomb}$ aufgetragen.
 \begin{figure}[H]
