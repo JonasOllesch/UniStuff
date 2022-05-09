@@ -95,14 +95,14 @@ plt.clf()
 
 
 #Messreihe B
-
+l = 30.7*10**(-3)
 Messtiefe_ainm = np.zeros(16)
-Messtiefe_ainm[:] = Messung_2_a[:,0]*1800
+Messtiefe_ainm[:] = l+ 1800*(Messung_2_a[:,0]-l/2700)
 Messtiefe_binm = np.zeros(16)
-Messtiefe_binm[:] = Messung_2_b[:,0]*1800
+Messtiefe_binm[:] = l+ 1800*(Messung_2_b[:,0]-l/2700)
 writeW(Messtiefe_ainm, "Messtiefe_ainm")
 writeW(Messtiefe_binm, "Messtiefe_binm")
-
+del l
 
 
 plt.scatter(Messung_2_a[:,0]*10**3,Messung_2_a[:,2],s=8,c='b',label="Streuintensität")
