@@ -20,6 +20,9 @@ def writeW(Wert,Beschreibung):
 def pol_1(a,b,x):
     return a*x+b
 
+def intensitaet(a,l):
+    return -2*a*l
+
 Messung_1 = np.array(np.genfromtxt('Messung_1.txt'))
 Messung_1[:,0] = Messung_1[:,0]*10**(-6)
 Messung_1[:,1] = Messung_1[:,1]*10**(-3)
@@ -28,7 +31,9 @@ Messung_2 = np.array(np.genfromtxt('Messung_2.txt'))
 Messung_2[:,0] = Messung_2[:,0]*10**(-6)
 Messung_2[:,1] = Messung_2[:,1]*10**(-3)
 
-
+Messung_3 = np.array(np.genfromtxt('Messung_3.txt'))
+Messung_3[:,2] = Messung_3[:,2]*10**(-3)
+lnIdI0  = np.log(Messung_3[:,1]/Messung_3[:,0])
 
 
 D_Acrylplatte_theo = 0.1
@@ -83,6 +88,28 @@ writeW(popt_b[0], "popt_b b")
 writeW(np.sqrt(pcov_b[1][1]), "sqrt(pcov_b[1][1]))")
 writeW(np.sqrt(pcov_b[0][0]), "sqrt(pcov_b[0][0]))")
 
-#Auge
+#3. Hier muss die doppelte Länge verwendet werden, weil der Impuls hin un zurück gehen muss
+plt.scatter(Messung_3[:,2]*2,lnIdI0,s=8, c='blue',label="Messdaten")
+x_c = np.linspace(0,0.24,1000)
+popt_c, pcov_c = curve_fit(intensitaet,Messung_3[:,2]*2,lnIdI0)
+y_c = intensitaet(popt_c[0], x_c)
+plt.plot(x_c,y_c,c='red',label="Ausgleichsfunktion")
+plt.ylabel(r'$ \ln \left( \frac{I}{I_0} \right) $')
+plt.xlabel(r'$l \mathbin{/} \unit{\meter}$')
+plt.xlim(0,0.24)
+plt.tight_layout()
+plt.legend()
+plt.grid()
+plt.savefig('build/Graph_c.pdf')
+plt.clf()
+writeW(popt_c, "popt_c")
+writeW(np.sqrt(pcov_c), "sqrt(popt_c)")
+
+
+#Auge bin mir nicht sicher ob man das so brechnet. In Altprotokollen haben die 4 Messwerte, aber mit unseren 2 sollte das auch gehen.
 T_Iris = 9.06*10**(-6)
+L_Iris = 1/2 * 2500 * T_Iris
+writeW(L_Iris, "L_Iris")
 T_Retina = 16.13*10**(-6)
+L_Retina = 2*L_Iris + 1/2*1410*(T_Retina-T_Iris)
+writeW(L_Retina, "L_Retina")
