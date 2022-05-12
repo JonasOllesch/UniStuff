@@ -1,0 +1,7 @@
+#Durchschallung Verfahren
+#Zeit in mus    l in mm
+23.02               28.1
+28.9                37.5
+59.24               77.5
+23.11               65.6
+23.02               114.6
