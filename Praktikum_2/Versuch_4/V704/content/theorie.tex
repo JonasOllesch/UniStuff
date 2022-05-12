@@ -64,13 +64,13 @@ Zur Bestimmung der Teilchenzahl im Absorber der Ordnungszahl $\text{z}$ und
 dem Molvolumen $V_{\text{Mol}}$ bzw. der Dichte $\rho$ und dem
 Molekulargewicht $M$ dient
 \begin{equation*}
-    n = \frac{\text{z} N_L}{V_{\text{Mol}}} = \frac{\text{z} N_L \rho}{M} \,,
+    n = \frac{\text{z} N_A}{V_{\text{Mol}}} = \frac{\text{z} N_A \rho}{M} \,,
 \end{equation*}
-wobei $N_L$ die Loschmidtsche Zahl darstellt. \\
+wobei $N_A$ die Avogadro-Konstante darstellt. \\
 
 Der Wirkungsquerschnitt ergibt sich damit zu
 \begin{equation}
-    \sigma = \frac{\mu}{n} = \frac{\mu N}{z N_L \rho} \,.
+    \sigma = \frac{\mu}{n} = \frac{\mu N}{z N_A \rho} \,.
     \label{eq:wirkungsquerschnitt}
 \end{equation}
 
@@ -165,10 +165,11 @@ gegeben. \\
 Nach \eqref{eq:wirkungsquerschnitt} ergibt sich der Absorptionskoeffizient
 $\mu_{\text{com}}$, also der durch den Comptoneffekt bedingte
 Absorptionskoeffizient, zu
-\begin{equation*}
+\begin{equation}
     \mu_{\text{com}} = n \sigma_{\text{com}} =  
-    \frac{z N_L \rho}{M} \sigma_{\text{com}} \,.
-\end{equation*} 
+    \frac{z N_A \rho}{M} \sigma_{\text{com}} \,.
+    \label{eq:absorptionskoefftheorie}
+\end{equation} 
 
 Strebt nun die Energie gegen null, ergibt sich im Grenzwert
 der Thomsonsche Wirkungsquerschnitt $\sigma_{\text{Th}}$ mit
@@ -258,7 +259,7 @@ Atom gelöst.
 Mit der Ionisationsenergie $I$ ist der Energieverlust pro Absorberschichtdicke
 gegeben durch
 \begin{equation*}
-    \frac{\dif E}{\dif x} \approx - \frac{2 \pi r_\text{e}^2}{E_\beta} \frac{N_L \rho}{M}
+    \frac{\dif E}{\dif x} \approx - \frac{2 \pi r_\text{e}^2}{E_\beta} \frac{N_A \rho}{M}
     \ln(\frac{E_\beta}{I}) \,.
 \end{equation*}
 
