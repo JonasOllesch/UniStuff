@@ -1,0 +1,93 @@
+\section{Auswertung}
+\label{sec:auswertung}
+
+\subsection{Schallgeschwindigkeitsbestimmung in Acryl}
+
+Um einen besseren Vergleich der Messwerte zu ermöglichen, sollen hier die Messwerte aus Impuls-Echo-Verfahren und Durchschallungsverfahren zusammengeführt werden.
+Die aufgenommenen Messdaten, also die Zylinderdicken mit den dazugehörigen Laufzeiten, sind für das Impuls-Echo-Verfahren in \autoref{tab:1a}, für das Durchschallungsverfahren in \autoref{tab:1b} dargestellt.
+
+\begin{table}[H]
+    \begin{subtable}{0.5\textwidth}
+        \centering
+        \caption{Laufzeitbestimmung über Impuls-Echo-Verfahren.}
+        \label{tab:1a}  
+        \begin{tabular}{c c}
+        \toprule 
+        {Zylinderhöhe $h \mathbin{/} \unit{\milli\meter}$} & {Laufzeit $\Delta t \mathbin{/} \unit{\micro\second}$} \\
+        \midrule 
+         28.1      &       23.37       \\ 
+         37.5      &       29.37       \\  
+         65.6      &       23.11       \\
+         77.5      &       59.17       \\ 
+         99.1      &       75.85       \\ 
+        114.6      &       59.05       \\
+        117.8      &       88.33       \\  
+        \bottomrule
+        \end{tabular}   
+    \end{subtable}
+    \begin{subtable}{0.5\textwidth}
+        \centering
+        \caption{Laufzeitbestimmung über Durchschallungsverfahren.}
+        \label{tab:1b} 
+        \begin{tabular}{c c}
+        \toprule 
+        {Zylinderhöhe $h \mathbin{/} \unit{\milli\meter}$} & {Laufzeit $\Delta t \mathbin{/} \unit{\micro\second}$} \\
+        \midrule 
+         28.1       &       23.02       \\   
+         37.5       &       28.90       \\
+         65.6       &       23.11       \\   
+         77.5       &       59.24       \\
+         -          &       -           \\      
+        114.6       &       23.02       \\ 
+         -          &       -           \\
+        \bottomrule
+        \end{tabular}  
+    \end{subtable}
+ \caption{Zylinderdicken und Laufzeiten unter Impuls-Echo- sowie Durchschallungsverfahren.} 
+\end{table}
+
+Zu beachten sind dabei die fehlenden Messwerte beim Durchschallungsverfahren, die aufgrund fehlender Kompetenz auf Seiten der Messenden nicht aufgenommen werden konnten. \\
+
+Wird eine lineare Regression der Form
+\begin{equation*}
+    y = c x + b
+\end{equation*}
+durchgeführt, wobei die Steigung $c$ die Schallgeschwindigkeit und der y-Achsenabschnitt $b$ die Anpassungsschicht darstellt, ergeben sich die in \autoref{fig:graph1a} und \autoref{fig:graph1b} dargestellten Plots.
+    
+\begin{figure}[H]
+        \centering
+        \includegraphics[width=\textwidth]{build/Graph_a.pdf} 
+        \caption{Plot der Messdaten und Ausgleichsgeraden für das Impuls-Echo-Verfahren.}
+        \label{fig:graph1a}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{build/Graph_b.pdf} 
+    \caption{Plot der Messdaten und Ausgleichsgeraden für das Durchschallungsverfahren.}
+    \label{fig:graph1b}
+\end{figure}
+
+Für das Impuls-Echo-Verfahren ergeben sich die Koeffizienten dabei zu
+\begin{equation*}
+    c = .... \pm ... \,\unit{\frac{\meter}{\second}}
+\end{equation*}
+und
+\begin{equation*}
+    b = ... \pm ... \,\unit{\meter} \,,
+\end{equation*}
+für das Durchschallungsverfahren ergeben sich
+\begin{equation*}
+    c = .... \pm ... \,\unit{\frac{\meter}{\second}}
+\end{equation*}
+und
+\begin{equation*}
+    b = ... \pm ... \,\unit{\meter} \,.
+\end{equation*} \\
+
+Mit einem Theoriewert von
+\begin{equation*}
+    c_{\text{Acryl},\text{t}} = 2730 \,\unit{\frac{\meter}{\second}} 
+\end{equation*}
+entspricht das einer Abweichung von $... \%$ beim Impuls-Echo-Verfahren bzw. einer Abweichung von $... \%$ beim Durchschallungsverfahren.
+
