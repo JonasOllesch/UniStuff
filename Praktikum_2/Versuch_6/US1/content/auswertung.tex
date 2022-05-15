@@ -2,6 +2,7 @@
 \label{sec:auswertung}
 
 \subsection{Längenbestimmung über Schallgeschwindigkeit in Acryl}
+\label{subsec:längenbest}
 
 Zunächst wurde die Dicke der Acrylplatte mithilfe einer Schieblehre zu
 \begin{equation*}
@@ -11,13 +12,23 @@ bestimmt.
 
 Um dann die Schallgeschwindigkeit zu ermitteln, wurden die Differenzen zwischen den einzelnen Peaks gemessen.
 Wie in \autoref{fig:export1} zu erkennen, wurde das Messfenster so eingestellt, dass vier Impulse zu sehen waren.
-Die Differenzen $T_{i,i+1}$ zwischen dem $i$-ten und $i + 1$-Impuls kann dabei zur Schallgeschwindigkeitsbestimmung genutzt werden.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{figures/MessungAcrylplatte(1).jpg}
+    \caption{Screenshot der Impulsmessung aus \textit{FlowView}.}
+    \label{fig:export1}
+\end{figure}
+
+Die Differenzen $T_{i,i+1}$ zwischen dem $i$-ten und $i + 1$-Peak kann dabei zur Schallgeschwindigkeitsberechnung genutzt werden, zur genaueren Bestimmung
+der Differenzen wurde dabei die intgrierten Cursor auf je ein Peak-Paar gesetzt und die Differenz der x-Position abgelesen.
 Dabei betrugen die Differenzen
 \begin{align*}
     T_{1,2} &= 7,43 \,\unit{\micro\second} \,,\\
     T_{2,3} &= 7,41 \,\unit{\micro\second} \,,\\
     T_{3,4} &= 7,30 \,\unit{\micro\second} \,.\\
-\end{align*}
+\end{align*} \\
+
 Um während der Versuchsdurchführung Zeit zu sparen, wurde, um die Schallgeschwindigkeit zu berechnen, die Differenz $T_{1,2}$ als 'Mittelwert' gewählt,
 mit der sich die Schallgeschwindigkeit aus \eqref{eq:schallges} zu
 \begin{equation*}
@@ -50,13 +61,13 @@ Die aufgenommenen Messdaten, also die Zylinderdicken mit den dazugehörigen Lauf
         \toprule 
         {Zylinderhöhe $h \mathbin{/} \unit{\milli\meter}$} & {Laufzeit $\Delta t \mathbin{/} \unit{\micro\second}$} \\
         \midrule 
-         28.1      &       23.37       \\ 
-         37.5      &       29.37       \\  
-         65.6      &       23.11       \\
-         77.5      &       59.17       \\ 
-         99.1      &       75.85       \\ 
-        114.6      &       59.05       \\
-        117.8      &       88.33       \\  
+         28,1      &       23,37       \\ 
+         37,5      &       29,37       \\  
+         65,6      &       23,11       \\
+         77,5      &       59,17       \\ 
+         99,1      &       75,85       \\ 
+        114,6      &       59,05       \\
+        117,8      &       88,33       \\  
         \bottomrule
         \end{tabular}   
     \end{subtable}
@@ -68,12 +79,12 @@ Die aufgenommenen Messdaten, also die Zylinderdicken mit den dazugehörigen Lauf
         \toprule 
         {Zylinderhöhe $h \mathbin{/} \unit{\milli\meter}$} & {Laufzeit $\Delta t \mathbin{/} \unit{\micro\second}$} \\
         \midrule 
-         28.1       &       23.02       \\   
-         37.5       &       28.90       \\
-         65.6       &       23.11       \\   
-         77.5       &       59.24       \\
+         28,1       &       23,02       \\   
+         37,5       &       28,90       \\
+         65,6       &       23,11       \\   
+         77,5       &       59,24       \\
          -          &       -           \\      
-        114.6       &       23.02       \\ 
+        114,6       &       23,02       \\ 
          -          &       -           \\
         \bottomrule
         \end{tabular}  
@@ -126,3 +137,73 @@ Mit einem Theoriewert von
 \end{equation*}
 entspricht das einer Abweichung von $... \%$ beim Impuls-Echo-Verfahren bzw. einer Abweichung von $... \%$ beim Durchschallungsverfahren.
 
+
+\subsection{Bestimmung der Dämpfung mit Impuls-Echo-Verfahren}
+
+Hier wird nun nicht länger die Zeitdifferenz zwischen zwei Einzelimpulsen, sondern die Amplitudendifferenz benötigt.
+Analog zu \autoref{subsec:längenbest} werden die Cursor im Programm auf die beiden Impulspeaks gesetzt, anhand der Anzeige kann einfach die Amplitudendifferenz
+als Differenz auf der y-Achse abgelesen werden.
+Dabei wurde die Verstärkung vollständig abgeschaltet.
+Die Amplitude des ersten und zweiten Impulses, die Amplitudendifferenz sowie die Höhe des jeweils verwendeten Zylinders bzw. 
+der verwendeten Zylinderkombination sind in \autoref{tab:2}
+dargestellt.
+
+\begin{table}
+    \centering
+    \caption{Amplitudendifferenzen über das Impuls-Echo-Verfahren.}
+    \label{tab:2} 
+    \begin{tabular}{c c c c}
+    \toprule 
+    {Zylinderhöhe $h \mathbin{/} \unit{\milli\meter}$} & {$A_1 \mathbin{/} \unit{\volt}$} & {$A_2 \mathbin{/} \unit{\volt}$} & {$\Delta A \mathbin{/} \unit{\volt}$}\\
+    \midrule 
+     28,1       &       1,343       &        1,243      &       0,100       \\       
+     37,5       &       1,347       &        1,278      &       0,069       \\       
+     65,6       &       1,341       &        1,157      &       0.184       \\       
+     77,5       &       2,136       &        0,445      &       1,681       \\       
+    105,6       &       1,327       &        0,077      &       1,250       \\
+    115,0       &       1,324       &        0,086      &       1,238       \\               
+    \bottomrule
+    \end{tabular}  
+\end{table}
+
+Die Regression erfolgt dabei über den exponentiellen Zusammenhang
+\begin{equation*}
+    U(l) = U_0 \text{e}^{\alpha l} \,,
+\end{equation*}
+der in \autoref{fig:graph2} dargestellte Plot trägt die Zylinderlänge gegen den Logarithmus der Amplitude auf. \\
+Dabei sind
+\begin{align*}
+    U_0     &= (... \pm ...) \,\unit{\volt} \,,\\
+    \alpha  &= (... \pm ...) \,\frac{1}{\unit{\meter}} \,.
+\end{align*}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics{build/Graph_c.pdf}
+    \caption{Zylinderlänge l gegen Logarithmus der Amplitude $U$.}
+    \label{fig:graph2}
+\end{figure}
+
+
+\subsection{Vermessung des Augenmodells}
+
+Zur Vermessung des Augenmodells wurden die Laufzeiten bis zur Iris sowie bis zur Retina aufgenommen.
+Nach \eqref{eq:schallges} ergeben sich mit $c_\text{L} = 2500 \,\unit{\frac{\meter}{\second}}$, der Schallgeschwindigkeit in der Linse, und
+$c_\text{GK} = 1410 \,\unit{\frac{\meter}{\second}}$, der Schallgeschwindigkeit in der Glaskörperflüssigkeit, die in \autoref{tab:3} dargestellten Werte.
+
+
+\begin{table}
+    \centering
+    \caption{Laufzeiten und Abmessungen im Auge.}
+    \label{tab:1b} 
+    \begin{tabular}{c c}
+    \toprule 
+    {} & {}  \\
+    \midrule 
+    {$\Delta t_\text{Iris} \mathbin{/} \unit{\micro\second}$}    &       9,06
+    {$l_\text{Iris} \mathbin{/} \unit{\meter}$}                  &       0,0113
+    {$\Delta t_\text{Retina} \mathbin{/} \unit{\micro\second}$}  &      16,13
+    {$l_\text{Retina} \mathbin{/} \unit{\meter}$}                &       0,0276
+    \bottomrule
+    \end{tabular}  
+\end{table}
