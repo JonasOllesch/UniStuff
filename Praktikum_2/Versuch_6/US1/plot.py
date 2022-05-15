@@ -105,7 +105,77 @@ plt.clf()
 writeW(popt_c, "popt_c")
 writeW(np.sqrt(pcov_c), "sqrt(popt_c)")
 
+#N plots ohne Ausreißer
+Messung_1_oA = np.array(np.genfromtxt('Messung_1_oA.txt'))
+Messung_1_oA[:,0] = Messung_1_oA[:,0]*10**(-6)
+Messung_1_oA[:,1] = Messung_1_oA[:,1]*10**(-3)
 
+Messung_2_oA = np.array(np.genfromtxt('Messung_2_oA.txt'))
+Messung_2_oA[:,0] = Messung_2_oA[:,0]*10**(-6)
+Messung_2_oA[:,1] = Messung_2_oA[:,1]*10**(-3)
+
+Messung_3_oA = np.array(np.genfromtxt('Messung_3_oA.txt'))
+Messung_3_oA[:,2] = Messung_3_oA[:,2]*10**(-3)
+lnIdI0_oA  = np.log(Messung_3_oA[:,1]/Messung_3_oA[:,0])
+
+
+#1.
+plt.scatter(Messung_1_oA[:,0],2*Messung_1_oA[:,1],s=8, c='blue',label="Messdaten ohne Ausreißer")
+x_a_oA = np.linspace(22*10**(-6),90*10**(-6),1000)
+popt_a_oA, pcov_a_oA = curve_fit(pol_1, Messung_1_oA[:,0], 2*Messung_1_oA[:,1])
+y_a_oA = pol_1(popt_a_oA[1], popt_a_oA[0], x_a_oA)
+plt.plot(x_a_oA,y_a_oA,c='red',label="Ausgleichsfunktion ohne Ausreißer")
+plt.ylabel(r'$2 \cdot l \mathbin{/} \unit{\meter}$')
+plt.xlabel(r'$t \mathbin{/} \unit{\micro\second}$')
+plt.xlim(22*10**(-6),90*10**(-6))
+plt.tight_layout()
+plt.legend()
+plt.grid()
+plt.savefig('build/Graph_a_oA.pdf')
+plt.clf()
+
+writeW(popt_a_oA[1], "popt_a_oA m")
+writeW(popt_a_oA[0], "popt_a_oA b")
+writeW(np.sqrt(pcov_a_oA[1][1]), "sqrt(pcov_a_oA[1][1]))")
+writeW(np.sqrt(pcov_a_oA[0][0]), "sqrt(pcov_a_oA[0][0]))")
+
+#2.
+plt.scatter(Messung_2_oA[:,0],Messung_2_oA[:,1],s=8, c='blue',label="Messdaten ohne Ausreißer")
+x_b_oA = np.linspace(22*10**(-6),61*10**(-6),1000)
+popt_b_oA, pcov_b_oA = curve_fit(pol_1, Messung_2_oA[:,0], Messung_2_oA[:,1])
+y_b_oA = pol_1(popt_b_oA[1], popt_b_oA[0], x_b_oA)
+plt.plot(x_b_oA,y_b_oA,c='red',label="Ausgleichsfunktion ohne Ausreißer")
+plt.ylabel(r'$l \mathbin{/} \unit{\meter}$')
+plt.xlabel(r'$t \mathbin{/} \unit{\micro\second}$')
+plt.xlim(22*10**(-6),61*10**(-6))
+plt.tight_layout()
+plt.legend()
+plt.grid()
+plt.savefig('build/Graph_b_oA.pdf')
+plt.clf()                       
+
+writeW(popt_b_oA[1], "popt_b_oA m")
+writeW(popt_b_oA[0], "popt_b_oA b")
+writeW(np.sqrt(pcov_b_oA[1][1]), "sqrt(pcov_b_oA[1][1]))")
+writeW(np.sqrt(pcov_b_oA[0][0]), "sqrt(pcov_b_oA[0][0]))")
+
+
+plt.scatter(Messung_3_oA[:,2]*2,lnIdI0_oA,s=8, c='blue',label="Messdaten ohne Ausreißer")
+x_c_oA = np.linspace(0,0.24,1000)
+popt_c_oA, pcov_c_oA = curve_fit(intensitaet,Messung_3_oA[:,2]*2,lnIdI0_oA)
+y_c_oA = intensitaet(popt_c_oA[0], x_c_oA)
+plt.plot(x_c_oA,y_c_oA,c='red',label="Ausgleichsfunktion ohne Ausreißer")
+plt.ylabel(r'$ \ln \left( \frac{I}{I_0} \right) $')
+plt.xlabel(r'$l \mathbin{/} \unit{\meter}$')
+plt.xlim(0,0.24)
+plt.tight_layout()
+plt.legend()
+plt.grid()
+plt.savefig('build/Graph_c_oA.pdf')
+plt.clf()
+writeW(popt_c_oA, "popt_c_oA")
+writeW(np.sqrt(pcov_c_oA), "sqrt(popt_c_oA)")
+#----------------------
 #Auge bin mir nicht sicher ob man das so brechnet. In Altprotokollen haben die 4 Messwerte, aber mit unseren 2 sollte das auch gehen.
 T_Iris = 9.06*10**(-6)
 L_Iris = 1/2 * 2500 * T_Iris

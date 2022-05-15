@@ -1,0 +1,8 @@
+#Dämpfung der Wert mit A1 = 2.136 sieht falsch aus, das habe ich bestimmmt irgendwo schon mal geschrieben, aber ich wollte es nochmal erwähnen
+#A1     A2      l
+1.343   1.243   28.1
+1.347   1.278   37.5
+2.136   0.445   77.5
+1.324   0.086   115
+#1.341   1.157   65.6
+1.327   0.077   105.6  
