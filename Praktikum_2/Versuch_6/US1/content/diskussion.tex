@@ -1,14 +1,43 @@
 \section{Diskussion}
 \label{sec:Diskussion}
 Als erstes wurde Schallgeschwindigkeit in Acrylglas gemessen.
-Diese werden mit einem Theoriewert von
-$c_{\text{Acryl},\text{t}} = 2730 \,\unit{\frac{\meter}{\second}} $ verglichen.
-Das entspricht einer Abweichung von $13 \, \%$ beim Impuls-Echo-Verfahren bzw. einer Abweichung von $88.70 \, \%$ beim Durchschallungsverfahren. 
-Allein an der Größe der Abweichung kann gesehen werden, dass die Messwerte eine großen Streuung unterliegen. Nach diesen beiden Messreihen ist das Echo-Impuls-Verfahren deutlich besser geeingnet, um die Schallgeschwindigkeit in einem Medium zu messen.
+Diese wurde zu $c = 2691,79 \,\unit{\frac{\meter}{\second}}$ bestimmt, was verglichern mit einem Theoriewert von
+$c_{\text{Acryl},\text{t}} = 2730 \,\unit{\frac{\meter}{\second}} $ einer Abweichung von $14,00 \, \%$ beim Impuls-Echo-Verfahren 
+bzw. einer Abweichung von $88,70 \, \%$ beim Durchschallungsverfahren. 
+Wie zu erkennen ist, unterliegen insbesondere die Messdaten zum Durchschallungsverfahren einer großen Abweichung.
+Nach Bereinigung der Messwerte, also sturem Ignorieren der Ausreißer, ergeben sich die in \autoref{fig:graph3} und \autoref{fig:graph4}
+dargestellten Graphen.
 
-Mehr Messwerte und eine genauere Messung sind notwendig, um eindeutigere Ergebnisse zu erhalten.
+Aus den verbesserten Plots ergibt sich eine Schallgeschwindigkeit von $c = 2724,92 \,\unit{\frac{\meter}{\second}}$ für das
+Impuls-Echo-Verfahren, also eine Abweichung von $0,186 \,\%$, beim Durchschallungsverfahren eine Schallgeschwindigkeit von
+$1348,99 \,\unit{\frac{\meter}{\second}}$, die verdächtig genau um einen Faktor von $\frac{1}{2}$ vom Theoriewert abweicht.
+Davon ausgehend, dass beim Durchschallungsverfahren einfach nur ein Rechenfehler aufgetreten ist, sind beide Verfahren, nach
+Bereigigung der Messdaten, für eine Schallgeschwindigkeitsbestimmung geeignet. \\
+
+\begin{figure}[H]
+    \centering
+    \includegraphics{build/Graph_a_oA.pdf}
+    \caption{Bereinigte Messdaten und Fit zum Impuls-Echo-Verfahren.}
+    \label{fig:graph3}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics{build/Graph_b_oA.pdf}
+    \caption{Bereinigte Messdaten und Fit zum Durchschallungsverfahren.}
+    \label{fig:graph4}
+\end{figure}
+
 In \autoref{fig:graph1a} und \autoref{fig:graph1b} sind Messwerte bei ungefähr gleicher Messdauer zu sehen, die jedoch einen signifikanten Unterschied in der Messlänge haben.
-Messfehler bei zusammengesetzten Zylinder entstehen durch eine unzureichende Kopplung. Der Impuls wird dann schon an der Schnittstelle reflektiert und nicht erst am Ende des zweiten Zylinders. \\
+Eventuelle Messfehler können durch mangelhafte Kopplung der Acrylzylinder untereinander bzw. mit den Sonden entstehen.
+Anstatt den kompletten Körper zu durchdringen, kann der Impuls schon an der Grenzfläche zwischen den Zylinder reflektiert werden,
+wodurch der Eindruck eines kürzeren Körpers entsteht. 
+Auch Sprünge im Material können nicht vollständig ausgeschlossen werden, sie sind aber unwahrscheinlich. \\
 
-Die Messwerte für das Augenmodell sind offensichtlich fehlerhaft. Ein menschliches Auge hat einen Durchmesser von $ 2,3 \, \unit{cm} $ \cite{ap07}. Der experimentelle Wert liegt bei $ 0.92 \, \unit{cm}$.
-Der experimentelle Wert hat eine Abweichung von $ 60 \, \% $ zum Literaturwert.
+Die Messwerte für das Augenmodell sind offensichtlich fehlerhaft. 
+Ein menschliches Auge hat einen Durchmesser von $ 2,30 \, \unit{\centi\meter} $ \cite{ap07}.
+Der experimentell bestimmte Wert liegt bei $l_\text{Retina,modell} = 2,76 \,\unit{\centi\meter}$, ein Wert, der auf den ersten Blick zwar recht gut erscheint,
+alledings nur, wenn man vernachlässigt, dass das Modell dreimal größer als ein echtes menschliches Auge ist.
+So liegt der experimentell bestimmte Wert für ein realistisch großes Auge bei
+$ l_\text{Retina,echt} = \dfrac{1}{3} l_\text{Retina,modell} = 0,92 \, \unit{\centi\meter}$.
+Der experimentelle Wert hat also eine Abweichung von $ 60,00 \, \% $ zum Literaturwert.
