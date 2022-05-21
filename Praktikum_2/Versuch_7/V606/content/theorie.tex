@@ -64,7 +64,7 @@ und
 \begin{equation}
     |\vec{\mu_\text{S}}| = \mu_\text{B} \sqrt{S(S + 1)} \,.
     \label{eq:muSabs}
-\end{equation}
+\end{equation} \\
 
 Aus \eqref{eq:muLabs} und \eqref{eq:muSabs} lässt sich nun das zum Gesamtdrehimpuls gehörende magnetische Moment
 berechnen.
@@ -74,12 +74,12 @@ Es gilt
 \end{equation}
 wobei die Winkel $\alpha$ und $\beta$ wie in \autoref{fig:abb1} zu erkennen gewählt sind.
 
-\begin{figure}
+\begin{figure}[H]
     \centering
     \includegraphics{figures/Abb_1.pdf}
     \caption{Vektordiagramm der magnetischen Momente\cite{ap07}.}
     \label{fig:abb1}
-\end{figure}
+\end{figure} 
 
 Unter Verwendung des Cosinussatzes gilt
 \begin{equation*}
@@ -91,9 +91,116 @@ und
 \end{equation*}
 mit einigen Vereinfachung folgt dann
 \begin{equation}
+    |\vec{\mu}_\text{J}| \approx \mu_\text{B} \sqrt{J(J + 1)} \dfrac{3 J (J + 1) + {S(S + 1) - L(L +1)}}{2J(J + 1)} \,.
+\end{equation} \\
+
+Dabei ist 
+\begin{equation}
     g_\text{J} := \dfrac{3 J(J + 1) + {S(S + 1 - L(L + 1))}}{2 J(J + 1)} \,,
     \label{eq:lande-faktor}
 \end{equation}
-der Landé-Faktor des Atoms.
+der Landé-Faktor des Atoms. \\
+
+Damit vereinfacht sich der Ausdruck zu 
+\begin{equation}
+    |\vec{\mu}_\text{J}| \approx \mu_\text{B} g_\text{J} \sqrt{J(J + 1)} \,.
+\end{equation} \\
+
+Unter Beachtung des quantenmechanischen Phänomens der Richtungsquantelung, das besagt, dass für die $\mu_{\text{J}_\text{Z}}$ nur ganzzahlige Vielfache von $\mu_\text{B}g_\text{J}$ möglich sind, folgt,
+dass, relativ zur äußeren Feldrichtung, genau $2J + 1$ Einstellmöglichkeiten des magnetischen Moments mit einer potentiellen Energie von
+\begin{equation}
+    E_\text{m} = - \vec{\mu}_\text{J} \cdot \vec{B} = \mu_{\text{J}_\text{Z}} B = \mu_\text{B} g_\text{J} m B
+\end{equation}
+existieren. \\
+
+Diese Aufspaltung der Energie in Unterniveaus wird als Zeeman-Effekt bezeichnet.
+Mit der durch die Boltzmannverteilung gegebenen Besetzungshäufigkeit
+\begin{equation}
+    Z(E,T) = \text{e}^{-\frac{E}{\text{k}T}}
+\end{equation}
+und Summation über alle Einzelorientierung folgt nach einigen Rechenschritten
+\begin{equation}
+    \chi = \dfrac{\mu_0 \mu^2_\text{B} g^2_J N J(J + 1)}{3 \text{k} T}
+\end{equation}
+für die paramagnetische Suszeptibilität. \\
+
+\subsection{Berechnung der Suszeptibilität seltener Erden}
+
+Um die theoretische Suszeptibilität seltener Erd-Verbindungen zu ermitteln, wird nach den Hundschen Regeln der Gesamtdrehimpuls bestimmt.
+Die Hundschen Regeln lauten:
+
+\begin{enumerate}
+    \item Die Einzelspins $\vec{s}_i$ kombinieren zum nach dem Pauli-Prinzip maximal möglichen Gesamtspin $\vec{S} = \sum\vec{s}_i$
+    \item Die Einzelbahndrehimpulse $\vec{l}_i$ setzen sich so zusammen, dass der bei Erfüllung des Pauli-Prinzips und Regel 1 maximale Drehimpuls $\vec{L} = \sum \vec{l}_i$ entsteht.
+    \item Der Gesamtdrehimpuls ist $\vec{J} = \vec{L} - \vec{S}$, wenn die Schale weniger als und $\vec{J} = \vec{L} + \vec{S}$, wenn die Schale mehr als zur Hälfte gefüllt ist.
+\end{enumerate}
+
+\subsection{Suszeptibilitätsmessung über Brückenschaltungen}
+
+Zur experimentellen Bestimmung der Suszeptibilität wird eine nach \autoref{fig:abb2} aufgebaute Brückenschaltung verwendet.
+
+\begin{figure}
+    \centering
+    \includegraphics{figures/Abb_2.pdf}
+    \caption{Brückenschaltung zur Suszeptibilitätsmessung\cite{ap07}.}
+    \label{fig:abb2}
+\end{figure}
+
+Die totale Induktivität der mit Materie gefüllten Zylinderspule ist dabei gegeben durch
+\begin{equation}
+    L_M\text{total} = \mu \mu_0 \dfrac{n^2}{l} F \,,
+    \label{eq:induspu}
+\end{equation}
+mit der Windungszahl $n$, der Länge $l$ und dem Querschnitt $F$. \\
+
+Ist die Spule nicht mit der Probe, sondern lediglich mit Luft gefüllt, kann der Faktor $\mu_0$ ignoriert werden, es gilt
+\begin{equation}
+    L = \mu \dfrac{n^2}{l} F \,.
+\end{equation} \\
+
+Die Differenz $\Delta L$ zwischen der mit Luft und mit der Probe gefüllten Spule beträgt
+\begin{equation}
+    \Delta L = \mu_0 \chi Q \dfrac{n^2}{l} \,,
+\end{equation}
+wobei $Q$ der Probenquerschnitt ist. \\
+
+Mit den komplexen Widerständen
+\begin{align*}
+    Z_1             &= R_\text{M} + i \omega L_\text{M} \\
+    \dfrac{1}{Z_2}  &= \dfrac{1}{R_\text{P}} + \dfrac{1}{R + i \omega L} \approx \dfrac{1}{ R + i \omega L}\\
+    Z_3             &= R_3                                               \approx R_4\\
+    Z_4             &= R_4                                               \approx R_3
+\end{align*}
+
+Die Suszeptibilität lässt sich dabei auf zwei Arten bestimmen.
+Über eine Änderung der Brückenspannung, oder durch eine Widerstandsänderung via Abgleichbedingung nach Einführen der Probe. \\
+
+Nach einiger Rechnung ergibt sich für die Suszeptibilitätsmessung über Spannungsänderung der Ausdruck
+\begin{equation}
+    \chi = \dfrac{U_\text{Br}}{U_\text{Sp}} \dfrac{4 l}{\omega \mu_0 n^2 Q} \sqrt{R^2 + \omega^2 \left(\mu_0 \dfrac{n^2}{l} F \right)^2} \,,
+    \label{eq:spannsusamogus}
+\end{equation}
+der sich in hochfrequenter Näherung zu
+\begin{equation}
+    \chi(\omega \rightarrow \infty) = 4 \dfrac{F}{Q} \dfrac{U_\text{Br}}{U_\text{Sp}}
+    \label{eq:spannsussimp}
+\end{equation}
+vereinfacht, wobei $U_\text{Br}$ die Brücken- und $U_\text{Sp}$ die Speisespannung darstellen. \\
+
+Über die Abgleichbedingung 
+\begin{equation*}
+    Z_1 R_4 = Z_2 R_3
+\end{equation*}
+folgt mit dem geänderten Abgleichwiderstand
+\begin{equation*}
+    R_3' = R_3 + \Delta R
+\end{equation*}
+die Suszeptibilität
+\begin{equation}
+    \chi = 2 \dfrac{\Delta R}{R_3} \dfrac{F}{Q} \,.
+    \label{eq:widsus}
+\end{equation}
+
+
 
 
