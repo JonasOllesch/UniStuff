@@ -1,5 +1,5 @@
 #R_3 = R_4 = 998, Güte = 20, Verstärkung x10
-#f in Hz        U in V
+#f in kHz        U in V
 10.01           0.5
 12.95           0.78
 16.03           1.11

@@ -56,7 +56,7 @@ Messung_2_c[:,3] = Messung_2_c[:,3]*0.1
 #plt.plot(x,y,color='r',label="regression")
 
 plt.scatter(Messung_1[:,0]/1000, Messung_1[:,1],s=8,label="Messdaten")
-plt.xlabel(r'$ f \, \mathbin{/} \unit{\hertz}$')
+plt.xlabel(r'$ f \, \mathbin{/} \unit{\kilo\hertz}$')
 plt.ylabel(r'$ U \mathbin{/} \unit{\volt}  $')
 plt.tight_layout()
 plt.legend()
