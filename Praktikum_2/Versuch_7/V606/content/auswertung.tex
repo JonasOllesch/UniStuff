@@ -1,5 +1,54 @@
 \section{Auswertung}
 \label{sec:Auswertung}
+In diesem Abschnitt wird die Filterkurve der Brückenschaltung und die Suszeptibilität von $\text{Dy}_2\text{O}_3$ , $\text{Gd}_2\text{O}_3$ und  $\text{Nd}_2 \text{O}_3$ bestimmt.
+
+\subsection{theoretische Bestimmung der Suszeptibilität}
+
+Um einen besseren Überblick über die Qualität der aufgenommenen Messwerte zu erhalten, ist es sinnvoll, diese mit den theoretisch berechneten Suszeptibilitäten zu vergleichen.
+Dabei wird nach den Hundschen Regeln vorgegangen. \\
+
+Zu beachten ist dabei auch die Orientierungsquantenzahl $m = (-3, \,-2, \,-1, \,0, \,1, \,2, \,3)$, die für Elektronen mit gleichem Spin immer unterschiedlich sein muss.
+Für die drei Proben folgt also:
+
+\begin{itemize}
+    \item $\text{Nd}_2 \text{O}_3$ besitzt auf der 4f-Schale drei Elektronen, die nach der ersten Hundschen Regel den gleichen Spin $s_\text{i} = \frac{1}{2}$, also kombiniert einen Gesamtspin von $S = \frac{3}{2}$ besitzen.
+          Die drei Elektronen müssen sich also in ihrer Orientierungsquantenzahl unterscheiden. 
+          Hier folgt ein maximaler Drehimpuls von $L = \sum m_i = 3 + 2 + 1 = 6$, insgesamt also ein Gesamtdrehimpuls von $J = L - S = 6 - \frac{3}{2} = \frac{9}{2}$,
+          da die Schale weniger als halb gefüllt ist.
+          Damit ergibt sich nach \eqref{eq:lande-faktor} ein Landé-Faktor von $g_\text{J} = \frac{8}{11}$.
+
+    \item Für $\text{Gd}_2\text{O}_3$ wird analog vorgegangen. Mit sieben Elektronen auf der 4f-Schale mit gleichem Spin folgt $S = 3,5$. 
+        Da die Anzahl an Elektronen genau gleich der Anzahl unterschiedlicher Orientierungsquantenzahlen ist, ist der Bahndrehimpuls $L = 0$.
+        Der Gesamtdrehimpuls ist damit gleich dem Gesamtspin, $J = S = 3,5$ und der Landé-Faktor $g_\text{J} = 2$.
+
+    \item Mit neun Elektronen auf der 4f-Schale besitzt $\text{Dy}_2\text{O}_3$ mehr Elektronen, als es Orientierungsquantenzahlen gibt, zwei der Elektronen haben also einen negativen Spin.
+        Damit ergibt sich $S = 2,5$ und ein Bahndrehimpuls von \\ $L = 3 + 2 + 1 + 0 - 1 - 2 - 3 + 3 + 2 = 5$.
+        Für den Gesamtdrehimpuls folgt $J = L + S = 7,5$, da die Schale mehr als halb gefüllt ist, für den Landé-Faktor $g_\text{J} = \frac{4}{3}$.
+\end{itemize}
+
+Mit der Avogadrokonstanten $N_a$, der Dichte $\rho$ und der molaren Masse $M_\text{mol}$ gilt für die Anzahl der Momente pro Volumen
+\begin{equation}
+    N = 2 N_a \dfrac{\rho}{M_\text{mol}} \,,
+\end{equation}
+womit sich nach \eqref{eq:susg_J} und den in \autoref{tab:probwertis} aufgetragenen Dichten, molaren Massen sowie der berechneten Anzahl der Momente pro Volumen
+die in \autoref{tab:theosus} dargestellten theoretischen Suszeptibilitäten ergeben.
+
+\begin{table}[H]
+    \centering
+    \caption{Dichten $\rho$, molare Massen $M_\text{mol}$ und berechnete Momente pro Volumen $N$.}
+    \label{tab:probwertis}
+    \begin{tabular}{S S[table-format=1.2] S[table-format=3.2] S[table-format=1.2]}
+      \toprule
+      {} & {$\rho \mathbin{/} \unit{\frac{\gram}{{\centi\meter}^3}}$} & {$M_\text{mol} \mathbin{/} \unit{\frac{\gram}{\mol}}$} & {$N \mathbin{/} \unit{\frac{1}{{\centi\meter}^3}} \cdot 10^{28}$}  \\
+      \midrule
+      {$\text{Nd}_2 \text{O}_3$}        &           7.24          &         336.48          &           2.59            \\
+      {$\text{Gd}_2\text{O}_3$}         &           7.40          &         362.50          &           2.46            \\
+      {$\text{Dy}_2\text{O}_3$}         &           7.80          &         373.00          &           2.52            \\
+      \bottomrule
+    \end{tabular}
+\end{table}
+
+
 
 \subsection{Untersuchung der Filterkurve}
 
@@ -63,61 +112,16 @@ bei einer Frequenz von
 \end{equation}
 bestimmt.
 
-\subsection{theoretische Bestimmung der Suszeptibilität}
-
-Um einen besseren Überblick über die Qualität der aufgenommenen Messwerte zu erhalten, ist es sinnvoll, diese mit den theoretisch berechneten Suszeptibilitäten zu vergleichen.
-Dabei wird nach den Hundschen Regeln vorgegangen. \\
-
-Zu beachten ist dabei auch die Orientierungsquantenzahl $m = (-3, \,-2, \,-1, \,0, \,1, \,2, \,3)$, die für Elektronen mit gleichem Spin immer unterschiedlich sein muss.
-Für die drei Proben folgt also:
-
-\begin{itemize}
-    \item $\text{Nd}_2 \text{O}_3$ besitzt auf der 4f-Schale drei Elektronen, die nach der ersten Hundschen Regel den gleichen Spin $s_\text{i} = \frac{1}{2}$, also kombiniert einen Gesamtspin von $S = \frac{3}{2}$ besitzen.
-          Die drei Elektronen müssen sich also in ihrer Orientierungsquantenzahl unterscheiden. 
-          Hier folgt ein maximaler Drehimpuls von $L = \sum m_i = 3 + 2 + 1 = 6$, insgesamt also ein Gesamtdrehimpuls von $J = L - S = 6 - \frac{3}{2} = \frac{9}{2}$,
-          da die Schale weniger als halb gefüllt ist.
-          Damit ergibt sich nach \eqref{eq:lande-faktor} ein Landé-Faktor von $g_\text{J} = \frac{8}{11}$.
-
-    \item Für $\text{Gd}_2\text{O}_3$ wird analog vorgegangen. Mit sieben Elektronen auf der 4f-Schale mit gleichem Spin folgt $S = 3,5$. 
-        Da die Anzahl an Elektronen genau gleich der Anzahl unterschiedlicher Orientierungsquantenzahlen ist, ist der Bahndrehimpuls $L = 0$.
-        Der Gesamtdrehimpuls ist damit gleich dem Gesamtspin, $J = S = 3,5$ und der Landé-Faktor $g_\text{J} = 2$.
-
-    \item Mit neun Elektronen auf der 4f-Schale besitzt $\text{Dy}_2\text{O}_3$ mehr Elektronen, als es Orientierungsquantenzahlen gibt, zwei der Elektronen haben also einen negativen Spin.
-        Damit ergibt sich $S = 2,5$ und ein Bahndrehimpuls von \\ $L = 3 + 2 + 1 + 0 - 1 - 2 - 3 + 3 + 2 = 5$.
-        Für den Gesamtdrehimpuls folgt $J = L + S = 7,5$, da die Schale mehr als halb gefüllt ist, für den Landé-Faktor $g_\text{J} = \frac{4}{3}$.
-\end{itemize}
-
-Mit der Avogadrokonstanten $N_a$, der Dichte $\rho$ und der molaren Masse $M_\text{mol}$ gilt für die Anzahl der Momente pro Volumen
-\begin{equation}
-    N = 2 N_a \dfrac{\rho}{M_\text{mol}} \,,
-\end{equation}
-womit sich nach \eqref{eq:susg_J} und den in \autoref{tab:probwertis} aufgetragenen Dichten, molaren Massen sowie der berechneten Anzahl der Momente pro Volumen
-die in \autoref{tab:theosus} dargestellten theoretischen Suszeptibilitäten ergeben.
-
-\begin{table}[H]
-    \centering
-    \caption{Dichten $\rho$, molare Massen $M_\text{mol}$ und berechnete Momente pro Volumen $N$.}
-    \label{tab:probwertis}
-    \begin{tabular}{S S[table-format=1.2] S[table-format=3.2] S[table-format=1.2]}
-      \toprule
-      {} & {$\rho \mathbin{/} \unit{\frac{\gram}{{\centi\meter}^3}}$} & {$M_\text{mol} \mathbin{/} \unit{\frac{\gram}{\mol}}$} & {$N \mathbin{/} \unit{\frac{1}{{\centi\meter}^3}} \cdot 10^{28}$}  \\
-      \midrule
-      {$\text{Nd}_2 \text{O}_3$}        &           7.24          &         336.48          &           2.59            \\
-      {$\text{Gd}_2\text{O}_3$}         &           7.40          &         362.50          &           2.46            \\
-      {$\text{Dy}_2\text{O}_3$}         &           7.80          &         373.00          &           2.52            \\
-      \bottomrule
-    \end{tabular}
-\end{table}
-
 
 
 \subsection{Experiemntelle Bestimmung der Suszeptibilität}
 
+Es wird eine Sinusspannung mit einer Frequenz von $ 21,920 \, \unit{\kilo\hertz}$ als Speisespannung verwendet.
 Die Probe liegt in einem Pulver vor, deswegen ist die Dichte $ \rho_p$ geringer als wenn sie aus einem einzelnen Kristall bestehen würde.
 Deswegen wird aus dem eigentlichen Querschnitt ein realer Querschnitt $Q_{real} $ berechnet, welchen die Probe hätte, wenn sie aus einem Kristall bestehen würde.
 Dazu wird die Formel \eqref{eq:Qreal} verwendet
 \begin{equation}
-    Q_{real} = \frac{M_p}{l \rho_w} .
+    Q_{real} = \frac{M_p}{l \, \rho_w} .
     \label{eq:Qreal}
 \end{equation}
 $M_p$ ist die Masse der Probe. $\rho_w$ ist die Dichte eines Einkristalls und $l$ die Länge der Probe.
@@ -187,7 +191,7 @@ Die Werte für die Proben sind der der folgenden \autoref{tab:tab2} angegeben.
 
 Die Tabellen \autoref{tab:tab3}, \autoref{tab:tab4} und \autoref{tab:tab5} zeigen die Messwerte für die drei verschiedenen Proben.\\
 Nach \eqref{eq:widsus} kann die Suszeptibilität durch $ \Delta R $ ausgrechnet werden und nach \eqref{eq:spannsussimp} über $\Delta U$.
-Die Mittelwerte der Ergebnisse sind in \autoref{tab:tab6} eingetragen
+Die Mittelwerte der Ergebnisse sind in \autoref{tab:tab6} eingetragen.
 
 
 \begin{table}[H]
@@ -198,9 +202,9 @@ Die Mittelwerte der Ergebnisse sind in \autoref{tab:tab6} eingetragen
       \toprule
        {Stoff} & {$\chi_{\text{R}}$} & {$\chi_{\text{U}}$} &{$\chi_{\text{theo}}$}  \\
       \midrule
-      {$\text{Dy}_2\text{O}_3$}  &{}.&{.} &{0.02525}         \\
-      {$\text{Gd}_2\text{O}_3$}  &{}.&{.} &{0.01370}         \\
-      {$\text{Nd}_2 \text{O}_3$} &{}.&{.} &{0.00299}         \\
+      {$\text{Dy}_2\text{O}_3$}  &{$0.02271 \pm 9.2 \cdot 10^{-4}$}    &{$ 0.38346 \pm 0.30599$} &{0.02525}         \\
+      {$\text{Gd}_2\text{O}_3$}  &{$0.00147 \pm 7.0 \cdot 10^{-5}$}    &{$ 0.00932 \pm 0.00249$} &{0.01370}             \\
+      {$\text{Nd}_2 \text{O}_3$} &{$0.00071 \pm 2.7 \cdot 10^{-4}$}    &{$ 0.01048 \pm 0.00980$} &{0.00299}         \\
       \bottomrule
     \end{tabular}
 \end{table}
