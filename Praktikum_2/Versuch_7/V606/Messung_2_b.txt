@@ -1,4 +1,4 @@
-#Gd2O3 f = 21.920 kHz ohm x 5m, v x0.1
+#Gd2O3 f = 21.920 kHz ohm x 5m, v x0.1 l = 15.9 cm m=10,2g
 #R_0 in Ohm         U_0 in V        R_m in Ohm  U_m in V
 512                 0.58            357         0.595
 500                 0.61            362         0.585

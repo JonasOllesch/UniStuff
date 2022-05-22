@@ -1,4 +1,4 @@
-#Nd2O3 f = 21.920 kHz ohm x 5m, v x0.1
+#Nd2O3 f = 21.920 kHz ohm x 5m, v x0.1 l =16cm m=7,66g
 #R_0 in Ohm         U_0 in V        R_m in Ohm  U_m in V
 536                 0.61            460         0.655
 502                 0.615           476         0.615
