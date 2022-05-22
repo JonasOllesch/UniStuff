@@ -12,3 +12,9 @@ suszep_aus_u
 [0.81546125 0.00785776 0.01798122]
 [0.14561808 0.01309627 0.        ]
 [0.1893035  0.01571553 0.00599374]
+Theoretische Suszeptibilität für Nd
+0.0029975555311556623
+Theoretische Suszeptibilität für Gd
+0.013701664302883821
+Theoretische Suszeptibilität für Dy
+0.02524967947414905

@@ -2,6 +2,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 from scipy.optimize import curve_fit
 from uncertainties import ufloat
+import scipy.constants as sc
 
 
 
@@ -101,3 +102,37 @@ suszep_aus_u_Gd203_std = np.std(suszep_aus_u[:,2])
 
 
 writeW(suszep_aus_u, "suszep_aus_u")
+
+## theoretische Suszeptibilitäten
+
+mu_0 = sc.mu_0
+mu_B = sc.value('Bohr magneton')
+k    = sc.k
+T = 295.15
+
+# Probe 1
+g_J1 = 8/11
+J_1 = 9/2
+N_1 = 2.59*10**28
+
+chi_1 = (mu_0*mu_B**2*g_J1**2*N_1*J_1*(J_1 + 1))/(3*k*T)
+
+writeW(chi_1, 'Theoretische Suszeptibilität für Nd')
+
+# Probe 2
+g_J2 = 2
+J_2 = 3.5
+N_2 = 2.46*10**28
+
+chi_2 = (mu_0*mu_B**2*g_J2**2*N_2*J_2*(J_2 + 1))/(3*k*T)
+
+writeW(chi_2, 'Theoretische Suszeptibilität für Gd')
+
+# Probe 3
+g_J3 = 4/3
+J_3 = 7.5
+N_3 = 2.52*10**28
+
+chi_3 = (mu_0*mu_B**2*g_J3**2*N_3*J_3*(J_3 + 1))/(3*k*T)
+
+writeW(chi_3, 'Theoretische Suszeptibilität für Dy')
