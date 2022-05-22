@@ -54,7 +54,7 @@ Es wurde versucht mit $ scipy$ eine Lorentzkurve der Form \eqref{eq:Lorentzkurve
 Das Maximum der Spannung wird als
 
 \begin{equation}
-    U_A = 8,1 \, \unit{\volt}
+    U_\text{A} = 8,1 \, \unit{\volt}
 \end{equation}
 
 bei einer Frequenz von 
@@ -62,6 +62,54 @@ bei einer Frequenz von
     v_0 = 21,05 \, \unit{\kilo\hertz}
 \end{equation}
 bestimmt.
+
+\subsection{theoretische Bestimmung der Suszeptibilität}
+
+Um einen besseren Überblick über die Qualität der aufgenommenen Messwerte zu erhalten, ist es sinnvoll, diese mit den theoretisch berechneten Suszeptibilitäten zu vergleichen.
+Dabei wird nach den Hundschen Regeln vorgegangen. \\
+
+Zu beachten ist dabei auch die Orientierungsquantenzahl $m = (-3, \,-2, \,-1, \,0, \,1, \,2, \,3)$, die für Elektronen mit gleichem Spin immer unterschiedlich sein muss.
+Für die drei Proben folgt also:
+
+\begin{itemize}
+    \item $\text{Nd}_2 \text{O}_3$ besitzt auf der 4f-Schale drei Elektronen, die nach der ersten Hundschen Regel den gleichen Spin $s_\text{i} = \frac{1}{2}$, also kombiniert einen Gesamtspin von $S = \frac{3}{2}$ besitzen.
+          Die drei Elektronen müssen sich also in ihrer Orientierungsquantenzahl unterscheiden. 
+          Hier folgt ein maximaler Drehimpuls von $L = \sum m_i = 3 + 2 + 1 = 6$, insgesamt also ein Gesamtdrehimpuls von $J = L - S = 6 - \frac{3}{2} = \frac{9}{2}$,
+          da die Schale weniger als halb gefüllt ist.
+          Damit ergibt sich nach \eqref{eq:lande-faktor} ein Landé-Faktor von $g_\text{J} = \frac{8}{11}$.
+
+    \item Für $\text{Gd}_2\text{O}_3$ wird analog vorgegangen. Mit sieben Elektronen auf der 4f-Schale mit gleichem Spin folgt $S = 3,5$. 
+        Da die Anzahl an Elektronen genau gleich der Anzahl unterschiedlicher Orientierungsquantenzahlen ist, ist der Bahndrehimpuls $L = 0$.
+        Der Gesamtdrehimpuls ist damit gleich dem Gesamtspin, $J = S = 3,5$ und der Landé-Faktor $g_\text{J} = 2$.
+
+    \item Mit neun Elektronen auf der 4f-Schale besitzt $\text{Dy}_2\text{O}_3$ mehr Elektronen, als es Orientierungsquantenzahlen gibt, zwei der Elektronen haben also einen negativen Spin.
+        Damit ergibt sich $S = 2,5$ und ein Bahndrehimpuls von \\ $L = 3 + 2 + 1 + 0 - 1 - 2 - 3 + 3 + 2 = 5$.
+        Für den Gesamtdrehimpuls folgt $J = L + S = 7,5$, da die Schale mehr als halb gefüllt ist, für den Landé-Faktor $g_\text{J} = \frac{4}{3}$.
+\end{itemize}
+
+Mit der Avogadrokonstanten $N_a$, der Dichte $\rho$ und der molaren Masse $M_\text{mol}$ gilt für die Anzahl der Momente pro Volumen
+\begin{equation}
+    N = 2 N_a \dfrac{\rho}{M_\text{mol}} \,,
+\end{equation}
+womit sich nach \eqref{eq:susg_J} und den in \autoref{tab:probwertis} aufgetragenen Dichten, molaren Massen sowie der berechneten Anzahl der Momente pro Volumen
+die in \autoref{tab:theosus} dargestellten theoretischen Suszeptibilitäten ergeben.
+
+\begin{table}[H]
+    \centering
+    \caption{Dichten $\rho$, molare Massen $M_\text{mol}$ und berechnete Momente pro Volumen $N$.}
+    \label{tab:probwertis}
+    \begin{tabular}{S S[table-format=1.2] S[table-format=3.2] S[table-format=1.2]}
+      \toprule
+      {} & {$\rho \mathbin{/} \unit{\frac{\gram}{{\centi\meter}^3}}$} & {$M_\text{mol} \mathbin{/} \unit{\frac{\gram}{\mol}}$} & {$N \mathbin{/} \unit{\frac{1}{{\centi\meter}^3}} \cdot 10^{28}$}  \\
+      \midrule
+      {$\text{Nd}_2 \text{O}_3$}        &           7.24          &         336.48          &           2.59            \\
+      {$\text{Gd}_2\text{O}_3$}         &           7.40          &         362.50          &           2.46            \\
+      {$\text{Dy}_2\text{O}_3$}         &           7.80          &         373.00          &           2.52            \\
+      \bottomrule
+    \end{tabular}
+\end{table}
+
+
 
 \subsection{Experiemntelle Bestimmung der Suszeptibilität}
 
@@ -133,25 +181,26 @@ Die Werte für die Proben sind der der folgenden \autoref{tab:tab2} angegeben.
         {2.68} & {2.3} &  {0.38}&{0.061} &{0.0655}&{0.0045}\\
         {2.51} & {2.38}&  {0.13}&{0.0615}&{0.0615}&{0.0}\\
         {2.6}  & {2.3} &  {0.3} &{0.0645}&{0.063} &{0.0015}\\
-      \bottomrule
+        \bottomrule
     \end{tabular}
 \end{table}
 
 Die Tabellen \autoref{tab:tab3}, \autoref{tab:tab4} und \autoref{tab:tab5} zeigen die Messwerte für die drei verschiedenen Proben.\\
-Nach \eqref{eq:widsus} kann die Suszeptibilität durch $ \Delta R$ ausgrechnet werden und nach \eqref{eq:spannsussimp} über $\Delta U$.
-Die Ergebnisse sind in \autoref{tab:tab6} eingetragen.
+Nach \eqref{eq:widsus} kann die Suszeptibilität durch $ \Delta R $ ausgrechnet werden und nach \eqref{eq:spannsussimp} über $\Delta U$.
+Die Mittelwerte der Ergebnisse sind in \autoref{tab:tab6} eingetragen
+
 
 \begin{table}[H]
     \centering
-    \caption{Experiemntelle Werte für die Suszeptibilität.}
+    \caption{Suszeptibilitäten $\chi$ der unterschiedlichen Proben.}
     \label{tab:tab6}
-    \begin{tabular}{S S S S S S}
+    \begin{tabular}{S S S S}
       \toprule
-        {$ R_0 \mathbin{/} \unit{\ohm} $}&{$R_m \mathbin{/} \unit{\ohm} $}&{$ \Delta R \mathbin{/} \unit{\ohm}$}&{$ U_0 \mathbin{/} \unit{\volt}$}&{$U_m \mathbin{/} \unit{\volt}$}&{$\Delta U \mathbin{/} \unit{\volt}$}\\
-        \midrule
-        {2.68} & {2.3} &  {0.38}&{0.061} &{0.0655}&{0.0045}\\
-        {2.51} & {2.38}&  {0.13}&{0.0615}&{0.0615}&{0.0}\\
-        {2.6}  & {2.3} &  {0.3} &{0.0645}&{0.063} &{0.0015}\\
+       {Stoff} & {$\chi_{\text{R}}$} & {$\chi_{\text{U}}$} &{$\chi_{\text{theo}}$}  \\
+      \midrule
+      {$\text{Dy}_2\text{O}_3$}  &{}.&{.} &{0.02525}         \\
+      {$\text{Gd}_2\text{O}_3$}  &{}.&{.} &{0.01370}         \\
+      {$\text{Nd}_2 \text{O}_3$} &{}.&{.} &{0.00299}         \\
       \bottomrule
     \end{tabular}
 \end{table}
