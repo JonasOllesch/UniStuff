@@ -8,14 +8,14 @@ In Anwesenheit von Materie ändert sich ein Magnetfeld $\vec{B} = \mu_0 \vec{H}$
     \vec{M} = N \mu_0 \bar{\vec{\mu}} = \mu_0 \chi \vec{H} \,,
 \end{equation*}
 wobei $\bar{\vec{\mu}}$ das mittlere magnetische Moment und $\chi$ die Suszeptibilität darstellt.
-Dabei ist $\chi$ keine Konstante, sondern eine von $H$ und der Temperatur $T$ abhängige Größe. \\
+Dabei ist $\chi$ keine Konstante, sondern eine von dem Magnetfeld $\vec{H}$ und der Temperatur $T$ abhängige Größe. \\
 
 Je nach Bereich der Suszeptibilität werden unterschiedliche Arten von Magnetismus unterschieden.
 Ist die Suszeptibilität kleiner null, wird von Diamagnetismus gesprochen.
 Diese Form des Magnetismus beschreibt die Induktion zum äußeren Magnetfeld entgegengerichteter magnetische Momente. \\
 
 Hier soll der Fokus aber stärker auf dem Paramagnetismus liegen.
-Der Paramagnetismus stellt, entgegen zum Diamagnetismus, keine allgemeine Eigenschaft, er findet sich nur bei
+Der Paramagnetismus stellt, entgegen zum Diamagnetismus, keine allgemeine Eigenschaft dar, er findet sich nur bei
 Teilchen, die einen nicht verschwindenden Drehimpuls besitzen und entsteht durch die Orientierung der an den
 Drehimpuls gekoppelten magnetischen Momente zum äußeren Feld. \\
 
@@ -149,14 +149,14 @@ Zur experimentellen Bestimmung der Suszeptibilität wird eine nach \autoref{fig:
 
 Die totale Induktivität der mit Materie gefüllten Zylinderspule ist dabei gegeben durch
 \begin{equation}
-    L_M\text{total} = \mu \mu_0 \dfrac{n^2}{l} F \,,
+    L_{M,\text{total}} = \mu \mu_0 \dfrac{n^2}{l} F \,,
     \label{eq:induspu}
 \end{equation}
 mit der Windungszahl $n$, der Länge $l$ und dem Querschnitt $F$. \\
 
-Ist die Spule nicht mit der Probe, sondern lediglich mit Luft gefüllt, kann der Faktor $\mu_0$ ignoriert werden, es gilt
+Ist die Spule nicht mit der Probe, sondern lediglich mit Luft gefüllt, kann der Faktor $\mu$ ignoriert werden, da $\mu_\text{Luft} \approx 1$, es gilt
 \begin{equation}
-    L = \mu \dfrac{n^2}{l} F \,.
+    L = \mu_0 \dfrac{n^2}{l} F \,.
 \end{equation} \\
 
 Die Differenz $\Delta L$ zwischen der mit Luft und mit der Probe gefüllten Spule beträgt
@@ -165,13 +165,14 @@ Die Differenz $\Delta L$ zwischen der mit Luft und mit der Probe gefüllten Spul
 \end{equation}
 wobei $Q$ der Probenquerschnitt ist. \\
 
-Mit den komplexen Widerständen
+Die komplexen Widerstände $Z_i$ sind dabei durch
 \begin{align*}
     Z_1             &= R_\text{M} + i \omega L_\text{M} \\
     \dfrac{1}{Z_2}  &= \dfrac{1}{R_\text{P}} + \dfrac{1}{R + i \omega L} \approx \dfrac{1}{ R + i \omega L}\\
     Z_3             &= R_3                                               \approx R_4\\
     Z_4             &= R_4                                               \approx R_3
 \end{align*}
+gegeben. \\
 
 Die Suszeptibilität lässt sich dabei auf zwei Arten bestimmen.
 Über eine Änderung der Brückenspannung, oder durch eine Widerstandsänderung via Abgleichbedingung nach Einführen der Probe. \\
