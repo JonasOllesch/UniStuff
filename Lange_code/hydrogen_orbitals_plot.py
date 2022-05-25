@@ -45,36 +45,29 @@ theta = Symbol("theta", real=True)
 
 fmt = lambda x: "{:.0f}%".format(x)
 
+max_r = 50
 points = 1001
 hbar = 1.05457182e-34
 ryd = 2.179872e-18 # Rydberg energy in Joules
 
-# Superposition coefficients, (A, n, l, m). A: Amplitude.
-# Enable _one_ of the following configurations.
+# A list of all orbitals to be plotted in the form (n, l, m, max_r)
+c_wf = [
+        [2, 1, -1, 8],
+        [2, 1, 0, 8],
+        [2, 1, 1, 8],
 
-# c_wf = [[1, 1, 0, 0], [1, 2, 1, 1]]
-# comment = "spos1"
-# max_r = 10
-
-c_wf = [[4, 2, 1, 0], [5, 3, 2, 1]]
-comment = "spos2"
-max_r = 20
-
-lin_scale = np.linspace(-max_r, max_r, points)
-xgrid, ygrid = np.meshgrid(lin_scale, lin_scale)
-rgrid, phigrid = np.sqrt(xgrid**2 + ygrid**2), np.arctan2(ygrid, xgrid)
-
-wf_lamb = [lambdify([r, phi], Psi_nlm(n, l, m, r, phi, np.pi/2, 1), "numpy") for [A, n, l, m] in c_wf]
-wf_num_stat = [wfl(rgrid, phigrid) for wfl in wf_lamb]
+    ]
 
 def E_nl(n):
     return -ryd / n**2
 
-def plot_wf_real(t, dfunc = np.real, cmap = "seismic", symdlim = True):
-    wavefunc_num = np.zeros_like(rgrid, dtype = complex)
-    for idx in range(len(c_wf)):
-        wavefunc_num += c_wf[idx][0] * np.exp(-1j * E_nl(c_wf[idx][1]) * t / hbar) * wf_num_stat[idx]
-    wavefunc_num = dfunc(wavefunc_num)
+def plot_wf_real(n, l, m, max_r, dfunc = np.real, cmap = "seismic", symdlim = True):
+    lin_scale = np.linspace(-max_r, max_r, points)
+    xgrid, ygrid = np.meshgrid(lin_scale, lin_scale)
+    rgrid, phigrid = np.sqrt(xgrid**2 + ygrid**2), np.arctan2(ygrid, xgrid)
+
+    wavefunc_lamb = lambdify([r, phi], Psi_nlm(n, l, m, r, phi, np.pi/2, 1), "numpy")
+    wavefunc_num = dfunc(wavefunc_lamb(rgrid, phigrid))
     dlim = max(np.min(wavefunc_num), np.max(wavefunc_num))
     if symdlim: 
         clim = (-dlim, dlim)
@@ -96,19 +89,19 @@ def plot_wf_real(t, dfunc = np.real, cmap = "seismic", symdlim = True):
     ax.set_yticks(ticker, [fmt(i) for i in labeler[::-1]])
     ax.set_xlabel("$x\,/\,a_0$")
     ax.set_ylabel("$y\,/\,a_0$")
-    title = "[" + ", ".join(["({:d},{:d},{:d})".format(n, l, m) for (A, n, l, m) in c_wf]) + "]"
-    title += r",  $t = $" + " {:.3f} fs".format(t * 1e15)
-    ax.set_title(title)
+    ax.set_title(r"$n =$" + " {:d}".format(n) + r"$, l =$" + " {:d}".format(l) + r"$, m = $" + " {:d}".format(m))
     cbar = plt.colorbar(im, ax = ax)
     cbar.set_label(r"$\mathcal{R}e \Psi(r, \phi, \theta = 90°)$")
     cbar.set_ticks(np.linspace(-dlim, dlim, 3))
     cbar.set_ticklabels([r"$-$", r"0", r"$+$"])
-    
-def plot_wf_abs2(t, dfunc = lambda x: np.abs(x)**2, cmap = "afmhot_r", symdlim = False):
-    wavefunc_num = np.zeros_like(rgrid, dtype = complex)
-    for idx in range(len(c_wf)):
-        wavefunc_num += c_wf[idx][0] * np.exp(-1j * E_nl(c_wf[idx][1]) * t / hbar) * wf_num_stat[idx]
-    wavefunc_num = dfunc(wavefunc_num)
+
+def plot_wf_abs2(n, l, m, max_r, dfunc = lambda x: np.abs(x)**2, cmap = "afmhot_r", symdlim = False):
+    lin_scale = np.linspace(-max_r, max_r, points)
+    xgrid, ygrid = np.meshgrid(lin_scale, lin_scale)
+    rgrid, phigrid = np.sqrt(xgrid**2 + ygrid**2), np.arctan2(ygrid, xgrid)
+
+    wavefunc_lamb = lambdify([r, phi], Psi_nlm(n, l, m, r, phi, np.pi/2, 1), "numpy")
+    wavefunc_num = dfunc(wavefunc_lamb(rgrid, phigrid))
     dlim = max(np.min(wavefunc_num), np.max(wavefunc_num))
     if symdlim: 
         clim = (-dlim, dlim)
@@ -130,15 +123,19 @@ def plot_wf_abs2(t, dfunc = lambda x: np.abs(x)**2, cmap = "afmhot_r", symdlim =
     ax.set_yticks(ticker, [fmt(i) for i in labeler[::-1]])
     ax.set_xlabel("$x\,/\,a_0$")
     ax.set_ylabel("$y\,/\,a_0$")
-    title = "[" + ", ".join(["({:d},{:d},{:d})".format(n, l, m) for (A, n, l, m) in c_wf]) + "]"
-    title += r",  $t = $" + " {:.3f} fs".format(t * 1e15)
-    ax.set_title(title)
+    ax.set_title(r"$n =$" + " {:d}".format(n) + r"$, l =$" + " {:d}".format(l) + r"$, m = $" + " {:d}".format(m))
     cbar = plt.colorbar(im, ax = ax)
     cbar.set_label(r"$|\Psi(r, \phi, \theta = 90°)|^2$")
     cbar.set_ticks(np.linspace(0, dlim, 2))
     cbar.set_ticklabels([r"0", r"$+$"])
 
-plot_wf_abs2(0e-15)
-plt.savefig("Abs2_psi_{:s}.png".format(comment), dpi = 300)
-plot_wf_real(0e-15)
-plt.savefig("Re_psi_{:s}.png".format(comment), dpi = 300)
+
+for (n, l, m, max_r) in c_wf:
+    plot_wf_real(n, l, m, max_r)
+    
+    
+    #plt.savefig("Re_psi_n={:02d}_l={:02d}_m={:02d}.png".format(n, l, m), dpi = 300)
+    #plot_wf_abs2(n, l, m, max_r)
+    #plt.savefig("Abs2_psi_n={:02d}_l={:02d}_m={:02d}.png".format(n, l, m), dpi = 300)
+plt.savefig("superposition", dpi = 300)
+    
