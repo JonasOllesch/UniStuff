@@ -35,10 +35,13 @@ import matplotlib.pyplot as plt
 from sympy.physics.hydrogen import Psi_nlm
 from sympy import Symbol, lambdify
 from matplotlib import rc
+
+
 rc("font", **{"size": 12})
 rc("text", usetex=True)
 rc("animation", html="html5")
 rc("figure", figsize = (5, 4.2))
+
 r = Symbol("r", positive=True)
 phi = Symbol("phi", real=True)
 theta = Symbol("theta", real=True)
@@ -105,11 +108,14 @@ def plot_wf_real(t, dfunc = np.real, cmap = "seismic", symdlim = True):
     cbar.set_ticklabels([r"$-$", r"0", r"$+$"])
     
 def plot_wf_abs2(t, dfunc = lambda x: np.abs(x)**2, cmap = "afmhot_r", symdlim = False):
+
     wavefunc_num = np.zeros_like(rgrid, dtype = complex)
+
     for idx in range(len(c_wf)):
         wavefunc_num += c_wf[idx][0] * np.exp(-1j * E_nl(c_wf[idx][1]) * t / hbar) * wf_num_stat[idx]
     wavefunc_num = dfunc(wavefunc_num)
     dlim = max(np.min(wavefunc_num), np.max(wavefunc_num))
+    
     if symdlim: 
         clim = (-dlim, dlim)
     else:
@@ -126,13 +132,18 @@ def plot_wf_abs2(t, dfunc = lambda x: np.abs(x)**2, cmap = "afmhot_r", symdlim =
         lin_scale[int(3 * points / 4)],
         lin_scale[-1],
     ]
+
     ax.set_xticks(ticker, [fmt(i) for i in labeler])
     ax.set_yticks(ticker, [fmt(i) for i in labeler[::-1]])
+
     ax.set_xlabel("$x\,/\,a_0$")
     ax.set_ylabel("$y\,/\,a_0$")
+
     title = "[" + ", ".join(["({:d},{:d},{:d})".format(n, l, m) for (A, n, l, m) in c_wf]) + "]"
     title += r",  $t = $" + " {:.3f} fs".format(t * 1e15)
+
     ax.set_title(title)
+
     cbar = plt.colorbar(im, ax = ax)
     cbar.set_label(r"$|\Psi(r, \phi, \theta = 90°)|^2$")
     cbar.set_ticks(np.linspace(0, dlim, 2))
