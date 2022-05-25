@@ -25,7 +25,7 @@ Apsorptionskoeffizien 1 b Abweichung
 Null Aktivität 1 b
 4.8270247937786195
 Null Aktivität 1 b Abweichung
-0.15310805084731036
+0.15310805084731033
 Ausgleichgerade 1
 -14.514023477723123
 7.580085748099921

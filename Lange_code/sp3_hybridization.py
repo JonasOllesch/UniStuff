@@ -46,52 +46,28 @@ imgx = 1920
 imgy = 1080
 figsize=(imgx/dpi, imgy/dpi)
 
-plot_path = "./sp3_hybridization"
+plot_path = "./real_sph"
 
 N_grid = 250
 cmap = cm.jet
 dfunc = lambda x: np.abs(x)
 
+# real-valued spherical harmonics
+rsph_l = 2
+rsph_m = 2
 
-
-comment = "1"
-c_s, c_px, c_py, c_pz = 1, 1, 1, 1
-
-comment = "2"
-c_s, c_px, c_py, c_pz = 1, 1, -1, -1
-
-comment = "3"
-c_s, c_px, c_py, c_pz = 1, -1, -1, 1
-
-comment = "4"
-c_s, c_px, c_py, c_pz = 1, -1, 1, -1
-
-
-rsph_l = 1
-rsph_m = -1
-sph_harm_coeffs_px = [
-    [c_px * (-1) ** rsph_m / np.sqrt(2), rsph_l, rsph_m, False],
-    [c_px * (-1) ** rsph_m / np.sqrt(2), rsph_l, rsph_m, True],
-]
-
-rsph_l = 1
-rsph_m = 0 
-sph_harm_coeffs_pz = [[c_pz, rsph_l, rsph_m, False]]
-
-rsph_l = 1
-rsph_m = 1
-sph_harm_coeffs_py = [
-    [c_py * (-1) ** rsph_m / (1j * np.sqrt(2)), rsph_l, -rsph_m, False],
-    [c_py * -((-1) ** rsph_m) / (1j * np.sqrt(2)), rsph_l, -rsph_m, True],
-]
-
-rsph_l = 0
-rsph_m = 0
-sph_harm_coeffs_s = [[c_s, rsph_l, rsph_m, False]]
-
-sph_harm_coeffs = (sph_harm_coeffs_s + sph_harm_coeffs_px + 
-                   sph_harm_coeffs_py + sph_harm_coeffs_pz)
-
+if rsph_m < 0:
+    sph_harm_coeffs = [
+        [(-1) ** rsph_m / np.sqrt(2), rsph_l, rsph_m, False],
+        [(-1) ** rsph_m / np.sqrt(2), rsph_l, rsph_m, True],
+    ]
+if rsph_m == 0:
+    sph_harm_coeffs = [[1, rsph_l, rsph_m, False]]
+if rsph_m > 0:
+    sph_harm_coeffs = [
+        [(-1) ** rsph_m / (1j * np.sqrt(2)), rsph_l, -rsph_m, False],
+        [-((-1) ** rsph_m) / (1j * np.sqrt(2)), rsph_l, -rsph_m, True],
+    ]
 
 print("Preparing coordinate grid.")
 theta = np.linspace(0, np.pi, N_grid)
@@ -136,13 +112,10 @@ def plot_ylm(ylm_lc):
         x * r0, y * r0, z * r0, rstride=1, cstride=1, facecolors=cmap(fcolors)
     )
     ax.set_box_aspect((1, 1, 1))
-    # xmax = ymax = zmax = np.max([r0 * x, r0 * y, r0 * z])
-    # xmin = ymin = zmin = np.min([r0 * x, r0 * y, r0 * z])
-    # xmax = ymax = zmax = np.max([xmax, ymax, zmax])
-    # xmin = ymin = zmin = np.min([xmin, ymin, zmin])
-    limit = np.max(np.abs(np.concatenate((r0 * x, r0 * y, r0 * z))))
-    xmax = ymax = zmax = limit    
-    xmin = ymin = zmin = -limit
+    xmax = ymax = zmax = np.max([r0 * x, r0 * y, r0 * z])
+    xmin = ymin = zmin = np.min([r0 * x, r0 * y, r0 * z])
+    xmax = ymax = zmax = np.max([xmax, ymax, zmax])
+    xmin = ymin = zmin = np.min([xmin, ymin, zmin])
 
     cbar = fig.colorbar(
         mappable=None,
@@ -151,7 +124,7 @@ def plot_ylm(ylm_lc):
         pad=0.05,
         shrink=0.65,
     )
-    cbar.set_label(r"$r = \psi_{" + "{:s}".format(comment) + r"}(\theta, \phi)$")
+    cbar.set_label(rf"$r = |S_{{{rsph_l},{rsph_m}}}|$")
     cbar.set_ticks(np.linspace(fmin, fmax, 3))
     cbar.set_ticklabels([0, 0.5, 1])
 
@@ -172,7 +145,7 @@ plot_ylm(ylm_lc)
 plt.savefig(
     os.path.join(
         plot_path,
-        "sp3_hybrid_{:s}.png".format(comment),
+        "real_valued_spherical_harmonic_l={:d}_m={:d}.png".format(rsph_l, rsph_m),
     ),
     dpi=dpi,
     # bbox_inches='tight',
