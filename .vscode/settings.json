@@ -1,4 +1,18 @@
 {
     "latex-workshop.view.pdf.viewer": "tab",
-    "latex-workshop.view.pdf.tab.editorGroup": "current"
+    "latex-workshop.view.pdf.tab.editorGroup": "current",
+    "cSpell.enableFiletypes": [
+        "latex"
+    ],
+    "cSpell.words": [
+        "Auffängerelektrode",
+        "Auffängerstrom",
+        "Beschleunigerelektrode",
+        "Beschleunigerpotential",
+        "monoenergetische",
+        "Potentialgefälle",
+        "Quecksilberatom",
+        "Quecksilberatomen",
+        "Relaxationszeit"
+    ]
 }
