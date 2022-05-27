@@ -22,20 +22,20 @@ Drehimpuls gekoppelten magnetischen Momente zum äußeren Feld. \\
 Der Gesamtdrehimpuls setzt sich jedoch nicht nur aus dem Bahndrehimpuls zusammen, sondern besteht auch dem
 Elektronen- bzw. Kernspin.
 Mit dem Gesamtspin $\vec{S}$ und dem Bahndrehimpuls $\vec{L}$ gilt für den Gesamtdrehimpuls
-\begin{equation}
+\begin{equation*}
     \vec{J} = \vec{L} + \vec{S} \,.
-\end{equation} \\
+\end{equation*} \\
 
 Die zu den Drehimpulsen gehörigen magnetischen Momente sind dabei durch
 
-\begin{equation}
+\begin{equation*}
     \vec{\mu_L} = -\dfrac{\mu_\text{B}}{\hbar} \vec{L}
     \label{eq:magmomL}
-\end{equation}
+\end{equation*}
 und
-\begin{equation}
+\begin{equation*}
     \vec{\mu_S} = - g_\text{S} \dfrac{\mu_\text{B}}{\hbar} \vec{S}
-\end{equation}
+\end{equation*}
 gegeben, wobei
 \begin{equation*}
     \mu_\text{B} := \frac{\text{e}_0}{\text{m}_0} \hbar
@@ -50,10 +50,10 @@ Werden nur die Beträge betrachtet, gilt
     \label{eq:Sabs}
 \end{align}
 sowie
-\begin{equation}
+\begin{equation*}
     |\vec{J}| = \sqrt{J(J + 1)} \hbar \quad (J = \text{Gesamtdrehimpulsquantenzahl des Atoms}).
     \label{eq:Jabs}
-\end{equation} \\
+\end{equation*} \\
 
 Daraus folgt
 \begin{equation}
@@ -69,9 +69,9 @@ und
 Aus \eqref{eq:muLabs} und \eqref{eq:muSabs} lässt sich nun das zum Gesamtdrehimpuls gehörende magnetische Moment
 berechnen.
 Es gilt
-\begin{equation}
+\begin{equation*}
     |\vec{\mu_\text{J}}| = |\vec{\mu_\text{S}}| \cos \alpha + |\vec{\mu_\text{L}}| \cos\beta \,,
-\end{equation}
+\end{equation*}
 wobei die Winkel $\alpha$ und $\beta$ wie in \autoref{fig:abb1} zu erkennen gewählt sind.
 
 \begin{figure}[H]
@@ -90,9 +90,9 @@ und
     \cos\beta = \dfrac{|\vec{J}|^2 - |\vec{L}|^2 + |\vec{S}|^2}{2|\vec{J}| |\vec{L}|} \,,
 \end{equation*}
 mit einigen Vereinfachung folgt dann
-\begin{equation}
+\begin{equation*}
     |\vec{\mu}_\text{J}| \approx \mu_\text{B} \sqrt{J(J + 1)} \dfrac{3 J (J + 1) + {S(S + 1) - L(L +1)}}{2J(J + 1)} \,.
-\end{equation} \\
+\end{equation*} \\
 
 Dabei ist 
 \begin{equation}
@@ -102,27 +102,27 @@ Dabei ist
 der Landé-Faktor des Atoms. \\
 
 Damit vereinfacht sich der Ausdruck zu 
-\begin{equation}
+\begin{equation*}
     |\vec{\mu}_\text{J}| \approx \mu_\text{B} g_\text{J} \sqrt{J(J + 1)} \,.
-\end{equation} \\
+\end{equation*} \\
 
 Unter Beachtung des quantenmechanischen Phänomens der Richtungsquantelung, das besagt, dass für die $\mu_{\text{J}_\text{Z}}$ nur ganzzahlige Vielfache von $\mu_\text{B}g_\text{J}$ möglich sind, folgt,
 dass, relativ zur äußeren Feldrichtung, genau $2J + 1$ Einstellmöglichkeiten des magnetischen Moments mit einer potentiellen Energie von
-\begin{equation}
+\begin{equation*}
     E_\text{m} = - \vec{\mu}_\text{J} \cdot \vec{B} = \mu_{\text{J}_\text{Z}} B = \mu_\text{B} g_\text{J} m B
-\end{equation}
+\end{equation*}
 existieren. \\
 
 Diese Aufspaltung der Energie in Unterniveaus wird als Zeeman-Effekt bezeichnet.
 Mit der durch die Boltzmannverteilung gegebenen Besetzungshäufigkeit
-\begin{equation}
+\begin{equation*}
     Z(E,T) = \text{e}^{-\frac{E}{\text{k}T}}
-\end{equation}
+\end{equation*}
 und Summation über alle Einzelorientierung folgt nach einigen Rechenschritten
-\begin{equation}
+\begin{equation*}
     \chi = \dfrac{\mu_0 \mu^2_\text{B} g^2_J N J(J + 1)}{3 \text{k} T}
     \label{eq:susg_J}
-\end{equation}
+\end{equation*}
 für die paramagnetische Suszeptibilität. \\
 
 \subsection{Berechnung der Suszeptibilität seltener Erden}
@@ -148,21 +148,21 @@ Zur experimentellen Bestimmung der Suszeptibilität wird eine nach \autoref{fig:
 \end{figure}
 
 Die totale Induktivität der mit Materie gefüllten Zylinderspule ist dabei gegeben durch
-\begin{equation}
+\begin{equation*}
     L_{M,\text{total}} = \mu \mu_0 \dfrac{n^2}{l} F \,,
     \label{eq:induspu}
-\end{equation}
+\end{equation*}
 mit der Windungszahl $n$, der Länge $l$ und dem Querschnitt $F$. \\
 
 Ist die Spule nicht mit der Probe, sondern lediglich mit Luft gefüllt, kann der Faktor $\mu$ ignoriert werden, da $\mu_\text{Luft} \approx 1$, es gilt
-\begin{equation}
+\begin{equation*}
     L = \mu_0 \dfrac{n^2}{l} F \,.
-\end{equation} \\
+\end{equation*} \\
 
 Die Differenz $\Delta L$ zwischen der mit Luft und mit der Probe gefüllten Spule beträgt
-\begin{equation}
+\begin{equation*}
     \Delta L = \mu_0 \chi Q \dfrac{n^2}{l} \,,
-\end{equation}
+\end{equation*}
 wobei $Q$ der Probenquerschnitt ist. \\
 
 Die komplexen Widerstände $Z_i$ sind dabei durch
@@ -178,10 +178,10 @@ Die Suszeptibilität lässt sich dabei auf zwei Arten bestimmen.
 Über eine Änderung der Brückenspannung, oder durch eine Widerstandsänderung via Abgleichbedingung nach Einführen der Probe. \\
 
 Nach einiger Rechnung ergibt sich für die Suszeptibilitätsmessung über Spannungsänderung der Ausdruck
-\begin{equation}
+\begin{equation*}
     \chi = \dfrac{U_\text{Br}}{U_\text{Sp}} \dfrac{4 l}{\omega \mu_0 n^2 Q} \sqrt{R^2 + \omega^2 \left(\mu_0 \dfrac{n^2}{l} F \right)^2} \,,
     \label{eq:spannsusamogus}
-\end{equation}
+\end{equation*}
 der sich in hochfrequenter Näherung zu
 \begin{equation}
     \chi(\omega \rightarrow \infty) = 4 \dfrac{F}{Q} \dfrac{U_\text{Br}}{U_\text{Sp}}
