@@ -58,6 +58,12 @@ Messung_2_c[:,3] = Messung_2_c[:,3]*0.1
 #plt.plot(x,y,color='r',label="regression")
 
 plt.scatter(Messung_1[:,0]/1000, Messung_1[:,1],s=8,label="Messdaten")
+x_a = np.linspace(8,42,1000)
+y_a = 8.1/np.sqrt(2)+x_a[:]-x_a[:]
+plt.plot(x_a,y_a,color = 'green',label=r"$\frac{1}{\sqrt{2}} \cdot U_{A,max} $ ")
+plt.scatter(20.75, 8.1/np.sqrt(2),color = 'black',s=8)
+plt.scatter(23, 8.1/np.sqrt(2),color = 'black',s=8)
+plt.xlim(8,42)
 plt.xlabel(r'$ f \, \mathbin{/} \unit{\kilo\hertz}$')
 plt.ylabel(r'$ U \mathbin{/} \unit{\volt}  $')
 plt.tight_layout()

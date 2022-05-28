@@ -31,19 +31,19 @@ Mit der Avogadrokonstanten $N_a$, der Dichte $\rho$ und der molaren Masse $M_\te
     N = 2 N_a \dfrac{\rho}{M_\text{mol}} \,,
 \end{equation*}
 womit sich nach \eqref{eq:susg_J} und den in \autoref{tab:probwertis} aufgetragenen Dichten, molaren Massen sowie der berechneten Anzahl der Momente pro Volumen
-die in \autoref{tab:tab6} dargestellten theoretischen Suszeptibilitäten ergeben.
+die in \autoref{tab:probwertis} dargestellten theoretischen Suszeptibilitäten ergeben.
 
 \begin{table}[H]
     \centering
-    \caption{Dichten $\rho$, molare Massen $M_\text{mol}$ und berechnete Momente pro Volumen $N$.}
+    \caption{Dichten $\rho$, molare Massen $M_\text{mol}$, berechnete Momente pro Volumen $N$ und die theoretische Suszeptibilität $\chi_{\text{theo}}$.}
     \label{tab:probwertis}
-    \begin{tabular}{S S[table-format=1.2] S[table-format=3.2] S[table-format=1.2]}
+    \begin{tabular}{S S[table-format=1.2] S[table-format=3.2] S[table-format=1.2] S}
       \toprule
-      {} & {$\rho \mathbin{/} \unit{\frac{\gram}{{\centi\meter}^3}}$} & {$M_\text{mol} \mathbin{/} \unit{\frac{\gram}{\mol}}$} & {$N \mathbin{/} \unit{\frac{1}{{\centi\meter}^3}} \cdot 10^{28}$}  \\
+      {} & {$\rho \mathbin{/} \unit{\frac{\gram}{{\centi\meter}^3}}$} & {$M_\text{mol} \mathbin{/} \unit{\frac{\gram}{\mol}}$} & {$N \mathbin{/} \unit{\frac{1}{{\centi\meter}^3}} \cdot 10^{28}$}&{$\chi_{\text{theo}}$}  \\
       \midrule
-      {$\text{Nd}_2\text{O}_3$}         &           7,24          &         336,48          &           2,59            \\
-      {$\text{Gd}_2\text{O}_3$}         &           7,40          &         362,50          &           2,46            \\
-      {$\text{Dy}_2\text{O}_3$}         &           7,80          &         373,00          &           2,52            \\
+      {$\text{Nd}_2\text{O}_3$}         &           7,24          &         336,48          &           2,59     &{0,02525}       \\
+      {$\text{Gd}_2\text{O}_3$}         &           7,40          &         362,50          &           2,46     &{0,01370}       \\
+      {$\text{Dy}_2\text{O}_3$}         &           7,80          &         373,00          &           2,52     &{0,00299}       \\
       \bottomrule
     \end{tabular}
 \end{table}
@@ -111,6 +111,20 @@ bei einer Frequenz von
     v_0 = 21,05 \, \unit{\kilo\hertz}
 \end{equation*}
 bestimmt.
+Für $ v_{-} $ wir der folgende Wert ablesen
+\begin{equation*}
+  v_{-} = \left( 20,75 \pm 0,5 \right)\, \unit{\kilo\hertz} \text{und}
+  v_{+} = \left( 23,00 \pm 0,5 \right)\, \unit{\kilo\hertz}
+\end{equation*}
+für $v_{+}$.
+Die Güte des Selektivverstärkers wird über
+\begin{equation}
+  Q = \frac{v_0}{v_{+}-v_{-}}
+  \label{eq:guete}
+\end{equation}
+berechnet, was einen Wert von $ 9,4 \pm 2.9 $ ergibt.
+
+
 
 
 
@@ -205,7 +219,7 @@ Die Mittelwerte der Ergebnisse sind in \autoref{tab:tab6} eingetragen.
        {Stoff} & {$\chi_{\text{R}}$} & {$\chi_{\text{U}}$} &{$\chi_{\text{theo}}$}  \\
       \midrule
       {$\text{Dy}_2\text{O}_3$}  &{$0,02271 \pm 9,2 \cdot 10^{-4}$}    &{$ 0,38346 \pm 0,30599$} &{0,02525}         \\
-      {$\text{Gd}_2\text{O}_3$}  &{$0,00147 \pm 7,0 \cdot 10^{-5}$}    &{$ 0,00932 \pm 0,00249$} &{0,01370}             \\
+      {$\text{Gd}_2\text{O}_3$}  &{$0,00147 \pm 7,0 \cdot 10^{-5}$}    &{$ 0,00932 \pm 0,00249$} &{0,01370}         \\
       {$\text{Nd}_2\text{O}_3$}  &{$0,00071 \pm 2,7 \cdot 10^{-4}$}    &{$ 0,01048 \pm 0,00980$} &{0,00299}         \\
       \bottomrule
     \end{tabular}
