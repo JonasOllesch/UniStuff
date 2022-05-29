@@ -46,9 +46,16 @@ saettigung[3]= berechnesaettigung(191.2+273.15)
 writeW(saettigung, "Sättigung")
 
 mittlerefreieWeglänge = np.zeros(4)
-mittlerefreieWeglänge[:] = (0.0029/saettigung[:])/100
+mittlerefreieWeglänge[:] = (0.0029/saettigung[:])
 
+writeW(mittlerefreieWeglänge, "Mittlere freie Weglänge")
 
+a = 1
+
+komischerFaktor =  np.zeros(4)
+komischerFaktor[:] = (a/mittlerefreieWeglänge[:])
+
+writeW(komischerFaktor, 'Faktor a/bar{w}')
 
 
 
