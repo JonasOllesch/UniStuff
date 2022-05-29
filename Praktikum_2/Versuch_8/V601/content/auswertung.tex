@@ -67,27 +67,25 @@ Mithilfe des XY-Schreibers wurden die in \autoref{fig:graphc} dargestellten Kurv
     \label{fig:graphc}
 \end{figure}
 
-Die Positionen des $i$-ten, in \autoref{fig:graphc} rot markierten Maximums sind in \autoref{tab:messung2} dargestellt.
+Die Positionen des $i$-ten, in \autoref{fig:graphc} rot markierten Maximums sind in \autoref{tab:iiplus1} dargestellt.
 Das erste Maximum beschreibt dabei das erste erkennbare Maximum, auch wenn von mindestens einem weiteren, nicht sichtbaren Maximum ausgegangen werden kann.
 
 \begin{table}[H]
     \centering
     \caption{Abstand des $i$-ten Maximums bei $173,5 \,\unit{\celsius}$ bzw. $191,2 \,\unit{\celsius}$ vom Nullpunkt.}
-    \label{tab:messung2}
+    \label{tab:iiplus1}
     \begin{tabular}{S[table-format = 1.1] S[table-format = 2.3] S[table-format = 2.3]}
       \toprule
       {$i$-tes Maximum} & {$T = 173,5 \,\unit{\celsius}$} & {$T = 191,2 \,\unit{\celsius}$}\\
       \midrule
        %%%%%%%%%%%%% Hier könnten Ihre Werte stehen
-        {...}               &           {...}           &           {...}           \\
-        {...}               &           {...}           &           {...}           \\
-        {...}               &           {...}           &           {...}           \\
-        {...}               &           {...}           &           {...}           \\
-        {...}               &           {...}           &           {...}           \\
-        {...}               &           {...}           &           {...}           \\
-        {...}               &           {...}           &           {...}           \\
-        {...}               &           {...}           &           {...}           \\
-        {...}               &           {...}           &           {...}           \\
+        {1}               &           {16.5}           &           {13.5}           \\
+        {2}               &           {22.8}           &           {19.5}           \\
+        {3}               &           {30.6}           &           {25.25}          \\
+        {4}               &           {37.6}           &           {31.25}          \\
+        {5}               &           {46.6}           &           {37.5}           \\
+        {6}               &           {-}           &            {43.5}           \\
+        {7}               &           {-}           &            {49.75}           \\
         %%%%%%%%%%%%%%%%%%%%%%%
       \bottomrule
     \end{tabular}
@@ -98,21 +96,18 @@ Von Bedeutung sind hier aber insbesondere die in \autoref{tab:messung2diffs} dar
 \begin{table}[H]
     \centering
     \caption{Differenz zwischen $i$-ten und $i + 1$-ten Maximum bei $173,5 \,\unit{\celsius}$ bzw. $191,2 \,\unit{\celsius}$.}
-    \label{tab:messung2}
+    \label{tab:messung2diffs}
     \begin{tabular}{S[table-format = 1.1] S[table-format = 2.3] S[table-format = 2.3]}
       \toprule
       {} & {$T = 173,5 \,\unit{\celsius}$} & {$T = 191,2 \,\unit{\celsius}$}\\
       \midrule
        %%%%%%%%%%%%% Hier könnten Ihre Werte stehen
-        {...}               &           {...}           &           {...}           \\
-        {...}               &           {...}           &           {...}           \\
-        {...}               &           {...}           &           {...}           \\
-        {...}               &           {...}           &           {...}           \\
-        {...}               &           {...}           &           {...}           \\
-        {...}               &           {...}           &           {...}           \\
-        {...}               &           {...}           &           {...}           \\
-        {...}               &           {...}           &           {...}           \\
-        {...}               &           {...}           &           {...}           \\
+        {1}               &           {6,3}           &           {6}           \\
+        {2}               &           {7,8}           &           {5,75}           \\
+        {3}               &           {7,0}           &           {6,0}           \\
+        {4}               &           {9,0}             &          {6,25}           \\
+        {5}               &           {...}           &           {6,0}           \\
+        {6}               &           {...}           &           {6.25}           \\
         %%%%%%%%%%%%%%%%%%%%%%%
       \bottomrule
     \end{tabular}
@@ -123,13 +118,13 @@ Die berechneten Differenzen lassen sich zu den in \autoref{fig:mittelwertis} auf
 \begin{table}[H]
     \centering
     \caption{Mittelwerte und Abweichungen der Maximadifferenzen bei $173,5 \,\unit{\celsius}$ bzw. $191,2 \,\unit{\celsius}$.}
-    \label{tab:messung2}
+    \label{tab:mittelwertis}
     \begin{tabular}{S[table-format = 1.1] S[table-format = 2.3] S[table-format = 2.3]}
       \toprule
       {} & {$T = 173,5 \,\unit{\celsius}$} & {$T = 191,2 \,\unit{\celsius}$}\\
       \midrule
        %%%%%%%%%%%%% Hier könnten Ihre Werte stehen
-        {...}               &           {...}           &           {...}           \\
+        { $ \text{ - }$} & {$ \left( 7,525 \pm \, 1,003\right) \, \unit{\volt}$} & {$ \left(6,042 \pm 0,172 \right)\, \unit{\volt}$}\\
         %%%%%%%%%%%%%%%%%%%%%%%
       \bottomrule
     \end{tabular}
@@ -141,13 +136,13 @@ Es ergeben sich die in \autoref{tab:wellenläng} niedergeschriebenen Werte.
 \begin{table}[H]
     \centering
     \caption{Emittierte Wellenlängen $\lambda$ bei $173,5 \,\unit{\celsius}$ bzw. $191,2 \,\unit{\celsius}$.}
-    \label{tab:messung2}
+    \label{tab:wellenläng}
     \begin{tabular}{S[table-format = 2.3] S[table-format = 2.3]}
       \toprule
       {Bei $T = 173,5 \,\unit{\celsius}$} & {Bei $T = 191,2 \,\unit{\celsius}$}\\
       \midrule
        %%%%%%%%%%%%% Hier könnten Ihre Werte stehen
-                  {$\lambda = ... \pm ...$}           &           {$\lambda = ... \pm ...$}           \\
+                  {$\lambda = \left( 165 \pm 22 \right)\, \unit{\nano\meter}$}&{$\lambda = \left( 206 \pm 6 \right) \, \unit{\nano\meter}$}           \\
         %%%%%%%%%%%%%%%%%%%%%%%
       \bottomrule
     \end{tabular}

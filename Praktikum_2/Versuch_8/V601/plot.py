@@ -28,9 +28,16 @@ deltaUmax1[0]= 6.3
 deltaUmax1[1]= 7.8
 deltaUmax1[2]= 7.0
 deltaUmax1[3]=9
+#print(Messung_3max[0][1])
 
-
-
+Messung_4max = np.array([[13.5,19],[19.5,33],[25.25,43],[31.25,49],[37.5,51],[43.5,53],[49.75,59]]) 
+deltaUmax2 = np.zeros(6)
+deltaUmax2[0]=6
+deltaUmax2[1]=5.75
+deltaUmax2[2]=6
+deltaUmax2[3]=6.25
+deltaUmax2[4]=6
+deltaUmax2[5]=6.25
 
 Messung_4= np.array(np.genfromtxt('data/Messung2_191_2C.txt'))
 
@@ -97,7 +104,7 @@ deltaUmax1mean = np.mean(deltaUmax1)
 deltaUmax1std = np.std(deltaUmax1)
 writeW(deltaUmax1mean, "deltaUmax1mean")
 writeW(deltaUmax1std, "deltaUmax1std")
-plt.scatter(Messung_3[:,0],Messung_3[:,1],s=6, c='blue',label="173.5°C",marker='x')
+plt.scatter(Messung_3[:,0],Messung_3[:,1],s=6, c='blue',label="173,5°C",marker='x')
 plt.scatter(Messung_3max[:,0], Messung_3max[:,1],s=6, c='red',label="Maxima",marker='x')
 plt.tick_params(left = False, labelleft = False)
 plt.ylabel(r'$I_A$')
@@ -107,3 +114,28 @@ plt.legend()
 plt.grid()
 plt.savefig('build/Graph_c.pdf')
 plt.clf()
+
+
+
+
+plt.scatter(Messung_4[:,0],Messung_4[:,1],s=6, c='blue',label="191,25°C",marker='x')
+plt.scatter(Messung_4max[:,0], Messung_4max[:,1],s=6, c='red',label="Maxima",marker='x')
+plt.tick_params(left = False, labelleft = False)
+plt.ylabel(r'$I_A$')
+plt.xlabel(r'$U_A \mathbin{/} \unit{\volt}$')
+plt.tight_layout()
+plt.legend()
+plt.grid()
+plt.savefig('build/Graph_d.pdf')
+plt.clf()
+
+deltaUmax2mean = np.mean(deltaUmax2)
+deltaUmax2std = np.std(deltaUmax2)
+writeW(deltaUmax2mean, "deltaUmax2mean")
+writeW(deltaUmax2std, "deltaUmax2std")
+deltaUmax1ufloat=ufloat(deltaUmax1mean,deltaUmax1std)
+deltaUmax2ufloat=ufloat(deltaUmax2mean,deltaUmax2std)
+wellenleange1 = (6.62607015*10**(-34))*(3*10**8)/(deltaUmax1ufloat*1.6*10**(-19))
+wellenleange2 = (6.62607015*10**(-34))*(3*10**8)/(deltaUmax2ufloat*1.6*10**(-19))
+writeW(wellenleange1, "wellenleange1")
+writeW(wellenleange2, "wellenleange2")
