@@ -22,7 +22,21 @@ def berechnesaettigung(T):
 Messung_1= np.array(np.genfromtxt('data/Messung1_25_7C.txt'))
 Messung_2= np.array(np.genfromtxt('data/Messung1_142C.txt'))
 Messung_3= np.array(np.genfromtxt('data/Messung2_173_5C.txt'))
+Messung_3max = np.array([[16.5,23],[22.8,40],[30.6,50],[37.6,54],[46.6,64]])
+deltaUmax1 = np.zeros(4)
+deltaUmax1[0]= 6.3
+deltaUmax1[1]= 7.8
+deltaUmax1[2]= 7.0
+deltaUmax1[3]=9
+
+
+
+
 Messung_4= np.array(np.genfromtxt('data/Messung2_191_2C.txt'))
+
+
+
+
 
 saettigung = np.zeros(4)
 saettigung[0]= berechnesaettigung(25.7+273.15)
@@ -72,9 +86,12 @@ plt.grid()
 plt.savefig('build/Graph_b.pdf')
 plt.clf()
 
-
+deltaUmax1mean = np.mean(deltaUmax1)
+deltaUmax1std = np.std(deltaUmax1)
+writeW(deltaUmax1mean, "deltaUmax1mean")
+writeW(deltaUmax1std, "deltaUmax1std")
 plt.scatter(Messung_3[:,0],Messung_3[:,1],s=6, c='blue',label="173.5°C",marker='x')
-plt.plot(Messung_3[:,0],Messung_3[:,1], color='blue')
+plt.scatter(Messung_3max[:,0], Messung_3max[:,1],s=6, c='red',label="Maxima",marker='x')
 plt.tick_params(left = False, labelleft = False)
 plt.ylabel(r'$I_A$')
 plt.xlabel(r'$U_A \mathbin{/} \unit{\volt}$')
