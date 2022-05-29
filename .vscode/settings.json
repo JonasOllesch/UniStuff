@@ -2,6 +2,7 @@
     "latex-workshop.view.pdf.viewer": "tab",
     "latex-workshop.view.pdf.tab.editorGroup": "current",
     "cSpell.enableFiletypes": [
+        "!python",
         "latex"
     ],
     "cSpell.words": [
@@ -9,7 +10,9 @@
         "Auffängerstrom",
         "Beschleunigerelektrode",
         "Beschleunigerpotential",
+        "geplottet",
         "heruntergeregelt",
+        "Maximadifferenzen",
         "monoenergetische",
         "Picoamperemeter",
         "Potentialgefälle",
