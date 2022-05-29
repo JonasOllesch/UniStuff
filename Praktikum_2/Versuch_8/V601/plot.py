@@ -21,7 +21,8 @@ def berechnesaettigung(T):
     return (5.5*10**7)*np.exp(-6876/T)
 Messung_1= np.array(np.genfromtxt('data/Messung1_25_7C.txt'))
 Messung_2= np.array(np.genfromtxt('data/Messung1_142C.txt'))
-
+Messung_3= np.array(np.genfromtxt('data/Messung2_173_5C.txt'))
+Messung_4= np.array(np.genfromtxt('data/Messung2_191_2C.txt'))
 
 saettigung = np.zeros(4)
 saettigung[0]= berechnesaettigung(25.7+273.15)
@@ -69,4 +70,16 @@ plt.tight_layout()
 plt.legend()
 plt.grid()
 plt.savefig('build/Graph_b.pdf')
+plt.clf()
+
+
+plt.scatter(Messung_3[:,0],Messung_3[:,1],s=6, c='blue',label="173.5°C",marker='x')
+plt.plot(Messung_3[:,0],Messung_3[:,1], color='blue')
+plt.tick_params(left = False, labelleft = False)
+plt.ylabel(r'$I_A$')
+plt.xlabel(r'$U_A \mathbin{/} \unit{\volt}$')
+plt.tight_layout()
+plt.legend()
+plt.grid()
+plt.savefig('build/Graph_c.pdf')
 plt.clf()
