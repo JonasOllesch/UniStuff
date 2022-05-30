@@ -24,7 +24,7 @@ Mithilfe von \eqref{eq:mittfreiweg} und \eqref{eq:dampfdruck} ergeben sich die i
     \end{tabular}
 \end{table}
 
-Neben der mittleren freien Weglänge und dem Sättigungsdampfdruck ist in \autoref{tab:dampfd_freiweg} auch der Faktor $\dfrac{a}{\bar{w}}$ aufgetragen, wobei $a = 1 \,\unit{\centi\meter}$ als Abstand zwischen Kathode
+Neben der mittleren freien Weglänge und dem Sättigungsdampfdruck ist in \autoref{tab:dampfd_freiweg} auch der Faktor $\frac{a}{\bar{w}}$ aufgetragen, wobei $a = 1 \,\unit{\centi\meter}$ als Abstand zwischen Kathode
 und Beschleunigerelektrode angenommen wird.
 
 
@@ -41,30 +41,37 @@ Die mit dem XY-Schreiber aufgenommenen Kurven sind in \autoref{fig:grapha} zu er
 
 Wird nun die Bremsspannung $U_\text{A}$ gegen die Differenz $I_\text{A}(U_\text{A}+ \Delta U_\text{A}) - I_\text{A}(U_\text{A})$ geplottet, ergeben sich die in \autoref{fig:graphb} zu erkennenden Graphen.
 
-\begin{figure}
+\begin{figure}[H]
     \centering
     \includegraphics{build/Graph_b.pdf}
     \caption{Differenz $I_\text{A}(U_\text{A}+ \Delta U_\text{A}) - I_\text{A}(U_\text{A})$ in Abhängigkeit der Spannung $U_\text{A}$.}
     \label{fig:graphb}
 \end{figure}
 
-Das bei der blauen Kurve erkennbare Minimum entspricht der effektiven Beschleunigungsspannung $U_{\text{B},\text{eff}}$ bei $U_{\text{B},eff} = 8 \,\unit{\volt}$, wie sie in \eqref{eq:Ueff} zum Einsatz kommt.
+Das bei der blauen Kurve erkennbare Minimum entspricht der effektiven Beschleunigungsspannung $U_{\text{B},\text{eff}}$ bei $U_{\text{B},\text{eff}} = 8 \,\unit{\volt}$, wie sie in \eqref{eq:Ueff} zum Einsatz kommt.
 Zusammen mit der eingestellten Beschleunigungsspannung von $U_\text{B} = 11 \,\unit{\volt}$ lässt sich das Kontaktpotential $K$ zu
 \begin{equation*}
-    K = \frac{1}{\text{e}_0} (\Phi_\text{B} - \Phi\text{G}) = U_\text{B} - U_{\text{B},eff} = 3 \,\unit{\volt} %% passt das so?
+    K = \frac{1}{\text{e}_0} (\Phi_\text{B} - \Phi_\text{G}) = U_\text{B} - U_{\text{B},\text{eff}} = 3 \,\unit{\volt} %% passt das so?
 \end{equation*}
 bestimmen.
 
 
 \subsection{Auswertung der Franck-Hertz-Kurven}
 
-Mithilfe des XY-Schreibers wurden die in \autoref{fig:graphc} dargestellten Kurven aufgenommen.
+Mithilfe des XY-Schreibers wurden die in \autoref{fig:graphc} und \autoref{fig:graphd} dargestellten Kurven aufgenommen.
 
-\begin{figure}
+\begin{figure}[H]
     \centering
     \includegraphics{build/Graph_c.pdf}
-    \caption{Franck-Hertz-Kurven bei $173,5 \,\unit{\celsius}$ bzw. $191,2 \,\unit{\celsius}$.}
+    \caption{Franck-Hertz-Kurve bei $173,5 \,\unit{\celsius}$.}
     \label{fig:graphc}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics{build/Graph_d.pdf}
+  \caption{Franck-Hertz-Kurve bei $191,2 \,\unit{\celsius}$.}
+  \label{fig:graphd}
 \end{figure}
 
 Die Positionen des $i$-ten, in \autoref{fig:graphc} rot markierten Maximums sind in \autoref{tab:iiplus1} dargestellt.
@@ -74,18 +81,18 @@ Das erste Maximum beschreibt dabei das erste erkennbare Maximum, auch wenn von m
     \centering
     \caption{Abstand des $i$-ten Maximums bei $173,5 \,\unit{\celsius}$ bzw. $191,2 \,\unit{\celsius}$ vom Nullpunkt.}
     \label{tab:iiplus1}
-    \begin{tabular}{S[table-format = 1.1] S[table-format = 2.3] S[table-format = 2.3]}
+    \begin{tabular}{S[table-format = 1.1] S[table-format = 2.1] S[table-format = 2.2]}
       \toprule
       {$i$-tes Maximum} & {$T = 173,5 \,\unit{\celsius}$} & {$T = 191,2 \,\unit{\celsius}$}\\
       \midrule
        %%%%%%%%%%%%% Hier könnten Ihre Werte stehen
-        {1}               &           {16.5}           &           {13.5}           \\
-        {2}               &           {22.8}           &           {19.5}           \\
-        {3}               &           {30.6}           &           {25.25}          \\
-        {4}               &           {37.6}           &           {31.25}          \\
-        {5}               &           {46.6}           &           {37.5}           \\
-        {6}               &           {-}           &            {43.5}           \\
-        {7}               &           {-}           &            {49.75}           \\
+        {1}               &           {16.5}           &           {13.5}            \\
+        {2}               &           {22.8}           &           {19.5}            \\
+        {3}               &           {30.6}           &           {25.25}           \\
+        {4}               &           {37.6}           &           {31.25}           \\
+        {5}               &           {46.6}           &           {37.5}            \\
+        {6}               &           {-}              &           {43.5}           \\
+        {7}               &           {-}              &           {49.75}          \\
         %%%%%%%%%%%%%%%%%%%%%%%
       \bottomrule
     \end{tabular}
@@ -95,25 +102,25 @@ Von Bedeutung sind hier aber insbesondere die in \autoref{tab:messung2diffs} dar
 
 \begin{table}[H]
     \centering
-    \caption{Differenz zwischen $i$-ten und $i + 1$-ten Maximum bei $173,5 \,\unit{\celsius}$ bzw. $191,2 \,\unit{\celsius}$.}
+    \caption{Differenz zwischen $i$-tem und $i + 1$-tem Maximum bei $173,5 \,\unit{\celsius}$ bzw. $191,2 \,\unit{\celsius}$.}
     \label{tab:messung2diffs}
     \begin{tabular}{S[table-format = 1.1] S[table-format = 2.3] S[table-format = 2.3]}
       \toprule
       {} & {$T = 173,5 \,\unit{\celsius}$} & {$T = 191,2 \,\unit{\celsius}$}\\
       \midrule
        %%%%%%%%%%%%% Hier könnten Ihre Werte stehen
-        {1}               &           {6,3}           &           {6}           \\
-        {2}               &           {7,8}           &           {5,75}           \\
-        {3}               &           {7,0}           &           {6,0}           \\
-        {4}               &           {9,0}             &          {6,25}           \\
-        {5}               &           {...}           &           {6,0}           \\
-        {6}               &           {...}           &           {6.25}           \\
+        {1-2}               &           {6,3}           &           {6,0}              \\
+        {2-3}               &           {7,8}           &           {5,75}           \\
+        {3-4}               &           {7,0}           &           {6,0}            \\
+        {4-5}               &           {9,0}           &           {6,25}           \\
+        {5-6}               &           {-}             &           {6,0}            \\
+        {6-7}               &           {-}             &           {6.25}           \\
         %%%%%%%%%%%%%%%%%%%%%%%
       \bottomrule
     \end{tabular}
 \end{table}
 
-Die berechneten Differenzen lassen sich zu den in \autoref{fig:mittelwertis} aufgetragenen Werten mitteln.
+Die berechneten Differenzen lassen sich zu den in \autoref{tab:mittelwertis} aufgetragenen Werten mitteln.
 
 \begin{table}[H]
     \centering
@@ -124,7 +131,7 @@ Die berechneten Differenzen lassen sich zu den in \autoref{fig:mittelwertis} auf
       {} & {$T = 173,5 \,\unit{\celsius}$} & {$T = 191,2 \,\unit{\celsius}$}\\
       \midrule
        %%%%%%%%%%%%% Hier könnten Ihre Werte stehen
-        { $ \text{ - }$} & {$ \left( 7,525 \pm \, 1,003\right) \, \unit{\volt}$} & {$ \left(6,042 \pm 0,172 \right)\, \unit{\volt}$}\\
+        {}      & {$ \left( 7,525 \pm \, 1,003\right) \, \unit{\volt}$} & {$ \left(6,042 \pm 0,172 \right)\, \unit{\volt}$}\\
         %%%%%%%%%%%%%%%%%%%%%%%
       \bottomrule
     \end{tabular}
@@ -137,12 +144,12 @@ Es ergeben sich die in \autoref{tab:wellenläng} niedergeschriebenen Werte.
     \centering
     \caption{Emittierte Wellenlängen $\lambda$ bei $173,5 \,\unit{\celsius}$ bzw. $191,2 \,\unit{\celsius}$.}
     \label{tab:wellenläng}
-    \begin{tabular}{S[table-format = 2.3] S[table-format = 2.3]}
+    \begin{tabular}{S S[table-format = 2.3] S[table-format = 2.3]}
       \toprule
-      {Bei $T = 173,5 \,\unit{\celsius}$} & {Bei $T = 191,2 \,\unit{\celsius}$}\\
+      {}      &     {Bei $T = 173,5 \,\unit{\celsius}$} & {Bei $T = 191,2 \,\unit{\celsius}$}\\
       \midrule
        %%%%%%%%%%%%% Hier könnten Ihre Werte stehen
-                  {$\lambda = \left( 165 \pm 22 \right)\, \unit{\nano\meter}$}&{$\lambda = \left( 206 \pm 6 \right) \, \unit{\nano\meter}$}           \\
+         {$\lambda$}      &       {$\left( 165 \pm 22 \right)\, \unit{\nano\meter}$}      &     {$\left( 206 \pm 6 \right) \, \unit{\nano\meter}$}           \\
         %%%%%%%%%%%%%%%%%%%%%%%
       \bottomrule
     \end{tabular}
