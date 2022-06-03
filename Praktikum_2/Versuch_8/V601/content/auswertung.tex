@@ -48,6 +48,7 @@ Wird nun die Bremsspannung $U_\text{A}$ gegen die Differenz $I_\text{A}(U_\text{
     \label{fig:graphb}
 \end{figure}
 
+Die Verbindungen zwischen den Punkten dienen dabei nur der besseren Viualisierung und besitzen keinerlei physikalische Relevanz.
 Das bei der blauen Kurve erkennbare Minimum entspricht der effektiven Beschleunigungsspannung $U_{\text{B},\text{eff}}$ bei $U_{\text{B},\text{eff}} = 8 \,\unit{\volt}$, wie sie in \eqref{eq:Ueff} zum Einsatz kommt.
 Zusammen mit der eingestellten Beschleunigungsspannung von $U_\text{B} = 11 \,\unit{\volt}$ lässt sich das Kontaktpotential $K$ zu
 \begin{equation*}
@@ -120,7 +121,8 @@ Von Bedeutung sind hier aber insbesondere die in \autoref{tab:messung2diffs} dar
     \end{tabular}
 \end{table}
 
-Die berechneten Differenzen lassen sich zu den in \autoref{tab:mittelwertis} aufgetragenen Werten mitteln.
+Die berechneten Differenzen lassen sich zu den in \autoref{tab:mittelwertis} aufgetragenen Werten mitteln, die Energie ist dabei durch
+$E = q \Delta U$ gegeben.
 
 \begin{table}[H]
     \centering
@@ -128,11 +130,11 @@ Die berechneten Differenzen lassen sich zu den in \autoref{tab:mittelwertis} auf
     \label{tab:mittelwertis}
     \begin{tabular}{S[table-format = 1.1] S[table-format = 2.3] S[table-format = 2.3]}
       \toprule
-      {} & {$T = 173,5 \,\unit{\celsius}$} & {$T = 191,2 \,\unit{\celsius}$}\\
+      {} & {$\Delta U \mathbin{/} \unit{\volt}$} & {$E \mathbin{/} \unit{\eV}$}\\
       \midrule
        %%%%%%%%%%%%% Hier könnten Ihre Werte stehen
-        {}      & {$ \left( 7,525 \pm \, 1,003\right) \, \unit{\volt}$} & {$ \left(6,042 \pm 0,172 \right)\, \unit{\volt}$}\\
-        %%%%%%%%%%%%%%%%%%%%%%%
+       {$T = 173,5 \,\unit{\celsius}$}      &     {$  7,525 \pm \, 1,003$}   & {$  7,525 \pm \, 1,003$} \\
+       {$T = 191,2 \,\unit{\celsius}$}      & 	  {$ 6,042 \pm 0,172 $}       & {$6,042 \pm 0,172      $} \\
       \bottomrule
     \end{tabular}
 \end{table}
