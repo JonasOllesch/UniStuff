@@ -148,7 +148,7 @@ Nach der Stromdichte umgestellt ergibt sich für $j$ an der Anode
 \end{equation}
 
 Diese Gleichung wird auch als Langmuir-Schottkysche Raumladungsgleichung bezeichnet,
-wobei das Potential $V(x)$, die Feldstärke $E(x)$ und die Rauladungsdichte $\rho(x)$
+wobei das Potential $V(x)$, die Feldstärke $E(x)$ und die Raumladungsdichte $\rho(x)$
 den in \autoref{fig:abb2} dargestellten Verläufen folgen.
 
 \begin{figure}[H]
@@ -186,13 +186,14 @@ ist in \autoref{fig:abb5} dargestellt.
 
 Die Stromdichte lässt sich also über eine Konstante $j_0$ schreiben als
 
-\begin{equation*}
+\begin{equation}
     j(V) = j_0 \, \text{exp}\left(-\dfrac{\text{e}_0 \phi_\text{A} + \text{e}_0 V}{\text{k}_\text{B} \, T} \right)
          = c \,\text{exp}\left(-\dfrac{\text{e}_0 V}{\text{k}_\text{B} T} \right)
-\end{equation*}
+         \label{eq:stromladexp}
+\end{equation}
 
 
-\subsection{Kennlinie einer Hochvaluumdiode}
+\subsection{Kennlinie einer Hochvakuumdiode}
 
 Der Zusammenhang zwischen Stromdichte $j$ bzw. Anodenstrom $I_\text{A}$
 und dem von außen angelegten Potential wird als Kennlinie bezeichnet und lässt sich unter

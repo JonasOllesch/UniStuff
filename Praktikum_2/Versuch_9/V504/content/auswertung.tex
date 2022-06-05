@@ -14,7 +14,7 @@ Die Paare aus Anodenspannung und Anodenstrom der fünf verschiedenen Kennlinien 
 \begin{minipage}[c]{0.45\textwidth}
     \begin{tabular}{S S}
         \toprule
-        & \multicolumn{1}{c}{$U_\text{f} = 3,2 \,\unit{\volt}$} \\
+        & \multicolumn{1}{c}{$U_\text{H} = 3,2 \,\unit{\volt}$} \\
         \cmidrule(lr){2-2}
         {$U \mathbin{/} \unit{\volt}$} & {$I_1 \mathbin{/} \unit{\ampere}$} \\
         \midrule
@@ -30,7 +30,7 @@ Die Paare aus Anodenspannung und Anodenstrom der fünf verschiedenen Kennlinien 
 \begin{minipage}[c]{0.45\textwidth}
     \begin{tabular}{S S}
         \toprule
-        & \multicolumn{1}{c}{$U_\text{f} = 3,5 \,\unit{\volt}$} \\
+        & \multicolumn{1}{c}{$U_\text{H} = 3,5 \,\unit{\volt}$} \\
         \cmidrule(lr){2-2}
         {$U \mathbin{/} \unit{\volt}$} & {$I_2 \mathbin{/} \unit{\ampere}$} \\
         \midrule
@@ -55,7 +55,7 @@ Die Paare aus Anodenspannung und Anodenstrom der fünf verschiedenen Kennlinien 
         \sisetup{table-format=2.1}
         \begin{tabular}{S S S}
             \toprule
-            & \multicolumn{1}{c}{$U_\text{f} = 4 \,\unit{\volt}$} & \multicolumn{1}{c}{$U_\text{f} = 4,2 \,\unit{\volt}$} \\
+            & \multicolumn{1}{c}{$U_\text{H} = 4 \,\unit{\volt}$} & \multicolumn{1}{c}{$U_\text{H} = 4,2 \,\unit{\volt}$} \\
             \cmidrule(lr){2-2} \cmidrule(lr){3-3}
             {$U \mathbin{/} \unit{\volt}$} & {$I_3 \mathbin{/} \unit{\ampere}$} & {$I_4 \mathbin{/} \unit{\ampere}$} \\
             \midrule
@@ -71,7 +71,7 @@ Die Paare aus Anodenspannung und Anodenstrom der fünf verschiedenen Kennlinien 
     \sisetup{table-format=2.1}
     \begin{tabular}{S S}
         \toprule
-        & \multicolumn{1}{c}{$U_\text{f} = 5,4 \,\unit{\volt}$} \\
+        & \multicolumn{1}{c}{$U_\text{H} = 5,4 \,\unit{\volt}$} \\
         \cmidrule(lr){2-2}
         {$U \mathbin{/} \unit{\volt}$} & {$I_5 \mathbin{/} \unit{\ampere}$} \\
         \midrule
@@ -83,6 +83,193 @@ Die Paare aus Anodenspannung und Anodenstrom der fünf verschiedenen Kennlinien 
         %%%%%%
         \bottomrule
     \end{tabular}
-        
     \end{minipage}
 \end{table}
+
+Die dazugehörigen Plots sind in \autoref{fig:kennlini} zu erkennen.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%\begin{figure}[H]
+%%%%%%%%%%%%%%%%%%%%%%%%%    \centering
+%%%%%%%%%%%%%%%%%%%%%%%%%    \includegraphics{build/kennlinien.pdf}
+%%%%%%%%%%%%%%%%%%%%%%%%%    \caption{Anodenstrom $I_\text{A}$ in Abhängigkeit der Anodenspannung $U_\text{A}$ bei unterschiedlichen Heizspannungen.}
+%%%%%%%%%%%%%%%%%%%%%%%%%    \label{fig:kennlini}
+%%%%%%%%%%%%%%%%%%%%%%%%%\end{figure}
+
+Die unterschiedlichen Sättigungsströme lassen sich relativ genau aus den aufgenommenen Messdaten erkennen.
+Sie sind in \autoref{tab:sättigungsstromis} dargestellt.
+
+\begin{table}
+    \centering
+    \caption{Sättigungsstrom $I_\text{S}$ zu unterschiedlichen \\ Heizspannungen $U_\text{H}$ und -strömen $I_\text{H}$.}
+    \label{tab:sättigungsstromis}
+    \begin{tabular}{S S S}
+        \toprule
+        {$U_\text{H} \mathbin{/} \unit{\volt}$} & {$I_\text{H} \mathbin{/} \unit{\ampere}$} & {$I_\text{S} \mathbin{/} \unit{\ampere}$} \\
+        \midrule
+        %%%%% Hier könnten Ihre Werte stehen
+
+
+
+
+        %%%%%%
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+
+\subsection{Untersuchung des Raumladungsgebiets}
+
+Anhand der größtmöglichen Heizspannung soll nun das Raumladungsgebiet untersucht werden.
+Hier wird also die fünfte Messreihe genauer betrachtet.
+Dazu wird eine lineare Regression der Form
+\begin{equation*}
+    y = m x + b
+\end{equation*}
+durchgeführt, wobei Strom und Spannung logarithmisch gegeneinander aufgetragen werden. \\
+
+Diese Regression mit den Parametern
+\begin{equation*}
+    m = (... \pm ...)
+\end{equation*}
+und
+\begin{equation*}
+    b = (... \pm ...)
+\end{equation*}
+ist in \autoref{fig:linregkennl5} aufgetragen.
+
+%%%%%%%%%%%%%%%%%%%%%%%\begin{figure}[H]
+%%%%%%%%%%%%%%%%%%%%%%%    \centering
+%%%%%%%%%%%%%%%%%%%%%%%    \includegraphics{build/linregraumladung.pdf}
+%%%%%%%%%%%%%%%%%%%%%%%    \caption{Lineare Regression an den logarithmisch geplotteten Werten aus Messreihe 5. Die Vertikale gibt den Grenzbereich des Raumladungsgebietes an.}
+%%%%%%%%%%%%%%%%%%%%%%%    \label{fig:linregkennl5}
+%%%%%%%%%%%%%%%%%%%%%%%\end{figure}
+
+
+\subsubsection{Untersuchung des Anlaufstromgebiets}
+
+Die zum Anlaufstrom aufgenommenen Messdaten sind in \autoref{tab:anlaufstrom} dargestellt.
+Dabei wird die korrigierte Spannung $U_\text{korr}$ über
+\begin{equation*}
+    U_\text{korr} = U_\text{gemessen} - R_i \, I
+\end{equation*} 
+bestimmt, wobei $I$ der gemessene Strom und $R_i$ der Innenwiderstand von $1 \,\unit{\mega\ohm}$ sind.
+
+\begin{table}
+    \centering
+    \caption{Gemessene Spannung $U_\text{gemessen}$, gemessener Strom $I$ sowie korrigierte Spannung $U_\text{korr}$.}
+    \label{tab:anlaufstrom}
+    \begin{tabular}{S S S}
+        \toprule
+        {$U_\text{gemessen} \mathbin{/} \unit{\volt}$} & {$I \mathbin{/} \unit{\ampere}$} & {$U_\text{korr} \mathbin{/} \unit{\volt}$} \\
+        \midrule
+        %%%%% Hier könnten Ihre Werte stehen
+
+
+
+
+        %%%%%%
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+Nun soll ein Ausdruck für die Kathodentemperatur gefunden werden.
+Dazu wird \eqref{eq:stromladexp} nach T umgestellt, sodass sich eine Regressionsgleichung der Form
+\begin{equation*}
+    \ln(I) = -\dfrac{\text{e}_0}{\text{k}_\text{B} T} V + \ln(c) = m x + b
+\end{equation*}
+ergibt, dessen grafische Darstellung in \autoref{fig:anlaufstrom} zu erkennen ist.
+
+%%%%%%%%%\begin{figure}
+%%%%%%%%%    \centering
+%%%%%%%%%    \includegraphics{build/reganlaufstrom.pdf}
+%%%%%%%%%    \caption{Logarithmische Darstellung der zum Anlaufstromgebiet aufgenommenen Messdaten samt linearer Regression.}
+%%%%%%%%%    \label{fig:anlaufstrom}
+%%%%%%%%%\end{figure}
+
+Mit
+\begin{equation*}
+    m = (... \pm ...)
+\end{equation*}
+und
+\begin{equation*}
+    b = (... \pm ...)
+\end{equation*}
+lässt sich über
+\begin{equation*}
+    m = -\dfrac{\text{e}_0}{\text{k}_\text{B} T} \Leftrightarrow T = - \dfrac{\text{e}_0}{\text{k}_\text{B} m}
+\end{equation*}
+die Kathodentemperatur zu
+\begin{equation*}
+    T = (... \pm ...) \,\unit{\kelvin}
+\end{equation*}
+bestimmen. 
+
+
+\subsection{Kathodentemperatur aus Leistungsbilanz}
+
+Mit den in \autoref{tab:sättigungsstromis} verwendeten Heizspannungen und -strömen kann nach
+\begin{equation*}
+    T = \left(\dfrac{U_\text{H} I_\text{H} - N_\text{WL}}{\eta \sigma f}\right)^\frac{1}{4}
+\end{equation*}
+die Kathodentemperatur bestimmt werden, wobei $N_\text{WL} = 0,9 \,\unit{\watt}$ die Wärmeleitung der Apparatur, $\eta = 0,28$ der Emissionsgrad der Oberfläche,
+$\sigma = 5,7 \cdot 10^{-12} \,\unit{\watt \,\centi\meter^{-2} \,\kelvin^{-4}}$ die Boltzmannsche Strahlungskonstante und $f = 0,32 \,\unit{\centi\meter^2}$ die emittierende Kathodenoberfläche darstellen \cite{ap09}. \\
+
+So ergeben sich die in \autoref{tab:kathtempheizstrom} dargestellten Werte.
+
+\begin{table}
+    \centering
+    \caption{Kathodentemperatur $T$ zu unterschiedlichen Heizströmen.}
+    \label{tab:kathtempheizstrom}
+    \begin{tabular}{S S S S S}
+        \toprule
+        {$T_1 \mathbin{/} \unit{\kelvin}$} & {$T_2 \mathbin{/} \unit{\kelvin}$} & {$T_3 \mathbin{/} \unit{\kelvin}$} & {$T_4 \mathbin{/} \unit{\kelvin}$} & {$T_5 \mathbin{/} \unit{\kelvin}$} \\
+        \midrule
+        %%%%% Hier könnten Ihre Werte stehen
+
+
+
+
+        %%%%%%
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+Gemittelt ergibt sich so eine Kathodentemperatur von
+\begin{equation*}
+    T = (... \pm ...) \,\unit{\kelvin} \,.
+\end{equation*}
+
+
+\subsection{Bestimmung der Austrittsarbeit}
+
+Mithilfe von \eqref{eq:stromdichte} lässt sich nach Umstellen mit $j_\text{S} = \frac{I_\text{S}}{f}$ ein Ausdruck für die Austrittsarbeit $\text{e}_0 \,\Phi$ finden.
+Dieser lautet
+\begin{equation*}
+    \text{e}_0 \,\Phi = -\text{k}_\text{B} T \,\ln \left(\dfrac{I_\text{S} \, \text{h}^3}{4 \, \pi \, \text{e}_0 \, \text{k}^2_\text{B} \, \text{m}_0 \,f \,  T^2}\right) \,.
+\end{equation*} \\
+
+Die zu den bereits in \autoref{tab:sättigungsstromis} bestimmten Sättigungsströmen gehörigen Austrittsarbeiten sind in \autoref{tab:austrittsarbeit} dargestellt.
+
+\begin{table}
+    \centering
+    \caption{Austrittsarbeiten $\text{e}_0 \Phi$ zu unterschiedlichen Sättigungsströmen.}
+    \label{tab:austrittsarbeit}
+    \begin{tabular}{S S S S S}
+        \toprule
+        {$\text{e}_0\Phi_1 \mathbin{/} \unit{\eV}$} & {$\text{e}_0\Phi_2 \mathbin{/} \unit{\eV}$} & {$\text{e}_0\Phi_3 \mathbin{/} \unit{\eV}$} & {$\text{e}_0\Phi_4 \mathbin{/} \unit{\eV}$} & {$\text{e}_0\Phi_5 \mathbin{/} \unit{\eV}$}  \\
+        \midrule
+        %%%%% Hier könnten Ihre Werte stehen
+
+
+
+
+        %%%%%%
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+Gemittelt ergibt sich hier
+
+\begin{equation*}
+    \text{e}_0 \Phi = (... \pm ...) \,\unit{\eV} \,.
+\end{equation*}
