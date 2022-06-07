@@ -87,11 +87,11 @@ Messung6[:,1]= Messung6[:,1]*10**(-9)
 
 
 
-plt.scatter(Messung1[:,0], Messung1[:,1]*1000,s=8,label=r"$U_{H} = 3,2 $")
-plt.scatter(Messung2[:,0], Messung2[:,1]*1000,s=8,label=r"$U_{H} = 3,5 $")
-plt.scatter(Messung3[:,0], Messung3[:,1]*1000,s=8,label=r"$U_{H} = 4,0 $")
-plt.scatter(Messung4[:,0], Messung4[:,1]*1000,s=8,label=r"$U_{H} = 4,2 $")
-plt.scatter(Messung5[:,0], Messung5[:,1]*1000,s=8,label=r"$U_{H} = 5,0 $")
+plt.scatter(Messung1[:,0], Messung1[:,1]*1000,s=4,label=r"$U_{H} = 3,2 \,\unit{\volt} $")
+plt.scatter(Messung2[:,0], Messung2[:,1]*1000,s=4,label=r"$U_{H} = 3,5 \,\unit{\volt} $")
+plt.scatter(Messung3[:,0], Messung3[:,1]*1000,s=4,label=r"$U_{H} = 4,0 \,\unit{\volt} $")
+plt.scatter(Messung4[:,0], Messung4[:,1]*1000,s=4,label=r"$U_{H} = 4,2 \,\unit{\volt} $")
+plt.scatter(Messung5[:,0], Messung5[:,1]*1000,s=4,label=r"$U_{H} = 5,0 \,\unit{\volt} $")
 plt.xlabel(r'$U \, \mathbin{/} \unit{\volt}$')
 plt.ylabel(r'$ I \mathbin{/} \unit{\milli\ampere}  $')
 plt.tight_layout()
