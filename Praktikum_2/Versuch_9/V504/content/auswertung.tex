@@ -5,95 +5,361 @@ Zur besseren Übersichtlichkeit ist die Auswertung im Folgenden in einige Untera
 
 \subsection{Kennlinien und Sättigungsstrom}
 
-Die Paare aus Anodenspannung und Anodenstrom der fünf verschiedenen Kennlinien sind in \autoref{tab:kennlini1_2} und \autoref{tab:kennlini3_5} dargestellt.
+Die Paare aus Anodenspannung und Anodenstrom der fünf verschiedenen Kennlinien sind in \autoref{tab:kennlini1_1},\autoref{tab:kennlini1_2},\autoref{tab:kennlini1_3},\autoref{tab:kennlini1_4} und \autoref{tab:kennlini1_5} dargestellt.
+
+%\begin{table}[H]
+%    \centering
+%    \caption{Anodenstrom $I_1$ mit den dazugehörigen Anodenspannungen $U$.}
+%    \label{tab:kennlini1_2}
+%\begin{minipage}[c]{0.45\textwidth}
+%    \begin{tabular}{S S}
+%        \toprule
+%        & \multicolumn{1}{c}{$U_\text{H} = 3,2 \,\unit{\volt}$} \\
+%        \cmidrule(lr){2-2}
+%        {$U \mathbin{/} \unit{\volt}$} & {$I_1 \mathbin{/} \unit{\milli\ampere}$} \\
+%        \midrule
+%        {5}&       {0.005}\\
+%        {7}&       {0.010}\\
+%        {9}&       {0.013}\\
+%        {10}&      {0.015}\\
+%        {11}&      {0.017}\\
+%        {13}&      {0.020}\\
+%        {15}&      {0.024}\\
+%        {17}&      {0.028}\\
+%        {19}&      {0.031}\\
+%        {20}&      {0.034}\\
+%        {21}&      {0.036}\\
+%        {23}&      {0.040}\\
+%        {25}&      {0.043}\\
+%        {27}&      {0.046}\\
+%        {29}&      {0.049}\\
+%        {30}&      {0.051}\\
+%        {35}&      {0.057}\\
+%        {40}&      {0.061}\\
+%        {45}&      {0.065}\\
+%        {50}&      {0.067}\\
+%        {55}&      {0.069}\\
+%        {60}&      {0.070}\\
+%        {80}&      {0.070}\\
+%        {90}&      {0.072}\\
+%        {100}&     {0.074}\\
+%        \bottomrule
+%    \end{tabular}
+%\end{minipage}
+%\begin{minipage}[c]{0.45\textwidth}
+%    \begin{tabular}{S S}
+%        \toprule
+%        & \multicolumn{1}{c}{$U_\text{H} = 3,5 \,\unit{\volt}$} \\
+%        \cmidrule(lr){2-2}
+%        {$U \mathbin{/} \unit{\volt}$} & {$I_2 \mathbin{/} \unit{\milli\ampere}$} \\
+%        \midrule
+%        {5}&       {0.007}\\
+%        {7}&       {0.011}\\
+%        {9}&       {0.016}\\
+%        {10}&      {0.018}\\
+%        {12}&      {0.022}\\
+%        {14}&      {0.027}\\
+%        {16}&      {0.031}\\
+%        {18}&      {0.036}\\
+%        {20}&      {0.042}\\
+%        {22}&      {0.046}\\
+%        {24}&      {0.052}\\
+%        {26}&      {0.057}\\
+%        {28}&      {0.063}\\
+%        {30}&      {0.067}\\
+%        {32}&      {0.070}\\
+%        {34}&      {0.074}\\
+%        {36}&      {0.077}\\
+%        {38}&      {0.081}\\
+%        {40}&      {0.084}\\
+%        {45}&      {0.090}\\
+%        {50}&      {0.094}\\
+%        {55}&      {0.096}\\
+%        {60}&      {0.097}\\
+%        {65}&      {0.099}\\
+%        {70}&      {0.102}\\
+%        {80}&      {0.105}\\
+%        {90}&      {0.018}\\
+%        {100}&     {0.111}\\
+%        {110}&     {0.113}\\
+%        {120}&     {0.114}\\
+%        {130}&     {0.115}\\
+%        {140}&     {0.116}\\
+%        {150}&     {0.117}\\
+%        \bottomrule
+%    \end{tabular}
+%\end{minipage}
+%\end{table}
+%    
+%
+%
+%\begin{table}[H]
+%    \centering
+%    \caption{Anodenströme $I_i$ mit den dazugehörigen Anodenspannungen $U$ für die dritte bis fünfte Heizspannung.}
+%        \label{tab:kennlini3_5}
+%    \begin{minipage}{0.45\textwidth}
+%        \sisetup{table-format=2.1}
+%        \begin{tabular}{S S S}
+%            \toprule
+%            & \multicolumn{1}{c}{$U_\text{H} = 4 \,\unit{\volt}$} & \multicolumn{1}{c}{$U_\text{H} = 4,2 \,\unit{\volt}$} \\
+%            \cmidrule(lr){2-2} \cmidrule(lr){3-3}
+%            {$U \mathbin{/} \unit{\volt}$} & {$I_3 \mathbin{/} \unit{\milli\ampere}$} & {$I_4 \mathbin{/} \unit{\milli\ampere}$} \\
+%            \midrule
+%            {2}&       {0.002}&{0.003}\\
+%            {4}&       {0.007}&{0.008}\\
+%            {6}&       {0.012}&{0.015}\\
+%            {8}&       {0.016}&{0.020}\\
+%            {10}&      {0.024}&{0.039}\\
+%            {12}&      {0.030}&{0.036}\\
+%            {14}&      {0.036}&{0.044}\\
+%            {16}&      {0.042}&{0.053}\\
+%            {18}&      {0.049}&{0.061}\\
+%            {20}&      {0.056}&{0.070}\\
+%            {22}&      {0.064}&{0.080}\\
+%            {24}&      {0.071}&{0.089}\\
+%            {26}&      {0.080}&{0.101}\\
+%            {28}&      {0.088}&{0.110}\\
+%            {30}&      {0.093}&{0.121}\\
+%            {32}&      {0.101}&{0.129}\\
+%            {34}&      {0.110}&{0.140}\\
+%            {36}&      {0.117}&{0.146}\\
+%            {38}&      {0.124}&{0.156}\\
+%            {40}&      {0.132}&{0.168}\\
+%            {42}&      {0.138}&{0.177}\\
+%            {44}&      {0.145}&{0.188}\\
+%            {46}&      {0.152}&{0.200}\\
+%            {48}&      {0.159}&{0.212}\\
+%            {50}&      {0.165}&{0.222}\\
+%            {52}&      {0.170}&{0.235}\\
+%            {54}&      {0.167}&{0.244}\\
+%            {56}&      {0.173}&{0.252}\\
+%            {58}&      {0.180}&{0.262}\\
+%            {60}&      {0.186}&{0.269}\\
+%            {65}&      {0.197}&{0.306}\\
+%            {70}&      {0.209}&{0.335}\\
+%            {75}&      {0.218}&{0.360}\\
+%            {80}&      {0.223}&{0.385}\\
+%            {85}&      {0.228}&{0.405}\\
+%            {90}&      {0.227}&{0.425}\\
+%            {95}&      {0.230}&{0.446}\\
+%            {100}&     {0.232}&{0.459}\\
+%            {110}&     {0.238}&{0.474}\\
+%            {120}&     {0.243}&{0.496}\\
+%            {130}&     {0.246}&{0.512}\\
+%            {140}&     {0.247}&{0.524}\\
+%            {150}&     {0.249}&{0.530}\\
+%            {160}&     {0.251}&{0.532}\\
+%            {170}&     {0.252}&{0.535}\\
+%            {180}&     {0.254}&{0.540}\\
+%            {190}&     {0.255}&{0.543}\\
+%            {200}&     {0.256}&{0.546}\\
+%            \bottomrule
+%        \end{tabular}
+%    \end{minipage}
+%    \begin{minipage}{0.45\textwidth}
+%    \sisetup{table-format=2.1}
+%    \begin{tabular}{S S}
+%        \toprule
+%        & \multicolumn{1}{c}{$U_\text{H} = 5,4 \,\unit{\volt}$} \\
+%        \cmidrule(lr){2-2}
+%        {$U \mathbin{/} \unit{\volt}$} & {$I_5 \mathbin{/} \unit{\ampere}$} \\
+%        \midrule
+%        {5}&       {0.015}\\
+%        {10}&      {0.034}\\
+%        {15}&      {0.056}\\
+%        {16}&      {0.062}\\
+%        {18}&      {0.072}\\
+%        {20}&      {0.085}\\
+%        {22}&      {0.094}\\
+%        {24}&      {0.105}\\
+%        {26}&      {0.116}\\
+%        {28}&      {0.130}\\
+%        {30}&      {0.140}\\
+%        {32}&      {0.155}\\
+%        {34}&      {0.162}\\
+%        {36}&      {0.175}\\
+%        {38}&      {0.190}\\
+%        {40}&      {0.207}\\
+%        {42}&      {0.221}\\
+%        {44}&      {0.233}\\
+%        {46}&      {0.251}\\
+%        {48}&      {0.266}\\
+%        {50}&      {0.281}\\
+%        {52}&      {0.296}\\
+%        {54}&      {0.314}\\
+%        {56}&      {0.336}\\
+%        {58}&      {0.353}\\
+%        {60}&      {0.376}\\
+%        {65}&      {0.426}\\
+%        {70}&      {0.473}\\
+%        {75}&      {0.526}\\
+%        {80}&      {0.580}\\
+%        {85}&      {0.629}\\
+%        {90}&      {0.671}\\
+%        {95}&      {0.717}\\
+%        {100}&     {0.750}\\
+%        {105}&     {0.814}\\
+%        {110}&     {0.890}\\
+%        {115}&     {0.950}\\
+%        {130}&     {1.003}\\
+%        {140}&     {1.090}\\
+%        {150}&     {1.181}\\
+%        {160}&     {1.284}\\
+%        {170}&     {1.370}\\
+%        {180}&     {1.455}\\
+%        {190}&     {1.540}\\
+%        {200}&     {1.616}\\
+%        {210}&     {1.688}\\
+%        {220}&     {1.765}\\
+%        {230}&     {1.833}\\
+%        {240}&     {1.950}\\
+%        {250}&     {1.996}\\
+%        \bottomrule
+%    \end{tabular}
+%    \end{minipage}
+%\end{table}
+%
 
 \begin{table}[H]
     \centering
-    \caption{Anodenstrom $I_1$ mit den dazugehörigen Anodenspannungen $U$.}
+    \caption{Anodenstrom $I_i$ mit der dazugehörigen Anodenspannung $U$ für die Heizspannung $U = 3,2 \, \unit{\volt} $.}
+    \label{tab:kennlini1_1}
+    \begin{tabular}{S S S S S[table-format=3.0] S}
+      \toprule
+      {$U \mathbin{/} \unit{\volt}$} & {$I_1 \mathbin{/} \unit{\milli\ampere}$} & {$U \mathbin{/} \unit{\volt}$} & {$I_1 \mathbin{/} \unit{\milli\ampere}$} & {$U \mathbin{/} \unit{\volt}$} & {$I_1 \mathbin{/} \unit{\milli\ampere}$}  \\
+      \midrule
+        {5}&       {0,005} & {20}&      {0,034} & {45}&      {0,065}\\
+        {7}&       {0,010} & {21}&      {0,036} & {50}&      {0,067}\\
+        {9}&       {0,013} & {23}&      {0,040} & {55}&      {0,069}\\
+        {10}&      {0,015} & {25}&      {0,043} & {60}&      {0,070}\\
+        {11}&      {0,017} & {27}&      {0,046} & {80}&      {0,070}\\
+        {13}&      {0,020} & {29}&      {0,049} & {90}&      {0,072}\\
+        {15}&      {0,024} & {30}&      {0,051} & {100}&     {0,074}\\
+        {17}&      {0,028} & {35}&      {0,057} & {-}   &    {-}    \\
+        {19}&      {0,031} & {40}&      {0,061} & {-}   &    {-}    \\
+      \bottomrule
+    \end{tabular}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \caption{Anodenstrom $I_i$ mit der dazugehörigen Anodenspannung $U$ für die Heizspannung $U = 3,5 \, \unit{\volt} $.}
     \label{tab:kennlini1_2}
-\begin{minipage}[c]{0.45\textwidth}
-    \begin{tabular}{S S}
-        \toprule
-        & \multicolumn{1}{c}{$U_\text{H} = 3,2 \,\unit{\volt}$} \\
-        \cmidrule(lr){2-2}
-        {$U \mathbin{/} \unit{\volt}$} & {$I_1 \mathbin{/} \unit{\ampere}$} \\
-        \midrule
-        %%%%% Hier könnten Ihre Werte stehen
+    \begin{tabular}{S S S S S[table-format=3.1] S}
+      \toprule
+      {$U \mathbin{/} \unit{\volt}$} & {$I_1 \mathbin{/} \unit{\milli\ampere}$} & {$U \mathbin{/} \unit{\volt}$} & {$I_1 \mathbin{/} \unit{\milli\ampere}$} & {$U \mathbin{/} \unit{\volt}$} & {$I_1 \mathbin{/} \unit{\milli\ampere}$}  \\
+      \midrule
+            {5}&       {0,007}&        {26}&      {0,057}&        {60}&      {0,097}\\
+            {7}&       {0,011}&        {28}&      {0,063}&        {65}&      {0,099}\\
+            {9}&       {0,016}&        {30}&      {0,067}&        {70}&      {0,102}\\
+            {10}&      {0,018}&        {32}&      {0,070}&        {80}&      {0,105}\\
+            {12}&      {0,022}&        {34}&      {0,074}&        {90}&      {0,018}\\
+            {14}&      {0,027}&        {36}&      {0,077}&        {100}&     {0,111}\\
+            {16}&      {0,031}&        {38}&      {0,081}&        {110}&     {0,113}\\
+            {18}&      {0,036}&        {40}&      {0,084}&        {120}&     {0,114}\\
+            {20}&      {0,042}&        {45}&      {0,090}&        {130}&     {0,115}\\
+            {22}&      {0,046}&        {50}&      {0,094}&        {140}&     {0,116}\\
+            {24}&      {0,052}&        {55}&      {0,096}&        {150}&     {0,117}\\
 
-
-
-
-        %%%%%%
-        \bottomrule
+      \bottomrule
     \end{tabular}
-\end{minipage}
-\begin{minipage}[c]{0.45\textwidth}
-    \begin{tabular}{S S}
-        \toprule
-        & \multicolumn{1}{c}{$U_\text{H} = 3,5 \,\unit{\volt}$} \\
-        \cmidrule(lr){2-2}
-        {$U \mathbin{/} \unit{\volt}$} & {$I_2 \mathbin{/} \unit{\ampere}$} \\
-        \midrule
-        %%%%% Hier könnten Ihre Werte stehen
-
-
-
-
-        %%%%%%
-        \bottomrule
-    \end{tabular}
-\end{minipage}
 \end{table}
-    
+
+\begin{table}[H]
+    \centering
+    \caption{Anodenstrom $I_i$ mit der dazugehörigen Anodenspannung $U$ für die Heizspannung $U = 4,0 \, \unit{\volt} $.}
+    \label{tab:kennlini1_3}
+    \begin{tabular}{S S S S S[table-format=3.1] S}
+      \toprule
+      {$U \mathbin{/} \unit{\volt}$} & {$I_1 \mathbin{/} \unit{\milli\ampere}$} & {$U \mathbin{/} \unit{\volt}$} & {$I_1 \mathbin{/} \unit{\milli\ampere}$} & {$U \mathbin{/} \unit{\volt}$} & {$I_1 \mathbin{/} \unit{\milli\ampere}$}  \\
+      \midrule
+        {2}  &    { 0,002} & {34}  &    {0,110} & {75 }    & {0,218} \\
+        {4}  &    { 0,007} & {36}  &    {0,117} & {80 }    & {0,223} \\
+        {6}  &    { 0,012} & {38}  &    {0,124} & {85 }    & {0,228} \\
+        {8}  &    { 0,016} & {40}  &    {0,132} & {90 }    & {0,227} \\
+        {10}  &    {0,024} & {42}  &    {0,138} & {95 }    & {0,230} \\
+        {12}  &    {0,030} & {44}  &    {0,145} & {100}    & {0,232} \\
+        {14}  &    {0,036} & {46}  &    {0,152} & {110}    & {0,238} \\
+        {16}  &    {0,042} & {48}  &    {0,159} & {120}    & {0,243} \\
+        {18}  &    {0,049} & {50}  &    {0,165} & {130}    & {0,246} \\
+        {20}  &    {0,056} & {52}  &    {0,170} & {140}    & {0,247} \\
+        {22}  &    {0,064} & {54}  &    {0,167} & {150}    & {0,249} \\
+        {24}  &    {0,071} & {56}  &    {0,173} & {160}    & {0,251} \\
+        {26}  &    {0,080} & {58}  &    {0,180} & {170}    & {0,252} \\
+        {28}  &    {0,088} & {60}  &    {0,186} & {180}    & {0,254} \\
+        {30}  &    {0,093} & {65}  &    {0,197} & {190}    & {0,255} \\
+        {32}  &    {0,101} & {70}  &    {0,209} & {200}    & {0,256} \\
+      \bottomrule
+    \end{tabular}
+\end{table}
 
 
 \begin{table}[H]
     \centering
-    \caption{Anodenströme $I_i$ mit den dazugehörigen Anodenspannungen $U$ für die dritte bis fünfte Heizspannung.}
-        \label{tab:kennlini3_5}
-    \begin{minipage}{0.45\textwidth}
-        \sisetup{table-format=2.1}
-        \begin{tabular}{S S S}
-            \toprule
-            & \multicolumn{1}{c}{$U_\text{H} = 4 \,\unit{\volt}$} & \multicolumn{1}{c}{$U_\text{H} = 4,2 \,\unit{\volt}$} \\
-            \cmidrule(lr){2-2} \cmidrule(lr){3-3}
-            {$U \mathbin{/} \unit{\volt}$} & {$I_3 \mathbin{/} \unit{\ampere}$} & {$I_4 \mathbin{/} \unit{\ampere}$} \\
-            \midrule
-            %%%%% Hier könnten Ihre Werte stehen
-    
-    
-    
-            %%%%%
-            \bottomrule
-        \end{tabular}
-    \end{minipage}
-    \begin{minipage}{0.45\textwidth}
-    \sisetup{table-format=2.1}
-    \begin{tabular}{S S}
-        \toprule
-        & \multicolumn{1}{c}{$U_\text{H} = 5,4 \,\unit{\volt}$} \\
-        \cmidrule(lr){2-2}
-        {$U \mathbin{/} \unit{\volt}$} & {$I_5 \mathbin{/} \unit{\ampere}$} \\
-        \midrule
-        %%%%% Hier könnten Ihre Werte stehen
-
-
-
-
-        %%%%%%
-        \bottomrule
+    \caption{Anodenstrom $I_i$ mit der dazugehörigen Anodenspannung $U$ für die Heizspannung $U = 4,2 \, \unit{\volt} $.}
+    \label{tab:kennlini1_4}
+    \begin{tabular}{S S S S S[table-format=3.1] S}
+      \toprule
+      {$U \mathbin{/} \unit{\volt}$} & {$I_1 \mathbin{/} \unit{\milli\ampere}$} & {$U \mathbin{/} \unit{\volt}$} & {$I_1 \mathbin{/} \unit{\milli\ampere}$} & {$U \mathbin{/} \unit{\volt}$} & {$I_1 \mathbin{/} \unit{\milli\ampere}$}  \\
+      \midrule
+        {2}  &     {0,003}       & {34}  &    {0,140} & {75 }    & {0,360} \\
+        {4}  &     {0,008}       & {36}  &    {0,146} & {80 }    & {0,385} \\
+        {6}  &     {0,015}       & {38}  &    {0,156} & {85 }    & {0,405} \\
+        {8}  &     {0,020}       & {40}  &    {0,168} & {90 }    & {0,425} \\
+        {10}  &    {0,039}       & {42}  &    {0,177} & {95 }    & {0,446} \\
+        {12}  &    {0,036}       & {44}  &    {0,188} & {100}    & {0,459} \\
+        {14}  &    {0,044}       & {46}  &    {0,200} & {110}    & {0,474} \\
+        {16}  &    {0,053}       & {48}  &    {0,212} & {120}    & {0,496} \\
+        {18}  &    {0,061}       & {50}  &    {0,222} & {130}    & {0,512} \\
+        {20}  &    {0,070}       & {52}  &    {0,235} & {140}    & {0,524} \\
+        {22}  &    {0,080}       & {54}  &    {0,244} & {150}    & {0,530} \\
+        {24}  &    {0,089}       & {56}  &    {0,252} & {160}    & {0,532} \\
+        {26}  &    {0,101}       & {58}  &    {0,262} & {170}    & {0,535} \\
+        {28}  &    {0,110}       & {60}  &    {0,269} & {180}    & {0,540} \\
+        {30}  &    {0,121}       & {65}  &    {0,306} & {190}    & {0,543} \\
+        {32}  &    {0,129}       & {70}  &    {0,335} & {200}    & {0,546} \\
+      \bottomrule
     \end{tabular}
-    \end{minipage}
 \end{table}
+
+\begin{table}[H]
+    \centering
+    \caption{Anodenstrom $I_i$ mit der dazugehörigen Anodenspannung $U$ für die Heizspannung $U = 5,0 \, \unit{\volt} $.}
+    \label{tab:kennlini1_5}
+    \begin{tabular}{S S S S S[table-format=3.1] S}
+      \toprule
+      {$U \mathbin{/} \unit{\volt}$} & {$I_1 \mathbin{/} \unit{\milli\ampere}$} & {$U \mathbin{/} \unit{\volt}$} & {$I_1 \mathbin{/} \unit{\milli\ampere}$} & {$U \mathbin{/} \unit{\volt}$} & {$I_1 \mathbin{/} \unit{\milli\ampere}$}  \\
+      \midrule
+            {5}&       {0,015}&   {44}&      {0,233}& {105}&     {0,814}\\
+            {10}&      {0,034}&   {46}&      {0,251}& {110}&     {0,890}\\
+            {15}&      {0,056}&   {48}&      {0,266}& {115}&     {0,950}\\
+            {16}&      {0,062}&   {50}&      {0,281}& {130}&     {1,003}\\
+            {18}&      {0,072}&   {52}&      {0,296}& {140}&     {1,090}\\
+            {20}&      {0,085}&   {54}&      {0,314}& {150}&     {1,181}\\
+            {22}&      {0,094}&   {56}&      {0,336}& {160}&     {1,284}\\
+            {24}&      {0,105}&   {58}&      {0,353}& {170}&     {1,370}\\
+            {26}&      {0,116}&   {60}&      {0,376}& {180}&     {1,455}\\
+            {28}&      {0,130}&   {65}&      {0,426}& {190}&     {1,540}\\
+            {30}&      {0,140}&   {70}&      {0,473}& {200}&     {1,616}\\
+            {32}&      {0,155}&   {75}&      {0,526}& {210}&     {1,688}\\
+            {34}&      {0,162}&   {80}&      {0,580}& {220}&     {1,765}\\
+            {36}&      {0,175}&   {85}&      {0,629}& {230}&     {1,833}\\
+            {38}&      {0,190}&   {90}&      {0,671}& {240}&     {1,950}\\
+            {40}&      {0,207}&   {95}&      {0,717}& {250}&     {1,996}\\
+            {42}&      {0,221}&   {100}&     {0,750}&  {-} & {-}\\
+      \bottomrule
+    \end{tabular}
+\end{table}
+
 
 Die dazugehörigen Plots sind in \autoref{fig:kennlini} zu erkennen.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%\begin{figure}[H]
-%%%%%%%%%%%%%%%%%%%%%%%%%    \centering
-%%%%%%%%%%%%%%%%%%%%%%%%%    \includegraphics{build/kennlinien.pdf}
-%%%%%%%%%%%%%%%%%%%%%%%%%    \caption{Anodenstrom $I_\text{A}$ in Abhängigkeit der Anodenspannung $U_\text{A}$ bei unterschiedlichen Heizspannungen.}
-%%%%%%%%%%%%%%%%%%%%%%%%%    \label{fig:kennlini}
-%%%%%%%%%%%%%%%%%%%%%%%%%\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics{build/kennlinien.pdf}
+    \caption{Anodenstrom $I_\text{A}$ in Abhängigkeit der Anodenspannung $U_\text{A}$ bei unterschiedlichen Heizspannungen.}
+    \label{fig:kennlini}
+\end{figure}
 
 Die unterschiedlichen Sättigungsströme lassen sich relativ genau aus den aufgenommenen Messdaten erkennen.
 Sie sind in \autoref{tab:sättigungsstromis} dargestellt.
@@ -102,16 +368,15 @@ Sie sind in \autoref{tab:sättigungsstromis} dargestellt.
     \centering
     \caption{Sättigungsstrom $I_\text{S}$ zu unterschiedlichen \\ Heizspannungen $U_\text{H}$ und -strömen $I_\text{H}$.}
     \label{tab:sättigungsstromis}
-    \begin{tabular}{S S S}
+    \begin{tabular}{S S[table-format=1.2] S}
         \toprule
-        {$U_\text{H} \mathbin{/} \unit{\volt}$} & {$I_\text{H} \mathbin{/} \unit{\ampere}$} & {$I_\text{S} \mathbin{/} \unit{\ampere}$} \\
+        {$U_\text{H} \mathbin{/} \unit{\volt}$} & {$I_\text{H} \mathbin{/} \unit{\ampere}$} & {$I_\text{S} \mathbin{/} \unit{\milli\ampere}$} \\
         \midrule
-        %%%%% Hier könnten Ihre Werte stehen
-
-
-
-
-        %%%%%%
+            {3,2} & {1,95}&{0,074}\\
+            {3,5} & {2,0} &{0,117}\\
+            {4,0} & {2,1} &{0.256}\\
+            {4,2} & {2,2} &{0,546}\\
+            {5,0} & {2,4} &{1,996}\\
         \bottomrule
     \end{tabular}
 \end{table}
@@ -129,20 +394,20 @@ durchgeführt, wobei Strom und Spannung logarithmisch gegeneinander aufgetragen 
 
 Diese Regression mit den Parametern
 \begin{equation*}
-    m = (... \pm ...)
+    m = ( 1,30 \pm 0,04)
 \end{equation*}
 und
 \begin{equation*}
-    b = (... \pm ...)
+    b = (-13,25 \pm 0,01)
 \end{equation*}
 ist in \autoref{fig:linregkennl5} aufgetragen.
 
-%%%%%%%%%%%%%%%%%%%%%%%\begin{figure}[H]
-%%%%%%%%%%%%%%%%%%%%%%%    \centering
-%%%%%%%%%%%%%%%%%%%%%%%    \includegraphics{build/linregraumladung.pdf}
-%%%%%%%%%%%%%%%%%%%%%%%    \caption{Lineare Regression an den logarithmisch geplotteten Werten aus Messreihe 5. Die Vertikale gibt den Grenzbereich des Raumladungsgebietes an.}
-%%%%%%%%%%%%%%%%%%%%%%%    \label{fig:linregkennl5}
-%%%%%%%%%%%%%%%%%%%%%%%\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics{build/linregraumladung.pdf}
+    \caption{Lineare Regression an den logarithmisch geplotteten Werten aus Messreihe 5. Die Vertikale gibt den Grenzbereich des Raumladungsgebietes an.}
+    \label{fig:linregkennl5}
+\end{figure}
 
 
 \subsubsection{Untersuchung des Anlaufstromgebiets}
@@ -158,16 +423,21 @@ bestimmt, wobei $I$ der gemessene Strom und $R_i$ der Innenwiderstand von $1 \,\
     \centering
     \caption{Gemessene Spannung $U_\text{gemessen}$, gemessener Strom $I$ sowie korrigierte Spannung $U_\text{korr}$.}
     \label{tab:anlaufstrom}
-    \begin{tabular}{S S S}
+    \begin{tabular}{S[table-format=1.2] S[table-format=2.3] S S[table-format=1.2] S[table-format=2.3] S}
         \toprule
-        {$U_\text{gemessen} \mathbin{/} \unit{\volt}$} & {$I \mathbin{/} \unit{\ampere}$} & {$U_\text{korr} \mathbin{/} \unit{\volt}$} \\
+        {$U_\text{gemessen} \mathbin{/} \unit{\volt}$} & {$I \mathbin{/} \unit{\nano\ampere}$} & {$U_\text{korr} \mathbin{/} \unit{\volt}$}&{$U_\text{gemessen} \mathbin{/} \unit{\volt}$} & {$I \mathbin{/} \unit{\nano\ampere}$} & {$U_\text{korr} \mathbin{/} \unit{\volt}$} \\
         \midrule
-        %%%%% Hier könnten Ihre Werte stehen
-
-
-
-
-        %%%%%%
+        0         &       11    &   0,011   & 0,55      &       0,67  &   0,55067 \\     
+        0,05      &       7,6   &   0,0576  & 0,6       &       0,54  &   0,60054 \\         
+        0,1       &       5,5   &   0,1055  & 0,65      &       0,43  &   0,65043 \\     
+        0,15      &       4,4   &   0,1544  & 0,7       &       0,36  &   0,70036 \\      
+        0,2       &       3,5   &   0,2035  & 0,75      &       0,28  &   0,75028 \\     
+        0,25      &       2,85  &   0,25285 & 0,8       &       0,26  &   0,80026 \\      
+        0,3       &       2,2   &   0,3022  & 0,85      &       0,222 &   0,85022 \\     
+        0,35      &       1,7   &   0,3517  & 0,9       &       0,19  &   0,90019 \\      
+        0,4       &       1,35  &   0,40135 & 0,95      &       0,17  &   0,95017 \\     
+        0,45      &       1,1   &   0,4511  & 0,96      &       0,16  &   0,96016 \\     
+        0,5       &       0,88  &   0,50088 & {-}       &{-}          &         {-}\\           
         \bottomrule
     \end{tabular}
 \end{table}
@@ -179,20 +449,20 @@ Dazu wird \eqref{eq:stromladexp} nach T umgestellt, sodass sich eine Regressions
 \end{equation*}
 ergibt, dessen grafische Darstellung in \autoref{fig:anlaufstrom} zu erkennen ist.
 
-%%%%%%%%%\begin{figure}
-%%%%%%%%%    \centering
-%%%%%%%%%    \includegraphics{build/reganlaufstrom.pdf}
-%%%%%%%%%    \caption{Logarithmische Darstellung der zum Anlaufstromgebiet aufgenommenen Messdaten samt linearer Regression.}
-%%%%%%%%%    \label{fig:anlaufstrom}
-%%%%%%%%%\end{figure}
+\begin{figure}
+    \centering
+    \includegraphics{build/reganlaufstrom.pdf}
+    \caption{Logarithmische Darstellung der zum Anlaufstromgebiet aufgenommenen Messdaten samt linearer Regression.}
+    \label{fig:anlaufstrom}
+\end{figure}
 
 Mit
 \begin{equation*}
-    m = (... \pm ...)
+    m = (-4,373 \pm 0,100) \, \unit{\dfrac{1}{\volt}}
 \end{equation*}
 und
 \begin{equation*}
-    b = (... \pm ...)
+    b = (-18,572 \pm 0,058) 
 \end{equation*}
 lässt sich über
 \begin{equation*}
@@ -200,7 +470,7 @@ lässt sich über
 \end{equation*}
 die Kathodentemperatur zu
 \begin{equation*}
-    T = (... \pm ...) \,\unit{\kelvin}
+    T = (2650 \pm 60) \,\unit{\kelvin}
 \end{equation*}
 bestimmen. 
 
@@ -214,29 +484,24 @@ Mit den in \autoref{tab:sättigungsstromis} verwendeten Heizspannungen und -str�
 die Kathodentemperatur bestimmt werden, wobei $N_\text{WL} = 0,9 \,\unit{\watt}$ die Wärmeleitung der Apparatur, $\eta = 0,28$ der Emissionsgrad der Oberfläche,
 $\sigma = 5,7 \cdot 10^{-12} \,\unit{\watt \,\centi\meter^{-2} \,\kelvin^{-4}}$ die Boltzmannsche Strahlungskonstante und $f = 0,32 \,\unit{\centi\meter^2}$ die emittierende Kathodenoberfläche darstellen \cite{ap09}. \\
 
-So ergeben sich die in \autoref{tab:kathtempheizstrom} dargestellten Werte.
+So ergeben sich die in \autoref{tab:tabelle3} dargestellten Werte.
 
-\begin{table}
-    \centering
-    \caption{Kathodentemperatur $T$ zu unterschiedlichen Heizströmen.}
-    \label{tab:kathtempheizstrom}
-    \begin{tabular}{S S S S S}
-        \toprule
-        {$T_1 \mathbin{/} \unit{\kelvin}$} & {$T_2 \mathbin{/} \unit{\kelvin}$} & {$T_3 \mathbin{/} \unit{\kelvin}$} & {$T_4 \mathbin{/} \unit{\kelvin}$} & {$T_5 \mathbin{/} \unit{\kelvin}$} \\
-        \midrule
-        %%%%% Hier könnten Ihre Werte stehen
-
-
-
-
-        %%%%%%
-        \bottomrule
-    \end{tabular}
-\end{table}
+%\begin{table}[H]
+%    \centering
+%    \caption{Kathodentemperatur $T$ zu unterschiedlichen Heizströmen.}
+%    \label{tab:kathtempheizstrom}
+%    \begin{tabular}{S S S S S}
+%        \toprule
+%        {$T_1 \mathbin{/} \unit{\kelvin}$} & {$T_2 \mathbin{/} \unit{\kelvin}$} & {$T_3 \mathbin{/} \unit{\kelvin}$} & {$T_4 \mathbin{/} \unit{\kelvin}$} & {$T_5 \mathbin{/} \unit{\kelvin}$} \\
+%        \midrule
+%
+%        \bottomrule
+%    \end{tabular}
+%\end{table}
 
 Gemittelt ergibt sich so eine Kathodentemperatur von
 \begin{equation*}
-    T = (... \pm ...) \,\unit{\kelvin} \,.
+    T = (1951,430 \pm 123,461) \,\unit{\kelvin} \,.
 \end{equation*}
 
 
@@ -248,28 +513,47 @@ Dieser lautet
     \text{e}_0 \,\Phi = -\text{k}_\text{B} T \,\ln \left(\dfrac{I_\text{S} \, \text{h}^3}{4 \, \pi \, \text{e}_0 \, \text{k}^2_\text{B} \, \text{m}_0 \,f \,  T^2}\right) \,.
 \end{equation*} \\
 
-Die zu den bereits in \autoref{tab:sättigungsstromis} bestimmten Sättigungsströmen gehörigen Austrittsarbeiten sind in \autoref{tab:austrittsarbeit} dargestellt.
+Die zu den bereits in \autoref{tab:tabelle3} bestimmten Sättigungsströmen gehörigen Austrittsarbeiten sind in \autoref{tab:tabelle3} dargestellt.
 
-\begin{table}
+%\begin{table}
+%    \centering
+%    \caption{Austrittsarbeiten $\text{e}_0 \Phi$ zu unterschiedlichen Sättigungsströmen.}
+%    \label{tab:austrittsarbeit}
+%    \begin{tabular}{S S S S S}
+%        \toprule
+%        {$\text{e}_0\Phi_1 \mathbin{/} \unit{\eV}$} & {$\text{e}_0\Phi_2 \mathbin{/} \unit{\eV}$} & {$\text{e}_0\Phi_3 \mathbin{/} \unit{\eV}$} & {$\text{e}_0\Phi_4 \mathbin{/} \unit{\eV}$} & {$\text{e}_0\Phi_5 \mathbin{/} \unit{\eV}$}  \\
+%        \midrule
+%        %%%%% Hier könnten Ihre Werte stehen
+%
+%
+%
+%
+%        %%%%%%
+%        \bottomrule
+%    \end{tabular}
+%\end{table}
+
+\begin{table}[H]
     \centering
-    \caption{Austrittsarbeiten $\text{e}_0 \Phi$ zu unterschiedlichen Sättigungsströmen.}
-    \label{tab:austrittsarbeit}
-    \begin{tabular}{S S S S S}
+    \caption{Messwerte der Sättigungsstromstärken, Heizstromstärken und -spannungen, sowie die daraus errechneten Kathodentemperaturen T und Austrittsarbeiten $\text{e}_0\Phi$.}
+    \label{tab:tabelle3}
+    \begin{tabular}{S[table-format=1.2] S S S S}
         \toprule
-        {$\text{e}_0\Phi_1 \mathbin{/} \unit{\eV}$} & {$\text{e}_0\Phi_2 \mathbin{/} \unit{\eV}$} & {$\text{e}_0\Phi_3 \mathbin{/} \unit{\eV}$} & {$\text{e}_0\Phi_4 \mathbin{/} \unit{\eV}$} & {$\text{e}_0\Phi_5 \mathbin{/} \unit{\eV}$}  \\
+        {$I_{H} \mathbin{/} \unit{\ampere}$} & {$U_{H} \mathbin{/} \unit{\volt}$} & {$T \mathbin{/} \unit{\kelvin}$} & {$I_{S} \mathbin{/} \unit{\milli\ampere}$} & {$\text{e}_0\Phi \mathbin{/} \unit{\eV}$} \\
         \midrule
-        %%%%% Hier könnten Ihre Werte stehen
-
-
-
-
-        %%%%%%
+        1,95&3,2&1798,207&0,074&3.291\\
+        2   &3,5&1859,031&0,117&3.340\\
+        2,1 &4,0&1957,580&0.256&3.402\\
+        2,2 &4,2&1983,175&0,546&3.322\\
+        2,4 &5,0&2159,161&1,996&3.407\\
         \bottomrule
     \end{tabular}
 \end{table}
 
+
+
 Gemittelt ergibt sich hier
 
 \begin{equation*}
-    \text{e}_0 \Phi = (... \pm ...) \,\unit{\eV} \,.
+    \text{e}_0 \Phi = (3,352 \pm 0,045) \,\unit{\eV} \,.
 \end{equation*}
