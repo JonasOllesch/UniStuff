@@ -7,7 +7,7 @@ lösen sie, sofern ihre Energie ausreicht, Elektronen aus. \\
 Um diesen, auch Photoeffekt genannten Effekt näher zu untersuchen,
 kann der in \autoref{fig:abb1} dargestellte Aufbau verwendet werden.
 
-\begin{figure}
+\begin{figure}[H]
     \centering
     \includegraphics{figures/Abb1.pdf}
     \caption{Aufbau zur Untersuchung des Photoeffekts \cite{ap10}.}
@@ -48,3 +48,60 @@ sie erfüllen also die folgenden Eigenschaften:
     \item Die Lichtintensität ist proportional zur Photonenzahl pro Zeit- und Raumwinkeleinheit.
 \end{enumerate}
 
+
+Zur expliziten Messung wird die Messapparatur \autoref{fig:abb2} entsprechend aufgebaut.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{figures/Abb2.pdf}
+    \caption{Schaltbild zur verwendeten Messapparatur \cite{ap10}.}
+    \label{fig:abb2}
+\end{figure}
+
+Die dabei verwendete Photozelle ist in \autoref{fig:abb3} näher zu erkennen.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{figures/Abb3.pdf}
+    \caption{Verwendete Photozelle in schematischer Darstellung \cite{ap10}.}
+    \label{fig:abb3}
+\end{figure}
+
+An die Kathoden-Anoden-Strecke wird nun eine variable Spannung $-20 \,\unit{\volt} \leq U \leq 20 \,\unit{\volt}$ angelegt, die die Elektronen entsprechend bremst oder beschleunigt.
+Über das Picoamperemeter kann nun der Strom der aus der Kathode austretenden Elektronen gemessen werden, genauer gesagt der Elektronen, deren kinetische Energie größer $\text{e}_0 U_\text{g}$ ist. 
+Sobald
+\begin{equation*}
+    \text{e}_0 U_\text{g} = \dfrac{1}{2} \, \text{m}_0 \, v^2_\text{max}
+\end{equation*}
+gilt, erreichen selbst die Elektronen mit der höchsten Geschwindigkeit $v_\text{max}$ nicht länger die Anode, es fließt also kein Strom. \\
+
+So lässt sich auch die kinetische Energie der schnellsten Elektronen berechnen.
+Nach \eqref{eq:energiebilanz} gilt
+\begin{equation*}
+    \text{h} \nu = \text{e}_0 \,U_\text{g} + A_\text{k} \,.
+\end{equation*}
+
+Entgegen der bisher getroffenen Annahme verschwindet der Strom allerdings nicht schlagartig bei $U_\text{g}$, sondern nimmt aufgrund der intrinsischen Energieverteilung der Elektronen die in \autoref{fig:abb4}
+dargestellte Form an.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics{figures/Abb4.pdf}
+    \caption{Photostrom $I_\text{Photo}$ in Abhängigkeit der Bremsspannung $U$.}
+    \label{fig:abb4}
+\end{figure}
+
+Dabei besteht zwischen Photostrom und Bremsspannung ein quadratischer Zusammenhang
+\begin{equation*}
+    U ~ \sqrt{I_\text{Ph}} \,.
+\end{equation*}
+
+Sollte der Fall auftreten, dass zwar $\text{h} \, \nu \geq A_\text{k}$, allerdings nicht $\text{h} \, \nu \geq A_\text{A}$ ist, tritt kein Photostrom auf, da die Elektronen gegen ein Gegenfeld anlaufen müssten,
+um die Anode zu erreichen.
+So muss zunächst ein beschleunigendes Potential $U_\text{b}$ angelegt werden, sodass bei
+\begin{equation*}
+    \text{h} \, \nu + \text{e}_0 \, U_\text{b} \geq A_\text{A}
+\end{equation*}
+erneut ein Photostrom gemessen werden kann.
+
+%%% Theorie Ende
