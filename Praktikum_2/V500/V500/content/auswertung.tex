@@ -1,0 +1,147 @@
+\section{Auswertung}
+\label{sec:auswertung}
+
+\subsection{Bestimmung der Gegenspannung und Austrittsarbeit}
+
+Zur Bestimmung wird für die aufgenommenen Messdaten zur Photostromabhängigkeit eine lineare Regression der Form
+\begin{equation*}
+    \sqrt{I_\text{Ph}} = m U + b
+\end{equation*}
+durchgeführt. \\
+
+Die Messdaten sind dabei in \autoref{tab:1} dargestellt, die dazugehörigen Plots samt Regression finden sich in \autoref{fig:graph1}.
+
+\begin{table}[H]
+    \centering
+    \caption{Messwerte der Bremsspannungen $U$ und des Photostroms $I_\text{Ph}$ einzelnen Spektrallinien.}
+    \label{tab:1}
+    \subcaptionbox{Rot}[0.18\textwidth]{
+      \begin{tabular}{c c}
+        \toprule
+        $U_g / \si{\volt}$ & $I / \si{\nano\ampere}$\\
+        \midrule
+
+        \bottomrule
+      \end{tabular}
+      }
+    \subcaptionbox{Gelb}[0.18\textwidth]{
+      \begin{tabular}{c c}
+        \toprule
+        $U_g / \si{\volt}$ & $I / \si{\nano\ampere}$\\
+        \midrule
+
+        \bottomrule
+      \end{tabular}
+      }
+    \subcaptionbox{Grün}[0.18\textwidth]{
+        \begin{tabular}{c c}
+          \toprule
+          $U_g / \si{\volt}$ & $I / \si{\nano\ampere}$\\
+          \midrule
+
+          \bottomrule
+        \end{tabular}
+        }
+      \subcaptionbox{Blau}[0.18\textwidth]{
+        \begin{tabular}{c c}
+          \toprule
+          $U_g / \si{\volt}$ & $I / \si{\nano\ampere}$\\
+          \midrule
+
+          \bottomrule
+        \end{tabular}
+        }
+      \subcaptionbox{Violett}[0.18\textwidth]{
+        \begin{tabular}{c c}
+          \toprule
+          $U_g / \si{\volt}$ & $I / \si{\nano\ampere}$ \\
+          \midrule
+
+          \bottomrule
+        \end{tabular}
+        }
+\end{table}
+
+%%%%%%%%%%%%%%%%%%%%%%\begin{figure}
+%%%%%%%%%%%%%%%%%%%%%%    \centering
+%%%%%%%%%%%%%%%%%%%%%%    \includegraphics{build/photostrom.pdf}
+%%%%%%%%%%%%%%%%%%%%%%    \caption{Photostrom $I_\text{Ph}$ in Abhängigkeit der Bremsspannung $U$ samt linearer Regression.}
+%%%%%%%%%%%%%%%%%%%%%%    \label{fig:graph1}
+%%%%%%%%%%%%%%%%%%%%%%\end{figure}
+
+Durch die Nullstellen der Regressionsgeraden lassen sich nun die in \autoref{tab:2} dargestellten Gegenspannungen $U_\text{g}$ bestimmen.
+
+\begin{table}[H]
+    \centering
+    \caption{Gegenspannungen $U_\text{g}$ der unterschiedlichen Spektrallinien.}
+    \label{tab:2}
+    \begin{tabular}{S S}
+      \toprule
+        $\lambda \mathbin{/} \si{\nano\meter}$ & $U_\text{g} \mathbin{/} \si{\volt}$ \\
+      \midrule
+
+
+      \bottomrule
+    \end{tabular}
+\end{table}
+
+Nun lassen sich nach
+\begin{equation*}
+    \nu = \dfrac{\text{c}}{\lambda}
+\end{equation*}
+bei Lichtgeschwindigkeit $c$ die Frequenzen der Spektrallinien bestimmen und, wie in \autoref{fig:gegspanngegfreq} zu erkennen, gegen die Gegenspannungen plotten.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%\begin{figure}
+%%%%%%%%%%%%%%%%%%%%%%%%%    \centering
+%%%%%%%%%%%%%%%%%%%%%%%%%    \includegraphics{build/gegspanngegfreq.pdf}
+%%%%%%%%%%%%%%%%%%%%%%%%%    \caption{Gegenspannungen $U_\text{g}$ für unterschiedliche Frequenzen $\lambda$ des Lichts.}
+%%%%%%%%%%%%%%%%%%%%%%%%%    \label{fig:gegspanngegfreq}
+%%%%%%%%%%%%%%%%%%%%%%%%%\end{figure}
+
+Erneut wird eine lineare Regression durchgeführt, hier ist die Steigung
+\begin{equation*}
+    m = \dfrac{\text{h}}{\text{e}_0} = (... \pm ...) \,\si{\joule\second\coulomb^{-1}}
+\end{equation*}
+und der y-Achsenabschnitt die negative Austrittsarbeit 
+\begin{equation*}
+    -b = A_\text{A} = (... \pm ...) \,\si{\eV} \,.
+\end{equation*}
+
+
+\subsection{Kennlinie bei gelbem Licht}
+
+Die zur Spektrallinie bei $\lambda = 578 \,\si{\nano\meter}$ aufgenommenen Wertepaare aus Spannung und Photostrom sind in \autoref{tab:3} dargestellt und in \autoref{fig:kennliniegelb} geplottet.
+
+\begin{table}[H]
+    \centering
+    \caption{Brems- und Beschleunigungsspannungen $U$ sowie der dazugehörige Photostrom $I_\text{Ph}$. Bremsspannungen sind mit negativem, Beschleunigungsspannungen mit positivem Vorzeichen dargestellt.}
+    \label{tab:3}
+    \begin{tabular}{S S}
+      \toprule
+      $U_\text{g} \mathbin{/} \si{\volt}$ & $I \mathbin{/} \si{\nano\ampere}$  \\
+      \midrule
+
+
+      \bottomrule
+    \end{tabular}
+\end{table}
+
+%%%%%%%%%%%%%%%%% \begin{figure}
+%%%%%%%%%%%%%%%%%     \centering
+%%%%%%%%%%%%%%%%%     \includegraphics{build/kennliniegelb.pdf}
+%%%%%%%%%%%%%%%%%     \caption{Kennlinie bei $\lambda = 578 \,\si{\nano\meter}$.}
+%%%%%%%%%%%%%%%%%     \label{fig:kennliniegelb}
+%%%%%%%%%%%%%%%%% \end{figure}
+
+Auffällig ist der hohe Sättigungsstrom.
+Ab einer bestimmten Spannung erreicht eine maximale Anzahl an Elektronen die Anode.
+Da die Anzahl der emittierten Elektronen allerdings nur von der Lichtintensität, nicht aber der Spannung abhängt, nähert sich der Strom asymptotisch einem Grenzwert an, selbst wenn die Spannung weiter erhöht wird. \\
+
+Diese asymptotische Annäherung sowie, dass sich der Strom auch für $U_\text{g} < U$ bereits null nähert, hängt mit der Fermi-Diracschen-Energieverteilung der Elektronen zusammen.
+Da manche Elektronen eine höhere Energie als andere besitzen, erreichen manche die Anode nicht, obwohl die Spannung noch größer $U_\text{g}$ ist.
+Analog erreichen manche Elektronen die Anode noch nicht, obwohl die theoretisch angelegte Spannung bereits die maximale Elektronenzahl auf die Anode treffen lassen würde. \\
+
+Unter Umständen kann auch ein negativer Strom auftreten, da das Kathodenmaterial bereits bei $T = 20 \,\si{\celsius}$ verdampfen kann.
+Dieser Strom kann bereits bei energiearmem Licht auftreten, es lässt sich also folgern, dass die Austrittsarbeit der Kathode der der Anode ähnelt.
+
+
