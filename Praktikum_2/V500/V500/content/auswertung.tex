@@ -128,13 +128,13 @@ Die Messdaten sind dabei in \autoref{tab:1} dargestellt, die dazugehörigen Plot
 \end{table}
 
 
-%\begin{figure}
-%    \centering
-%    \includegraphics{build/photostrom.pdf}
-%    \caption{Photostrom $I_\text{Ph}$ in Abhängigkeit der Bremsspannung $U$ samt linearer Regression.}
-%    \label{fig:graph1}
-%\end{figure}
-%
+\begin{figure}
+    \centering
+    \includegraphics{build/photostrom.pdf}
+    \caption{Photostrom $I_\text{Ph}$ in Abhängigkeit der Bremsspannung $U$ samt linearer Regression.}
+    \label{fig:graph1}
+\end{figure}
+
 Durch die Nullstellen der Regressionsgeraden lassen sich nun die in \autoref{tab:2} dargestellten Gegenspannungen $U_\text{g}$ bestimmen.
 
 \begin{table}[H]
@@ -213,7 +213,7 @@ Die zur Spektrallinie bei $\lambda = 578 \,\si{\nano\meter}$ aufgenommenen Werte
     \end{tabular}
 \end{table}
 
- \begin{figure}
+ \begin{figure}[H]
      \centering
      \includegraphics{build/kennliniegelb.pdf}
      \caption{Kennlinie bei $\lambda = 578 \,\si{\nano\meter}$.}
@@ -222,11 +222,12 @@ Die zur Spektrallinie bei $\lambda = 578 \,\si{\nano\meter}$ aufgenommenen Werte
 
 Auffällig ist der hohe Sättigungsstrom.
 Ab einer bestimmten Spannung erreicht eine maximale Anzahl an Elektronen die Anode.
-Da die Anzahl der emittierten Elektronen allerdings nur von der Lichtintensität, nicht aber der Spannung abhängt, nähert sich der Strom asymptotisch einem Grenzwert an, selbst wenn die Spannung weiter erhöht wird. \\
+Da die Anzahl der emittierten Elektronen allerdings nur von der Lichtintensität, nicht aber der Spannung abhängt, nähert sich der Strom asymptotisch einem Grenzwert an, selbst wenn die Spannung weiter erhöht wird.
+Das ohmische „Gesetz“ besagt einen linearen Zusammenhang zwischen Spannung und Strom $ U = R \cdot I $. Dieses Gesetzt gilt aber nur für ohmische Widerstände wie zum Beispiel Leiter. Das ohmische Gesetz ist ein empirisches Gesetz, dass die mehr fundamentalen Maxwell Gleichungen für bestimmte Materialien durch einen einfachen linearen Zusammenhang annähert. \\
 
 Diese asymptotische Annäherung sowie, dass sich der Strom auch für $U_\text{g} < U$ bereits null nähert, hängt mit der Fermi-Diracschen-Energieverteilung der Elektronen zusammen.
 Da manche Elektronen eine höhere Energie als andere besitzen, erreichen manche die Anode nicht, obwohl die Spannung noch größer $U_\text{g}$ ist.
-Analog erreichen manche Elektronen die Anode noch nicht, obwohl die theoretisch angelegte Spannung bereits die maximale Elektronenzahl auf die Anode treffen lassen würde. \\
+Analog erreichen manche Elektronen die Anode noch nicht, obwohl die theoretisch angelegte Spannung bereits die maximale Elektronenzahl auf die Anode treffen lassen würde. Die Anode müsste eine unendliche Ausdehnung haben, damit alle Elektronen die Anode erreichen können. \\
 
 Unter Umständen kann auch ein negativer Strom auftreten, da das Kathodenmaterial bereits bei $T = 20 \,\si{\celsius}$ verdampfen kann.
 Dieser Strom kann bereits bei energiearmem Licht auftreten, es lässt sich also folgern, dass die Austrittsarbeit der Kathode der der Anode ähnelt.
