@@ -114,7 +114,7 @@ plt.clf()
 writeW(popt_g, "Koeffizenten b , a Gegenfeld")
 writeW(np.sqrt(pcov_g), "Unsicherheit der Gegenfeldregression")
 
-plt.scatter(Messung_e[:,0],Messung_e[:,1],c='blue',s=6,label = "Messdaten")
+plt.scatter(Messung_e[:,0],Messung_e[:,1]*10**9,c = 'blue',s = 6,label = "Messdaten")
 plt.ylabel(r'$ I \mathbin{/} \unit{\nano\ampere}$')
 plt.xlabel(r'$ U \mathbin{/} \unit{\volt}$')
 plt.tight_layout()
