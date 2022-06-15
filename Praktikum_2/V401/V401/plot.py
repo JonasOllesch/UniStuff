@@ -57,7 +57,9 @@ lmda = wavelength(deltad=deltad,z=z_wave)
 #print(lmda)
 
 lmdamean = ufloat(np.mean(lmda), stats.sem(lmda)) # stats.sem macht Standardabweichung
-#print(lmdamean)
+print("{:.11f}".format(lmdamean))
+
+
 
 # b)
 
@@ -73,8 +75,8 @@ n_luftmean = ufloat(np.mean(n_luft), stats.sem(n_luft))
 
 #print(n_luftmean)
 
-np.savetxt('build/wavelength.txt', np.column_stack([deltad * 10**(5), z_wave, lmda * 10**9]), fmt='%.2f', delimiter = '  &  ', header= 'Verschiebung d (mit Untersetzungsfaktor in 10mm), z, Wellenlänge in nm')
-np.savetxt('build/refractionindex.txt', np.column_stack([pstrich, z_refrac,n_luft]), fmt='%.6f', delimiter = '          &           ', header = 'Druckdifferenz in bar, z, Brechungsindex')
+np.savetxt('build/wavelength.txt',      np.column_stack([deltad * 10**(5), z_wave, lmda * 10**9]), fmt='%.2f', delimiter = '          &           ', header= 'Verschiebung d (mit Untersetzungsfaktor in 10mm), z, Wellenlänge in nm')
+np.savetxt('build/refractionindex.txt', np.column_stack([pstrich, z_refrac,n_luft]),               fmt='%.6f', delimiter = '          &           ', header = 'Druckdifferenz in bar, z, Brechungsindex')
 
 writeW(lmdamean*10**9, 'Gemittelte Wellenlänge in nm mit Abweichung:')
 writeW(abs((laserlmda - lmdamean)/lmdamean), 'Abweichung der berechneten Laserwellenlänge von der Sollwellenlänge lambda = 635 nm:')

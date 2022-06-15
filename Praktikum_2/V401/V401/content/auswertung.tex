@@ -1,2 +1,76 @@
 \section{Auswertung}
 \label{sec:auswertung}
+
+\subsection{Bestimmung der Laserwellenlänge}
+
+In \autoref{tab:1} sind die Verschiebungen $\Delta d$, wie sie an der Millimeterschraube zu erkennen sind, mit den dazugehörigen gezählten Maxima $z$ und Wellenlängen $\lambda$ dargestellt. \\
+
+Die Wellenlängen berechnen sich dabei über Umstellen von \eqref{eq:deltad} aus
+\begin{equation*}
+    \lambda = 2 \dfrac{\Delta d}{z} \,,
+\end{equation*}
+wobei $\Delta d$ nicht $5 \,\si{\milli\meter}$ entspricht, sondern zunächst noch durch den Untersetzungsfaktor $S = 5,017$ geteilt werden muss, um die tatsächliche Distanzänderung zu ermitteln.
+
+\begin{table}[H]
+    \centering
+    \caption{Distanzänderung $\Delta d$ an der Millimeterschraube, gezählte Maxima $z$ und Wellenlänge $\lambda$.}
+    \label{tab:1}
+    \begin{tabular}{S[table-format=1.0] S[table-format=4.0] S[table-format=3.2]}
+      \toprule
+    {$\Delta d \mathbin{/} \si{\milli\meter}$} & {$z$} & {$\lambda \mathbin{/} \si{\nano\meter}$} \\
+      \midrule
+        5          &           3106          &           641.73             \\
+        5          &           3025          &           658.92             \\
+        5          &           3101          &           642.77             \\
+        5          &           3036          &           656.53             \\
+        5          &           3102          &           642.56             \\
+        5          &           3073          &           648.62             \\
+        5          &           3104          &           642.15             \\
+        5          &           3032          &           657.40             \\
+        5          &           3104          &           642.15             \\
+        5          &           3030          &           657.83             \\
+    \bottomrule
+    \end{tabular}
+\end{table}
+
+Gemittelt ergibt sich eine Wellenlänge von
+\begin{equation*}
+    \lambda_\text{Laser,exp} = (649,07 \pm 2,43) \,\si{\nano\meter} \,.
+\end{equation*}
+
+
+\subsection{Ermittlung des Brechungsindizes von Luft}
+
+In \autoref{tab:2} sind die Druckänderung $\Delta p$, die gezählten Maxima $z$ sowie die dazugehörigen Brechungsindizes aufgetragen. \\
+Die Berechnung der Brechungsindizes erfolgt dabei über Umstellen von \eqref{eq:bdeltan} nach $\Delta n$, sodass sich
+\begin{equation*}
+    \Delta n = \dfrac{z \, \lambda}{2 \, \text{b}}
+\end{equation*}
+ergibt, wobei b die Breite der Messzelle darstellt. \\
+Eine Druckänderung von $500 \, \si{\milli\meter} \text{Hg}$ entspricht dabei ungefähr $0.666612 \,\si{\bar}$.
+
+\begin{table}[H]
+    \centering
+    \caption{Druckänderung $\Delta p$, gezählte Maxima $z$ und Refraktionsindex $n$.}
+    \label{tab:1}
+    \begin{tabular}{S[table-format=3.0] S[table-format=2.0] S[table-format=1.6]}
+      \toprule
+    {$\Delta p \mathbin{/} \si{\milli\meter} \text{Hg}$} & {$z$} & {$n$} \\
+      \midrule
+        500          &           28          &           1.000567 \\
+        500          &           26          &           1.000527 \\
+        500          &           27          &           1.000547 \\
+        500          &           29          &           1.000588 \\
+        500          &           30          &           1.000608 \\
+        500          &           23          &           1.000466 \\
+        500          &           27          &           1.000547 \\
+    \bottomrule
+    \end{tabular}
+\end{table}
+
+Nach Mittelung der berechneten Brechungsindizes ergibt sich
+\begin{equation*}
+    n_\text{Luft,exp} = 1.000550 \pm 0.000017 \,.
+\end{equation*}
+
+
