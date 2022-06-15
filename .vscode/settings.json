@@ -20,11 +20,15 @@
         "geplotteten",
         "halbzahligem",
         "heruntergeregelt",
+        "Intensitätsminimum",
+        "Interferenzterm",
         "Kathodenoberfläche",
         "Kathodentemperatur",
         "Konstantspannungsgerät",
         "korr",
         "Maximadifferenzen",
+        "Millimeterschraube",
+        "Mittelung",
         "monoenergetische",
         "Picoamperemeter",
         "Potentialgefälle",
@@ -32,9 +36,13 @@
         "Potentialverhältnis",
         "Quecksilberatom",
         "Quecksilberatomen",
+        "Refraktionsindex",
         "Relaxationszeit",
         "Schwankungsfreudigkeit",
         "Spektrallampe",
-        "Theoriewerten"
+        "Synchromotor",
+        "Theoriewert",
+        "Theoriewerten",
+        "Untersetzungsfaktor"
     ]
 }

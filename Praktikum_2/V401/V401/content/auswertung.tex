@@ -42,28 +42,29 @@ Gemittelt ergibt sich eine Wellenlänge von
 \subsection{Ermittlung des Brechungsindizes von Luft}
 
 In \autoref{tab:2} sind die Druckänderung $\Delta p$, die gezählten Maxima $z$ sowie die dazugehörigen Brechungsindizes aufgetragen. \\
-Die Berechnung der Brechungsindizes erfolgt dabei über Umstellen von \eqref{eq:bdeltan} nach $\Delta n$, sodass sich
+Die Berechnung der Brechungsindizes erfolgt über \eqref{eq:brechungsindex}. \\
+Um dabei $\Delta n $ zu erhalten, muss \eqref{eq:bdeltan} nach $\Delta n$ umgestellt werden, dann gilt
 \begin{equation*}
-    \Delta n = \dfrac{z \, \lambda}{2 \, \text{b}}
-\end{equation*}
-ergibt, wobei b die Breite der Messzelle darstellt. \\
+    \Delta n = \dfrac{z \, \lambda}{2 \, \text{b}} \,,
+\end{equation*} 
+wobei b die Breite der Messzelle darstellt. \\
 Eine Druckänderung von $500 \, \si{\milli\meter} \text{Hg}$ entspricht dabei ungefähr $0.666612 \,\si{\bar}$.
 
 \begin{table}[H]
     \centering
     \caption{Druckänderung $\Delta p$, gezählte Maxima $z$ und Refraktionsindex $n$.}
-    \label{tab:1}
+    \label{tab:2}
     \begin{tabular}{S[table-format=3.0] S[table-format=2.0] S[table-format=1.6]}
       \toprule
     {$\Delta p \mathbin{/} \si{\milli\meter} \text{Hg}$} & {$z$} & {$n$} \\
       \midrule
-        500          &           28          &           1.000567 \\
-        500          &           26          &           1.000527 \\
-        500          &           27          &           1.000547 \\
-        500          &           29          &           1.000588 \\
-        500          &           30          &           1.000608 \\
-        500          &           23          &           1.000466 \\
-        500          &           27          &           1.000547 \\
+        500          &           28          &           1.000567       \\
+        500          &           26          &           1.000527       \\
+        500          &           27          &           1.000547       \\
+        500          &           29          &           1.000588       \\
+        500          &           30          &           1.000608       \\
+        500          &           23          &           1.000466       \\
+        500          &           27          &           1.000547       \\
     \bottomrule
     \end{tabular}
 \end{table}
