@@ -2,6 +2,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 from scipy.optimize import curve_fit
 from uncertainties import ufloat
+import scipy.constants as const
 
 # Die Kennlinien bitte in 'kennlinien.pdf' speichern, sonst muss der Code in auswertung.tex noch geändert werden '^^
 # Den Fit (Aufgabenteil b)) für Messreihe 5 als 'linregraumladung.pdf' speichern (oder halt in der Auswertung ändern :D)
@@ -148,11 +149,11 @@ writeW(np.sqrt(pcov_c), "sqrt(pcov) von Messung 5")
 tmp = ufloat(popt_c[1],np.sqrt(pcov_c[1][1]))
 writeW(-(1.602176*10**-19)/((1.380649*10**-23)*tmp), "Kathodentemperatur")
 
-Heitzstrom = np.array( [[3.2,1.95],[3.5,2], [4,2.1], [4,2.2],[5,2.4]] )
-print(Heitzstrom[:,0])
-print(Heitzstrom[:,1])
+Heizstrom = np.array( [[3.2,1.95],[3.5,2], [4,2.1], [4,2.2],[5,2.4]] )
+print(Heizstrom[:,0])
+print(Heizstrom[:,1])
 Temperatur = np.zeros(5)
-Temperatur[:] =((Heitzstrom[:,0]*Heitzstrom[:,1]-0.9)/(0.32*5.7*10**(-12)*0.28))**(1/4) 
+Temperatur[:] =((Heizstrom[:,0]*Heizstrom[:,1]-0.9)/(0.32*5.7*10**(-12)*0.28))**(1/4) 
 writeW(Temperatur, "Temperatur")
 
 saettigungstrom = np.array([0.074,0.117,0.256,0.546,1.996])
@@ -160,12 +161,21 @@ tmp1 = np.zeros(5)
 tmp2 = np.zeros(5)
 tmp3 = np.zeros(5)
 ephi = np.zeros(5)
-tmp1[:] = -1.380649*10**(-23)*Temperatur[:]
+
+kb = const.Boltzmann
+e0 = const.elementary_charge
+m0 = const.electron_mass
+h  = const.Planck
+f = 0.32e-2
+
+tmp1[:] = -kb*Temperatur[:]
 print(tmp1)
-tmp2[:] = saettigungstrom[:]*(6.62607015*10**(-34))*(6.62607015*10**(-34))*(6.62607015*10**(-34))
-tmp3[:] = (4*np.pi*(1.602176*10**(-19))*((1.380649*10**(-23))**2)*(9.1*10**(-31))*(0.32*10**(-4))*Temperatur[:]**2)
-ephi[:] = tmp1[:]*np.log(tmp2[:]/tmp3[:])/((1.602176*10**(-19)))
+tmp2[:] = saettigungstrom[:]*h**3/f
+tmp3[:] = (4 * np.pi* e0 * kb**2 * m0 * Temperatur[:]**2)
+ephi[:] = tmp1[:]*np.log(tmp2[:]/tmp3[:])
 writeW(ephi, "Austrittsarbeit")
+writeW(ephi/e0, 'Austrittsarbeit eV')
+
 
 writeW(np.mean(Temperatur), "np.mean(Temperatur)")
 writeW(np.std(Temperatur), "np.std(Temperatur)")

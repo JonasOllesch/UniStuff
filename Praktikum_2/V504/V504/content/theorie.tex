@@ -25,23 +25,24 @@ sprich die Austrittsarbeit $\text{e}_0 \xi$ leisten. \\
 \begin{figure}[H]
     \centering
     \includegraphics{figures/Abb1.pdf}
-    \caption{Potentialtopfmodell eines Metalls\cite{ap09}.}
+    \caption{Potentialtopfmodell eines Metalls \cite{ap09}.}
     \label{fig:abb1}
 \end{figure}
 
 Die Elektronen unterliegen dabei als Teilchen mit halbzahligem
 Spin dem Pauli-Prinzip, das besagt, dass jeder mögliche
 Zustand der Energie $E$ von höchstens zwei Elektronen mit
-entgegengesetztem Spin eingenommen werden kann.
+entgegengesetztem Spin eingenommen werden kann. \\
 So besitzen Elektronen auch im absoluten Nullpunkt noch eine Restenergie,
 die Fermische Grenzenergie $\zeta$. \\
-Diese Grenzenergie ist bei Raumtemperatur $>> \text{k}_\text{B} T$. \\
+Diese Grenzenergie ist bei Raumtemperatur $T$ $>> \text{k}_\text{B} T$, wobei $k_\text{B}$ die aus der Thermodynamik bekannte
+Boltzmannkonstante ist. \\
 
 Die Fermi-Diracsche Verteilungsfunktion beschreibt dabei die Wahrscheinlichkeit,
 einen möglichen Zustand der Energie $E$ als besetzt vorzufinden. \\
 Sie besitzt die Form
 \begin{equation*}
-    f(E) = \dfrac{1}{\text{exp}(\frac{E - \zeta}{\text{k}_\text{B} T} + 1)} \,,
+    f(E) = \dfrac{1}{\text{exp}\left(\frac{E - \zeta}{\text{k}_\text{B} T} + 1 \right)} \,,
 \end{equation*}
 ihr Verlauf ist in \autoref{fig:abb2} dargestellt.
 
@@ -91,7 +92,7 @@ lässt sich \eqref{eq:elekprozeitfläche} schreiben als
     \label{eq:dalphaE}
 \end{equation} \\
 
-Dabei ist mit $f(E)$ aus \eqref{eq:approxfermidirac}
+Dabei ist mit $f(E)$ aus \eqref{eq:approxfermidirac} und dem Planckschen Wirkungsquantum h
 \begin{equation*}
     n(E) = \dfrac{2}{\text{h}^3} f(E) \,,
 \end{equation*}
@@ -108,7 +109,9 @@ Die Stromdichte $j_\text{S}$ ist dann gegeben durch die Richardson-Gleichung mit
                      T^2 \text{exp} \left(- \dfrac{\text{e}_0 \Phi}{\text{k}_\text{B} \, T}\right)
     \label{eq:stromdichte}
 \end{equation}
-gegeben.
+gegeben. \\
+Dabei sind $\text{e}_0$ und $\text{m}_0$ die Elementarladung und Ruhemasse eines Elektrons.
+
 
 
 \subsection{Langmuir-Schottkysche Raumladungsgleichung}
@@ -124,7 +127,7 @@ Kontinuitätsgleichung
 \end{equation}
 ständig erfüllt sein muss. \\
 
-Unter Betrachtung in einer Dimension gilt die Poisson-Gleichung
+Unter Betrachtung in einer Dimension gilt für ein Potential $V$ die Poisson-Gleichung
 \begin{equation}
     \dfrac{\dif^2 V}{\dif x^2} = - \dfrac{\rho (x)}{\varepsilon_0} \,.
 \end{equation}
@@ -141,9 +144,9 @@ für das Potential $V(x)$. \\
 
 Es wächst also nicht linear mit $x$, sondern folgt einem $x^{\frac{4}{3}}$-Gesetz. \\
 
-Nach der Stromdichte umgestellt ergibt sich für $j$ an der Anode
+Nach der Stromdichte umgestellt ergibt sich für $j$ an der Anode ($x=a$)
 \begin{equation}
-    j = \dfrac{4}{9} \varepsilon \sqrt{2\frac{\text{e}_0}{\text{m}_0}} \dfrac{V^{\frac{3}{2}}}{a^2} \,.
+    j = \dfrac{4}{9} \varepsilon_0 \sqrt{2\frac{\text{e}_0}{\text{m}_0}} \dfrac{V^{\frac{3}{2}}}{a^2} \,.
     \label{eq:anodestromdichte}
 \end{equation}
 
@@ -173,7 +176,7 @@ der sich als kinetische Energie wiederfinden lässt. \\
 Selbst bei einem niedrigen Gegenfeld lassen sich emittierte Elektronen beobachten,
 weshalb dieser Strom auch als Anlaufstrom bezeichnet wird. \\
 
-Das Potentialverhältnis zwischen Kathode und Anode mit der
+Das Potentialverhältnis zwischen Kathode (Austrittsarbeit $\Phi_\text{K}$) und Anode (Austrittsarbeit $\Phi_\text{A}$) mit der
 Austrittsarbeit $\phi_\text{A} > \phi_\text{K}$ an der Anode
 ist in \autoref{fig:abb5} dargestellt.
 
