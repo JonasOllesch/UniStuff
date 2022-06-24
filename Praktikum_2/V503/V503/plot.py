@@ -1,4 +1,4 @@
-import matplotlib.pyplot as pyplot
+import matplotlib.pyplot as plt
 import numpy as np
 from scipy.optimize import curve_fit
 from uncertainties import ufloat
