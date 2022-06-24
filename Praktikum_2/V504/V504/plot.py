@@ -150,13 +150,13 @@ tmp = ufloat(popt_c[1],np.sqrt(pcov_c[1][1]))
 writeW(-(1.602176*10**-19)/((1.380649*10**-23)*tmp), "Kathodentemperatur")
 
 Heizstrom = np.array( [[3.2,1.95],[3.5,2], [4,2.1], [4,2.2],[5,2.4]] )
-print(Heizstrom[:,0])
-print(Heizstrom[:,1])
 Temperatur = np.zeros(5)
-Temperatur[:] =((Heizstrom[:,0]*Heizstrom[:,1]-0.9)/(0.32*5.7*10**(-12)*0.28))**(1/4) 
+Temperatur[:] =((Heizstrom[:,0]*Heizstrom[:,1]-0.9)/(0.32*5.7e-12*0.28))**(1/4) 
 writeW(Temperatur, "Temperatur")
 
 saettigungstrom = np.array([0.074,0.117,0.256,0.546,1.996])
+saettigungstrom = saettigungstrom*1e-3
+Austrittsarbeit = np.zeros(5)
 tmp1 = np.zeros(5)
 tmp2 = np.zeros(5)
 tmp3 = np.zeros(5)
@@ -166,19 +166,31 @@ kb = const.Boltzmann
 e0 = const.elementary_charge
 m0 = const.electron_mass
 h  = const.Planck
-f = 0.32e-2
+writeW(h,"h")
+writeW(kb,"kb")
 
-tmp1[:] = -kb*Temperatur[:]
-print(tmp1)
-tmp2[:] = saettigungstrom[:]*h**3/f
-tmp3[:] = (4 * np.pi* e0 * kb**2 * m0 * Temperatur[:]**2)
-ephi[:] = tmp1[:]*np.log(tmp2[:]/tmp3[:])
-writeW(ephi, "Austrittsarbeit")
-writeW(ephi/e0, 'Austrittsarbeit eV')
+#tmp1[:] = -kb*Temperatur[:]
+#print(tmp1)
+#tmp2[:] = saettigungstrom[:]*h**3/f
+#tmp3[:] = (4 * np.pi* e0 * kb**2 * m0 * Temperatur[:]**2)
+#ephi[:] = tmp1[:]*np.log(tmp2[:]/tmp3[:])
+#writeW(ephi, "Austrittsarbeit")
+#writeW(ephi/e0, 'Austrittsarbeit eV')
 
+# Austrittsarbeit
+kb = const.Boltzmann
+e0 = const.elementary_charge
+m0 = const.electron_mass
+h = const.Planck
+#saettigungstrom[:] = [0.12, 0.27, 0.6, 1.2, 2.1]
+f = 0.32e-4                   # Fläche in m
+js = saettigungstrom/f                     # Sättigungsstromdichte
+Austrittsarbeit= - Temperatur  * kb * np.log(js * h**3 / (4*np.pi*e0*m0*kb**2 * Temperatur**2) )
 
+writeW(Austrittsarbeit, "Austrittsarbeit in J")
+writeW(Austrittsarbeit/e0, "Austrittsarbeit in eV")
 writeW(np.mean(Temperatur), "np.mean(Temperatur)")
 writeW(np.std(Temperatur), "np.std(Temperatur)")
 
-writeW(np.mean(ephi), "np.mean(ephi)")
-writeW(np.std(ephi), "np.std(ephi)")
+writeW(np.mean(Austrittsarbeit/e0), "np.mean(ephi)")
+writeW(np.std(Austrittsarbeit/e0), "np.std(ephi)")
