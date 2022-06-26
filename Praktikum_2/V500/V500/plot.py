@@ -86,6 +86,13 @@ writeW(popt_c, "Koeffizenten b , a blau")
 writeW(popt_d, "Koeffizenten b , a violett")
 writeW(popt_e, "Koeffizenten b , a orange")
 
+writeW(np.sqrt(pcov_a), "Unsicherheit b , a rot")
+writeW(np.sqrt(pcov_b), "Unsicherheit b , a grün")
+writeW(np.sqrt(pcov_c), "Unsicherheit b , a blau")
+writeW(np.sqrt(pcov_d), "Unsicherheit b , a violett")
+writeW(np.sqrt(pcov_e), "Unsicherheit b , a orange")
+
+
 writeW(-1*popt_a[0]/popt_a[1], "Nullstell von rot")
 writeW(-1*popt_b[0]/popt_b[1], "Nullstell von grün")
 writeW(-1*popt_c[0]/popt_c[1], "Nullstell von blau")

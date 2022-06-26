@@ -129,12 +129,33 @@ Die Messdaten sind dabei in \autoref{tab:1} dargestellt, die dazugehörigen Plot
 \end{table}
 
 
-\begin{figure}
+\begin{figure}[H]
     \centering
     \includegraphics{build/photostrom.pdf}
     \caption{Photostrom $I_\text{Ph}$ in Abhängigkeit der Bremsspannung $U$ samt linearer Regression.}
     \label{fig:graph1}
 \end{figure}
+
+Die Parameter der Ausgleichsgeraden sind in \autoref{tab:tabpram} dargestellt.
+
+\begin{table}[H]
+  \centering
+  \caption{Parameter der Ausgeleichsgeraden der unterschiedlichen Spektrallinien.}
+  \label{tab:tabpram}
+  \begin{tabular}{S S S}
+    \toprule
+      $ {\text{Farbe}} $ &$ a \mathbin{/} \unit{\ampere}^{0,5} \mathbin{/} \unit{\volt} $ & $b \mathbin{/} \unit{\ampere}^{0,5}$ \\
+    \midrule
+      {Rot}     & {$(-1,727 \pm 0,117) \cdot 10^{-5}$} & {$(1,097 \pm 0,042) \cdot 10^{-5} $} \\  
+      {Orange}  & {$(-2,954 \pm 0,167) \cdot 10^{-5}$} & {$(1,714 \pm 0,058) \cdot 10^{-5} $} \\ % orange
+      {Grün}    & {$(-3,549 \pm 0,654) \cdot 10^{-5}$} & {$(2,947 \pm 0,261) \cdot 10^{-5} $} \\ % grün
+      {Blau}    & {$(-2,645 \pm 0,077) \cdot 10^{-5}$} & {$(3,365 \pm 0,058) \cdot 10^{-5} $} \\ % blau
+      {Violett} & {$(-0,971 \pm 0,040) \cdot 10^{-5}$} & {$(1,403 \pm 0,036) \cdot 10^{-5} $} \\ % violett
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+
 
 Durch die Nullstellen der Regressionsgeraden lassen sich nun die in \autoref{tab:2} dargestellten Gegenspannungen $U_\text{g}$ bestimmen.
 
@@ -221,9 +242,11 @@ Die zur Spektrallinie bei $\lambda = 578 \,\si{\nano\meter}$ aufgenommenen Werte
      \label{fig:kennliniegelb}
  \end{figure}
 
-Auffällig ist insbesondere der hohe Sättigungsstrom. \\
-Ab einer bestimmten Spannung erreicht eine maximale Anzahl an Elektronen die Anode.
-Da die Anzahl der emittierten Elektronen allerdings nur von der Lichtintensität, nicht aber der Spannung abhängt, nähert sich der Strom nur asymptotisch einem Grenzwert an, selbst wenn die Spannung weiter erhöht wird.
+%Auffällig ist insbesondere der hohe Sättigungsstrom. \\
+%Ab einer bestimmten Spannung erreicht eine maximale Anzahl an Elektronen die Anode.
+Auffällig ist, dass bei großen Spannungen die Zunahme des gemessenen Stroms geringer wird. 
+Um eindeutig festzustellen, ob der Photostrom einen Grenzwert erreicht, muss der Messbereich vergrößert werden.
+%Da die Anzahl der emittierten Elektronen allerdings nur von der Lichtintensität, nicht aber der Spannung abhängt, nähert sich der Strom nur asymptotisch einem Grenzwert an, selbst wenn die Spannung weiter erhöht wird.
 Das ohmsche „Gesetz“ besagt einen linearen Zusammenhang zwischen Spannung und Strom $ U = R \cdot I $, es ist jedoch nur für ohmsche Widerstände gültig.  
 Es ist lediglich ein empirisches Gesetz, das, für bestimmte Materialien, die Maxwell-Gleichungen durch einen einfachen linearen Zusammenhang annähert. \\
 
