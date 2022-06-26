@@ -212,7 +212,7 @@ def Euklid(q, max):
             n += 1
     return gcd
 
-#q_0 = Euklid(q_t, 1000)
+q_0 = Euklid(q_t, 1000)
 q_0 = np.mean(q_t)/(1+(6.17e-5 * 133.33)*(101325 * np.mean(r)))**(-2/3)
 print("q_0 = " + str(q_0))
 # print(
