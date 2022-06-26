@@ -1,0 +1,138 @@
+\section{Zielsetzung}
+\label{sec:ziel}
+Der Millikan-Oltröpfchenversuch wird verwendet um die Elementarladung eines Elektrons zu bestimmen.
+Hierzu wird die Ladung auf zerstäubten Öltröpfchen ermittelt und damit auf die Elementarladung geschlossen.
+\section{Theoretische Grundlagen}
+\label{sec:theorie}
+\subsection{Die Kräfte ohne elektrisches Feld}
+\label{ssec:th_ohne}
+Auf die zerstäubten Öltröpfchen wirken, bevor das elektrische Feld eingeschaltet wird, zwei Kräfte.
+Dazu gehört die Gravitationskraft $\overrightarrow{F_g}=m\cdot \overrightarrow{g}$ mit der Masse $m$ des Tröpfchens und der Erdbeschleunigung $\overrightarrow{g}$ und
+die entgegengesetzte Reibungskraft. Werden die Tröpfchen nun als Kugeln angenommen kann die Reibungskraft in Luft durch die Stokes'sche Reibung  $\overrightarrow{F_R}=-6\pi r \eta_L \overrightarrow{v} $ beschrieben werden.
+Dabei ist $r$ der Radius des Öltröpfchens, $\nu_L$ die Viskosität von Luft und $\overrightarrow{v} $ die Geschwindigkeit des Tröpfchens.
+Für das Kräftegleichgewicht gilt nun mit der Dichte des Öls $\rho_{Oel}$ und der Dichte von Luft $\rho_{L}$
+\begin{equation*}
+    \frac{4\pi}{3}\cdot r^3\left(\rho_{Oel}-\rho_{L}\right)=6\pi r \eta_L v_0.
+\end{equation*}
+$v_0$ beschreibt dabei die Geschwindigkeit der Tröpfchen die sich nach wenigen Sekunden konstant einstellt.
+Dadurch lässt sich der Radius der Tröpfchens bestimmen
+\begin{equation}
+    \label{eqn:radius1}
+    r=\sqrt{\frac{9 \eta_L v_0}{2 g \left(\rho_{Oel}-\rho_{L}\right)}}.
+\end{equation}
+\subsection{Die Kräfte mit elektrischem Feld}
+\label{ssec:th_mit}
+Wird nun ein elektrisches Feld eingeschaltet wirkt eine weitere Kraft auf das Öl.
+Die Kraft eines elektrischen Feldes der Stärke $\overrightarrow{E}$ auf eine Ladung $q_0$ wird durch $\overrightarrow{F}_{el}=q_0\cdot \overrightarrow{E}$ beschrieben.
+Es gibt zwei Fälle. Je nach Polung des elektrischen Feldes bewegt sich das Tröpfchen in eine andere Richtung.
+Dies wird in der \autoref{fig:kraft}
+\begin{figure}
+    \centering
+    \includegraphics{content/graphics/Kräfte.pdf}
+    \caption{Kräftegleichgewicht der Öltröpfchen \cite{v503}}
+    \label{fig:kraft}
+\end{figure}
+deutlich gemacht.
+Durch diese Unterscheidung lassen sich 2 Gleichungen aufstellen. Aus den Kräftegleichgewichten ergibt sich so für den Fall, dass das Tröpfchen aufsteigt
+\begin{equation}
+    \label{eqn:ab}
+    \frac{4\pi}{3}\cdot r^3\left(\rho_{Oel}-\rho_{L}\right)-6\pi r \eta_L v_{ab}=-q_0\cdot E
+\end{equation}
+und für den Fall, dass das Tröpfchen fällt
+\begin{equation}
+    \label{eqn:auf}
+    \frac{4\pi}{3}\cdot r^3\left(\rho_{Oel}+\rho_{L}\right)+6\pi r \eta_L v_{auf}=q_0\cdot E.
+\end{equation}
+Nun kann mit den Gleichungen \eqref{eqn:ab} und \eqref{eqn:auf} sowohl die Ladung $q_0$ als auch der Radius $r$ der Tröpfchen,
+in Abhängigkeit der zu messenden Werte $v_{auf}$ und $v_{ab}$, bestimmt werden.
+Für diese gilt
+\begin{equation}
+    \label{eqn:Ladung0}
+    q_0=3\pi \eta_L\sqrt{\frac{9 \eta_L \left(v_{ab}-v_{auf}\right) }{4 g \left(\rho_{Oel}-\rho_{L}\right)}}\cdot \frac{\left(v_{ab}+v_{auf}\right)}{E}
+\end{equation}
+und
+\begin{equation}
+    \label{eqn:Radius}
+    r = \sqrt{\frac{9 \eta_L \left(v_{ab}-v_{auf}\right)}{2 g \left(\rho_{Oel}-\rho_{L}\right)}}.
+\end{equation}
+\subsection{Korrektur der Viskosität}
+\label{ssec:Viskositaet}
+Das Stokes'sche Reibungsgetzt gilt nur in einem für Kugeln die größer als die mittlere freie Weglänge in Luft sind.
+Dies ist aber für die Tröpfchen nicht erfüllt und die Viskosität $\eta_L$ muss durch
+\begin{equation}
+    \label{eqn:Viskositaet}
+    \eta_{eff}=\eta_L\left(\frac{1}{1+\frac{B}{pr}}\right)
+\end{equation}
+korrigiert werden. $B$ beschreibt den Cunningham Korrekturterm mit $B=\qty{6.17e-3}{Torr\cdot \centi\meter}$ und $p$ den Druck in der Kammer.
+Die Ladung muss also durch
+\begin{equation}
+    \label{eqn:Ladung}
+    q=q_0\cdot \left( 1+\frac{B}{pr}\right)^{\frac{3}{2}}
+\end{equation}
+bestimmt werden.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+% \subsection{Berechnung der Messunsicherheiten}
+% \label{ssec:Fehlerrechnung}
+% Alle Mittelwerte einer $N$-fach gemessenen Größe $x$ werden über die Formel
+% \begin{equation}
+%     \overline{x} = \frac{1}{N} \sum_{i=1}^{N} x_\text{i} .
+%     \label{eqn:mittel}
+% \end{equation}
+% berechnet. Der zugehörige Fehler des Messwertes berechnet sich dann über
+% \begin{equation}
+%     \symup{\Delta} \overline{x} = \sqrt{\frac{1}{N(N-1)} \sum_{i=1}^{N} (x_\text{i}-\overline{x})^2} .
+%     \label{eqn:std}
+% \end{equation}
+% Setzt sich eine zu berechnende Größe aus mehreren mit Unsicherheit behafteten Messwerten zusammen, so ist die Unsicherheit dieser Größe über die Gauß'sche Fehlerfortflanzung gegeben
+% \begin{equation}
+%     \symup{\Delta} f(x_1, \cdots, x_\text{N}) = \sqrt{\sum_{i=1}^{N} \left[ \left(\frac{\partial f}{\partial x_\text{i}}\right)^2 \cdot (\symup{\Delta} x_\text{i})^2) \right] } .
+%     \label{eqn:gaus}
+% \end{equation}
+% Ausgleichsgraden lassen sich wie folgt berechnen:
+% \begin{subequations}
+%     \begin{equation}
+%         y = m \cdot x + b
+%         \label{eqn:grade}
+%     \end{equation}
+%     \begin{equation}
+%         m = \frac{\overline{xy} - \overline{x} \cdot \overline{y}}{\overline{x^2} - \overline{x}^2}
+%         \label{eqn:steigung}
+%     \end{equation}
+%     \begin{equation}
+%         b = \frac{\overline{x^2} \cdot \overline{y} - \overline{x} \cdot \overline{xy}}{\overline{x^2} - \overline{x}^2} .
+%         \label{eqn:achsenab}
+%     \end{equation}
+% \end{subequations}
+% Bei der Angabe des Endergebnisses werden schließlich alle statistischen Teilfehler addiert.
+% Alle Berechnungen, Graphen sowie das Bestimmen der Unsicherheiten werden mit Python 3.8.8 und entsprechenden Bibliotheken\footnote{Numpy \cite{numpy}, Uncertainties \cite{uncertainties} and Matplotlib \cite{matplotlib}} durchgefürt.
