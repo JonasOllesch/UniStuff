@@ -32,7 +32,7 @@ Alle Zeiten wurden für eine Strecke von $s = 5 \, \unit{\milli\meter}$ gemessen
             \centering
             \begin{tabular}{S S S S S}
               \toprule
-                {$R \mathbin{/} \unit{\mega\ohm} $}& {$T \text{in} °C $} & {$\eta \, \text{in} 10^{-5} \unit{\newton}\mathbin{/} \unit{\second\meter}^2$} & {$ t_{ab} \mathbin{/} \unit{\second}$} & {$ t_{auf} \mathbin{/} \unit{\second}$}\\
+                {$R \mathbin{/} \unit{\mega\ohm} $}& {$T \, \text{in} °C $} & {$\eta \, \text{in} 10^{-5} \unit{\newton}\mathbin{/} \unit{\second\meter}^2$} & {$ t_{ab} \mathbin{/} \unit{\second}$} & {$ t_{auf} \mathbin{/} \unit{\second}$}\\
               \midrule
               
               \bottomrule
@@ -48,7 +48,7 @@ Alle Zeiten wurden für eine Strecke von $s = 5 \, \unit{\milli\meter}$ gemessen
             \centering
             \begin{tabular}{S S S S S}
               \toprule
-                {$R \mathbin{/} \unit{\mega\ohm} $} & {$T \text{in} °C $} & {$\eta \, \text{in} 10^{-5} \unit{\newton}\mathbin{/} \unit{\second\meter}^2$}&{$ t_{ab} \mathbin{/} \unit{\second}$} & {$ t_{auf} \mathbin{/} \unit{\second}$}\\
+                {$R \mathbin{/} \unit{\mega\ohm} $} & {$T \, \text{in} °C $} & {$\eta \, \text{in} 10^{-5} \unit{\newton}\mathbin{/} \unit{\second\meter}^2$}&{$ t_{ab} \mathbin{/} \unit{\second}$} & {$ t_{auf} \mathbin{/} \unit{\second}$}\\
               \midrule
               
               \bottomrule
@@ -64,7 +64,7 @@ Alle Zeiten wurden für eine Strecke von $s = 5 \, \unit{\milli\meter}$ gemessen
             \centering
             \begin{tabular}{S S S S S}
               \toprule
-                {$R \mathbin{/} \unit{\mega\ohm} $} & {$T \text{in} °C $} & {$\eta \, \text{in} 10^{-5} \unit{\newton}\mathbin{/} \unit{\second\meter}^2$}&{$ t_{ab} \mathbin{/} \unit{\second}$} & {$ t_{auf} \mathbin{/} \unit{\second}$}\\
+                {$R \mathbin{/} \unit{\mega\ohm} $} & {$T \, \text{in} °C $} & {$\eta \, \text{in} 10^{-5} \unit{\newton}\mathbin{/} \unit{\second\meter}^2$}&{$ t_{ab} \mathbin{/} \unit{\second}$} & {$ t_{auf} \mathbin{/} \unit{\second}$}\\
               \midrule
               
               \bottomrule
@@ -80,7 +80,7 @@ Alle Zeiten wurden für eine Strecke von $s = 5 \, \unit{\milli\meter}$ gemessen
             \centering
             \begin{tabular}{S S S S S}
               \toprule
-                {$R \mathbin{/} \unit{\mega\ohm} $} & {$T \text{in} °C $} & {$\eta \, \text{in} 10^{-5} \unit{\newton}\mathbin{/} \unit{\second\meter}^2$}&{$ t_{ab} \mathbin{/} \unit{\second}$} & {$ t_{auf} \mathbin{/} \unit{\second}$}\\
+                {$R \mathbin{/} \unit{\mega\ohm} $} & {$T \, \text{in} °C $} & {$\eta \, \text{in} 10^{-5} \unit{\newton}\mathbin{/} \unit{\second\meter}^2$}&{$ t_{ab} \mathbin{/} \unit{\second}$} & {$ t_{auf} \mathbin{/} \unit{\second}$}\\
               \midrule
               
               \bottomrule
@@ -96,7 +96,7 @@ Alle Zeiten wurden für eine Strecke von $s = 5 \, \unit{\milli\meter}$ gemessen
             \centering
             \begin{tabular}{S S S S S}
               \toprule
-                {$R \mathbin{/} \unit{\mega\ohm} $} & {$T \text{in} °C $} & {$\eta \, \text{in} 10^{-5} \unit{\newton}\mathbin{/} \unit{\second\meter}^2$}&{$ t_{ab} \mathbin{/} \unit{\second}$} & {$ t_{auf} \mathbin{/} \unit{\second}$}\\
+                {$R \mathbin{/} \unit{\mega\ohm} $} & {$T \, \text{in} °C $} & {$\eta \, \text{in} 10^{-5} \unit{\newton}\mathbin{/} \unit{\second\meter}^2$}&{$ t_{ab} \mathbin{/} \unit{\second}$} & {$ t_{auf} \mathbin{/} \unit{\second}$}\\
               \midrule
               
               \bottomrule
@@ -202,10 +202,10 @@ Die Ladungen der Tröpfchen sind in \autoref{tab:Ladungen} aufgetragen. Dazu mus
 \begin{table}[H]
   \centering
   \caption{Messreihe für senkrechte Polarisation.}
-  \label{tab:Messung1}
+  \label{tab:Ladungen}
   \begin{tabular}{S S}
     \toprule
-      {$\text{Nr}$} & {$q \text{in} \mathbin{/} \unit{\coulomb}$}\\
+      {$\text{Nr}$} & {$q \, \text{in} \mathbin{/} \unit{\coulomb}$}\\
     \midrule
 
     \bottomrule
@@ -215,12 +215,19 @@ Die Ladungen der Tröpfchen sind in \autoref{tab:Ladungen} aufgetragen. Dazu mus
 Es ist unrealistisch, dass alle Ladungen ein ganzzahliges vielfachen von einem einzelnen Wert sind, deswegen wird nach dem kleinsten gemeinsammen Teilcher gesucht, bei dem die übrigbleibende Differenz unter $1 \cdot 10^{-19}$ liegt, da die Elementarladung in dieser Größenordnung vermutet wird.
 Mit dieser Methode wird eine Ladund von 
 \begin{equation}
-  e_0 = \qty{wert(unsicherheit)e-19}{\coulomb}
+%  e_0 = \qty{wert(unsicherheit)e-19} \,\unit{\coulomb}
   \label{eq:egemessen}
 \end{equation}
 berechnet.
-Daraus kann über die Faraday-Konstante mit der Gleichung 
-
+Daraus kann über die Faraday-Konstante $ F = 96485,33212... \dfrac{\unit{\coulomb}}{\text{mol}}$ \cite{go02} mit der Gleichung 
+\begin{equation*}
+  N_\text{A} = \dfrac{F}{e_0}
+  \label{eq:egemessen}
+\end{equation*}
 die Avogadro-Konstante bestimmt werden, welche 
 
+\begin{equation*}
+%  N_\text{A} = \qty{wert(unsicherheit)e23} \, \dfrac{1}{mol}
+  \label{eq:egemessen}
+\end{equation*}
 als Wert hat.
