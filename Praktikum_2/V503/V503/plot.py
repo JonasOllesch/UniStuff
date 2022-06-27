@@ -260,61 +260,94 @@ N_a = 96485.3321233100184 / np.mean(e_0)
 
 print('N_a',N_a)
 
-
+writeW(1.1, 'v_auf bei U = 157V')
 for i in range (0,5):
-    writeW(np.mean(vauf157[i,:]),'v_auf bei U = 157V für Teilchen i')
+    writeW(np.mean(vauf157[i,:]*10**3), i+1)
 
+writeW(1.2,'v_ab bei U = 157V')
 for i in range(0,5):
-    writeW(np.mean(vab157[i,:]), 'v_ab bei U = 157V für Teilchen i')
+    writeW(np.mean(vab157[i,:]*10**3), i+1)
 
-writeW('nix','nächste Spannung')
 
+writeW(2.1, 'v_auf bei U = 175V')
 for i in range (0,5):
-    writeW(np.mean(vauf175[i,:]),'v_auf bei U = 175V für Teilchen i')
+    writeW(np.mean(vauf175[i,:]*10**3), i+1)
 
+writeW(2.2,'v_ab bei U = 175V')
 for i in range(0,5):
-    writeW(np.mean(vab175[i,:]), 'v_ab bei U = 175V für Teilchen i')
+    writeW(np.mean(vab175[i,:]*10**3), i+1)
 
+
+writeW(3.1, 'v_auf bei U = 200V')
 for i in range (0,5):
-    writeW(np.mean(vauf200[i,:]),'v_auf bei U = 200V für Teilchen i')
+    writeW(np.mean(vauf200[i,:]*10**3), i+1)
 
+writeW(3.2,'v_ab bei U = 200V')
 for i in range(0,5):
-    writeW(np.mean(vab200[i,:]), 'v_ab bei U = 200V für Teilchen i')
+    writeW(np.mean(vab200[i,:]*10**3), i+1)
 
+
+writeW(4.1, 'v_auf bei U = 225V')
 for i in range (0,5):
-    writeW(np.mean(vauf225[i,:]),'v_auf bei U = 225V für Teilchen i')
+    writeW(np.mean(vauf225[i,:]*10**3), i+1)
 
+writeW(4.2,'v_ab bei U = 225V')
 for i in range(0,5):
-    writeW(np.mean(vab225[i,:]), 'v_ab bei U = 225V für Teilchen i')
+    writeW(np.mean(vab225[i,:]*10**3), i+1)
 
+
+writeW(5.1, 'v_auf bei U = 250V')
 for i in range (0,5):
-    writeW(np.mean(vauf250[i,:]),'v_auf bei U = 250V für Teilchen i')
+    writeW(np.mean(vauf250[i,:]*10**3), i+1)
 
+writeW(5.2,'v_ab bei U = 250V')
 for i in range(0,5):
-    writeW(np.mean(vab250[i,:]), 'v_ab bei U = 250V für Teilchen i')
+    writeW(np.mean(vab250[i,:]*10**3), i+1)
 
 
-for i in range (0,5):
-    writeW(q_0157,'Ladung q_0 bei U = 157V')
+#for i in range (0,5):
+#    writeW(np.mean(vauf175[i,:]),'v_auf bei U = 175V für Teilchen i')
+#
+#for i in range(0,5):
+#    writeW(np.mean(vab175[i,:]), 'v_ab bei U = 175V für Teilchen i')
+#
+#for i in range (0,5):
+#    writeW(np.mean(vauf200[i,:]),'v_auf bei U = 200V für Teilchen i')
+#
+#for i in range(0,5):
+#    writeW(np.mean(vab200[i,:]), 'v_ab bei U = 200V für Teilchen i')
+#
+#for i in range (0,5):
+#    writeW(np.mean(vauf225[i,:]),'v_auf bei U = 225V für Teilchen i')
+#
+#for i in range(0,5):
+#    writeW(np.mean(vab225[i,:]), 'v_ab bei U = 225V für Teilchen i')
+#
+#for i in range (0,5):
+#    writeW(np.mean(vauf250[i,:]),'v_auf bei U = 250V für Teilchen i')
+#
+#for i in range(0,5):
+#    writeW(np.mean(vab250[i,:]), 'v_ab bei U = 250V für Teilchen i')
+#
 
-for i in range (0,5):
-    writeW(q_0175,'Ladung q_0 bei U = 175V')
+writeW(q_0157,'Ladung q_0 bei U = 157V')
 
-for i in range (0,5):
-    writeW(q_0200,'Ladung q_0 bei U = 200V')
+writeW(q_0175,'Ladung q_0 bei U = 175V')
 
-for i in range (0,5):
-    writeW(q_0225,'Ladung q_0 bei U = 225V')
+writeW(q_0200,'Ladung q_0 bei U = 200V')
 
-for i in range (0,5):
-    writeW(q_0250,'Ladung q_0 bei U = 250V')
+writeW(q_0225,'Ladung q_0 bei U = 225V')
+
+writeW(q_0250,'Ladung q_0 bei U = 250V')
 
 
 nalit = 6.022141e23
-qlit = 1.602176e-19
+elit = 1.602176e-19
 
+writeW(np.mean(e_0), 'Berechnete Elementarlladung')
+writeW(N_a, 'Berechnete Avocado')
 
-writeW((qlit - np.mean(q_0)) / qlit * 100, 'Abweichung der berechneten Elementarladung vom Litwert')
+writeW((elit - np.mean(e_0)) / elit * 100, 'Abweichung der berechneten Elementarladung vom Litwert')
 writeW((nalit - N_a) / nalit * 100, 'Abweichung der berechneten Avogadrokonstante vom Litwert')
 
 
