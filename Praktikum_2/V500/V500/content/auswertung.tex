@@ -140,11 +140,11 @@ Die Parameter der Ausgleichsgeraden sind in \autoref{tab:tabpram} dargestellt.
 
 \begin{table}[H]
   \centering
-  \caption{Parameter der Ausgeleichsgeraden der unterschiedlichen Spektrallinien.}
+  \caption{Parameter der Ausgleichsgeraden der unterschiedlichen Spektrallinien.}
   \label{tab:tabpram}
   \begin{tabular}{S S S}
     \toprule
-      $ {\text{Farbe}} $ &$ a \mathbin{/} \unit{\ampere}^{0,5} \mathbin{/} \unit{\volt} $ & $b \mathbin{/} \unit{\ampere}^{0,5}$ \\
+      $ {\text{Farbe}} $ &$ a \mathbin{/} \unit{\ampere}^{\frac{1}{2}} \mathbin{/} \unit{\volt} $ & $b \mathbin{/} \unit{\ampere}^{\frac{1}{2}}$ \\
     \midrule
       {Rot}     & {$(-1,727 \pm 0,117) \cdot 10^{-5}$} & {$(1,097 \pm 0,042) \cdot 10^{-5} $} \\  
       {Orange}  & {$(-2,954 \pm 0,167) \cdot 10^{-5}$} & {$(1,714 \pm 0,058) \cdot 10^{-5} $} \\ % orange
@@ -185,7 +185,7 @@ bei Lichtgeschwindigkeit $c$ die Frequenzen der Spektrallinien bestimmen und, wi
 \begin{figure}
     \centering
     \includegraphics{build/gegspanngegfreq.pdf}
-    \caption{Gegenspannungen $U_\text{g}$ für unterschiedliche Frequenzen $v$ des Lichts.}
+    \caption{Gegenspannungen $U_\text{g}$ für unterschiedliche Frequenzen $\nu$ des Lichts.}
     \label{fig:gegspanngegfreq}
 \end{figure}
 
@@ -251,7 +251,8 @@ Das ohmsche „Gesetz“ besagt einen linearen Zusammenhang zwischen Spannung un
 Es ist lediglich ein empirisches Gesetz, das, für bestimmte Materialien, die Maxwell-Gleichungen durch einen einfachen linearen Zusammenhang annähert. \\
 
 Diese asymptotische Annäherung sowie, dass sich der Strom auch für $U_\text{g} < U$ bereits null nähert, hängt mit der Fermi-Diracschen-Energieverteilung der Elektronen zusammen.
-Da manche Elektronen eine höhere Energie als andere besitzen, erreichen manche die Anode nicht, obwohl die Spannung noch größer $U_\text{g}$ ist.
+Dieser Energieverteilung nach besitzen manche Elektronen intrinsisch eine niedrigere Energie als andere, erreichen manche die bereits Anode nicht, obwohl die Spannung noch größer $U_\text{g}$ ist.
+Somit lässt sich bereits vor Erreichen von $U_\text{g}$ ein Stromabfall beobachten
 Analog erreichen manche Elektronen die Anode noch nicht, obwohl die theoretisch angelegte Spannung bereits die maximale Elektronenzahl auf die Anode treffen lassen würde. Die Anode müsste eine unendliche Ausdehnung haben, damit alle Elektronen die Anode erreichen können. \\
 
 Unter Umständen kann auch ein negativer Strom auftreten, da das Kathodenmaterial bereits bei $T = 20 \,\si{\celsius}$ verdampfen kann.
