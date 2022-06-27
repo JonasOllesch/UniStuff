@@ -108,12 +108,11 @@ dist = ufloat(7.625, 0.0051) * 1e-3
 rho_O = 886  # kg/m^3
 rho_L = 1.225  # kg/m^3
 
-ar = np.ones(5)
-etaL157 = 1.9525 * 1e-5
+etaL157 = 1.8475 * 1e-5
 etaL175 = etaL157
 etaL200  = etaL157
 etaL225  = etaL157
-etaL250  = 1.865 *1e-5
+etaL250  = 1.8525 *1e-5
 
 rad157 = rad(etaL157, vauf157, vab157)
 rad157 = rad157.mean(axis=1)
@@ -263,36 +262,36 @@ print('N_a',N_a)
 
 
 for i in range (0,5):
-    writeW(vauf157[i,:],'v_auf bei U = 157V für Teilchen i')
+    writeW(np.mean(vauf157[i,:]),'v_auf bei U = 157V für Teilchen i')
 
 for i in range(0,5):
-    writeW(vab157[i,:], 'v_ab bei U = 157V für Teilchen i')
+    writeW(np.mean(vab157[i,:]), 'v_ab bei U = 157V für Teilchen i')
 
 writeW('nix','nächste Spannung')
 
 for i in range (0,5):
-    writeW(vauf175[i,:],'v_auf bei U = 175V für Teilchen i')
+    writeW(np.mean(vauf175[i,:]),'v_auf bei U = 175V für Teilchen i')
 
 for i in range(0,5):
-    writeW(vab175[i,:], 'v_ab bei U = 175V für Teilchen i')
+    writeW(np.mean(vab175[i,:]), 'v_ab bei U = 175V für Teilchen i')
 
 for i in range (0,5):
-    writeW(vauf200[i,:],'v_auf bei U = 200V für Teilchen i')
+    writeW(np.mean(vauf200[i,:]),'v_auf bei U = 200V für Teilchen i')
 
 for i in range(0,5):
-    writeW(vab200[i,:], 'v_ab bei U = 200V für Teilchen i')
+    writeW(np.mean(vab200[i,:]), 'v_ab bei U = 200V für Teilchen i')
 
 for i in range (0,5):
-    writeW(vauf225[i,:],'v_auf bei U = 225V für Teilchen i')
+    writeW(np.mean(vauf225[i,:]),'v_auf bei U = 225V für Teilchen i')
 
 for i in range(0,5):
-    writeW(vab225[i,:], 'v_ab bei U = 225V für Teilchen i')
+    writeW(np.mean(vab225[i,:]), 'v_ab bei U = 225V für Teilchen i')
 
 for i in range (0,5):
-    writeW(vauf250[i,:],'v_auf bei U = 250V für Teilchen i')
+    writeW(np.mean(vauf250[i,:]),'v_auf bei U = 250V für Teilchen i')
 
 for i in range(0,5):
-    writeW(vab250[i,:], 'v_ab bei U = 250V für Teilchen i')
+    writeW(np.mean(vab250[i,:]), 'v_ab bei U = 250V für Teilchen i')
 
 
 for i in range (0,5):
