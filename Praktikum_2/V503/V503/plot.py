@@ -14,10 +14,10 @@ def writeW(Wert,Beschreibung):
     my_file.write('\n')
     try:
         for i in Wert:
-            my_file.write(str(i))
+            my_file.write(str(repr(i)))
             my_file.write('\n')
     except:
-        my_file.write(str(Wert))
+        my_file.write(str(repr(Wert)))
         my_file.write('\n')
 
     return 0
@@ -104,6 +104,8 @@ vab225 =  s / tab225
 vauf250 = s / tauf250 
 vab250 =  s / tab250
 
+print('vab250', np.mean(vab250[1,:]))
+
 dist = ufloat(7.625, 0.0051) * 1e-3
 rho_O = 886  # kg/m^3
 rho_L = 1.225  # kg/m^3
@@ -158,11 +160,14 @@ q175  = np.mean(q175,axis=1)
 q200  = np.mean(q200,axis=1)
 q225  = np.mean(q225,axis=1)
 q250  = np.mean(q250,axis=1)
-q_0157 = q157/(1+(6.17e-5 * 133.33)/(101325 * rad157))**(-2/3)
-q_0175 = q175/(1+(6.17e-5 * 133.33)/(101325 * rad175))**(-2/3)
-q_0200 = q200/(1+(6.17e-5 * 133.33)/(101325 * rad200))**(-2/3)
-q_0225 = q225/(1+(6.17e-5 * 133.33)/(101325 * rad225))**(-2/3)
-q_0250 = q250/(1+(6.17e-5 * 133.33)/(101325 * rad250))**(-2/3)
+
+qges = np.array([q157, q175, q200, q225, q250])
+qges = qges.reshape(1,25)
+q_0157 = q157*(1+(6.17e-5 * 133.33)/(101325 * rad157))**(2/3)
+q_0175 = q175*(1+(6.17e-5 * 133.33)/(101325 * rad175))**(2/3)
+q_0200 = q200*(1+(6.17e-5 * 133.33)/(101325 * rad200))**(2/3)
+q_0225 = q225*(1+(6.17e-5 * 133.33)/(101325 * rad225))**(2/3)
+q_0250 = q250*(1+(6.17e-5 * 133.33)/(101325 * rad250))**(2/3)
 
 print(unp.nominal_values(q157))
 print(unp.nominal_values(q175))
@@ -254,8 +259,10 @@ def Euklid(q, max):
             n += 1
     return gcd
 
+e_0nikorr = Euklid(qges,1000)
 e_0 = Euklid(q_0,1000)
 print('e_0',np.mean(e_0))
+N_anikorr = 96485.3321233100184 / np.mean(e_0nikorr)
 N_a = 96485.3321233100184 / np.mean(e_0)
 
 print('N_a',N_a)
@@ -330,6 +337,15 @@ for i in range(0,5):
 #    writeW(np.mean(vab250[i,:]), 'v_ab bei U = 250V für Teilchen i')
 #
 
+
+writeW(rad157,'Radius r bei U = 157V')
+writeW(rad175,'Radius r bei U = 175V')
+writeW(rad200,'Radius r bei U = 200V')
+writeW(rad225,'Radius r bei U = 225V')
+writeW(rad250,'Radius r bei U = 250V')
+
+writeW(qges, 'nicht korrigierte Ladung q')
+
 writeW(q_0157,'Ladung q_0 bei U = 157V')
 
 writeW(q_0175,'Ladung q_0 bei U = 175V')
@@ -344,8 +360,13 @@ writeW(q_0250,'Ladung q_0 bei U = 250V')
 nalit = 6.022141e23
 elit = 1.602176e-19
 
-writeW(np.mean(e_0), 'Berechnete Elementarlladung')
+writeW(np.mean(e_0nikorr), 'nicht korrigierte Elementarladung')
+writeW(np.mean(e_0), 'Berechnete Elementarladung')
+writeW(np.mean(N_anikorr), 'Nicht korrigierte Avocado')
 writeW(N_a, 'Berechnete Avocado')
+
+writeW((np.mean(e_0nikorr)-np.mean(e_0))/np.mean(e_0nikorr)*100, 'Abweichung der korrigierten und nicht korrigierten Elementarladung')
+writeW((N_anikorr-N_a)/N_anikorr*100, 'Abweichung der korrigierten und nicht korrigierten Avocado')
 
 writeW((elit - np.mean(e_0)) / elit * 100, 'Abweichung der berechneten Elementarladung vom Litwert')
 writeW((nalit - N_a) / nalit * 100, 'Abweichung der berechneten Avogadrokonstante vom Litwert')
