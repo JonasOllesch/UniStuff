@@ -20,16 +20,30 @@ dmstd = np.zeros((20))
 dmstd[:] = horisontallineat(durchschnitt-standartabweichung)
 
 
-
+s = np.sort(Messung[:,1],axis=0)
 plt.plot(x,dpstd,color='lightgreen',label="std")
 plt.plot(x,dmstd,color='lightgreen')
 plt.plot(x,y,color='red',label="Bestehensgrenze")
 plt.plot(x,durchschnitt_,color='green',label="Durchschnitt")
 plt.scatter(Messung[:,0],Messung[:,1],c = 'blue',s = 6,label = "Messdaten")
-plt.xlabel("Punkte")
+plt.ylabel("Punkte")
+plt.xlabel("Person")
 plt.legend()
 plt.tight_layout()
 
 plt.grid()
-plt.savefig('Klausur_p_4.pdf')
+plt.savefig('Klausur_p_4_scatterplot.pdf')
+plt.clf()
+
+
+
+
+plt.hist(Messung[:,1],bins=10,range=(0,70))
+plt.xlabel("Punkte")
+plt.ylabel("Personen")
+
+plt.legend()
+plt.tight_layout()
+plt.grid()
+plt.savefig('Klausur_p_4_Histogram.pdf')
 plt.clf()
