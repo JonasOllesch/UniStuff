@@ -17,6 +17,7 @@ a0_a1_matrix = np.random.multivariate_normal([1.0,1.0], covariance_matrix, size=
 
 plt.scatter(a_0,a_1,s=8, c='blue')
 plt.ylabel(r'$a_1$')
+plt.ylim(0,1.8)
 plt.xlabel(r'$a_0$')
 plt.xlim(0,2)
 #plt.axis('equal')
@@ -29,6 +30,7 @@ plt.clf()
 
 plt.scatter(a0_a1_matrix[:,0],a0_a1_matrix[:,1],s=8, c='blue')
 plt.ylabel(r'$a_1$')
+plt.ylim(0,1.8)
 plt.xlabel(r'$a_0$')
 plt.xlim(0,2)
 #plt.axis('equal')
