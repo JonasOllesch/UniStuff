@@ -14,24 +14,25 @@ a0_a1_matrix = np.random.multivariate_normal([1.0,1.0], covariance_matrix, size=
 
 
 
-
 plt.scatter(a_0,a_1,s=8, c='blue')
-plt.tight_layout()
-plt.ylabel(r'$a_1$')
 plt.xlabel(r'$a_0$')
-plt.axis('equal')
+plt.ylabel(r'$a_1$')
 #plt.legend("ohne Korrelation")
+plt.tight_layout()
+plt.axis('equal')
 plt.grid()
 plt.savefig('build/Graph_a.pdf')
 plt.clf()
 
+
 plt.scatter(a0_a1_matrix[:,0],a0_a1_matrix[:,1],s=8, c='blue')
-plt.tight_layout()
-plt.ylabel(r'$a_1$')
 plt.xlabel(r'$a_0$')
-plt.axis('equal')
+
+plt.ylabel(r'$a_1$')
+plt.tight_layout()
 #plt.legend("mit Korrelation")
 plt.grid()
+plt.axis('equal')
 plt.savefig('build/Graph_b.pdf')
 plt.clf()
 
