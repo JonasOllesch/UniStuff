@@ -21,7 +21,7 @@ Null Aktivität 1 a Abweichung
 Apsorptionskoeffizient 1 b
 -33.48398836618611
 Apsorptionskoeffizien 1 b Abweichung
-22.824026244782303
+22.8240262447823
 Null Aktivität 1 b
 4.8270247937786195
 Null Aktivität 1 b Abweichung
