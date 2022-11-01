@@ -6,8 +6,8 @@ curve fit Wurzel der Unsicherheit pcov[0][0]
 curve fit Wurzel der Unsicherheit pcov[1][1]
 0.39885668831746607
 die Koeffizienten der Ausgleichsfunktion der Plateaufunktion
-0.8466403162055404
-14433.415019762844
+0.8466403162055132
+14433.415019762857
 Beschreibung
 350.0
 360.0

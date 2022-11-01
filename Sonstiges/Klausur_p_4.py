@@ -8,7 +8,7 @@ Messung = np.array(np.genfromtxt('Klausur_p_4_Daten.txt'))
 
 x = np.linspace(0,35,20)
 y = np.zeros((20))
-y[:] = horisontallineat(22)
+y[:] = horisontallineat(25)
 
 durchschnitt = np.mean(Messung[:,1])
 durchschnitt_ = np.zeros((20))

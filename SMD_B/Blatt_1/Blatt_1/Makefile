@@ -1,4 +1,4 @@
-all: build/V355.pdf
+all: build/Blatt_1.pdf
 
 # hier Python-Skripte:
 build/plot.pdf: plot.py ../matplotlibrc ../header-matplotlib.tex | build
@@ -7,10 +7,10 @@ build/plot.pdf: plot.py ../matplotlibrc ../header-matplotlib.tex | build
 	# and set the matplotlibrc
 	TEXINPUTS=$$(pwd)/..: MATPLOTLIBRC=../matplotlibrc python plot.py
 
-# hier weitere Abhängigkeiten für build/V355.pdf deklarieren:
-build/V355.pdf: build/plot.pdf #SchwingkreisAbb.pdf SchwebungAbb.pdf SinSchwingkreisAbb.pdf
+# hier weitere Abhängigkeiten für build/Blatt_1.pdf deklarieren:
+build/Blatt_1.pdf: build/plot.pdf
 
-build/V355.pdf: FORCE | build
+build/Blatt_1.pdf: FORCE | build
 	# to find header and bib files in the main directory
 	TEXINPUTS=..: \
 	BIBINPUTS=..: \
@@ -20,7 +20,7 @@ build/V355.pdf: FORCE | build
 	  --output-directory=build \
 	  --interaction=nonstopmode \
 	  --halt-on-error \
-	V355.tex
+	Blatt_1.tex
 
 build:
 	mkdir -p build
