@@ -1,0 +1,42 @@
+\section{Exercise 29 - \textit{Sample Variance}}
+\label{sec:ex29}
+
+Assume $x_1, ..., x_\text{n}$ as square-integrable, pairwise uncorrelated, real-valued random variables $X_1, ..., X_\text{n}$ with variance $\sigma^2$ and mean $\mu$.
+
+\subsection*{(a)}
+
+First, let's have a look at the arithmetic mean
+\begin{equation*}
+    \bar{X} = \dfrac{1}{n} \sum_{i=1}^n X_i \,.
+\end{equation*}
+and find out whether it is an unbiased estimator of the mean $\mu$. \\
+
+To do that, we will have to rewrite the expression for $\bar{X}$. \\
+Since $\frac{1}{n}$ is just a constant, it can just be pulled past the expected value as seen below:
+
+\begin{equation*}
+    \langle \bar{X} \rangle =  E \left(\dfrac{1}{n} \sum_{i=1}^n X_i \right) = \dfrac{1}{n} E \left(\sum_{i=1}^n X_i \right) \,.
+\end{equation*}
+
+Since it doesn't matter whether the expression is summed first and the mean taken afterward, or the other way around, the arithmetic mean becomes
+
+\begin{equation*}
+    \langle \bar{X} \rangle = \dfrac{1}{n} \sum_{i=1}^n E(X_i) = \dfrac{1}{n} \sum_{i=1}^n \mu  = \dfrac{1}{n} \, n \, \mu = \mu = \langle \mu \rangle \,.
+\end{equation*}
+
+So, the arithmetic mean is indeed unbiased.
+
+\subsection*{(b)}
+
+Next, the same is done for the variance. \\
+The most import rule here for calculating with variances is
+\begin{equation*}
+    \text{Var}(aX) = a^2 \text{Var}(X) \,.
+\end{equation*}
+
+With that, the expression for the variance can be simplified as follows:
+\begin{equation*}
+    \text{Var}(\bar{X}) = \text{Var} \left(\dfrac{1}{n} \sum_{i=1}^n X_i \right) = \dfrac{1}{n^2} \text{Var} \left(\sum_{i=1}^n X_i \right)
+\end{equation*}
+
+
