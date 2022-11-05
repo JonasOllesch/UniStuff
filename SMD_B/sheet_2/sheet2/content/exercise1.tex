@@ -14,22 +14,25 @@ and find out whether it is an unbiased estimator of the mean $\mu$. \\
 To do that, we will have to rewrite the expression for $\bar{X}$. \\
 Since $\frac{1}{n}$ is just a constant, it can just be pulled past the expected value as seen below:
 
-\begin{equation*}
-    \langle \bar{X} \rangle =  E \left(\dfrac{1}{n} \sum_{i=1}^n X_i \right) = \dfrac{1}{n} E \left(\sum_{i=1}^n X_i \right) \,.
-\end{equation*}
+\begin{align*}
+    \langle \bar{X} \rangle &=  E \left(\dfrac{1}{n} \sum_{i=1}^n X_i \right) \\
+                            &= \dfrac{1}{n} E \left(\sum_{i=1}^n X_i \right) \,.
+\end{align*}
 
 Since it doesn't matter whether the expression is summed first and the mean taken afterward, or the other way around, the arithmetic mean becomes
 
-\begin{equation*}
-    \langle \bar{X} \rangle = \dfrac{1}{n} \sum_{i=1}^n E(X_i) = \dfrac{1}{n} \sum_{i=1}^n \mu  = \dfrac{1}{n} \, n \, \mu = \mu = \langle \mu \rangle \,.
-\end{equation*}
+\begin{align*}
+    \langle \bar{X} \rangle &= \dfrac{1}{n} \sum_{i=1}^n E(X_i) \\
+                            &= \dfrac{1}{n} \sum_{i=1}^n \mu  \\
+                            &= \dfrac{1}{n} \, n \, \mu \\
+                            &= \mu = \langle \mu \rangle \,.
+\end{align*}
 
 So, the arithmetic mean is indeed unbiased.
 
 \subsection*{(b)}
 
-Next, the same is done for the variance. \\
-The most import rule here for calculating with variances is
+Here, the most import rule for calculating with variances is
 \begin{equation*}
     \text{Var}(aX) = a^2 \text{Var}(X) \,.
 \end{equation*}
@@ -38,5 +41,30 @@ With that, the expression for the variance can be simplified as follows:
 \begin{equation*}
     \text{Var}(\bar{X}) = \text{Var} \left(\dfrac{1}{n} \sum_{i=1}^n X_i \right) = \dfrac{1}{n^2} \text{Var} \left(\sum_{i=1}^n X_i \right)
 \end{equation*}
+Similarly to task (a),
+\begin{align*}
+    \text{Var}(\bar{X}) &= \dfrac{1}{n^2} \text{Var} \left(\sum_{i=1}^n X_i \right) \\
+                        &= \dfrac{1}{n^2} \sum_{i=1}^n \text{Var}(X_i) \\
+                        &= \dfrac{1}{n^2} n \sigma^2 \\
+                        &= \dfrac{1}{n} \sigma^2 \,,
+\end{align*}
+which is what was to be shown.
+
+\subsection*{(c)}
+
+With the help of (b), task (c) is solved below:
+
+\begin{align*}
+    \langle S_0^2 \rangle &= E \left( \dfrac{1}{n} \sum_{i=1}^n (X_i - \bar{X})^2 \right) \\
+                          &= \dfrac{1}{n} \sum_{i=1}^n E((X_i - \bar{X})^2) && \text{||} \, \text{by definition:} \quad E((X_i - \bar{X})^2) = \text{Var}(X_i) \\
+                          &= \dfrac{1}{n} \sum_{i=1}^n \text{Var}(X_i) \\
+                          &= \dfrac{1}{n} \, n \, \sigma^2 = \sigma^2 \,.
+\end{align*}
+
+Therefore, $S_0^2$ is an unbiased estimator.
+
+\subsection*{(d)}
+
+
 
 
