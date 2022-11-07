@@ -1,0 +1,46 @@
+\section{Task 2 - \textit{Lab Experiment}}
+
+\subsection*{(a)}
+
+The design matrix is a $"\text{simple}"$ $12$ by $2$ matrix of the form
+\begin{equation*}
+    \textbf{A} = \left(
+        \begin{array}{c c}
+            f_1(\psi_1) & f_2(\psi_1) \\
+            \vdots & \vdots \\
+            f_1(\psi_{12}) & f_2(\psi_{12}) \\
+        \end{array}
+    \right) \,.
+\end{equation*}
+
+Using the table and ansatz from the exercise, we can just calculate it as shown in \autoref{list:designmat} and get
+\begin{equation*}
+    \textbf{A} = \left(
+        \begin{array}{c c}
+             1                    &  0  \\
+             0.866                &  0.5 \\
+             0.5                  &  0.866 \\
+             6.123 \cdot 10^{-17}  &  1 \\
+            -0.5                  &  0.866 \\
+            -0.866                &  0.5 \\
+            -1                    &  1.225 \cdot 10^{-16} \\
+            -0.866                & -0.5 \\
+            -0.5                  & -0.866 \\
+            -1.837 \cdot 10^{-16} & -1 \\
+            0.5                   & -0.866 \\
+            0.866                 & -0.5 \\
+        \end{array}
+    \right)
+\end{equation*}
+
+\begin{lstlisting}[language = Python, caption={Calculation of design matrix \textbf{A}.}, label = {list:designmat}]
+    Data = np.array(np.genfromtxt('Daten.txt'))
+    A = np.zeros(shape=(12,2))
+    A[:,0]= np.cos(Data[:,0]*(2*np.pi/360))
+    A[:,1]= np.sin(Data[:,0]*(2*np.pi/360))
+\end{lstlisting}
+
+
+It should be noted that the three values with the lowest exponents are in reality just zero and will be treated as such.
+
+

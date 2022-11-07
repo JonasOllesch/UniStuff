@@ -12,6 +12,9 @@ Data = np.array(np.genfromtxt('Daten.txt'))
 A = np.zeros(shape=(12,2))
 A[:,0]= np.cos(Data[:,0]*(2*np.pi/360))
 A[:,1]= np.sin(Data[:,0]*(2*np.pi/360))
+
+print('This is A:', A)
+
 A_T= A.transpose()
 tmp1 = np.matmul(A_T,A)
 tmp2 = np.linalg.inv(tmp1)
