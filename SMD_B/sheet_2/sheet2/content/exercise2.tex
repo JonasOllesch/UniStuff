@@ -134,13 +134,13 @@ and
 
 If done by hand, the errors would be calculated using gaussian error propagation, here, numpy's uncertainties package does the work (see \autoref{list:errors} for comparison).
 
-\begin{lstlisting}[language = Python, caption={Calculation of errors of $a_1, a_2, A_0$ and $\delta$.}, label = {list:errors}]
+\begin{lstlisting}[language = Python, caption={Calculation of $a_1, a_2, A_0$ and $\delta$.}, label = {list:errors}]
     def calc_A_0 (a1,a2):
     return  a1/(unumpy.cos(unumpy.arctan(a2/a1)))
 
     def calc_delta(a1,a2):
     return (-1)*unumpy.arctan(a2/a1)
-    
+
     Err_a1 = np.sqrt(Var_a[0][0])
     Err_a2 = np.sqrt(Var_a[1][1])
     a1 = ufloat(a[0],Err_a1)
