@@ -68,12 +68,12 @@ So, the estimator $S_0^2$ is biased, but can be corrected by adding a factor $n$
 \subsection*{(d)}
 
 \begin{align*}
-    \langle \sigma^2 \rangle    &= \left\langle \dfrac{1}{n} \sum_{i=1}^n (X_i - \bar{X})^2 \right\rangle \\
-                                &= \dfrac{1}{n} \langle  \sum_{i=1}^n (X_i - \mu + \mu \, - \bar{X})^2 \rangle \\ 
-                                &= \dfrac{1}{n} \langle  \sum_{i=1}^n (X_i - \mu)^2 -2(X_i -\mu)(\bar{X} - \mu) + (\bar{X} - \mu)^2 \rangle \\
-                                &= \dfrac{1}{n} \langle  \sum_{i=1}^n ( X_i - \mu)^2 -2 \sum_{i=1}^n (X_i -\mu)(\bar{X} - \mu) + \sum_{i=1}^n(\bar{X} - \mu)^2 \rangle  \\
-                                &= \dfrac{1}{n} \langle  \sum_{i=1}^n ( X_i - \mu)^2 -2n(\bar{X} -\mu)(\bar{X} - \mu) + n(\bar{X} - \mu)^2 \rangle  \\
-                                &= \dfrac{1}{n} \langle  \sum_{i=1}^n ( X_i - \mu)^2 -n(\bar{X} - \mu)^2 \rangle  \\
+    \langle \hat{\sigma}^2 \rangle    &= \left\langle \dfrac{1}{n} \sum_{i=1}^n (X_i - \bar{X})^2 \right\rangle \\
+                                &= \dfrac{1}{n} \left\langle  \sum_{i=1}^n (X_i - \mu + \mu \, - \bar{X})^2 \right\rangle \\ 
+                                &= \dfrac{1}{n} \left\langle  \sum_{i=1}^n (X_i - \mu)^2 -2(X_i -\mu)(\bar{X} - \mu) + (\bar{X} - \mu)^2 \right\rangle \\
+                                &= \dfrac{1}{n} \left\langle  \sum_{i=1}^n ( X_i - \mu)^2 -2 \sum_{i=1}^n (X_i -\mu)(\bar{X} - \mu) + \sum_{i=1}^n(\bar{X} - \mu)^2 \right\rangle  \\
+                                &= \dfrac{1}{n} \left\langle  \sum_{i=1}^n ( X_i - \mu)^2 -2n(\bar{X} -\mu)(\bar{X} - \mu) + n(\bar{X} - \mu)^2 \right\rangle  \\
+                                &= \dfrac{1}{n} \left\langle  \sum_{i=1}^n ( X_i - \mu)^2 -n(\bar{X} - \mu)^2 \right\rangle  \\
                                 &= \dfrac{1}{n} \left( \sum_{i=1}^n \langle X_i - \mu \rangle^2 -n\langle\bar{X} -\mu \rangle^2 \right) \\
                                 &= \dfrac{1}{n} \left( \text{Var}(X_i) -n \text{Var}(\bar{X})\right)  \\
                                 &= \sigma^2 - \dfrac{\sigma^2}{n}   \\
@@ -82,4 +82,9 @@ So, the estimator $S_0^2$ is biased, but can be corrected by adding a factor $n$
 
 As we can clearly see, the estimator is indeed biased. To correct it, we just need to add a factor of $\frac{1}{n-1}$ to the definition of the standard deviation.
 
-    
+Edit: So this calculation is a little weird, because in part b) we got  $\text{Var}(\bar{X}) = \dfrac{\sigma^2}{n}$. If we plug that in the third to last line we get
+\begin{align*}
+    \langle \hat{\sigma}^2 \rangle    &= \dfrac{1}{n} \left( \sigma^2 - n \dfrac{\sigma^2}{n} \right)\\
+                                      &= 0 \, 
+\end{align*}
+which should not be the case. I hope that you can clarify the situation.

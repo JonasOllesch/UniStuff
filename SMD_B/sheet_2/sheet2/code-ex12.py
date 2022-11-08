@@ -20,16 +20,24 @@ tmp1 = np.matmul(A_T,A)
 tmp2 = np.linalg.inv(tmp1)
 tmp3 = np.matmul(tmp2,A_T)
 a = np.matmul(tmp3,Data[:,1])
-print( "this is a -->",a)
+
+#print( "this is a -->",a)
 Var_a = 0.011**2*tmp2
-print(Var_a)
+
+#print(Var_a)
 Err_a1 = np.sqrt(Var_a[0][0])
 Err_a2 = np.sqrt(Var_a[1][1])
+
 a1 = ufloat(a[0],Err_a1)
 a2 = ufloat(a[1],Err_a2)
-print("a1" , repr(a1))
-print("a2" , repr(a2))
+
+#print("a1" , repr(a1))
+#print("a2" , repr(a2))
+
 A_0 = calc_A_0(a1, a2)
 delta = calc_delta(a1, a2)
-print("A_0",    repr(A_0))
-print("delta",  repr(delta*360/(2*np.pi)))
+
+#print("A_0",    repr(A_0))
+#print("delta",  repr(delta*360/(2*np.pi)))
+
+#if you can not run the code because of uncertainties, trust us xD
