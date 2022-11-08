@@ -43,4 +43,21 @@ Using the table and ansatz from the exercise, we can just calculate it as shown 
 
 It should be noted that the three values with the lowest exponents are in reality just zero and will be treated as such.
 
+To calculate the solution vector $\textbf{â}$, we use the definition from the lecture, namely
+\begin{equation}
+    \textbf{â} = (\textbf{A}^T\textbf{A})^{-1}\textbf{A}^T \textbf{y} \,,
+    \label{eq:solveca}
+\end{equation}
+where $\textbf{y}$ is just the vector of the asymmetry values. \\
+
+\eqref{eq:solveca} can be implemented into code as seen in \autoref{list:solveca}
+
+
+\begin{lstlisting}[language = Python, caption={Calculation of solution vector \textbf{â}.}, label = {list:solveca}]
+    A_T= A.transpose()
+    tmp1 = np.matmul(A_T,A)
+    tmp2 = np.linalg.inv(tmp1)
+    tmp3 = np.matmul(tmp2,A_T)
+    a = np.matmul(tmp3,Data[:,1])
+\end{lstlisting}
 

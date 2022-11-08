@@ -55,8 +55,8 @@ which is what was to be shown.
 With the help of (b), task (c) is solved below:
 
 \begin{align*}
-    \langle S_0^2 \rangle &= E \left( \dfrac{1}{n} \sum_{i=1}^n (X_i - \bar{X})^2 \right) \\
-                          &= \dfrac{1}{n} \sum_{i=1}^n E((X_i - \bar{X})^2) && \text{||} \, \text{by definition:} \quad E((X_i - \bar{X})^2) = \text{Var}(X_i) \\
+    \langle S_0^2 \rangle &= E \left( \dfrac{1}{n} \sum_{i=1}^n (X_i - \mu)^2 \right) \\
+                          &= \dfrac{1}{n} \sum_{i=1}^n E((X_i - \mu)^2) && \text{||} \, \text{by definition:} \quad E((X_i - \mu)^2) = \text{Var}(X_i) \\
                           &= \dfrac{1}{n} \sum_{i=1}^n \text{Var}(X_i) \\
                           &= \dfrac{1}{n} \, n \, \sigma^2 = \sigma^2 \,.
 \end{align*}
@@ -66,7 +66,7 @@ Therefore, $S_0^2$ is an unbiased estimator.
 \subsection*{(d)}
 
 \begin{align*}
-    \langle \sigma^2 \rangle    &= \langle \dfrac{1}{n} \sum_{i=1}^n (X_i - \bar{X})^2 \rangle \\
+    \langle \sigma^2 \rangle    &= \left\langle \dfrac{1}{n} \sum_{i=1}^n (X_i - \bar{X})^2 \right\rangle \\
                                 &= \dfrac{1}{n} \langle  \sum_{i=1}^n (X_i - \mu + \mu \, - \bar{X})^2 \rangle \\ 
                                 &= \dfrac{1}{n} \langle  \sum_{i=1}^n (X_i - \mu)^2 -2(X_i -\mu)(\bar{X} - \mu) + (\bar{X} - \mu)^2 \rangle \\
                                 &= \dfrac{1}{n} \langle  \sum_{i=1}^n ( X_i - \mu)^2 -2 \sum_{i=1}^n (X_i -\mu)(\bar{X} - \mu) + \sum_{i=1}^n(\bar{X} - \mu)^2 \rangle  \\
@@ -77,5 +77,7 @@ Therefore, $S_0^2$ is an unbiased estimator.
                                 &= \sigma^2 - \dfrac{\sigma^2}{n}   \\
                                 &= \dfrac{n-1}{n} \sigma^2                               
 \end{align*}
+
+As we can clearly see, the estimator is indeed biased. To correct it, we just need to add a factor of $\frac{1}{n-1}$ to the definition of the standard deviation.
 
     
