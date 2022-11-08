@@ -58,10 +58,13 @@ With the help of (b), task (c) is solved below:
     \langle S_0^2 \rangle &= E \left( \dfrac{1}{n} \sum_{i=1}^n (X_i - \mu)^2 \right) \\
                           &= \dfrac{1}{n} \sum_{i=1}^n E((X_i - \mu)^2) && \text{||} \, \text{by definition:} \quad E((X_i - \mu)^2) = \text{Var}(X_i) \\
                           &= \dfrac{1}{n} \sum_{i=1}^n \text{Var}(X_i) \\
-                          &= \dfrac{1}{n} \, n \, \sigma^2 = \sigma^2 \,.
+                          &= \dfrac{1}{n}  \, \sigma^2 \,.
 \end{align*}
 
-Therefore, $S_0^2$ is an unbiased estimator.
+So, the estimator $S_0^2$ is biased, but can be corrected by adding a factor $n$ so that
+\begin{equation*}
+    \langle \tilde{S}_0^2 \rangle = n \langle S_0^2 \rangle = \sigma^2 \,.
+\end{equation*}
 
 \subsection*{(d)}
 
@@ -73,7 +76,7 @@ Therefore, $S_0^2$ is an unbiased estimator.
                                 &= \dfrac{1}{n} \langle  \sum_{i=1}^n ( X_i - \mu)^2 -2n(\bar{X} -\mu)(\bar{X} - \mu) + n(\bar{X} - \mu)^2 \rangle  \\
                                 &= \dfrac{1}{n} \langle  \sum_{i=1}^n ( X_i - \mu)^2 -n(\bar{X} - \mu)^2 \rangle  \\
                                 &= \dfrac{1}{n} \left( \sum_{i=1}^n \langle X_i - \mu \rangle^2 -n\langle\bar{X} -\mu \rangle^2 \right) \\
-                                &= \dfrac{1}{n} \left( Var(X_i) -n Var(\bar{X})\right)  \\
+                                &= \dfrac{1}{n} \left( \text{Var}(X_i) -n \text{Var}(\bar{X})\right)  \\
                                 &= \sigma^2 - \dfrac{\sigma^2}{n}   \\
                                 &= \dfrac{n-1}{n} \sigma^2                               
 \end{align*}

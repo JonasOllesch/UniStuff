@@ -13,14 +13,23 @@ The design matrix is a $"\text{simple}"$ $12$ by $2$ matrix of the form
     \right) \,.
 \end{equation*}
 
-Using the table and ansatz from the exercise, we can just calculate it as shown in \autoref{list:designmat} and get
+Using the table and ansatz 
+\begin{equation*}
+    f(\psi) = a_1 f_1(\psi) + a_2 f_2(\psi)
+\end{equation*}
+from the exercise, where
+\begin{align*}
+    f_1(\psi) &= \cos (\psi) \\
+    f_2(\psi) &= \sin (\psi) \,,
+\end{align*}
+we can just calculate it as shown in \autoref{list:designmat} and get
 \begin{equation*}
     \textbf{A} = \left(
         \begin{array}{c c}
              1                    &  0  \\
              0.866                &  0.5 \\
              0.5                  &  0.866 \\
-             6.123 \cdot 10^{-17}  &  1 \\
+             6.123 \cdot 10^{-17} &  1 \\
             -0.5                  &  0.866 \\
             -0.866                &  0.5 \\
             -1                    &  1.225 \cdot 10^{-16} \\
@@ -33,15 +42,14 @@ Using the table and ansatz from the exercise, we can just calculate it as shown 
     \right)
 \end{equation*}
 
-\begin{lstlisting}[language = Python, caption={Calculation of design matrix \textbf{A}.}, label = {list:designmat}]
+\begin{lstlisting}[language = Python, caption={Calculation of design matrix \textbf{A}. The file \texttt{Daten.txt} holds the table data from the exercise sheet.}, label = {list:designmat}]
     Data = np.array(np.genfromtxt('Daten.txt'))
     A = np.zeros(shape=(12,2))
     A[:,0]= np.cos(Data[:,0]*(2*np.pi/360))
     A[:,1]= np.sin(Data[:,0]*(2*np.pi/360))
 \end{lstlisting}
 
-
-It should be noted that the three values with the lowest exponents are in reality just zero and will be treated as such.
+It should be noted that the three values with the lowest exponents are in reality just zero and will be treated as such. \\
 
 To calculate the solution vector $\textbf{â}$, we use the definition from the lecture, namely
 \begin{equation}
@@ -60,4 +68,85 @@ where $\textbf{y}$ is just the vector of the asymmetry values. \\
     tmp3 = np.matmul(tmp2,A_T)
     a = np.matmul(tmp3,Data[:,1])
 \end{lstlisting}
+and yields
+\begin{equation*}
+    \hat{\textbf{a}} = \left(\begin{array}{c}
+        a_1 \\  
+        a_2
+    \end{array} \right) 
+    = \left(\begin{array}{c}
+        -0.0375 \\  
+        0.0773
+    \end{array} \right)
+\end{equation*}
 
+If one were to plot those values for $a_1$ and $a_2$ (see Max's, Jonas M.'s and Stefan's solution for that :D), one would see that they fit the data quite nicely, but since it is not part of the task, we will not
+do it here.
+
+\subsection*{(b)}
+
+When trying to calculate the covariance matrix $\textbf{V}[\hat{\textbf{a}}]$ using
+\begin{equation}
+    \textbf{V}[\hat{\textbf{a}}] = (\textbf{A}^T\textbf{A})^{-1}\textbf{V}[\textbf{y}] \textbf{A} (\textbf{A}^T\textbf{A})^{-1} \,,
+    \label{eq:Vara}
+\end{equation}
+one should first have a look at $\textbf{V}[\textbf{y}]$. \\
+In case that all different values of $\textbf{y}$ are uncorrelated, as they are here, \eqref{eq:Vara} simplifies a lot and becomes
+\begin{equation*}
+    \textbf{V}[\hat{\textbf{a}}] = \sigma^2 (\textbf{A}^T \textbf{A})^{-1} \,.
+\end{equation*}
+Using the standard deviation of $\sigma^2 = 0.011$ for the values of $\textbf{y}$, the covariance matrix is
+\begin{equation*}
+    \left(
+        \begin{array}{c c}
+        2.01666667 \cdot 10^{-5}  & -1.67921232 \cdot 10^{-21} \\
+        -1.67921232 \cdot 10^{-21} &  2.01666667 \cdot 10^{-5} \\
+        \end{array}
+    \right)
+\end{equation*}
+Similarly to the design matrix, the elements on the off-diagonal are negligibly small. \\
+Now, the errors of $a_1$ and $a_2$ are just the square root of the main diagonal entries, giving
+
+\begin{equation*}
+    \hat{\textbf{a}}
+    = \left(\begin{array}{c}
+        -0.0375 \pm 0.0045 \\
+         0.0774 \pm 0.0045
+    \end{array} \right)
+\end{equation*}
+with a correlation coefficient of zero, since $a_1$ and $a_2$ are uncorrelated.
+
+\subsection*{(d)}
+
+To calculate $A_0$ and $\delta$, the two ansätze from (a) are set equal.
+By using
+\begin{equation*}
+    \cos(\alpha + \beta) = \cos\alpha \cos\beta - \sin\alpha \sin\beta
+\end{equation*}
+and comparing coefficients of the resulting equation, which will be omitted here, we get
+\begin{equation*}
+    \delta = -\arctan\left(\dfrac{a_2}{a_1}\right) = 64.1462 \pm 2.9926
+\end{equation*}
+and
+\begin{equation*}
+    A_0 = \dfrac{a_1}{\cos(\delta)} =\dfrac{a_1}{\cos \left(\arctan \left(\dfrac{a_2}{a_1}\right)\right)} = -0.0860 \pm 0.0045 \,.
+\end{equation*}
+
+If done by hand, the errors would be calculated using gaussian error propagation, here, numpy's uncertainties package does the work (see \autoref{list:errors} for comparison).
+
+\begin{lstlisting}[language = Python, caption={Calculation of errors of $a_1, a_2, A_0$ and $\delta$.}, label = {list:errors}]
+    def calc_A_0 (a1,a2):
+    return  a1/(unumpy.cos(unumpy.arctan(a2/a1)))
+
+    def calc_delta(a1,a2):
+    return (-1)*unumpy.arctan(a2/a1)
+    
+    Err_a1 = np.sqrt(Var_a[0][0])
+    Err_a2 = np.sqrt(Var_a[1][1])
+    a1 = ufloat(a[0],Err_a1)
+    a2 = ufloat(a[1],Err_a2)
+    print("a1" , repr(a1))
+    print("a2" , repr(a2))
+    A_0 = calc_A_0(a1, a2)
+    delta = calc_delta(a1, a2)
+\end{lstlisting}
