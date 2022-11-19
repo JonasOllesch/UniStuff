@@ -14,14 +14,6 @@ def n_log_likelihood(lam):
 
 n_log_likelihood_x_min = minimize(n_log_likelihood, x0=10).fun
 
-#x = np.linspace(1,20,100)
-#y = n_log_likelihood(x)
-#plt.plot(x,y)
-#plt.grid()
-##plt.tight_layout()
-#plt.xlabel(r"$\lambda$")
-#plt.ylabel(r"$-\ln{ \left( L \right) }$")
-#plt.savefig("n_log_likelihood.pdf")
 
 def difffunc1h2(x):
     return abs(abs(n_log_likelihood(x)) - abs(n_log_likelihood_x_min + 1/2))
