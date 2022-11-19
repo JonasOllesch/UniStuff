@@ -71,6 +71,12 @@ plt.scatter(S1, n_log_likelihood(S1),color='r',label=r" $\sigma \,$Intervall" )
 plt.scatter(S2, n_log_likelihood(S2),color='r')
 plt.scatter(S3, n_log_likelihood(S3),color='r')
 
+print(S1, n_log_likelihood(S1))
+print(S2, n_log_likelihood(S2))
+print(S3, n_log_likelihood(S3))
+
+
+
 plt.legend()
 plt.grid()
 plt.savefig("n_log_likelihood_mit_simga_u_taylor.pdf")
