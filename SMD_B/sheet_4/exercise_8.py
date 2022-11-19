@@ -53,11 +53,33 @@ S1 = newton(difffunc1h2, x0=[9,12])
 S2 = newton(difffunc2, x0=[8,13])
 S3 = newton(difffunc9h2, x0=[7,14])
 
-plt.scatter(S1, n_log_likelihood(S1),color='r',label=r"$\simga$ Intervall$" )
+plt.scatter(S1, n_log_likelihood(S1),color='r',label=r"$\sigma \,$Intervall" )
 plt.scatter(S2, n_log_likelihood(S2),color='r')
 plt.scatter(S3, n_log_likelihood(S3),color='r')
 
 plt.legend()
 plt.grid()
 plt.savefig("n_log_likelihood_mit_simga.pdf")
+plt.clf()
 
+def taylor2o(lam):
+    return -np.log(np.float64(math.factorial(8)*np.math.factorial(9)*np.math.factorial(13)))-30*np.log(10)+3*10+ 30/200*(lam-10)**2
+
+y_taylor = taylor2o(x)
+plt.plot(x,y_taylor,c='green',label=r"$T_{-\log{\left(\mathcal{L}\right)};10}$")
+plt.plot(x,y,c='blue',label=r"$-\log{\mathcal{L}}$")
+plt.xlabel(r"$\lambda$")
+plt.ylabel(r"$-\ln{ \left( \mathcal{L} \right) }$")
+S1 = newton(difffunc1h2, x0=[9,12])
+S2 = newton(difffunc2, x0=[8,13])
+S3 = newton(difffunc9h2, x0=[7,14])
+
+
+plt.scatter(S1, n_log_likelihood(S1),color='r',label=r" $\sigma \,$Intervall" )
+plt.scatter(S2, n_log_likelihood(S2),color='r')
+plt.scatter(S3, n_log_likelihood(S3),color='r')
+
+plt.legend()
+plt.grid()
+plt.savefig("n_log_likelihood_mit_simga_u_taylor.pdf")
+plt.clf()
