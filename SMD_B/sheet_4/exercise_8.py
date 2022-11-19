@@ -2,6 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from numpy import math
 from scipy.optimize import minimize
+from scipy.optimize import newton
 
 def random_poisson(la,number):
     return np.random.poisson(lam=la,size=number)
@@ -10,20 +11,53 @@ def random_poisson(la,number):
 def n_log_likelihood(lam):
     return -np.log(np.float64(math.factorial(8)*np.math.factorial(9)*np.math.factorial(13)))-30*np.log(lam)+3*lam
 
-def n_log_likelihood_m_mlh_p1d2(lam):
-    return abs(-30*np.log(lam)+3*lam +30*np.log(30)-30 -1/2)
 
-minimum_nllh=n_log_likelihood(10)
+n_log_likelihood_x_min = minimize(n_log_likelihood, x0=10).fun
 
-
-#print(minimize(n_log_likelihood_m_mlh_p1d2,10))
-#print(minimize(n_log_likelihood_m_mlh_p2,10))
-#print(minimize(n_log_likelihood_m_mlh_p9d2,10))
-
-#x = np.linspace(0,20,50)
-#y = n_log_likelihood_m_mlh_p1d2(x)
-#print(y)
+#x = np.linspace(1,20,100)
+#y = n_log_likelihood(x)
 #plt.plot(x,y)
-#plt.savefig("test.pdf")
+#plt.grid()
+##plt.tight_layout()
+#plt.xlabel(r"$\lambda$")
+#plt.ylabel(r"$-\ln{ \left( L \right) }$")
+#plt.savefig("n_log_likelihood.pdf")
 
-print(minimize(n_log_likelihood_m_mlh_p1d2,x0=10))
+def difffunc1h2(x):
+    return abs(abs(n_log_likelihood(x)) - abs(n_log_likelihood_x_min + 1/2))
+
+def difffunc2(x):
+    return abs(abs(n_log_likelihood(x)) - abs(n_log_likelihood_x_min + 2))
+
+def difffunc9h2(x):
+    return abs(abs(n_log_likelihood(x)) - abs(n_log_likelihood_x_min + 9/2))
+
+x = np.linspace(1,20,100)
+y = n_log_likelihood(x)
+
+plt.plot(x,y,c='blue',label=r"$-\log{\mathcal{L}}$")
+plt.legend()
+plt.grid()
+#plt.tight_layout()
+plt.xlabel(r"$\lambda$")
+plt.ylabel(r"$-\ln{ \left( \mathcal{L} \right) }$")
+plt.savefig("n_log_likelihood.pdf")
+plt.clf()
+
+
+#plt.tight_layout()
+plt.plot(x,y,c='blue',label=r"$-\log{\mathcal{L}}$")
+plt.xlabel(r"$\lambda$")
+plt.ylabel(r"$-\ln{ \left( \mathcal{L} \right) }$")
+S1 = newton(difffunc1h2, x0=[9,12])
+S2 = newton(difffunc2, x0=[8,13])
+S3 = newton(difffunc9h2, x0=[7,14])
+
+plt.scatter(S1, n_log_likelihood(S1),color='r',label=r"$\simga$ Intervall$" )
+plt.scatter(S2, n_log_likelihood(S2),color='r')
+plt.scatter(S3, n_log_likelihood(S3),color='r')
+
+plt.legend()
+plt.grid()
+plt.savefig("n_log_likelihood_mit_simga.pdf")
+
