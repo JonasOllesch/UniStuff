@@ -57,6 +57,24 @@ plt.clf()
 def taylor2o(lam):
     return -np.log(np.float64(math.factorial(8)*np.math.factorial(9)*np.math.factorial(13)))-30*np.log(10)+3*10+ 30/200*(lam-10)**2
 
+def difftaylor1h2(lam):
+    return -np.log(np.float64(math.factorial(8)*np.math.factorial(9)*np.math.factorial(13)))-30*np.log(10)+3*10+ 30/200*(lam-10)**2 -n_log_likelihood_x_min -1/2
+def difftaylor2(lam):
+    return -np.log(np.float64(math.factorial(8)*np.math.factorial(9)*np.math.factorial(13)))-30*np.log(10)+3*10+ 30/200*(lam-10)**2 -n_log_likelihood_x_min -2
+def difftaylor9h2(lam):
+    return -np.log(np.float64(math.factorial(8)*np.math.factorial(9)*np.math.factorial(13)))-30*np.log(10)+3*10+ 30/200*(lam-10)**2 -n_log_likelihood_x_min -9/2
+
+
+
+
+S1t = newton(difftaylor1h2,x0=[9,12])
+S2t = newton(difftaylor2,x0=[8,13])
+S3t = newton(difftaylor9h2,x0=[7,14])
+print("")
+print(S1t)
+print(S2t)
+print(S3t)
+print("")
 y_taylor = taylor2o(x)
 plt.plot(x,y_taylor,c='green',label=r"$T_{-\log{\left(\mathcal{L}\right)};10}$")
 plt.plot(x,y,c='blue',label=r"$-\log{\mathcal{L}}$")
@@ -71,9 +89,9 @@ plt.scatter(S1, n_log_likelihood(S1),color='r',label=r" $\sigma \,$Intervall" )
 plt.scatter(S2, n_log_likelihood(S2),color='r')
 plt.scatter(S3, n_log_likelihood(S3),color='r')
 
-print(S1, n_log_likelihood(S1))
-print(S2, n_log_likelihood(S2))
-print(S3, n_log_likelihood(S3))
+plt.scatter(S1t, taylor2o(S1t),color='#0ABAB5',label=r" $\sigma_{T} \,$Intervall" )
+plt.scatter(S2t, taylor2o(S2t),color='#0ABAB5')
+plt.scatter(S3t, taylor2o(S3t),color='#0ABAB5')
 
 
 
