@@ -1,12 +1,12 @@
 all: build/sheet7.pdf
 
 # hier Python-Skripte:
-build/plot.pdf: code-ex12.py  ../matplotlibrc ../header-matplotlib.tex | build
+build/plot.pdf: code-ex14.py  ../matplotlibrc ../header-matplotlib.tex | build
 	# so that matplotlib can find the tex header when running
 	# LaTeX in the tmp directory
 	# and set the matplotlibrc
 	TEXINPUTS=$$(pwd)/..: MATPLOTLIBRC=../matplotlibrc 
-		python code-ex12.py 
+		python code-ex14.py 
 
 # hier weitere Abhängigkeiten für build/sheet7.pdf deklarieren:
 build/sheet7.pdf: build/plot.pdf

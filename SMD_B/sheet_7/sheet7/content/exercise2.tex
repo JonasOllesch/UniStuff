@@ -1,0 +1,131 @@
+\section*{Exercise 14 - \textit{Balloon Experiment}}
+
+\subsection*{(a)}
+
+First, we have to calculate the likelihood with the seven
+measurements from the exercise.
+
+With
+\begin{equation*}
+    x = [4135, 4202, 4203, 4218, 4227, 4231, 4310]
+\end{equation*}
+and assuming a poissonian distribution for the measurements, we get
+the negative log-likelihood
+\begin{equation*}
+    -\ln(\mathscr{L}) = 7\lambda - \sum_{i=1}^7 x_i \ln{\lambda}
+    + \sum_{i=1}^7 \ln(x_i!) \,.
+\end{equation*}
+
+To find the maximum, we just take the derivative and set it equal to zero.
+
+Here, we get
+
+\begin{equation*}
+    \frac{\partial \mathscr{L}}{\partial \lambda} = 7 
+    - \frac{1}{\lambda} \sum_{i=1}^7x_i = 0 \,,
+\end{equation*}
+
+which, if rearranged for $\lambda$ just yields the mean
+\begin{equation*}
+    \hat{\lambda} = 4128 \,.
+\end{equation*}
+
+\subsection*{(b)}
+
+Now, we just replace $\lambda$ with a linear polynomial of the from
+$\lambda = mx + n$ and calculate the most likely parameters for $m$ and $n$ as can be seen in \autoref{list:mn}.
+
+\begin{lstlisting}[language = Python, caption={Calculation of $m, n$.}, label = {list:mn}]
+    def calc_lin_likelihood(params):
+    return (7*params[1] + 28 * params[0] 
+    - (data[0]*np.log(params[0] + params[1]) + 
+    data[1]*np.log(2*params[0] + params[1]) 
+    + data[2]*np.log(3*params[0] + params[1])
+    + data[3]*np.log(4*params[0] + params[1]) 
+    + data[4]*np.log(5*params[0] + params[1]) 
+    + data[5]*np.log(6*params[0] + params[1]) 
+    + data[6]*np.log(7*params[0] + params[1])))
+
+data     = np.array([4135, 4202, 4203, 4218, 4227, 4231, 4310])
+new_data = np.array([4135, 4202, 4203, 4218, 4227, 4231, 4310,4402])
+
+
+
+minmin = minimize(calc_lin_likelihood, x0 = [30,4000])
+\end{lstlisting}
+
+With that, we get
+\begin{equation*}
+    m = 22.1528
+\end{equation*}
+and
+\begin{equation*}
+    n = 4129.0902 \,.
+\end{equation*}
+
+(To be honest, we didn't quite know what to do with the $\sum_{i=1}^7 \ln(x_i!)$-term as is goes toward infinity for large values of $x_i$ as we have them here, so we just ignored it. 
+Still, the results seem pretty nice.)
+
+\subsection*{(c)}
+
+Wilks' Theorem is applicable, if
+\begin{enumerate}
+    \item the null hypothesis can be obtained by linear parameter transformations as a special case of the alternative hypothesis and
+    \item the sample size approaches infinity.
+\end{enumerate}
+
+With over $4000$ counts per day and the linear approach from task (b), both conditions are fulfilled here.+
+In code, the likelihood test can be done as seen in \autoref{list:likehoodtest}.
+
+\begin{lstlisting}[language = Python, caption={Calculation of Significance $\alpha$ and the test statistic $\Gamma$.}, label = {list:likehoodtest}]
+    def calc_likelihood(lamb):
+    return (7*lamb - np.sum(data)*np.log(lamb))
+    signifi = calc_lin_likelihood(minmin.x)/calc_likelihood(lamb)
+    print('Significance: ', signifi)
+    print('Test Statistic: ', -2*np.log(signifi))
+\end{lstlisting}
+
+This results in a significance of
+\begin{equation*}
+    \alpha = 1.000007183 \approx 1
+\end{equation*}
+and a test statistic of
+\begin{equation*}
+    \Gamma = -1.4366 \cdot 10^{-5} \,,
+\end{equation*}
+which is quite close to zero, meaning the measured data is very insignificant.
+
+\subsection*{(d)}
+
+Now, we just add the 8th data point and calculate (a)-(c) again. \\
+
+For (a), we get
+\begin{equation*}
+    \hat{\lambda}_{new} = 4241 \,,
+\end{equation*}
+for (b)
+\begin{equation*}
+    m = 18.8482 
+\end{equation*}
+and
+\begin{equation*}
+    n = 4143.2048
+\end{equation*}
+and for (c)
+\begin{equation*}
+    \alpha = 1.149965
+\end{equation*}
+and
+\begin{equation*}
+    \Gamma = -0.2795 \,.
+\end{equation*}
+
+The result for (c) is notably more significant, but $\alpha$ is still close to $1$.
+
+\subsection*{(e)}
+
+The problem with the added data from task (d) is that it is heavily biased.
+As stated in the task, the 8th measurement is performed to support his thesis, which could explain the one-week gap in the data.
+This gap could be used to obscure any fluctuations that might have appeared in the data if measured more regularly.
+Even if the significance is higher, further measurements should be performed to check the hypothesis's plausibility.
+
