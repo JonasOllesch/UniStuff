@@ -1,0 +1,36 @@
+\section*{Exercise 14 - \textit{Balloon Experiment}}
+
+\subsection*{(a)}
+
+First, we have to calculate the likelihood with the seven
+measurements from the exercise.
+
+With
+\begin{equation*}
+    x = [4135, 4202, 4203, 4218, 4227, 4231, 4310]
+\end{equation*}
+and assuming a poissonian distribution for the measurements, we get
+the negative log-likelihood
+\begin{equation*}
+    -\ln(\mathscr{L}) = 7\lambda - \sum_{i=1}^7 x_i \ln{\lambda}
+    + \sum_{i=1}^7 \ln(x_i!) \,.
+\end{equation*}
+
+To find the maximum, we just take the derivative and set it equal to zero.
+
+Here, we get
+
+\begin{equation*}
+    \frac{\partial \mathscr{L}}{\partial \lambda} = 7 
+    - \frac{1}{\lambda} \sum_{i=1}^7x_i = 0 \,,
+\end{equation*}
+
+which, if rearranged for $\lambda$ just yields the mean
+\begin{equation*}
+    \hat{\lambda} = 4128 \,.
+\end{equation*}
+
+\subsection*{(b)}
+
+Now, we just replace $\lambda$ with a linear polynomial of the from
+$y = mx + n$.
