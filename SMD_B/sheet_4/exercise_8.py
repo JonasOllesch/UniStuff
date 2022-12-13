@@ -70,11 +70,7 @@ def difftaylor9h2(lam):
 S1t = newton(difftaylor1h2,x0=[9,12])
 S2t = newton(difftaylor2,x0=[8,13])
 S3t = newton(difftaylor9h2,x0=[7,14])
-print("")
-print(S1t)
-print(S2t)
-print(S3t)
-print("")
+
 y_taylor = taylor2o(x)
 plt.plot(x,y_taylor,c='green',label=r"$T_{-\log{\left(\mathcal{L}\right)};10}$")
 plt.plot(x,y,c='blue',label=r"$-\log{\mathcal{L}}$")
@@ -92,8 +88,6 @@ plt.scatter(S3, n_log_likelihood(S3),color='r')
 plt.scatter(S1t, taylor2o(S1t),color='#0ABAB5',label=r" $\sigma_{T} \,$Intervall" )
 plt.scatter(S2t, taylor2o(S2t),color='#0ABAB5')
 plt.scatter(S3t, taylor2o(S3t),color='#0ABAB5')
-
-
 
 plt.legend()
 plt.grid()
