@@ -1,12 +1,15 @@
 import numpy as np
 
-def create_response_matrix(e,n):
+def create_response_matrix(e,n):  #creating the matrix 
     A = np.eye(n,M=n,k=-1)*e+np.eye(n,M=n,k=0)*(1-e)+np.eye(n,M=n,k=1)*e
     return A
+
 A = create_response_matrix(0.23, 20)
-f = np.array([193, 485, 664, 763, 804, 805, 779, 736, 684, 626, 566, 508, 452, 400, 351, 308, 268, 233, 202, 173])
-g = np.matmul(A,f)
-A_eigenvalue = np.linalg.eig(A)[0]
+f = np.array([193, 485, 664, 763, 804, 805, 779, 736, 684, 626, 566, 508, 452, 400, 351, 308, 268, 233, 202, 173])#initialize variables
+g = np.matmul(A,f)                                                                                                #initialize variables
+
+
+A_eigenvalue = np.linalg.eig(A)[0]  #calculate eigenvalues and vec
 A_eigenvektor = np.linalg.eig(A)[1]
 #print(A_eigenvalue)
 #print(A_eigenvektor[0,:])
@@ -14,7 +17,7 @@ A_eigenvektor = np.linalg.eig(A)[1]
 #print(f)
 #print(g)
 #print(A)
-def bubblesort(A,B):
+def bubblesort(A,B):    #sorting the eigenvalues with the best algorithm ever
     werte = np.copy(A)
     Matrix = np.copy(B)
     for i in range(len(werte)):
@@ -31,10 +34,17 @@ def bubblesort(A,B):
                 #print(i,Matrix[0,:])
     return werte, Matrix
 
-tmp2 = bubblesort(A_eigenvalue,A_eigenvektor)
+tmp2 = bubblesort(A_eigenvalue,A_eigenvektor)   #call sorting
 A_eig_val_sort = tmp2[0]
 A_eig_vec_sort = tmp2[1]
 #print(A_eig_val_sort)
 #print(A_eig_vec_sort[0,:])
-A_eig_vec_sort_inv = np.linalg.inv(A_eig_vec_sort)
-D = np.matmul(np.matmul(A_eig_vec_sort_inv,A),A_eig_vec_sort)
+A_eig_vec_sort_inv = np.linalg.inv(A_eig_vec_sort)              #invert eigenvector matrix
+D = np.matmul(np.matmul(A_eig_vec_sort_inv,A),A_eig_vec_sort)   #calculate diagonal matrix
+
+
+D_prime = np.zeros(np.shape(D)) #zeros all entries, which are not on the main diagonal
+for i in range(len(D)):
+    D_prime[i][i] = D[i][i]
+D = np.copy(D_prime)    
+del D_prime
