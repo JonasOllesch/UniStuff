@@ -47,7 +47,7 @@ A_eigenvektor = np.linalg.eig(A)[1]
 tmp2 = bubblesort(A_eigenvalue,A_eigenvektor)   #call sorting
 A_eig_val_sort = tmp2[0]
 A_eig_vec_sort = tmp2[1]
-
+#print(A_eig_val_sort)
 A_eig_vec_sort_inv = np.linalg.inv(A_eig_vec_sort)              #invert eigenvector matrix
 D = np.matmul(np.matmul(A_eig_vec_sort_inv,A),A_eig_vec_sort)   #calculate diagonal matrix
 
@@ -69,6 +69,7 @@ b_measured = np.matmul(tmp,g_measured)
 g_cov = np.diag(g)          #cause g is poisson distributed the cov should be the expected value
 b_cov = np.matmul(np.matmul(tmp,g_cov),np.transpose(tmp))
 b_norm = b_measured/np.sqrt(np.diag(b_cov))
+print(abs(b_norm))
 
 
 plt.hist(np.arange(20) - 0.5, bins=np.arange(21) - 0.5, weights=abs(b_norm), histtype="bar")
@@ -85,13 +86,18 @@ b_reg = np.copy(b_measured)
 for i in range(0,len(f)):
     if abs(b_norm[i]) < 1:
         for j in range(i,len(f)):
-            cut = j
+            cut = i
             b_reg[j] = 0
         break
 
-plt.hist(np.arange(20) - 0.5, bins=np.arange(21) - 0.5, weights=b,          label="Truth",  histtype="step",    color="blue")
-plt.hist(np.arange(20) - 0.5, bins=np.arange(21) - 0.5, weights=b_measured, label="$b$",    histtype="step",    color="#0B610B")
-plt.hist(np.arange(20) - 0.5, bins=np.arange(21) - 0.5, weights=b_reg,      label="b $reg$",histtype="step",    color="red")
+# unfolding
+f_unf = np.matmul(A_eig_vec_sort,b_measured)
+f_unf_reg = np.matmul(A_eig_vec_sort,b_reg)
+f_unf_cov = np.matmul(np.matmul(A_eig_vec_sort,b_cov),np.transpose(A_eig_vec_sort))
+f_unf_reg_cov = np.matmul(np.matmul(A_eig_vec_sort,b_reg),np.transpose(A_eig_vec_sort))#you have to regularize the cov matrix, but i don't know how
+plt.hist(np.arange(20) - 0.5, bins=np.arange(21) - 0.5, weights=b,          label=r"true",  histtype="step",    color="blue")
+plt.hist(np.arange(20) - 0.5, bins=np.arange(21) - 0.5, weights=b_measured, label=r"$b_{i}$",    histtype="step",    color="#0B610B")
+plt.hist(np.arange(20) - 0.5, bins=np.arange(21) - 0.5, weights=b_reg,      label=r"$b_{i,reg}$",histtype="step",    color="red")
 plt.xlim(-0.4,20)
 plt.grid()
 plt.xlabel("Index")
@@ -102,20 +108,13 @@ plt.xticks(np.arange(0,20,step=2))
 plt.savefig("build/hist.pdf")
 plt.clf()
 
-# unfolding
-f_unf = np.matmul(A_eig_vec_sort,b_measured)
-f_unf_reg = np.matmul(A_eig_vec_sort,b_reg)
-f_unf_cov = np.matmul(np.matmul(A_eig_vec_sort,b_cov),np.transpose(A_eig_vec_sort))
-f_unf_reg_cov = np.matmul(np.matmul(A_eig_vec_sort,b_reg),np.transpose(A_eig_vec_sort))#you have to regularize the cov matrix somehow 
 
-
-
-plt.errorbar(np.arange(20),f_unf,yerr=np.sqrt(np.diag(f_unf_cov)),drawstyle="steps-mid",color="red",label="f unf ",linestyle=('dashed'),capsize=(2))
-plt.errorbar(np.arange(20),f_unf_reg,yerr=np.sqrt(f_unf_reg),drawstyle="steps-mid",color="#0B610B",label=r"f_reg",linestyle=('dashdot'),capsize=(2))
-plt.plot(np.arange(20),f,drawstyle="steps-mid",color="blue",label=r"Truth")
+plt.errorbar(np.arange(20),f_unf,yerr=np.sqrt(np.diag(f_unf_cov)),drawstyle="steps-mid",color="red",label=r"$f_{unf}$ ",linestyle=('dashed'),capsize=(2))
+plt.errorbar(np.arange(20),f_unf_reg,yerr=np.sqrt(f_unf_reg),drawstyle="steps-mid",color="#0B610B",label=r"$f_{reg,unf}$",linestyle=('dashdot'),capsize=(2))
+plt.plot(np.arange(20),f,drawstyle="steps-mid",color="blue",label=r"true")
 plt.grid()
 plt.xlabel("bins")
-plt.ylabel("events")
+plt.ylabel("measurement")
 plt.legend(loc="best")
 plt.xticks(np.arange(0,20,step=2))
 plt.savefig("build/hist2.pdf")
