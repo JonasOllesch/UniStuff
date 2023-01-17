@@ -17,7 +17,7 @@ Such restriction do not apply to the Lomb-Scargle periodogram, which can always 
 
 After loading the data from the \texttt{.txt}-file, the code for the Lomb-Scargle periodogram is implemented as seen below.
 
-\begin{lstlisting}[language = Python, caption={Implementation of the Lomb-Scagle periodogram}, label = {list:lombscargle}]
+\begin{lstlisting}[language = Python, caption={Implementation of the Lomb-Scagle periodogram.}, label = {list:lombscargle}]
     #0)
     column_names = ["Date", "Time", "Measurement", "Temperature"]
     
@@ -52,3 +52,43 @@ The corresponding plot can be seen in \autoref{fig:lombscarg}.
     \caption{Lomb-Scargle periodogram.}
     \label{fig:lombscarg}
 \end{figure}
+
+\subsection*{(c)}
+
+Taking a closer look at \autoref{fig:lombscarg} we can clearly see how the frequencies at lower values grow larger in amplitude, hinting at strong
+daily, leading back to the usually large differences in temperatures during the day and night, and monthly fluctuations, which  can be explained by looking at different days in the same season 
+- those tend to have around the same temperatures. \\
+
+Furthermore, we see peaks where one would expect a year to have passed. This makes sense as well, as the temperatures tend to follow
+the same trend for repeating seasons. \\
+
+\subsection*{(d)}
+
+First, we grid the data as can be seen in \autoref{list:gridding}.
+
+\begin{lstlisting}[language = Python, caption={Data gridding.}, label = {list:gridding}]
+    def resampled_fuction(x, x_orig, y_orig):
+    interp = interp1d(x_orig, y_orig)
+    return interp(x)
+
+    gridded_x = np.linspace(2000,2008.9999620210326, len(M_scarg_2))
+    tofou = resampled_fuction(gridded_x, M_scarg_2,T_scarg_2)
+\end{lstlisting}
+
+Then, we Fourier transform the new gridded data as seen in \autoref{list:furie}, which results in \autoref{fig:fourier}.
+
+\begin{lstlisting}[language = Python, caption={Implementation of the Fourier transformation.}, label = {list:furie}]
+    A_signal_gridded = rfft(tofou)
+    frequencies = rfftfreq(np.size(gridded_x),1/365)
+\end{lstlisting}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics{plots/furie.pdf}
+    \caption{Fourier transformation for the gridded data.}
+    \label{fig:fourier}
+\end{figure}
+
+\subsection*{(e)}
+
+Lastly, we isolate the two highest amplitude frequencies, which are conveniently the first two entries, so that we get \autoref{fig:e}.
