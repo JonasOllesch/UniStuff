@@ -43,7 +43,7 @@ plt.tight_layout()
 #plt.yscale('log')
 #plt.xlim(0, 1)
 
-plt.savefig('lomb_scarg.pdf')
+plt.savefig('plots/lomb_scarg.pdf')
 plt.clf()
 
 #d)
@@ -53,17 +53,17 @@ def resampled_fuction(x, x_orig, y_orig):
     return interp(x)
 
 gridded_x = np.linspace(2000,2008.9999620210326, len(M_scarg_2))
-gridded_y = resampled_fuction(gridded_x, M_scarg_2, T_scarg_2)
+tofou = resampled_fuction(gridded_x, M_scarg_2,T_scarg_2)
 
-A_signal_gridded = rfft(gridded_y)
-frequencies = rfftfreq(np.size(gridded_x), np.diff(gridded_x)[0])
+A_signal_gridded = rfft(tofou)
+frequencies = rfftfreq(np.size(gridded_x),1/365)
 
 
-plt.plot(gridded_x/np.pi, gridded_y, 'r+', label='Gridded data')
+plt.plot(frequencies*2*np.pi, np.abs(A_signal_gridded), 'r-', label='Gridded data')
 plt.xlabel(r"x/$\pi$")
 plt.ylabel("y")
 plt.legend(loc='upper right', framealpha=0.95)
 #plot_amplitude(frequencies*2*np.pi, np.abs(A_signal_gridded), 'r-', label='Gridded data', xlim=(0, 5), ylim=(0, 30))
 plt.tight_layout()
-plt.savefig('furie.pdf')
+plt.savefig('plots/furie.pdf')
 plt.clf()
