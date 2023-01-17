@@ -1,56 +1,39 @@
 import numpy as np
 import matplotlib.pyplot as plt
-from scipy.optimize import minimize
-from scipy.special import factorial
+import pandas as pd
+from scipy.signal import lombscargle
 
-# params[0] holds m, params[1] holds n as values for y = mx +n
+#0)
+column_names = ["Date", "Time", "Measurement", "Temperature"]
 
-def calc_lin_likelihood(params):
-    return (7*params[1] + 28 * params[0] 
-    - (data[0]*np.log(params[0] + params[1]) + 
-    data[1]*np.log(2*params[0] + params[1]) 
-    + data[2]*np.log(3*params[0] + params[1])
-    + data[3]*np.log(4*params[0] + params[1]) 
-    + data[4]*np.log(5*params[0] + params[1]) 
-    + data[5]*np.log(6*params[0] + params[1]) 
-    + data[6]*np.log(7*params[0] + params[1])))
-    
-def calc_likelihood(lamb):
-    return (7*lamb - np.sum(data)*np.log(lamb))
+tempdata = pd.read_csv("temperatures_dortmund.csv", names=column_names, sep=",", skiprows=1)
 
-def calc_new_lin_likelihood(params):
-    return (8*params[1] + 42 * params[0] 
-    - (new_data[0]*np.log(params[0] + params[1]) + 
-    new_data[1]*np.log(2*params[0] + params[1]) 
-    + new_data[2]*np.log(3*params[0] + params[1])
-    + new_data[3]*np.log(4*params[0] + params[1]) 
-    + new_data[4]*np.log(5*params[0] + params[1]) 
-    + new_data[5]*np.log(6*params[0] + params[1]) 
-    + new_data[6]*np.log(7*params[0] + params[1])
-    + new_data[7]*np.log(14*params[0] + params[1])))
+#b)
+Measurement = tempdata["Measurement"].to_numpy()
+Temperature = tempdata["Temperature"].to_numpy()
 
-data     = np.array([4135, 4202, 4203, 4218, 4227, 4231, 4310])
-new_data = np.array([4135, 4202, 4203, 4218, 4227, 4231, 4310,4402])
+#we kill everything that is broken
+mask = np.where(Measurement < 2009)
+#Measurement_2 = Measurement(mask)
+M_scarg_1 = Measurement[mask]
+T_scarg_1 = Temperature[mask]
+#print(len(M_scarg_1))
+#print(len(T_scarg_1))
+M_scarg_2 = M_scarg_1[np.where(~np.isnan(T_scarg_1))]
+T_scarg_2 = T_scarg_1[np.where(~np.isnan(T_scarg_1))]
 
-lamb = np.mean(data)
-new_lamb = np.mean(new_data)
+freq = np.linspace(0.001, 2000, 10000) 
+lomb_scarg = lombscargle(np.array(M_scarg_2), np.array(T_scarg_2), freq, normalize=True)
 
 
-minmin = minimize(calc_lin_likelihood, x0 = [30.0,4000.0])
+#plt.figure(figsize=(7, 4))
+plt.plot(freq, lomb_scarg, lw=1.0, c='paleturquoise')
+plt.stem(freq, lomb_scarg, label=r"$\mathrm{P}(N_{\mathrm{signal}})$")
+#plt.axvline(1/11, 0, 1, label=r'$T\,=\,11\,$a', color='black')
+plt.xlabel(r'Frequency $f\,/\,\mathrm{a}$')
+plt.ylabel(r"$\mathrm{P}(2\pi f)$")
+plt.legend(loc='best')
+#plt.xlim(0, 1)
 
-print('minmin: ', minmin)
-
-signifi = calc_lin_likelihood(minmin.x)/calc_likelihood(lamb)
-
-print('Significance: ', signifi)
-print('Test Statistic: ', -2*np.log(signifi))
-
-
-new_minmin = minimize(calc_new_lin_likelihood, x0 = [30.0,4000.0])
-
-print('new_minmin: ', new_minmin)
-
-new_signifi = calc_new_lin_likelihood(new_minmin.x)/calc_likelihood(new_lamb)
-
-print('New Significance: ', new_signifi)
-print('New Test Statistic: ', -2*np.log(new_signifi))
+plt.savefig('lomb_scarg.pdf')
+plt.clf()
