@@ -3,7 +3,6 @@ import matplotlib.pyplot as plt
 import pandas as pd
 from scipy.signal import lombscargle
 from scipy.interpolate import interp1d
-
 from scipy.fft import rfft, rfftfreq
 
 
