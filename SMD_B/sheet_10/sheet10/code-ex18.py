@@ -27,15 +27,16 @@ M_scarg_2 = M_scarg_1[mask2]
 T_scarg_2 = T_scarg_1[mask2]
 freq_max = 400
 
-freq = np.linspace(0.001, freq_max*2*np.pi, 10) 
+freq = np.linspace(0.001, freq_max*2*np.pi, 1000) 
 lomb_scarg = lombscargle(np.array(M_scarg_2), np.array(T_scarg_2), freq, normalize=True)
 
 
 #plt.figure(figsize=(7, 4))
-plt.plot(freq/(2*np.pi), lomb_scarg,"x",ms=1, c='blue')
+plt.plot(freq/(2*np.pi), 100*lomb_scarg,"x",ms=1, c='blue')
 #plt.stem(freq, lomb_scarg, label=r"$\mathrm{P}(N_{\mathrm{signal}})$")
 #plt.axvline(1/11, 0, 1, label=r'$T\,=\,11\,$a', color='black')
 plt.xlim(0, freq_max)
+plt.ylim(0,10)
 plt.xlabel(r'Frequency $f\,/\,\mathrm{a}$')
 plt.ylabel(r"$\mathrm{P}(2\pi f)$")
 plt.legend(loc='best')
