@@ -2,4 +2,19 @@
 
 \subsection*{(a)}
 
+First we have to decide whether we can apply a Fourier transformation or Lomb-Scargle periodogram to our data.
 
+In order for a Fourier transformation to be applicable, your data has to be uniformly sampled. If that's not the case, the data needs to be gridded
+first. \\
+
+At first, the data we have here looks to be uniformly sampled, but at some point toward the end (from September 18th, 2008, as the exercise sheet so kindly tells us),
+the time between measurements decreases from fifteen to ten minutes
+(and some data points are just missing entirely or are just broken instead). \\
+
+Such restriction do not apply to the Lomb-Scargle periodogram, which can always be applied to your data.
+
+After loading the data from the \texttt{.txt}-file, the code for the Lomb-Scargle periodogram is implemented as seen below.
+
+\begin{lstlisting}[language = Python, caption={Implementation of the Lomb-Scagle periodogram}, label = {list:lombscargle}]
+
+\end{lstlisting}
