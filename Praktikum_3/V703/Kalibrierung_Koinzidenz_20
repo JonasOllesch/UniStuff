@@ -1,0 +1,14 @@
+#Zeit in ns
+20
+#links ist negativ
+#Verzögerungsdauer      Messdauer       Counts
+-32                     120             33
+-24                     60              384
+-20                     60              919
+-16                     30              658
+-12                     30              620
+-8                      30              632
+-4                      30              656
+-3                      30              639
+-2                      30              619 
+-1                      30              585 
