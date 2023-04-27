@@ -4,8 +4,8 @@ from scipy.optimize import curve_fit
 from uncertainties import ufloat
 import uncertainties.unumpy as unp
 
-from iminuit import cost
-from iminuit import Minuit
+#from iminuit import cost
+#from iminuit import Minuit
 
 def pdf(x,N,lam,y):
     return (N*np.exp(-lam*x))+y
@@ -48,11 +48,11 @@ print(popt_zeit)
 #print(Channel)
 xmin = np.append(Channel,gefüllte_Kanäle)
 #c = cost.UnbinnedNLL(xmin,pdf)
-c = cost.LeastSquares(Channel, gefüllte_Kanäle,0.1,pdf)
-m = Minuit(c, N=39, lam=0.014566, y=0.9,limit_N=(20,100),limit_lam=(0.0001,0.05),limit_y=(0.5,2))
-m.migrad()
+#c = cost.LeastSquares(Channel, gefüllte_Kanäle,0.1,pdf)
+#m = Minuit(c, N=39, lam=0.014566, y=0.9,limit_N=(20,100),limit_lam=(0.0001,0.05),limit_y=(0.5,2))
+#m.migrad()
 #print(m.migrad())
-print(m.values)
+#print(m.values)
 x_test = np.linspace(0,400,1000)
 y_test = pdf(x_test,36.24,0.01256,1.217)
 
