@@ -1,5 +1,5 @@
 #Zeit in ns
-20
+#20
 #links ist negativ
 #Verzögerungsdauer      Messdauer       Counts
 -32                     120             33

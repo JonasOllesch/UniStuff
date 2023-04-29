@@ -1,2 +1,76 @@
 \section{Auswertung}
 \label{sec:auswertung}
+
+
+Die Messung lief insgsamt $t = 160955 \, \unit{\second}$. Das entpricht $44,71 \, \unit{\hour}$. In dieser Zeit wurden $N_{start} = 2595364$ Startsignale und $N_{stop} = 5046$ Stopsignale gemessen.
+Während der Messzeit wurden insgsamt $N_{\mu} = 3235 $ Myonen registriert.
+
+\subsection{Kalibrierung des MCA}
+\label{sec:KaliMCA}
+
+Der MCA wird mithilfe eines Doppelimpulsgenerator justiert. Doppelimulsgenerator erzeugt zwei Impulse mit einem festen Abstand.
+Diese Impulse werden von MCA je nach zeitlichen Abstand einem Kanal zugeordnet. In \autoref{tab:KaliMCA_tab} sieht man die Kanalnummer und den dazugehörenden Abstand der Impulse.
+
+\begin{table}
+    \centering
+    \caption{Einordnung der Impulsabstände in die Kanäle des MCA}
+    \label{tab:KaliMCA_tab}
+    \begin{tabular}{c c}
+    \toprule
+     Kanal &  $Zeit \mathbin{/} \unit{\micro\second}$ \\
+    \midrule
+     430,0 &                             9,5 \\
+     384,0 &                             8,5 \\
+     338,0 &                             7,5 \\
+     292,0 &                             6,5 \\
+     246,0 &                             5,5 \\
+     200,0 &                             4,5 \\
+     154,0 &                             3,5 \\
+     108,0 &                             2,5 \\
+      62,0 &                             1,5 \\
+      16,0 &                             0,5 \\
+    \bottomrule
+    \end{tabular}
+    \end{table}
+
+Die Zeit für die Kanäle, die zwischen den bestimmten Kanälen liegen, werden durch eine lineare Regression bestimmt \autoref{fig:lin_reg_Channel_zeit}.
+Die Parameter des Fits sind durch 
+\begin{equation*}
+    \text{Impulsabstände} = \left(0,021 \pm 0,000 \right) \unit{\micro\second} \cdot  \text{Kanalnummer} + \left(0,152 \pm 0,000 \right) \unit{\micro\second}
+    \label{eq:Kanal_Zeit_Rechnung}
+\end{equation*}
+gegebenen.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics{build/Channel_Kalibrierung.pdf}
+    \caption{Lineare Regression durch die Kanäle des MCA und die dazugehörenden Zeiten.}
+    \label{fig:lin_reg_Channel_zeit}
+\end{figure}
+
+\subsection{Bestimmung der Lebensdauer}
+\label{sec:Bes_Leb}
+
+Zunächst werden die Kanalnummer mit der Gleichung \autoref{eq:Kanal_Zeit_Rechnung} in Zeiten umgerechnet.
+In dem Plot \autoref{fig:expon} sind die Anzahl der Myonen, die in einen Kanal gemessen wurden, gegen die Lebensdauer dieser Myonen aufgetragen.
+Es wird eine Ausgeleichsfunktion der Form von \autoref{eq:exponential_decay} gefittet.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics{build/Myonenzerfall_Zeit.pdf}
+    \caption{Exponentieller Zerfall der Myonen.}
+    \label{fig:expon}
+\end{figure}
+
+Die Parameter des Fits sind gegeben durch:
+
+\begin{align*}
+    N_0         &=34,251  \pm \, 0,758                                 \\
+    \lambda     &= (0,478 \pm \, 0,0206)  \, \unit{\dfrac{1}{\micro\second}} \\
+    B           &=0,340   \pm \, 0,267
+\end{align*}
+
+Aus der Inversen der Zerfallskonstanten wird die Lebensdauer brechnet
+\begin{equation*}
+    \tau = \dfrac{1}{\lambda} = \left(2,090  \pm 0,090 \right) \unit{\micro\second}\,.
+\end{equation*}
