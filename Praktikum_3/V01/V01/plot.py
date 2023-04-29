@@ -6,7 +6,7 @@ from uncertainties import correlated_values
 import uncertainties.unumpy as unp
 import pandas as pd
 
-
+from scipy import interpolate
 
 def writeW(Wert,Beschreibung):
     output = ("build/Auswertung")   
@@ -25,7 +25,7 @@ def writeW(Wert,Beschreibung):
 #plt.rcParams['text.usetex'] = True
 
 def pdf(x,N,lam,y):
-    return (N*np.exp(-lam*x))+y
+    return (N*np.exp(-lam*x)) + y
 
 Channel_Kalibrierung = np.genfromtxt('Messdaten/Channel_Kalibrierung.txt',encoding='unicode-escape')
 def pol1(a,b,x):
@@ -75,7 +75,7 @@ plt.clf()
 Messung = np.genfromtxt('Messdaten/v01.Spe',skip_header=12,skip_footer=15,encoding='unicode-escape')        
 gefüllte_Kanäle = Messung[3:]
 Channel= np.arange(len(gefüllte_Kanäle))
-writeW(np.sum(Messung),"Anzahl der gemessenen Myonen")
+#writeW(np.sum(Messung),"Anzahl der gemessenen Myonen")
 #print("der channel Geraden: " ,popt_channel)
 Zeit = (popt_channel[1]*Channel+popt_channel[0])
 
@@ -100,9 +100,9 @@ x_zeit = np.linspace(0,11,1000)
 y_zeit = pdf(x_zeit,*popt_zeit)
 Zeit_parameter = correlated_values(popt_zeit,pcov_zeit)
 
-print("Zeit_parameter", Zeit_parameter)
-writeW(Zeit_parameter,"die Parameter aus dem Zeit fit")
-writeW(1/Zeit_parameter[1]," Mittlere Lebensdauer in mu s")
+#print("Zeit_parameter", Zeit_parameter)
+#writeW(Zeit_parameter,"die Parameter aus dem Zeit fit")
+#writeW(1/Zeit_parameter[1]," Mittlere Lebensdauer in mu s")
 
 plt.errorbar(Zeit,gefüllte_Kanäle,yerr=np.sqrt(gefüllte_Kanäle),elinewidth=0.2,capthick=1,markersize=2,color = 'green', fmt='x')
 plt.plot(x_zeit,y_zeit,color='red',label="gefittete Funktion")
@@ -133,11 +133,19 @@ KK20u = KK20u[:]/KK20[:,1]
 #KK10u= KK10u*20
 #KK15u= KK15u*20
 #KK20u= KK20u*20
+x_kali_koin = np.linspace(-32,32,1000)
+plateu_10 = unp.nominal_values(KK10u[KK10u > 18])
+print(plateu_10)
+plateu_mean = np.mean(plateu_10)
+print(plateu_mean)
+print(plateu_mean/2)
+print(unp.nominal_values(KK10u))
 
 plt.errorbar(KK10[:,0],unp.nominal_values(KK10u[:]),yerr=unp.std_devs(KK10u[:]),color = 'blue', fmt='x',label="Messwerte")
 plt.ylabel("Zählung")
-plt.xlabel("Verzögerungszeit")
+plt.xlabel(r"\text{Verzögerungszeit} in \unit{\nano\second}")
 plt.grid(linestyle = ":")
+plt.ylim(0,30)
 plt.tight_layout()
 plt.legend()
 plt.savefig('build/Kalibrierung_Koinzidenz_10')
@@ -145,7 +153,7 @@ plt.clf()
 
 plt.errorbar(KK15[:,0],unp.nominal_values(KK15u[:]),yerr=unp.std_devs(KK15u[:]),color = 'blue', fmt='x',label="Messwerte")
 plt.ylabel("Zählung")
-plt.xlabel("Verzögerungszeit")
+plt.xlabel(r"\text{Verzögerungszeit} in \unit{\nano\second}")
 plt.grid(linestyle = ":")
 plt.tight_layout()
 plt.legend()
@@ -154,7 +162,7 @@ plt.clf()
 
 plt.errorbar(KK20[:,0],unp.nominal_values(KK20u[:]),yerr=unp.std_devs(KK20u[:]),color = 'blue', fmt='x',label="Messwerte")
 plt.ylabel("Zählung")
-plt.xlabel("Verzögerungszeit")
+plt.xlabel(r"\text{Verzögerungszeit} in \unit{\nano\second}")
 plt.grid(linestyle = ":")
 plt.tight_layout()
 plt.legend()
