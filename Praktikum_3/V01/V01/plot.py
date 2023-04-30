@@ -35,9 +35,9 @@ def exponential(x,N,lam,y):
 
 
 popt_channel, pcov_cannel = curve_fit(pol1,Channel_Kalibrierung[:,0],Channel_Kalibrierung[:,1])
-print(popt_channel)
-print(pcov_cannel)
-print(correlated_values(popt_channel, pcov_cannel))
+#print(popt_channel)
+#print(pcov_cannel)
+#print(correlated_values(popt_channel, pcov_cannel))
 
 x = np.linspace(0,450,10)
 y = pol1(popt_channel[1],popt_channel[0],x)

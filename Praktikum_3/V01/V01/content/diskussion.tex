@@ -5,29 +5,29 @@
 
 Als Verzögerungszeit der Verzögerungsleitung wurde $\Delta t = 3 \,\unit{\nano\second}$ gewählt.
 Wie aus dem Fit der gemessenen Ereignisse pro Verzögerungen abzuleiten ist, liegt die optimale Verzögerungszeit bei
-$7,145 \,\unit{\nano\second}$.
+$3,573 \,\unit{\nano\second}$. Das lässt den Schluss zu, dass die Verzögerungszeit besser hätte gewählt werden können.
 
 
 \subsection{Vergleich der Untergrundraten}
 
-Anhand \textbf{Formel referenzieren!} für die theoretische Bestimmung des Untergrundes ergibt sich ein Wert von
+Anhand \eqref{eq:theo_unter} für die theoretische Bestimmung des Untergrundes ergibt sich ein Wert von
 \begin{equation}
-    U_\text{theo} = irgendwas \,\frac{\text{counts}}{\unit{\second}} \,.
+    B_\text{theo} = 1,229 \,.
 \end{equation}
 
-Verglichen mit dem experimentell bestimmten Wert von $U_\text{exp} = irgendwas \,\frac{\text{counts}}{\unit{\second}}$ besteht eine Abweichung von
-$irgendwas \,\%$.
+Verglichen mit dem experimentell bestimmten Wert von $B_{exp} = 0,340 \pm \, 0,267$ besteht eine relative Abweichung von
+$72,335 \,\%$. Aus diesem Wert lässt sich ableiten, dass zusätzliche Effekte berücksichtigt werden müssen, um den theoretischen und den experimentellen Wert in Einklang zu bringen.
 
 \subsection{Vergleich der Lebensdauern}
 
-Verglichen mit einem Theoriewert von $\tau_{\mu,\text{theo}} \approx 2,196 981 1 \,\unit{\micro\second}$ \cite{pdg} weicht die experimentell bestimmte Lebensdauer von
-$\tau_{\mu,\text{exp}} =  \left(2,090  \pm 0,090 \right) \,\unit{\micro\second}$ um $irgendwas \,\%$ ab.
+Verglichen mit einem Theoriewert von $\tau_{\mu,\text{theo}} \approx 2,197 \,\unit{\micro\second}$ \cite{pdg} weicht die experimentell bestimmte Lebensdauer von
+$\tau_{\mu,\text{exp}} =  \left(2,090  \pm 0,090 \right) \,\unit{\micro\second}$ um $4,869 \,\%$ relative ab.
 
-
-\subsection{Sonstige Effekte}
+Eine weitere Fehlerquelle der MCA. Die ersten drei Kanäle wurden bei der Ausgleichsfunktion nicht berücksichtigt, da diese keine Einträge enthalten. Nach einem exponentiellen Abfall, wären hier die meisten Einträge zu erwarten. 
+Auch sind die Zählungen in den folgenden Kanälen geringer als erwartet, was die Vermutung zulässt, dass der MCA für geringe Zeiten eine schlechte Auflösung hat.
+Auffällig ist auch, dass die Kanäle $31$ und $33$ überbesetzt sind. Ein eindeutiger Grund kann dafür nicht angegeben werden.
+Hinzu kommt, dass am TAC $N_\text{stop} = 5046$ Stoppsignale, am MCA aber nur $N_{\mu} = 3235$ Myonen registriert wurden.
 
 Wie in \autoref{sec:theorie} erläutert verringert sich durch die Bildung myonischer Atome die Lebensdauer
 negativ geladener Myonen. Dadurch fällt der bestimmte Wert etwas niedriger aus. \\
 
-Hinzu kommt, dass am TAC $N_\text{stop} = 5046$ Stoppsignale, am MCA aber nur $N_{\mu} = 3235$ Myonen registriert wurden. Das spricht dafür,
-dass die Funktionsweise des MCAs für geringe Zeiten eingeschränkt ist.

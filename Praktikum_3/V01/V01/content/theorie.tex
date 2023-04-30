@@ -78,8 +78,12 @@ beschreiben. \\
 \begin{equation*}
     N_\text{fehl} (k) = N_\text{start} \cdot P(k)
 \end{equation*}
-lässt sich so die Anzahl der Fehlereignisse berechnen, wobei hier insbesondere $N(1)$ wichtig ist. \\
-
+lässt sich so die Anzahl der Fehlereignisse berechnen, wobei hier insbesondere $P(1)$ wichtig ist. \\
+Mit $P(1)$ ergibt sich
+\begin{equation}
+    N_\text{fehl} (k) =  {N_\text{start}}²  \cdot \frac{T_\text{s}}{T_\text{mess}} \, e^{{ N_\text{start}} \cdot \frac{T_\text{s}}{T_\text{mess}}}
+    \label{eq:theo_unter}
+\end{equation}
 
 
 \newpage
