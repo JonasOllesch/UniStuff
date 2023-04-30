@@ -8,19 +8,18 @@ import pandas as pd
 
 from scipy import interpolate
 
+output = ("build/Auswertung")   
+my_file = open(output + '.txt', "w") 
 def writeW(Wert,Beschreibung):
-    output = ("build/Auswertung")   
-    my_file = open(output + '.txt', "w") 
     my_file.write(str(Beschreibung))
     my_file.write('\n')
     try:
         for i in Wert:
-            my_file.write(str(i))
+            my_file.write(repr(i))
             my_file.write('\n')
     except:
-        my_file.write(str(repr(Wert)))
+        my_file.write( repr(Wert))
         my_file.write('\n')
-    my_file.close()
     return 0
 #plt.rcParams['text.usetex'] = True
 
@@ -129,18 +128,47 @@ KK20u = unp.uarray(KK20[:,2],np.sqrt(KK20[:,2]))
 KK10u = KK10u[:]/KK10[:,1]
 KK15u = KK15u[:]/KK15[:,1]
 KK20u = KK20u[:]/KK20[:,1]
-#auf 1 min 
-#KK10u= KK10u*20
-#KK15u= KK15u*20
-#KK20u= KK20u*20
-x_kali_koin = np.linspace(-32,32,1000)
-plateu_10 = unp.nominal_values(KK10u[KK10u > 18])
-print(plateu_10)
-plateu_mean = np.mean(plateu_10)
-print(plateu_mean)
-print(plateu_mean/2)
-print(unp.nominal_values(KK10u))
 
+#writeW(KK10u,"KK10u")
+#writeW(KK10,"KK10")
+
+
+writeW(KK10u,"KK10u")
+writeW(KK10,"KK10")
+
+writeW(KK15u,"KK15u")
+writeW(KK15,"KK15")
+writeW(KK20u,"KK20u")
+writeW(KK20,"KK20")
+
+
+#x = np.arange(0, 1000)
+#f = np.arange(0, 1000)
+#g = np.sin(np.arange(0, 10, 0.01) * 2) * 1000
+#
+#plt.plot(x, f, '-',color='blue')
+#plt.plot(x, g, '-',color='red')
+#
+#idx = np.argwhere(np.diff(np.sign(f - g))).flatten()
+#plt.plot(x[idx], f[idx], color='green')
+#plt.show()
+
+
+def poly(x,koef):
+    return np.polyval(koef,x)
+
+x_kali_koin = np.linspace(-32,32,100000)
+plateu_10 = unp.nominal_values(KK10u[KK10u > 18])
+plateu_mean_10 = np.mean(plateu_10)
+
+pol4_10 = np.polyfit(KK10[:,0],unp.nominal_values(KK10u[:]),deg = 8)
+y_kali_koin_10 = np.polyval(pol4_10,x_kali_koin)
+
+idx = np.argwhere(np.diff(np.sign(plateu_mean_10/2 - y_kali_koin_10))).flatten()
+print("Halbwertsbreite 10 in ns", np.max(x_kali_koin[idx]) - np.min(x_kali_koin[idx]))
+
+plt.plot(x_kali_koin,y_kali_koin_10,color = 'red',label="Polynom 8. Grades")
+plt.plot(x_kali_koin[idx], y_kali_koin_10[idx], color='green',label="Halbwertsbreite")
 plt.errorbar(KK10[:,0],unp.nominal_values(KK10u[:]),yerr=unp.std_devs(KK10u[:]),color = 'blue', fmt='x',label="Messwerte")
 plt.ylabel("Zählung")
 plt.xlabel(r"\text{Verzögerungszeit} in \unit{\nano\second}")
@@ -151,6 +179,20 @@ plt.legend()
 plt.savefig('build/Kalibrierung_Koinzidenz_10')
 plt.clf()
 
+
+pol4_15 = np.polyfit(KK15[:,0],unp.nominal_values(KK15u[:]),deg = 8)
+y_kali_koin_15 = np.polyval(pol4_15,x_kali_koin)
+
+plt.plot(x_kali_koin,y_kali_koin_15,color = 'red',label = "Polynom 8. Grades" )
+plateu_15 = unp.nominal_values(KK15u[KK15u > 21])
+plateu_mean_15 = np.mean(plateu_15)
+idx = np.argwhere(np.diff(np.sign(plateu_mean_15/2 - y_kali_koin_15))).flatten()
+print("Halbwertsbreite 15 in ns", np.max(x_kali_koin[idx]) - np.min(x_kali_koin[idx]))
+
+
+plt.plot(x_kali_koin[idx], y_kali_koin_15[idx], color='green',label='Halbwertsbreite')
+
+
 plt.errorbar(KK15[:,0],unp.nominal_values(KK15u[:]),yerr=unp.std_devs(KK15u[:]),color = 'blue', fmt='x',label="Messwerte")
 plt.ylabel("Zählung")
 plt.xlabel(r"\text{Verzögerungszeit} in \unit{\nano\second}")
@@ -160,6 +202,17 @@ plt.legend()
 plt.savefig('build/Kalibrierung_Koinzidenz_15')
 plt.clf()
 
+
+plateu_20 = unp.nominal_values(KK20u[KK20u > 19.4])
+plateu_mean_20 = np.mean(plateu_20)
+pol4_20 = np.polyfit(KK20[:,0],unp.nominal_values(KK20u[:]),deg = 8)
+y_kali_koin_20 = np.polyval(pol4_20,x_kali_koin)
+idx = np.argwhere(np.diff(np.sign(plateu_mean_20/2 - y_kali_koin_20))).flatten()
+
+
+print("Halbwertsbreite 20 in ns", np.max(x_kali_koin[idx]) - np.min(x_kali_koin[idx]))
+plt.plot(x_kali_koin[idx], y_kali_koin_20[idx], color='green',label='Halbwertsbreite')
+plt.plot(x_kali_koin,y_kali_koin_20,color = 'red',label="Polynom 8. Grades")
 plt.errorbar(KK20[:,0],unp.nominal_values(KK20u[:]),yerr=unp.std_devs(KK20u[:]),color = 'blue', fmt='x',label="Messwerte")
 plt.ylabel("Zählung")
 plt.xlabel(r"\text{Verzögerungszeit} in \unit{\nano\second}")
@@ -168,3 +221,12 @@ plt.tight_layout()
 plt.legend()
 plt.savefig('build/Kalibrierung_Koinzidenz_20')
 plt.clf()
+
+writeW(plateu_mean_10,"plateu_mean_10")
+writeW(np.std(plateu_10),"plateu_std_10")
+
+writeW(plateu_mean_15,"plateu_mean_15")
+writeW(np.std(plateu_15),"plateu_std_15")
+
+writeW(plateu_mean_20,"plateu_mean_20")
+writeW(np.std(plateu_20),"plateu_std_20")
