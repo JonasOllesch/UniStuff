@@ -78,13 +78,12 @@ beschreiben. \\
 \begin{equation*}
     N_\text{fehl} (k) = N_\text{start} \cdot P(k)
 \end{equation*}
-lässt sich so die Anzahl der Fehlereignisse berechnen, wobei hier insbesondere $N(1)$ wichtig ist. \\
-
-Die Anzahl der Fehlereignisse pro Kanal des Vielkanalanalysators (Erklärung folgt) ergibt sich zu
+lässt sich so die Anzahl der Fehlereignisse berechnen, wobei hier insbesondere $P(1)$ wichtig ist. \\
+Mit $P(1)$ ergibt sich
 \begin{equation}
-    B = \frac{N_\text{fehl} (1)}{N_\text{Kanäle}} \,,
+    N_\text{fehl} (k) =  {N_\text{start}}²  \cdot \frac{T_\text{s}}{T_\text{mess}} \, e^{{ N_\text{start}} \cdot \frac{T_\text{s}}{T_\text{mess}}}
+    \label{eq:theo_unter}
 \end{equation}
-wobei $N_\text{Kanäle}$ die Gesamtzahl der Kanäle ist.
 
 
 \newpage
