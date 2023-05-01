@@ -35,21 +35,21 @@ Die Halbwertsbreite wurde mithilfe eines Polynoms des 8. Grades bestimmt. Die Re
 \begin{figure}[H]
     \centering
     \includegraphics[width=.8\textwidth]{build/Kalibrierung_Koinzidenz_10.pdf}
-    \caption{Lineare Regression durch die Kanäle des MCA und die dazugehörenden Zeiten.}
+    \caption{Lineare Regression durch die Kanäle des MCA und die dazugehörenden Zeiten bei einer Impulsbreite von $\Delta t = 10 \,\unit{\nano\second}$.}
     \label{fig:koin_10}
 \end{figure}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=.8\textwidth]{build/Kalibrierung_Koinzidenz_15.pdf}
-    \caption{Lineare Regression durch die Kanäle des MCA und die dazugehörenden Zeiten.}
+    \caption{Lineare Regression durch die Kanäle des MCA und die dazugehörenden Zeiten bei einer Impulsbreite von $\Delta t = 15 \,\unit{\nano\second}$.}
     \label{fig:koin_15}
 \end{figure}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=.8\textwidth]{build/Kalibrierung_Koinzidenz_20.pdf}
-    \caption{Lineare Regression durch die Kanäle des MCA und die dazugehörenden Zeiten.}
+    \caption{Lineare Regression durch die Kanäle des MCA und die dazugehörenden Zeiten bei einer Impulsbreite von $\Delta t = 20 \,\unit{\nano\second}$.}
     \label{fig:koin_20}
 \end{figure}
 
@@ -154,12 +154,12 @@ Diese Impulse werden von MCA je nach zeitlichen Abstand einem Kanal zugeordnet. 
     \end{tabular}
     \end{table}
 
-Die Zeit für die Kanäle, die zwischen den bestimmten Kanälen liegt, werden durch eine lineare Regression bestimmt \autoref{fig:lin_reg_Channel_zeit}.
+Die Zeit für die Kanäle, die zwischen den bestimmten Kanälen liegt, werden, wie in \autoref{fig:lin_reg_Channel_zeit} dargestellt, durch eine lineare Regression bestimmt.
 Die Parameter des Fits sind durch 
-\begin{equation*}
+\begin{equation}
     \text{Impulsabstände} = \left(0,021 \pm 0,000 \right) \,\unit{\micro\second} \cdot  \text{Kanalnummer} + \left(0,152 \pm 0,000 \right) \,\unit{\micro\second}
     \label{eq:Kanal_Zeit_Rechnung}
-\end{equation*}
+\end{equation}
 gegeben.
 
 \begin{figure}[H]
@@ -178,26 +178,27 @@ Der Untergrund verteilt sich auf $511$ Kanäle. Dadurch folgt eine Untergrundrat
 \subsection{Bestimmung der Lebensdauer}
 \label{sec:Bes_Leb}
 
-Zunächst werden die Kanalnummer mit der Gleichung \autoref{eq:Kanal_Zeit_Rechnung} in Zeiten umgerechnet.
+Zunächst werden die Kanalnummer mit der Gleichung \eqref{eq:Kanal_Zeit_Rechnung} in Zeiten umgerechnet.
 In dem Plot \autoref{fig:expon} sind die Anzahl der Myonen, die in einen Kanal gemessen wurden, gegen die Lebensdauer dieser Myonen aufgetragen.
-Es wird eine Ausgleichsfunktion der Form von \autoref{eq:exponential_decay} gefittet.
+Es wird eine Ausgleichsfunktion der Form \eqref{eq:exponential_decay} gefittet.
 
 \begin{figure}[H]
     \centering
     \includegraphics{build/Myonenzerfall_Zeit.pdf}
-    \caption{Exponentieller Zerfall der Myonen.}
+    \caption{Vom MCA aufgenommene Messdaten der unterschiedlichen Myonenlebensdauern samt exponentiellem Fit.}
     \label{fig:expon}
 \end{figure}
 
 Die Parameter des Fits sind gegeben durch:
 
 \begin{align*}
-    &N_0         =& 34,251 \pm& \, 0,758                                 \\
-    &\lambda     =& (0,478 \pm& \, 0,0206)  \, \unit{\dfrac{1}{\micro\second}} \\
-    &B_{exp}           =& 0,340  \pm& \, 0,267
+    &N_0                      =& 34,251 \pm& \, 0,758                                 \\
+    &\lambda            	  =& (0,478 \pm& \, 0,0206)  \, \unit{\dfrac{1}{\micro\second}} \\
+    &B_{\text{exp}}           =& 0,340  \pm& \, 0,267
 \end{align*}
 
-Aus der Inversen der Zerfallskonstanten wird die Lebensdauer berechnet
+Aus der Inversen der Zerfallskonstanten wird die Lebensdauer zu 
 \begin{equation*}
-    \tau = \dfrac{1}{\lambda} = \left(2,090  \pm 0,090 \right) \,\unit{\micro\second} \,.
+    \tau = \dfrac{1}{\lambda} = \left(2,090  \pm 0,090 \right) \,\unit{\micro\second}
 \end{equation*}
+berechnet.

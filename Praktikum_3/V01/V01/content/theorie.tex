@@ -57,7 +57,7 @@ Für diesen Versuch muss \eqref{eq:expdec} um einen Untergrund $B$ ergänzt werd
     N(t) = N_0 \, e^{-\lambda \, t} + B
     \label{eq:exponential_decay}
 \end{equation}
-gilt.
+gilt. \\
 
 Zur Abschätzung dieses Hintergrundes treffe innerhalb einer Suchzeit $T_\text{s}$ nach Eintreffen des ersten Myons ein weiteres als unerwünschter Untergrund ein.
 Für die durchschnittliche Anzahl gemessener Myonen pro Sekunde während der gesamten Messzeit $T_\text{mess}$ gilt
@@ -68,7 +68,7 @@ wobei $N_\text{start}$ die Anzahl der gegebenen Startsignale, also die Anzahl de
 
 Das Produkt $T_\text{s} \cdot n$ beschreibt den Erwartungswert der Messungen in der Suchzeit. \\
 
-Damit lässt die poissonverteilte Wahrscheinlichkeit für das Eintreffen $k$ weiterer Myonen durch
+Damit lässt sich die poissonverteilte Wahrscheinlichkeit für das Eintreffen $k$ weiterer Myonen durch
 \begin{equation*}
     P(k) = \frac{(T_\text{s} \cdot n)^k}{k!} \, e^{T_\text{s} \cdot n}
 \end{equation*}
@@ -81,7 +81,7 @@ beschreiben. \\
 lässt sich so die Anzahl der Fehlereignisse berechnen, wobei hier insbesondere $P(1)$ wichtig ist. \\
 Mit $P(1)$ ergibt sich
 \begin{equation}
-    N_\text{fehl} (k) =  {N_\text{start}}²  \cdot \frac{T_\text{s}}{T_\text{mess}} \, e^{{ N_\text{start}} \cdot \frac{T_\text{s}}{T_\text{mess}}}
+    N_\text{fehl} (1) =  {N_\text{start}}²  \cdot \frac{T_\text{s}}{T_\text{mess}} \, e^{{ N_\text{start}} \cdot \frac{T_\text{s}}{T_\text{mess}}}
     \label{eq:theo_unter}
 \end{equation}
 
@@ -90,7 +90,7 @@ Mit $P(1)$ ergibt sich
 
 \subsection{Erklärung wichtiger Bauelemente}
 
-Die Erklärung der im Versuch verwendeten Bauelemente erfolgt nach \autoref{fig:schaltung}.
+Die Erklärung der im Versuch verwendeten Bauelemente erfolgt nach der in \autoref{fig:schaltung} erkennbaren Reihenfolge.
 
 \begin{figure}[H]
     \centering
@@ -114,7 +114,7 @@ Für Lebensdauermessung ist besonders die Zeitauflösung wichtig, also eignen si
 Der Photomultiplier (PMT) wandelt mithilfe des Photoeffekts ein eintreffendes Photon in ein elektrisches Signal um.
 Über eine anliegende Beschleunigungsspannung wird das vom Photon ausgelöste Elektron zur Anode beschleunigt und löst auf seinem Weg weitere Elektronen aus.
 An der Anode lassen sich diese Elektronen als Strom messen.
-Insgesamt wird das vom Szintillator eintreffende Signal um einen Faktor von bis zu $10^9$, für gewöhnlich um $10^5 - 10^7$-fach, verstärkt \cite{kolawerm}.
+Insgesamt wird das vom Szintillator eintreffende Signal um einen Faktor von bis zu $10^9$, für gewöhnlich um $10^5$ - $10^7$-fach, verstärkt \cite{kolawerm}.
 
 
 \subsubsection{Verzögerungsleitung}
@@ -143,8 +143,7 @@ in dem er für eine definierbare Zeit verbleibt, bevor er sich wieder umschaltet
 
 \subsubsection{Time-Amplitude-Converter}
 
-Der Time-Amplitude-Converter (TAC) verfügt über zwei Eingänge. Treffen zwei Signale nicht gleichzeitig ein, gibt er ein Ausgangssignal, dessen Amplitude proportional zum zeitlichen Abstand der beiden
-Eingangssignale ist.
+Der Time-Amplitude-Converter (TAC) verfügt über zwei Eingänge. Treffen zwei Signale im Abstand $\Delta t$ ein, gibt er ein Ausgangssignal, dessen Amplitude proportional dazu ist.
 
 
 \subsubsection{Vielkanalanalysator}
