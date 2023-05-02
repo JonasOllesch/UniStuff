@@ -14,13 +14,13 @@ Die Halbwertsbreite wurde mithilfe eines Polynoms des 8. Grades bestimmt. Die Re
 Über die Gleichung \eqref{eq:Auflosung} kann aus der Halbwertsbreite die Auflösung berechnet werden. Die Ereignisse sind in \autoref{tab:Halbwertsbreiten} zu sehen.
 
 \begin{equation}
-    t_{Aus} = \left|2 \cdot t_{Koin} - t_{Halb} \right|
+    t_{Auf} = \left|2 \cdot t_{Koin} - t_{Halb} \right|
     \label{eq:Auflosung}
 \end{equation}
 
 \begin{table}[H]
     \centering
-    \caption{Die durchschnittliche Höhe des Plateaus, die Auflösungszeit, und die Halbwertsbreite für die verschiedenen Koinzidenz.}
+    \caption{Die durchschnittliche Höhe des Plateaus, die Auflösungszeit und die Halbwertsbreite für die verschiedenen Koinzidenz.}
     \label{tab:Halbwertsbreiten}
     \begin{tabular}{c c c c}
     \toprule
@@ -32,24 +32,25 @@ Die Halbwertsbreite wurde mithilfe eines Polynoms des 8. Grades bestimmt. Die Re
     \bottomrule
     \end{tabular}
     \end{table}
+
 \begin{figure}[H]
     \centering
     \includegraphics[width=.8\textwidth]{build/Kalibrierung_Koinzidenz_10.pdf}
-    \caption{Lineare Regression durch die Kanäle des MCA und die dazugehörenden Zeiten bei einer Impulsbreite von $\Delta t = 10 \,\unit{\nano\second}$.}
+    \caption{Plot zur Bestimmung der Halbwertsbreite bei Änderung der Verzögerungsleitung für eine Koinzidenz von $t_{koin} = 10 \, \unit{\nano\second}$}
     \label{fig:koin_10}
 \end{figure}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=.8\textwidth]{build/Kalibrierung_Koinzidenz_15.pdf}
-    \caption{Lineare Regression durch die Kanäle des MCA und die dazugehörenden Zeiten bei einer Impulsbreite von $\Delta t = 15 \,\unit{\nano\second}$.}
+    \caption{Plot zur Bestimmung der Halbwertsbreite bei Änderung der Verzögerungsleitung für eine Koinzidenz von $t_{koin} = 15 \, \unit{\nano\second}$}
     \label{fig:koin_15}
 \end{figure}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=.8\textwidth]{build/Kalibrierung_Koinzidenz_20.pdf}
-    \caption{Lineare Regression durch die Kanäle des MCA und die dazugehörenden Zeiten bei einer Impulsbreite von $\Delta t = 20 \,\unit{\nano\second}$.}
+    \caption{Plot zur Bestimmung der Halbwertsbreite bei Änderung der Verzögerungsleitung für eine Koinzidenz von $t_{koin} = 20 \, \unit{\nano\second}$}
     \label{fig:koin_20}
 \end{figure}
 
