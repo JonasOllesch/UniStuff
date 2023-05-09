@@ -91,7 +91,7 @@ polarisation[:,1] = polarisation[:,1]*1e-6 -5.35e-9#in Ampere minus Hintergrund
 
 popt_pol, pcov_pol = curve_fit(PolStrom,polarisation[:,0]*np.pi/180,polarisation[:,1],sigma=polarisation[:,1]*0.1,p0=[6e-5,1.21])
 para_pol = correlated_values(popt_pol,pcov_pol)
-print(para_pol)
+#print(para_pol)
 x_fit_pol = np.linspace(-0.5,2*np.pi+0.5,100)
 y_fit_pol = uPolStrom(x_fit_pol,*para_pol)
 
@@ -122,8 +122,36 @@ plt.legend(loc='lower left')
 plt.savefig('build/polarisation_pol.pdf')
 plt.clf()
 
-#output = ("Messdaten/Polarisation")   
+
+Beugung_80   = np.genfromtxt('Messdaten/Wellenlaenge_80.txt',encoding='unicode-escape')
+Beugung_100  = np.genfromtxt('Messdaten/Wellenlaenge_80.txt',encoding='unicode-escape')
+Beugung_600  = np.genfromtxt('Messdaten/Wellenlaenge_80.txt',encoding='unicode-escape')
+Beugung_1200 = np.genfromtxt('Messdaten/Wellenlaenge_80.txt',encoding='unicode-escape')
+Messreihe = ['80','100','600','1200']
+
+d = np.array([77.3,77.3,29.4,16,4])
+d = d /100 # von cm in m
+Gitter_const = np.array([80,100,600,1200])
+Gitter_const = Gitter_const/1000 #von mm in m
+
+# Define a list of names for the arrays
+array_names = ["Beugung_80", "Beugung_100"]
+my_arrays = {}
+for counter,value in enumerate(Messreihe):
+    my_arrays['beta_'+value] = exec("np.arctan(Beugung_{}[:,1]/d[0])".format(value))
+    myStr = "np.arctan(Beugung_{}[:,1]/d[{}])".format(value,counter)
+    result = eval(myStr)
+    my_arrays['beta_{}'.format(value)] = result
+    
+
+
+#myStr = "x=5"
+#exec(myStr)
+#print(x)
+#output = 5
+
+#output = ("Messdaten/Wellenlaenge_80")   
 #my_file = open(output + '.txt', "a") 
-#for i in range(0,73):
-#    my_file.write(str(i*5))
+#for i in range(-8,9):
+#    my_file.write(str(i))
 #    my_file.write('\n')
