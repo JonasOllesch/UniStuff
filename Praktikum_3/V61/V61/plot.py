@@ -92,7 +92,7 @@ polarisation[:,1] = polarisation[:,1]*1e-6 -5.35e-9#in Ampere minus Hintergrund
 popt_pol, pcov_pol = curve_fit(PolStrom,polarisation[:,0]*np.pi/180,polarisation[:,1],sigma=polarisation[:,1]*0.1,p0=[6e-5,1.21])
 para_pol = correlated_values(popt_pol,pcov_pol)
 print(para_pol)
-x_fit_pol = np.linspace(0,7,100)
+x_fit_pol = np.linspace(-0.5,2*np.pi+0.5,100)
 y_fit_pol = uPolStrom(x_fit_pol,*para_pol)
 
 plt.errorbar(polarisation[:,0]*np.pi/180,polarisation[:,1],yerr=polarisation[:,1]*0.1,color = 'blue', fmt='x',label='Photostrom hinter dem Polfilter')
