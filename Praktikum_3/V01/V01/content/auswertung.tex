@@ -10,11 +10,11 @@ Während der Messzeit wurden insgesamt $N_{\mu} = 3235 $ Myonen registriert.
 Um eine angebrachte Verzögerungszeit zu finden, wird die Verzögerungszeit variiert und die Zählrate hinter der Koinzidenz gemessen.
 Die Messwerte sind in \autoref{fig:koin_10}, \autoref{fig:koin_15} und \autoref{fig:koin_20} aufgetragen. Die Unsicherheit ist durch $ \sqrt{N}$ gegeben, wobei $N$ die Menge der gezählten Ereignisse ist.
 Das negative Vorzeichen vor der Verzögerungszeit bedeutet, dass die linke Verzögerungsleitung verwendet wurde. Bei der rechten Verzögerungsleitung ist das Vorzeichen positiv.
-Die Halbwertsbreite wurde mithilfe eines Polynoms des 8. Grades bestimmt. Die Regression wurde mit dem Package $scipy.optimize.curve\_ fit $  \cite{scipyop} durchgeführt.
+Die Halbwertsbreite wurde mithilfe eines Polynoms des 8. Grades bestimmt. Die Regression wurde mit dem Package $scipy.optimize.curve\_ fit $  \cite{scipyop} durchgeführt. %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Warum 8. Grad??
 Über die Gleichung \eqref{eq:Auflosung} kann aus der Halbwertsbreite die Auflösung berechnet werden. Die Ereignisse sind in \autoref{tab:Halbwertsbreiten} zu sehen.
 
 \begin{equation}
-    t_{Auf} = \left|2 \cdot t_{Koin} - t_{Halb} \right|
+    t_\text{Auf} = \left|2 \cdot t_\text{Koin} - t_\text{Halb} \right|
     \label{eq:Auflosung}
 \end{equation}
 
@@ -24,37 +24,37 @@ Die Halbwertsbreite wurde mithilfe eines Polynoms des 8. Grades bestimmt. Die Re
     \label{tab:Halbwertsbreiten}
     \begin{tabular}{c c c c}
     \toprule
-     $t_{koin} \mathbin{/} \unit{\nano\second} $ &$\bar{N}$ & $\Delta t_{Halb} \mathbin{/} \unit{\nano\second}$ & $t_{Auf}$ \\
+     $t_\text{Koin} \mathbin{/} \unit{\nano\second} $ &$\bar{N}$ & $\Delta t_\text{Halb} \mathbin{/} \unit{\nano\second}$ & $t_\text{Auf}$ \\
     \midrule
-        $10$&  $20,250 \pm 0,665$ &  $17,891$ & $2,109$\\
-        $15$&  $24,871 \pm 1,775$ &  $22,855$ & $7,145$\\
-        $20$&  $21,628 \pm 1,260$ &  $40,831$ & $0,831$\\
+        $10$&  $20,250 \pm 0,665$ &  $17,891$ & $2,109$\\ %%%%%%%%%%%%%%%%%%%%%% Hier noch die Kommastellen
+        $15$&  $24,871 \pm 1,775$ &  $22,855$ & $7,145$\\ %%%%%%%%%%%%%%%%%%%%%% Hier noch die Kommastellen
+        $20$&  $21,628 \pm 1,260$ &  $40,831$ & $0,831$\\ %%%%%%%%%%%%%%%%%%%%%% Hier noch die Kommastellen
     \bottomrule
     \end{tabular}
     \end{table}
 
-\begin{figure}[H]
+\begin{figure}[H] %%%%%%%%%%%%%%%%%% Noch die Beschriftungen der y-Achse der Plots. Auf wie viele Sekunden hast du das runtergerechnet? Eigentlich sollte das doch eine Zählrate sein, oder?
     \centering
     \includegraphics[width=.8\textwidth]{build/Kalibrierung_Koinzidenz_10.pdf}
-    \caption{Plot zur Bestimmung der Halbwertsbreite bei Änderung der Verzögerungsleitung für eine Koinzidenz von $t_{koin} = 10 \, \unit{\nano\second}$}
+    \caption{Aufgenommene Zählrate bei Änderung der Verzögerungsleitung für eine Koinzidenz von $t_\text{Koin} = 10 \, \unit{\nano\second}$ sowie Bestimmung der Halbwertsbreite.}
     \label{fig:koin_10}
 \end{figure}
 
-\begin{figure}[H]
+\begin{figure}[H] %% Hier auch
     \centering
     \includegraphics[width=.8\textwidth]{build/Kalibrierung_Koinzidenz_15.pdf}
-    \caption{Plot zur Bestimmung der Halbwertsbreite bei Änderung der Verzögerungsleitung für eine Koinzidenz von $t_{koin} = 15 \, \unit{\nano\second}$}
+    \caption{Aufgenommene Zählrate bei Änderung der Verzögerungsleitung für eine Koinzidenz von $t_\text{Koin} = 15 \, \unit{\nano\second}$ sowie Bestimmung der Halbwertsbreite.}
     \label{fig:koin_15}
 \end{figure}
 
-\begin{figure}[H]
+\begin{figure}[H] %% Hier auch
     \centering
     \includegraphics[width=.8\textwidth]{build/Kalibrierung_Koinzidenz_20.pdf}
-    \caption{Plot zur Bestimmung der Halbwertsbreite bei Änderung der Verzögerungsleitung für eine Koinzidenz von $t_{koin} = 20 \, \unit{\nano\second}$}
+    \caption{Aufgenommene Zählrate bei Änderung der Verzögerungsleitung für eine Koinzidenz von $t_\text{Koin} = 20 \, \unit{\nano\second}$ sowie Bestimmung der Halbwertsbreite.}
     \label{fig:koin_20}
 \end{figure}
 
-Als Verzögerungszeit der Verzögerungsleitung wurde $\Delta t = 3 \,\unit{\nano\second}$ bei $t_{koin} = 15 \, \unit{\nano\second}$ gewählt.
+Als Verzögerungszeit der Verzögerungsleitung wurde $\Delta t = 3 \,\unit{\nano\second}$ bei $t_\text{Koin} = 15 \, \unit{\nano\second}$ gewählt.
 
 %\begin{table}[H]
 %    \centering
@@ -172,15 +172,15 @@ gegeben.
 
 \subsection{Bestimmung der Untergrundrate}
 \label{sec:Bes_Unt}
-Es wird zunächst eine Abschätzung der Untergrundrate durchgeführt. Aus \eqref{eq:theo_unter} ergibt sich ein Wert von $N_{start} = 627,893$.
-Der Untergrund verteilt sich auf $511$ Kanäle. Dadurch folgt eine Untergrundrate von $B_{theo} = 1,239 \, $.
+Es wird zunächst eine Abschätzung der Untergrundrate durchgeführt. Aus \eqref{eq:theo_unter} ergibt sich ein Wert von $N_\text{start} = 627,893$.
+Der Untergrund verteilt sich auf $511$ Kanäle. Dadurch folgt eine Untergrundrate von $B_\text{theo} = 1,239$. %%% Warum haben wir hier die 511 statt 512?
 
 
 \subsection{Bestimmung der Lebensdauer}
 \label{sec:Bes_Leb}
 
 Zunächst werden die Kanalnummer mit der Gleichung \eqref{eq:Kanal_Zeit_Rechnung} in Zeiten umgerechnet.
-In dem Plot \autoref{fig:expon} sind die Anzahl der Myonen, die in einen Kanal gemessen wurden, gegen die Lebensdauer dieser Myonen aufgetragen.
+In \autoref{fig:expon} sind die Anzahl der Myonen, die in einen Kanal gemessen wurden, gegen die Lebensdauer dieser Myonen aufgetragen.
 Es wird eine Ausgleichsfunktion der Form \eqref{eq:exponential_decay} gefittet.
 
 \begin{figure}[H]

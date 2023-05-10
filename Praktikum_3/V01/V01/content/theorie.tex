@@ -3,8 +3,8 @@
 
 \subsection{Entstehung und Zerfall kosmischer Myonen}
 
-Treffen Protonen kosmischer Höhenstrahlung auf die Moleküle der Luft, entstehen unter anderem Pionen und Kaonen, die daraufhin einen hadronischen Teilchenschauer auslösen können. \\
-Die hier betrachteten kosmischen Myonen sind ein Teil dieses Luftschauers, der direkt aus den Pion- und Kaonzerfällen entsteht. \\
+Treffen Protonen kosmischer Höhenstrahlung auf die Moleküle der Luft, kann ein hadronischer Teilchenschauer ausgelöst werden, bei dem unter anderem Pionen und Kaonen entstehen. \\
+Die hier betrachteten, in einer Höhe von etwa $10 - 15 \,\unit{\kilo\meter}$ \cite{grup} entstehenden, kosmischen Myonen sind ein Teil dieses Luftschauers, der direkt aus den Pion- und Kaonzerfällen entsteht. \\
 
 Unter Erzeugung eines Myons und Myonneutrinos zerfallen diese wie folgt:
 
@@ -14,20 +14,22 @@ Unter Erzeugung eines Myons und Myonneutrinos zerfallen diese wie folgt:
     K^+ &\rightarrow \mu^+ + \nu_\mu \,.
 \end{align*}
 
-Die in etwa $10 - 15 \,\unit{\kilo\meter}$ \cite{grup} entstehenden Myonen besitzen die selben Eigenschaften wie Elektronen, mit dem Unterschied, dass Myonen etwa die 200-fache Masse \cite{pdg} besitzen .
-Auch mit einer Lebensdauer von etwa $2,187 \cdot 10^{-6} \,\unit{\second}$ \cite{pdg} erreicht aufgrund der hochrelativistischen Geschwindigkeiten etwa 
-$1 \,\text{Myon} \, (\unit{\centi\meter}^2 \, \unit{\minute})^{-1}$ die Erdoberfläche \cite{grup}. \\
+Myonen besitzen ähnliche Eigenschaften wie Elektronen, mit dem Unterschied, dass Myonen etwa die 200-fache Masse \cite{pdg} besitzen.
+Mit einer Lebensdauer von $2,187 \cdot 10^{-6} \,\unit{\second}$ \cite{pdg} sollten die kosmischen Myonen nicht in der Lage sein, die Erdoberfläche zu erreichen.
+Die hier entstehenden Myonen bewegen sich hochrelativistisch, erfahren also Zeitdilatation.
+Es erreicht $1 \,\text{Myon} \, (\unit{\centi\meter}^2 \, \unit{\minute})^{-1}$ die Erdoberfläche \cite{grup}. \\
 
-Erreicht ein Myon das Ende seiner Lebensdauer, zerfällt es unter Austausch eines W-Bosons über den folgenden Kanal:
+Myonen können es unter Austausch eines W-Bosons über den folgenden Kanal zerfallen:
 
-\begin{equation*}
-    \mu \rightarrow e + \nu_e + \nu_\mu \,,
-\end{equation*}
+\begin{align*}
+    \mu^+ &\rightarrow e^+ + \nu_e + \bar{\nu}_\mu \\
+    \mu^- &\rightarrow e^- + \bar{\nu}_e + \nu_\mu\,, 
+\end{align*}
 
-wobei immer ein Neutrino und ein Antineutrino entsteht, sodass die Leptonenzahl erhalten bleibt. \\
-Für positive Myonen ist dieser Zerfall der einzig mögliche, negative Myonen können dagegen auch durch Myoneinfang zerfallen.
-Dabei wird das wie ein Elektron negativ geladene Myon von einem Atomkern angezogen und löst aufgrund seiner gegenüber Elektronen größeren Masse eine Elektronenkaskade aus,
-bis es auf das niedrigste Energieniveau fällt und vom Kern unter Entstehung eines Neutrons und eines Neutrinos eingefangen wird:
+wobei immer ein Neutrino und ein Antineutrino entsteht, sodass die Leptonzahl erhalten bleibt. \\
+Für positive Myonen ist dieser Zerfall der einzig mögliche, negative Myonen in Ruhe können dagegen auch durch Myoneinfang zerfallen.
+Das eingefangene Myon löst aufgrund seiner gegenüber Elektronen größeren Masse eine Elektronenkaskade aus,
+bis es auf das niedrigste Energieniveau fällt und vom Kern unter Entstehung eines Neutrons und eines Neutrinos eingefangen wird \cite{myoeifa}:
 
 \begin{equation*}
     \mu^- + p \rightarrow n + \nu_\mu \,.
@@ -59,7 +61,7 @@ Für diesen Versuch muss \eqref{eq:expdec} um einen Untergrund $B$ ergänzt werd
 \end{equation}
 gilt. \\
 
-Zur Abschätzung dieses Hintergrundes treffe innerhalb einer Suchzeit $T_\text{s}$ nach Eintreffen des ersten Myons ein weiteres als unerwünschter Untergrund ein.
+Zur Abschätzung dieses Hintergrundes treffe innerhalb einer Suchzeit $T_\text{s}$ nach Eintreffen des ersten Myons ein weiteres als Untergrund ein.
 Für die durchschnittliche Anzahl gemessener Myonen pro Sekunde während der gesamten Messzeit $T_\text{mess}$ gilt
 \begin{equation*}
     n = \frac{N_\text{start}}{T_\text{mess}} \,,
@@ -106,13 +108,14 @@ ionisiert wird und sich ein Elektron zum Aktivierungszentrum bewegen muss, um ei
 Diese Anregungsenergie wird innerhalb einiger Nanosekunden wieder freigesetzt \cite{kolawerm}. \\
 Die Zeitauflösung organischer Szintillatoren ist deutlich höher als die anorganischer Szintillatoren.
 Aufgrund der Vielfalt unterschiedlicher Anregungsniveaus organischer Szintillatoren ist die Energieauflösung verglichen mit den diskreten Ionisationsenergien der anorganischen Szintillatoren geringer.
-Für Lebensdauermessung ist besonders die Zeitauflösung wichtig, also eignen sich organische Szintillatoren am besten. \\
+Für die Lebensdauermessung ist besonders die Zeitauflösung wichtig, also eignen sich organische Szintillatoren am besten. \\
 
 
 \subsubsection{Photomultiplier}
 
-Der Photomultiplier (PMT) wandelt mithilfe des Photoeffekts ein eintreffendes Photon in ein elektrisches Signal um.
-Über eine anliegende Beschleunigungsspannung wird das vom Photon ausgelöste Elektron zur Anode beschleunigt und löst auf seinem Weg weitere Elektronen aus.
+Der Photomultiplier (PM) wandelt mithilfe des Photoeffekts ein eintreffendes Photon in ein elektrisches Signal um.
+Über eine anliegende Beschleunigungsspannung wird das vom Photon ausgelöste Elektron zur Anode beschleunigt.
+Im Sekundärelektronenvervielfacher, der aus mehreren aufeinanderfolgen Elektroden in zunehmend positivem Potential löst es weitere Elektronen aus \cite{myoeifa}.
 An der Anode lassen sich diese Elektronen als Strom messen.
 Insgesamt wird das vom Szintillator eintreffende Signal um einen Faktor von bis zu $10^9$, für gewöhnlich um $10^5$ - $10^7$-fach, verstärkt \cite{kolawerm}.
 
@@ -121,13 +124,13 @@ Insgesamt wird das vom Szintillator eintreffende Signal um einen Faktor von bis 
 
 In den Verzögerungsleitungen liegen Leitungen unterschiedlicher Länge, sodass das eintreffende Signal mit Schaltern über die Leitungen umgeleitet werden kann.
 Das Signal legt eine längere Strecke zurück und ist damit verzögert. Die hier verwendeten Verzögerungsleitungen verfügen über sieben unterschiedliche Schalter, mit denen Einzelverzögerung
-zwischen $1 \,\unit{\nano\second}$ und $32 \,\unit{\nano\second}$ eingestellt werden können. Diese Schalter funktionieren additiv.
+zwischen $0,5 \,\unit{\nano\second}$ und $32 \,\unit{\nano\second}$ eingestellt werden können. Diese Schalter funktionieren additiv.
 
 
 \subsubsection{Diskriminator}
 
-Die verbauten Diskriminatoren verfügen über eine regelbare Schwellamplitude. Alle eintreffende Impulse unter dieser Amplitude werden nicht weitergegeben, sodass unerwünschte Störsignale,
-die beispielsweise durch zufällig ausgelöste Elektronen im PMT entstehen, unterdrückt.
+Die verbauten Diskriminatoren verfügen über eine regelbare Schwellamplitude. Alle eintreffende Impulse unter dieser Amplitude werden nicht weitergegeben, sodass Störsignale,
+die beispielsweise durch zufällig ausgelöste Elektronen im PM entstehen, unterdrückt.
 
 
 \subsubsection{Koinzidenz}
