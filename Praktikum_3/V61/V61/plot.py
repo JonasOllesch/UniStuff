@@ -22,7 +22,14 @@ def uPolStrom(x,I0,phi0):
 def TEM_01_func(x,I0,x01,x02,x03,w,a):
     return I0*(((x-x01)/w)**2)*(np.exp(-2*((x-x02)/w)**2)+a*np.exp(-2*((x-x03)/w)**2))
 
+def Bragg(n,g,theta):#die Braggbedingung
+    return 2*g*np.sin(theta)/n
 
+def berechne_Abstand_mittel(dd,Abstand):
+    print("dd: ",dd)
+    for i in range (0,len(Abstand)):
+        #print("dd[i],d[len(dd)-i-1]: ",dd[i],dd[len(dd)-i-1])
+        Abstand[i] = (dd[i]+dd[len(dd)-i-1])/2
 
 TEM_00_pos,TEM_00_I,TEM_00_gro = np.genfromtxt('Messdaten/TEM_00.txt',encoding='unicode-escape',dtype=None,unpack=True)
 for i in range(0,len(TEM_00_I)):
@@ -50,7 +57,6 @@ plt.tight_layout()
 plt.legend()
 plt.savefig('build/TEM_00.pdf')
 plt.clf()
-
 
 
 TEM_01_pos,TEM_01_I,TEM_01_gro = np.genfromtxt('Messdaten/TEM_01.txt',encoding='unicode-escape',dtype=None,unpack=True)
@@ -85,7 +91,6 @@ plt.savefig('build/TEM_01.pdf')
 plt.clf()
 
 
-
 polarisation = np.genfromtxt('Messdaten/Polarisation.txt',encoding='unicode-escape')
 polarisation[:,1] = polarisation[:,1]*1e-6 -5.35e-9#in Ampere minus Hintergrund 
 
@@ -116,7 +121,7 @@ label_position=ax.get_rlabel_position()
 ax.text(np.radians(label_position+10),ax.get_rmax()/2.,'Photostrom in A',
         rotation=label_position,ha='center',va='center')
 ax.errorbar(theta, r, yerr=polarisation[:,1]*0.1, capsize=0,fmt='x',label="Photostrom hinter dem Polfilter")
-ax.plot(x_fit_pol,unp.nominal_values(y_fit_pol),color='red',label="theo Verlauf")
+ax.plot(x_fit_pol,unp.nominal_values(y_fit_pol),color='red',label="theo. Verlauf")
 plt.tight_layout()
 plt.legend(loc='lower left')
 plt.savefig('build/polarisation_pol.pdf')
@@ -124,31 +129,61 @@ plt.clf()
 
 
 Beugung_80   = np.genfromtxt('Messdaten/Wellenlaenge_80.txt',encoding='unicode-escape')
-Beugung_100  = np.genfromtxt('Messdaten/Wellenlaenge_80.txt',encoding='unicode-escape')
-Beugung_600  = np.genfromtxt('Messdaten/Wellenlaenge_80.txt',encoding='unicode-escape')
-Beugung_1200 = np.genfromtxt('Messdaten/Wellenlaenge_80.txt',encoding='unicode-escape')
-Messreihe = ['80','100','600','1200']
+Beugung_100  = np.genfromtxt('Messdaten/Wellenlaenge_100.txt',encoding='unicode-escape')
+Beugung_600  = np.genfromtxt('Messdaten/Wellenlaenge_600.txt',encoding='unicode-escape')
+Beugung_1200 = np.genfromtxt('Messdaten/Wellenlaenge_1200.txt',encoding='unicode-escape')
+
+Beugung_80[:,1] = Beugung_80[:,1]/100
+Beugung_100[:,1] = Beugung_100[:,1]/100
+Beugung_600[:,1] = Beugung_600[:,1]/100
+Beugung_1200[:,1] = Beugung_1200[:,1]/100
+
 
 d = np.array([77.3,77.3,29.4,16,4])
 d = d /100 # von cm in m
-Gitter_const = np.array([80,100,600,1200])
+Gitter_const = np.array([1/80,1/100,1/600,1/1200])
 Gitter_const = Gitter_const/1000 #von mm in m
 
-# Define a list of names for the arrays
-array_names = ["Beugung_80", "Beugung_100"]
-my_arrays = {}
-for counter,value in enumerate(Messreihe):
-    my_arrays['beta_'+value] = exec("np.arctan(Beugung_{}[:,1]/d[0])".format(value))
-    myStr = "np.arctan(Beugung_{}[:,1]/d[{}])".format(value,counter)
-    result = eval(myStr)
-    my_arrays['beta_{}'.format(value)] = result
-    
+Mittlere_Abstand_Beugung_80 = np.zeros(int((len(Beugung_80[:,1])-1)/2))
+berechne_Abstand_mittel(Beugung_80[:,1],Mittlere_Abstand_Beugung_80)
 
+Mittlere_Abstand_Beugung_100 = np.zeros(int((len(Beugung_100[:,1])-1)/2))
+berechne_Abstand_mittel(Beugung_100[:,1],Mittlere_Abstand_Beugung_100)
 
-#myStr = "x=5"
-#exec(myStr)
-#print(x)
-#output = 5
+Mittlere_Abstand_Beugung_600 = np.zeros(int((len(Beugung_600[:,1])-1)/2))
+berechne_Abstand_mittel(Beugung_600[:,1],Mittlere_Abstand_Beugung_600)
+
+Mittlere_Abstand_Beugung_1200 = np.zeros(int((len(Beugung_1200[:,1])-1)/2))
+berechne_Abstand_mittel(Beugung_1200[:,1],Mittlere_Abstand_Beugung_1200)
+
+#print("gemittelter Abstand: ",Mittlere_Abstand_Beugung_80)
+theta_80 = np.zeros(len(Mittlere_Abstand_Beugung_80[:]))
+theta_80 = np.arctan(Mittlere_Abstand_Beugung_80[:]/d[0])
+#print("Winkel: ",theta_80*180/np.pi)
+lam_80 = (Gitter_const[0]*np.sin(theta_80[:]))/Beugung_80[:8,0]
+print(lam_80*1e9)
+
+#print("gemittelter Abstand: ",Mittlere_Abstand_Beugung_100)
+theta_100 = np.zeros(len(Mittlere_Abstand_Beugung_100[:]))
+theta_100 = np.arctan(Mittlere_Abstand_Beugung_100[:]/d[1])
+#print("Winkel: ",theta_100*180/np.pi)
+lam_100 = (Gitter_const[1]*np.sin(theta_100[:]))/Beugung_100[:6,0]
+print(lam_100*1e9)
+
+#print("gemittelter Abstand: ",Mittlere_Abstand_Beugung_600)
+theta_600 = np.zeros(len(Mittlere_Abstand_Beugung_600[:]))
+theta_600 = np.arctan(Mittlere_Abstand_Beugung_600[:]/d[2])
+#print("Winkel: ",theta_600*180/np.pi)
+lam_600 = (Gitter_const[2]*np.sin(theta_600[:]))/Beugung_600[:2,0]
+print(lam_600*1e9)
+
+#print("gemittelter Abstand: ",Mittlere_Abstand_Beugung_1200)
+theta_1200 = np.zeros(len(Mittlere_Abstand_Beugung_1200[:]))
+theta_1200 = np.arctan(Mittlere_Abstand_Beugung_1200[:]/d[3])
+#print("Winkel: ",theta_1200*180/np.pi)
+lam_1200 = (Gitter_const[3]*np.sin(theta_1200[:]))/Beugung_1200[:1,0]
+print(lam_1200*1e9)
+
 
 #output = ("Messdaten/Wellenlaenge_80")   
 #my_file = open(output + '.txt', "a") 
