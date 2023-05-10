@@ -33,21 +33,21 @@ Die Halbwertsbreite wurde mithilfe eines Polynoms des 8. Grades bestimmt. Die Re
     \end{tabular}
     \end{table}
 
-\begin{figure}[H] %%%%%%%%%%%%%%%%%% Noch die Beschriftungen der y-Achse der Plots. Auf wie viele Sekunden hast du das runtergerechnet? Eigentlich sollte das doch eine Zählrate sein, oder?
+\begin{figure}[H] 
     \centering
     \includegraphics[width=.8\textwidth]{build/Kalibrierung_Koinzidenz_10.pdf}
     \caption{Aufgenommene Zählrate bei Änderung der Verzögerungsleitung für eine Koinzidenz von $t_\text{Koin} = 10 \, \unit{\nano\second}$ sowie Bestimmung der Halbwertsbreite.}
     \label{fig:koin_10}
 \end{figure}
 
-\begin{figure}[H] %% Hier auch
+\begin{figure}[H] 
     \centering
     \includegraphics[width=.8\textwidth]{build/Kalibrierung_Koinzidenz_15.pdf}
     \caption{Aufgenommene Zählrate bei Änderung der Verzögerungsleitung für eine Koinzidenz von $t_\text{Koin} = 15 \, \unit{\nano\second}$ sowie Bestimmung der Halbwertsbreite.}
     \label{fig:koin_15}
 \end{figure}
 
-\begin{figure}[H] %% Hier auch
+\begin{figure}[H]
     \centering
     \includegraphics[width=.8\textwidth]{build/Kalibrierung_Koinzidenz_20.pdf}
     \caption{Aufgenommene Zählrate bei Änderung der Verzögerungsleitung für eine Koinzidenz von $t_\text{Koin} = 20 \, \unit{\nano\second}$ sowie Bestimmung der Halbwertsbreite.}
@@ -173,7 +173,7 @@ gegeben.
 \subsection{Bestimmung der Untergrundrate}
 \label{sec:Bes_Unt}
 Es wird zunächst eine Abschätzung der Untergrundrate durchgeführt. Aus \eqref{eq:theo_unter} ergibt sich ein Wert von $N_\text{start} = 627,893$.
-Der Untergrund verteilt sich auf $511$ Kanäle. Dadurch folgt eine Untergrundrate von $B_\text{theo} = 1,239$. %%% Warum haben wir hier die 511 statt 512?
+Der Untergrund verteilt sich auf $512$ Kanäle. Dadurch folgt eine Untergrundrate von $B_\text{theo} = 1,226$. %%% Warum haben wir hier die 511 statt 512? aus irgendeinem Grund steht bei uns in der Datei 511. Jetzt haben wir halt 512 ist mir auch egal und ändert im Prinzip überhaupt nix
 
 
 \subsection{Bestimmung der Lebensdauer}
