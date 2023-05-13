@@ -26,7 +26,7 @@ def Bragg(n,g,theta):#die Braggbedingung
     return 2*g*np.sin(theta)/n
 
 def berechne_Abstand_mittel(dd,Abstand):
-    print("dd: ",dd)
+    #print("dd: ",dd)
     for i in range (0,len(Abstand)):
         #print("dd[i],d[len(dd)-i-1]: ",dd[i],dd[len(dd)-i-1])
         Abstand[i] = (dd[i]+dd[len(dd)-i-1])/2
@@ -99,14 +99,17 @@ para_pol = correlated_values(popt_pol,pcov_pol)
 #print(para_pol)
 x_fit_pol = np.linspace(-0.5,2*np.pi+0.5,100)
 y_fit_pol = uPolStrom(x_fit_pol,*para_pol)
+print("parameter der Polarisation I_0 : ", repr(para_pol[0]))
+print("parameter der Polarisation theta 0 : ", repr(para_pol[1]*180/np.pi))
 
-plt.errorbar(polarisation[:,0]*np.pi/180,polarisation[:,1],yerr=polarisation[:,1]*0.1,color = 'blue', fmt='x',label='Photostrom hinter dem Polfilter')
-plt.plot(x_fit_pol,unp.nominal_values(y_fit_pol),label="theo. Verlauf",color='red')
-plt.ylabel("I in A")
-plt.xlabel("Winkel in °")
+plt.errorbar(polarisation[:,0],polarisation[:,1],yerr=polarisation[:,1]*0.1,color = 'blue', fmt='x',label='Photostrom')
+plt.plot(x_fit_pol*180/np.pi,unp.nominal_values(y_fit_pol),label="Fit",color='red')
+plt.xlim(-0.1,360.1)
+plt.ylabel(r"$I \mathbin{/} \unit{\ampere}$")
+plt.xlabel(r"$\text{Winkel} \mathbin{/} °$")
 plt.grid(linestyle = ":")
 plt.tight_layout()
-plt.legend()
+plt.legend(loc="upper right")
 plt.savefig('build/polarisation.pdf')
 plt.clf()
 
@@ -118,12 +121,12 @@ theta = np.pi/180 * polarisation[:,0]
 ax.set_rmax(np.max(r))
 ax.set_rlabel_position(0)
 label_position=ax.get_rlabel_position()
-ax.text(np.radians(label_position+10),ax.get_rmax()/2.,'Photostrom in A',
-        rotation=label_position,ha='center',va='center')
-ax.errorbar(theta, r, yerr=polarisation[:,1]*0.1, capsize=0,fmt='x',label="Photostrom hinter dem Polfilter")
-ax.plot(x_fit_pol,unp.nominal_values(y_fit_pol),color='red',label="theo. Verlauf")
+ax.text(np.radians(label_position+15),ax.get_rmax()/ (3/4),r'$ \text{Photostrom} \mathbin{/} \unit{\ampere}$',
+        rotation=label_position,ha='center',va='center',fontsize=8)
+ax.errorbar(theta, r, yerr=polarisation[:,1]*0.1, capsize=0,fmt='x',label="Photostrom")
+ax.plot(x_fit_pol,unp.nominal_values(y_fit_pol),color='red',label="Fit")
 plt.tight_layout()
-plt.legend(loc='lower left')
+plt.legend(loc='lower right')
 plt.savefig('build/polarisation_pol.pdf')
 plt.clf()
 
