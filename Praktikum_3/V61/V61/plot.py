@@ -167,7 +167,7 @@ theta_80 = np.zeros(len(Mittlere_Abstand_Beugung_80[:]))
 theta_80 = np.arctan(Mittlere_Abstand_Beugung_80[:]/d[0])
 #print("Winkel: ",theta_80*180/np.pi)
 lam_80 = Gitter_const[0]*np.sin(theta_80)/Beugung_80[:8,0]
-print(lam_80*1e9)
+#print(lam_80*1e9)
 print("lam 80 mean: ", np.mean(unp.nominal_values(lam_80*1e9)))
 print("lam 80 mean: ", np.std(unp.nominal_values(lam_80*1e9)))
 
@@ -177,7 +177,7 @@ theta_100 = np.zeros(len(Mittlere_Abstand_Beugung_100[:]))
 theta_100 = np.arctan(Mittlere_Abstand_Beugung_100[:]/d[1])
 #print("Winkel: ",theta_100*180/np.pi)
 lam_100 = (Gitter_const[1]*np.sin(theta_100[:]))/Beugung_100[:6,0]
-print(lam_100*1e9)
+#print(lam_100*1e9)
 print("lam 100 mean: ", np.mean(unp.nominal_values(lam_100*1e9)))
 print("lam 100 mean: ", np.std(unp.nominal_values (lam_100*1e9)))
 #print("lam 100 mean: ",np.mean(lam_100*1e9))
@@ -188,7 +188,7 @@ theta_600 = np.zeros(len(Mittlere_Abstand_Beugung_600[:]))
 theta_600 = np.arctan(Mittlere_Abstand_Beugung_600[:]/d[2])
 #print("Winkel: ",theta_600*180/np.pi)
 lam_600 = (Gitter_const[2]*np.sin(theta_600[:]))/Beugung_600[:2,0]
-print(lam_600*1e9)
+#print(lam_600*1e9)
 print("lam 600 mean: ", np.mean(unp.nominal_values(lam_600*1e9)))
 print("lam 600 mean: ", np.std(unp.nominal_values (lam_600*1e9)))
 
@@ -198,6 +198,28 @@ theta_1200 = np.arctan(Mittlere_Abstand_Beugung_1200[:]/d[3])
 #print("Winkel: ",theta_1200*180/np.pi)
 lam_1200 = (Gitter_const[3]*unp.sin(ufloat(theta_1200,0.001)))/Beugung_1200[:1,0]
 print("lambda 1200: ",repr(lam_1200*1e9))
+
+x = np.linspace(0,2,1000)
+stab_plan_kon_g1 = 1 
+stab_plan_kon_g2 = 1 - x/(1000*(1e-3))#platzhalter
+
+stab_kon_kon_g1 = 1 - x/(1000*(1e-3))#platzhalter
+stab_kon_kon_g2 = 1 - x/(1000*(1e-3))#platzhalter
+
+
+plt.plot(x,stab_plan_kon_g1*stab_plan_kon_g2,label=r"r_1 = \text{inf}\, r_2 = Platzhalter",color="blue")
+plt.plot(x,stab_kon_kon_g1*stab_kon_kon_g2,label=r"r_1 = \text{Platzhalter}\, r_2 = Platzhalter",color="red")
+plt.xlabel(r"$\text{Resonatorlänge} \mathbin{/} \unit{\meter}$")
+plt.ylabel(r"$g_1 g_2$")
+plt.ylim(-0.25,1.25)
+plt.grid(linestyle = ":")
+plt.tight_layout()
+plt.legend()
+plt.savefig('build/Stabilität_theo.pdf')
+plt.clf()
+
+#lines = np.genfromtxt('Messdaten/Stabilität_plan_konv.txt',encoding='unicode-escape').readlines() #Einlesen der Höhe der Quelle über dem Diamaneten
+#print(lines)
 
 #output = ("Messdaten/Wellenlaenge_80")   
 #my_file = open(output + '.txt', "a") 
