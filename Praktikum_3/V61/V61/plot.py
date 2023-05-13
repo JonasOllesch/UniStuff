@@ -6,10 +6,10 @@ from uncertainties import correlated_values
 import uncertainties.unumpy as unp
 
 def Gaus(x,I0,x0,w):
-    return I0*np.exp(-2*((x-x0)/w)**2)
+    return I0*np.exp(-((x-x0)/w)**2)
 
 def uGaus(x,I0,x0,w):
-    return I0*unp.exp(-2*((x-x0)/w)**2)
+    return I0*unp.exp(-((x-x0)/w)**2)
 
 def PolStrom(x,I0,phi0):
     return I0*(np.cos(x+phi0))**2
@@ -19,8 +19,9 @@ def uPolStrom(x,I0,phi0):
 #def TEM_01_func(x,I0,x0,w,phi):
 #    return (I0*((x*np.cos(phi)-x0)/w)**2)*np.exp(-2*((x*np.cos(phi)-x0)/w)**2)
 
-def TEM_01_func(x,I0,x01,x02,x03,w,a):
-    return I0*(((x-x01)/w)**2)*(np.exp(-2*((x-x02)/w)**2)+a*np.exp(-2*((x-x03)/w)**2))
+def TEM_01_func(x,I0,x01,x02,x03,w,w2):
+    return I0*(((x-x01))**2)*(np.exp(-((x-x02)/w)**2)+np.exp(-((x-x03)/w2)**2))
+
 
 def Bragg(n,g,theta):#die Braggbedingung
     return 2*g*np.sin(theta)/n
@@ -43,6 +44,7 @@ TEM_00 = np.transpose(TEM_00)
 
 popt_TEM_00, pcov_TEM_00 = curve_fit(Gaus,xdata=TEM_00[:,0],ydata=TEM_00[:,1],sigma=TEM_00[:,1]*0.1,)
 TEM_00_para = correlated_values(popt_TEM_00,pcov_TEM_00)
+print("Parameter der TEM_00_para: ", TEM_00_para)
 x_fit_TEM_00 = np.linspace(-23,43,10000)
 
 y_fit_TEM_00 = uGaus(x_fit_TEM_00,*unp.nominal_values(TEM_00_para))
@@ -70,16 +72,17 @@ TEM_01_I = TEM_01_I-(5.35e-9)
 TEM_01 = np.vstack((TEM_01_pos, TEM_01_I))
 TEM_01 = np.transpose(TEM_01)
 
-popt_TEM_01, pcov_TEM_01 = curve_fit(TEM_01_func,xdata=TEM_01[:,0],ydata=TEM_01[:,1],sigma=TEM_01[:,1]*0.1,maxfev=20000,p0=[1.89*1e-6,-39,-2,-12,10,1.2])
+popt_TEM_01, pcov_TEM_01 = curve_fit(TEM_01_func,xdata=TEM_01[:,0],ydata=TEM_01[:,1],sigma=TEM_01[:,1]*0.1,maxfev=1000,p0=[1.89*1e-6,-1,-15,-10,10,1])
 #print(popt_TEM_01)
 #print(pcov_TEM_01)
 
 TEM_01_para = correlated_values(popt_TEM_01,pcov_TEM_01)
+print("Parameter der TEM_01: ",TEM_01_para)
 x_fit_TEM_01 = np.linspace(-32,32,10000)
 #print(TEM_01_para)
 y_fit_TEM_01 = TEM_01_func(x_fit_TEM_01,*unp.nominal_values(TEM_01_para))
 
-plt.plot(x_fit_TEM_01,unp.nominal_values(y_fit_TEM_01),color='red',label="theo. MEM 01 Mode")
+plt.plot(x_fit_TEM_01,unp.nominal_values(y_fit_TEM_01),color='red',label=r"Fit der TEM_{01}")
 
 plt.errorbar(TEM_01[:,0],TEM_01[:,1],yerr=TEM_01[:,1]*0.1,color = 'blue', fmt='x',label='Photostrom')
 plt.ylabel("I in A")
