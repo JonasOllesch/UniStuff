@@ -38,9 +38,120 @@ bestimmt. Die grafische Darstellung ist in  \autoref{fig:pol_pol} und \autoref{f
 \subsection{Bestimmung der Wellenlänge}
 \label{sec:Wellenlänge}
 
-Um die Wellenlänge des Lasers zu bestimmen, wird der Strahl an einem Gitter gebeugt. Es wird der Abstand zum zentralen Maxima $n = 0$ gemessen und mithilfe der Bragg-Bedingung
+Um die Wellenlänge des Lasers zu bestimmen, wird der Strahl an einem Gitter gebeugt. Auf einem Schirm, der sich in einem Abstand $d$ hinter dem Gitter befindet, kann ein Interferenzmuster beobachtet werden. Es wird der Abstand $\Delta x_\text{n}$ zum zentralen Maxima $n = 0$ gemessen und mithilfe der Bragg-Bedingung
 \begin{equation}
-    n \lambda = 2*g *\sin{\alpha}
+    n \lambda = 2 g \sin{\alpha}
     \label{eq:bragg}
 \end{equation}
-kann die Wellenlänge $\lambda$ berechnet werden, dabei ist $n$ das $n$-te Maxima von $n=0$, $g$ ist die Gitterkonstante des verwendeten Gitters und $\alpha$ der Winkel zwischen der optischen Achse des Maximas.
+kann die Wellenlänge $\lambda$ berechnet werden, dabei ist $n$ das $n$-te Maxima von $n=0$, $g$ ist die Gitterkonstante des verwendeten Gitters und $\alpha$ der Winkel zwischen der optischen Achse des dem betrachteten Maximas.
+$\alpha$ wird über die trigonometrische Beziehung  
+\begin{equation*}
+    \alpha = \arctan(\frac{\Delta x_\text{n}}{d})
+    \label{eq:trig}
+\end{equation*} 
+bestimmt. Die aufgenommenen Messwerte sind in \autoref{tab:Well_80}, \autoref{tab:Well_100}, \autoref{tab:Well_600} und \autoref{tab:Well_1600} zu sehen.
+
+\begin{table}[H]
+    \centering
+    \caption{Der Abstand des $n$-ten Maximas zu $n = 0$. Negative $n$ bezeichnen Maxima die links von $n = 0$ liegen und positive $n$, die die rechts von $n = 0$ liegen. Die Messwerte wurden für $d = 77,3 \, \unit{\centi\meter}$ und $g = \dfrac{1 \, \unit{\milli\meter}}{80}$ aufgenommen.}
+    \label{tab:Well_80}
+    \begin{tabular}{c c c c}
+    \toprule
+     $n$ & $\Delta x_\text{n}$ &   $n$ & $\Delta x_\text{n}$\\
+    \midrule
+        $-8$  &$ 34,5$ &        $1$ &  $ 3,9$ \\
+        $-7$  &$ 29,5$ &        $2$ &  $ 7,9$ \\
+        $-6$  &$ 24,8$ &        $3$ &  $12,2$ \\
+        $-5$  &$ 20,3$ &        $4$ &  $16,1$ \\
+        $-4$  &$ 16,0$ &        $5$ &  $20,2$ \\
+        $-3$  &$ 12,1$ &        $6$ &  $24,5$ \\
+        $-2$  &$ 8,0 $ &        $7$ &  $29,0$ \\
+        $-1$  &$ 4,1 $ &        $8$ &  $33,7$ \\
+       $ 0 $  &$ 0,0 $ &        $-$ &  $   -$ \\
+    \bottomrule
+    \end{tabular}
+    \end{table}
+
+\begin{table}[H]
+    \centering
+    \caption{Der Abstand des $n$-ten Maximas zu $n = 0$. Negative $n$ bezeichnen Maxima die links von $n = 0$ liegen und positive $n$, die die rechts von $n = 0$ liegen. Die Messwerte wurden für $d = 77,3 \, \unit{\centi\meter}$ und $g = \dfrac{1 \, \unit{\milli\meter}}{100}$ aufgenommen.}
+    \label{tab:Well_100}
+    \begin{tabular}{c c c c}
+    \toprule
+     $n$ & $\Delta x_\text{n}$ &   $n$ & $\Delta x_\text{n}$\\
+    \midrule
+    $-6$ &  $31,7 $&      $1$   &$4,9$ \\
+    $-5$ &  $25,7 $&      $2$   &$9,8$ \\
+    $-4$ &  $20,2 $&      $3$   &$14,9$ \\
+    $-3$ &  $14,9 $&      $4$   &$20,1$ \\
+    $-2$ &  $9,8  $&      $5$   &$25,5$ \\
+    $-1$ &  $4,9  $&      $6$   &$31,3$ \\   
+    $ 0$ &  $0,0  $&      $-$   &$-$    \\
+    \bottomrule
+    \end{tabular}
+    \end{table}
+
+\begin{table}[H]
+    \centering
+    \caption{Der Abstand des $n$-ten Maximas zu $n = 0$. Negative $n$ bezeichnen Maxima die links von $n = 0$ liegen und positive $n$, die die rechts von $n = 0$ liegen. Die Messwerte wurden für $d = 29,4 \, \unit{\centi\meter}$ und $g = \dfrac{1 \, \unit{\milli\meter}}{600}$ aufgenommen.}
+    \label{tab:Well_600}
+    \begin{tabular}{c c c c}
+    \toprule
+     $n$ & $\Delta x_\text{n}$ &   $n$ & $\Delta x_\text{n}$\\
+    \midrule
+    $-2$ & $36,0$ & $1$ & $ 11,9$ \\
+    $-1$ & $12,1$ & $2$ & $ 33,4$ \\
+    $0$ & $ 0.0$  & $- $ & $ - $\\
+   \bottomrule
+    \end{tabular}
+    \end{table}
+\begin{table}[H]
+    \centering
+    \caption{Der Abstand des $n$-ten Maximas zu $n = 0$. Negative $n$ bezeichnen Maxima die links von $n = 0$ liegen und positive $n$, die die rechts von $n = 0$ liegen. Die Messwerte wurden für $d = 29,4 \, \unit{\centi\meter}$ und $g = \dfrac{1 \, \unit{\milli\meter}}{600}$ aufgenommen.}
+    \label{tab:Well_600}
+    \begin{tabular}{c c c c}
+    \toprule
+     $n$ & $\Delta x_\text{n}$ &   $n$ & $\Delta x_\text{n}$\\
+    \midrule
+    $-2$ & $36,0$ & $1$ & $ 11,9$ \\
+    $-1$ & $12,1$ & $2$ & $ 33,4$ \\
+    $ 0$ & $ 0,0$ & $-$ & $ -   $\\
+   \bottomrule
+    \end{tabular}
+    \end{table}
+\begin{table}[H]
+    \centering
+    \caption{Der Abstand des $n$-ten Maximas zu $n = 0$. Negative $n$ bezeichnen Maxima die links von $n = 0$ liegen und positive $n$, die die rechts von $n = 0$ liegen. Die Messwerte wurden für $d = 29,4 \, \unit{\centi\meter}$ und $g = \dfrac{1 \, \unit{\milli\meter}}{600}$ aufgenommen.}
+    \label{tab:Well_1200}
+    \begin{tabular}{c c c c}
+    \toprule
+     $n$ & $\Delta x_\text{n}$ &   $n$ & $\Delta x_\text{n}$\\
+    \midrule
+    $-1$ & $19,8$   & $1$ & $ 17,9$   \\
+    $0$  & $0   $   & $-$ & $ -   $   \\
+    \bottomrule
+    \end{tabular}
+    \end{table}
+
+Um systematische Fehler zu vermeiden wird der Abstand zu den beiden Maxima gleicher Ordnung gemittelt. 
+Aus diesen gemittelten Abständen werden über die Gleichungen \eqref{eq:trig} und \eqref{eq:bragg} die Wellenlängen in \autoref{tab:Wellenlänge_ubersicht} berechnet. 
+Es wird angenommen, dass die Maxima bis auf $1 \unit{\milli\meter}$ bestimmt werden konnten.
+
+\begin{table}[H]
+    \centering
+    \caption{Die berechnete Wellenlänge zu den verwendeten Gittern und Abständen.}
+    \label{tab:Wellenlänge_ubersicht}
+    \begin{tabular}{c c c}
+    \toprule
+     $g \mathbin{/} \unit{\milli\meter}$ & $d \mathbin{/} \unit{\centi\meter}$ &$\lambda \mathbin{/} \unit{\nano\meter}$ \\
+    \midrule
+    $1/80  $   & $77,3$   & $637,10 \pm 5,94$\\
+    $1/100 $   & $77,3$   & $630,12 \pm 1,41$\\
+    $1/600 $   & $29,4$   & $632,81 \pm 2,99$\\
+    $1/1200$   & $16,4$   & $635,32 \pm 0,54$\\
+    \bottomrule
+    \end{tabular}
+    \end{table}
+
+\subsection{Messung der TEM Moden}
+\label{sec:TEM_moden}

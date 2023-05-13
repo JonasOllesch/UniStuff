@@ -163,8 +163,11 @@ berechne_Abstand_mittel(Beugung_1200[:,1],Mittlere_Abstand_Beugung_1200)
 theta_80 = np.zeros(len(Mittlere_Abstand_Beugung_80[:]))
 theta_80 = np.arctan(Mittlere_Abstand_Beugung_80[:]/d[0])
 #print("Winkel: ",theta_80*180/np.pi)
-lam_80 = (Gitter_const[0]*np.sin(theta_80[:]))/Beugung_80[:8,0]
+lam_80 = Gitter_const[0]*np.sin(theta_80)/Beugung_80[:8,0]
 print(lam_80*1e9)
+print("lam 80 mean: ", np.mean(unp.nominal_values(lam_80*1e9)))
+print("lam 80 mean: ", np.std(unp.nominal_values(lam_80*1e9)))
+
 
 #print("gemittelter Abstand: ",Mittlere_Abstand_Beugung_100)
 theta_100 = np.zeros(len(Mittlere_Abstand_Beugung_100[:]))
@@ -172,6 +175,10 @@ theta_100 = np.arctan(Mittlere_Abstand_Beugung_100[:]/d[1])
 #print("Winkel: ",theta_100*180/np.pi)
 lam_100 = (Gitter_const[1]*np.sin(theta_100[:]))/Beugung_100[:6,0]
 print(lam_100*1e9)
+print("lam 100 mean: ", np.mean(unp.nominal_values(lam_100*1e9)))
+print("lam 100 mean: ", np.std(unp.nominal_values (lam_100*1e9)))
+#print("lam 100 mean: ",np.mean(lam_100*1e9))
+#print("lam 100 std: ", np.std(lam_100*1e9))
 
 #print("gemittelter Abstand: ",Mittlere_Abstand_Beugung_600)
 theta_600 = np.zeros(len(Mittlere_Abstand_Beugung_600[:]))
@@ -179,14 +186,15 @@ theta_600 = np.arctan(Mittlere_Abstand_Beugung_600[:]/d[2])
 #print("Winkel: ",theta_600*180/np.pi)
 lam_600 = (Gitter_const[2]*np.sin(theta_600[:]))/Beugung_600[:2,0]
 print(lam_600*1e9)
+print("lam 600 mean: ", np.mean(unp.nominal_values(lam_600*1e9)))
+print("lam 600 mean: ", np.std(unp.nominal_values (lam_600*1e9)))
 
 #print("gemittelter Abstand: ",Mittlere_Abstand_Beugung_1200)
 theta_1200 = np.zeros(len(Mittlere_Abstand_Beugung_1200[:]))
 theta_1200 = np.arctan(Mittlere_Abstand_Beugung_1200[:]/d[3])
 #print("Winkel: ",theta_1200*180/np.pi)
-lam_1200 = (Gitter_const[3]*np.sin(theta_1200[:]))/Beugung_1200[:1,0]
-print(lam_1200*1e9)
-
+lam_1200 = (Gitter_const[3]*unp.sin(ufloat(theta_1200,0.001)))/Beugung_1200[:1,0]
+print("lambda 1200: ",repr(lam_1200*1e9))
 
 #output = ("Messdaten/Wellenlaenge_80")   
 #my_file = open(output + '.txt', "a") 
