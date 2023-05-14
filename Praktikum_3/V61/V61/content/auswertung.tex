@@ -1,9 +1,9 @@
 \section{Auswertung}
 \label{sec:auswertung}
 
-Die folgenden Ausgleichsfunktionen werden mit Funktion $curve\_fit$ aus der Python\cite{py}-Bibliothek $scipy$\cite{2020SciPy-NMeth} bestimmt.
+Folgenden Ausgleichsfunktionen werden mit Funktion $curve\_fit$ aus der Python\cite{py}-Bibliothek $scipy$\cite{2020SciPy-NMeth} bestimmt.
 Die Fehlerrechnung wird mithilfe der Bibliothek $uncertainties$ \cite{unp} durchgeführt.
-Die Grafiken werden durch die Bibliothek $matplotlib$\cite{Hunter:2007} erstellt. Der gemessene Strom an der Photodiode wird in Ampere ausgelesen.  
+Grafiken werden durch die Bibliothek $matplotlib$\cite{Hunter:2007} erstellt. Der gemessene Strom an der Photodiode wird in Ampere ausgelesen.  
 Aufgrund von Schwankungen des Photostroms wird eine Unsicherheit von $10 \%$ angenommen.
 
 \subsection{Untersuchung der Polarisation}
@@ -19,7 +19,7 @@ Die Parameter des Fit werden als
     I_0      =& (69,16 \pm    1,27) \, \unit{\micro\ampere}   \text{und}  \\
     \theta_0 =& (92,18 \pm    0,12) \, °                        \\
 \end{align*}
-bestimmt. Die grafische Darstellung ist in  \autoref{fig:pol_pol} und \autoref{fig:pol}
+bestimmt. Die grafische Darstellung ist in  \autoref{fig:pol_pol} und \autoref{fig:pol} zu sehen.
 
 \begin{figure}[H]
     \centering
@@ -43,7 +43,7 @@ Um die Wellenlänge des Lasers zu bestimmen, wird der Strahl an einem Gitter geb
     n \lambda = 2 g \sin{\alpha}
     \label{eq:bragg}
 \end{equation}
-kann die Wellenlänge $\lambda$ berechnet werden, dabei ist $n$ das $n$-te Maxima von $n=0$, $g$ ist die Gitterkonstante des verwendeten Gitters und $\alpha$ der Winkel zwischen der optischen Achse des dem betrachteten Maximas.
+kann die Wellenlänge $\lambda$ berechnet werden. $n$  beschreibt das $n$-te Maxima von $n=0$, $g$ ist die Gitterkonstante des verwendeten Gitters und $\alpha$ der Winkel zwischen der optischen Achse des dem betrachteten Maximas.
 $\alpha$ wird über die trigonometrische Beziehung  
 \begin{equation}
     \alpha = \arctan(\frac{\Delta x_\text{n}}{d})
@@ -136,7 +136,7 @@ bestimmt. Die aufgenommenen Messwerte sind in \autoref{tab:Well_80}, \autoref{ta
 
 Um systematische Fehler zu vermeiden wird der Abstand zu den beiden Maxima gleicher Ordnung gemittelt. 
 Aus diesen gemittelten Abständen werden über die Gleichungen \eqref{eq:trig} und \eqref{eq:bragg} die Wellenlängen in \autoref{tab:Wellenlänge_ubersicht} berechnet. 
-Es wird angenommen, dass die Maxima bis auf $1 \unit{\milli\meter}$ bestimmt werden konnten.
+Es wird angenommen, dass die Maxima bis auf $1 \unit{\milli\meter}$ genau bestimmt werden können.
 
 \begin{table}[H]
     \centering
