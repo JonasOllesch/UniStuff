@@ -11,6 +11,7 @@ So kann das Licht beim Durchgang durch das aktive Medium verstärkt werden. \\
 
 Der Resonator ist aus zwei Spiegeln aufgebaut, die das Licht reflektieren und erneut durch das verstärkende Medium schicken.
 Einer dieser Spiegel ist totalreflektierend, der andere wirft nur einen Teil des Lichts zurück, sodass das restliche Licht aus dem Laser entweichen kann.
+Bereits zwei plane Spiegel erfüllen die Funktionsweise eines Resonators, durch das Austauschen einer oder beider planen Spiegel durch konkave Spiegel kann eine höhere Strahlfokussierung erreicht werden. \\
 Die Stabilität des Resonators wird durch den Stabilitätsfaktor
 \begin{equation}
     g_i := 1 - \frac{L}{r_i} 
@@ -72,7 +73,82 @@ Der konkrete Ablauf von Anregung und Emission ist in \autoref{fig:HeNeUebergaeng
     \includegraphics[width=\textwidth]{figures/HeNe-LaserÜbergänge.pdf}
     \caption{Schema der im HeNe-Gemisch des Lasers stattfindenden Übergänge \cite{leifi}. In Schritt 1 wird das Helium von seinem Grundzustand auf den höheren Zustand $E_{2,\text{He}}$ angeregt und gibt bei einem Stoß
     mit einem Neonatom seine Energie an dieses ab (Schritt 2). Bei stimulierter Emission durch ein äußeres Photon fällt das Neon auf einen niedrigeren Energiezustand zurück und emittiert dabei Photonen, darunter unter
-    anderem die bekannte $633 \,\unit{\nano\meter}$-Linie (Schritt 3). Durch Kollision mit der Gefäßwand gibt das Neon dann seine restliche Energie ab und fällt in den Grundzustand zurück.}
+    anderem die bekannte $633 \,\unit{\nano\meter}$-Linie (Schritt 3). Durch Kollision mit der Gefäßwand gibt das Neon dann seine restliche Energie ab und fällt in den Grundzustand zurück (Schritt 4).}
     \label{fig:HeNeUebergaenge}
 \end{figure}
+
+
+\subsection{Longitudinale Moden}
+
+Durch die Überlagerung beider Laufrichtungen zwischen den Resonatorspiegeln entsteht eine stehende Welle mit Frequenzabstand
+
+\begin{equation}
+    \Delta \nu = \frac{c}{2L} \,,
+    \label{eq:freqdist}
+\end{equation}
+wobei $c$ die Lichtgeschwindigkeit und $L$ die Resonatorlänge beschreibt. \\
+Wie in \autoref{fig:lorentzpeaks} zu erkennen ist, entstehen so Peaks mit Abstand $\Delta \nu$.
+Dadurch, dass sich die Gasmoleküle im Lasermedium relativ zueinander unterschiedlich bewegen, kommt es zu einer Gaußverbreiterung. \\
+Die Amplituden der Peaks folgen also einer einhüllenden Gaußkurve. \\
+Die longitudinalen Moden des Laser nicht ohne weiteres nur durch Veränderung der Resonatorlänge selektiv verstärken.
+Um den Singlemode-Betrieb des Lasers dennoch zu gewährleisten, kann ein sogenannter Fabry-Perot Elaton, also ein einfacher plan-plan Resonator, verwendet werden. 
+Durch Interferenzen im Resonator wird nur eine Mode verstärkt.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=.8\textwidth]{figures/LaserModes.pdf}
+    \caption{Longitudinale Lasermoden und einhüllende Gaußkurve der Amplituden in Frequenzabhängigkeit \cite{wikilongmode}.}
+    \label{fig:lorentzpeaks}
+\end{figure}
+
+\subsection{Transversale Moden}
+
+Im Gegensatz zu den longitudinalen Moden, die sich parallel zur Ausbreitungsrichtung des Lasers ausbilden, schwingen die transversalen Moden, auch \textbf{TEM} genannt, senkrecht zur Ausbreitungsrichtung des Lasers.
+Sie entstehen durch Unebenheiten und Imperfektionen an den Spiegeln oder sonstigen Lasermaterial. \\
+Das Profil der einiger $TEM_{x y}$ ist in \autoref{fig:transmoden} zu erkennen.
+Die Indizes $x$ und $y$ beschreiben dabei die Anzahl der Peaks entlang der jeweiligen Achse senkrecht zur Ausbreitung des Strahls.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=.5\textwidth]{figures/TransversaleModen.pdf}
+    \caption{Darstellung einiger $TEM$ für den hier vorliegenden Resonatortypen \cite{transmode}.}
+    \label{fig:transmoden}
+\end{figure}
+
+Die Moden $TEM_{10}$ und $TEM_{01}$ stellen die selbe Verteilung dar, sie sind lediglich um $90 \,°$ zueinander gedreht. \\
+Dabei gilt
+\begin{equation*}
+    I_{xy} (r) \propto I_0 \left| H_x(r) H_y(r) e^{-\frac{x^2}{2}} \right|^2 
+\end{equation*}
+Die Intensitätsverteilungen der Moden $TEM_{00}$ und $TEM_{10}$ sind dabei durch
+\begin{equation}
+    I_{00} (r) = I_0 \exp \left(-2\frac{r^2}{\omega^2} \right)
+    \label{eq:int00}
+\end{equation}
+und
+\begin{equation}
+    I_{10} (r) = I_0 \frac{r^2}{\omega^2} \exp \left(-2\frac{r^2}{\omega^2}\right)
+    \label{eq:int10}
+\end{equation}
+gegeben.
+Der Abstand zur optischen Achse wird dabei durch $r$ mit $r = x - x_0$ beschrieben, wobei $x - x_0$ den Abstand auf der $x$-Achse relativ zu einem vorher gewählten Startpunkt $x_0$ ist. \\
+
+Zur Selektion der Moden kann ein dünner Draht verwendet werden.
+Links vom rechten der beiden Resonatorspiegeln platziert selektiert er je nach Orientierung des Drahtes eine rotierte Version der $TEM_{10}$. \\
+
+Zur Beschreibung der Moden sei gesagt, dass hier eigentlich ein zylindrischer Resonator vorliegt. 
+Demnach müssten die Intensitätsverteilungen durch Laguerre-Polynome statt der hier verwendeten Hermiteschen Polynome beschrieben werden. 
+Allerdings ist die zylindrische Symmetrie durch die eingebauten Brewsterfenster gestört und es treten rechteckige Symmetrien auf, wodurch die Berechnung durch Hermitesche Polynome korrekt ist. \\
+Diese Brewsterfenster filtern das emittierte Licht nach Polarisation. 
+Dabei wird senkrecht zur Ausbreitungsrichtung polarisiertes Licht zu einem Teil reflektiert, parallel polarisiertes Licht wird dagegen transmittiert.
+Es wird also eine Polarisationsrichtung bevorzugt, während die andere abgeschwächt wird, sodass der Laser in die gewünschte Richtung schwingt.  \\
+Das Gesetz von Malus beschreibt dabei die Intensität $I(\theta)$ in Abhängigkeit des Polarisationswinkels $\theta$ mit 
+\begin{equation}
+    I(\theta) = I_0 \cdot \cos^2(\theta) \,.
+    \label{eq:malus}
+\end{equation}
+
+
+
+
 
