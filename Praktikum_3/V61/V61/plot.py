@@ -98,6 +98,10 @@ plt.clf()
 
 polarisation = np.genfromtxt('Messdaten/Polarisation.txt',encoding='unicode-escape')
 polarisation[:,1] = polarisation[:,1]*1e-6 -5.35e-9#in Ampere minus Hintergrund 
+print("min polarisation: ", np.min(polarisation[:,1]))
+print("max polarisation: ", np.max(polarisation[:,1]))
+print("Verhältnis min/max",np.min(polarisation[:,1])/np.max(polarisation[:,1]))
+
 
 popt_pol, pcov_pol = curve_fit(PolStrom,polarisation[:,0]*np.pi/180,polarisation[:,1],sigma=polarisation[:,1]*0.1,p0=[6e-5,1.21])
 para_pol = correlated_values(popt_pol,pcov_pol)
@@ -247,14 +251,12 @@ print("Standartabweichung Abstand der longitudinal Moden: ", std)
 #for i in range(-8,9):
 #    my_file.write(str(i))
 #    my_file.write('\n')
-mean_ges =  np.sqrt(2*constants.Boltzmann*300/(20.18*constants.atomic_mass))
-print("durchschnittliche Geschwindigkeit der Atome: ", mean_ges)
-def doppler(v):
-    return  (constants.speed_of_light/632.8*(1e-9)) * np.sqrt(  (constants.speed_of_light - v) / (constants.speed_of_light + v)  )
-f_plus = doppler(mean_ges)
-f_min = doppler(-mean_ges)
-print("f_plus", f_plus)
-print("f_min", f_min)
-
-
-print("Gesamtbreite der Dopplerverschiebung: ", f_plus-f_min)
+#mean_ges =  np.sqrt(2*constants.Boltzmann*300/(20.18*constants.atomic_mass))
+#print("durchschnittliche Geschwindigkeit der Atome: ", mean_ges)
+#def doppler(v):
+#    return  (constants.speed_of_light/632.8*(1e-9)) * np.sqrt(  (constants.speed_of_light - v) / (constants.speed_of_light + v)  )
+#f_plus = doppler(mean_ges)
+#f_min = doppler(-mean_ges)
+#print("f_plus", f_plus)
+#print("f_min", f_min)
+#print("Gesamtbreite der Dopplerverschiebung: ", f_plus-f_min)

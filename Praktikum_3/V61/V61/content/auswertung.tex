@@ -45,10 +45,10 @@ Um die Wellenlänge des Lasers zu bestimmen, wird der Strahl an einem Gitter geb
 \end{equation}
 kann die Wellenlänge $\lambda$ berechnet werden, dabei ist $n$ das $n$-te Maxima von $n=0$, $g$ ist die Gitterkonstante des verwendeten Gitters und $\alpha$ der Winkel zwischen der optischen Achse des dem betrachteten Maximas.
 $\alpha$ wird über die trigonometrische Beziehung  
-\begin{equation*}
+\begin{equation}
     \alpha = \arctan(\frac{\Delta x_\text{n}}{d})
     \label{eq:trig}
-\end{equation*} 
+\end{equation} 
 bestimmt. Die aufgenommenen Messwerte sind in \autoref{tab:Well_80}, \autoref{tab:Well_100}, \autoref{tab:Well_600} und \autoref{tab:Well_1600} zu sehen.
 
 \begin{table}[H]
@@ -108,7 +108,7 @@ bestimmt. Die aufgenommenen Messwerte sind in \autoref{tab:Well_80}, \autoref{ta
 \begin{table}[H]
     \centering
     \caption{Der Abstand des $n$-ten Maximas zu $n = 0$. Negative $n$ bezeichnen Maxima die links von $n = 0$ liegen und positive $n$, die die rechts von $n = 0$ liegen. Die Messwerte wurden für $d = 29,4 \, \unit{\centi\meter}$ und $g = \dfrac{1 \, \unit{\milli\meter}}{600}$ aufgenommen.}
-    \label{tab:Well_600}
+    \label{tab:Well_1200}
     \begin{tabular}{c c c c}
     \toprule
      $n$ & $\Delta x_\text{n}$ &   $n$ & $\Delta x_\text{n}$\\
@@ -119,10 +119,11 @@ bestimmt. Die aufgenommenen Messwerte sind in \autoref{tab:Well_80}, \autoref{ta
    \bottomrule
     \end{tabular}
     \end{table}
+
 \begin{table}[H]
     \centering
     \caption{Der Abstand des $n$-ten Maximas zu $n = 0$. Negative $n$ bezeichnen Maxima die links von $n = 0$ liegen und positive $n$, die die rechts von $n = 0$ liegen. Die Messwerte wurden für $d = 29,4 \, \unit{\centi\meter}$ und $g = \dfrac{1 \, \unit{\milli\meter}}{600}$ aufgenommen.}
-    \label{tab:Well_1200}
+    \label{tab:Well_1600}
     \begin{tabular}{c c c c}
     \toprule
      $n$ & $\Delta x_\text{n}$ &   $n$ & $\Delta x_\text{n}$\\
@@ -196,10 +197,6 @@ In der zweiten Anordnung $r_1 = ???$ und $r_2 = ???$ wurde der Strahl bei einer 
 \label{sec:Stab_be}
 Die Peaks der gemessenen longitudinal Moden in Abhängigkeit der Resonatorlänge sind in \autoref{tab:longi} zu sehen.
 Zusätzlich ist der mittlere Abstand zwischen zwei Moden in der Tabelle zu sehen.
-%Die Frequenz der longitudinal Moden wird nun mit der Verschiebung der Wellenlänge des Lasers verglichen, die durch den Dopplereffekt entsteht.
-%Die Dopplerbreite eines HeNe-Lasers beträgt $ \Delta f = 1500 \, \unit{meta\hertz}$\cite{eicheich}.
-
-
 
 \begin{table}[H]
     \centering
@@ -207,7 +204,7 @@ Zusätzlich ist der mittlere Abstand zwischen zwei Moden in der Tabelle zu sehen
     \label{tab:longi}
     \begin{tabular}{c c c c c c c c c c | c}
     \toprule
-      $L \mathbin{/} \unit{\centi\meter}$ & & & & & & & & & $\Delta \mathbin{/} \unit{\mega\hertz}$ &  \\
+      $L \mathbin{/} \unit{\centi\meter}$ & & & & & & & & & & $\Delta f \mathbin{/}  \unit{\mega\hertz}$   \\
     \midrule
         $44$ &  $345$ & $690$ &$ 1031$ & $-   $ & $-    $ & $-   $ & $-   $ & $-   $ &  $-   $ &  $ 343,00 \pm 2,0 $ \\
         $46$ &  $330$ & $630$ &$ 990$  & $-   $ & $-    $ & $-   $ & $-   $ & $-   $ &  $-   $ &  $ 330,00 \pm 30,00 $ \\
