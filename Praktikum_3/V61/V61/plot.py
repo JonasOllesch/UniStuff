@@ -4,6 +4,8 @@ from scipy.optimize import curve_fit
 from uncertainties import ufloat
 from uncertainties import correlated_values
 import uncertainties.unumpy as unp
+import copy
+from scipy import constants
 
 def Gaus(x,I0,x0,w):
     return I0*np.exp(-((x-x0)/w)**2)
@@ -96,6 +98,10 @@ plt.clf()
 
 polarisation = np.genfromtxt('Messdaten/Polarisation.txt',encoding='unicode-escape')
 polarisation[:,1] = polarisation[:,1]*1e-6 -5.35e-9#in Ampere minus Hintergrund 
+print("min polarisation: ", np.min(polarisation[:,1]))
+print("max polarisation: ", np.max(polarisation[:,1]))
+print("Verhältnis min/max",np.min(polarisation[:,1])/np.max(polarisation[:,1]))
+
 
 popt_pol, pcov_pol = curve_fit(PolStrom,polarisation[:,0]*np.pi/180,polarisation[:,1],sigma=polarisation[:,1]*0.1,p0=[6e-5,1.21])
 para_pol = correlated_values(popt_pol,pcov_pol)
@@ -218,11 +224,39 @@ plt.legend()
 plt.savefig('build/Stabilität_theo.pdf')
 plt.clf()
 
-#lines = np.genfromtxt('Messdaten/Stabilität_plan_konv.txt',encoding='unicode-escape').readlines() #Einlesen der Höhe der Quelle über dem Diamaneten
-#print(lines)
+longitudinal_modes = []
+for i in range(0,27):
+    longitudinal_modes.append(np.genfromtxt('Messdaten/Stabilität_plan_konv.txt',encoding='unicode-escape', skip_header=i,max_rows=1))
+del longitudinal_modes[0]
+del longitudinal_modes[0]
+
+test = copy.deepcopy(longitudinal_modes)
+for j in range(0,len(test[:])):
+    for i in reversed(range(1,len(test[j][:]))):
+        test[j][i] = test[j][i]-test[j][i-1]
+test2 = []
+for i in range(0,len(test[:])):
+    test2.append(test[i][2:])
+
+means = []
+std = []
+for i in range(0,len(test[:])):
+    means.append(np.mean(test2[i][:]))
+    std.append(np.std(test2[i][:]))
+print("mittlerer Abstand der longitudinal Moden: ", means)
+print("Standartabweichung Abstand der longitudinal Moden: ", std)
 
 #output = ("Messdaten/Wellenlaenge_80")   
 #my_file = open(output + '.txt', "a") 
 #for i in range(-8,9):
 #    my_file.write(str(i))
 #    my_file.write('\n')
+#mean_ges =  np.sqrt(2*constants.Boltzmann*300/(20.18*constants.atomic_mass))
+#print("durchschnittliche Geschwindigkeit der Atome: ", mean_ges)
+#def doppler(v):
+#    return  (constants.speed_of_light/632.8*(1e-9)) * np.sqrt(  (constants.speed_of_light - v) / (constants.speed_of_light + v)  )
+#f_plus = doppler(mean_ges)
+#f_min = doppler(-mean_ges)
+#print("f_plus", f_plus)
+#print("f_min", f_min)
+#print("Gesamtbreite der Dopplerverschiebung: ", f_plus-f_min)

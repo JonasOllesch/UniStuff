@@ -1,9 +1,9 @@
 \section{Auswertung}
 \label{sec:auswertung}
 
-Die folgenden Ausgleichsfunktionen werden mit Funktion $curve\_fit$ aus der Python\cite{py}-Bibliothek $scipy$\cite{2020SciPy-NMeth} bestimmt.
+Folgenden Ausgleichsfunktionen werden mit Funktion $curve\_fit$ aus der Python\cite{py}-Bibliothek $scipy$\cite{2020SciPy-NMeth} bestimmt.
 Die Fehlerrechnung wird mithilfe der Bibliothek $uncertainties$ \cite{unp} durchgeführt.
-Die Grafiken werden durch die Bibliothek $matplotlib$\cite{Hunter:2007} erstellt. Der gemessene Strom an der Photodiode wird in Ampere ausgelesen.  
+Grafiken werden durch die Bibliothek $matplotlib$\cite{Hunter:2007} erstellt. Der gemessene Strom an der Photodiode wird in Ampere ausgelesen.  
 Aufgrund von Schwankungen des Photostroms wird eine Unsicherheit von $10 \%$ angenommen.
 
 \subsection{Untersuchung der Polarisation}
@@ -19,7 +19,7 @@ Die Parameter des Fit werden als
     I_0      =& (69,16 \pm    1,27) \, \unit{\micro\ampere}   \text{und}  \\
     \theta_0 =& (92,18 \pm    0,12) \, °                        \\
 \end{align*}
-bestimmt. Die grafische Darstellung ist in  \autoref{fig:pol_pol} und \autoref{fig:pol}
+bestimmt. Die grafische Darstellung ist in  \autoref{fig:pol_pol} und \autoref{fig:pol} zu sehen.
 
 \begin{figure}[H]
     \centering
@@ -43,12 +43,12 @@ Um die Wellenlänge des Lasers zu bestimmen, wird der Strahl an einem Gitter geb
     n \lambda = 2 g \sin{\alpha}
     \label{eq:bragg}
 \end{equation}
-kann die Wellenlänge $\lambda$ berechnet werden, dabei ist $n$ das $n$-te Maxima von $n=0$, $g$ ist die Gitterkonstante des verwendeten Gitters und $\alpha$ der Winkel zwischen der optischen Achse des dem betrachteten Maximas.
+kann die Wellenlänge $\lambda$ berechnet werden. $n$  beschreibt das $n$-te Maxima von $n=0$, $g$ ist die Gitterkonstante des verwendeten Gitters und $\alpha$ der Winkel zwischen der optischen Achse des dem betrachteten Maximas.
 $\alpha$ wird über die trigonometrische Beziehung  
-\begin{equation*}
+\begin{equation}
     \alpha = \arctan(\frac{\Delta x_\text{n}}{d})
     \label{eq:trig}
-\end{equation*} 
+\end{equation} 
 bestimmt. Die aufgenommenen Messwerte sind in \autoref{tab:Well_80}, \autoref{tab:Well_100}, \autoref{tab:Well_600} und \autoref{tab:Well_1600} zu sehen.
 
 \begin{table}[H]
@@ -108,7 +108,7 @@ bestimmt. Die aufgenommenen Messwerte sind in \autoref{tab:Well_80}, \autoref{ta
 \begin{table}[H]
     \centering
     \caption{Der Abstand des $n$-ten Maximas zu $n = 0$. Negative $n$ bezeichnen Maxima die links von $n = 0$ liegen und positive $n$, die die rechts von $n = 0$ liegen. Die Messwerte wurden für $d = 29,4 \, \unit{\centi\meter}$ und $g = \dfrac{1 \, \unit{\milli\meter}}{600}$ aufgenommen.}
-    \label{tab:Well_600}
+    \label{tab:Well_1200}
     \begin{tabular}{c c c c}
     \toprule
      $n$ & $\Delta x_\text{n}$ &   $n$ & $\Delta x_\text{n}$\\
@@ -119,10 +119,11 @@ bestimmt. Die aufgenommenen Messwerte sind in \autoref{tab:Well_80}, \autoref{ta
    \bottomrule
     \end{tabular}
     \end{table}
+
 \begin{table}[H]
     \centering
     \caption{Der Abstand des $n$-ten Maximas zu $n = 0$. Negative $n$ bezeichnen Maxima die links von $n = 0$ liegen und positive $n$, die die rechts von $n = 0$ liegen. Die Messwerte wurden für $d = 29,4 \, \unit{\centi\meter}$ und $g = \dfrac{1 \, \unit{\milli\meter}}{600}$ aufgenommen.}
-    \label{tab:Well_1200}
+    \label{tab:Well_1600}
     \begin{tabular}{c c c c}
     \toprule
      $n$ & $\Delta x_\text{n}$ &   $n$ & $\Delta x_\text{n}$\\
@@ -135,7 +136,7 @@ bestimmt. Die aufgenommenen Messwerte sind in \autoref{tab:Well_80}, \autoref{ta
 
 Um systematische Fehler zu vermeiden wird der Abstand zu den beiden Maxima gleicher Ordnung gemittelt. 
 Aus diesen gemittelten Abständen werden über die Gleichungen \eqref{eq:trig} und \eqref{eq:bragg} die Wellenlängen in \autoref{tab:Wellenlänge_ubersicht} berechnet. 
-Es wird angenommen, dass die Maxima bis auf $1 \unit{\milli\meter}$ bestimmt werden konnten.
+Es wird angenommen, dass die Maxima bis auf $1 \unit{\milli\meter}$ genau bestimmt werden können.
 
 \begin{table}[H]
     \centering
@@ -180,8 +181,8 @@ und die der $\text{TEM}_{01}$ als
  \end{align*}
  bestimmt.
 
- \subsection{Untersuchung der Stabilitätsbedingung}
- \label{sec:Stab_be}
+\subsection{Untersuchung der Stabilitätsbedingung}
+\label{sec:Stab_be}
 Der theoretische Verlauf der Stabilitätsfaktoren ist in \autoref{fig:stab_be_theo} zu sehen.
 Im Experiment wurde für die Anordnung $r_1 = inf$ und $r_2 = ???$ bei einer Resonatorlänge von $135 \, \unit{\centi\meter}$ ein stabiler Strahl erzeugt.
 In der zweiten Anordnung $r_1 = ???$ und $r_2 = ???$ wurde der Strahl bei einer Länge von $140 \, \unit{\centi\meter}$ instabil.
@@ -191,3 +192,45 @@ In der zweiten Anordnung $r_1 = ???$ und $r_2 = ???$ wurde der Strahl bei einer 
     \caption{Theoretische Sta für zwei Anordnungen.}
     \label{fig:stab_be_theo}
 \end{figure}
+
+\subsection{Messung der longitudinal Moden}
+\label{sec:Stab_be}
+Die Peaks der gemessenen longitudinal Moden in Abhängigkeit der Resonatorlänge sind in \autoref{tab:longi} zu sehen.
+Zusätzlich ist der mittlere Abstand zwischen zwei Moden in der Tabelle zu sehen.
+
+\begin{table}[H]
+    \centering
+    \caption{Die Peakpositionen in den longitudinal Moden. Die Postion und der durchschnittliche Abstand sind in $\unit{\mega\hertz}$.}
+    \label{tab:longi}
+    \begin{tabular}{c c c c c c c c c c | c}
+    \toprule
+      $L \mathbin{/} \unit{\centi\meter}$ & & & & & & & & & & $\Delta f \mathbin{/}  \unit{\mega\hertz}$   \\
+    \midrule
+        $44$ &  $345$ & $690$ &$ 1031$ & $-   $ & $-    $ & $-   $ & $-   $ & $-   $ &  $-   $ &  $ 343,00 \pm 2,0 $ \\
+        $46$ &  $330$ & $630$ &$ 990$  & $-   $ & $-    $ & $-   $ & $-   $ & $-   $ &  $-   $ &  $ 330,00 \pm 30,00 $ \\
+        $50$ &  $315$ & $630$ &$ 945$  & $-   $ & $-    $ & $-   $ & $-   $ & $-   $ &  $-   $ &  $ 315,00 \pm 0,00 $ \\
+        $52$ &  $308$ & $611$ &$ 915$  & $1219$ & $-    $ & $-   $ & $-   $ & $-   $ &  $-   $ &  $ 303,67 \pm 0,47 $ \\
+        $54$ &  $293$ & $585$ &$ 881$  & $1170$ & $-    $ & $-   $ & $-   $ & $-   $ &  $-   $ &  $ 292,33 \pm 2,87 $ \\
+        $56$ &  $281$ & $563$ &$ 844$  & $-   $ & $-    $ & $-   $ & $-   $ & $-   $ &  $-   $ &  $ 281,50 \pm 0,50 $ \\
+        $58$ &  $270$ & $536$ &$ 806$  & $1073$ & $-    $ & $-   $ & $-   $ & $-   $ &  $-   $ &  $ 267,67 \pm 1,70 $ \\
+        $60$ &  $259$ & $518$ &$ 776$  & $1039$ & $-    $ & $-   $ & $-   $ & $-   $ &  $-   $ &  $ 260,00 \pm 2,16 $ \\
+        $62$ &  $251$ & $503$ &$ 754$  & $1001$ & $-    $ & $-   $ & $-   $ & $-   $ &  $-   $ &  $ 250,00 \pm 2,16 $ \\
+        $64$ &  $244$ & $488$ &$ 728$  & $971 $ & $-    $ & $-   $ & $-   $ & $-   $ &  $-   $ &  $ 242,33 \pm 1,70 $ \\
+        $66$ &  $236$ & $473$ &$ 705$  & $941 $ & $-    $ & $-   $ & $-   $ & $-   $ &  $-   $ &  $ 235,00 \pm 2,16 $ \\
+        $68$ &  $229$ & $456$ &$ 683$  & $911 $ & $1136 $ & $-   $ & $-   $ & $-   $ &  $-   $ &  $ 226,75 \pm 1,09 $ \\
+        $70$ &  $221$ & $446$ &$ 664$  & $885 $ & $1110 $ & $-   $ & $-   $ & $-   $ &  $-   $ &  $ 222,25 \pm 2,95 $ \\
+        $72$ &  $218$ & $431$ &$ 645$  & $863 $ & $1076 $ & $-   $ & $-   $ & $-   $ &  $-   $ &  $ 214,50 \pm 2,06 $ \\
+        $74$ &  $206$ & $409$ &$ 611$  & $816 $ & $1020 $ & $-   $ & $-   $ & $-   $ &  $-   $ &  $ 203,50 \pm 1,12 $ \\
+        $76$ &  $199$ & $398$ &$ 600$  & $799 $ & $998  $ & $1196$ & $-   $ & $-   $ &  $-   $ &  $ 199,40 \pm 1,36 $ \\ 
+        $78$ &  $195$ & $390$ &$ 585$  & $776 $ & $971  $ & $1166$ & $-   $ & $-   $ &  $-   $ &  $ 194,20 \pm 1,60 $ \\ 
+        $80$ &  $191$ & $379$ &$ 570$  & $758 $ & $949  $ & $1136$ & $-   $ & $-   $ &  $-   $ &  $ 189,00 \pm 1,67 $ \\ 
+        $85$ &  $180$ & $356$ &$ 536$  & $713 $ & $893  $ & $1069$ & $1249$ & $-   $ &  $-   $ &  $ 178,17 \pm 1,86 $ \\ 
+        $90$ &  $169$ & $338$ &$ 510$  & $679 $ & $848  $ & $1013$ & $1185$ & $-   $ &  $-   $ &  $ 169,33 \pm 2,36 $ \\ 
+        $95$ &  $161$ & $319$ &$ 476$  & $638 $ & $795  $ & $956 $ & $1114$ & $1275$ &  $-   $ &  $ 159,14 \pm 1,96 $ \\ 
+        $100$ & $150$ & $304$ &$ 454$  & $608 $ & $754  $ & $908 $ & $1061$ & $1211$ &  $-   $ &  $ 151,57 \pm 2,82 $ \\ 
+        $110$ & $139$ & $278$ &$ 413$  & $551 $ & $686  $ & $825 $ & $960 $ & $1099$ &  $-   $ &  $ 137,14 \pm 1,88 $ \\ 
+        $120$ & $128$ & $251$ &$ 379$  & $506 $ & $630  $ & $758 $ & $881 $ & $1005$ &  $1133$ &  $ 125,63 \pm 2,18 $ \\
+        $130$ & $233$ & $465$ &$ 694$  & $926 $ & $1159 $ & $1391$ & $-   $ & $-   $ &  $-   $ &  $ 231,60 \pm 1,36 $ \\ 
+    \bottomrule
+    \end{tabular}
+    \end{table}
