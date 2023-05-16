@@ -44,7 +44,7 @@ delta2 = np.pi/2
 theta_sun = np.arcsin(np.sqrt(0.6))/2
 sinsqua_sun = np.sin(theta_sun)**2                                       # sun_sin = np.sin(theta_sun)**2
 
-g1 = np.linspace(1*10**(-15), 10**(-3), 1 * 10**6)       # 20 * 10**6 steps are enough to make both plots grow to m1 = 1 :) Yeah not anymore, going to need a bit more than that
+g1 = np.linspace(1*10**(-15), 10**(-2), 2 * 10**6)       # 20 * 10**6 steps are enough to make both plots grow to m1 = 1 :) Yeah not anymore, going to need a bit more than that
 
 
 # lower bounds:
@@ -101,7 +101,7 @@ plt.plot(g1, g_tautau_m1_pha0(g_tautau_low, g1, delm_sunsqua, delm_atmsqua), col
 plt.plot(g1, g_tautau_m1_pha0(g_tautau_upper, g1, delm_sunsqua, delm_atmsqua), color='purple', linestyle='dashdot')
 
 plt.xlabel(r'$g_1$')
-plt.xlim(10**(-11), 10**(-4))
+plt.xlim(10**(-11), 10**(-2))
 plt.xscale('log')
 
 plt.ylabel(r'$m_1$')
