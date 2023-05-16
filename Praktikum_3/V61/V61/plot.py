@@ -207,14 +207,16 @@ print("lambda 1200: ",repr(lam_1200*1e9))
 
 x = np.linspace(0,2,1000)
 stab_plan_kon_g1 = 1 
-stab_plan_kon_g2 = 1 - x/(1000*(1e-3))#platzhalter
+stab_plan_kon_g2 = 1 - x/(1400*(1e-3))#platzhalter
 
-stab_kon_kon_g1 = 1 - x/(1000*(1e-3))#platzhalter
-stab_kon_kon_g2 = 1 - x/(1000*(1e-3))#platzhalter
+stab_kon_kon_g1 = 1 - x/(1400*(1e-3))#platzhalter
+stab_kon_kon_g2 = 1 - x/(1400*(1e-3))#platzhalter
 
 
-plt.plot(x,stab_plan_kon_g1*stab_plan_kon_g2,label=r"r_1 = \text{inf}\, r_2 = Platzhalter",color="blue")
-plt.plot(x,stab_kon_kon_g1*stab_kon_kon_g2,label=r"r_1 = \text{Platzhalter}\, r_2 = Platzhalter",color="red")
+
+
+plt.plot(x,stab_plan_kon_g1*stab_plan_kon_g2,label=r"$r_{1} = \text{inf}\, r_{2} = 1400, \, \unit{\milli\meter}$",color="blue")
+plt.plot(x,stab_kon_kon_g1*stab_kon_kon_g2,label=r"$r_{1} =  1400 \unit{\milli\meter}, \, r_{2} = 1400 \, \unit{\milli\meter}$",color="red")
 plt.xlabel(r"$\text{Resonatorlänge} \mathbin{/} \unit{\meter}$")
 plt.ylabel(r"$g_1 g_2$")
 plt.ylim(-0.25,1.25)
