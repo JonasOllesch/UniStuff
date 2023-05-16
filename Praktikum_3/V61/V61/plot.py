@@ -130,7 +130,7 @@ theta = np.pi/180 * polarisation[:,0]
 ax.set_rmax(np.max(r))
 ax.set_rlabel_position(0)
 label_position=ax.get_rlabel_position()
-ax.text(np.radians(label_position+15),ax.get_rmax()/ (3/4),r'$ \text{Photostrom} \mathbin{/} \unit{\ampere}$',
+ax.text(np.radians(label_position+0),ax.get_rmax()/ (3/6),r'$ \text{Photostrom} \mathbin{/} \unit{\ampere}$',
         rotation=label_position,ha='center',va='center',fontsize=8)
 ax.errorbar(theta, r, yerr=polarisation[:,1]*0.1, capsize=0,fmt='x',label="Photostrom")
 ax.plot(x_fit_pol,unp.nominal_values(y_fit_pol),color='red',label="Fit")
@@ -215,10 +215,11 @@ stab_kon_kon_g2 = 1 - x/(1400*(1e-3))#platzhalter
 
 
 
-plt.plot(x,stab_plan_kon_g1*stab_plan_kon_g2,label=r"$r_{1} = \text{inf}\, r_{2} = 1400, \, \unit{\milli\meter}$",color="blue")
+plt.plot(x,stab_plan_kon_g1*stab_plan_kon_g2,label=r"$r_{1} = \infty\, r_{2} = 1400, \, \unit{\milli\meter}$",color="blue")
 plt.plot(x,stab_kon_kon_g1*stab_kon_kon_g2,label=r"$r_{1} =  1400 \unit{\milli\meter}, \, r_{2} = 1400 \, \unit{\milli\meter}$",color="red")
 plt.xlabel(r"$\text{Resonatorlänge} \mathbin{/} \unit{\meter}$")
 plt.ylabel(r"$g_1 g_2$")
+plt.xlim(-0.25,2.25)
 plt.ylim(-0.25,1.25)
 plt.grid(linestyle = ":")
 plt.tight_layout()

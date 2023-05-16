@@ -1,7 +1,7 @@
 \section{Auswertung}
 \label{sec:auswertung}
 
-Folgenden Ausgleichsfunktionen werden mit Funktion $curve\_fit$ aus der Python\cite{py}-Bibliothek $scipy$\cite{2020SciPy-NMeth} bestimmt.
+Folgende Ausgleichsfunktionen werden mit Funktion $curve\_fit$ aus der Python\cite{py}-Bibliothek $scipy$\cite{2020SciPy-NMeth} bestimmt.
 Die Fehlerrechnung wird mithilfe der Bibliothek $uncertainties$ \cite{unp} durchgeführt.
 Grafiken werden durch die Bibliothek $matplotlib$\cite{Hunter:2007} erstellt. Der gemessene Strom an der Photodiode wird in Ampere ausgelesen.  
 Aufgrund von Schwankungen des Photostroms wird eine Unsicherheit von $10 \%$ angenommen.
@@ -9,16 +9,19 @@ Aufgrund von Schwankungen des Photostroms wird eine Unsicherheit von $10 \%$ ang
 \subsection{Untersuchung der Polarisation}
 \label{sec:Polarisation}
 
-Die Intentsitätsverteilung in Abhängigkeit vom Raumwinkel $\theta$ ist durch die Funktion
+Die Intentsitätsverteilung in Abhängigkeit vom Raumwinkel $\theta$ ist nach \eqref{eq:malus} durch die Funktion
 \begin{equation*}
     I(\theta) = I_0 \cdot \cos(\theta + \theta_0)² %am besten in der Theorie erklären wo diese Formel überhaupt herkommt
 \end{equation*}
 gegeben, wobei $\theta_0 $ ein konstanter Offset gegenüber der optischen Achse ist. 
 Die Parameter des Fit werden als
-\begin{align*}
-    I_0      =& (69,16 \pm    1,27) \, \unit{\micro\ampere}   \text{und}  \\
-    \theta_0 =& (92,18 \pm    0,12) \, °                        \\
-\end{align*}
+\begin{equation*}
+    I_0      = (69,16 \pm    1,27) \, \unit{\micro\ampere}
+\end{equation*}
+und
+\begin{equation*}
+    \theta_0 = (92,18 \pm    0,12) \, °  
+\end{equation*}
 bestimmt. Die grafische Darstellung ist in  \autoref{fig:pol_pol} und \autoref{fig:pol} zu sehen.
 
 \begin{figure}[H]
@@ -105,24 +108,10 @@ bestimmt. Die aufgenommenen Messwerte sind in \autoref{tab:Well_80}, \autoref{ta
    \bottomrule
     \end{tabular}
     \end{table}
-\begin{table}[H]
-    \centering
-    \caption{Der Abstand des $n$-ten Maximas zu $n = 0$. Negative $n$ bezeichnen Maxima die links von $n = 0$ liegen und positive $n$, die die rechts von $n = 0$ liegen. Die Messwerte wurden für $d = 29,4 \, \unit{\centi\meter}$ und $g = \dfrac{1 \, \unit{\milli\meter}}{600}$ aufgenommen.}
-    \label{tab:Well_1200}
-    \begin{tabular}{c c c c}
-    \toprule
-     $n$ & $\Delta x_\text{n}$ &   $n$ & $\Delta x_\text{n}$\\
-    \midrule
-    $-2$ & $36,0$ & $1$ & $ 11,9$ \\
-    $-1$ & $12,1$ & $2$ & $ 33,4$ \\
-    $ 0$ & $ 0,0$ & $-$ & $ -   $\\
-   \bottomrule
-    \end{tabular}
-    \end{table}
 
 \begin{table}[H]
     \centering
-    \caption{Der Abstand des $n$-ten Maximas zu $n = 0$. Negative $n$ bezeichnen Maxima die links von $n = 0$ liegen und positive $n$, die die rechts von $n = 0$ liegen. Die Messwerte wurden für $d = 29,4 \, \unit{\centi\meter}$ und $g = \dfrac{1 \, \unit{\milli\meter}}{600}$ aufgenommen.}
+    \caption{Der Abstand des $n$-ten Maximas zu $n = 0$. Negative $n$ bezeichnen Maxima die links von $n = 0$ liegen und positive $n$, die die rechts von $n = 0$ liegen. Die Messwerte wurden für $d = 29,4 \, \unit{\centi\meter}$ und $g = \dfrac{1 \, \unit{\milli\meter}}{1200}$ aufgenommen.}
     \label{tab:Well_1600}
     \begin{tabular}{c c c c}
     \toprule
@@ -134,7 +123,7 @@ bestimmt. Die aufgenommenen Messwerte sind in \autoref{tab:Well_80}, \autoref{ta
     \end{tabular}
     \end{table}
 
-Um systematische Fehler zu vermeiden wird der Abstand zu den beiden Maxima gleicher Ordnung gemittelt. 
+Um systematische Fehler zu vermeiden, wird der Abstand zu den beiden Maxima gleicher Ordnung gemittelt. 
 Aus diesen gemittelten Abständen werden über die Gleichungen \eqref{eq:trig} und \eqref{eq:bragg} die Wellenlängen in \autoref{tab:Wellenlänge_ubersicht} berechnet. 
 Es wird angenommen, dass die Maxima bis auf $1 \unit{\milli\meter}$ genau bestimmt werden können.
 
@@ -154,14 +143,14 @@ Es wird angenommen, dass die Maxima bis auf $1 \unit{\milli\meter}$ genau bestim
     \end{tabular}
     \end{table}
 
-\subsection{Messung der $TEM$ Moden}
+\subsection{Messung der $TEM$-Moden}
 \label{sec:TEM_moden}
 
 Die Intentsitätsverteilung der $TEM_{00}$ und $TEM_{01}$  werden durch Funktionen 
 
 \begin{align*}
-    I_{00}(x) =& I_0 \cdot e^{-(x-x_0)²/w ²} \, \text{und} \\
-    I_{01}(x) =& I_0 \cdot (x-x_{0})^2 \left( e^{-(x-x_1)²/w ²} + a e^{-(x-x_2)²/w ²} \right) \\
+    I_{00}(x) &= I_0 \cdot e^{-(x-x_0)²/w ²} \, \quad \text{und} \\
+    I_{01}(x) &= I_0 \cdot (x-x_{0})^2 \left( e^{-(x-x_1)²/w ²} + a e^{-(x-x_2)²/w ²} \right) \\
 \end{align*}
 gefittet.
 Die Parameter der $TEM_{00}$  wurden als 
@@ -184,7 +173,7 @@ und die der $TEM_{01}$ als
 \subsection{Untersuchung der Stabilitätsbedingung}
 \label{sec:Stab_be}
 Der theoretische Verlauf der Stabilitätsfaktoren ist in \autoref{fig:stab_be_theo} zu sehen.
-Im Experiment wurde für die Anordnung $r_1 = \text{inf}$ und $r_2 = 1400 \, \unit{\milli\meter}$ bei einer Resonatorlänge von $135 \, \unit{\centi\meter}$ ein stabiler Strahl erzeugt.
+Im Experiment wurde für die Anordnung $r_1 = \infty$ und $r_2 = 1400 \, \unit{\milli\meter}$ bei einer Resonatorlänge von $135 \, \unit{\centi\meter}$ ein stabiler Strahl erzeugt.
 In der zweiten Anordnung $r_1 = 1400 \, \unit{\milli\meter}$ und $r_2 = 1400 \, \unit{\milli\meter}$ wurde der Strahl bei einer Länge von $140 \, \unit{\centi\meter}$ instabil.
  \begin{figure}[H]
     \centering
@@ -193,14 +182,14 @@ In der zweiten Anordnung $r_1 = 1400 \, \unit{\milli\meter}$ und $r_2 = 1400 \, 
     \label{fig:stab_be_theo}
 \end{figure}
 
-\subsection{Messung der longitudinal Moden}
+\subsection{Messung der longitudinalen Moden}
 \label{sec:Stab_be}
-Die Peaks der gemessenen longitudinal Moden in Abhängigkeit der Resonatorlänge sind in \autoref{tab:longi} zu sehen.
+Die Peaks der gemessenen longitudinalen Moden in Abhängigkeit der Resonatorlänge sind in \autoref{tab:longi} zu sehen.
 Zusätzlich ist der mittlere Abstand zwischen zwei Moden in der Tabelle zu sehen.
 
 \begin{table}[H]
     \centering
-    \caption{Die Peakpositionen in den longitudinal Moden. Die Postion und der durchschnittliche Abstand sind in $\unit{\mega\hertz}$.}
+    \caption{Die Peakpositionen in den longitudinalen Moden. Die Postion und der durchschnittliche Abstand sind in $\unit{\mega\hertz}$ angegeben.}
     \label{tab:longi}
     \begin{tabular}{c c c c c c c c c c | S[table-format=3.2]}
     \toprule
