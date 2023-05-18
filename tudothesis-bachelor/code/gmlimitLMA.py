@@ -74,7 +74,7 @@ print(g_ee_m1_pha0(g_ee_low, g1, delm_sunsqua, sinsqua_sun))
 # g_ee lower bound with phase 0
 
 plt.plot(g1, g_ee_m1_pha0(g_ee_low, g1, delm_sunsqua, sinsqua_sun), color='blue',label=r'bounds on $g_{ee}$')
-plt.plot(g1, g_ee_m1_pha0(g_ee_neglow, g1, delm_sunsqua, sinsqua_sun), color='teal')
+plt.plot(g1, g_ee_m1_pha0(g_ee_neglow, g1, delm_sunsqua, sinsqua_sun), color='blue')
 
 # g_ee lower bound with phase pi/2
 
@@ -83,29 +83,30 @@ plt.plot(g1, g_ee_m1_pha0(g_ee_neglow, g1, delm_sunsqua, sinsqua_sun), color='te
 # g_ee upper bound
 
 plt.plot(g1, g_ee_m1_pha0(g_ee_upper, g1, delm_sunsqua, sinsqua_sun), color='blue')
-plt.plot(g1, g_ee_m1_pha0(g_ee_negupper, g1, delm_sunsqua, sinsqua_sun), color='teal')
+#plt.plot(g1, g_ee_m1_pha0(g_ee_negupper, g1, delm_sunsqua, sinsqua_sun), color='teal')
 
 
 
 # g_eμ lower bound
 
 plt.plot(g1, g_emu_m1_pha0(g_emu_low, g1, delm_sunsqua, theta_sun), color='green', linestyle='dashed', label=r'bounds on $g_{e \mu^\prime}$') ### Der ist gut!!
-plt.plot(g1, g_emu_m1_pha0(g_emu_neglow, g1, delm_sunsqua, theta_sun), color='yellow', linestyle='dashed')
+#plt.plot(g1, g_emu_m1_pha0(g_emu_neglow, g1, delm_sunsqua, theta_sun), color='yellow', linestyle='dashed')
 
 # g_eμ upper bound
-plt.plot(g1, g_emu_m1_pha0(g_emu_upper, g1, delm_sunsqua, theta_sun), color='green', linestyle='dashed')
-plt.plot(g1, g_emu_m1_pha0(g_emu_negupper, g1, delm_sunsqua, theta_sun), color='yellow', linestyle='dashed') ### Der auch, der macht den tollen Knick!
+
+#plt.plot(g1, g_emu_m1_pha0(g_emu_upper, g1, delm_sunsqua, theta_sun), color='green', linestyle='dashed')
+plt.plot(g1, g_emu_m1_pha0(g_emu_negupper, g1, delm_sunsqua, theta_sun), color='green', linestyle='dashed') ### Der auch, der macht den tollen Knick!
 
 
 # g_μμ lower bound
 
-plt.plot(g1, g_mumu_m1_pha0(g_mumu_low, g1, delm_sunsqua, theta_sun), color='red', linestyle='dotted', label=r'bounds on $g_{\mu^\prime \mu^\prime}$')
-plt.plot(g1, g_mumu_m1_pha0(g_mumu_neglow, g1, delm_sunsqua, theta_sun), color='pink', linestyle='dotted')
+#plt.plot(g1, g_mumu_m1_pha0(g_mumu_low, g1, delm_sunsqua, theta_sun), color='red', linestyle='dotted', label=r'bounds on $g_{\mu^\prime \mu^\prime}$')
+plt.plot(g1, g_mumu_m1_pha0(g_mumu_neglow, g1, delm_sunsqua, theta_sun), color='red', linestyle='dotted', label=r'bounds on $g_{\mu^\prime \mu^\prime}$')
 
 # g_μμ upper bound
 
 plt.plot(g1, g_mumu_m1_pha0(g_mumu_upper, g1, delm_sunsqua, theta_sun), color='red', linestyle='dotted')
-plt.plot(g1, g_mumu_m1_pha0(g_mumu_negupper, g1, delm_sunsqua, theta_sun), color='pink', linestyle='dotted')
+#plt.plot(g1, g_mumu_m1_pha0(g_mumu_negupper, g1, delm_sunsqua, theta_sun), color='pink', linestyle='dotted')
 
 # g_ττ lower bound
 

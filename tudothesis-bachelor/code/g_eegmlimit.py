@@ -17,7 +17,7 @@ delta2 = np.pi/2
 theta_sun = np.arcsin(np.sqrt(0.6))/2
 sinsqua_sun = np.sin(theta_sun)**2                                       # sun_sin = np.sin(theta_sun)**2
 
-g1 = np.linspace(1*10**(-15), 10**(-3), 2 * 10**6)       # 20 * 10**6 entries are enough to make both plots grow to m1 = 1 :) Yeah not anymore, going to need a bit more than that
+g1 = np.linspace(1*10**(-10), 10**(-3), 20 * 10**6)       # 20 * 10**6 entries are enough to make both plots grow to m1 = 1 :) Yeah not anymore, going to need a bit more than that
 
 
 # lower bounds:
@@ -44,7 +44,7 @@ plt.plot(g1, g_ee_m1_pha0(g_ee_negupper, g1, delm_sunsqua, sinsqua_sun), color='
 
 
 plt.xlabel(r'$g_1$')
-plt.xlim(10**(-11), 10**(-3))
+plt.xlim(10**(-10), 10**(-3))
 plt.xscale('log')
 
 plt.ylabel(r'$m_1$')
