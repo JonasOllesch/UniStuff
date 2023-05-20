@@ -4,9 +4,8 @@ from scipy.optimize import curve_fit
 from uncertainties import ufloat
 from uncertainties import correlated_values
 import uncertainties.unumpy as unp
-import pandas as pd
+from matplotlib.legend_handler import (HandlerLineCollection,HandlerTuple)
 
-from scipy import interpolate
 
 output = ("build/Auswertung")   
 my_file = open(output + '.txt', "w") 
@@ -29,6 +28,10 @@ def pdf(x,N,lam,y):
 Channel_Kalibrierung = np.genfromtxt('Messdaten/Channel_Kalibrierung.txt',encoding='unicode-escape')
 def pol1(a,b,x):
     return a*x +b 
+
+def pol0(a,x):
+    return a 
+
 
 def exponential(x,N,lam,y):
     return (N*np.exp(-lam*x))+y
@@ -154,79 +157,136 @@ writeW(KK20,"KK20")
 #plt.show()
 
 
-def poly(x,koef):
-    return np.polyval(koef,x)
+x_left_10  = np.linspace(-18,-1,5)
+x_mid_10   = np.linspace(-1,5,5) 
+x_right_10 = np.linspace(5,18,5)
 
-x_kali_koin = np.linspace(-32,32,100000)
-plateu_10 = unp.nominal_values(KK10u[KK10u > 18])
-plateu_mean_10 = np.mean(plateu_10)
+popt_x_left_10,pcov_x_left_10 = curve_fit(pol1,KK10[3:8,0],unp.nominal_values(KK10u[3:8]),sigma=unp.std_devs(KK10u[3:8]))
+para_x_left_10 = correlated_values(popt_x_left_10,pcov_x_left_10)
+y_left_10 = pol1(x_left_10,*para_x_left_10)
 
-pol4_10 = np.polyfit(KK10[:,0],unp.nominal_values(KK10u[:]),deg = 8)
-y_kali_koin_10 = np.polyval(pol4_10,x_kali_koin)
+mean_10 = np.mean(unp.nominal_values(KK10u[8:14]))
 
-idx = np.argwhere(np.diff(np.sign(plateu_mean_10/2 - y_kali_koin_10))).flatten()
-print("Halbwertsbreite 10 in ns", np.max(x_kali_koin[idx]) - np.min(x_kali_koin[idx]))
+popt_x_right_10,pcov_x_right_10 = curve_fit(pol1,KK10[14:17,0],unp.nominal_values(KK10u[14:17]),sigma=unp.std_devs(KK10u[14:17])) 
+para_x_right_10 = correlated_values(popt_x_right_10,pcov_x_right_10)
+y_right_10 = pol1(x_right_10,*para_x_right_10)
 
-plt.plot(x_kali_koin,y_kali_koin_10,color = 'red',label="Polynom 8. Grades")
-plt.plot(x_kali_koin[idx], y_kali_koin_10[idx], color='green',label="Halbwertsbreite")
-plt.errorbar(KK10[:,0],unp.nominal_values(KK10u[:]),yerr=unp.std_devs(KK10u[:]),color = 'blue', fmt='x',label="Messwerte")
+mm6 = plt.plot(x_left_10, unp.nominal_values(y_left_10), color='#ff7f0e')
+mm7 = plt.hlines(mean_10,xmin=-1,xmax=5,color='#2ca02c')
+mm8 = plt.plot(x_right_10, unp.nominal_values(y_right_10), color='#d62728')
+mm9 = plt.hlines(mean_10/2,xmax=unp.nominal_values((mean_10/2-para_x_left_10[0])/para_x_left_10[1]),xmin=unp.nominal_values((mean_10/2-para_x_right_10[0])/para_x_right_10[1]),color='#2ca02c',linestyle='dashed')
+
+#print(popt_x_left_10)
+#print(popt_x_right_10)
+#print(mean_10/2)
+#print((mean_10/2-popt_x_left_10[1])/popt_x_left_10[0])
+#print((mean_10/2-popt_x_right_10[1])/popt_x_right_10[0])
+
+mm1 = plt.errorbar(KK10[:3, 0], unp.nominal_values(KK10u[:3]), yerr=unp.std_devs(KK10u[:3]), fmt='x')
+mm2 = plt.errorbar(KK10[3:8, 0], unp.nominal_values(KK10u[3:8]), yerr=unp.std_devs(KK10u[3:8]), fmt='x')
+mm3 = plt.errorbar(KK10[8:14, 0], unp.nominal_values(KK10u[8:14]), yerr=unp.std_devs(KK10u[8:14]), fmt='x')
+mm4 = plt.errorbar(KK10[14:17, 0], unp.nominal_values(KK10u[14:17]), yerr=unp.std_devs(KK10u[14:17]), fmt='x')
+mm5 = plt.errorbar(KK10[17:, 0], unp.nominal_values(KK10u[17:]), yerr=unp.std_devs(KK10u[17:]), fmt='x')
+
+handles = [(mm1, mm2, mm3, mm4, mm5), (mm6[0], mm7, mm8[0]),(mm9)]
+labels = ['Messwerte', 'lin. Fit','FWHM']
+
+plt.legend(handles, labels, handler_map={tuple: HandlerTuple(ndivide=None)}, loc='best')
+
 plt.ylabel(r"$\text{Zählung} \mathbin{/} \unit{\second}$")
 plt.xlabel(r"$\text{Verzögerungszeit} \, \text{in} \, \unit{\nano\second}$")
 plt.grid(linestyle = ":")
 plt.ylim(0,30)
 plt.tight_layout()
-plt.legend()
 plt.savefig('build/Kalibrierung_Koinzidenz_10')
 plt.clf()
 
 
-pol4_15 = np.polyfit(KK15[:,0],unp.nominal_values(KK15u[:]),deg = 8)
-y_kali_koin_15 = np.polyval(pol4_15,x_kali_koin)
+x_left_15 = np.linspace(-18,-2,5)
+x_mid_15 = np.linspace(-4,10,5)
+x_right_15 = np.linspace(10,21,5)
 
-plt.plot(x_kali_koin,y_kali_koin_15,color = 'red',label = "Polynom 8. Grades" )
-plateu_15 = unp.nominal_values(KK15u[KK15u > 21])
-plateu_mean_15 = np.mean(plateu_15)
-idx = np.argwhere(np.diff(np.sign(plateu_mean_15/2 - y_kali_koin_15))).flatten()
-print("Halbwertsbreite 15 in ns", np.max(x_kali_koin[idx]) - np.min(x_kali_koin[idx]))
+popt_x_left_15,pcov_x_left_15 = curve_fit(pol1,KK15[3:8,0],unp.nominal_values(KK15u[3:8]),sigma=unp.std_devs(KK15u[3:8]))
+para_x_left_15 = correlated_values(popt_x_left_15,pcov_x_left_15)
+y_left_15 = pol1(x_left_15,*para_x_left_15)
+
+mean_15 = np.mean(unp.nominal_values(KK15u[8:15]))
+
+popt_x_right_15,pcov_x_right_15 = curve_fit(pol1,KK15[15:18,0],unp.nominal_values(KK15u[15:18]),sigma=unp.std_devs(KK15u[15:18])) 
+para_x_right_15 = correlated_values(popt_x_right_15,pcov_x_right_15)
+y_right_15 = pol1(x_right_15,*para_x_right_15)
+
+mm6 = plt.plot(x_left_15, unp.nominal_values(y_left_15), color='#ff7f0e')
+mm7 = plt.hlines(mean_15,xmin=-4,xmax=10,color='#2ca02c')
+mm8 = plt.plot(x_right_15, unp.nominal_values(y_right_15), color='#d62728')
+mm9 = plt.hlines(mean_15/2,xmax=unp.nominal_values((mean_15/2-para_x_left_15[0])/para_x_left_15[1]),xmin=unp.nominal_values((mean_15/2-para_x_right_15[0])/para_x_right_15[1]),color='#2ca02c',linestyle='dashed')
 
 
-plt.plot(x_kali_koin[idx], y_kali_koin_15[idx], color='green',label='Halbwertsbreite')
+mm1 = plt.errorbar(KK15[:3,0]   ,unp.nominal_values(KK15u[:3])      ,yerr=unp.std_devs(KK15u[:3])   ,fmt='x')
+mm2 = plt.errorbar(KK15[3:8,0]  ,unp.nominal_values(KK15u[3:8])     ,yerr=unp.std_devs(KK15u[3:8])  ,fmt='x')
+mm3 = plt.errorbar(KK15[8:15,0] ,unp.nominal_values(KK15u[8:15])    ,yerr=unp.std_devs(KK15u[8:15]) ,fmt='x')
+mm4 = plt.errorbar(KK15[15:18,0],unp.nominal_values(KK15u[15:18])   ,yerr=unp.std_devs(KK15u[15:18]),fmt='x')
+mm5 = plt.errorbar(KK15[18:,0]  ,unp.nominal_values(KK15u[18:])     ,yerr=unp.std_devs(KK15u[18:])  ,fmt='x')
+
+handles = [(mm1, mm2, mm3, mm4, mm5), (mm6[0], mm7, mm8[0]),mm9]
+labels = ['Messwerte', 'lin. Fit','FWHM']
+plt.legend(handles, labels, handler_map={tuple: HandlerTuple(ndivide=None)}, loc='best')
 
 
-plt.errorbar(KK15[:,0],unp.nominal_values(KK15u[:]),yerr=unp.std_devs(KK15u[:]),color = 'blue', fmt='x',label="Messwerte")
+plt.ylim(0,30)
 plt.ylabel(r"$\text{Zählung} \mathbin{/} \unit{\second}$")
 plt.xlabel(r"$\text{Verzögerungszeit} \, \text{in} \, \unit{\nano\second}$")
 plt.grid(linestyle = ":")
 plt.tight_layout()
-plt.legend()
 plt.savefig('build/Kalibrierung_Koinzidenz_15')
 plt.clf()
 
+x_left_20 = np.linspace(-28,-18,5)
+x_mid_20 = np.linspace(-18,12,5)
+x_right_20 = np.linspace(12,25,5)
 
-plateu_20 = unp.nominal_values(KK20u[KK20u > 19.4])
-plateu_mean_20 = np.mean(plateu_20)
-pol4_20 = np.polyfit(KK20[:,0],unp.nominal_values(KK20u[:]),deg = 8)
-y_kali_koin_20 = np.polyval(pol4_20,x_kali_koin)
-idx = np.argwhere(np.diff(np.sign(plateu_mean_20/2 - y_kali_koin_20))).flatten()
+popt_x_left_20,pcov_x_left_20 = curve_fit(pol1,KK20[1:3,0],unp.nominal_values(KK20u[1:3]),sigma=unp.std_devs(KK20u[1:3]))
+para_x_left_20 = correlated_values(popt_x_left_20,pcov_x_left_20)
+y_left_20 = pol1(x_left_20,*para_x_left_20)
+
+mean_20 = np.mean(unp.nominal_values(KK20u[3:16]))
+
+popt_x_right_20,pcov_x_right_20 = curve_fit(pol1,KK20[16:19,0],unp.nominal_values(KK20u[16:19]),sigma=unp.std_devs(KK20u[16:19])) 
+para_x_right_20 = correlated_values(popt_x_right_20,pcov_x_right_20)
+y_right_20 = pol1(x_right_20,*para_x_right_20)
+
+mm6 = plt.plot(x_left_20, unp.nominal_values(y_left_20), color='#ff7f0e')
+mm7 = plt.hlines(mean_20,xmin=-18,xmax=12,color='#2ca02c')
+mm8 = plt.plot(x_right_20, unp.nominal_values(y_right_20), color='#d62728')
+mm9 = plt.hlines(mean_20/2,xmax=unp.nominal_values((mean_20/2-para_x_left_20[0])/para_x_left_20[1]),xmin=unp.nominal_values((mean_20/2-para_x_right_20[0])/para_x_right_20[1]),color='#2ca02c',linestyle='dashed')
+
+print("pcov_x_left_20", pcov_x_left_20)
+print("para_x_left_20", para_x_left_20)
+print("para_x_right_20", para_x_right_20)
+plt.errorbar(KK20[:1,0],unp.nominal_values(KK20u[:1]),yerr=unp.std_devs(KK20u[:1])              ,fmt='x')
+plt.errorbar(KK20[1:3,0],unp.nominal_values(KK20u[1:3]),yerr=unp.std_devs(KK20u[1:3])           ,fmt='x')
+plt.errorbar(KK20[3:16,0],unp.nominal_values(KK20u[3:16]),yerr=unp.std_devs(KK20u[3:16])        ,fmt='x')
+plt.errorbar(KK20[16:19,0],unp.nominal_values(KK20u[16:19]),yerr=unp.std_devs(KK20u[16:19])     ,fmt='x')
+plt.errorbar(KK20[19:,0],unp.nominal_values(KK20u[19:]),yerr=unp.std_devs(KK20u[19:])           ,fmt='x')
+
+handles = [(mm1, mm2, mm3, mm4, mm5), (mm6[0], mm7, mm8[0]),mm9]
+labels = ['Messwerte', 'lin. Fit','FWHM']
+plt.legend(handles, labels, handler_map={tuple: HandlerTuple(ndivide=None)}, loc='best')
 
 
-print("Halbwertsbreite 20 in ns", np.max(x_kali_koin[idx]) - np.min(x_kali_koin[idx]))
-plt.plot(x_kali_koin[idx], y_kali_koin_20[idx], color='green',label='Halbwertsbreite')
-plt.plot(x_kali_koin,y_kali_koin_20,color = 'red',label="Polynom 8. Grades")
-plt.errorbar(KK20[:,0],unp.nominal_values(KK20u[:]),yerr=unp.std_devs(KK20u[:]),color = 'blue', fmt='x',label="Messwerte")
+plt.ylim(0,25)
 plt.ylabel(r"$\text{Zählung} \mathbin{/} \unit{\second}$")
 plt.xlabel(r"$\text{Verzögerungszeit} \, \text{in} \, \unit{\nano\second}$")
 plt.grid(linestyle = ":")
 plt.tight_layout()
-plt.legend()
 plt.savefig('build/Kalibrierung_Koinzidenz_20')
 plt.clf()
 
-writeW(plateu_mean_10,"plateu_mean_10")
-writeW(np.std(plateu_10),"plateu_std_10")
 
-writeW(plateu_mean_15,"plateu_mean_15")
-writeW(np.std(plateu_15),"plateu_std_15")
+print("mean_10: ", mean_10)
+print("mean_15: ", mean_15)
+print("mean_20: ", mean_20)
 
-writeW(plateu_mean_20,"plateu_mean_20")
-writeW(np.std(plateu_20),"plateu_std_20")
+print("FWHM_10 : ",  repr((mean_10/2-para_x_left_10[0])/para_x_left_10[1] - (mean_10/2-para_x_right_10[0])/para_x_right_10[1]))
+print("FWHM_15 : ",  repr((mean_15/2-para_x_left_15[0])/para_x_left_15[1] - (mean_15/2-para_x_right_15[0])/para_x_right_15[1]))
+print("FWHM_20 : ",  repr((mean_20/2-para_x_left_20[0])/para_x_left_20[1] - (mean_20/2-para_x_right_20[0])/para_x_right_20[1]))
