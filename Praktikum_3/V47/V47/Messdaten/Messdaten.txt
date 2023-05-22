@@ -1,1 +1,23 @@
-#Widerstand in Ohm, Heitzstrom in mA , Spannung in V, Zeit in hh:mm:ss
+# Widerstand in Ohm, Heizstrom in mA , Spannung in V, Zeit in hh, mm ,ss
+18.4    160.
+22.7    162.
+27.0    164.
+31.3    165.
+35.5    166.
+39.7    166.
+43.8    166.
+47.9    167.
+52.0    167.
+56.1    167.
+60.2    168.
+64.3    168.
+68.3    168.
+72.3    168.
+76.3    168.
+80.3    168.
+84.2    169.
+88.3    169.
+92.1    169.
+96.1    169.
+100.0   169. 
+103.9   170. 
