@@ -17,8 +17,8 @@ delta2 = np.pi/2
 theta_sun = np.arcsin(np.sqrt(0.6))/2
 sinsqua_sun = np.sin(theta_sun)**2                                       # sun_sin = np.sin(theta_sun)**2
 
-g1 = np.linspace(1*10**(-10), 10**(-3), 20 * 10**6)       # 20 * 10**6 entries are enough to make both plots grow to m1 = 1 :) Yeah not anymore, going to need a bit more than that
-
+#g1 = np.linspace(1*10**(-10), 10**(-3), 1 * 10**6)       # 20 * 10**6 entries are enough to make both plots grow to m1 = 1 :) Yeah not anymore, going to need a bit more than that
+g1 = np.logspace(start = -10, stop = -3, num = 2 * 10**6, base = 10.0)
 
 # lower bounds:
 g_ee_low    =  3 * 10**(-7)
