@@ -1,0 +1,1 @@
+#Widerstand in Ohm, Heitzstrom in mA , Spannung in V, Zeit in hh:mm:ss
