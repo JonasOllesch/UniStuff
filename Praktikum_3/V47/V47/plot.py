@@ -6,8 +6,10 @@ from scipy import constants
 import copy
 
 def rechne_ohm_zu_temperatur_celsius(R):
-    return 0.00134*R**2+2.296*R- 243.02#
+    return 0.00134*R**2+2.296*R -243.02
 
+linearerAusdehnungskoeffizient = 16.5*10**(-6)
+Kompressionsmodul = 123*10**9
 m = 0.342  #Masse in kg 
 #Widerstand in Ohm, Strom  in mA , Spannung in V, Zeit in hh, mm ,ss
 Widerstand, Strom , Spannung, Stunden, Minuten, Sekunden = np.genfromtxt('Messdaten/Messdaten.txt',encoding='unicode-escape',dtype=None,unpack=True)
@@ -26,19 +28,22 @@ print(type(Delta_t[0]))
 
 for i in range (0,länge-1):
     Delta_t[i+1] = Zeit[i+1]-Zeit[i]
-print(Delta_t)
-Energie = Spannung*Strom*Delta_t
-print(Energie)
-Temperatur = rechne_ohm_zu_temperatur_celsius(Widerstand)
 
+print("Delta_t: ", Delta_t)
+Delta_E = Spannung*Strom*Delta_t
+print("Delta_E: ", Delta_E)
+Temperatur = rechne_ohm_zu_temperatur_celsius(Widerstand)
+print("Temperatur: ", Temperatur)
 Delta_T = copy.deepcopy(Widerstand) # der Unterschied in der Temperatur
 for i in range(0,länge-1):
     Delta_T[i] = Temperatur[i+1]-Temperatur[i]
+Delta_T[länge-1] = 0  #der letzte Eintrag kann nicht berechnet werden, da es keine nächste Temperatur gibt 
 
-#Berechnung der Wärmekapazität C = \Delta E / \Delta T
-Wärmekapazität = copy.deepcopy(Widerstand)
-
-
+print("Delta_T: ", Delta_T)
+#Berechnung der Wärmekapazität C = (Delta E) / (Delta T)
+C_p = copy.deepcopy(Widerstand)
+C_p = Delta_E/Delta_T
+print(C_p)
 #plt.errorbar(Zeit,gefüllte_Kanäle,yerr=np.sqrt(gefüllte_Kanäle),elinewidth=0.2,capthick=1,markersize=2,color = 'green', fmt='x')
 #plt.plot(x_zeit,y_zeit,color='red',label="gefittete Funktion")
 #plt.fill_between(Zeit,gefüllte_Kanäle,step="pre",alpha=1,label="Histogram der Myonenzerfälle")
