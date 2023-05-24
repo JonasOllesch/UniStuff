@@ -59,3 +59,48 @@ As can be seen, the heat capacity assumed by the classical approach is independe
 This contradicts practical measurements, where a distinct relation between heat capacity and temperature can be observed. 
 
 \subsection{Einstein approach}
+
+The Einstein approach assumes that all $3N$ eigen oscillations of the lattice oscillate at the same frequency $\omega_\text{E}$.
+The average energy follows the Bose-Einstein distribution, more specifically
+\begin{equation*}
+   \langle U \rangle = 3 N \hbar \omega_\text{E} \left(\frac{1}{2} + \frac{1}{\text{e}^{\beta \hbar \omega_\text{E}} - 1} \right) \,,
+\end{equation*}
+where $\hbar$ is the Planck constant and $\beta = \frac{1}{k_\text{B} T}$. \\
+
+Using the characteristic Einstein temperature $\theta_\text{E} = \frac{\hbar \omega_\text{E}}{k_\text{B}}$, the heat capacity can be expressed as
+\begin{equation}
+    C^\text{E}_V = 3 N k_\text{B} \left(\frac{\theta_\text{E}}{T} \right)^2 \frac{\text{e}^{\frac{\theta_\text{E}}{T}}}{\left(\text{e}^{\frac{\theta_\text{E}}{T}} - 1 \right)^2} \,.
+    \label{eq:einsteinheatcap}
+\end{equation}
+
+Approximately, the heat capacity follows
+\begin{equation*}
+    C^\text{E}_V = \begin{cases}
+        3 N k_\text{B} \left(\frac{\theta_\text{E}}{T} \right)^2 \text{e}^{\frac{\theta_\text{E}}{T}} &\qquad \text{for} \quad T << \theta_\text{E} \\ 
+        3 N k_\text{B} &\qquad \text{for} \quad T >> \theta_\text{E} \,.
+    \end{cases} 
+\end{equation*}
+
+As can be seen above, for high temperatures, the Einstein approximation once again predicts a constant heat capacity coinciding with the one the classical approach predicts.
+This approximation work quite well for higher temperatures, where optical phonons dictate the processes inside the copper. \cite{}
+
+\subsection{Debye approach}
+
+The Debye approach on the other hand better describes lower temperatures, where acoustic phonons dominate the processes inside the substance.
+Here, all phonon branches are approximated through $3$ branches of linear dispersion $\omega_i = v_i q$,  from which the heat capacity follows as
+\begin{equation*}
+    C^\text{D}_V = 9 N k_\text{B} \left( \frac{T}{\theta_\text{D}} \right)^3 \int^{\frac{\theta_\text{D}}{T}}_0 \dif x \, \frac{x^4 \text{e}^x}{(\text{e}^x -1)^2} \,,
+\end{equation*}
+with the Debye temperature
+\begin{equation*}
+    \theta_\text{D} = \frac{\hbar v_\text{s}}{K_\text{B}} \left(6 \pi^2 \frac{N}{V}\right)^{\frac{1}{3}} \,,
+\end{equation*}
+the speed of sound $v_\text{s}$ in medium and $N$ wave vectors inside the first Brillouin zone. \\
+
+For high and low temperatures, the heat capacity can be expressed as
+\begin{equation*}
+    C^\text{D}_V= \begin{cases}
+        \frac{12 \pi^4}{5} N k_\text{B} \left(\frac{T} {\theta_\text{D}}\right)^3 &\qquad \text{for} \quad T << \theta_\text{D} \\ 
+        3 N k_\text{B} &\qquad \text{for} \quad T >> \theta_\text{D} \,.
+    \end{cases} 
+\end{equation*}
