@@ -12,7 +12,7 @@ def pol1(x,a,b):
 def rechne_ohm_zu_temperatur_celsius(Widerstand):
     return 0.00134*Widerstand**2+2.296*Widerstand -243.02
 
-Kompressionsmodul = 123*10**9
+Kompressionsmodul = 137*10**9
 Masse = 0.342  #Masse in kg 
 tab1=np.array([[24.9430,   24.9310,   24.8930,   24.8310,   24.7450,   24.6340,   24.5000,   24.3430,   24.1630,   23.9610],
                [23.7390,   23.4970,   23.2360,   22.9560,   22.6600,   22.3480,   22.0210,   21.6800,   21.3270,   20.9630],
@@ -53,6 +53,7 @@ Delta_t[länge-1] = 0
 Delta_E = Spannung*Strom*Delta_t
 Temperatur = rechne_ohm_zu_temperatur_celsius(Widerstand)
 Temperatur = Temperatur + constants.zero_Celsius
+print(Temperatur)
 #print("Temperatur in C", Temperatur[:10])
 
 
@@ -80,7 +81,7 @@ C_v = C_p - 9*linAusKoef**2*Kompressionsmodul*Molvolumen*Temperatur
 
 
 plt.errorbar(unp.nominal_values(Temperatur[:länge-1]),unp.nominal_values(C_p[:länge-1]),xerr=unp.std_devs(C_p[:länge-1]), yerr=unp.std_devs(Temperatur[:länge-1]),elinewidth=1,capthick=1,markersize=3,color = 'blue', fmt='x',label=r"$ C_\text{p}$")
-plt.errorbar(unp.nominal_values(Temperatur[:länge-1]),unp.nominal_values(C_v[:länge-1]),xerr=unp.std_devs(C_v[:länge-1]), yerr=unp.std_devs(Temperatur[:länge-1]),elinewidth=1,capthick=1,markersize=3,color = 'red', fmt='x',label=r"$ C_\text{v}$")
+plt.errorbar(unp.nominal_values(Temperatur[:länge-1]),unp.nominal_values(C_v[:länge-1]),xerr=unp.std_devs(C_v[:länge-1]), yerr=unp.std_devs(Temperatur[:länge-1]),elinewidth=1,capthick=1,markersize=3,color = 'red', fmt='x',label=r"$ C_\text{V}$")
 
 plt.hlines(3*constants.R,xmin=65,xmax=280,color='green',linestyles='dashed',label='Dulong-Petit Gesetzt')
 plt.ylabel(r"$ C \mathbin{/} \unit{\dfrac{\joule}{\kelvin \, \mol}} $")
@@ -101,13 +102,13 @@ theta_dT = np.zeros(länge)
 
 for i in range(länge):
     theta_dT[i] = find_nearest(C_v[i])
-print(theta_dT[:10])#die Werte :10 liegen unter 170K wie in der Anleitung gefordert der 0. Wert wird herrausgenommen, da er zuweit außerhalb liegt
-
+#print("debye temperatur:",theta_dT[:10])#die Werte :10 liegen unter 170K wie in der Anleitung gefordert der 0. Wert wird herrausgenommen, da er zuweit außerhalb liegt
 
 theta = theta_dT*Temperatur
-print(theta[1:10])
-print(np.mean(unp.nominal_values(theta[1:10])))
-print(np.sqrt(np.sum(unp.std_devs(theta[1:10])**2)))
+print("theta Gesamt", theta)
+print("die Debye Temperaturen: ", theta[1:10])
+print("Mittelwert der Debye Temperatur ", np.mean(unp.nominal_values(theta[1:10])))
+print("Standartabweichung der Debye Temperatur: ",np.sqrt(np.sum(unp.std_devs(theta[1:10])**2)))
 
 plt.scatter(unp.nominal_values(C_v[1:10]),theta_dT[1:10],label='Debye-Funktion')
 plt.xlabel(r"$ C_{\text{p}} \mathbin{/} \unit{\dfrac{\joule}{\kelvin\mol}} $")
@@ -117,3 +118,5 @@ plt.tight_layout()
 plt.legend()
 plt.savefig('build/Debye_Funktion.pdf')
 plt.clf()
+
+         

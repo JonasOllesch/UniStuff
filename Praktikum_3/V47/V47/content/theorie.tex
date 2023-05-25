@@ -3,7 +3,7 @@
 
 If a substance is exposed to an external heat or energy source,
 it will heat up trying to reach thermodynamic equilibrium.
-The capacity at which it does so is called the heat capacity
+The capacity at which it does is the heat capacity
 \begin{equation*}
     C = \frac{\Delta Q}{\Delta T} \,,
 \end{equation*}
@@ -17,9 +17,9 @@ The heat capacity
 \end{equation*}
 as the derivative of the inner energy by temperature under constant volume $V$ and respectively
 \begin{equation*}
-    C_{p} = \left( \frac{\partial U}{\partial T} \right) \big \vert _p
+    C_{p} = \left( \frac{\partial H}{\partial T} \right) \big \vert _p
 \end{equation*}
-for constant pressure $p$. \\
+for constant pressure $p$ with the entalpy $H$. \\
 
 In practice, holding the pressure constant is significantly simpler than keeping a constant volume, so $C_p$ is the heat capacity most often measured directly.
 The correlation between $C_V$ and $C_p$, where the former is always greater, is given by
@@ -76,12 +76,12 @@ Using the characteristic Einstein temperature $\theta_\text{E} = \frac{\hbar \om
 Approximately, the heat capacity follows
 \begin{equation*}
     C^\text{E}_V = \begin{cases}
-        3 N k_\text{B} \left(\frac{\theta_\text{E}}{T} \right)^2 \text{e}^{\frac{\theta_\text{E}}{T}} &\qquad \text{for} \quad T << \theta_\text{E} \\ 
+        3 N k_\text{B} \left(\frac{\theta_\text{E}}{T} \right)^2 \text{e}^{-\frac{\theta_\text{E}}{T}} &\qquad \text{for} \quad T << \theta_\text{E} \\ 
         3 N k_\text{B} &\qquad \text{for} \quad T >> \theta_\text{E} \,.
     \end{cases} 
 \end{equation*}
 
-As can be seen above, for high temperatures, the Einstein approximation once again predicts a constant heat capacity coinciding with the one the classical approach predicts.
+As can be seen above, for high temperatures, the Einstein approximation once again predicts a constant heat capacity coinciding with the classical result.
 This approximation work quite well for higher temperatures, where optical phonons dictate the processes inside the copper. \cite{}
 
 \subsection{Debye approach}
