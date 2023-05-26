@@ -83,7 +83,7 @@ C_v = C_p - 9*linAusKoef**2*Kompressionsmodul*Molvolumen*Temperatur
 plt.errorbar(unp.nominal_values(Temperatur[:länge-1]),unp.nominal_values(C_p[:länge-1]),xerr=unp.std_devs(C_p[:länge-1]), yerr=unp.std_devs(Temperatur[:länge-1]),elinewidth=1,capthick=1,markersize=3,color = 'blue', fmt='x',label=r"$ C_\text{p}$")
 plt.errorbar(unp.nominal_values(Temperatur[:länge-1]),unp.nominal_values(C_v[:länge-1]),xerr=unp.std_devs(C_v[:länge-1]), yerr=unp.std_devs(Temperatur[:länge-1]),elinewidth=1,capthick=1,markersize=3,color = 'red', fmt='x',label=r"$ C_\text{V}$")
 
-plt.hlines(3*constants.R,xmin=65,xmax=280,color='green',linestyles='dashed',label='Dulong-Petit Gesetzt')
+plt.hlines(3*constants.R,xmin=65,xmax=280,color='green',linestyles='dashed',label='Dulong-Petit law')
 plt.ylabel(r"$ C \mathbin{/} \unit{\dfrac{\joule}{\kelvin \, \mol}} $")
 plt.xlabel(r"$T \mathbin{/} \unit{\kelvin}$")
 plt.grid(linestyle = ":")

@@ -6,30 +6,32 @@
 The error propagation is performed using $uncertainties$ \cite{unp}. The linear interpolation is performed using $numpy$ \cite{numpy}.
 Figures are compiled using $matplotlib$\cite{Hunter:2007}. Due to fluctuations of the measuring device, we assume an uncertainty of
 $\pm 0.5 \, \unit{\ohm}$ for the resistances and $\pm 0.5 \, \unit{\second} $ for the time measurements. 
-The assumed error of the voltage and the current is $1 \, \%$.
+The assumed error of the voltage and the current is $1 \, \%$. 
+These uncertainties relate to the reading of the instruments during the experiment.
 
 \section{Calculation of the heat capacity $C_\text{V}$ and $C_\text{p}$}
 \label{sec:CVaCp}
 
-The measurement data can be seen in \autoref{tab:data}. First the temperature is calculated from the resistance via \eqref{eq:RtoT}.
-\begin{equation}
+The measurement data can be seen in \autoref{tab:data}. First the temperature is calculated from the resistance via 
+\begin{equation*}
     \label{eq:RtoT}
-    T = 0.00134 R^2 + 2.296 R - 243.02
-\end{equation}
-
+    T = 0.00134 R^2 + 2.296 R - 243.02 \,
+\end{equation*}
+which gives the temperature in $\unit{\celsius}$.
 The heat capacity $C_\text{v}$ can be calculated via the electric energy $\Delta E = U \cdot I \cdot \Delta t $, that is feed into the system between two measurements.
 $\Delta t $ is the time between two measurements.
+
 According to the first law of thermodynamics $ \Delta E = \Delta Q + \Delta W $ energy is equal to heat, if no additional work is performed.
-When this relationships are used in \eqref{eq:heat_cap} the result is $C = \frac{U \cdot I \cdot \Delta t}{\Delta T}$. Now mass$m$ of the copper sample has to be taken into account,
+When this relationships are used in \eqref{eq:heat_cap} the result is $C = \frac{U \cdot I \cdot \Delta t}{\Delta T}$. Now the mass $m$ of the copper sample has to be taken into account,
 which results in 
 
-\begin{equation}
+\begin{equation*}
     C_\text{p} = \dfrac{M}{m} \frac{U \cdot I \cdot \Delta t}{\Delta T},
-\end{equation}
+\end{equation*}
 
-where $M = 63.546 \unit{\dfrac{\gram}{\mol}}$\cite{Jefflab} and $m = 342 \unit{\gram}$ \cite{v47}.
+where $M = 63.546\, \unit{\dfrac{\gram}{\mol}}$\cite{Jefflab} and $m = 342 \,\unit{\gram}$ \cite{v47}.
 The resulting heat capacity can be see in \autoref{tab:data}.
-Now $C_\text{V} $ is calculated with \eqref{eq:CVtoCp}. $\alpha $ is calculated with a linear spline interpolation from values given in \cite{v47}, while classically $\kappa = 137.6  $ \cite{KO202193}.
+Now $C_\text{V} $ is calculated with \eqref{eq:CVtoCp}. $\alpha $ is calculated with a linear spline interpolation from values given in \cite{v47}, while $\kappa = 137.6 \, \unit{\giga\pascal} $ \cite{KO202193}.
 The result is also in \autoref{tab:data}.
 The related plot can be seen in \autoref{fig:heat_cap_plot}.
 
@@ -75,43 +77,63 @@ The related plot can be seen in \autoref{fig:heat_cap_plot}.
     \end{table}
 
 
-The Debye temperature can be determent with the help of \autoref{tab:Debye}
-To obtained the Debye temperature the closed value in the table is found, for a given $C_V$ and multiplying it with the temperature at that measurement point.
+The Debye temperature can be determent with the help of \autoref{tab:Debye}.
+To obtain the Debye temperature the closed value in the table is found, for a given $C_\text{V}$, and multiplying it with the temperature at that measurement point.
 The row of the table corresponds to the first digit before the decimal point and the column corresponds
 to the first digit after the decimal point. 
 The Debye temperature is only calculated for temperature below $T = 170 \, \unit{\kelvin}$.
-$\theta_text{D} = 1158.00\pm 18.65$ is discarded, because it is considered an outlier.
+$\theta_\text{D} = 1158.00\pm 18.65$ is discarded, because of the small measurement time this data point is considered unreliable.
 Resulting in a mean of 
-\begin{equation}
+\begin{equation*}
     \bar{\theta_\text{D}} = \left( 290.93 \pm  9.21 \right) \,  \unit{\kelvin}.
-\end{equation}
+\end{equation*}
 
+With \eqref{eq:densityofstates} and
+\begin{align*}
+    N_\text{L} =& N_\text{A} = \dfrac{m}{M} =  3.241 \cdot 10^{24},                                 \\
+    L          =& \sqrt[3]{V_0 \dfrac{m}{M} } = 33.68 \, \text{mm} \, ,              \\
+    V_0        =& \dfrac{M}{\rho} = 7.11 \cdot 10^{-6} \, \text{m}^3/\text{mol} \, \text{\cite{Jefflab}},  \\
+    v_\text{l}        =& 4.7 \, \text{km/s} \,                                             \text{\cite{v47}},                            \\
+    v_\text{t}        =& 2.26 \, \text{km/s} \,                                            \text{\cite{v47}}.
+\end{align*}
+
+
+the value for $\omega_\text{D}$ is 
+\begin{equation*}
+    \omega_\text{D} = 43.5 \, \unit{\tera\hertz}.
+    \label{eq:debye_freq}
+\end{equation*}
+Further:
+\begin{equation*}
+    \omega_\text{D} = \dfrac{\hbar \omega_\text{D}}{k} = 332.36 \, \unit{\kelvin}.
+\end{equation*}
 
 \begin{table}[H]
 \centering
-\caption{The Debye temperature for a given $C_V$  \cite{v47}.}
+\caption{The Debye temperature for a given $C_\text{V}$  \cite{v47}.}
 \label{tab:Debye}
+\begin{adjustbox}{width=1\textwidth}
 \begin{tabular}{c | c c c c c c c c c c}
 \toprule
  $\dfrac{\Theta_D}{T} $ &0 & 1 & 2 &3 & 4 & 5&6 & 7 & 8 &9\\
 \midrule
-    0 & 0       & 1        & 2        & 3     &   4      & 5        & 6        & 7        & 8        &      9 \\
-    1 &24.9430  &24.9310   &24.8930   &24.8310&   24.7450&   24.6340&   24.5000&   24.3430&   24.1630&   23.9610\\
-    2 &23.7390  &23.4970   &23.2360   &22.9560&   22.6600&   22.3480&   22.0210&   21.6800&   21.3270&   20.9630\\
-    3 &20.5880  &20.2050   &19.8140   &19.4160&   19.0120&   18.6040&   18.1920&   17.7780&   17.3630&   16.9470\\
-    4 &16.5310  &16.1170   &15.7040   &15.2940&   14.8870&   14.4840&   14.0860&   13.6930&   13.3050&   12.9230\\
-    5 &12.5480  &12.1790   &11.8170   &11.4620&   11.1150&   10.7750&   10.4440&   10.1190&   9.8030&    9.4950 \\
-    6 &9.1950   &8.9030    &8.6190    &8.3420&    8.0740&    7.8140&    7.5610&    7.3160&    7.0780&    6.8480 \\
-    7 &6.6250   &6.4090    &6.2000    &5.9980&    5.8030&    5.6140&    5.4310&    5.2550&    5.0840&    4.9195 \\
-    8 &4.7606   &4.6071    &4.4590    &4.3160&    4.1781&    4.0450&    3.9166&    3.7927&    3.6732&    3.5580 \\
-    9 &3.4468   &3.3396    &3.2362    &3.1365&    3.0403&    2.9476&    2.8581&    2.7718&    2.6886&    2.6083 \\
-    8 &2.5309   &2.4562    &2.3841    &2.3146&    2.2475&    2.1828&    2.1203&    2.0599&    2.0017&    1.9455 \\
-    8 &1.8912   &1.8388    &1.7882    &1.7393&    1.6920&    1.6464&    1.6022&    1.5596&    1.5184&    1.4785 \\
-    8 &1.4400   &1.4027    &1.3667    &1.3318&    1.2980&    1.2654&    1.2337&    1.2031&    1.1735&    1.1448 \\
-    8 &1.1170   &1.0900    &1.0639    &1.0386&    1.0141&    0.9903&    0.9672&    0.9449&    0.9232&    0.9021 \\
-    8 &0.8817   &0.8618    &0.8426    &0.8239&    0.8058&    0.7881&    0.7710&    0.7544&    0.7382&    0.7225 \\
-    8 &0.7072   &0.6923    &0.6779    &0.6638&    0.6502&    0.6368&    0.6239&    0.6113&    0.5990&    0.5871 \\
-    8 &0.5755   &0.5641    &0.5531    &0.5424&    0.5319&    0.5210&    0.5117&    0.5020&    0.4926&    0.4834 \\
+    0 &24.9430  &24.9310   &24.8930   &24.8310&   24.7450&   24.6340&   24.5000&   24.3430&   24.1630&   23.9610\\
+    1 &23.7390  &23.4970   &23.2360   &22.9560&   22.6600&   22.3480&   22.0210&   21.6800&   21.3270&   20.9630\\
+    2 &20.5880  &20.2050   &19.8140   &19.4160&   19.0120&   18.6040&   18.1920&   17.7780&   17.3630&   16.9470\\
+    3 &16.5310  &16.1170   &15.7040   &15.2940&   14.8870&   14.4840&   14.0860&   13.6930&   13.3050&   12.9230\\
+    4 &12.5480  &12.1790   &11.8170   &11.4620&   11.1150&   10.7750&   10.4440&   10.1190&   9.8030&    9.4950 \\
+    5 &9.1950   &8.9030    &8.6190    &8.3420&    8.0740&    7.8140&    7.5610&    7.3160&    7.0780&    6.8480 \\
+    6 &6.6250   &6.4090    &6.2000    &5.9980&    5.8030&    5.6140&    5.4310&    5.2550&    5.0840&    4.9195 \\
+    7 &4.7606   &4.6071    &4.4590    &4.3160&    4.1781&    4.0450&    3.9166&    3.7927&    3.6732&    3.5580 \\
+    8 &3.4468   &3.3396    &3.2362    &3.1365&    3.0403&    2.9476&    2.8581&    2.7718&    2.6886&    2.6083 \\
+    9 &2.5309   &2.4562    &2.3841    &2.3146&    2.2475&    2.1828&    2.1203&    2.0599&    2.0017&    1.9455 \\
+    10 &1.8912   &1.8388    &1.7882    &1.7393&    1.6920&    1.6464&    1.6022&    1.5596&    1.5184&    1.4785 \\
+    11&1.4400   &1.4027    &1.3667    &1.3318&    1.2980&    1.2654&    1.2337&    1.2031&    1.1735&    1.1448 \\
+    12 &1.1170   &1.0900    &1.0639    &1.0386&    1.0141&    0.9903&    0.9672&    0.9449&    0.9232&    0.9021 \\
+    13 &0.8817   &0.8618    &0.8426    &0.8239&    0.8058&    0.7881&    0.7710&    0.7544&    0.7382&    0.7225 \\
+    14 &0.7072   &0.6923    &0.6779    &0.6638&    0.6502&    0.6368&    0.6239&    0.6113&    0.5990&    0.5871 \\
+    15 &0.5755   &0.5641    &0.5531    &0.5424&    0.5319&    0.5210&    0.5117&    0.5020&    0.4926&    0.4834 \\
     \bottomrule
 \end{tabular}
+\end{adjustbox}
 \end{table}
