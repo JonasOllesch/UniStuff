@@ -3,7 +3,7 @@
 
 If a substance is exposed to an external heat or energy source,
 it will heat up trying to reach thermodynamic equilibrium.
-The capacity at which it does is the heat capacity
+The capacity at which it does so is called the heat capacity
 \begin{equation}
     C = \frac{\Delta Q}{\Delta T} \,,
     \label{eq:heat_cap}
@@ -20,7 +20,7 @@ as the derivative of the inner energy by temperature under constant volume $V$ a
 \begin{equation*}
     C_{p} = \left( \frac{\partial H}{\partial T} \right) \big \vert _p
 \end{equation*}
-for constant pressure $p$ with the entalpy $H$. \\
+for constant pressure $p$ with the enthalpy $H$. \\
 
 In practice, holding the pressure constant is significantly simpler than keeping a constant volume, so $C_p$ is the heat capacity most often measured directly.
 The correlation between $C_V$ and $C_p$, where the former is always greater, is given by
@@ -57,7 +57,7 @@ From that, $C_V$ calculates as
 \end{equation*} \\
 
 As can be seen, the heat capacity assumed by the classical approach is independent of both pressure and temperature.
-This contradicts experimental observations, where a distinct relation between heat capacity and temperature can be noticed. 
+This contradicts experimental observations, where a distinct relation between heat capacity and temperature can be noticed \cite{grossmarx}. 
 
 \subsection{Einstein approach}
 
@@ -83,49 +83,50 @@ Approximately, the heat capacity follows
 \end{equation*}
 
 As can be seen above, for high temperatures, the Einstein approximation once again predicts a constant heat capacity coinciding with the classical result.
-This approximation work quite well for higher temperatures, where optical phonons dictate the processes inside the copper. \cite{}
+This approximation work quite well for higher temperatures, where optical phonons dictate the processes inside the copper \cite{grossmarx}.
 
 \subsection{Debye approach}
 
 The Debye approach on the other hand better describes lower temperatures, where acoustic phonons dominate the processes inside the substance.
-Here, all phonon branches are approximated through $3$ branches of linear dispersion $\omega_i = v_i q$,  from which the heat capacity follows as
-The singular modes of the Einstein model are replaced with a more complex spectrum of possible eigen frequency $Z(\omega)$ in a crystal. 
+Here, all phonon branches are approximated through $3$ branches of linear dispersion $\omega_i = v_i q$.
+The singular modes of the Einstein model are replaced by a more complex spectrum of possible eigen frequencies $Z(\omega)$ in a crystal. 
 The heat capacity is given by 
 \begin{equation}
     C_\text{V} = \dfrac{\dif}{\dif T} \int^{\omega_\text{max}}_0 Z(\omega) \dfrac{\hbar \omega}{\exp{\left( \hbar \omega \mathbin{/} k_\text{B} T \right)} -1} \dif\omega.
     \label{eq:CV_debye}
 \end{equation}
-In the first approximation $Z(\omega)$ can be determent by counting all possible eigen frequency for a cube with edge length $L$ in a frequency interval form $\omega$ to $\omega + \dif \omega$.
+In a first approximation, $Z(\omega)$ can be determined by counting all possible eigen frequencies for a cube with edge length $L$ in a frequency interval form $\omega$ to $\omega + \dif \omega$.
 The result is 
 \begin{equation}
     Z(\omega)\dif\omega = \dfrac{L³ \omega}{2\pi}\dfrac{1}{\dfrac{1}{v^{3}_\text{l}} + \dfrac{2}{v^{3}_\text{t} }}  \dif\omega \, 
     \label{eq:densityofstates}
 \end{equation}
-where $v_\text{l}$ is the longitudinal and $v_\text{t}$ the transversal phase velocity.
-A real crystal with, $ N_\text{L}$ atoms, has only a limited number of possible frequency. The upper boundary is called the Debye frequency $\omega_\text{D}$, which can be calculated throw the integral 
+where $v_\text{l}$ is the longitudinal and $v_\text{t}$ the transversal phase velocity. \\
+A real crystal with $ N_\text{L}$ atoms can only oscillate at a limited number of frequencies. 
+The upper boundary is called the Debye frequency $\omega_\text{D}$, which can be calculated by solving 
 
 \begin{equation*}
-    \int^{\omega_\text{D}}_0 Z(\omega) \dif \omega = 3 N_\text{L}. 
+    \int^{\omega_\text{D}}_0 Z(\omega) \dif \omega = 3 N_\text{L} \,. 
 \end{equation*}
-In combination with \eqref{eq:densityofstates} resulting
+In combination with \eqref{eq:densityofstates}, the Debye frequency results in
 
 \begin{equation}
-    w^{3}_\text{D} = \dfrac{18 \pi N_\text{L}}{L^3}\dfrac{1}{\dfrac{1}{v^{3}_\text{l}} + \dfrac{2}{v^{3}_\text{t} }} .
+    w^{3}_\text{D} = \dfrac{18 \pi N_\text{L}}{L^3}\dfrac{1}{\dfrac{1}{v^{3}_\text{l}} + \dfrac{2}{v^{3}_\text{t} }} \,.
     \label{eq:Debye_frequency}
 \end{equation}
 
 
-Now \eqref{eq:densityofstates} is substituted into the \eqref{eq:CV_debye}
+Substituting \eqref{eq:densityofstates} into \eqref{eq:CV_debye} yields
 
 \begin{equation*}
-    C^\text{D}_V = 9 N k_\text{B} \left( \frac{T}{\theta_\text{D}} \right)^3 \int^{\frac{\theta_\text{D}}{T}}_0 \dif x \, \frac{x^4 \text{e}^x}{(\text{e}^x -1)^2} \,
+    C^\text{D}_V = 9 N k_\text{B} \left( \frac{T}{\theta_\text{D}} \right)^3 \int^{\frac{\theta_\text{D}}{T}}_0 \dif x \, \frac{x^4 \text{e}^x}{(\text{e}^x -1)^2} \,,
 \end{equation*}
-follows, with the Debye temperature
+where
 
 \begin{equation*}
-    \theta_\text{D} = \frac{\hbar v_\text{s}}{k_\text{B}} \left(6 \pi^2 \frac{N}{V}\right)^{\frac{1}{3}} \,,
+    \theta_\text{D} = \frac{\hbar v_\text{s}}{k_\text{B}} \left(6 \pi^2 \frac{N}{V}\right)^{\frac{1}{3}}
 \end{equation*}
-the speed of sound $v_\text{s}$ in medium and $N$ wave vectors inside the first Brillouin zone. \\
+describes the Debye temperature, $v_\text{s}$ the speed of sound in medium and $N$ wave vectors inside the first Brillouin zone. \\
 
 For high and low temperatures, the heat capacity can be expressed as
 \begin{equation*}
@@ -134,5 +135,3 @@ For high and low temperatures, the heat capacity can be expressed as
         3 N k_\text{B} &\qquad \text{for} \quad T >> \theta_\text{D} \,.
     \end{cases} 
 \end{equation*}
-
-\newpage

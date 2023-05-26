@@ -9,38 +9,33 @@ $\pm 0.5 \, \unit{\ohm}$ for the resistances and $\pm 0.5 \, \unit{\second} $ fo
 The assumed error of the voltage and the current is $1 \, \%$. 
 These uncertainties relate to the reading of the instruments during the experiment.
 
-\section{Calculation of the heat capacity $C_\text{V}$ and $C_\text{p}$}
-\label{sec:CVaCp}
+\subsection{Calculation of the heat capacity $C_\text{V}$ and $C_\text{p}$}
+\label{subsec:CVaCp}
 
-The measurement data can be seen in \autoref{tab:data}. First the temperature is calculated from the resistance via 
+The measured data can be seen in \autoref{tab:data}. First, the temperature is calculated from the resistance via 
 \begin{equation*}
     \label{eq:RtoT}
-    T = 0.00134 R^2 + 2.296 R - 243.02 \,
+    T = 0.00134 R^2 + 2.296 R - 243.02 \,,
 \end{equation*}
-which gives the temperature in $\unit{\celsius}$.
-The heat capacity $C_\text{v}$ can be calculated via the electric energy $\Delta E = U \cdot I \cdot \Delta t $, that is feed into the system between two measurements.
-$\Delta t $ is the time between two measurements.
+which gives the temperature in $\unit{\celsius}$. \\
 
-According to the first law of thermodynamics $ \Delta E = \Delta Q + \Delta W $ energy is equal to heat, if no additional work is performed.
-When this relationships are used in \eqref{eq:heat_cap} the result is $C = \frac{U \cdot I \cdot \Delta t}{\Delta T}$. Now the mass $m$ of the copper sample has to be taken into account,
+The heat capacity $C_\text{V}$ can be calculated via the electric energy $\Delta E = U \cdot I \cdot \Delta t $ that is introduced into the system between two measurements.
+$\Delta t$ is the time between two measurements.
+
+According to the first law of thermodynamics, $\Delta E = \Delta Q + \Delta W$, energy is equal to heat, if no additional work is performed.
+With this, \eqref{eq:heat_cap} becomes $C = \frac{U \cdot I \cdot \Delta t}{\Delta T}$. Now, the mass $m$ of the copper sample has to be taken into account,
 which results in 
 
 \begin{equation*}
-    C_\text{p} = \dfrac{M}{m} \frac{U \cdot I \cdot \Delta t}{\Delta T},
+    C_\text{p} = \dfrac{M}{m} \frac{U \cdot I \cdot \Delta t}{\Delta T} \,,
 \end{equation*}
 
-where $M = 63.546\, \unit{\dfrac{\gram}{\mol}}$\cite{Jefflab} and $m = 342 \,\unit{\gram}$ \cite{v47}.
-The resulting heat capacity can be see in \autoref{tab:data}.
-Now $C_\text{V} $ is calculated with \eqref{eq:CVtoCp}. $\alpha $ is calculated with a linear spline interpolation from values given in \cite{v47}, while $\kappa = 137.6 \, \unit{\giga\pascal} $ \cite{KO202193}.
-The result is also in \autoref{tab:data}.
-The related plot can be seen in \autoref{fig:heat_cap_plot}.
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[]{build/heat_kapazität.pdf}
-    \caption{The heat capacities $C_\text{V}$ and $C_\text{p}$ together with the classical prediction against the temperature $T$.}
-    \label{fig:heat_cap_plot}
-\end{figure}
+where $M = 63.546\, \unit{\dfrac{\gram}{\mol}}$\cite{Jefflab} is the copper's molar and $m = 342 \,\unit{\gram}$ \cite{v47} the copper's regular mass.
+The resulting heat capacity can be see in \autoref{tab:data}. \\
+Now, $C_\text{V} $ is calculated using \eqref{eq:CVtoCp}. \\
+$\alpha $ is calculated with a linear spline interpolation from values given in \cite{v47}, while $\kappa = 137.6 \, \unit{\giga\pascal} $ \cite{KO202193}.
+The result is also listed in \autoref{tab:data}. \\
+\autoref{fig:heat_cap_plot} shows the plot gained from the data.
 
 \begin{table}[H]
     \centering
@@ -48,7 +43,7 @@ The related plot can be seen in \autoref{fig:heat_cap_plot}.
     \label{tab:data}
     \begin{tabular}{c c c c c c}
     \toprule
-      {Time} & $R \mathbin{/} \unit{\ohm}$ & $I \mathbin{/} \unit{\milli\ampere}$&$U \mathbin{/} \unit{\volt} $& $T \mathbin{/} \unit{\kelvin}$&$\Theta_\text{d} \mathbin{/} \unit{\kelvin}$ \\
+      {Time} & $R \mathbin{/} \unit{\ohm}$ & $I \mathbin{/} \unit{\milli\ampere}$&$U \mathbin{/} \unit{\volt} $& $T \mathbin{/} \unit{\kelvin}$&$\Theta_\text{D} \mathbin{/} \unit{\kelvin}$ \\
     \midrule
           $00:00:00$  &  $18.4$ &    $160.7$ &   $ 16.85$  & $72.83  \pm 1.17$&    $1158.00\pm 18.65$   \\    
           $00:00:05$  &  $22.7$ &    $162.2$ &   $ 16.91$  & $82.94  \pm 1.18$&    $323.46 \pm 4.60$   \\    
@@ -76,16 +71,22 @@ The related plot can be seen in \autoref{fig:heat_cap_plot}.
     \end{tabular}
     \end{table}
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[]{build/heat_kapazität.pdf}
+    \caption{The heat capacities $C_\text{V}$ and $C_\text{p}$ together with the classical prediction against the temperature $T$.}
+    \label{fig:heat_cap_plot}
+\end{figure}
 
-The Debye temperature can be determent with the help of \autoref{tab:Debye}.
-To obtain the Debye temperature the closed value in the table is found, for a given $C_\text{V}$, and multiplying it with the temperature at that measurement point.
+The Debye temperature can be determined with the help of \autoref{tab:Debye}.
+To obtain the Debye temperature for a given $C_\text{V}$, the closest value in the table is chosen and multiplied it with the corresponding temperature.
 The row of the table corresponds to the first digit before the decimal point and the column corresponds
 to the first digit after the decimal point. 
-The Debye temperature is only calculated for temperature below $T = 170 \, \unit{\kelvin}$.
-$\theta_\text{D} = 1158.00\pm 18.65$ is discarded, because of the small measurement time this data point is considered unreliable.
-Resulting in a mean of 
+The Debye temperature is only calculated for temperatures below $T = 170 \, \unit{\kelvin}$.
+Because of the unreliably small time interval, the data at $\theta_\text{D} = 1158.00\pm 18.65$ is discarded,
+resulting in a mean Debye temperature of 
 \begin{equation*}
-    \bar{\theta_\text{D}} = \left( 290.93 \pm  9.21 \right) \,  \unit{\kelvin}.
+    \bar{\theta}_\text{D} = \left( 290.93 \pm  9.21 \right) \,  \unit{\kelvin} \,.
 \end{equation*}
 
 With \eqref{eq:densityofstates} and
@@ -93,10 +94,9 @@ With \eqref{eq:densityofstates} and
     N_\text{L} =& N_\text{A} = \dfrac{m}{M} =  3.241 \cdot 10^{24},                                 \\
     L          =& \sqrt[3]{V_0 \dfrac{m}{M} } = 33.68 \, \text{mm} \, ,              \\
     V_0        =& \dfrac{M}{\rho} = 7.11 \cdot 10^{-6} \, \text{m}^3/\text{mol} \, \text{\cite{Jefflab}},  \\
-    v_\text{l}        =& 4.7 \, \text{km/s} \,                                             \text{\cite{v47}},                            \\
-    v_\text{t}        =& 2.26 \, \text{km/s} \,                                            \text{\cite{v47}}.
+    v_\text{l}        =& 4.7 \, \text{km/s} \,                                             \text{\cite{v47}}\,,                            \\
+    v_\text{t}        =& 2.26 \, \text{km/s} \,                                            \text{\cite{v47}}\,,
 \end{align*}
-
 
 the value for $\omega_\text{D}$ is 
 \begin{equation*}
@@ -105,7 +105,7 @@ the value for $\omega_\text{D}$ is
 \end{equation*}
 Further:
 \begin{equation*}
-    \omega_\text{D} = \dfrac{\hbar \omega_\text{D}}{k} = 332.36 \, \unit{\kelvin}.
+    \theta_\text{D} = \dfrac{\hbar \omega_\text{D}}{k_\text{B}} = 332.36 \, \unit{\kelvin}.
 \end{equation*}
 
 \begin{table}[H]
