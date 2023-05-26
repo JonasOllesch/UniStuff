@@ -12,7 +12,7 @@ def pol1(x,a,b):
 def rechne_ohm_zu_temperatur_celsius(Widerstand):
     return 0.00134*Widerstand**2+2.296*Widerstand -243.02
 
-Kompressionsmodul = 137*10**9
+Kompressionsmodul = 137.6*10**9
 Masse = 0.342  #Masse in kg 
 tab1=np.array([[24.9430,   24.9310,   24.8930,   24.8310,   24.7450,   24.6340,   24.5000,   24.3430,   24.1630,   23.9610],
                [23.7390,   23.4970,   23.2360,   22.9560,   22.6600,   22.3480,   22.0210,   21.6800,   21.3270,   20.9630],
@@ -83,7 +83,7 @@ C_v = C_p - 9*linAusKoef**2*Kompressionsmodul*Molvolumen*Temperatur
 plt.errorbar(unp.nominal_values(Temperatur[:länge-1]),unp.nominal_values(C_p[:länge-1]),xerr=unp.std_devs(C_p[:länge-1]), yerr=unp.std_devs(Temperatur[:länge-1]),elinewidth=1,capthick=1,markersize=3,color = 'blue', fmt='x',label=r"$ C_\text{p}$")
 plt.errorbar(unp.nominal_values(Temperatur[:länge-1]),unp.nominal_values(C_v[:länge-1]),xerr=unp.std_devs(C_v[:länge-1]), yerr=unp.std_devs(Temperatur[:länge-1]),elinewidth=1,capthick=1,markersize=3,color = 'red', fmt='x',label=r"$ C_\text{V}$")
 
-plt.hlines(3*constants.R,xmin=65,xmax=280,color='green',linestyles='dashed',label='Dulong-Petit Gesetzt')
+plt.hlines(3*constants.R,xmin=65,xmax=280,color='green',linestyles='dashed',label='Dulong-Petit law')
 plt.ylabel(r"$ C \mathbin{/} \unit{\dfrac{\joule}{\kelvin \, \mol}} $")
 plt.xlabel(r"$T \mathbin{/} \unit{\kelvin}$")
 plt.grid(linestyle = ":")
