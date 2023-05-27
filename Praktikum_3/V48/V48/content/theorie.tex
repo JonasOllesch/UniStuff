@@ -37,13 +37,92 @@ Ohne äußeres Feld richten sich die Dipolmomente ohne Präferenz in eine zufäl
 In einem homogenen elektrischen Feld (bei Raumtemperatur) minimiert sich also die potentielle Energie genau dann, wenn die Dipole genug Energie erhalten, um die Aktivierungsenergie $W$, 
 die zur Überwindung der Coulomb-Barriere im Gitter nötig ist, erhalten und sich so entlang des Feldes ausrichten können.
 Kann diese Aktivierungsenergie nicht aufgebracht werden, sitzen die Leerstellen und Dotier-Ionen, eingeschränkt vom Gitterpotential, örtlich fest. \\
-Zur Beschreibung des Relaxationsprozesses nach Ausschalten des E-Feldes, also der Rückkehr in den zufällig ausgerichteten Zustand der Dipolmomente, erfolgt durch die Maxwell-Boltzmann-Verteilung nach
+Die Beschreibung des Relaxationsprozesses nach Ausschalten des E-Feldes, also der Rückkehr in den zufällig ausgerichteten Zustand der Dipolmomente, erfolgt durch die Maxwell-Boltzmann-Verteilung nach
 \begin{equation}
     \tau(T) = \tau_0 \text{e}^{\frac{W}{k_\text{B} T}}  \,,
+    \label{eq:relaxationszeit}
 \end{equation}
-mit der Boltzmannkonstante $k_\text{B}$, Temperatur $T$ und $\tau_0 = \tau(\infty)$ \cite{v48}.
+mit der Boltzmannkonstante $k_\text{B} = 1,380 6504(24) \cdot 10^{-23} \si{\frac{\joule}{\kelvin}} $ \cite{pdg}, Temperatur $T$ und $\tau_0 = \tau(\infty)$ \cite{v48}.
 
+\subsection{Depolarisierungsstrom}
 
+Im Zuge der Relaxation wird durch die elektrischen Felder um die Dipole ein messbarer Strom induziert, mit dem sich die im Experiment benötigten Größen bestimmen lassen.
+Eine notwendige Annahme ist hierbei, dass die Heizrate $b$, mit der die Probe erwärmt wird, konstant bleibt. \\
+Der Depolarisierungsstrom ist dann proportional zur durchschnittlichen Polarisierung $P$ pro Dipol, der Anzahl teilnehmender Dipole und der Rate der Relaxation. \\
+Die durchschnittliche Polarisierung ist nach der klassischen Debye-Theorie
+\begin{equation}
+    P = \frac{p^2 E}{3 k_\text{B} T} \,,
+    \label{eq:durchPola}
+\end{equation}
+während sich die Anzahl der Dipole aus
+\begin{equation}
+    \frac{\dif N}{\dif t} = - \frac{N}{\tau(T)}
+    \label{eq:AnzahlDipole}
+\end{equation}
+herleiten lässt. \\
+Die durchschnittliche Anzahl teilnehmender Dipole $N$ pro Einheitsvolumen folgt dabei
+\begin{equation}
+    N = N_\text{p} \exp \left(- \int^t_{t_0} \dif t' \frac{1}{\tau(T)}\right) =  N_\text{p} \exp \left(- \int^t_{t_0} \dif T' \frac{1}{b \tau_0} \exp \left(-\frac{W}{k_\text{B} T'} \right)\right) \,,
+    \label{eq:N}
+\end{equation}
+sodass sich der Depolarisierungsstrom $I(T)$ mit der ursprünglichen Anzahl ausgerichteter Dipole $N_\text{p}$ als 
+\begin{equation}
+    I(T) = \frac{p^2 E}{3 k_\text{B} T_1} \frac{N_\text{p}}{\tau_0}  \exp \left(-\frac{W}{k_\text{B} T'} \right) \exp \left(- \int^t_{t_0} \dif T' \frac{1}{b \tau_0}  \exp \left(-\frac{W}{k_\text{B} T'} \right) \right)
+    \label{eq:depolstrom}
+\end{equation}
+schreiben lässt.
+$T_1$ stellt dabei die Temperatur da, bei der das elektrische Feld angelegt worden ist. \\
+
+Durch das Maximum in \eqref{eq:depolstrom} lässt sich zusätzlich
+\begin{equation*}
+    \tau_0 = \frac{k_\text{B} T^2_\text{M}}{b W} \exp \left(- \frac{W}{k_\text{B} T_\text{M}}\right)
+\end{equation*}
+herleiten. \\
+
+Zur konkreten Herleitung von $W$ und $\tau_0$ soll hier näher auf zwei verschiedene Ansätze eingegangen werden.
+
+\subsubsection{Herleitung über die Stromdichte}
+
+Nach \cite[S. ~4]{fuller} kann der Depolarisierungsstrom $I(T)$ als proportional zur Polarisierung $P$ angenommen werden.
+Verfügt die Probe über die Fläche $A$ mit der Polarisierung $P_0$ zur Temperatur $T_0$, gilt
+\begin{equation*}
+    \int^{T_1}_{T_0} I(T) \dif T = P_0 A = \frac{N p^2 E}{3 k_\text{B}T} \,.
+\end{equation*}
+Mit der Stromdichte $j(T) A = \frac{P(T)}{\tau(T)} A$ gilt also auch
+\begin{equation*}
+    P(T) A = \int^{T_\text{f}}_{T_0} \dif T' j(T) A  = \int^\infty_{t(T)} \dif t' I(t')
+\end{equation*}
+und damit
+\begin{equation}
+    \tau(T) = \tau_0 \exp \left(\frac{W}{k_\text{B} T} \right) =  \frac{\int^\infty_{t(T)} \dif t' I(t')}{I(T)} \,,
+    \label{eq:relaxozeitpol}
+\end{equation}
+bzw.
+\begin{equation}
+    \ln(\tau(T)) = \ln(\tau_0) + \ln\left(\frac{W}{k_\text{B} T} \right) =  \ln \left(\int^\infty_{t(T)} \dif t' I(t') \right) - \ln (I(T)) \,,
+    \label{eq:lnrelaxozeitpol}
+\end{equation}
+wobei $T_\text{f}$ die finale Temperatur ist.
+Durch eine lineare Regression lassen sich so $\tau_0$ und $W$ bestimmen, sofern das Integral vorher mit grafischer Integration gelöst wird.
+
+\subsubsection{Herleitung über die Polarisierung}
+
+Alternativ kann für den Fall $W >> k_\text{B} T$ angenommen werden, dass
+\begin{equation*}
+    \int^t_{t_0} \dif T' \frac{1}{b \tau_0}  \exp \left(-\frac{W}{k_\text{B} T'} \right)
+\end{equation*}
+ist. \\
+Der Strom nimmt damit die Form
+\begin{equation*}
+    I(T) = \frac{p^2 E N_\text{p}}{3 k_\text{B} T_1 \tau_0} \exp(-\frac{W}{k_\text{B} T}) 
+\end{equation*}
+oder
+\begin{equation}
+    \ln I(T) = - \frac{W}{k_\text{B} T} + const
+    \label{eq:lnStrom}
+\end{equation}
+an.
+Damit lässt sich $W$ also durch eine lineare Regression berechnen.
 
 
 
