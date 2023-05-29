@@ -9,6 +9,7 @@ TeXOptions = -lualatex \
 #	python gmlimit.py
 
 build/thesis.pdf: FORCE | build
+	python code/gmlimitlowernew.py
 	python code/gmlimitnew.py
 	python code/g_eegmlimit.py
 	python code/g_eevis.py
