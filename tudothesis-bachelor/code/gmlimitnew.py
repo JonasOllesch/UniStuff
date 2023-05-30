@@ -58,12 +58,12 @@ g_emu_neglow    = -3 * 10**(-7)
 g_mumu_neglow   = -3 * 10**(-7)
 g_tautau_neglow = -3 * 10**(-7)
 # upper bounds:
-g_ee_upper     = 2 * 10**(-6)               # updated upper bounds on g_ee
+g_ee_upper     = 2 * 10**(-5)               # updated upper bounds on g_ee
 g_emu_upper    = 2 * 10**(-5)
 g_mumu_upper   = 2 * 10**(-5)
 g_tautau_upper = 2 * 10**(-5)
 
-g_ee_negupper     = -2 * 10**(-6)
+g_ee_negupper     = -2 * 10**(-5)
 g_emu_negupper    = -2 * 10**(-5)
 g_mumu_negupper   = -2 * 10**(-5)
 g_tautau_negupper = -2 * 10**(-5)
