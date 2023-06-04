@@ -1,13 +1,16 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-
-## Functions for m1:
 # m_1 in dependence of g_ee and g_1 (with phase 0)
 
 def g_ee_m1_pha0(g_ee, g1, delm_sunsqua, sinsqua_sun):
     denom_1 = (g_ee - g1 * (1- sinsqua_sun)) / (sinsqua_sun * g1) #* np.exp(2j * delta)
     return (delm_sunsqua / (denom_1**2 - 1))**(1/2)
+
+# def g_ee_m1_pha90(g_ee, g1, delm_sunsqua, sinsqua_sun):
+#     denom_1 = -1 * ((g_ee - g1 * (1- sinsqua_sun)) / (sinsqua_sun * g1)) #* np.exp(2j * delta)
+#     return (delm_sunsqua / (denom_1**2 - 1))**(1/2)
+
 
 # m_1 in dependence of g_emu and g_1 (with phase 0)
 
@@ -29,19 +32,6 @@ def g_tautau_m1_pha0(g_tautau, g1, delm_sunsqua, delm_atmsqua):
     denom_1 = g_tautau/g1 #* np.exp(2j * delta)
     return ((delm_sunsqua + delm_atmsqua) / (denom_1**2 - 1))**(1/2)
 
-
-## Functions to calculate the g1-cutoffs from limits on m1 and/or intersections
-#  g1-cutoff for g_ee
-
-def g1_g_ee_cutoff_pha0(g_ee, m1_lim, delm_sunsqua, theta_sun):
-    denom_1 = np.cos(theta_sun)**2 + np.sqrt(1 + delm_sunsqua/m1_lim**2) * np.sin(theta_sun)**2
-    return g_ee/denom_1
-
-def g1_g_ee_cutoff_pha90(g_ee, m1_lim, delm_sunsqua, theta_sun):
-    denom_1 = np.cos(theta_sun)**2 - np.sqrt(1 + delm_sunsqua/m1_lim**2) * np.sin(theta_sun)**2
-    return g_ee/denom_1
-
-
 # g1-cutoff for g_emu intersection
 
 def g1_g_emu_cutoff(g_low, g_upper, theta_sun):
@@ -49,6 +39,7 @@ def g1_g_emu_cutoff(g_low, g_upper, theta_sun):
     return (g_upper**2 - g_low**2) / denom_1
 
 
+num = 2 * 10**6                                  # number of entries for logspaces
 
 delm_sunsqua = 7.53 * 10**(-5)                   # new value from the PDG                                        
 delm_atmsqua = 2.453 * 10**(-5)                  # new value from the PDG
@@ -58,13 +49,10 @@ delta2 = np.pi/2
 
 
 theta_sun = np.arcsin(np.sqrt(0.546))/2
-sinsqua_sun = np.sin(theta_sun)**2   
+sinsqua_sun = np.sin(theta_sun)**2                                       # sun_sin = np.sin(theta_sun)**2
 
-g1 = np.logspace(start = -12, stop = -3, num = 2 * 10**6, base = 10.0)      
+g1 = np.logspace(start = -12, stop = -3, num = 2 * 10**6, base = 10.0)       # 20 * 10**6 entries are enough to make both plots grow to m1 = 1 :) Yeah not anymore, going to need a bit more than that
 
-# upper limit on m1
-
-m1_lim = 0.8
 
 # lower bounds:
 g_ee_low     = 3 * 10**(-7)
@@ -88,30 +76,7 @@ g_mumu_negupper   = -2 * 10**(-5)
 g_tautau_negupper = -2 * 10**(-5)
 
 
-# print(g_ee_m1_pha0(g_ee_low, g1, delm_sunsqua, sinsqua_sun))
-
-print('g_ee cutoff with phase 0: ',g1_g_ee_cutoff_pha0(g_ee_low, m1_lim, delm_sunsqua, theta_sun), g1_g_ee_cutoff_pha0(g_ee_upper, m1_lim, delm_sunsqua, theta_sun))
-print('g_ee cutoff with phase 90: ',g1_g_ee_cutoff_pha90(g_ee_low, m1_lim, delm_sunsqua, theta_sun), g1_g_ee_cutoff_pha90(g_ee_upper, m1_lim, delm_sunsqua, theta_sun))
-
-
-
-# limited logspaces from cutoffs
-
-### for g1_ee
-num = 2 * 10**6  # Number of elements in the logspace array
-
-# lower phase 0 cutoff
-g1_ee_low_pha0 = np.logspace(-12, np.log10(g1_g_ee_cutoff_pha0(g_ee_low, m1_lim, delm_sunsqua, theta_sun)), num)
-
-# lower phase 90 cutoff
-g1_ee_low_pha90 = np.logspace(np.log10(g1_g_ee_cutoff_pha90(g_ee_low, m1_lim, delm_sunsqua, theta_sun)), -3, num)
-
-
-# upper phase 0 cutoff
-g1_ee_upper_pha0 = np.logspace(-12, np.log10(g1_g_ee_cutoff_pha0(g_ee_upper, m1_lim, delm_sunsqua, theta_sun)), num)
-
-# upper phase 90 cutoff
-g1_ee_upper_pha90 = np.logspace(np.log10(g1_g_ee_cutoff_pha90(g_ee_upper, m1_lim, delm_sunsqua, theta_sun)), -3, num)
+print(g_ee_m1_pha0(g_ee_low, g1, delm_sunsqua, sinsqua_sun))
 
 
 ### for g_emu
@@ -120,12 +85,9 @@ print('g_emu cutoff: ', g1_g_emu_cutoff(g_emu_low, g_emu_negupper, theta_sun))
 
 g1_emu_cutoff = np.logspace(-12, np.log10(g1_g_emu_cutoff(g_emu_low, g_emu_negupper, theta_sun)), num)
 
-
-## Plots
 # g_ee lower bound with phase 0
 
-plt.plot(g1_ee_low_pha0, g_ee_m1_pha0(g_ee_low, g1_ee_low_pha0, delm_sunsqua, sinsqua_sun), color='blue', label=r'positive bounds on $g_{ee}$')
-plt.plot(g1_ee_low_pha90, g_ee_m1_pha0(g_ee_low, g1_ee_low_pha90, delm_sunsqua, sinsqua_sun), color='blue')
+plt.plot(g1, g_ee_m1_pha0(g_ee_low, g1, delm_sunsqua, sinsqua_sun), color='blue', label=r'positive bounds on $g_{ee}$')
 plt.plot(g1, g_ee_m1_pha0(g_ee_neglow, g1, delm_sunsqua, sinsqua_sun), color='teal',label=r'negative bounds on $g_{ee}$')
 
 # g_ee lower bound with phase pi/2
@@ -134,15 +96,14 @@ plt.plot(g1, g_ee_m1_pha0(g_ee_neglow, g1, delm_sunsqua, sinsqua_sun), color='te
 
 # g_ee upper bound
 
-plt.plot(g1_ee_upper_pha0, g_ee_m1_pha0(g_ee_upper, g1_ee_upper_pha0, delm_sunsqua, sinsqua_sun), color='blue')
-plt.plot(g1_ee_upper_pha90, g_ee_m1_pha0(g_ee_upper, g1_ee_upper_pha90, delm_sunsqua, sinsqua_sun), color='blue')
+plt.plot(g1, g_ee_m1_pha0(g_ee_upper, g1, delm_sunsqua, sinsqua_sun), color='blue')
 plt.plot(g1, g_ee_m1_pha0(g_ee_negupper, g1, delm_sunsqua, sinsqua_sun), color='teal')
 
 
 
 # g_eμ lower bound
 
-plt.plot(g1_emu_cutoff, g_emu_m1_pha0(g_emu_low, g1_emu_cutoff, delm_sunsqua, theta_sun), color='orange', linestyle='dashed', label=r'lower bound on $g_{e \mu^\prime}$') ### Der ist gut!!
+plt.plot(g1_emu_cutoff, g_emu_m1_pha0(g_emu_low, g1_emu_cutoff, delm_sunsqua, theta_sun), color='orange', linestyle='dashed', label=r'lower bound on $g_{e \mu^\prime}$')### Der ist gut!!
 #plt.plot(g1, g_emu_m1_pha0(g_emu_neglow, g1, delm_sunsqua, theta_sun), color='yellow', linestyle='dashed')
 
 # g_eμ upper bound
@@ -170,7 +131,7 @@ plt.plot(g1, g_tautau_m1_pha0(g_tautau_low, g1, delm_sunsqua, delm_atmsqua), col
 plt.plot(g1, g_tautau_m1_pha0(g_tautau_upper, g1, delm_sunsqua, delm_atmsqua), color='red', linestyle='dashdot')
 
 plt.xlabel(r'$g_1$')
-plt.xlim(10**(-11), 10**(-3))
+plt.xlim(10**(-11), 10**(-4))
 plt.xscale('log')
 
 plt.ylabel(r'$m_1$')
@@ -180,5 +141,5 @@ plt.yscale('log')
 plt.grid(linestyle = ":")
 plt.tight_layout()
 plt.legend()
-plt.savefig('build/g_1m_1new.pdf')
+plt.savefig('build/justgmlimits.pdf')
 plt.clf()
