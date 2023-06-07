@@ -6,6 +6,7 @@ from uncertainties import correlated_values
 import uncertainties.unumpy as unp
 import copy
 from scipy import constants
+from scipy.integrate import simpson
 
 def methode_eins(T,c,W):
     return c - W/(constants.Boltzmann*T)
@@ -80,11 +81,38 @@ para_pol1 = correlated_values(popt, pcov)
 
 y_pol1 = pol1(x_pol1,*para_pol1)
 plt.plot(x_pol1*1e-18,unp.nominal_values(y_pol1),color='red')
-plt.ylabel(r"$ ln\left(\dfrac{I}{\unit{\ampere}} \right) $")
+plt.ylabel(r"$ \text{ln} \left(\dfrac{I}{\unit{\ampere}} \right) $")
 plt.xlabel(r"$ \dfrac{1}{k_B T} \mathbin{/} \dfrac{a}{\unit{\joule}}$")
-
 plt.grid(linestyle = ":")
 plt.tight_layout()
 plt.legend()
 plt.savefig('build/pol1.pdf')
+plt.clf()
+
+signal_Str_pos = unp.nominal_values(signal_Str[signal_Str>0])
+signal_Tem_pos = unp.nominal_values(signal_Tem[signal_Str>0])
+
+f1 = np.zeros(len(signal_Str_pos))
+for i in range(0,len(signal_Str_pos)):
+    f1[i] = np.log(simpson(signal_Str_pos[i:],signal_Tem_pos[i:]))-np.log(unp.nominal_values(signal_Str_pos[i]))
+
+
+signal_Tem_pos = signal_Tem_pos[f1>0]
+f1 =f1[f1>0]
+
+
+popt, pcov = curve_fit(pol1,1/(constants.k*unp.nominal_values(signal_Tem_pos[0:20])),np.log(f1[0:20]))
+para_int1 = correlated_values(popt, pcov)
+x_int1 = np.linspace((1/(constants.k*np.min(unp.nominal_values(signal_Tem_pos[0:20])))),(1/(constants.k*np.max(unp.nominal_values(signal_Tem_pos[0:20])))),2)
+y_int1 = pol1(x_int1,*para_int1)
+
+plt.plot(x_int1*1e-18,unp.nominal_values(y_int1),color='red',label='lin. Fit')
+plt.scatter(1/(constants.k*unp.nominal_values(signal_Tem_pos[21:]))*1e-18,np.log(f1) ,color='darkorange',s=6,marker='x',label='nicht gefittete Messwerte')
+plt.scatter(1/(constants.k*unp.nominal_values(signal_Tem_pos[0:20]))*1e-18,np.log(f1[0:20]) ,color='red',s=6,marker='x',label='Gefittete Messwerte')
+plt.ylabel(r"$ \text{ln} f\left( T \right) $")
+plt.xlabel(r"$ \dfrac{1}{k_B T} \mathbin{/} \dfrac{a}{\unit{\joule}}$")
+plt.grid(linestyle = ":")
+plt.tight_layout()
+plt.legend()
+plt.savefig('build/int1.pdf')
 plt.clf()
