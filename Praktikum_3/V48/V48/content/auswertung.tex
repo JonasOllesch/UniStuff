@@ -9,7 +9,7 @@ Grafiken werden durch die Bibliothek $matplotlib$\cite{Hunter:2007} erstellt.
 
 \subsection{Bestimmung der Heizraten}
 
-In den \autoref{tab:Messdaten1} und \autoref{tab:Messdaten2} sind die Messdaten und die Heizraten der verschiedenen Messreihen zu sehen.
+In \autoref{tab:Messdaten1} und \autoref{tab:Messdaten2} sind die Messdaten und die Heizraten der verschiedenen Messreihen zu sehen.
 Es ergeben sich die durchschnittlichen Heizraten von 
 \begin{align}
     \bar{b_1} &=   1,49 \pm  0,23 \label{eq:TheoH1} \\
@@ -105,7 +105,7 @@ Es ergeben sich die durchschnittlichen Heizraten von
 \subsection{Signalhintergrundtrennung}
 \label{sec:Signalhintergrundtrennung}
         
-Die grafische Darstellung der Messdaten sind in \autoref{fig:Messdaten1} und \autoref{fig:Messdaten2} zusehen.
+Die grafische Darstellung der Messdaten ist in \autoref{fig:Messdaten1} und \autoref{fig:Messdaten2} zusehen.
 Es wird ein linearer Hintergrund angenommen. Für die Berechnung des Hintergrundes werden die orangen Messwerte verwendet.
 Zusätzlich werden die Messwerte, die sich im Plot rechts vom Hintergrund befinden, ausgeschlossen, da diese durch nicht gewünschte Effekte zustande kommen. 
 \begin{figure}[H]
@@ -149,11 +149,12 @@ Der Hintergrund wird von den Messwerten subtrahiert und die bereinigten Daten si
 \subsection{Berechnung über die Stromdichte}
 \label{sec:BerechnungStromdichte}
 
-Die Relaxationszeit wird über die Hilfsfunktion $f(T) = \ln \left(\int^\infty_{I(T)} \dif t' I(t') \right) - \ln (I(T))$ gilt.
-Einige der Daten konnten nicht mit in die Berechnung eingebracht werden, weil da $f(T)$ positiv sein muss, 
-da $\ln \left(f(T)\right)$ durch eine Gerade der Form $f(T) = \dfrac{a_i}{k_b T} + b_i$ genähert wird.
+Die Relaxationszeit wird über die Hilfsfunktion $f(T) = \ln \left(\int^\infty_{I(T)} \dif t' I(t') \right) - \ln (I(T))$ bestimmt.
+Einige der Daten konnten nicht mit in die Berechnung eingebracht werden,
+da für $\ln \left(f(T)\right)$ Werte $f(T) < 0$ außerhalb des Definitionsbereichs liegen. 
+$f(T)$ wird durch eine Gerade der Form $f(T) = \dfrac{a_i}{k_b T} + b_i$ genähert.
 In die Berechnung werden nur die Punkte einbezogen, die annähernd auf einer Geraden liegen.
-Die grafische Darstellung der Ausgelichsgeraden sind in \autoref{fig:int1} und \autoref{fig:int2} zu sehen.
+Die grafische Darstellung der Ausgleichsgeraden sind in \autoref{fig:int1} und \autoref{fig:int2} zu sehen.
 Die Parameter werden als 
 \begin{align*}
     \alpha_1 &=   (5,76   \pm 0,27) \cdot 10^{-20} \, \unit{\joule} , \\
@@ -208,8 +209,8 @@ bestimmt.
     \includegraphics[]{build/pol1.pdf}
     \caption{Plot von $\ln(I\mathbin{/} \unit{\ampere}) $ für die erste Messreihe.}
     \label{fig:pol1}
-\end{figure}[H]
-\begin{figure}
+\end{figure}
+\begin{figure}[H]
     \centering
     \includegraphics[]{build/pol2.pdf}
     \caption{Plot von $\ln(I\mathbin{/} \unit{\ampere}) $ für die zweite Messreihe.}
