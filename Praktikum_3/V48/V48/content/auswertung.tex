@@ -3,7 +3,7 @@
 
 
 Folgende Ausgleichsfunktionen werden mit Funktion $curve\_fit$ aus der Python\cite{py}-Bibliothek $scipy$\cite{2020SciPy-NMeth} bestimmt.
-Die Integration wird mithilfe der Funktion $scipy.integrate.simpson$ \cite{2020SciPy-NMeth}verwirklicht.%?
+Die Integration wird mithilfe der Funktion $scipy.integrate.simpson$ \cite{2020SciPy-NMeth}verwirklicht.
 Die Fehlerrechnung wird mithilfe der Bibliothek $uncertainties$ \cite{unp} durchgeführt.
 Grafiken werden durch die Bibliothek $matplotlib$\cite{Hunter:2007} erstellt. 
 
@@ -120,7 +120,11 @@ Zusätzlich werden die Messwerte, die sich im Plot rechts vom Hintergrund befind
     \caption{Plot der Messdaten zusammen mit der linearen Regression des Hintergrundes für die zweite Messreihe.}
     \label{fig:Messdaten2}
 \end{figure}
-Die Parameter der Ausgleichsfunktionen lassen sich zu 
+Die Parameter der Ausgleichsfunktionen
+\begin{equation*}
+    I = \alpha_i T + \beta_i
+\end{equation*}
+für die erste bzw. zweite Messreihe lassen sich zu 
 \begin{align*}
     \alpha_1 &=         (1,65 \pm 0,03 ) \cdot 10^{-14} \,\unit{\dfrac{1}{\kelvin}} \\
     \beta_1  &=         (-3.51 \pm-0,08) \cdot 10^{-12} \,\unit{\ampere} 
@@ -236,12 +240,12 @@ Die Relaxationszeiten als Funktion der Temperatur aus dem Polarisationsstrom ist
 \begin{figure}[H]
     \centering
     \includegraphics[]{build/taupol.pdf}
-    \caption{Plot von $\ln (\tau(T) \unit{\second})$ für den Polarisationsansatz.}
+    \caption{Plot von $\ln \left(\frac{\tau(T)}{\si{\second}} \right)$ für den Polarisationsansatz. Dabei wird $\tau(T)$ für den Logarithmus von Einheiten bereinigt.}
     \label{fig:taupol}
 \end{figure}
 \begin{figure}[H]
     \centering
     \includegraphics[]{build/tauint.pdf}
-    \caption{Plot von $\ln (\tau(T)\mathbin{/} \unit{\second})$ für den Ansatz über die Stromdichte.}
+    \caption{Plot von $\ln \left(\frac{\tau(T)}{\si{\second}} \right)$ für den Ansatz über die Stromdichte. Dabei wird $\tau(T)$ für den Logarithmus von Einheiten bereinigt.}
     \label{fig:tauint}
 \end{figure}

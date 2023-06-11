@@ -294,12 +294,12 @@ plt.plot(ee_upper_part_final, g_ee_m1_pha0(g_ee_upper, ee_upper_part_final, delm
 # fill-ins
 num1 = 1000
 g_tautau_m1_cutoff = np.logspace(-12, np.log10(g1_g_tautau_cutoff(g_tautau_low, m1_lim, delm_sunsqua, delm_atmsqua)), num1)
-m1_g_ee_fillin     = np.logspace(np.log10(g1_g_tautau_cutoff(g_tautau_low, m1_lim, delm_sunsqua, delm_atmsqua) + 10**(-9)), np.log10(g_ee_cutoff_neglower), num1)
+m1_g_ee_fillin     = np.logspace(np.log10(g1_g_tautau_cutoff(g_tautau_low, m1_lim, delm_sunsqua, delm_atmsqua)), np.log10(g_ee_cutoff_neglower), num1)
 
 
-plt.fill_between(g_tautau_m1_cutoff, g_tautau_m1_pha0(g_tautau_low, g_tautau_m1_cutoff, delm_sunsqua, delm_atmsqua), g_ee_m1_pha0(g_ee_upper, g_tautau_m1_cutoff, delm_sunsqua, sinsqua_sun), color='purple', alpha=0.5)
+plt.fill_between(g_tautau_m1_cutoff, g_tautau_m1_pha0(g_tautau_low, g_tautau_m1_cutoff, delm_sunsqua, delm_atmsqua), g_ee_m1_pha0(g_ee_upper, g_tautau_m1_cutoff, delm_sunsqua, sinsqua_sun), color='purple', alpha=0.5, linewidth=0)
 
-plt.fill_between(m1_g_ee_fillin, np.full_like(m1_g_ee_fillin, m1_lim), g_ee_m1_pha0(g_ee_upper, m1_g_ee_fillin, delm_sunsqua, sinsqua_sun), color='purple', alpha=0.5)
+plt.fill_between(m1_g_ee_fillin, np.full_like(m1_g_ee_fillin, m1_lim), g_ee_m1_pha0(g_ee_upper, m1_g_ee_fillin, delm_sunsqua, sinsqua_sun), color='purple', alpha=0.5, linewidth=0)
 #plt.fill_between(ee_neglow_part, np.full_like(ee_neglow_part, m1_lim), g_ee_m1_pha0(g_ee_neglow, ee_neglow_part, delm_sunsqua, sinsqua_sun), color='purple', alpha=0.5)
 
 
