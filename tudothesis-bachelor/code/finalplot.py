@@ -218,47 +218,6 @@ print('Intersection between negative lower bound and upper bound on g_ee: ', g_e
 g_ee_cutoff_lower = g1_g_ee_cutoff(g_ee_low, g_ee_upper, theta_sun)
 print('Intersection between positive lower bound and upper bound on g_ee: ', g_ee_cutoff_lower)
 
-
-## Plots
-# g_ee lower bound with phase 0
-
-#plt.plot(g1_ee_low_pha0, g_ee_m1_pha0(g_ee_low, g1_ee_low_pha0, delm_sunsqua, sinsqua_sun), color='blue', label=r'positive bounds on $g_{ee}$')
-#plt.plot(g1_ee_low_pha90, g_ee_m1_pha0(g_ee_low, g1_ee_low_pha90, delm_sunsqua, sinsqua_sun), color='blue', label=r'positive bounds on $g_{ee}$')
-#plt.plot(g1, g_ee_m1_pha0(g_ee_neglow, g1, delm_sunsqua, sinsqua_sun), color='teal',label=r'negative bounds on $g_{ee}$')
-
-# g_ee lower bound with phase pi/2
-
-#plt.plot(g1, g_ee_m1_pha90(g_ee_low, g1, delm_sunsqua, sinsqua_sun), color='yellow',label=r'lower bound on $g_{ee}$')  # It seems like I don't need this
-
-# g_ee upper bound
-
-#plt.plot(g1_ee_upper_pha0, g_ee_m1_pha0(g_ee_upper, g1_ee_upper_pha0, delm_sunsqua, sinsqua_sun), color='blue')
-#plt.plot(g1_ee_upper_pha90, g_ee_m1_pha0(g_ee_upper, g1_ee_upper_pha90, delm_sunsqua, sinsqua_sun), color='blue')
-#plt.plot(g1, g_ee_m1_pha0(g_ee_negupper, g1, delm_sunsqua, sinsqua_sun), color='teal')
-
-
-
-# g_eμ lower bound
-
-#plt.plot(g1_emu_cutoff, g_emu_m1_pha0(g_emu_low, g1_emu_cutoff, delm_sunsqua, theta_sun), color='orange', linestyle='dashed', label=r'lower bound on $g_{e \mu^\prime}$') ### Der ist gut!!
-#plt.plot(g1, g_emu_m1_pha0(g_emu_neglow, g1, delm_sunsqua, theta_sun), color='yellow', linestyle='dashed')
-
-# g_eμ upper bound
-
-#plt.plot(g1, g_emu_m1_pha0(g_emu_upper, g1, delm_sunsqua, theta_sun), color='orange', linestyle='dashed')
-#plt.plot(g1_emu_cutoff, g_emu_m1_pha0(g_emu_negupper, g1_emu_cutoff, delm_sunsqua, theta_sun), color='yellow', linestyle='dashed', label=r'upper bound on $g_{e \mu^\prime}$') ### Der auch, der macht den tollen Knick!
-
-
-# g_μμ lower bound
-
-#plt.plot(g1, g_mumu_m1_pha0(g_mumu_low, g1, delm_sunsqua, theta_sun), color='purple', linestyle='dotted', label=r'bounds on $g_{\mu^\prime \mu^\prime}$')
-#plt.plot(g1_mumu_low_pha90, g_mumu_m1_pha0(g_mumu_neglow, g1_mumu_low_pha90, delm_sunsqua, theta_sun), color='pink', linestyle='dotted', label=r'lower bound on $g_{\mu^\prime \mu^\prime}$')
-
-# g_μμ upper bound
-
-#plt.plot(g1_mumu_upper_pha0, g_mumu_m1_pha0(g_mumu_upper, g1_mumu_upper_pha0, delm_sunsqua, theta_sun), color='purple', linestyle='dotted', label=r'upper bound on $g_{\mu^\prime \mu^\prime}$')
-#plt.plot(g1, g_mumu_m1_pha0(g_mumu_negupper, g1, delm_sunsqua, theta_sun), color='pink', linestyle='dotted')
-
 ### final plot
 
 ## setting the logspaces
@@ -271,13 +230,14 @@ ee_upper_part       = np.logspace(np.log10(g_ee_cutoff_lower), np.log10(g1_intse
 emu_negupper_part_2 = np.logspace(np.log10(g1_intsect_upper_upper), np.log10(g1_g_emu_cutoff(g_emu_low, g_emu_negupper, theta_sun)), num)
 emu_low_part        = np.logspace(np.log10(g1_intsect_lower_upper), np.log10(g1_g_emu_cutoff(g_emu_low, g_emu_negupper, theta_sun)), num)
 ee_upper_part_final = np.logspace(np.log10(g1_intsect_lower_upper), np.log10(g1_g_ee_cutoff_pha0(g_ee_upper, m1_lim, delm_sunsqua, theta_sun)), num)
+
 print(ee_intersect_neglow)
 
 
 # g_ττ lower bound
 m1_lim_constant = np.full_like(g1, m1_lim)
 
-plt.plot(g1_tautau_low, g_tautau_m1_pha0(g_tautau_low, g1_tautau_low, delm_sunsqua, delm_atmsqua), color='purple', linestyle='dashdot', label=r'bounds on $g_{\tau^\prime \tau^\prime}$')
+plt.plot(g1_tautau_low, g_tautau_m1_pha0(g_tautau_low, g1_tautau_low, delm_sunsqua, delm_atmsqua), color='purple')
 
 plt.plot(ee_intersect_neglow, g_ee_m1_pha0(g_ee_upper, ee_intersect_neglow, delm_sunsqua, sinsqua_sun), color='purple')
 plt.plot(ee_neglow_part, g_ee_m1_pha0(g_ee_neglow, ee_neglow_part, delm_sunsqua, sinsqua_sun), color='purple')
@@ -293,15 +253,21 @@ plt.plot(ee_upper_part_final, g_ee_m1_pha0(g_ee_upper, ee_upper_part_final, delm
 
 # fill-ins
 num1 = 1000
-g_tautau_m1_cutoff = np.logspace(-12, np.log10(g1_g_tautau_cutoff(g_tautau_low, m1_lim, delm_sunsqua, delm_atmsqua)), num1)
-m1_g_ee_fillin     = np.logspace(np.log10(g1_g_tautau_cutoff(g_tautau_low, m1_lim, delm_sunsqua, delm_atmsqua)), np.log10(g_ee_cutoff_neglower), num1)
+g_tautau_m1_cutoff       = np.logspace(-12, np.log10(g1_g_tautau_cutoff(g_tautau_low, m1_lim, delm_sunsqua, delm_atmsqua)), num1)
+m1_g_ee_fillin           = np.logspace(np.log10(g1_g_tautau_cutoff(g_tautau_low, m1_lim, delm_sunsqua, delm_atmsqua)), np.log10(g_ee_cutoff_neglower), num1)
+m1_g_ee_fillin_2         = np.logspace(np.log10(g_ee_cutoff_neglower), np.log10(g1_intsect_upper_upper), num1)
+m1_g_emu_fillin_part1    = np.logspace(np.log10(g1_intsect_upper_upper), np.log10(g1_intsect_lower_upper), num1)
+m1_g_emu_fillin_part2    = np.logspace(np.log10(g1_intsect_lower_upper), np.log10(g1_g_emu_cutoff(g_emu_low, g_emu_negupper, theta_sun)), num1)
+
+g1_col = np.logspace(-12, -3, num1) 
 
 
 plt.fill_between(g_tautau_m1_cutoff, g_tautau_m1_pha0(g_tautau_low, g_tautau_m1_cutoff, delm_sunsqua, delm_atmsqua), g_ee_m1_pha0(g_ee_upper, g_tautau_m1_cutoff, delm_sunsqua, sinsqua_sun), color='purple', alpha=0.5, linewidth=0)
-
 plt.fill_between(m1_g_ee_fillin, np.full_like(m1_g_ee_fillin, m1_lim), g_ee_m1_pha0(g_ee_upper, m1_g_ee_fillin, delm_sunsqua, sinsqua_sun), color='purple', alpha=0.5, linewidth=0)
-#plt.fill_between(ee_neglow_part, np.full_like(ee_neglow_part, m1_lim), g_ee_m1_pha0(g_ee_neglow, ee_neglow_part, delm_sunsqua, sinsqua_sun), color='purple', alpha=0.5)
-
+plt.fill_between(m1_g_ee_fillin_2, np.full_like(m1_g_ee_fillin_2, m1_lim), g_ee_m1_pha0(g_ee_upper, m1_g_ee_fillin_2, delm_sunsqua, sinsqua_sun), color='purple', alpha=0.5, linewidth=0)
+plt.fill_between(m1_g_emu_fillin_part1, np.full_like(m1_g_emu_fillin_part1, m1_lim), g_emu_m1_pha0(g_ee_negupper, m1_g_emu_fillin_part1, delm_sunsqua, theta_sun), color='purple', alpha=0.5, linewidth=0)
+plt.fill_between(m1_g_emu_fillin_part2, g_emu_m1_pha0(g_emu_low, m1_g_emu_fillin_part2, delm_sunsqua, theta_sun), g_emu_m1_pha0(g_emu_negupper, m1_g_emu_fillin_part2, delm_sunsqua, theta_sun), color='purple', alpha=0.5, linewidth=0)
+plt.fill_between(g1_col, np.full_like(g1_col, m1_lim), np.full_like(g1_col, 1), color='blue', alpha=0.5, linewidth=0)
 
 plt.plot(g1, m1_lim_constant, color='blue')
 
@@ -318,6 +284,6 @@ plt.yscale('log')
 
 plt.grid(linestyle = ":")
 plt.tight_layout()
-plt.legend()
+#plt.legend()
 plt.savefig('build/finalplot.pdf')
 plt.clf()

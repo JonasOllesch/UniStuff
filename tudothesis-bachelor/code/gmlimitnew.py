@@ -267,13 +267,18 @@ plt.plot(g1_tautau_low, g_tautau_m1_pha0(g_tautau_low, g1_tautau_low, delm_sunsq
 
 plt.plot(g1_tautau_upper, g_tautau_m1_pha0(g_tautau_upper, g1_tautau_upper, delm_sunsqua, delm_atmsqua), color='red', linestyle='dashdot')
 
-plt.scatter(g1_intsect_lower_upper, g_ee_m1_pha0(g_ee_upper, g1_intsect_lower_upper, delm_sunsqua, sinsqua_sun))
-plt.scatter(g1_intsect_upper_lower, g_ee_m1_pha0(g_ee_low, g1_intsect_upper_lower, delm_sunsqua, sinsqua_sun))
-plt.scatter(g1_intsect_upper_neglower, g_ee_m1_pha0(g_ee_neglow, g1_intsect_upper_neglower, delm_sunsqua, sinsqua_sun))
-plt.scatter(g1_intsect_upper_upper, g_ee_m1_pha0(g_ee_upper, g1_intsect_upper_upper, delm_sunsqua, sinsqua_sun))
 
-plt.scatter(g_ee_cutoff_neglower, g_ee_m1_pha0(g_ee_upper, g_ee_cutoff_neglower, delm_sunsqua, sinsqua_sun))
-plt.scatter(g_ee_cutoff_lower, g_ee_m1_pha0(g_ee_upper, g_ee_cutoff_lower, delm_sunsqua, sinsqua_sun))
+# limit on m1
+
+plt.plot(g1, np.full_like(g1, m1_lim), color='black')
+
+# plt.scatter(g1_intsect_lower_upper, g_ee_m1_pha0(g_ee_upper, g1_intsect_lower_upper, delm_sunsqua, sinsqua_sun))
+# plt.scatter(g1_intsect_upper_lower, g_ee_m1_pha0(g_ee_low, g1_intsect_upper_lower, delm_sunsqua, sinsqua_sun))
+# plt.scatter(g1_intsect_upper_neglower, g_ee_m1_pha0(g_ee_neglow, g1_intsect_upper_neglower, delm_sunsqua, sinsqua_sun))
+# plt.scatter(g1_intsect_upper_upper, g_ee_m1_pha0(g_ee_upper, g1_intsect_upper_upper, delm_sunsqua, sinsqua_sun))
+# 
+# plt.scatter(g_ee_cutoff_neglower, g_ee_m1_pha0(g_ee_upper, g_ee_cutoff_neglower, delm_sunsqua, sinsqua_sun))
+# plt.scatter(g_ee_cutoff_lower, g_ee_m1_pha0(g_ee_upper, g_ee_cutoff_lower, delm_sunsqua, sinsqua_sun))
 
 
 
