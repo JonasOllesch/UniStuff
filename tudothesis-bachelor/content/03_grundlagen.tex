@@ -76,7 +76,7 @@ wobei $U_{\alpha i}$ die unitäre Pontecorvo-Maki-Nakagawa-Sakata-Mischungsmatri
 Das Superskript $(h_i) = \pm 1$ beschreibt dabei die Helizität des Eigenzustands und ist hier nicht weiter von Relevanz.
 
 
-\subsection{Materiebasis}
+\subsection{Materiebasis} %\cite{päspaper}
 \label{subsec:materiebasis}
 
 Zur Beschreibung der Propagation von Neutrinos in besonders dichten Medien wird eine weitere Basis, die Materiebasis genutzt.
@@ -87,10 +87,50 @@ Die Materieeigenzustände
 \end{equation} lassen sich, ähnlich wie die Flavoureigenzustände, ebenfalls als Superposition der Masseneigenzustände beschreiben, lediglich die Mischungsmatrix unterscheidet sich.
 
 
+\section{Neutrinos und spontane Symmetriebrechung}
+
+Um die Masse der Neutrinos zu erklären, führen wir ein Quantenfeld ein, das Majoronenfeld, welches die Leptonenzahlsymmetrie, wenn auch nur geringfügig, bricht.
+Dazu sollen hier zunächst einige Begrifflichkeiten geklärt werden.
+
+\subsection{Das Eichprinzip} %\cite{kleingrot}
+
+Das Prinzip der Eichinvarianz beschreibt Transformationen, die die Physik eines Systems, also die Lagrangedichte, invariant lassen.
+Dabei unterscheiden wir zwischen globalen Transformationen, die sich, unabhängig von Raum und Zeit, überall gleichartig auf das System auswirken und lokalen Eichtransformationen, 
+die von Ort und Zeit abhängig unterschiedlich auf das System wirken.
+
+Für uns sind im Folgenden insbesondere die globalen Symmetrien relevant.
+Jede dieser globalen Symmetrien, ist durch das Noether-Theorem mit einer Erhaltungsgröße verknüpft.
+Unter globale Transformationen fallen beispielsweise die Multiplikation der Lösung $\psi$ der Schrödingergleichung um eine konstante komplexe Phase $\mathrm{e}^{i \alpha}$.
+
+\subsection{Spontane Symmetriebrechung} %\cite{kleingrot}
 
 
-\section{Spontane Symmetriebrechung}
+Der Mechanismus der spontanen Symmetriebrechung erlaubt uns, massebehaftete Eichbosonen einzuführen, ohne die Eichinvarianz der Lagrangedichte durch explizite Massenterme zu verlieren.
+Konkret sprechen wir von einer spontanen Symmetriebrechung, wenn die grundlegenden Gleichungen eines Systems über eine Symmetrie verfügen, der der Grundzustand nicht folgt.
 
+Das Majoronenfeld, also auch die dazugehörigen Eichbosonen, die Majoronen, lässt sich durch ein Potential einführen, dessen Vakuumerwartungswert (VEV), also der Zustand niedrigster Energie $E_\text{min}$ entartet. \\
+Wir fordern also, dass unser System, beschrieben durch den Hamiltonian $H$, invariant unter einer Transformation $U$ bleibt, sprich der Kommutator $[H, U]$ verschwindet.
+Es gilt also auch
+\begin{equation*}
+    H U \ket{0} = U H \ket{0} = E_\text{min} U  \ket{0} 
+\end{equation*}
+und damit
+\begin{equation*}
+    U \ket{0}_i = \ket{0}_j \,, \quad i \neq j \,,
+\end{equation*}
+sofern mehrere entartete Zustände $\ket{0}_i$ existieren. \\
+Die Transformation $U$ lässt das Vakuum $\ket{0}$ also nicht notwendigerweise invariant.
+
+Das einfachste Potential mit diesen Eigenschaften besitzt die Form
+\begin{equation}
+    V(r) = -\frac{1}{2} \mu^2 r^2 + \frac{1}{4} \lambda r^4 \,, \quad \mu,\lambda > 0 \,.
+\end{equation}
+Offensichtlich ist dieses, auch Mexico-Hut-Potential genannte, Potential radialsymmetrisch.
+Es existiert also ein Kreis mit Radius
+\begin{equation*}
+    r_0 = \sqrt{\frac{\mu^2}{\lambda}} \,,
+\end{equation*}
+auf dem die Zustände minimaler Energie verteilt sind.
 
 
 \section{Einfluss von Majoronen auf Supernovaexplosionen}
