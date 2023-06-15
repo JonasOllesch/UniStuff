@@ -1,5 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
+plt.rcParams['text.usetex'] = True
 
 
 ## Functions for m1:
@@ -237,17 +238,17 @@ print(ee_intersect_neglow)
 # g_ττ lower bound
 m1_lim_constant = np.full_like(g1, m1_lim)
 
-plt.plot(g1_tautau_low, g_tautau_m1_pha0(g_tautau_low, g1_tautau_low, delm_sunsqua, delm_atmsqua), color='purple')
+plt.plot(g1_tautau_low, g_tautau_m1_pha0(g_tautau_low, g1_tautau_low, delm_sunsqua, delm_atmsqua), color='purple', linewidth = 0.5)
 
-plt.plot(ee_intersect_neglow, g_ee_m1_pha0(g_ee_upper, ee_intersect_neglow, delm_sunsqua, sinsqua_sun), color='purple')
-plt.plot(ee_neglow_part, g_ee_m1_pha0(g_ee_neglow, ee_neglow_part, delm_sunsqua, sinsqua_sun), color='purple')
+plt.plot(ee_intersect_neglow, g_ee_m1_pha0(g_ee_upper, ee_intersect_neglow, delm_sunsqua, sinsqua_sun), color='purple', linewidth = 0.5)
+plt.plot(ee_neglow_part, g_ee_m1_pha0(g_ee_neglow, ee_neglow_part, delm_sunsqua, sinsqua_sun), color='purple', linewidth = 0.5)
 
-plt.plot(emu_negupper_part, g_emu_m1_pha0(g_emu_negupper, emu_negupper_part, delm_sunsqua, theta_sun), color='purple')
-plt.plot(ee_low_part, g_ee_m1_pha0(g_ee_low, ee_low_part, delm_sunsqua, sinsqua_sun), color='purple')
-plt.plot(ee_upper_part, g_ee_m1_pha0(g_ee_upper, ee_upper_part, delm_sunsqua, sinsqua_sun), color='purple')
-plt.plot(emu_negupper_part_2, g_emu_m1_pha0(g_emu_negupper, emu_negupper_part_2, delm_sunsqua, theta_sun), color='purple')
-plt.plot(emu_low_part, g_emu_m1_pha0(g_emu_low, emu_low_part, delm_sunsqua, theta_sun), color='purple')
-plt.plot(ee_upper_part_final, g_ee_m1_pha0(g_ee_upper, ee_upper_part_final, delm_sunsqua, sinsqua_sun), color='purple')
+plt.plot(emu_negupper_part, g_emu_m1_pha0(g_emu_negupper, emu_negupper_part, delm_sunsqua, theta_sun), color='purple', linewidth = 0.5)
+plt.plot(ee_low_part, g_ee_m1_pha0(g_ee_low, ee_low_part, delm_sunsqua, sinsqua_sun), color='purple', linewidth = 0.5)
+plt.plot(ee_upper_part, g_ee_m1_pha0(g_ee_upper, ee_upper_part, delm_sunsqua, sinsqua_sun), color='purple', linewidth = 0.5)
+plt.plot(emu_negupper_part_2, g_emu_m1_pha0(g_emu_negupper, emu_negupper_part_2, delm_sunsqua, theta_sun), color='purple', linewidth = 0.5)
+plt.plot(emu_low_part, g_emu_m1_pha0(g_emu_low, emu_low_part, delm_sunsqua, theta_sun), color='purple', linewidth = 0.5)
+plt.plot(ee_upper_part_final, g_ee_m1_pha0(g_ee_upper, ee_upper_part_final, delm_sunsqua, sinsqua_sun), color='purple', linewidth = 0.5)
 
 
 
@@ -269,16 +270,13 @@ plt.fill_between(m1_g_emu_fillin_part1, np.full_like(m1_g_emu_fillin_part1, m1_l
 plt.fill_between(m1_g_emu_fillin_part2, g_emu_m1_pha0(g_emu_low, m1_g_emu_fillin_part2, delm_sunsqua, theta_sun), g_emu_m1_pha0(g_emu_negupper, m1_g_emu_fillin_part2, delm_sunsqua, theta_sun), color='purple', alpha=0.5, linewidth=0)
 plt.fill_between(g1_col, np.full_like(g1_col, m1_lim), np.full_like(g1_col, 1), color='blue', alpha=0.5, linewidth=0)
 
-plt.plot(g1, m1_lim_constant, color='blue')
-
-
-plt.plot
+#plt.plot(g1, m1_lim_constant, color='blue')
 
 plt.xlabel(r'$g_1$')
 plt.xlim(10**(-11), 10**(-3))
 plt.xscale('log')
 
-plt.ylabel(r'$m_1$')
+plt.ylabel(r'$m_1 \mathbin{/} \mathrm{eV}$')
 plt.ylim(10**(-6), 1)
 plt.yscale('log')
 
