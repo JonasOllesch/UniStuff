@@ -1,6 +1,8 @@
 \chapter{Theoretische Grundlagen}
 \label{chap:theorie}
 
+%%%% Ein kleines Chapter zur schwachen WW??
+
 \section{Geschichte der Neutrinos}
 \label{sec:neutrinogeschichte}
 
@@ -19,14 +21,14 @@ Theoretisch lassen sie sich durch die Wellenfunktionen $\psi$ als lorentzinvaria
     \label{eq:dirac}
 \end{equation}
 beschreiben.
-Die Wellenfunktion ist dabei ein vierkomponentiger Spinor, $\gamma_\mu$ sind die $4 \times 4$-Diracmatrizen der Darstellung
+Die Wellenfunktion ist dabei ein vierkomponentiger Spinor, $\gamma_\mu$ sind die $4 \times 4$-Gammamatrizen in Diracdarstellung mit
 \begin{align}
-    \gamma_0 = \left( \begin{array}{c c}
+    \gamma^0_\text{Dirac} = \left( \begin{array}{c c}
         \mathbb{1} & 0          \\ 
         0          & -\mathbb{1} \\ 
         \end{array}\right) \,,
     &&
-    \gamma_k = \left( \begin{array}{c c}
+    \gamma^k_\text{Dirac} = \left( \begin{array}{c c}
         0           & \sigma_k  \\ 
         -\sigma_k   & 0         \\ 
         \end{array}\right) \,,
@@ -48,6 +50,7 @@ wobei $\mathbb{1}$ die Einheitsmatrix und $\sigma_k$ mit $k = 1, 2, 3$ die $2 \t
         1           & 0 \\ 
         0   & -1         \\ 
         \end{array}\right)
+    \label{eq:paulimatrizen}
 \end{align}
 darstellen. 
 
@@ -119,6 +122,7 @@ Von diesem Punkt aus besitzt das Potential eine globale Symmetrie, egal in welch
 Betrachten wir das ganze aber von einem der Vakua, existiert diese Symmetrie unter der Transformation $x \rightarrow -x$ nicht länger.
 
 \section{Ursprung der Neutrinomasse} %\cite{kleingrot}
+\label{sec:neutrinomasse}
 
 Als nur schwach wechselwirkende Teilchen ist zum jetzigen Zeitpunkt nur die Existenz linkshändiger Neutrinos $\nu_L$ und rechtshändiger Antineutrinos $\bar{\nu}_R$ bewiesen.
 Diese sind über die Ladungs- und Paritätskonjugation $C P$ durch 
@@ -151,7 +155,7 @@ So erhalten auch Neutrinos im Standardmodell eine Leptonenzahl.
 Sind jetzt jedoch, wie oben beschrieben, Neutrinos und Antineutrino als Majoranateilchen identisch, ergibt die Zuordnung einer Leptonenzahl keinen Sinn mehr.
 Die globale Leptonenzahlsymmetrie ist also, wenn auch nur sehr geringfügig, spontan gebrochen.
 
-\section{Neutrinos in verschiedenen Basen}
+\section{Neutrinos und Neutrinomischung in verschiedenen Basen}
 \label{sec:neutrinobasen}
 
 \subsection{Flavourbasis} %\cite[Kap. 2.1]{oberauer}
@@ -163,24 +167,11 @@ Hier betrachten wir die Flavoureigenzustände $\nu_\alpha (\alpha = e, \mu, \tau
     \nu_\alpha = \sum_i U_{\alpha i} \nu^{(h_i)}_i \,,
     \label{eq:flavourbasis}
 \end{equation}
-wobei $U_{\alpha i}$ die unitäre Pontecorvo-Maki-Nakagawa-Sakata-Mischungsmatrix (PMNS-Matrix) zwischen Massenbasis und Flavourbasis darstellt und eine Aussage über die Wahrscheinlichkeit der Oszillation zwischen bestimmten Eigenzuständen macht.
-Das Superskript $(h_i) = \pm 1$ beschreibt dabei die Helizität des Eigenzustands und ist hier nicht weiter von Relevanz.
-
+wobei $U_{\alpha i}$ die unitäre Mischungsmatrix zwischen Massenbasis und Flavourbasis darstellt \cite[Kap. 2.1]{oberauer}.
+Das Superskript $(h_i) = \pm 1$ beschreibt dabei die Helizität des Eigenzustands.
 
 \subsection{Materiebasis} %\cite{päspaper}
 \label{subsec:materiebasis}
-
-Zur Beschreibung der Propagation von Neutrinos in besonders dichten Medien, wie man sie in Supernovae findet, wird eine weitere Basis, die Materiebasis genutzt.
-Hier stoßen die Neutrinos bei der Propagation ständig mit den Teilchen des Supernovamediums.
-Diese Stöße wirken sich auf das Oszillationsverhalten der Neutrinos aus.
-Die Materieeigenzustände
-\begin{equation}
-    \tilde{\nu}^{(h_i)}_i = \sum_i \tilde{U}_{i j} \nu^{(h_j)}_j
-    \label{eq:materiebasis}
-\end{equation} 
-lassen sich, ähnlich wie die Flavoureigenzustände, ebenfalls als Superposition der Masseneigenzustände beschreiben, lediglich die Mischungsmatrix unterscheidet sich.
-
-\section{Einfluss von Majoronen auf Supernovaexplosionen} % auch \cite{päspaper}
 
 Das Material im Inneren eines Stern wird im Laufe seines Lebens zu immer schwereren Elementen fusioniert und setzt große Mengen an Energie frei.
 Normalerweise reicht der so entstehende Strahlungsdruck, um dem äußeren Gravitationsdruck standzuhalten.
@@ -189,6 +180,154 @@ Besitzt der Stern eine ausreichende Gesamtmasse, implodiert er bis zu einer krit
 Sobald diese Dichte im Stern herrscht, entsteht eine Schockwelle im Inneren, die das Sternmaterial nach außen katapultiert.
 
 Dabei wird ein großer Teil der Supernovaenergie durch Neutrinos propagiert.
-Ist es diesen nun möglich, bei der Propagation durch das Supernovamedium über den Zerfall $\tilde{\nu}^{(h_i)}_i (p_i) \rightarrow \tilde{\nu}^{(h_j)}_j (p_j) + J(q)$ Energie in Form von Majoronen $J$ mit Impuls $q$ abzustrahlen,
-kann sich, je nach Kopplungsstärke, das Energiespektrum der Supernova verändern.
+Ist es diesen nun möglich, bei der Propagation durch das Supernovamedium über den Zerfall $\tilde{\nu}^{(h_i)}_i (p_i) \rightarrow \tilde{\nu}^{(h_j)}_j (p_j) + J(q)$
+Energie in Form von Majoronen $J$ mit Impuls $q$ abzustrahlen, kann sich, je nach Kopplungsstärke zwischen Neutrino und Majoron, das Energiespektrum der Supernova verändern.
+Diese Stöße wirken sich auf das Oszillations- und Propagationsverhalten der Neutrinos aus und können mithilfe der Materiebasis beschrieben werden.
+
+Drücken wir dabei das linkshändige vierkomponentige Feld $\nu_L$ in chiraler Darstellung der Gammamatrizen über ein zweikomponentiges Feld $\phi$ mit $\nu^T_L = (\phi, 0)^T$ aus, 
+näheres dazu findet sich in \cite{komponentendinger}, lässt sich der Lagrangian in der Materiebasis als
+\begin{equation}
+    \mathcal{L}_\text{tot} = \mathcal{L}_0 + \mathcal{L}_\text{med} + \mathcal{L}_\text{int}
+    \label{eq:materielagrange}
+\end{equation}
+mit
+\begin{align*}
+    \mathcal{L}_0          &=   i \sum_i \left[\phi^\dagger_i \left(\partial_t - \vec{\sigma} \times \nabla \right) \phi_i - \frac{m_i}{2} \left(\phi^T_i \sigma_2 \phi - \phi^\dagger_i \sigma_2 \phi^*_i\right) \right] \,,\\
+    \mathcal{L}_\text{med} &= - \sum_{i j} \phi^\dagger_i V_{i j} \phi_j  \,,\\
+    \mathcal{L}_\text{int} &= - J \sum_{i j} g^M_{i j} \left( \phi^T_i \sigma_2 \phi_j + \phi^\dagger_i \sigma_2 \phi^*_j \right)
+\end{align*}
+schreiben \cite{päspaper}.
+Dabei beschreibt der freie Lagrangian $\mathcal{L}_0$ die Propagation im Vakuum, $\mathcal{L}_\text{med}$ die in der Potentialmatrix $V$ berücksichtigten Effekte von Materie und $\mathcal{L}_\text{int}$
+beschreibt Wechselwirkungen zwischen Neutrinos und Majoronen.
+Die Kopplungsstärke zwischen Majoronen und Neutrinos der Massenbasis ist dabei in $g^M_{i j}$ zusammengefasst, $\vec{\sigma} = (\sigma_1, \sigma_2, \sigma_3)$ denotiert den Vektor der in \eqref{eq:paulimatrizen} zu findenden Paulimatrizen
+und $m_i$ den Masseneigenwert des jeweiligen Neutrinos in der Massenbasis.
+
+Für gewöhnlich würden wir hier, um die Eigenzustände des bereits erwähnten Zerfalls $\tilde{\nu}^{(h_i)}_i (p_i) \rightarrow \tilde{\nu}^{(h_j)}_j (p_j) + J(q)$ zu bestimmen, 
+die aus $\mathcal{L}_\text{tot}$ resultierenden Feldgleichungen 
+\begin{equation}
+    i \left(\partial_t - \vec{\sigma} \times \nabla \right) \phi_i + i m_i \sigma_2 \phi^*_i - \sum^3_j V_{i j} \phi_j = 0 \,,
+\end{equation}
+wie in \cite{komponentendinger} gezeigt, mithilfe von Planarwellenspinoren definiter Helizität lösen, 
+allerdings stimmen die so erhaltenden Lösungen mit den aus der Diagonalisierung der Mikheyev-Smirnov-Wolfenstein-Gleichung folgenden Lösungen überein.
+Sie beschreibt die Zeitentwicklung schwacher Eigenzustände und die Mischung zwischen diesen und den Energieeeigenzuständen durch
+\begin{equation}
+    i \partial_t \nu^{(h)}_i = \left(H^\text{rel}_{i j} + U_{i \alpha} V_{\alpha \beta} U^\dagger_{\beta j}\right) \nu^{(h)}_j \,.
+    \label{eq:MSW-gleichung}
+\end{equation}
+Aufgrund der geringen Massen und hohen Energien der Neutrinos, bei denen auch Energie- und Materieeigenzustände übereinstimmen, betrachten wir den hochrelativistischen Limes des Hamiltonians $H^\text{rel}_{i j} \approx \left(p + \frac{m^2_i}{2 p}\right) \delta_{ij}$ mit dem Kronecker-$\delta$
+\begin{equation}
+    \delta_{ij} = \begin{cases}
+                    1, \quad i=j \\
+                    0, \quad \text{sonst} \,.
+                  \end{cases}
+                  \label{eq:kronecker}
+\end{equation}
+$V$ ist dabei die diagonale Potentialmatrix der schwachen Basis, also
+\begin{equation}
+    V = \left( \begin{array}{c c c}
+        V_C + V_N   &   0     &     0   \\ 
+        0           &   V_N   &     0   \\ 
+        0           &   0     &     V_N  \\
+        \end{array}\right) \,,
+\end{equation}
+wobei $V_C = \sqrt{2} h G_F n_B (Y_\text{e}) + Y_{\nu_\text{e}}$ das von geladenen Strömen, also schwachen Wechselwirkungen, bei denen ein $W^+$- oder $W-$- Boson ausgetauscht wird erzeugte und 
+$V_N = \sqrt{2} h G_F n_B \left(-\frac{1}{2} Y_N + Y_{\nu_\text{e}}\right)$ das durch ungeladene Ströme, also nur unter Austausch von neutralen $Z$-Bosonen stattfindende schwache Wechselwirkungen erzeugte Potential.
+Mit der Baryonendichte $n_B$ des betrachteten Mediums gilt für ein beliebiges Teilchen $i$ mit korrespondierendem Antiteilchen $\bar{i}$ $Y_i = \frac{n_i - n_{\bar{i}}}{n_B}$.
+
+Aus der Diagonalisierung der rechten Seite der MSW-Gleichung folgen die Materieeigenzustände
+\begin{equation}
+    \tilde{\nu}^{(h_i)}_i = \sum_i \tilde{U}_{i j} \nu^{(h_j)}_j \,.
+    \label{eq:materiebasis}
+\end{equation} 
+Ähnlich wie die Flavoureigenzustände lassen sie sich als Superposition der Masseneigenzustände beschreiben.
+Sie unterscheiden sich lediglich in der Mischungsmatrix $\tilde{U}$.
+
+Hier können wir die in \autoref{subsec:flavourbasis} auftretende Mischungsmatrix $U$ als
+\begin{equation}
+    U = U_{2 3} \, U_{1 3} \, U_{1 2} \, U_0
+    \label{eq:kopplungflavour}
+\end{equation}
+parametrisieren.
+Bei den Matrizen $U_{i j}$ handelt es sich dabei um Rotationsmatrizen, die in der $i j$-Ebene eine Rotation um den Winkel $\theta_{i j}$ durchführen.
+Die in \autoref{sec:neutrinomasse} behandelte mögliche CP-Verletzung findet sich als Phase in der Matrix $U_0$ wieder.
+
+Wie in \cite{theta13} festgestellt ist $\theta_{1 3}$ nicht, wie lange Zeit angenommen, null.
+Nach aktuellen Daten der Particle Data Group gilt $\sin^2 \left(\theta_{1 3} \right) = \num{2.20 +- 0.07} \cdot 10^{-2}$ \cite{neutrinospdg}, hier wird $\theta_{1 3}$ dennoch auf null gesetzt.
+
+Damit vereinfacht sich die Mischungsmatrix zu $U = U_{2 3} \, U_{1 2} \, U_0$.
+Jetzt können wir $\theta_{1 2}$ als solaren Mischungswinkel $\theta_\odot$ und $\theta_{2 3}$ als atmosphärischen Mischungswinkel $\theta_\text{atm}$ identifizieren.
+Da zusätzlich, vor allem für leichte Neutrinos in der Nähe der Neutrinosphäre der Supernova, $|V_{\alpha \alpha}| \gg \frac{m^2_i}{2 p}$ für alle Elemente der Potentialmatrix gilt, unterscheiden sich die Materieeigenzustände nur um eine
+beliebige Drehung $\theta'$ in der $\nu_\mu$ - $\nu_\tau$ Ebene von den Eigenzuständen der schwachen Basis.
+Wir wählen $\theta' = -\theta_\text{2 3}$, um möglichst einfache Ausdrücke der Materieeigenzustände zu erhalten, wie sie in \autoref{tab:materieeigis} dargestellt sind.
+\begin{table}[H]
+    \centering
+    \begin{tabular}{S S S}
+      \toprule
+    {Materieeigenzustände $\tilde{\nu}^{(h_i)_i}$} & {Schwache Eigenzustände $\nu_{\alpha'}$} & {Potential $V$} \\
+      \midrule
+       {$\tilde{\nu}^+_1$} & {$\bar{\nu}_e$}                                                        &  {$- (V_C + V_N)$} \\
+       {$\tilde{\nu}^+_2$} & {$\bar{\nu}_{\mu'}  = c_{2 3} \bar{\nu}_\mu - s_{2 3} \bar{\nu}_\tau$} &  {$- V_N$} \\
+       {$\tilde{\nu}^+_3$} & {$\bar{\nu}_{\tau'} = s_{2 3} \bar{\nu}_\mu + c_{2 3} \bar{\nu}_\tau$} &  {$- V_N$} \\
+       {$\tilde{\nu}^-_1$} & {$\nu_{\mu'}        = c_{2 3} \nu_\mu       - s_{2 3} \nu_\tau$}       &  {$V_N$} \\
+       {$\tilde{\nu}^-_2$} & {$\nu_{\tau'}       = s_{2 3} \nu_\mu       + c_{2 3} \nu_\tau$}       &  {$V_N$} \\
+       {$\tilde{\nu}^-_3$} & {$\nu_e$}                                                              &  {$V_C + V_N$} \\
+    \bottomrule
+    \end{tabular}
+    \caption{Materieeigenzustände $\tilde{\nu}^\pm_i$ positiver und negativer Helizität im Limes $|V_{\alpha \alpha}| \gg \frac{m^2_i}{2 p}$ als Rotation der schwachen Eigenzustände. Die Eigenzustände sind dabei so
+            angeordnet, dass das Potential in der Tabelle nach unten hin ansteigt. Es gilt $c_{2 3} = \cos(\theta_{2 3})$ und $s_{2 3} = \sin(\theta_{2 3})$.}
+    \label{tab:materieeigis}
+\end{table}
+
+Genauso lassen sich auch die Kopplungsmatrixelemente $\tilde{g}_{i j}$ der Materiebasis als Rotation der Elemente der schwachen Basis identifizieren.
+In den hier betrachteten Modellen ist die schwache Kopplungsmatrix diagonal, es gilt also
+\begin{equation}
+    g^W = \left( \begin{array}{c c c}
+        g_1         &   0     &     0   \\ 
+        0           &   g_2   &     0   \\ 
+        0           &   0     &     g_3  \\
+    \end{array}\right) \,.
+    \label{eq:schwachekopplung}
+\end{equation}
+
+Damit ist also
+\begin{equation}
+    g_{\alpha' \beta'} \equiv \ \tilde{g}_{i j} = U(-\theta_{2 3}) \, g^W_{\alpha \beta} \, U^T(-\theta_{2 3}) = U_{1 2} \, U^*_0 \, g^M_{i j} \, U^\dagger_0 \, U_{1 2} \,,
+\end{equation}
+wenn wir zusätzlich benutzen, dass die schwache Kopplungsmatrix und die der Massenbasis über $g^W = U \, g^M \, U^T$ verknüpft sind, oder explizit
+\begin{align}
+    \tilde{g} &= \left( \begin{array}{c c c}
+        g_{ee}                  &   g_{e \mu'}          &     g_{e \tau'}       \\ 
+        g_{e \mu'}              &   g_{\mu' \mu'}       &     g_{\tau' \mu'}    \\ 
+        g_{e \tau'}             &   g_{\tau' \mu'}      &     g_{\tau \tau}     \\
+    \end{array}\right) \nonumber\\
+    &= \left( \begin{array}{c c c}
+        g_1 \cos^2 \theta_\odot + g_2 sin^2 \theta_\odot \mathrm{e}^{-2 i \delta}                   &   \frac{1}{2} \left(-g_1 + g_2 \mathrm{e}^{-2 i \delta}\right) \sin(2 \theta_\odot)       &     0   \\ 
+        \frac{1}{2} \left(-g_1 + g_2 \mathrm{e}^{-2 i \delta}\right) \sin(2 \theta_\odot)           &   g_1 sin^2 \theta_\odot + g_2 \cos^2 \theta_\odot\mathrm{e}^{-2 i \delta}                &     0   \\ 
+        0                                                                                           &   0                                                                                       &     g_3  \\
+    \end{array}\right)
+    \label{eq:materiekoppmat}
+\end{align}
+mit der CP-verletzenden Phase $\delta$.
+Die Kopplungsparameter $g_2$ und $g_3$ lassen sich dabei in Abhängigkeit von $g_1$ und $m_1$, also der Masse des ersten Masseneigenzustands, ausdrücken als
+\begin{align}
+    g_2 = g_1 \sqrt{1 + \frac{\Delta m^2_\odot}{m^2_1}}\,, && g_3 = g_1 \sqrt{1 + \frac{\Delta m^2_\odot + \Delta m^2_\text{atm}}{m^2_1}} \,,
+    \label{eq:g2g3}
+\end{align}
+wobei wir die Definitionen $\Delta m^2_{1 2} = \Delta m^2_\odot$ und $\Delta m^2_{23} = \Delta m^2_\text{atm}$ benutzen.
+So ist also ein Zusammenhang der Kopplungsmatrizen aller drei Basen hergestellt, der im folgenden genutzt werden kann, um die Einschränkungen auf die Kopplungsstärken deutlich zu machen.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
