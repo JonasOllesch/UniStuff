@@ -1,164 +1,7 @@
-\chapter{Theoretische Grundlagen}
-\label{chap:theorie}
+\chapter{Neutrinos und Neutrinomischung in verschiedenen Basen}
+\label{chap:neutrinobasen}
 
-%%%% Ein kleines Chapter zur schwachen WW??
-
-\section{Geschichte der Neutrinos}
-\label{sec:neutrinogeschichte}
-
-Neutrinos wurden erstmals am $4.$ Dezember $1930$ von Pauli als Spin-$\frac{1}{2}$-Teilchen postuliert, um das Problem der Drehimpulserhaltung und das kontinuierliche Elektronenspektrum beim $\beta$-Zerfall zu lösen. %\cite{zuber}
-Er führte das Neutrino als Teilchen ein, dass beim $\beta^-$-Zerfall
-\begin{equation*}
-    n \rightarrow p + e^- + \bar{\nu}_e
-\end{equation*}
-gemeinsam mit dem Elektron emittiert wird, anders als dieses allerdings nicht detektierbar ist. \\
-Diese Annahme Paulis wurde lange kritisch betrachtet, bis Neutrinos in den $50$er Jahren in Atomreaktoren zweifellos nachgewiesen werden konnten. %\cite{zuber}\\
-
-Im Standardmodell der Teilchen sind Neutrinos als einzige masselose, elektrisch neutrale Leptonen vertreten.
-Theoretisch lassen sie sich durch die Wellenfunktionen $\psi$ als lorentzinvariante Lösung der relativistischen Diracgleichung
-\begin{equation}
-    \left(i \gamma_\mu \frac{\partial}{\partial x_\mu} - m \right) \psi = 0
-    \label{eq:dirac}
-\end{equation}
-beschreiben.
-Die Wellenfunktion ist dabei ein vierkomponentiger Spinor, $\gamma_\mu$ sind die $4 \times 4$-Gammamatrizen in Diracdarstellung mit
-\begin{align}
-    \gamma^0_\text{Dirac} = \left( \begin{array}{c c}
-        \mathbb{1} & 0          \\ 
-        0          & -\mathbb{1} \\ 
-        \end{array}\right) \,,
-    &&
-    \gamma^k_\text{Dirac} = \left( \begin{array}{c c}
-        0           & \sigma_k  \\ 
-        -\sigma_k   & 0         \\ 
-        \end{array}\right) \,,
-    \label{eq:gammamatrizen}
-\end{align}
-wobei $\mathbb{1}$ die Einheitsmatrix und $\sigma_k$ mit $k = 1, 2, 3$ die $2 \times 2$-Paulimatrizen
-\begin{align}
-    \sigma_1 = \left( \begin{array}{c c}
-        0 & 1   \\ 
-        1 & 0   \\ 
-        \end{array}\right) \,,
-    &&
-    \sigma_2 = \left( \begin{array}{c c}
-        0           & -i  \\ 
-        i  & 0         \\ 
-        \end{array}\right) \,,
-    &&
-    \sigma_3 = \left( \begin{array}{c c}
-        1           & 0 \\ 
-        0   & -1         \\ 
-        \end{array}\right)
-    \label{eq:paulimatrizen}
-\end{align}
-darstellen. 
-
-Somit sind Neutrinos auch die einzigen Leptonen, die nicht nur nicht stark wechselwirken, sondern auch nicht an der elektromagnetischen Wechselwirkung teilnehmen.
-Tatsächlich ist ihre Wechselwirkung mit Materie so gering, dass die $7 \cdot 10^{10}$  Neutrinos, die pro $\si{\centi\meter}^2$ und pro Sekunde auf die Erde treffen, keinerlei Auswirkung
-auf das Leben ihrer Bewohner haben \cite[S. ~133]{grupen}. 
-
-Zu jeder der drei Leptonengenerationen, sprich Elektronen, Myonen und Tauonen existiert dabei ein korrespondierendes Neutrino.
-Dieser sogenannte Flavour eines Neutrinos ist dabei nicht fest, sondern kann sich zeitlich und räumlich periodisch ändern.
-Die Entdeckung dieser sogenannten Neutrinooszillationen erhielt im Jahre $2015$ den Nobelpreis \cite[S. ~19]{oberauer}.
-
-
-
-\section{Neutrinos und spontane Symmetriebrechung}
-
-Um die Masse der Neutrinos zu erklären, führen wir ein Quantenfeld ein, das Majoronenfeld, welches die Leptonenzahlsymmetrie, wenn auch nur geringfügig, bricht.
-Dazu sollen hier zunächst einige Begrifflichkeiten geklärt werden.
-
-\subsection{Das Eichprinzip} %\cite{kleingrot}
-
-Das Prinzip der Eichinvarianz beschreibt Transformationen, die die Physik eines Systems, also die Lagrangedichte, invariant lassen.
-Dabei unterscheiden wir zwischen globalen Transformationen, die sich, unabhängig von Raum und Zeit, überall gleichartig auf das System auswirken und lokalen Eichtransformationen, 
-die von Ort und Zeit abhängig unterschiedlich auf das System wirken.
-
-Für uns sind im Folgenden insbesondere die globalen Symmetrien relevant.
-Jede dieser globalen Symmetrien, ist durch das Noether-Theorem mit einer Erhaltungsgröße verknüpft.
-Unter globale Transformationen fallen beispielsweise die Multiplikation der Lösung $\psi$ der Schrödingergleichung um eine konstante komplexe Phase $\mathrm{e}^{i \alpha}$.
-
-\subsection{Spontane Symmetriebrechung} %\cite{kleingrot}
-
-
-Der Mechanismus der spontanen Symmetriebrechung erlaubt uns, massebehaftete Eichbosonen einzuführen, ohne die Eichinvarianz der Lagrangedichte durch explizite Massenterme zu verlieren.
-Konkret sprechen wir von einer spontanen Symmetriebrechung, wenn die grundlegenden Gleichungen eines Systems über eine Symmetrie verfügen, der der Grundzustand nicht folgt.
-
-Das Majoronenfeld, also auch die dazugehörigen Eichbosonen, die Majoronen, lässt sich durch ein Potential einführen, dessen Vakuumerwartungswert (VEV), also der Zustand niedrigster Energie $E_\text{min}$ verschieden von null ist. \\
-Wir fordern also, dass unser System, beschrieben durch den Hamiltonian $H$, invariant unter einer Transformation $U$ bleibt, sprich der Kommutator $[H, U]$ verschwindet.
-Es gilt also auch
-\begin{equation*}
-    H U \ket{0} = U H \ket{0} = E_\text{min} U  \ket{0} 
-\end{equation*}
-und damit
-\begin{equation*}
-    U \ket{0}_i = \ket{0}_j \,, \quad i \neq j \,,
-\end{equation*}
-sofern mehrere entartete Zustände $\ket{0}_i$ existieren. \\
-Die Transformation $U$ lässt das Vakuum $\ket{0}$ also nicht notwendigerweise invariant.
-
-Das einfachste Potential mit diesen Eigenschaften besitzt die Form
-\begin{equation}
-    V(x) = -\frac{1}{2} \mu^2 x^2 + \frac{1}{4} \lambda x^4 \,, \quad \mu,\lambda > 0 \,.
-\end{equation}
-Offensichtlich ist dieses, auch Mexico-Hut-Potential genannte, Potential radialsymmetrisch.
-Es existiert also ein Kreis mit Radius
-\begin{equation*}
-    x_0 = \sqrt{\frac{\mu^2}{\lambda}} \,,
-\end{equation*}
-auf dem die Zustände minimaler Energie verteilt sind.
-\autoref{fig:mexicohutpot} zeigt eine Darstellung des Potentials in zwei Dimensionen.
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[]{figures/MexicoHutpotential.pdf}
-    \caption{Darstellung des Mexico-Hut-Potentials in zwei Dimensionen. Zu erkennen sind die zwei möglichen Grundzustände $x = \pm x_0$ \cite{kleingrot}.}
-    \label{fig:mexicohutpot}
-\end{figure}
-
-Anschaulich stellen wir uns vor, dass wir uns zunächst im Zentrum des Potentials befinden.
-Von diesem Punkt aus besitzt das Potential eine globale Symmetrie, egal in welche Richtung wir schauen.
-Betrachten wir das ganze aber von einem der Vakua, existiert diese Symmetrie unter der Transformation $x \rightarrow -x$ nicht länger.
-
-\section{Ursprung der Neutrinomasse} %\cite{kleingrot}
-\label{sec:neutrinomasse}
-
-Als nur schwach wechselwirkende Teilchen ist zum jetzigen Zeitpunkt nur die Existenz linkshändiger Neutrinos $\nu_L$ und rechtshändiger Antineutrinos $\bar{\nu}_R$ bewiesen.
-Diese sind über die Ladungs- und Paritätskonjugation $C P$ durch 
-\begin{equation}
-    (\nu_L)^{C P} = \bar{\nu}_R
-    \label{eq:cpkonju}
-\end{equation}
-miteinander verknüpft.
-Der Paritätsoperator $P$ transformiert dabei linkshändige in rechtshändige Teilchen und umgekehrt, die Ladungskonjugation überführt Teilchen in ihre Antiteilchen, ohne dabei ihre Händigkeit zu verändern.
-Sind die ladungskonjugierten Teilchen zu $\nu_L$ bzw. $\bar{\nu}_R$ bisher nicht beobachtete, unabhängige Teilchen, sprechen wir von einem Dirac-Neutrino.
-Ist $\nu_L$ bzw- $\bar{\nu}_R$ sein eigenes ladungskonjugiertes Teilchen, gilt also
-\begin{align*}
-    (\nu_L)^C = \nu_L \,, && (\bar{\nu}_R)^C = \bar{\nu}_R \,.
-\end{align*}
-Diese, nach dem italienischen Physiker Ettore Majorana benannten Majorana-Neutrinos lösen nach wie vor die Diracgleichung \eqref{eq:dirac}, es existieren allerdings nur zwei physikalisch unterscheidbare Zustände.
-Diese beiden Majorana-Masseneigenzustände
-\begin{align*}
-    \nu_1 = \nu_L + \nu^{C P}_R \\
-    \nu_2 = \nu_R + \nu^{C P}_L
-\end{align*}
-sind ihre eigenen Antiteilchen und bilden gemeinsam den Massenterm der Lagrangedichte $\mathcal{L}_M$ zu
-\begin{equation}
-    \mathcal{L}_M = \mathcal{L}^L_M + \mathcal{L}^R_M = -\frac{1}{2} m^M_L \bar{\nu}_1 \nu_1 - \frac{1}{2} m^M_R \bar{\nu}_2 \nu_2 \,.
-    \label{eq:lagrangedichtemajo}
-\end{equation}
-Dabei stellen $m^M_L$ bzw. $m^M_R$ als Massen die Kopplungsstärken zwischen $\nu_L$ und $\bar{\nu}_R$ bzw. $\nu_R$ und $\bar{\nu}_L$ dar.
-
-Im Standardmodell ordnet der Leptonenzahloperator $L$ jedem Lepton die Leptonenzahl $+1$ und jedem Antilepton die Leptonenzahl $-1$.
-So erhalten auch Neutrinos im Standardmodell eine Leptonenzahl. 
-Sind jetzt jedoch, wie oben beschrieben, Neutrinos und Antineutrino als Majoranateilchen identisch, ergibt die Zuordnung einer Leptonenzahl keinen Sinn mehr.
-Die globale Leptonenzahlsymmetrie ist also, wenn auch nur sehr geringfügig, spontan gebrochen.
-
-\section{Neutrinos und Neutrinomischung in verschiedenen Basen}
-\label{sec:neutrinobasen}
-
-\subsection{Flavourbasis} %\cite[Kap. 2.1]{oberauer}
+\section{Flavourbasis} %\cite[Kap. 2.1]{oberauer}
 \label{subsec:flavourbasis}
 Voraussetzung für die Neutrinooszillationen ist aber, dass Masseneigenzustände $\nu_i$ als Lösungen der Diracgleichung mit den Masseneigenwerten $m_i \neq 0 (i = 1, 2, 3)$ existieren.
 Diese Masseneigenzustände bestimmen die Propagation des Neutrinos im Vakuum und müssen nicht zwangsläufig identisch zu den Flavoureigenzuständen sein.
@@ -170,14 +13,33 @@ Hier betrachten wir die Flavoureigenzustände $\nu_\alpha (\alpha = e, \mu, \tau
 wobei $U_{\alpha i}$ die unitäre Mischungsmatrix zwischen Massenbasis und Flavourbasis darstellt \cite[Kap. 2.1]{oberauer}.
 Das Superskript $(h_i) = \pm 1$ beschreibt dabei die Helizität des Eigenzustands.
 
-\subsection{Materiebasis} %\cite{päspaper}
-\label{subsec:materiebasis}
 
-Das Material im Inneren eines Stern wird im Laufe seines Lebens zu immer schwereren Elementen fusioniert und setzt große Mengen an Energie frei.
-Normalerweise reicht der so entstehende Strahlungsdruck, um dem äußeren Gravitationsdruck standzuhalten.
-Erreicht der Stern jedoch mit Eisen das Ende der Fusionskette, sinkt der Strahlungsdruck immer weiter, bis der Kern das Chandrasekhar-Limit erreicht und der Stern endgültig instabil wird.
-Besitzt der Stern eine ausreichende Gesamtmasse, implodiert er bis zu einer kritischen Dichte.
-Sobald diese Dichte im Stern herrscht, entsteht eine Schockwelle im Inneren, die das Sternmaterial nach außen katapultiert.
+\section{Supernovae}
+
+Im Inneren eines Sterns, der massiver als zehn unserer Sonnenmassen ist und sich dem Ende seines Lebens zuneigt, sind die Elemente nach absteigender Masse geschichtet.
+Der Kern des Sterns, bestehend aus Eisen, Elektronen, Positronen, Photonen und vereinzelten Nukleonen, ist umgeben von Schichten aus Silizium, Sauerstoff, Kohlenstoff, Helium und Wasserstoff.
+Je mehr Eisen der Stern jedoch fusioniert, desto weniger Material bleibt ihm zur weiteren Kernfusion übrig.
+Zu diesem Zeitpunkt des Lebens des Sterns wird das Gleichgewicht zum nach innen wirkenden Gravitationsdruck durch den Strahlungsdruck der Elektronen nach außen aufrechterhalten. 
+Doch dieses Gleichgewicht ist auf Dauer nicht stabil.
+
+Die Elektronen und Protonen im Kern des Stern kombinieren im Prozess des Elektroneneinfangs zu einem Neutron und einem Elektronneutrino $e^- + p \rightarrow n + \nu_e$ \cite{supernovaepaper}.
+So sinkt der Elektronendruck immer weiter, bis der Kern instabil wird und stürzt in sich zusammen, er kollabiert.
+Die Kollapsgeschwindigkeit übersteigt dabei die Schallgeschwindigkeit im stellaren Medium, es erreicht also keine Information des zusammenbrechenden inneren Kerns den nachfolgenden äußeren Kern.
+Mit einer anfänglichen Dichte von $10^9$ bis $10^{10} \, \si{\gram \per \centi\cubic\meter}$ erreicht er schnell Dichten, die in Nuklei, also Atomkernen, typisch sind.
+In Zuge dessen durchläuft ändert sich die Zusammensetzung im Kern.
+Nun besteht er nur noch aus Protonen und Neutronen.
+Als Fermionen können nach dem Pauliverbot niemals zwei Fermionen im exakt gleichen Zustand existieren.
+Zusätzlich zu diesem Verbot kommt hinzu, dass Protonen sich aufgrund ihrer gleichen Ladung abstoßen.
+
+Je dichter der Kern beim Kollaps also wird, desto drastischer erhöht sich der Druck nach außen, bis der Kern im \textit{Rebound} von sich selber abprallt und eine Schockwelle erzeugt, die nach außen durch den Stern propagiert.
+Dabei verliert die Schockwelle durch das Aufbrechen des einfallenden Sternmaterials Energie.
+Zusammen mit der Energie, die durch Elektronneutrinos, die beim Elektroneneinfang mit den im Kern freiwerdenden Protonen entstehen, verloren geht, wird die Schockwelle im Kern verzögert, bevor sie vollends nach außen propagiert.
+Der Kern des sterbenden Sterns mit seinem vergleichsweise kühlen Inneren und heißen, Neutrinos aller Flavours abstrahlenden Mantel wird nun als Protoneutronenstern bezeichnet.
+Die im, auch Neutrinosphäre genannten Mantel freiwerdenden Neutrinos entstehen in so großer Zahl, dass eine Leistung von mehr als $10^{45} \,\si{\watt}$ frei wird, die die verzögerte Schockwelle wiederbelebt.
+So explodiert der Stern in einer spektakulären Explosion, die wir als Supernova bezeichnen.
+
+\section{Materiebasis} %\cite{päspaper}
+\label{subsec:materiebasis}
 
 Dabei wird ein großer Teil der Supernovaenergie durch Neutrinos propagiert.
 Ist es diesen nun möglich, bei der Propagation durch das Supernovamedium über den Zerfall $\tilde{\nu}^{(h_i)}_i (p_i) \rightarrow \tilde{\nu}^{(h_j)}_j (p_j) + J(q)$
@@ -201,6 +63,7 @@ Dabei beschreibt der freie Lagrangian $\mathcal{L}_0$ die Propagation im Vakuum,
 beschreibt Wechselwirkungen zwischen Neutrinos und Majoronen.
 Die Kopplungsstärke zwischen Majoronen und Neutrinos der Massenbasis ist dabei in $g^M_{i j}$ zusammengefasst, $\vec{\sigma} = (\sigma_1, \sigma_2, \sigma_3)$ denotiert den Vektor der in \eqref{eq:paulimatrizen} zu findenden Paulimatrizen
 und $m_i$ den Masseneigenwert des jeweiligen Neutrinos in der Massenbasis.
+Wir berücksichtigen hier nur die einfachste Art der Majoronmodelle, also nehmen wir eine Proportionalität zwischen Kopplungs- und Massenmatrix $g^M_{i j} \propto m_{i j}$ an.
 
 Für gewöhnlich würden wir hier, um die Eigenzustände des bereits erwähnten Zerfalls $\tilde{\nu}^{(h_i)}_i (p_i) \rightarrow \tilde{\nu}^{(h_j)}_j (p_j) + J(q)$ zu bestimmen, 
 die aus $\mathcal{L}_\text{tot}$ resultierenden Feldgleichungen 
@@ -307,24 +170,65 @@ wenn wir zusätzlich benutzen, dass die schwache Kopplungsmatrix und die der Mas
     \end{array}\right)
     \label{eq:materiekoppmat}
 \end{align}
-mit der CP-verletzenden Phase $\delta$.
+mit der CP-verletzenden Phase $\delta$ \cite{päspaper}.
 Die Kopplungsparameter $g_2$ und $g_3$ lassen sich dabei in Abhängigkeit von $g_1$ und $m_1$, also der Masse des ersten Masseneigenzustands, ausdrücken als
 \begin{align}
     g_2 = g_1 \sqrt{1 + \frac{\Delta m^2_\odot}{m^2_1}}\,, && g_3 = g_1 \sqrt{1 + \frac{\Delta m^2_\odot + \Delta m^2_\text{atm}}{m^2_1}} \,,
     \label{eq:g2g3}
 \end{align}
-wobei wir die Definitionen $\Delta m^2_{1 2} = \Delta m^2_\odot$ und $\Delta m^2_{23} = \Delta m^2_\text{atm}$ benutzen.
+wobei wir die Definitionen $\Delta m^2_{1 2} = m^2_2 - m^2_1 = \Delta m^2_\odot$ und $\Delta m^2_{23} = m^2_3 - m^2_2 = \Delta m^2_\text{atm}$ benutzen.
 So ist also ein Zusammenhang der Kopplungsmatrizen aller drei Basen hergestellt, der im folgenden genutzt werden kann, um die Einschränkungen auf die Kopplungsstärken deutlich zu machen.
 
 
+\section{Einschränkung der Kopplungsparameter durch Supernovae}
 
+Im Folgenden betrachten wir einige der Argumente, die genutzt werden können, um die Kopplungsparameter zwischen Majoronen und Neutrinos einzuschränken, näher.
+Konkret gehen wir auf die Einschränkungen durch Neutrinospektren ein, die es uns ermöglichen, die Kopplungsparameter $g_1$ und $g_2$ einzuschränken, und die Einschränkungen aus der Majoronenluminosität ein,
+die uns eine Ausschlussregion für $|\tilde{g}_{i j}|$ liefert.
+Zusätzlich wird kurz das aktuelle Limit auf die Neutrinomasse $m_1$ diskutiert.
 
+\subsection{Einschränkungen durch Neutrinospektren}
+Durch Majoronen induzierte Flavourübergänge der Neutrinos der Form $\tilde{\nu}^\pm_i \rightarrow \tilde{\nu}^\mp_j + J$ können das Energiespektrum der einzelnen Neutrinogenerationen merklich verschieben. 
+Dabei muss jedoch beachtet werden, dass die Wirkungsquerschnitte der unterschiedlichen Neutrinos innerhalb einer typischen Supernova nicht übereinstimmen.
+Diese Diskrepanz stammt daher, dass $\nu_\mu$ und $\nu_\tau$ nur über neutrale Ströme mit dem Supernovamedium interagieren können.
+Elektronneutrinos $\nu_e$ können dagegen nicht nur über neutrale, sondern auch über geladene Ströme mit dem Medium wechselwirken.
+So können sie unter Abstrahlung eines $W$-Bosons mit den im Überfluss vorhandenen Elektronen interagieren, während Wechselwirkungen von $\nu_\mu$ und $\nu_\tau$ mit der Materie in den dichteren Regionen des sterbenden Sterns kaum zustande kommen.
+Es entsteht also ein Spektrum niedrigerer Temperaturen für $\nu_e$ und höherer Temperaturen für $\nu_\mu$ und $\nu_\tau$, dass durch Neutrinozerfälle verzerrt werden kann.
+Berücksichtigen wir nun zusätzlich zur Zerfallswahrscheinlichkeit $N_\text{decay}$ außerdem die Oszillationswahrscheinlichkeit $N_\text{osc}$ der Neutrinos nach dem Verlassen seiner Energiesphäre mit Radius $R_{E, \tilde{\nu}^\pm_i}$, 
+bis sie hier auf der Erde ankommen, lässt sich die effektive Wahrscheinlichkeit, dass ein Neutrino mit seinem ursprünglichen Flavour die Erde erreicht, als
+\begin{equation}
+    N = N_\text{decay} \cdot N_\text{osc}
+    \label{eq:survivalprob}
+\end{equation}
+schreiben \cite{supernovaboundsdasandere}.
 
+Die Zerfallswahrscheinlichkeit ist dabei gegeben durch
+\begin{equation}
+    N_\text{decay}(\tilde{\nu}^\pm) \cong \exp \left(- \int^\infty_{R_{E, \tilde{\nu}^\pm_i}} \mathrm{d}r \, \sum_j \Gamma(\tilde{\nu}^\pm_i \rightarrow \tilde{\nu}^\mp_j + J) \right) \,.
+    \label{eq:zerfallswkeit}
+\end{equation}
+In relativistischer Näherung, die wir hier bereits zur Bestimmung der Materieeigenzustände verwendet haben, lässt sich die Zerfallsrate $\Gamma(\tilde{\nu}^\pm_i \rightarrow \tilde{\nu}^\mp_j + J)$ durch
+\begin{equation}
+    \Gamma(\tilde{\nu}^\pm_i \rightarrow \tilde{\nu}^\mp_j + J) = \frac{|\tilde{g}^2_{i j}|}{16 \pi} \left(V_i - V_f \right)
+    \label{eq:zerfallsrate}
+\end{equation}
+ausdrücken, wobei $V_i - V_f$ die Potentialdifferenz zwischen Anfangs- und Endzustand beschreibt.
 
-
-
-
-
+Die Oszillationswahrscheinlichkeit hängt stark von der gewählten Massendifferenz und dem Mischungswinkel zwischen den Neutrinos ab.
+Wir fokussieren uns hier auf die LMA-MSW, also die Large-Mixing-Angle MSW-Lösung, die einen großen Mischungswinkel annimmt.
+Wie in \cite{ueberlebenswkeit} genauer erläutert ergibt sich so eine Oszillationswahrscheinlichkeit von
+\begin{equation}
+    N_\text{osc} = 1 - \left[\sin^2\theta_\odot - \sin 2\theta_m \sin\left(2\theta_\odot - 2 \theta_m\right) \sin^2 \left(\frac{\pi d}{l_m}\right)\right] \,,
+    \label{eq:osziwkeit}
+\end{equation}
+wobei
+\begin{equation*}
+    l_m = \frac{4 \pi E}{\Delta m^2_\odot} \frac{\sin2\theta_m}{\sin2\theta_\odot}
+\end{equation*}
+die Oszillationslänge und $\theta_m$ den Mischungswinkel der Neutrinos in Materie, die sie auf einer Distanz $d$ in der Erde bis zum Detektor durchdringen, beschreibt.
+Durch die Näherung $\theta_{1 3} = 0$ findet nur eine Mischung zwischen Elektron- und Myonneutrinos statt, der Mischungswinkel $\theta_m$ lässt sich also mit $\theta_\odot$ identifizieren.
+So lassen sich, wenn wir, wie in \cite{supernovaboundsdasandere} gezeigt, die entsprechenden, fehlenden Größen in \eqref{eq:osziwkeit} einsetzen, die Kopplungsparameter $g_1$ und $g_2$ auf einige $10^{-4}$ einschränken.
+Diese Einschränkung werden wir später nutzen, um einen sinnvollen Cutoff in den erstellten Plots zu erhalten. 
 
 
 
