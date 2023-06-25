@@ -48,7 +48,7 @@ delta1 = 0                                       # CP-violating phase, zero for 
 delta2 = np.pi/2
 
 
-theta_sun = np.arcsin(np.sqrt(0.546))/2
+theta_sun = np.arcsin(np.sqrt(0.307))/2
 sinsqua_sun = np.sin(theta_sun)**2                                       # sun_sin = np.sin(theta_sun)**2
 
 g1 = np.logspace(start = -12, stop = -3, num = 2 * 10**6, base = 10.0)       # 20 * 10**6 entries are enough to make both plots grow to m1 = 1 :) Yeah not anymore, going to need a bit more than that
@@ -129,6 +129,9 @@ plt.plot(g1, g_tautau_m1_pha0(g_tautau_low, g1, delm_sunsqua, delm_atmsqua), col
 # g_ττ upper bound
 
 plt.plot(g1, g_tautau_m1_pha0(g_tautau_upper, g1, delm_sunsqua, delm_atmsqua), color='red', linestyle='dashdot')
+
+
+
 
 plt.xlabel(r'$g_1$')
 plt.xlim(10**(-11), 10**(-4))

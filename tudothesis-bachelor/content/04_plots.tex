@@ -1,0 +1,85 @@
+\chapter{Ausschlussregionen der Kopplungsparameter}
+
+
+Mit den bisher zusammengestellten Einschränkungen auf $g_i$ und $m_1$ ist es uns, gemeinsam mit der Ausschlussregion auf $|g_{i j}|$ möglich, Grafiken zu erstellen, die uns die zulässigen Bereiche für $g_1$ und $m_1$ deutlich machen.
+Dazu betrachten wir die einzelnen Einträge in \eqref{eq:materiekoppmat} und nutzen die Ausdrücke in \eqref{eq:g2g3}, um $|g_{i j}|$ nur in Abhängigkeit von $g_1$ und $m_1$ zu schreiben.
+Somit ist es uns möglich, anschließend wahlweise $g_1$ in Abhängigkeit von $m_1$ oder $m_1$ in Abhängigkeit von $g_1$ auszudrücken.
+Hier entscheiden wir uns für $m_1 (g_1)$, um einen besseren Vergleich zu \cite{päspaper} herstellen zu können.
+Für alle folgenden Plots werden die LMA-MSW-Werte
+\begin{align*}
+    \sin^2\theta_\odot = \num{0.307}\,, && \Delta m^2_\odot = \num{7.53} \cdot 10^{-5} \si{eV}^2\,, && \Delta m^2_\text{atm} = \num{2.453} \cdot 10^{-3} \si{\eV}^2
+\end{align*}
+verwendet \cite{neutrinospdg}.
+
+\section{Ausschlussregion für $g_{ee}$}
+
+Beginnen wir zunächst mit der Kopplung $g_{ee}$.
+Hier gehen wir die Rechnung einmal Schritt für Schritt durch, da die Rechenschritte allerdings nur aus Umformungen und trivialen Operationen besteht und für alle Kopplungen dem gleichen Schema folgt, werden wir auf die Berechnungen der anderen
+Kopplungen nicht näher eingehen.
+
+Wie in \eqref{eq:materiekoppmat} zu erkennen ist, gilt
+\begin{equation}
+    g_{ee} = g_1 \cos^2 \theta_\odot + g_2 sin^2 \theta_\odot \mathrm{e}^{-2 i \delta} \,.
+    \label{eq:g_ee}
+\end{equation}
+Unter der Nutzung von
+\begin{equation*}
+    g_2 = g_1 \sqrt{1 + \frac{\Delta m^2_\odot}{m^2_1}}
+\end{equation*}
+aus \eqref{eq:g2g3} erhalten wir
+\begin{equation*}
+    g_1 \sqrt{1 + \frac{\Delta m^2_\odot}{m^2_1}} = \frac{g_{ee} - g_1 \cos^2 \theta_\odot}{sin^2 \theta_\odot} \mathrm{e}^{2 i \delta} \,.
+\end{equation*}
+Dividieren wir durch $g_1$, quadrieren die gesamte Gleichung und bringen die $1$ auf die andere Seite, erhalten wir
+\begin{equation*}
+    \frac{\Delta m^2_\odot}{m^2_1} = \left(\frac{g_{ee} -  \cos^2 \theta_\odot \, g_1}{sin^2 \theta_\odot \, g_1} \mathrm{e}^{2 i \delta} \right)^2 - 1 \,.
+\end{equation*}
+Jetzt müssen wir nur noch den Kehrwert bilden und die Wurzel ziehen
+Dann ist durch die Wurzel der Gleichung das Ergebnis
+\begin{equation}
+    m_1 = \sqrt{\frac{\Delta m^2_\odot}{\left(\frac{g_{ee} -  \cos^2 \theta_\odot \, g_1}{sin^2 \theta_\odot \, g_1} \mathrm{e}^{2 i \delta} \right)^2 - 1}}
+    \label{eq:m_1g_ee}
+\end{equation}
+gegeben.
+
+Da die CP-verletzende Phase $\delta$ frei wählbar ist, wählen wir hier zur Darstellung der Kopplung stets die beiden Extreme $\delta = 0$, also einen maximal positiven, und $\delta = \frac{pi}{2}$, also einen maximal negativen Phasenbeitrag.
+An \eqref{eq:m_1g_ee} wird aber schnell erkennbar, dass genau diese Wahl der Phasen keinerlei Auswirkungen auf die Parametrisierung von $m_1$ zu haben scheint.
+Denn mit $\mathrm{e}^{2 i \frac{\pi}{2}} = -1$ wird das negative Vorzeichen durch das Quadrat wieder aufgehoben.
+Wir sehen aber, dass die gewählte Phase zumindest für die Bestimmung des durch die in \autoref{subsec:KATRIN} erläuterte Massengrenze auftretenden Cutoff nicht ganz irrelevant ist.
+
+Um genau diesen Cutoff an der Massengrenze zu ermitteln, stellen wir \eqref{eq:g_ee} außerdem nach $g_1$ statt $m_1$ um, erhalten
+\begin{equation}
+    g_1 = \frac{g_{ee}}{\cos^2\theta_\odot + \sqrt{1 + \frac{\Delta m^2_\odot}{m^2_1}} \sin^2\theta_\odot \mathrm{e}^{-2 i \delta}} 
+    \label{eq:g1cutoffg_ee}
+\end{equation}
+und setzen für $m_1$ schließlich das gewünschte Limit ein.
+Wählen wir $m_1 \gg \Delta m^2_\odot$, beeinflusst die Wahl von $m_1$ nicht länger das Ergebnis von $g_1$ und es entsteht das in \autoref{fig:m_1g_ee} erkennbare divergente Verhalten.
+Hier ist die Phasenabhängigkeit offensichtlich.
+Wählen wir eine Phase von $\delta = \frac{\pi}{2}$ ist es möglich, dass sich die beiden Terme in \eqref{eq:g1cutoffg_ee} gegenseitig eliminieren.
+So entstehen zwei Zweige, die an unterschiedlichen Stellen nahezu parallel zur $y$-Achse $m_1 = \SI{0.8}{\eV}$ erreichen.
+Dazu sei gesagt, dass, da sie die Einschränkung von $|g_{i j}|$ nur auf den Betrag beziehen, immer vier Kurven, jeweils zwei für die positiven und zwei für die negativen Ober- und Untergrenzen entstehen.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{build/m1g1g_ee.pdf}
+    \caption{Neutrinomasse $m_1$ in Abhängigkeit des Kopplungsparameters $g_1$ für $g_{ee}$. Die durchgezogenen blauen Linien stellen dabei die untere und obere Grenze $g_{ee} = 3 \cdot 10^{-7}$ bzw. $g_{ee} = 2 \cdot 10^{-5}$
+            mit einer Phase von $\delta = 0$, die gestrichelten Linien die Grenzen bei einer Phase von $\delta = \frac{\pi}{2}$ dar. Gemeinsam mit den türkisen Linien der negativen Grenzen auf $|g_{ee}|$ entsteht so die blau
+            gefüllte Ausschlussfläche. Die rote Fläche kennzeichnet dabei den durch KATRIN ausgeschlossen Massenbereich von $m_1 > \SI{0.8}{\eV}$.}
+    \label{fig:m_1g_ee}
+\end{figure}
+Die Ausschlussregion ist dabei so gewählt, dass ein möglichst großer Parameterbereich übrig bleibt.
+Hier werden also nur die innersten Kurven zur Bildung der Fläche verwendet.
+Für einen bestimmten, relativ schmalen Wertebereich von $g_1$ wird in \eqref{eq:m_1g_ee} das quadrierte Argument im Nenner der Wurzel kleiner als 1.
+Damit wird die Wurzel imaginär und es entsteht die beobachtbare Lücke im Plot.
+Auffällig ist auch das asymptotische Verhalten der Äste für verhältnismäßig große $g_1$.
+Wird $g_1$ groß gegen die gewählte Grenze von $g_{ee}$, gilt näherungsweise 
+\begin{equation*}
+    \frac{g_{ee} -  \cos^2 \theta_\odot \, g_1}{sin^2 \theta_\odot \, g_1} \mathrm{e}^{2 i \delta} \approx \frac{\cos^2 \theta_\odot \, g_1}{sin^2 \theta_\odot \, g_1} \mathrm{e}^{2 i \delta}
+    = \frac{\cos^2 \theta_\odot}{sin^2 \theta_\odot} \mathrm{e}^{2 i \delta} \,.
+\end{equation*}
+In dem Fall ist $m_1$ also durch
+\begin{equation*}
+    m_1 = \sqrt{\frac{\Delta m^2_\odot}{ \left(\frac{\cos^2 \theta_\odot}{sin^2 \theta_\odot} \mathrm{e}^{2 i \delta}\right)^2 - 1}}
+\end{equation*}
+gegeben, $m_1$ ist also konstant. \\
+Diese asymptotische Konvergenz gegen $m_1 \approx \num{7.9695} \cdot 10^{-4} \, \si{\eV}$ tritt für alle Werte von $g_{ee}$ früher oder später ein.
+

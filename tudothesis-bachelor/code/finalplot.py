@@ -101,7 +101,7 @@ delta1 = 0                                       # CP-violating phase, zero for 
 delta2 = np.pi/2
 
 
-theta_sun = np.arcsin(np.sqrt(0.546))/2
+theta_sun = np.arcsin(np.sqrt(0.307))/2
 sinsqua_sun = np.sin(theta_sun)**2   
 
 g1 = np.logspace(start = -12, stop = -3, num = 2 * 10**6, base = 10.0)      
@@ -273,7 +273,7 @@ plt.fill_between(g1_col, np.full_like(g1_col, m1_lim), np.full_like(g1_col, 1), 
 #plt.plot(g1, m1_lim_constant, color='blue')
 
 plt.xlabel(r'$g_1$')
-plt.xlim(10**(-11), 10**(-3))
+plt.xlim(10**(-11), 10**(-4))
 plt.xscale('log')
 
 plt.ylabel(r'$m_1 \mathbin{/} \mathrm{eV}$')
