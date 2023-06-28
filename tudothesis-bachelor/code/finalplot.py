@@ -95,13 +95,13 @@ def g1_g_ee_cutoff(g_low, g_upper, theta_sun):
 
 
 delm_sunsqua = 7.53 * 10**(-5)                   # new value from the PDG                                        
-delm_atmsqua = 2.453 * 10**(-5)                  # new value from the PDG
+delm_atmsqua = 2.453 * 10**(-3)                  # new value from the PDG
 
 delta1 = 0                                       # CP-violating phase, zero for now
 delta2 = np.pi/2
 
 
-theta_sun = np.arcsin(np.sqrt(0.307))/2
+theta_sun = np.arcsin(np.sqrt(0.307))
 sinsqua_sun = np.sin(theta_sun)**2   
 
 g1 = np.logspace(start = -12, stop = -3, num = 2 * 10**6, base = 10.0)      
@@ -297,4 +297,66 @@ plt.grid(linestyle = ":")
 plt.tight_layout()
 #plt.legend()
 plt.savefig('build/finalplot.pdf')
+plt.clf()
+
+
+plt.fill_between(g_tautau_m1_cutoff, g_tautau_m1_pha0(g_tautau_low, g_tautau_m1_cutoff, delm_sunsqua, delm_atmsqua), g_ee_m1_pha0(g_ee_upper, g_tautau_m1_cutoff, delm_sunsqua, sinsqua_sun), color='purple', alpha=0.5, linewidth=0)
+plt.fill_between(m1_g_ee_fillin, np.full_like(m1_g_ee_fillin, m1_lim), g_ee_m1_pha0(g_ee_upper, m1_g_ee_fillin, delm_sunsqua, sinsqua_sun), color='purple', alpha=0.5, linewidth=0)
+plt.fill_between(m1_g_ee_fillin_2, g_ee_m1_pha0(g_ee_neglow, m1_g_ee_fillin_2, delm_sunsqua, sinsqua_sun), g_ee_m1_pha0(g_ee_upper, m1_g_ee_fillin_2, delm_sunsqua, sinsqua_sun), color='purple', alpha=0.5, linewidth=0)
+
+plt.fill_between(m1_g_ee_fillin_3, g_emu_m1_pha0(g_emu_negupper, m1_g_ee_fillin_3, delm_sunsqua, theta_sun), np.full_like(m1_g_ee_fillin_3, m1_lim), color='purple', alpha=0.5, linewidth=0)
+plt.fill_between(m1_g_ee_fillin_4, g_ee_m1_pha0(g_ee_low, m1_g_ee_fillin_4, delm_sunsqua, sinsqua_sun), np.full_like(m1_g_ee_fillin_4, m1_lim), color='purple', alpha=0.5, linewidth=0)
+plt.fill_between(m1_g_ee_fillin_5, g_ee_m1_pha0(g_ee_upper, m1_g_ee_fillin_5, delm_sunsqua, sinsqua_sun), np.full_like(m1_g_ee_fillin_5, m1_lim), color='purple', alpha=0.5, linewidth=0)
+
+plt.fill_between(m1_g_emu_fillin_part1, np.full_like(m1_g_emu_fillin_part1, m1_lim), g_emu_m1_pha0(g_ee_negupper, m1_g_emu_fillin_part1, delm_sunsqua, theta_sun), color='purple', alpha=0.5, linewidth=0)
+plt.fill_between(m1_g_emu_fillin_part2, g_emu_m1_pha0(g_emu_low, m1_g_emu_fillin_part2, delm_sunsqua, theta_sun), g_emu_m1_pha0(g_emu_negupper, m1_g_emu_fillin_part2, delm_sunsqua, theta_sun), color='purple', alpha=0.5, linewidth=0)
+plt.fill_between(g1_col, np.full_like(g1_col, m1_lim), np.full_like(g1_col, 1), color='red', alpha=0.5, linewidth=0)
+
+
+
+## Doppel-Beta-Zerfall
+
+dobeta_g_ee_low         =  0.4 * 10**(-5)
+dobeta_g_ee_upper       =  0.9 * 10**(-5)
+dobeta_g_ee_neglow      = -0.4 * 10**(-5)
+dobeta_g_ee_negupper    = -0.9 * 10**(-5)
+
+# lower phase 0 cutoff
+dobeta_g1_ee_low_pha0 = np.logspace(-12, np.log10(g1_g_ee_cutoff_pha0(dobeta_g_ee_low, m1_lim, delm_sunsqua, theta_sun)), num)
+
+# lower phase 90 cutoff
+dobeta_g1_ee_low_pha90 = np.logspace(np.log10(g1_g_ee_cutoff_pha90(dobeta_g_ee_low, m1_lim, delm_sunsqua, theta_sun)), -3, num)
+
+
+# upper phase 0 cutoff
+dobeta_g1_ee_upper_pha0 = np.logspace(-12, np.log10(g1_g_ee_cutoff_pha0(dobeta_g_ee_upper, m1_lim, delm_sunsqua, theta_sun)), num)
+
+# upper phase 90 cutoff
+dobeta_g1_ee_upper_pha90 = np.logspace(np.log10(g1_g_ee_cutoff_pha90(dobeta_g_ee_upper, m1_lim, delm_sunsqua, theta_sun)), -3, num)
+
+# g_ee lower bound with phase 0
+
+
+plt.plot(dobeta_g1_ee_low_pha0, g_ee_m1_pha0(dobeta_g_ee_low, dobeta_g1_ee_low_pha0, delm_sunsqua, sinsqua_sun), color='green', label=r'positive bounds on $g_{ee} = 0.4 \cdot 10^{-5}$')
+plt.plot(dobeta_g1_ee_low_pha90, g_ee_m1_pha0(dobeta_g_ee_low, dobeta_g1_ee_low_pha90, delm_sunsqua, sinsqua_sun), color='green', linestyle='dotted')
+plt.plot(g1, g_ee_m1_pha0(dobeta_g_ee_neglow, g1, delm_sunsqua, sinsqua_sun), color='lime', linestyle='dotted', label=r'positive bounds on $g_{ee} = 0.4 \cdot 10^{-5}$')
+
+# g_ee upper bound
+
+plt.plot(dobeta_g1_ee_upper_pha0, g_ee_m1_pha0(dobeta_g_ee_upper, dobeta_g1_ee_upper_pha0, delm_sunsqua, sinsqua_sun), color='blue', label=r'positive bounds on $g_{ee} = 0.9 \cdot 10^{-5}$')
+plt.plot(dobeta_g1_ee_upper_pha90, g_ee_m1_pha0(dobeta_g_ee_upper, dobeta_g1_ee_upper_pha90, delm_sunsqua, sinsqua_sun), color='blue', linestyle ='dotted')
+plt.plot(g1, g_ee_m1_pha0(dobeta_g_ee_negupper, g1, delm_sunsqua, sinsqua_sun), color='teal', linestyle= 'dotted', label=r'negative bounds on $g_{ee} = 0.9 \cdot 10^{-5}$')
+
+plt.xlabel(r'$g_1$')
+plt.xlim(10**(-11), 10**(-4))
+plt.xscale('log')
+
+plt.ylabel(r'$m_1 \mathbin{/} \mathrm{eV}$')
+plt.ylim(10**(-6), 1)
+plt.yscale('log')
+
+plt.grid(linestyle = ":")
+plt.tight_layout()
+plt.legend()
+plt.savefig('build/meinsanddobeta.pdf')
 plt.clf()

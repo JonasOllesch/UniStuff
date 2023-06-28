@@ -94,13 +94,13 @@ def g1_g_ee_cutoff(g_low, g_upper, theta_sun):
 
 
 delm_sunsqua = 7.53 * 10**(-5)                   # new value from the PDG                                        
-delm_atmsqua = 2.453 * 10**(-5)                  # new value from the PDG
+delm_atmsqua = 2.453 * 10**(-3)                  # new value from the PDG
 
 delta1 = 0                                       # CP-violating phase, zero for now
 delta2 = np.pi/2
 
 
-theta_sun = np.arcsin(np.sqrt(0.307))/2
+theta_sun = np.arcsin(np.sqrt(0.307))
 sinsqua_sun = np.sin(theta_sun)**2   
 
 g1 = np.logspace(start = -12, stop = -3, num = 2 * 10**6, base = 10.0)      
