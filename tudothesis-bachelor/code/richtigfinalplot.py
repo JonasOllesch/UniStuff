@@ -145,47 +145,36 @@ m1_lim = 0.8
 
 g_upper = g_lim(100)
 
+g1_col = np.logspace(start = -16, stop = -3, num = 1000, base = 10.0)
+m1_col = np.logspace(start = -9, stop = np.log10(0.8), num = 1000)
 
-# g_ee plots
+# g_ee plots, d1=pi/2, d2=0 ist der gute Ast
 
-plt.plot(g_ee_g1_pha0_0(g_upper, m1, theta_sun, theta_13, delm_sunsqua, delm_atmsqua), m1, color='blue', label = r'bounds on $g_{ee}$ with $\delta_1=\delta_2=0$')
-plt.plot(g_ee_g1_pha90_0(g_upper, m1, theta_sun, theta_13, delm_sunsqua, delm_atmsqua), m1, color='red', label = r'bounds on $g_{ee}$ with $\delta_1=\frac{\pi}{2}, \delta_2=0$')
+plt.plot(g_ee_g1_pha90_0(g_upper, m1, theta_sun, theta_13, delm_sunsqua, delm_atmsqua), m1,  color='blue', label = r'bounds on $g_{ee}$ with $\delta_1=\frac{\pi}{2}, \delta_2=0$')
+plt.plot(g_ee_g1_pha90_0(-g_upper, m1, theta_sun, theta_13, delm_sunsqua, delm_atmsqua), m1, color='blue')
 
-plt.plot(g_ee_g1_pha90_90(g_upper, m1, theta_sun, theta_13, delm_sunsqua, delm_atmsqua), m1, color='purple', label = r'bounds on $g_{ee}$ with $\delta_1=\delta_2=\frac{\pi}{2}$')
-plt.plot(g_ee_g1_pha0_90(g_upper, m1, theta_sun, theta_13, delm_sunsqua, delm_atmsqua), m1, color='green', label = r'bounds on $g_{ee}$ with $\delta_1=0, \delta_2 = \frac{\pi}{2}$')
+# g_emu
 
+plt.plot(g_emu_g1_pha0(g_upper, m1, theta_sun, theta_13, delm_sunsqua), m1, color='green', linestyle = 'dashed', label = r'bounds on $g_{e \mu}$ with $\delta_1=0$')
 
-plt.plot(g_ee_g1_pha0_0(-g_upper, m1, theta_sun, theta_13, delm_sunsqua, delm_atmsqua), m1, color='blue', linestyle = 'dashed', label = r'bounds on $g_{ee}$ with $\delta_1=\delta_2=0$')
-plt.plot(g_ee_g1_pha90_0(-g_upper, m1, theta_sun, theta_13, delm_sunsqua, delm_atmsqua), m1, color='red', linestyle = 'dashed', label = r'bounds on $g_{ee}$ with $\delta_1=\frac{\pi}{2}, \delta_2=0$')
+# g_mumu
 
-plt.plot(g_ee_g1_pha90_90(-g_upper, m1, theta_sun, theta_13, delm_sunsqua, delm_atmsqua), m1, color='purple',linestyle = 'dashed', label = r'bounds on $g_{ee}$ with $\delta_1=\delta_2=\frac{\pi}{2}$')
-plt.plot(g_ee_g1_pha0_90(-g_upper, m1, theta_sun, theta_13, delm_sunsqua, delm_atmsqua), m1, color='green',linestyle = 'dashed', label = r'bounds on $g_{ee}$ with $\delta_1=0, \delta_2 = \frac{\pi}{2}$')
+plt.plot(g_mumu_g1_pha90(-g_upper, m1, theta_13, delm_sunsqua), m1, color='purple', linestyle = 'dashed', label = r'bounds on $g_{\mu \mu}$ with $\delta_1=\frac{\pi}{2}$')
 
+# g_tautau
 
-plt.xlabel(r'$g_1$')
-plt.xlim(10**(-13), 10**(-4))
-plt.xscale('log')
+plt.plot(g_tautau_g1_pha0_90(-g_upper, m1, theta_sun, theta_13, delm_sunsqua, delm_atmsqua), m1, color='red',linestyle = 'dashdot', label = r'bounds on   $g_{\tau \tau}$ with $\delta_1=0, \delta_2 = \frac{\pi}{2}$')
 
-plt.ylabel(r'$m_1 \mathbin{/} \mathrm{eV}$')
-plt.ylim(10**(-6), 1)
-plt.yscale('log')
+# g_etau
 
-plt.grid(linestyle = ":")
-plt.tight_layout()
-plt.legend()
-plt.savefig('build/g_eeneu.pdf')
-plt.clf()
+plt.plot(g_etau_g1_pha90_0(g_upper, m1, theta_sun, theta_13, delm_sunsqua, delm_atmsqua), m1, color='black', linestyle='dashdot', label = r'bounds on $g_{e \tau}$ with $\delta_1=\frac{\pi}{2}, \delta_2=0$')
+plt.plot(g_etau_g1_pha90_0(-g_upper, m1, theta_sun, theta_13, delm_sunsqua, delm_atmsqua), m1, color='black', linestyle = 'dashdot', label = r'bounds on $g_{e \tau}$ with $\delta_1=\frac{\pi}{2}, \delta_2=0$')
 
+# g_mutau
 
+plt.plot(m1_col, g_mutau_g1_pha90(-g_upper, m1_col, theta_sun, theta_13, delm_sunsqua), m1, color='orange', linestyle = 'dashdot', label = r'bounds on $g_{\mu \tau}$ with $\delta_1=\frac{\pi}{2}$')
 
-# g_emu plots
-
-plt.plot(g_emu_g1_pha0(g_upper, m1, theta_sun, theta_13, delm_sunsqua), m1, color='blue', label = r'bounds on $g_{e \mu}$ with $\delta_1=0$')
-plt.plot(g_emu_g1_pha90(g_upper, m1, theta_sun, theta_13, delm_sunsqua), m1, color='red', label = r'bounds on $g_{e \mu}$ with $\delta_1=\frac{\pi}{2}$')
-
-
-plt.plot(g_emu_g1_pha0(-g_upper, m1, theta_sun, theta_13, delm_sunsqua), m1, color='blue', linestyle = 'dashed', label = r'bounds on $g_{e \mu}$ with $\delta_1=0$')
-plt.plot(g_emu_g1_pha90(-g_upper, m1, theta_sun, theta_13, delm_sunsqua), m1, color='red', linestyle = 'dashed', label = r'bounds on $g_{e \mu}$ with $\delta_1=\frac{\pi}{2}$')
+plt.fill_between(g1_col, np.full_like(g1_col, m1_lim), np.full_like(g1_col, 1), color='red', alpha=0.5, linewidth=0)
 
 plt.xlabel(r'$g_1$')
 plt.xlim(10**(-13), 10**(-4))
@@ -198,61 +187,108 @@ plt.yscale('log')
 plt.grid(linestyle = ":")
 plt.tight_layout()
 plt.legend()
-plt.savefig('build/g_emuneu.pdf')
+plt.savefig('build/g_ijfinal.pdf')
 plt.clf()
 
 
-## g_mumu plots
 
-plt.plot(g_mumu_g1_pha0(g_upper, m1, theta_13, delm_sunsqua), m1, color='blue', label = r'bounds on $g_{\mu \mu}$ with $\delta_1=0$')
-plt.plot(g_mumu_g1_pha90(g_upper, m1, theta_13, delm_sunsqua), m1, color='red', label = r'bounds on $g_{\mu \mu}$ with $\delta_1=\frac{\pi}{2}$')
+# g_tautau
 
+g1_cut = np.logspace(np.log10(g_tautau_g1_pha0_90(-g_upper, m1_lim, theta_sun, theta_13, delm_sunsqua, delm_atmsqua)), -4, 1000)
 
-plt.plot(g_mumu_g1_pha0(-g_upper, m1, theta_13, delm_sunsqua), m1, color='blue', linestyle = 'dashed', label = r'bounds on $g_{\mu \mu}$ with $\delta_1=0$')
-plt.plot(g_mumu_g1_pha90(-g_upper, m1, theta_13, delm_sunsqua), m1, color='red', linestyle = 'dashed', label = r'bounds on $g_{\mu \mu}$ with $\delta_1=\frac{\pi}{2}$')
+plt.plot(g_tautau_g1_pha0_90(-g_upper, m1, theta_sun, theta_13, delm_sunsqua, delm_atmsqua), m1, color='red',linestyle = 'dashdot', label = r'bounds on   $g_{\tau \tau}$ with $\delta_1=0, \delta_2 = \frac{\pi}{2}$')
+
+plt.fill_between(g1_col, np.full_like(g1_col, m1_lim), np.full_like(g1_col, 1), color='red', alpha=0.5, linewidth=0)
+plt.fill_between(g_tautau_g1_pha0_90(-g_upper, m1_col, theta_sun, theta_13, delm_sunsqua, delm_atmsqua), m1_col, np.full_like(m1_col, 10**(-7)), color='purple', alpha=0.5, linewidth=0)
+plt.fill_between(g1_cut, np.full_like(g1_cut, m1_lim), 0, color='purple', alpha=0.5, linewidth=0)
 
 plt.xlabel(r'$g_1$')
-plt.xlim(10**(-13), 10**(-4))
+plt.xlim(10**(-16), 10**(-4))
 plt.xscale('log')
 
 plt.ylabel(r'$m_1 \mathbin{/} \mathrm{eV}$')
-plt.ylim(10**(-6), 1)
+plt.ylim(10**(-7), 1)
 plt.yscale('log')
 
 plt.grid(linestyle = ":")
 plt.tight_layout()
 plt.legend()
-plt.savefig('build/g_mumuneu.pdf')
+plt.savefig('build/exclusionregionfinal.pdf')
 plt.clf()
 
 
-## g_tautau plots
-
-
-plt.plot(g_tautau_g1_pha0_0(g_upper, m1, theta_sun, theta_13, delm_sunsqua, delm_atmsqua), m1, color='blue', label = r'bounds on $g_{\tau \tau}$ with $\delta_1=\delta_2=0$')
-plt.plot(g_tautau_g1_pha90_0(g_upper, m1, theta_sun, theta_13, delm_sunsqua, delm_atmsqua), m1, color='red', label = r'bounds on $g_{\tau \tau}$ with $\delta_1=\frac{\pi}{2}, \delta_2=0$')
-
-plt.plot(g_tautau_g1_pha90_90(g_upper, m1, theta_sun, theta_13, delm_sunsqua, delm_atmsqua), m1, color='purple', label = r'bounds on $g_{\tau \tau}$ with $\delta_1=\delta_2=\frac{\pi}{2}$')
-plt.plot(g_tautau_g1_pha0_90(g_upper, m1, theta_sun, theta_13, delm_sunsqua, delm_atmsqua), m1, color='green', label = r'bounds on   $g_{\tau \tau}$ with $\delta_1=0, \delta_2 = \frac{\pi}{2}$')
-
-
-plt.plot(g_tautau_g1_pha0_0(-g_upper, m1, theta_sun, theta_13, delm_sunsqua, delm_atmsqua), m1, color='blue', linestyle = 'dashed', label = r'bounds on $g_{\tau \tau}$ with $\delta_1=\delta_2=0$')
-plt.plot(g_tautau_g1_pha90_0(-g_upper, m1, theta_sun, theta_13, delm_sunsqua, delm_atmsqua), m1, color='red', linestyle = 'dashed', label = r'bounds on $g_{\tau \tau}$ with $\delta_1=\frac{\pi}{2}, \delta_2=0$')
-
-plt.plot(g_tautau_g1_pha90_90(-g_upper, m1, theta_sun, theta_13, delm_sunsqua, delm_atmsqua), m1, color='purple',linestyle = 'dashed', label = r'bounds on $g_{\tau \tau}$ with $\delta_1=\delta_2=\frac{\pi}{2}$')
-plt.plot(g_tautau_g1_pha0_90(-g_upper, m1, theta_sun, theta_13, delm_sunsqua, delm_atmsqua), m1, color='green',linestyle = 'dashed', label = r'bounds on   $g_{\tau \tau}$ with $\delta_1=0, \delta_2 = \frac{\pi}{2}$')
-
-plt.xlabel(r'$g_1$')
-plt.xlim(10**(-13), 10**(-4))
-plt.xscale('log')
-
-plt.ylabel(r'$m_1 \mathbin{/} \mathrm{eV}$')
-plt.ylim(10**(-6), 1)
-plt.yscale('log')
-
-plt.grid(linestyle = ":")
-plt.tight_layout()
-plt.legend()
-plt.savefig('build/g_tautauneu.pdf')
-plt.clf()
+## g_emu plots, pos d=0 ist der gute
+#
+#plt.plot(g_emu_g1_pha0(g_upper, m1, theta_sun, theta_13, delm_sunsqua), m1, color='blue', label = r'bounds on $g_{e \mu}$ with $\delta_1=0$')
+##plt.plot(g_emu_g1_pha90(g_upper, m1, theta_sun, theta_13, delm_sunsqua), m1, color='red', label = r'bounds on $g_{e \mu}$ with $\delta_1=\frac{\pi}{2}$')
+##plt.plot(g_emu_g1_pha0(-g_upper, m1, theta_sun, theta_13, delm_sunsqua), m1, color='blue', linestyle = 'dashed', label = r'bounds on $g_{e \mu}$ with $\delta_1=0$')
+##plt.plot(g_emu_g1_pha90(-g_upper, m1, theta_sun, theta_13, delm_sunsqua), m1, color='red', linestyle = 'dashed', label = r'bounds on $g_{e \mu}$ with $\delta_1=\frac{\pi}{2}$')
+#
+#plt.xlabel(r'$g_1$')
+#plt.xlim(10**(-13), 10**(-4))
+#plt.xscale('log')
+#
+#plt.ylabel(r'$m_1 \mathbin{/} \mathrm{eV}$')
+#plt.ylim(10**(-6), 1)
+#plt.yscale('log')
+#
+#plt.grid(linestyle = ":")
+#plt.tight_layout()
+#plt.legend()
+#plt.savefig('build/g_emuneu.pdf')
+#plt.clf()
+#
+#
+### g_mumu plots, neg d=pi/2 ist ein kleines bisschen weiter rechts als der Rest
+#
+##plt.plot(g_mumu_g1_pha0(g_upper, m1, theta_13, delm_sunsqua), m1, color='blue', label = r'bounds on $g_{\mu \mu}$ with $\delta_1=0$')
+##plt.plot(g_mumu_g1_pha90(g_upper, m1, theta_13, delm_sunsqua), m1, color='red', label = r'bounds on $g_{\mu \mu}$ with $\delta_1=\frac{\pi}{2}$')
+#
+##plt.plot(g_mumu_g1_pha0(-g_upper, m1, theta_13, delm_sunsqua), m1, color='blue', linestyle = 'dashed', label = r'bounds on $g_{\mu \mu}$ with $\delta_1=0$')
+#plt.plot(g_mumu_g1_pha90(-g_upper, m1, theta_13, delm_sunsqua), m1, color='red', linestyle = 'dashed', label = r'bounds on $g_{\mu \mu}$ with $\delta_1=\frac{\pi}{2}$')
+#
+#plt.xlabel(r'$g_1$')
+#plt.xlim(10**(-13), 10**(-4))
+#plt.xscale('log')
+#
+#plt.ylabel(r'$m_1 \mathbin{/} \mathrm{eV}$')
+#plt.ylim(10**(-6), 1)
+#plt.yscale('log')
+#
+#plt.grid(linestyle = ":")
+#plt.tight_layout()
+#plt.legend()
+#plt.savefig('build/g_mumuneu.pdf')
+#plt.clf()
+#
+#
+### g_tautau plots, neg d1=0, d2=pi/2 ist am weitesten rechts
+#
+#
+##plt.plot(g_tautau_g1_pha0_0(g_upper, m1, theta_sun, theta_13, delm_sunsqua, delm_atmsqua), m1, color='blue', label = r'bounds on $g_{\tau \tau}$ with $\delta_1=\delta_2=0$')
+##plt.plot(g_tautau_g1_pha90_0(g_upper, m1, theta_sun, theta_13, delm_sunsqua, delm_atmsqua), m1, color='red', label = r'bounds on $g_{\tau \tau}$ with $\delta_1=\frac{\pi}{2}, \delta_2=0$')
+#
+##plt.plot(g_tautau_g1_pha90_90(g_upper, m1, theta_sun, theta_13, delm_sunsqua, delm_atmsqua), m1, color='purple', label = r'bounds on $g_{\tau \tau}$ with $\delta_1=\delta_2=\frac{\pi}{2}$')
+##plt.plot(g_tautau_g1_pha0_90(g_upper, m1, theta_sun, theta_13, delm_sunsqua, delm_atmsqua), m1, color='green', label = r'bounds on   $g_{\tau \tau}$ with $\delta_1=0, \delta_2 = \frac{\pi}{2}$')
+#
+#
+##plt.plot(g_tautau_g1_pha0_0(-g_upper, m1, theta_sun, theta_13, delm_sunsqua, delm_atmsqua), m1, color='blue', linestyle = 'dashed', label = r'bounds on $g_{\tau \tau}$ with $\delta_1=\delta_2=0$')
+##plt.plot(g_tautau_g1_pha90_0(-g_upper, m1, theta_sun, theta_13, delm_sunsqua, delm_atmsqua), m1, color='red', linestyle = 'dashed', label = r'bounds on $g_{\tau \tau}$ with $\delta_1=\frac{\pi}{2}, \delta_2=0$')
+#
+##plt.plot(g_tautau_g1_pha90_90(-g_upper, m1, theta_sun, theta_13, delm_sunsqua, delm_atmsqua), m1, color='purple',linestyle = 'dashed', label = r'bounds on $g_{\tau \tau}$ with $\delta_1=\delta_2=\frac{\pi}{2}$')
+#plt.plot(g_tautau_g1_pha0_90(-g_upper, m1, theta_sun, theta_13, delm_sunsqua, delm_atmsqua), m1, color='green',linestyle = 'dashed', label = r'bounds on   $g_{\tau \tau}$ with $\delta_1=0, \delta_2 = \frac{\pi}{2}$')
+#
+#plt.xlabel(r'$g_1$')
+#plt.xlim(10**(-13), 10**(-4))
+#plt.xscale('log')
+#
+#plt.ylabel(r'$m_1 \mathbin{/} \mathrm{eV}$')
+#plt.ylim(10**(-6), 1)
+#plt.yscale('log')
+#
+#plt.grid(linestyle = ":")
+#plt.tight_layout()
+#plt.legend()
+#plt.savefig('build/g_tautauneu.pdf')
+#plt.clf()
 

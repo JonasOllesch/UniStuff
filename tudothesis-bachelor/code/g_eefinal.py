@@ -126,6 +126,7 @@ def g_mutau_g1_pha90(g_mutau, m1, theta_sun, theta_13, delm_sunsqua):
     denom1 = np.sin(2*theta_sun) * np.sin(theta_13) * (1 - np.sqrt(1 + delm_sunsqua / m1**2))
     return g_mutau / denom1
 
+
 delm_sunsqua = 7.53 * 10**(-5)                   # new value from the PDG                                        
 delm_atmsqua = 2.453 * 10**(-3)                  # new value from the PDG
 
@@ -141,24 +142,28 @@ m1 = np.logspace(start = -9, stop = np.log10(0.8), num = 2 * 10**6, base = 10.0)
 # upper limit on m1
 
 m1_lim = 0.8
+g1_col = np.logspace(start = -16, stop = -3, num = 1000, base = 10.0)
 
 g_upper = g_lim(100)
 
 
-# g_etau plots, Grenzen mit d1=pi/2, d2=0 schränken am wenigsten ein
+# g_ee plots, d1=pi/2, d2=0 ist der gute Ast
 
-#plt.plot(g_etau_g1_pha0_0(g_upper, m1, theta_sun, theta_13, delm_sunsqua, delm_atmsqua), m1, color='blue', label = r'bounds on $g_{e \tau}$ with $\delta_1=\delta_2=0$')
-plt.plot(g_etau_g1_pha90_0(g_upper, m1, theta_sun, theta_13, delm_sunsqua, delm_atmsqua), m1, color='red', label = r'bounds on $g_{e \tau}$ with $\delta_1=\frac{\pi}{2}, \delta_2=0$')
+plt.plot(g_ee_g1_pha0_0(g_upper, m1, theta_sun, theta_13, delm_sunsqua, delm_atmsqua), m1, color='blue', label = r'bounds on $g_{ee}$ with $\delta_1=\delta_2=0$')
+plt.plot(g_ee_g1_pha90_0(g_upper, m1, theta_sun, theta_13, delm_sunsqua, delm_atmsqua), m1, color='red', label = r'bounds on $g_{ee}$ with $\delta_1=\frac{\pi}{2}, \delta_2=0$')
 
-#plt.plot(g_etau_g1_pha90_90(g_upper, m1, theta_sun, theta_13, delm_sunsqua, delm_atmsqua), m1, color='purple', label = r'bounds on $g_{e \tau}$ with $\delta_1=\delta_2=\frac{\pi}{2}$')
-#plt.plot(g_etau_g1_pha0_90(g_upper, m1, theta_sun, theta_13, delm_sunsqua, delm_atmsqua), m1, color='green', label = r'bounds on   $g_{e \tau}$ with $\delta_1=0, \delta_2 = \frac{\pi}{2}$')
+plt.plot(g_ee_g1_pha90_90(g_upper, m1, theta_sun, theta_13, delm_sunsqua, delm_atmsqua), m1, color='purple', label = r'bounds on $g_{ee}$ with $\delta_1=\delta_2=\frac{\pi}{2}$')
+plt.plot(g_ee_g1_pha0_90(g_upper, m1, theta_sun, theta_13, delm_sunsqua, delm_atmsqua), m1, color='green', label = r'bounds on $g_{ee}$ with $\delta_1=0, \delta_2 = \frac{\pi}{2}$')
 
 
-#plt.plot(g_etau_g1_pha0_0(-g_upper, m1, theta_sun, theta_13, delm_sunsqua, delm_atmsqua), m1, color='blue', linestyle = 'dashed', label = r'bounds on $g_{e \tau}$ with $\delta_1=\delta_2=0$')
-plt.plot(g_etau_g1_pha90_0(-g_upper, m1, theta_sun, theta_13, delm_sunsqua, delm_atmsqua), m1, color='red', linestyle = 'dashed', label = r'bounds on $g_{e \tau}$ with $\delta_1=\frac{\pi}{2}, \delta_2=0$')
+plt.plot(g_ee_g1_pha0_0(-g_upper, m1, theta_sun, theta_13, delm_sunsqua, delm_atmsqua), m1, color='blue', linestyle = 'dashed', label = r'bounds on $g_{ee}$ with $\delta_1=\delta_2=0$')
+plt.plot(g_ee_g1_pha90_0(-g_upper, m1, theta_sun, theta_13, delm_sunsqua, delm_atmsqua), m1, color='red', linestyle = 'dashed', label = r'bounds on $g_{ee}$ with $\delta_1=\frac{\pi}{2}, \delta_2=0$')
 
-#plt.plot(g_etau_g1_pha90_90(-g_upper, m1, theta_sun, theta_13, delm_sunsqua, delm_atmsqua), m1, color='purple',linestyle = 'dashed', label = r'bounds on $g_{e \tau}$ with $\delta_1=\delta_2=\frac{\pi}{2}$')
-#plt.plot(g_etau_g1_pha0_90(-g_upper, m1, theta_sun, theta_13, delm_sunsqua, delm_atmsqua), m1, color='green',linestyle = 'dashed', label = r'bounds on   $g_{e \tau}$ with $\delta_1=0, \delta_2 = \frac{\pi}{2}$')
+plt.plot(g_ee_g1_pha90_90(-g_upper, m1, theta_sun, theta_13, delm_sunsqua, delm_atmsqua), m1, color='purple',linestyle = 'dashed', label = r'bounds on $g_{ee}$ with $\delta_1=\delta_2=\frac{\pi}{2}$')
+plt.plot(g_ee_g1_pha0_90(-g_upper, m1, theta_sun, theta_13, delm_sunsqua, delm_atmsqua), m1, color='green',linestyle = 'dashed', label = r'bounds on $g_{ee}$ with $\delta_1=0, \delta_2 = \frac{\pi}{2}$')
+
+plt.fill_between(g1_col, np.full_like(g1_col, m1_lim), np.full_like(g1_col, 1), color='red', alpha=0.5, linewidth=0)
+
 
 plt.xlabel(r'$g_1$')
 plt.xlim(10**(-13), 10**(-4))
@@ -171,29 +176,5 @@ plt.yscale('log')
 plt.grid(linestyle = ":")
 plt.tight_layout()
 plt.legend()
-plt.savefig('build/g_etauneu.pdf')
-plt.clf()
-
-
-## g_mutau plots, neg d1=pi/2 ist best
-
-#plt.plot(g_mutau_g1_pha0(g_upper, m1, theta_sun, theta_13, delm_sunsqua), m1, color='blue', label = r'bounds on $g_{\mu \tau}$ with $\delta_1=0$')
-#plt.plot(g_mutau_g1_pha90(g_upper, m1, theta_sun, theta_13, delm_sunsqua), m1, color='red', label = r'bounds on $g_{\mu \tau}$ with $\delta_1=\frac{\pi}{2}$')
-
-
-#plt.plot(g_mutau_g1_pha0(-g_upper, m1, theta_sun, theta_13, delm_sunsqua), m1, color='blue', linestyle = 'dashed', label = r'bounds on $g_{\mu \tau}$ with $\delta_1=0$')
-plt.plot(g_mutau_g1_pha90(-g_upper, m1, theta_sun, theta_13, delm_sunsqua), m1, color='red', linestyle = 'dashed', label = r'bounds on $g_{\mu \tau}$ with $\delta_1=\frac{\pi}{2}$')
-
-plt.xlabel(r'$g_1$')
-plt.xlim(10**(-13), 10**(-4))
-plt.xscale('log')
-
-plt.ylabel(r'$m_1 \mathbin{/} \mathrm{eV}$')
-plt.ylim(10**(-6), 1)
-plt.yscale('log')
-
-plt.grid(linestyle = ":")
-plt.tight_layout()
-plt.legend()
-plt.savefig('build/g_mutauneu.pdf')
+plt.savefig('build/g_eefinal.pdf')
 plt.clf()
