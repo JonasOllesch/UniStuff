@@ -50,21 +50,50 @@ wobei
 die Oszillationslänge und $\theta_m$ den Mischungswinkel der Neutrinos in Materie, die sie auf einer Distanz $d$ in der Erde bis zum Detektor durchdringen, beschreibt.
 Durch die Näherung $\theta_{1 3} = 0$ gehen wir davon aus, dass es nur zu einer Mischung zwischen Elektron- und Myonneutrinos kommt, der Mischungswinkel $\theta_m$ lässt sich also mit $\theta_\odot$ identifizieren.
 So lassen sich, wenn wir, wie in \cite{supernovaboundsdasandere} gezeigt, die entsprechenden, fehlenden Größen in \eqref{eq:osziwkeit} einsetzen, die Kopplungsparameter $g_1$ und $g_2$ auf einige $10^{-4}$ einschränken.
+Wir werden später sehen, dass die so gefolgerten Grenzen auf $g_1$ für den Großteil unserer Betrachtung keine wirkliche Relevanz hat, uns aber erlaubt, die erstellten Plots unbesorgt auf $g_1 < 10^{-4}$ zu begrenzen. 
 
-\section{Grenzen durch Majoronenluminosität}
+%\section{Grenzen durch Majoronenluminosität}
+%
+%Um die Grenzen auf die Kopplungsparameter $|g_{i j}|$ aus der Majoronenluminosität zu erhalten, betrachten wir das Neutrinosignal der Supernova SN$1987$A unter der Annahme, dass $\nu_e$ nur geringfügig mit den anderen Flavours mischt.
+%Unter dieser Annahme passt das beobachtete Neutrinosignal gut zu numerischen Berechnungen der totalen Bindungsenergien in einer Supernova und erlaubt es uns, eine Ausschlussregion von auf die Kopplungsparameter durch
+%\begin{equation}
+%    3 \cdot 10^{-7} < |g_{i j}| < 2 \cdot 10^{-5} %%%%%%%%%%%%%%% TEMP!!!! AKTUALISIERUNG MIT DEN NEUEN DATEN. PÄS BITTE ANTWORTE MIIIIIR
+%    \label{eq:gijlimit}
+%\end{equation}
+%festzulegen.
+%
+%Lägen die Kopplungen in dem ausgeschlossenen Bereich, würden wir eine merkliche Unterdrückung der beobachteten Energie erwarten.
+%Für Werte $|g_{i j}| < 3 \cdot 10^{-7}$ wird die Kopplung zwischen Neutrinos und Majoronen so schwach, das kein merklicher Effekt auf das Supernovaspektrum entstehen würde. %%%% HIER SIND AUCH NOCH ALTE LIMITS!
+%Auf der anderen Seite wird die Kopplung für $|g_{i j}| > 2 \cdot 10^{-5}$ so stark, dass die Majoronen das Innere der Supernova nicht länger verlassen könnten. %%%% HIER SIND AUCH NOCH ALTE LIMITS!
+%So würden sie ebenfalls nicht zu einer Änderung des Energiespektrums beitragen.
 
-Um die Grenzen auf die Kopplungsparameter $|g_{i j}|$ aus der Majoronenluminosität zu erhalten, betrachten wir das Neutrinosignal der Supernova SN$1987$A unter der Annahme, dass $\nu_e$ nur geringfügig mit den anderen Flavours mischt.
-Unter dieser Annahme passt das beobachtete Neutrinosignal gut zu numerischen Berechnungen der totalen Bindungsenergien in einer Supernova und erlaubt es uns, eine Ausschlussregion von auf die Kopplungsparameter durch
+\section{Grenzen aus der Luminosität von SN1987A}
+
+Die bekannteste und für die Astrophysik wichtigste Kernkollaps-Supernova ist die Supernova SN1987A.
+Sie ist mit nur $157$ Lichtjahren Entfernung die erdnächste Supernova, die seit einigen Jahrhunderten beobachtet werden konnte und bietet mit ihrer großen Helligkeit die Möglichkeit, zum ersten Mal Supernovae näher zu untersuchen.
+Mithilfe der Cherenkov-Detektoren Kamiokande II und Irvine-Michigan-Brookhaven gelang es, einige Events der SN1987A zu detektieren und so Grenzen auf die Luminosität emittierter Teilchen simulieren zu können.
+Wie in \cite{neutrinolumi} gezeigt ergibt sich unter der Annahme, dass die Rate des Energieverlusts durch $\epsilon_a$ durch $\epsilon_a \lesssim 1 \cdot 10^{19} \,\text{erg} \,\text{g}^{-1} \,\si{\second}^{-1}$ 
+eine Neutrinoluminosität von
 \begin{equation}
-    3 \cdot 10^{-7} < |g_{i j}| < 2 \cdot 10^{-5} %%%%%%%%%%%%%%% TEMP!!!! AKTUALISIERUNG MIT DEN NEUEN DATEN. PÄS BITTE ANTWORTE MIIIIIR
-    \label{eq:gijlimit}
+    L_\nu (1 \,\si{\second}) = \num{4.4} \cdot 10^{52} \,\text{erg} \si{\second}^{-1}
+    \label{eq:neutrinolumi}
 \end{equation}
-festzulegen.
-
-Lägen die Kopplungen in dem ausgeschlossenen Bereich, würden wir eine merkliche Unterdrückung der beobachteten Energie erwarten.
-Für Werte $|g_{i j}| < 3 \cdot 10^{-7}$ wird die Kopplung zwischen Neutrinos und Majoronen so schwach, das kein merklicher Effekt auf das Supernovaspektrum entstehen würde. %%%% HIER SIND AUCH NOCH ALTE LIMITS!
-Auf der anderen Seite wird die Kopplung für $|g_{i j}| > 2 \cdot 10^{-5}$ so stark, dass die Majoronen das Innere der Supernova nicht länger verlassen könnten. %%%% HIER SIND AUCH NOCH ALTE LIMITS!
-So würden sie ebenfalls nicht zu einer Änderung des Energiespektrums beitragen.
+eine Sekunde nach dem Kern-Rebound.
+Dabei wurden Effekte der Rotverschiebung, durch die Neutrinos auf dem Weg von der Supernova bis zum Detektor Energie verlieren, berücksichtigt.
+Mithilfe eines numerisch ermittelten Majoronenspektrum lässt sich die Luminosität dieser zu
+\begin{equation}
+    L_J (1 \,\si{\second}) = \num{6.46} \cdot 10^{68} \left(|g_{i j}| m_J \,\si{\mega\eV}^{-1} \right) \,\text{erg} \si{\second}^{-1}
+\end{equation}
+bestimmen, wobei $100 \,\si{\eV} < m_J < 100 \,\si{\mega\eV}$ die kinetische Energie der Majoronen beschreibt.
+Da wir hier Zerfälle $J \rightarrow \nu \bar{\nu}$ annehmen, setzen wir voraus, dass die Majoronenluminosität nicht niedriger als die Neutrinoluminosität werden kann und erhalten so
+\begin{equation*}
+    |g_{i j}| m_J < \num{0.83} \cdot 10^{-8} \,\si{\mega\eV}
+\end{equation*}
+und damit eine Obergrenze von
+\begin{equation}
+    |g_{ij}| < \frac{\num{0.83} \cdot 10^{-8} \,\si{\mega\eV}}{m_J}
+\end{equation}
+auf die Kopplungsparameter $|g_{i j}|$.
 
 
 \section{Neutrinomassengrenze aus KATRIN}
@@ -89,24 +118,29 @@ Gemeinsam mit den in \autoref{subsec:spektrengrenzen} gefundenen Einschränkunge
 
 \section{Ausschlussregionen der Kopplungsparameter}
 
-Mit den bisher zusammengestellten Einschränkungen auf $g_i$ und $m_1$ ist es uns, gemeinsam mit der Ausschlussregion auf $|g_{i j}|$ möglich, Grafiken zu erstellen, die uns die zulässigen Bereiche für $g_1$ und $m_1$ deutlich machen.
+Mit den bisher zusammengestellten Einschränkungen auf $g_1$, $m_1$ und $|g_{i j}|$ ist es uns möglich, Grafiken zu erstellen, die uns die zulässigen Bereiche für $g_1$ und $m_1$ deutlich machen.
 Dazu betrachten wir die einzelnen Einträge in \eqref{eq:materiekoppmat} und nutzen die Ausdrücke in \eqref{eq:g2g3}, um $|g_{i j}|$ nur in Abhängigkeit von $g_1$ und $m_1$ zu schreiben.
 Somit ist es uns möglich, anschließend wahlweise $g_1$ in Abhängigkeit von $m_1$ oder $m_1$ in Abhängigkeit von $g_1$ auszudrücken.
-Hier entscheiden wir uns für $m_1 (g_1)$, um einen besseren Vergleich zu \cite{päspaper} herstellen zu können.
+Hier entscheiden wir uns für $g_1 (m_1)$, da ein analytisches Umstellen unter Berücksichtigung von $\theta_{1 3} \neq 0$ nicht mehr möglich ist.
 Für alle folgenden Plots werden die LMA-MSW-Werte
 \begin{align}
-    \sin^2\theta_\odot = \num{0.307}\,, && \Delta m^2_\odot = \num{7.53} \cdot 10^{-5} \si{eV}^2\,, && \Delta m^2_\text{atm} = \num{2.453} \cdot 10^{-3} \si{\eV}^2
+    \sin^2\theta_\odot &= \num{0.307}\,, && \sin^2\theta_{13} &= \num{0.020}\,, \\ \Delta m^2_\odot &= \num{7.53} \cdot 10^{-5} \si{eV}^2\,, && \Delta m^2_\text{atm} &= \num{2.453} \cdot 10^{-3} \si{\eV}^2
     \label{eq:LMAMSW}
 \end{align}
-verwendet \cite{neutrinospdg}.
+und die maximal als sinnvoll erachtete Majoronenmasse von 
+\begin{equation}
+    m_J = \SI{100}{\mega\eV}
+\end{equation}
+verwendet \cite{neutrinospdg}{newlimit}.
 
 Beginnen wir zunächst mit der Kopplung $g_{ee}$.
 Hier gehen wir die Rechnung einmal Schritt für Schritt durch, da die Rechenschritte allerdings nur aus Umformungen und trivialen Operationen besteht und für alle Kopplungen dem gleichen Schema folgt, werden wir auf die Berechnungen der anderen
 Kopplungen nicht näher eingehen.
 
-Wie in \eqref{eq:materiekoppmat} zu erkennen ist, gilt
+Im Folgenden nutzen wir auch die Notation $c_{ij} = \cos{\theta_{ij}}$ und $s_{ij} = \sin{\theta_{ij}}$.
+Rechnen wir \eqref{eq:materiekoppmat} konkret aus, gilt
 \begin{equation}
-    g_{ee} = g_1 \cos^2 \theta_\odot + g_2 \sin^2 \theta_\odot \mathrm{e}^{-2 i \delta} \,.
+    g_{ee} = c^2_{1 2} c^2_{1 3} g_1 + s^2_{12} c^2_{13} \mathrm{e}^{-2 i \delta_1} g_2 + s^2_{13} \mathrm{e}^{-2 i \delta_2}  g_3 \,.
     \label{eq:g_ee}
 \end{equation}
 Unter der Nutzung von
@@ -115,116 +149,88 @@ Unter der Nutzung von
 \end{equation*}
 aus \eqref{eq:g2g3} erhalten wir
 \begin{equation*}
-    g_1 \sqrt{1 + \frac{\Delta m^2_\odot}{m^2_1}} = \frac{g_{ee} - g_1 \cos^2 \theta_\odot}{\sin^2 \theta_\odot} \mathrm{e}^{2 i \delta} \,.
+    g_{ee} = g_1 \left(c^2_{1 2} c^2_{1 3} + \sqrt{1 + \frac{\Delta m^2_\odot}{m^2_1}}s^2_{12} c^2_{13} \mathrm{e}^{-2 i \delta_1} + \sqrt{1 + \frac{\Delta m^2_\odot + \Delta m^2_\text{atm}}{m^2_1}} s^2_{13} \mathrm{e}^{-2 i \delta_2}\right)
 \end{equation*}
-Dividieren wir durch $g_1$, quadrieren die gesamte Gleichung und bringen die $1$ auf die andere Seite, erhalten wir
-\begin{equation*}
-    \frac{\Delta m^2_\odot}{m^2_1} = \left(\frac{g_{ee} -  \cos^2 \theta_\odot \, g_1}{\sin^2 \theta_\odot \, g_1} \mathrm{e}^{2 i \delta} \right)^2 - 1 \,.
-\end{equation*}
-Jetzt müssen wir nur noch den Kehrwert bilden.
-Dann ist durch die Wurzel der Gleichung das Ergebnis
+Dividieren wir durch den ausgeklammerten Ausdruck auf der rechten Seite, erhalten wir
 \begin{equation}
-    m_1 = \sqrt{\frac{\Delta m^2_\odot}{\left(\frac{g_{ee} -  \cos^2 \theta_\odot \, g_1}{\sin^2 \theta_\odot \, g_1} \mathrm{e}^{2 i \delta} \right)^2 - 1}}
-    \label{eq:m_1g_ee}
+    g_1(m_1,g_{ee}) = \frac{g_{ee}}{\left(c^2_{1 2} c^2_{1 3} + \sqrt{1 + \frac{\Delta m^2_\odot}{m^2_1}}s^2_{12} c^2_{13} \mathrm{e}^{-2 i \delta_1} + \sqrt{1 + \frac{\Delta m^2_\odot + \Delta m^2_\text{atm}}{m^2_1}} s^2_{13} \mathrm{e}^{-2 i \delta_2}\right)} \,.
+    \label{eq:g_1g_ee}
 \end{equation}
-gegeben.
 
-Da die CP-verletzende Phase $\delta$ frei wählbar ist, wählen wir hier zur Darstellung der Kopplung stets die beiden Extreme $\delta = 0$, also einen maximal positiven, und $\delta = \frac{pi}{2}$, also einen maximal negativen Phasenbeitrag.
-An \eqref{eq:m_1g_ee} wird aber schnell erkennbar, dass genau diese Wahl der Phasen keinerlei Auswirkungen auf die Parametrisierung von $m_1$ zu haben scheint.
-Denn mit $\mathrm{e}^{2 i \frac{\pi}{2}} = -1$ wird das negative Vorzeichen durch das Quadrat wieder aufgehoben.
-Wir sehen aber, dass die gewählte Phase zumindest für die Bestimmung des durch die in \autoref{subsec:KATRIN} erläuterte Massengrenze auftretenden Cutoff nicht ganz irrelevant ist.
+Da die CP-verletzenden Phase $\delta_1,\delta_2$ frei wählbar sind, wählen wir hier zur Darstellung der Kopplung stets die beiden Extreme $\delta_i = 0$, also einen maximal positiven, und $\delta_i = \frac{pi}{2}$, also einen maximal negativen Phasenbeitrag.
+Je nach Kombination der beiden Phasen können sich die Nennerterme, zumindest teilweise, gegenseitig annullieren.
+So entstehen unterschiedliche Zweige, wie sie in \autoref{fig:g_eefinal} zu erkennen sind.
+Dazu sei gesagt, dass, da sich die Obergrenze nur auf den Betrag von $g_{i j}$ bezieht, unterschiedliche Kurven für die positive und für die negative Grenze entstehen.
+Zusätzlich sind die $x$- und $y$-Achsen aller folgenden Plots getauscht, um eine bessere Vergleichbarkeit mit \cite{päspaper} zu erreichen.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{build/g_eefinal.pdf}
+    \caption{Kopplungsparameter $g_1(m_1,g_{ee})$ in Abhängigkeit von $m_1$ für eine Majoronenmasse von $m_J = \SI{100}{\mega\eV}$. Die rote Fläche kennzeichnet dabei den durch KATRIN ausgeschlossen Massenbereich von $m_1 > \SI{0.8}{\eV}$.
+    Durchgezogene Linien bezeichnen dabei immer Kurven mit positiver, gestrichene Linien immer Kurven mit negativer Obergrenze.}
+    \label{fig:g_eefinal}
+\end{figure}
+Auffällig ist, dass für die Wahl einer negativen Obergrenze die Äste mit $\delta_1 = \delta_2 = 0$ sowie $\delta_1 = 0$ und $\delta_2 = \frac{\pi}{2}$ im gewählten Bereich nicht existieren.
+Dies stammt daher, dass sich die Phasenfaktoren in \eqref{eq:g_1g_ee} so weit kompensieren können, dass der Gesamtausdruck für $g_1$ negativ wird.
+Da wir hier allerdings nur Kopplungen $g_1 > 0$ betrachten, treten diese Kurven nicht auf.
+Selbiges gilt auch für scheinbar nicht existierende Kurven in allen weiteren Plots.
 
-Um genau diesen Cutoff an der Massengrenze zu ermitteln, stellen wir \eqref{eq:g_ee} außerdem nach $g_1$ statt $m_1$ um, erhalten
-\begin{equation}
-    g_1 = \frac{g_{ee}}{\cos^2\theta_\odot + \sqrt{1 + \frac{\Delta m^2_\odot}{m^2_1}} \sin^2\theta_\odot \mathrm{e}^{-2 i \delta}} 
-    \label{eq:g1cutoffg_ee}
-\end{equation}
-und setzen für $m_1$ schließlich das gewünschte Limit ein.
-Der Cutoff der anderen Kopplungen folgt dem gleichen Prinzip, darauf wollen wir hier aufgrund der Trivialität der Rechnungen nicht näher eingehen.
-Wählen wir $m_1 \gg \Delta m^2_\odot$, beeinflusst die Wahl von $m_1$ nicht länger das Ergebnis von $g_1$ und es entsteht das in \autoref{fig:m_1g_ee} erkennbare divergente Verhalten.
-Hier ist die Phasenabhängigkeit offensichtlich.
-Wählen wir eine Phase von $\delta = \frac{\pi}{2}$ ist es möglich, dass sich die beiden Terme in \eqref{eq:g1cutoffg_ee} gegenseitig eliminieren.
-So entstehen zwei Zweige, die an unterschiedlichen Stellen nahezu parallel zur $y$-Achse $m_1 = \SI{0.8}{\eV}$ erreichen.
-Dazu sei gesagt, dass, da sie die Einschränkung von $|g_{i j}|$ nur auf den Betrag beziehen, immer vier Kurven, jeweils zwei für die positiven und zwei für die negativen Ober- und Untergrenzen entstehen.
-%\begin{figure}[H]
-%    \centering
-%    \includegraphics[width=0.8\textwidth]{build/m1g1g_ee.pdf}
-%    \caption{Neutrinomasse $m_1$ in Abhängigkeit des Kopplungsparameters $g_1$ für $g_{ee}$. Die durchgezogenen blauen Linien stellen dabei die untere und obere Grenze $g_{ee} = 3 \cdot 10^{-7}$ bzw. $g_{ee} = 2 \cdot 10^{-5}$
-%            mit einer Phase von $\delta = 0$, die gestrichelten Linien die Grenzen bei einer Phase von $\delta = \frac{\pi}{2}$ dar. Gemeinsam mit den türkisen Linien der negativen Grenzen auf $|g_{ee}|$ entsteht so die blau
-%            gefüllte Ausschlussfläche. Die rote Fläche kennzeichnet dabei den durch KATRIN ausgeschlossen Massenbereich von $m_1 > \SI{0.8}{\eV}$.}
-%    \label{fig:m_1g_ee}
-%\end{figure}
-Die Ausschlussregion ist dabei so gewählt, dass ein möglichst großer Parameterbereich übrig bleibt.
-Hier werden also nur die innersten Kurven zur Bildung der Fläche verwendet.
-Für einen bestimmten, relativ schmalen Wertebereich von $g_1$ wird in \eqref{eq:m_1g_ee} das quadrierte Argument im Nenner der Wurzel kleiner als 1.
-Damit wird die Wurzel imaginär und es entsteht die beobachtbare Lücke im Plot.
+Die Ausschlussregion unserer Parameter wählen wir immer möglichst konservativ, sprich so, dass die zugelassene Region so wenig wie möglich, aber so viel wie nötig eingeschränkt wird.
+Das erreichen wir hier, indem wir den positiven und negativen Zweig mit $\delta_1 = \frac{\pi}{2}, \delta_2 = 0$ kombinieren.
+Ausgeschlossen werden nun alle Wertepaare, die unterhalb der gestrichenen und oberhalb der durchgezogen roten Kurve liegen.
+Wird $m_1$ groß gegen die Massendifferenzen $\Delta m^2_\text{atm}$ bzw. $\Delta m^2_\odot$,   
 Auffällig ist auch das asymptotische Verhalten der Äste für verhältnismäßig große $g_1$.
-Wird $g_1$ groß gegen die gewählte Grenze von $g_{ee}$, gilt näherungsweise 
-\begin{equation*}
-    \frac{g_{ee} -  \cos^2 \theta_\odot \, g_1}{sin^2 \theta_\odot \, g_1} \mathrm{e}^{2 i \delta} \approx \frac{\cos^2 \theta_\odot \, g_1}{sin^2 \theta_\odot \, g_1} \mathrm{e}^{2 i \delta}
-    = \frac{\cos^2 \theta_\odot}{sin^2 \theta_\odot} \mathrm{e}^{2 i \delta} \,.
-\end{equation*}
-In dem Fall ist $m_1$ also durch
-\begin{equation*}
-    m_1 (g_1) = \sqrt{\frac{\Delta m^2_\odot}{ \left(\frac{\cos^2 \theta_\odot}{\sin^2 \theta_\odot} \mathrm{e}^{2 i \delta}\right)^2 - 1}}
-\end{equation*}
-gegeben, $m_1$ ist also konstant. \\
-Diese asymptotische Konvergenz gegen $m_1 \approx \num{4.2902} \cdot 10^{-3} \, \si{\eV}$ tritt für alle Werte von $g_{ee}$ früher oder später ein.
+Wird $g_1$ groß gegen die gewählte Grenze von $g_{ee}$, gilt näherungsweise $g_1 \approx \text{const}$.
+Dieses Verhalten lässt sich in den nach oben divergierenden Zweigen der positiven Obergrenzen erkennen.
+Ähnlich existiert ein Resonanzwert $m_{1,0}$ bei dem $g_1$ aufgrund der Phaseninteraktionen im Nenner erst divergiert und bei Erreichen von $m_{1,0}$ einbricht.
 
 Analog gehen wir für die restlichen Kopplungen vor.
 So ergibt sich aus
 \begin{equation*}
-    g_{e \mu'} = \frac{1}{2} \left(-g_1 + g_2 \mathrm{e}^{-2 i \delta}\right) \sin(2 \theta_\odot)
+    g_{e \mu'} = -s_{12}c_{12}c_{13} g_1 + c_{12} s_{12} c_{13} \mathrm{e}^{-2 i \delta_1} g_2
 \end{equation*}
 für die Kopplung $g_{e \mu'}$
 \begin{equation}
-    m_1 = \sqrt{\frac{\Delta m^2_\odot}{\left( \left(\frac{2 g_{e \mu'}}{\sin{2 \theta_\odot}} + 1 \right) \mathrm{e}^{2 i \delta}\right)^2 - 1}} \,.
-    \label{eq:g_emu}
+    g_1(m_1,g_{e \mu'}) = \frac{2 g_{e \mu'}}{\sin(2\theta_\odot) \cos\theta_{13} \left(\sqrt{1 + \frac{\Delta m^2_\odot}{m^2_1}} \mathrm{e}^{-2 i \delta_1} - 1\right)} \,,
+    \label{eq:g_1g_emu}
 \end{equation}
-Auch hier ist zu erkennen, dass $m_1$ sich für $\delta = 0$ und $\delta = \frac{\pi}{2}$ nicht unterscheidet.
-
-Für $g_{\mu' \mu'}$ folgt aus
+für $g_{\mu' \mu'}$ folgt aus
 \begin{equation*}
-    g_{\mu' \mu'} = g_1 \sin^2 \theta_\odot + g_2 \cos^2 \theta_\odot\mathrm{e}^{-2 i \delta}
+    g_{\mu' \mu'} = s^2_{12} g_1 + c^2_{12} \mathrm{e}^{-2 i \delta_1} g_2
 \end{equation*}
 \begin{equation}
-    m_1 = \sqrt{\frac{\Delta m^2_\odot}{\left(\frac{g_{ee} -  \cos^2 \theta_\odot \, g_1}{\sin^2 \theta_\odot \, g_1} \mathrm{e}^{2 i \delta} \right)^2 - 1}} \,.
-    \label{eq:m_1g_mumu}
+    g_1(m_1, g_{\mu'\mu'}) = \frac{g_{\mu'\mu'}}{s^2_{1 2} + \sqrt{1 + \frac{\Delta m^2_\odot}{m^2_1}} c^2_{12} \mathrm{e}^{-2 i \delta_1}} \,.
+    \label{eq:g_1g_mumu}
 \end{equation}
-Da $g_{ee}$ und $g_{\mu' \mu'}$ bis auf ein Tauschen der Koeffizienten vor $\sin^2\theta_\odot$ und $\cos^2\theta_\odot$ vollständig übereinstimmen, weisen auch die Ausdrücke für $m_1$ große Ähnlichkeiten auf.
-Ein Unterschied ist allerdings, dass alle vier Kurven $m_1$ für $g_{\mu \mu}$, im Gegenteil zu den Verläufen der oberen Grenzen von $m_1$ für $g_{ee}$, nur aus einem einzigen divergenten Zweig bestehen.
 
 Schlussendlich folgt für $g_{\tau' \tau'}$ aus
 \begin{equation*}
-    g_{\tau' \tau'} = g_3 = g_1 \sqrt{1 + \frac{\Delta m^2_\odot + \Delta m^2_\text{atm}}{m^2_1}}
+    g_{\tau' \tau'} = c^2_{21} s^2_{13} g_1 + s^2_{12}s^2_{13} \mathrm{e}^{-2 i \delta_1} g_2 + c^2_{13} \mathrm{e}^{-2 i \delta_2} g_3
 \end{equation*}
 \begin{equation}
-    m_1 = \sqrt{\frac{\Delta m^2_\odot + \Delta m^2_\text{atm}}{\left(\frac{g_{\tau' \tau'}}{g_1}\right)^2 - 1}} \,.
-    \label{eq:g_tautau}
+    g_1(m_1,g_{\tau'\tau'}) = \frac{g_{\tau'\tau'}}{c^2_{12}s^2_{13} + \sqrt{1 + \frac{\Delta m^2_\odot}{m^2_1}} s^2_{12} s^2_{13} \mathrm{e}^{-2 i \delta_1} + \sqrt{1 + \frac{\Delta m^2_\odot + \Delta m^2_\text{atm}}{m_1}}c^2_{13} \mathrm{e}^{-2 i \delta_2}}\,.
+    \label{eq:g_1g_tautau}
 \end{equation}
-Dieser Ausdruck für $m_1$ unterscheidet sich am stärksten von den anderen.
-Das hat vor allem den Grund, dass wir hier annehmen, dass die Elektron- und Myonflavours nicht mit $\nu_\tau$ mischen, $g_{\tau' \tau'}$ also nur von der Kopplung der Tau-Neutrinos mit den Majoronen abhängt.
+Auf den ersten Blick ähnelt \eqref{eq:g_1g_tautau} sehr stark \eqref{eq:g_1g_ee} mit dem einzigen Unterschied, dass $s^2_{13}$ und $c^2_{13}$ vertauscht sind.
+Jedoch sind hier die Beiträge von $s^2_{13}$ so klein, dass die Kurven der unterschiedlichen Phasen nahezu übereinstimmen und es nicht zu dem bei $g_1(m_1, g_{ee})$ beobachteten Verhalten kommt.
+Das Verhalten von $g_1(m_1, g_{\tau'\tau'})$ wird im Grunde nur vom letzten Nennerterm beeinflusst.
 
-Gemeinsam entsteht so der in \autoref{fig:m_1all} dargestellte Plot.
-Dabei haben wir für jede Kopplung $g_{i j}$ bereits die konservativste Ausschlussregion gewählt, sodass für jede Kopplung eine Kurve für die Untergrenze und eine Kurve für die Obergrenze übrigbleiben.
-Alle restlichen Kurven werden aus dem Plot entfernt. 
+Wählen wir für jeden Parameter $g_{ij}$ einzeln die konservativste Ausschlussregion und fassen alle übrigen Kurven in einer einer Grafik zusammen, ergibt sich \autoref{fig:g_ijfinal}.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=.8\textwidth]{build/g_1m_1new.pdf}
-    \caption{Grafische Repräsentation der unterschiedlichen Vorschriften für $m_1$ in Abhängigkeit des Kopplungsparameters $g_1$. Erneut werden die in \eqref{eq:LMAMSW} erwähnten LMA-Werte genutzt.
-            Die dargestellten Kurven zeigen bereits eine Auswahl der konservativsten Ausschlussregionen, allerdings innerhalb einer Kopplung $g_{i j}$. 
-            Die Kopplung $g_{e \mu'}$ wird auf den Schnittpunkt der Ober- und Untergrenze beschränkt.}
-    \label{fig:m_1all}
+    \includegraphics[width=.8\textwidth]{build/g_ijfinal.pdf}
+    \caption{Kopplungsparameter $g_1$ in Abhängigkeit von $m_1$. Übrig bleiben die bereits erwähnte Ausschlussregion aus $g_{ee}$ mit $\delta_1=\frac{\pi}{2}, \delta_2=0$ in blau, 
+    die positive Obergrenze mit $\delta_1 = 0$ aus $g_{e \mu}$ in grün, die negative Obergrenze mit $\delta_1 = \frac{\pi}{2}$ aus $g_{\mu\mu}$ in violett und die negative Obergrenze mit $\delta_1 = 0, \delta_2 = \frac{\pi}{2}$ aus $g_{\tau'\tau'}$ in rot.
+    Die leicht durchscheinende rote Fläche kennzeichnet erneut den ausgeschlossenen Neutrinomassenbereich $m_1 > \SI{0.8}{\eV}$.}
+    \label{fig:g_ijfinal}
 \end{figure}
-Hier lässt sich noch anmerken, dass sich alle Kurven für $g_1 \ll g_{i j}$ linear verhalten, hier $g_{i j}$ das Verhalten dominiert.
 
-Damit lässt sich die gesamte Ausschlussregion als Zusammenschluss aller Einzelregionen darstellen, sodass sich \autoref{fig:finalplot} ergibt.
-%\begin{figure}[H]
-%    \centering
-%    \includegraphics[width=.8\textwidth]{build/finalplot.pdf}
-%    \caption{Finale Ausschlussregion durch Zusammenschluss der einzelnen Ausschlussregionen. Die Einhüllende der Untergrenze ist die Vorschrift für $m_1$ aus $g_{\tau' \tau'}$, 
-%            die Obergrenze entsteht durch das Zusammenspiel aller Grenzen durch $g_{ee}$ und $g_{e \mu'}$. Die Einschränkungen durch $g_{\mu' \mu'}$ beeinflussen die resultierende Fläche nicht.}
-%    \label{fig:finalplot}
-%\end{figure}
+Um die finale Ausschlussregion zu erhalten, bleibt uns nun keine andere Wahl, als $g_1(m_1,g_{\tau'\tau'})$ als Grenze zu wählen, sodass sich die in \autoref{fig:exclusionregionfinal} eingefärbte, ziemlich simple Fläche ergibt.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=.8\textwidth]{build/exclusionregionfinal.pdf}
+    \caption{Finale Ausschlussregion der Parameter $g_1$ und $m_1$, nur noch gegeben durch die Kurve $g_1(m_1, g_{\tau'\tau'})$. Alle Wertepaare, die innerhalb der roten oder violett gefärbten Flächen liegen, werden ausgeschlossen.}
+    \label{fig:exclusionregionfinal}
+\end{figure}
 
 
