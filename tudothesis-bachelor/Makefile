@@ -12,10 +12,13 @@ TeXOptions = -lualatex \
 build/thesis.pdf: FORCE | build
 	python code/g_eefinal.py
 	python code/richtigfinalplot.py
+	python code/finalmitdobeta.py
+#	python code/gmlimitnew.py
+
+
 #	python code/etau_test.py
 #	python code/finalplot.py
 #	python code/g_eegmlimit.py
-	python code/gmlimitnew.py
 #	python unnötiger_code/gmlimitlowernew.py
 #	python unnötiger_code/g_eevis.py
 #	python unnötiger_code/gmlimitLMA.py
