@@ -1,3 +1,104 @@
 \section{Auswertung}
 \label{sec:auswertung}
 
+Folgende Ausgleichsfunktionen werden mit Funktion $curve\_fit$ aus der Python\cite{py}-Bibliothek $scipy$\cite{2020SciPy-NMeth} bestimmt.
+Die Integration wird mithilfe der Funktion $scipy.integrate.simpson$ \cite{2020SciPy-NMeth}verwirklicht.
+Die Fehlerrechnung wird mithilfe der Bibliothek $uncertainties$ \cite{unp} durchgeführt.
+Grafiken werden durch die Bibliothek $matplotlib$\cite{Hunter:2007} erstellt. 
+Es wird eine Unsicherheit auf die Spannung der Sweep-Spule von $0,01 \, \unit{\volt}$ und die Spannung der horizontalen von $0,1 \, \unit{\milli\volt} $ angenommen.
+
+\subsection{Bestimmung des Erdmagnetfelds}
+
+Die aufgenommenen Messwerte des ersten Peaks sind in \autoref{tab:Messung1} und die des zweiten sind in \autoref{tab:Messung2} abgebildet.
+Das Magnetfeld eines Helmholtz-Spulenpaars wird über die \eqref{eq:Magnetfeld_Helmholtz} berechnet.
+Dazu werden die gemessenen Spannungen in Stromstärken umgerechnet.
+Für die Sweep-Spule gilt $2*U_\text{Sweep} = I_\text{Sweep}$ und für die horizontale Spule gilt $0,1*U_\text{Hori} = I_\text{Hori}$.\\
+Um das Erdmagnetfelds zu bestimmen, wird das Gesamtmagnetfeld aus Sweep-Spule und horizontaler Spule in horizontaler Richtung berechnet.
+Das Gesamtmagnetfeld ist in \autoref{fig:Gesamtmagnetfeld} aufgetragen. 
+Die Daten werden durch eine linear Regression der Form $m_\text{i} *f + b_\text{i}$ genähert,
+wobei die horizontale Komponente dem Parameter $b_\text{i}$ entspricht.
+Die Parameter aus den beiden Datensätzen wurden als 
+
+
+
+bestimmt.
+
+
+\begin{table}[H]
+    \centering
+    \caption{Die angelegte Frequenz, Spannung der Sweep-Spule, Spannung der horizontalen Spule und Gesamtmagnetfeld für den ersten Peak in der Transparenz.}
+    \label{tab:Messung1}
+    \begin{tabular}{S S S S}
+    \toprule
+      $ f \mathbin{/} \unit{\kilo\hertz}$ & $U_{\text{Sweep}} \mathbin{/} \unit{\milli\volt}$ & $U_{\text{Hori}} \mathbin{/} \unit{\volt}$ & $U_{\text{ges}} \mathbin{/} \unit{\micro\tesla}$ \\
+    \midrule
+    $100$ &         $ 0,0$ &        $6,48$ & $39,11    \pm 0,19$       \\ 
+    $200$ &         $ 4,8$ &        $7,5 $ & $53,68    \pm 0,19$       \\ 
+    $300$ &         $17,7$ &        $6,6 $ & $70,87    \pm 0,19$       \\ 
+    $400$ &         $31,3$ &        $4,63$ & $82,84    \pm 0,19$       \\ 
+    $500$ &         $42,6$ &        $3,75$ & $97,35    \pm 0,19$       \\ 
+    $600$ &         $55,7$ &        $2,41$ & $112,24   \pm 0,19$       \\ 
+    $700$ &         $67,0$ &        $1,54$ & $126,81   \pm 0,19$       \\ 
+    $800$ &         $66,6$ &        $4,03$ & $141,13   \pm 0,19$       \\ 
+    $900$ &         $79,0$ &        $2,86$ & $155,82   \pm 0,19$       \\ 
+    $1000$ &        $86,4$ &        $3,12$ & $170,37   \pm 0,19$       \\ 
+
+    \bottomrule
+    \end{tabular}
+    \end{table}
+
+\begin{table}[H]
+    \centering
+    \caption{Die angelegte Frequenz, Spannung der Sweep-Spule, Spannung der horizontalen Spule und Gesamtmagnetfeld für den zweiten Peak in der Transparenz.}
+    \label{tab:Messung2}
+    \begin{tabular}{S S S S}
+    \toprule
+      $ f \mathbin{/} \unit{\kilo\hertz}$ & $U_{\text{Sweep}} \mathbin{/} \unit{\milli\volt}$ & $U_{\text{Hori}} \mathbin{/} \unit{\volt}$ & $U_{\text{ges}} \mathbin{/} \unit{\micro\tesla}$ \\
+    \midrule
+    $100$ &     $ 0,0    $    &   $7,67$     &$46,29   \pm 0,19$     \\ 
+    $200$ &     $ 4,8  $    &   $9,84$     &$67,80   \pm 0,19$     \\ 
+    $300$ &     $ 17,7 $    &   $9,70$     &$89,58   \pm 0,19$    \\ 
+    $400$ &     $ 31,3 $    &   $9,36$     &$111,38  \pm 0,19$    \\ 
+    $500$ &     $ 42,6 $    &   $9,63$     &$132,83  \pm 0,19$    \\ 
+    $600$ &     $ 55,7 $    &   $9,51$     &$155,08  \pm 0,19$    \\ 
+    $700$ &     $ 67,0 $    &   $9,82$     &$176,77  \pm 0,19$    \\ 
+    $800$ &     $ 83,1 $    &   $8,80$     &$198,86  \pm 0,19$    \\ 
+    $900$ &     $ 95,2 $    &   $8,89$     &$220,62  \pm 0,19$    \\ 
+    $1000$ &    $ 112,5$    &   $7,52$     &$242,70  \pm 0,19$    \\ 
+
+    \bottomrule
+    \end{tabular}
+    \end{table}
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[]{build/Erdmagnetfeld.pdf}
+    \caption{Gesamtmagnetfeld aus Sweep-Spule und horizontaler Spule gegen die Frequenz und ihre linear Regression.}
+    \label{fig:Gesamtmagnetfeld}
+\end{figure}
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
