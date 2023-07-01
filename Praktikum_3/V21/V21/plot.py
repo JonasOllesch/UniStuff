@@ -34,7 +34,7 @@ B1_ges = Magnetfeld_Spule(11,P1_V*0.1,0.1639) + Magnetfeld_Spule(154, U_hor1*2, 
 popt, pcov = curve_fit(pol1,unp.nominal_values(Frequenz1),unp.nominal_values(B1_ges))
 para_Erdmagnetfeld1 = correlated_values(popt, pcov)
 
-x_fit_1 = np.linspace(5*1e5,5*1e6,2)
+x_fit_1 = np.linspace(5*1e4,5*1e5,2)
 y_fit_1 = pol1(x_fit_1,*para_Erdmagnetfeld1)
 
 
@@ -49,7 +49,7 @@ B2_ges = Magnetfeld_Spule(11,P2_V*0.1,0.1639) + Magnetfeld_Spule(154, U_hor2*2, 
 popt, pcov = curve_fit(pol1,unp.nominal_values(Frequenz2),unp.nominal_values(B2_ges))
 para_Erdmagnetfeld2 = correlated_values(popt, pcov)
 
-x_fit_2 = np.linspace(5*1e5,5*1e6,2)
+x_fit_2 = np.linspace(5*1e4,5*1e5,2)
 y_fit_2 = pol1(x_fit_2,*para_Erdmagnetfeld2)
 
 print("para_Erdmagnetfeld1: ", para_Erdmagnetfeld1)
