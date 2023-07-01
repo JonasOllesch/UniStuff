@@ -8,14 +8,18 @@ TeXOptions = -lualatex \
 #build/thesis.pdf: gmlimit.py | build
 #	python gmlimit.py
 
+
 build/thesis.pdf: FORCE | build
-	python code/finalplot.py
+	python code/g_eefinal.py
+	python code/richtigfinalplot.py
+#	python code/etau_test.py
+#	python code/finalplot.py
+#	python code/g_eegmlimit.py
 	python code/gmlimitnew.py
-	python code/gmlimitlowernew.py
-	python code/g_eegmlimit.py
-	python code/g_eevis.py
-	python code/gmlimitLMA.py
-	python code/justgmlimits.py
+#	python unnötiger_code/gmlimitlowernew.py
+#	python unnötiger_code/g_eevis.py
+#	python unnötiger_code/gmlimitLMA.py
+#	python unnötiger_code/justgmlimits.py
 #	python unnötiger_code/gmlimitSMA.py
 #	python unnötiger_code/gmlimitLOW.py
 #	python unnötiger_code/gmlimitVAC.py
