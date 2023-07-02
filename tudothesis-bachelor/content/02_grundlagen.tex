@@ -102,24 +102,37 @@ sofern mehrere entartete Zustände $\ket{0}_i$ existieren. \\
 Die Transformation $U$ lässt das Vakuum $\ket{0}$ also nicht notwendigerweise invariant.
 
 Das einfachste Potential mit diesen Eigenschaften besitzt die Form
+\begin{equation*}
+    V(x) \propto x^2 + x^4 \,.
+\end{equation*}
+Dieses, auch Mexico-Hut-Potential genannte Potential ist offensichtlich radialsymmetrisch.
+Konkret wählen wir hier zur Beschreibung des Potentials ein komplexes Feld
+\begin{equation*}
+    \phi(x) = \frac{1}{\sqrt{2}} (\phi_1(x) + i \phi_2(x))
+\end{equation*}
+mit den reellen Komponenten $\phi_1(x)$ und $\phi_2(x)$.
+Das korrespondierende Potential ist dann durch
 \begin{equation}
-    V(x) = -\frac{1}{2} \mu^2 x^2 + \frac{1}{4} \lambda x^4 \,, \quad \mu,\lambda > 0 \,.
+    V(\phi) = -\mu^2 \phi\phi^* + \lambda^2 (\phi\phi^*)^2
 \end{equation}
-Offensichtlich ist dieses, auch Mexico-Hut-Potential genannte, Potential radialsymmetrisch.
 Es existiert also ein Kreis mit Radius
 \begin{equation*}
-    x_0 = \sqrt{\frac{\mu^2}{\lambda}} \,,
+    \phi_0 = \frac{v}{\sqrt{2}} \,, \quad v = \frac{\mu}{\lambda}
 \end{equation*}
-auf dem die Zustände minimaler Energie verteilt sind.
+auf dem die Zustände minimaler Energie angesiedelt sind \cite{schmüser}.
+Wir betrachten jetzt einen Zustand in azimutaler, also imaginärer Auslenkung in der Nähe des Grundzustands mit
+\begin{equation*}
+    \phi(x) = \frac{1}{\sqrt{2}} (v + i \zeta(x)) \,.
+\end{equation*}
+Das Teilchen $\zeta(x)$ wird als Goldstone-Boson bezeichnet und besitzt keine Masse.
+Die später eingeführten Majoronen stellen eben genau so ein Goldstone-Boson dar.
 \autoref{fig:mexicohutpot} zeigt eine Darstellung des Potentials in zwei Dimensionen.
-
 \begin{figure}[H]
     \centering
     \includegraphics[]{figures/MexicoHutpotential.pdf}
     \caption{Darstellung des Mexico-Hut-Potentials in zwei Dimensionen. Zu erkennen sind die zwei möglichen Grundzustände $x = \pm x_0$ \cite{kleingrot}.}
     \label{fig:mexicohutpot}
 \end{figure}
-
 Anschaulich stellen wir uns vor, dass wir uns zunächst im Zentrum des Potentials befinden.
 Von diesem Punkt aus besitzt das Potential eine globale Symmetrie, egal in welche Richtung wir schauen.
 Betrachten wir das ganze aber von einem der Vakua, existiert diese Symmetrie unter der Transformation $x \rightarrow -x$ nicht länger.
