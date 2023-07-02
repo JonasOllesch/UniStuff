@@ -2,7 +2,6 @@
 \label{sec:auswertung}
 
 Folgende Ausgleichsfunktionen werden mit Funktion $curve\_fit$ aus der Python\cite{py}-Bibliothek $scipy$\cite{2020SciPy-NMeth} bestimmt.
-Die Integration wird mithilfe der Funktion $scipy.integrate.simpson$ \cite{2020SciPy-NMeth}verwirklicht.
 Die Fehlerrechnung wird mithilfe der Bibliothek $uncertainties$ \cite{unp} durchgeführt.
 Grafiken werden durch die Bibliothek $matplotlib$\cite{Hunter:2007} erstellt. 
 Es wird eine Unsicherheit auf die Spannung der Sweep-Spule von $0,01 \, \unit{\volt}$ und auf die Spannung der horizontalen von $0,1 \, \unit{\milli\volt} $ angenommen.
@@ -13,7 +12,7 @@ Die aufgenommenen Messwerte des ersten Peaks sind in \autoref{tab:Messung1} und 
 Das Magnetfeld eines Helmholtz-Spulenpaars wird über die \eqref{eq:Magnetfeld_Helmholtz} berechnet.
 Dazu werden die gemessenen Spannungen in Stromstärken umgerechnet.
 Für die Sweep-Spule gilt $2 \cdot U_\text{Sweep} = I_\text{Sweep}$ und für die horizontale Spule gilt $0,1 \cdot U_\text{Hori} = I_\text{Hori}$.\\
-Um das Erdmagnetfelds zu bestimmen, wird das Gesamtmagnetfeld aus Sweep-Spule und horizontaler Spule in horizontaler Richtung berechnet.
+Um das Erdmagnetfeld zu bestimmen, wird das Gesamtmagnetfeld aus Sweep-Spule und horizontaler Spule in horizontaler Richtung berechnet.
 Das Gesamtmagnetfeld ist in \autoref{fig:Gesamtmagnetfeld} aufgetragen. 
 Die Daten werden durch eine lineare Regression der Form $m_\text{i} \cdot f + b_\text{i}$ genähert,
 wobei die horizontale Komponente des Erdmagnetfelds dem Parameter $b_\text{i}$ entspricht.
@@ -81,7 +80,7 @@ bestimmt.
 \subsection{Bestimmung des Landé-Faktors}
 
 Der Landé-Faktor kann über die Gleichung \eqref{eq:LandeFaktor} bestimmt werden.
-Über diese Gleichung wird die Steigung der Geraden mit dem Landé-Faktor verknüpft.
+Durch diese Gleichung wird die Steigung der Geraden mit dem Landé-Faktor verknüpft.
 Mit der Gleichung
 
 \begin{equation*}
@@ -99,7 +98,7 @@ berechnet.
 
 \subsection{Bestimmung des Kernspins}
 
-Der Kernspins kann über \eqref{eq:Kernspins} berechnet werden, dabei wurde $g_\text{J} = 2$ aus dem hundschen Regeln bestimmt.
+Der Kernspins kann über \eqref{eq:Kernspins} berechnet werden, dabei wurde $g_\text{J} = 2$ aus den hundschen Regeln bestimmt.
 Die Gleichung für den Kernspins ist durch 
 \begin{equation*}
     I = \dfrac{1}{g_{\text{F,i}}} - \dfrac{1}{2}
@@ -113,7 +112,7 @@ bestimmt.
 
 \subsection{Bestimmung des Isotopenverhältnis}
 
-Aus dem Größenverhältnis der beobachten Peaks kann ein Verhältnis der vorhandenen Rubidium Atome abschätzt werden.  
+Aus dem Größenverhältnis der beobachteten Peaks kann ein Verhältnis der vorhandenen Rubidium Atome abschätzt werden.  
 In \autoref{fig:bildoszi} ist ein Bild des Oszilloskop zusehen.
 
 \begin{figure}[H]
@@ -136,10 +135,10 @@ Das ergibt ein Verhältnis von $32,88\, \%$ für Rb-87 und $67,12 \, \% $ für R
 Es wird die Größenordnung des quadratischen Zeeman-Effekts abgeschätzt, 
 dabei werden als Werte für die Hyperfeinstrukturaufspaltung des Grundzustandes bei 87-Rb: $4,53 \cdot 10^{-24} \, \unit{\joule} $ und $2,01 \cdot 10^{-24} \, \unit{\joule}$ bei  85-Rb  gewählt \cite{v21}.
 Die Energie des quadratischen Zeeman-Effekts kann mit der Gleichung \eqref{eq:QuadZee} berechnet werden.
-Es wird der Wert des größsten gemessenen Magnetfelds verwendet und aus den Auswahlregeln ergeben sich die Quantenzahl $m_\text{F} = 2$ für Rb-87 und $m_\text{F} = 3$ für $Rb-85$.
+Es wird der Wert des größten gemessenen Magnetfeldes verwendet und aus den Auswahlregeln ergeben sich die Quantenzahl $m_\text{F} = 2$ für Rb-87 und $m_\text{F} = 3$ für $Rb-85$.
 Daraus werden 
 \begin{align*}
     E_{\text{Quad},1} &= \left(7,78  \pm 0,05 \right)   \cdot 10^{-28} \, \unit{\joule} \, \text{und} \\
     E_{\text{Quad},2} &= \left(7,352 \pm 0,010 \right) \cdot 10^{-28} \, \unit{\joule}
 \end{align*}
-berechnet
+berechnet.
