@@ -27,7 +27,7 @@ Auch wenn, wie im Folgenden gezeigt, Zwei-Niveau-Systeme für Laser ungeeignet s
 Im Zwei-Niveau-System existieren zwei Energiezustände, $E_0$ und $E_1$, mit $\Delta E = E_0 - E_1 < 0$. \\
 Ein eintreffendes, stimulierendes Photon, das mindestens die Energie $\Delta E$ besitzt, kann das System, das sich in $E_1$ befindet, auf das höhere Energieniveau anheben und wird dabei absorbiert.
 Das System kann nun auf zwei Arten in den Grundzustand zurückkehren: durch \textit{spontane Emission} eines Photons, oder \textit{induzierte Emission}, die durch ein externes Photon der passenden Energie ausgelöst wird.
-Das so stimulierte Photon besitzt die gleiche Energie, Phase und Polarisation wie das stimulierende Photon. \\
+Das so stimulierte Photon besitzt die gleiche, Ausbreitungsrichtung, Energie, Phase und Polarisation wie das stimulierende Photon. \\
 
 Eine schematische Darstellung dieser Prozesse findet sich in \autoref{fig:abemiss}.
 
@@ -119,8 +119,9 @@ Die Indizes $x$ und $y$ beschreiben dabei die Anzahl der Peaks entlang der jewei
 Die Moden $TEM_{10}$ und $TEM_{01}$ stellen die selbe Verteilung dar, sie sind lediglich um $90 \,°$ zueinander gedreht. \\
 Dabei gilt
 \begin{equation*}
-    I_{xy} (r) \propto I_0 \left| H_x(r) H_y(r) e^{-\frac{x^2}{2}} \right|^2 
+    I_{xy} (r) \propto I_0 \left| H_x(r) H_y(r) e^{-\frac{x^2}{2}} \right|^2  \, ,
 \end{equation*}
+wobei $H_x(r)$ und $H_y(r)$ die entsprechenden Hermitpolynome sind.
 Die Intensitätsverteilungen der Moden $TEM_{00}$ und $TEM_{10}$ sind dabei durch
 \begin{equation}
     I_{00} (r) = I_0 \exp \left(-2\frac{r^2}{\omega^2} \right)
@@ -137,9 +138,8 @@ Der Abstand zur optischen Achse wird dabei durch $r$ mit $r = x - x_0$ beschrieb
 Zur Selektion der Moden kann ein dünner Draht verwendet werden.
 Links vom rechten der beiden Resonatorspiegeln platziert selektiert er je nach Orientierung des Drahtes eine rotierte Version der $TEM_{10}$. \\
 
-Zur Beschreibung der Moden sei gesagt, dass hier eigentlich ein zylindrischer Resonator vorliegt. 
-Demnach müssten die Intensitätsverteilungen durch Laguerre-Polynome statt der hier verwendeten Hermiteschen Polynome beschrieben werden. 
-Allerdings ist die zylindrische Symmetrie durch die eingebauten Brewsterfenster gestört und es treten rechteckige Symmetrien auf, wodurch die Berechnung durch Hermitesche Polynome korrekt ist. \\
+Zur Beschreibung der Moden sei gesagt, dass hier ein Rechtecksresonator vorliegt. 
+Demnach müssten die Intensitätsverteilungen durch die Hermiteschen Polynome beschrieben werden. 
 Diese Brewsterfenster filtern das emittierte Licht nach Polarisation. 
 Dabei wird senkrecht zur Ausbreitungsrichtung polarisiertes Licht zu einem Teil reflektiert, parallel polarisiertes Licht wird dagegen transmittiert.
 Es wird also eine Polarisationsrichtung bevorzugt, während die andere abgeschwächt wird, sodass der Laser in die gewünschte Richtung schwingt.  \\
