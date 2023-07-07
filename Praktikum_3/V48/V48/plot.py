@@ -11,6 +11,20 @@ from scipy.integrate import simpson
 def methode_eins(T,c,W):
     return c - W/(constants.Boltzmann*T)
 
+<<<<<<< HEAD
+Zeit, Temperatur, Strom, b = np.genfromtxt('Messdaten/Not_my_data.txt',encoding='unicode-escape',unpack=True)
+del b
+Temperatur = Temperatur+constants.zero_Celsius
+Strom = Strom*(1e-12)
+Daten_länge = len(Zeit)
+b = np.zeros(Daten_länge)
+||||||| c674d77
+Zeit, Temperatur, Strom, b = np.genfromtxt('Messdaten/Not_my_data.txt',encoding='unicode-escape',unpack=True)
+del b
+Strom = Strom*(1e-12)
+Daten_länge = len(Zeit)
+b = np.zeros(Daten_länge)
+=======
 #def Hintergrund_func(x,a,b,c):
 #    return np.exp(a*x+b)+c
 #
@@ -30,6 +44,7 @@ Temperatur1 = Temperatur1+constants.zero_Celsius
 Strom1 = Strom1*(1e-11)
 Daten_länge = len(Zeit1)
 Heizrate1 = np.zeros(Daten_länge)
+>>>>>>> 382da82c3975ad328d291118e7797d90d8c8dfc5
 for i in range(1,Daten_länge):
     Heizrate1[i] = Temperatur1[i]-Temperatur1[i-1]
 
@@ -47,10 +62,24 @@ print("Parameter Hintergrund 1", para)
 y1 = Hintergrund_func(x1,*para)
 plt.plot(unp.nominal_values(x1),unp.nominal_values(y1)*1e12,color='darkorange')
 
+<<<<<<< HEAD
+
+popt_m_1, pcov_m_1 = curve_fit(methode_eins,Temperatur[Daten_länge-5:],np.log(Strom[Daten_länge-5:]))
+para_m_1 = correlated_values(popt_m_1, pcov_m_1)
+x_fit = np.linspace(-80,80,1000)
+y_fit = methode_eins(x_fit,*para_m_1)
+||||||| c674d77
+Temperatur = Temperatur+constants.zero_Celsius
+popt_m_1, pcov_m_1 = curve_fit(methode_eins,Temperatur[Daten_länge-5:],np.log(Strom[Daten_länge-5:]))
+para_m_1 = correlated_values(popt_m_1, pcov_m_1)
+x_fit = np.linspace(-80,80,1000)
+y_fit = methode_eins(x_fit,*para_m_1)
+=======
 mask2 = np.logical_and(Temperatur1 >= -35+ constants.zero_Celsius, Temperatur1 <= 6+ constants.zero_Celsius)
 signal_Tem = Temperatur1[mask2]
 signal_Str = Strom1[mask2]
 signal_Str = signal_Str-Hintergrund_func(signal_Tem,*para)
+>>>>>>> 382da82c3975ad328d291118e7797d90d8c8dfc5
 
 plt.scatter(Temperatur1,Strom1*1e12,s=6,label='Messwerte',marker='x')
 plt.scatter(background_Tem,background_Str*1e12,s=6,c='darkorange',label='Hintergrund',marker='x')
@@ -63,11 +92,23 @@ plt.legend()
 plt.savefig('build/Messung1.pdf')
 plt.clf()
 
+<<<<<<< HEAD
+plt.scatter(Temperatur,np.log(Strom*(1e12)),marker='x',s=3,label='Messdaten')
+#plt.plot(unp.nominal_values(x_fit),unp.nominal_values(y_fit),color='red',label='Fit')
+plt.xlabel(r"$ T  \mathbin{/}  \unit{\celsius} $")
+plt.ylabel(r"$I \mathbin{/} \unit{\pico\ampere} $")
+||||||| c674d77
+plt.scatter(Temperatur,Strom*(1e12),marker='x',s=3,label='Messdaten')
+#plt.plot(unp.nominal_values(x_fit),unp.nominal_values(y_fit),color='red',label='Fit')
+plt.xlabel(r"$ T  \mathbin{/}  \unit{\celsius} $")
+plt.ylabel(r"$I \mathbin{/} \unit{\pico\ampere} $")
+=======
 #print(signal_Tem)
 plt.errorbar(signal_Tem,unp.nominal_values(signal_Str*1e12),yerr=unp.std_devs(signal_Str*1e12),fmt='x',c='darkorange',label='Bereinigte Messwerte')
 plt.xlabel(r"$T \mathbin{/} \unit{\kelvin}$")
 plt.ylabel(r"$I \mathbin{/} \unit{\pico\ampere}$")
 plt.ylim(0,8)
+>>>>>>> 382da82c3975ad328d291118e7797d90d8c8dfc5
 plt.grid(linestyle = ":")
 plt.tight_layout()
 plt.legend()

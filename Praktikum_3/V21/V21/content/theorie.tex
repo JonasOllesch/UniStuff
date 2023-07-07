@@ -3,16 +3,16 @@
 
 Im Folgenden wird näher auf einige, für den Versuch notwendige, theoretische Grundlagen eingegangen.
 
-\subsection{Wichtige Quantenzahlen}
+\subsection{Quantenzahlen}
 
-Hier sind insbesondere fünf verschiedene Quantenzahlen von großer Bedeutung:
+Hier sind insbesondere fünf verschiedene Quantenzahlen von Bedeutung:
 Der durch die Nukleonen bestimmte Kernspin mit der Quantenzahl $I$, der Spin mit der Quantenzahl $S$, der Bahndrehimpuls der Isotope mit der Quantenzahl $L$, der Gesamtdrehimpuls mit der Quantenzahl $J$ und die magnetische Quantenzahl $m_J = -J, -J+1, \dots, J-1, J$.
-Für einen Zustand mit den Quantenzahlen $(S,L,J)$ lässt sich so über den Gesamtdrehimpuls $J$ das magnetische Moment
+Für einen Zustand mit den Quantenzahlen $(S,L,J)$ lässt sich so über den Gesamtdrehimpuls $J = S + L$ das magnetische Moment
 \begin{equation}
-    \mu_\text{J} = \mu_\text{B} g_\text{j} \sqrt{J (J + 1)} \,,
+    \mu_\text{J} = \mu_\text{B} g_\text{j} \sqrt{J (J + 1)} \,
     \label{eq:magmom}
 \end{equation}
-wobei $\mu_\text{B} = \frac{e \hbar}{2 m_e}$ das Bohrsche Magneton und
+definieren, wobei $\mu_\text{B} = \frac{e \hbar}{2 m_e}$ das Bohrsche Magneton und
 \begin{equation}
     g_\text{J} = \frac{3 J(J + 1) + S(S + 1) - L(L + 1)}{2 J(J + 1)}
     \label{eq:landefak}
@@ -24,7 +24,7 @@ Wird nun ein äußeres Magnetfeld $B$ angelegt, kommt es zu einer weiteren Aufsp
 \begin{equation}
     E_\text{mag} = m_\text{J} \mu_\text{B} g_\text{J} B \,.
 \end{equation}
-Je höher als der Gesamtdrehimpuls $J$ ist, desto mehr zusätzliche Energieniveaus kann das System annehmen.
+Je höher also der Gesamtdrehimpuls $J$ ist, desto mehr zusätzliche Energieniveaus kann das System annehmen.
 Darüber hinaus hängen die Niveaus der Aufspaltung auch vom Kernspin $I$ ab.
 So kann eine neue Quantenzahl $F = J + I$ definiert werden, die es ermöglicht, über
 \begin{equation}
@@ -37,17 +37,17 @@ die auch Hyperfeinstruktur genannte Energieaufspaltung
     \label{eq:hyperfein}
 \end{equation}
 zu beschreiben.
-Ähnlich wie $m_\text{J}$ kann $F$ dabei alle Werte $F = |J - I|,|J-I|+1,...,J+I-1 J + I$ annehmen, die Quantenzahl $m_\text{F}$ ist dann durch $m_\text{F} = -F,\dots, F$ gegeben.
+Ähnlich wie $m_\text{J}$ kann $F$ dabei alle Werte $F = |J - I|,|J-I|+1,...,J+I-1, J + I$ annehmen, die Quantenzahl $m_\text{F}$ ist dann durch $m_\text{F} = -F,\dots, F$ gegeben.
 
 \subsection{Optisches Pumpen}
 
 Mithilfe elektromagnetischer Wellen der richtigen Wellenlänge ist es möglich, in einem Stoff Energieübergänge zu induzieren.
-Da diese Wellenlängen bei Rubidium im Bereich des sichtbaren Lichts liegt, wird der Prozess der Anregung auch optisches Pumpen genannt.
+Da diese Wellenlängen bei Rubidium im Bereich des sichtbaren Lichts liegen, wird der Prozess der Anregung auch optisches Pumpen genannt.
 Das typische Aufspaltungsschema der hier betrachteten Rubidiumisotope ist in \autoref{fig:rubidiumaufspaltung} dargestellt.
 \begin{figure}[H]
     \centering
     \includegraphics{figures/AufspaltungRubidium.pdf}
-    \caption{Feinstruktur- (FS-), Hyperfeinstruktur- (HFS-) und Zeemanaufspaltung der Rubidiumisotope $^{87}Rb$ und $^{85}Rb$ \cite{rubidiumspalt}.}
+    \caption{Feinstruktur- (FS-), Hyperfeinstruktur- (HFS-) und Zeemanaufspaltung der Rubidiumisotope $^{87}$Rb und $^{85}$Rb \cite{rubidiumspalt}.}
     \label{fig:rubidiumaufspaltung}
 \end{figure}
 Ziel ist es, durch die Wahl der richtigen Wellenlänge und Polarisation möglichst viele Isotope im gleichen Energiezustand zu sammeln.
@@ -55,9 +55,9 @@ Dafür wird genutzt, dass je nach Änderung der magnetischen Quantenzahl $m_\tex
 Ändert sich $m_\text{J}$ beim Übergang nicht, gilt also $\Delta m_\text{J} = 0$, wird linear polarisiertes Licht absorbiert/emittiert.
 Dieser Übergang wird als $\pi$-Übergang bezeichnet.
 Gilt $\Delta m_\text{J} = \pm 1$, findet der Übergang unter Emission/Absorption von rechts- bzw. linkzirkular polarisiertem Licht statt ($\sigma^\pm$-Übergang).
-Hier werden $\sigma$-Übergänge genutzt, um die niederen $s$-Energieniveaus auf die $p$-Niveaus zu pumpen.
-Von den $p$-Niveaus fallen die angeregten Rubidiumisotope auf das höchste $^2S_\frac{1}{2}$-Niveau.
-Auch wenn die Isotope von dort aus durch spontane Emission auf ein niedrigeres Energieniveau fallen können, werden sie schnell wieder zurückgepumpt.
+Hier werden $\sigma$-Übergänge genutzt, um die niederen $s$-Energieniveaus auf höhere $p$-Niveaus zu pumpen.
+Von den $p$-Niveaus fallen die angeregten Rubidiumisotope auf das höchste $^2S_{1/2}$-Niveau.
+Auch wenn die Isotope von dort aus durch spontane Emission auf ein niedrigeres Energieniveau fallen können, werden sie schnell wieder zurückgepumpt. \\
 
 Durch das Anlegen eines hochfrequenten Feldes lässt sich die Transparenz des Rubidiums beeinflussen.
 Liegt die Frequenz genau so, dass
@@ -74,8 +74,9 @@ gilt, die Hochfrequenzenergie also genau der Energiedifferenz zweier Zeeman-Nive
 \end{figure}
 Dieser Einbruch lässt sich durch das Phänomen der induzierten Emission erklären.
 Hier werden zwischen vom höchsten Energieniveau der s-Schale durch die HF-Photonen Übergänge ausgelöst, die die Isotope auf niedere Energieniveaus fallen lassen.
-Auf den niedrigeren Energieniveaus können die Isotope dann wieder äußeres Licht absorbieren und hochgepumpt werden, die Transparenz sinkt also insgesamt.
-In der Realität kommt es zu einem zweiten Peak, da Rubidium in zwei natürlichen Isotopen vorkommt.
+Auf den niedrigeren Energieniveaus können die Isotope dann wieder äußeres Licht absorbieren und hochgepumpt werden, die Transparenz sinkt also insgesamt.\\
+
+In der Realität kommt es zu einem zweiten Peak, da Rubidium in zwei natürlichen Isotopen vorkommt.\\
 
 Über den gewöhnlichen Zeeman-Effekt hinaus soll hier auch der quadratische Zeeman-Effekt betrachtet werden, der die Energie um
 \begin{equation}
