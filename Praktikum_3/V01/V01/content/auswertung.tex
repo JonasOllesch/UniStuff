@@ -10,25 +10,21 @@ Während der Messzeit wurden insgesamt $N_{\mu} = 3235 $ Myonen registriert.
 Um eine angebrachte Verzögerungszeit zu finden, wird die Verzögerungszeit variiert und die Zählrate hinter der Koinzidenz gemessen.
 Die Messwerte sind in \autoref{fig:koin_10}, \autoref{fig:koin_15} und \autoref{fig:koin_20} aufgetragen. Die Unsicherheit ist durch $ \sqrt{N}$ gegeben, wobei $N$ die Menge der gezählten Ereignisse ist.
 Das negative Vorzeichen vor der Verzögerungszeit bedeutet, dass die linke Verzögerungsleitung verwendet wurde. Bei der rechten Verzögerungsleitung ist das Vorzeichen positiv.
-Die Halbwertsbreite wurde mithilfe eines Polynoms des 8. Grades bestimmt. Die Regression wurde mit dem Package $scipy.optimize.curve\_ fit $  \cite{scipyop} durchgeführt. %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Warum 8. Grad??
-Über die Gleichung \eqref{eq:Auflosung} kann aus der Halbwertsbreite die Auflösung berechnet werden. Die Ereignisse sind in \autoref{tab:Halbwertsbreiten} zu sehen.
+Die Halbwertsbreite wird bestimmt, indem die einzelnen Messwerte manuell den Kategorien linke Flanke, Plateau, rechte Flanke oder Hintergrundzählrate zugeordnet werden.
+Danach wird der Mittelwert des Plateaus bestimmt und die Halbwertsbreite mit Hilfe von Geraden, die durch die Flanken gelegt werden berechnet.
 
-\begin{equation}
-    t_\text{Auf} = \left|2 \cdot t_\text{Koin} - t_\text{Halb} \right|
-    \label{eq:Auflosung}
-\end{equation}
 
 \begin{table}[H]
     \centering
     \caption{Die durchschnittliche Höhe des Plateaus, die Auflösungszeit und die Halbwertsbreite für die verschiedenen Koinzidenz.}
     \label{tab:Halbwertsbreiten}
-    \begin{tabular}{c c c c}
+    \begin{tabular}{c c c}
     \toprule
-     $t_\text{Koin} \mathbin{/} \unit{\nano\second} $ &$\bar{N}$ & $\Delta t_\text{Halb} \mathbin{/} \unit{\nano\second}$ & $t_\text{Auf} \mathbin{/} \unit{\nano\second}$ \\
+     $t_\text{Koin} \mathbin{/} \unit{\nano\second} $ &$\bar{N}$ & $\Delta t_\text{Halb} \mathbin{/} \unit{\nano\second}$ \\
     \midrule
-        $10$&  $20,15$ &  $15,32 \pm 2,88$ & $4,68$\\ 
-        $15$&  $24,87$ &  $21,64 \pm 1,68$ & $8,36$\\ 
-        $20$&  $21,64$ &  $40,39 \pm 0,15$ & $0,39$\\ 
+        $10$&  $20,15$ &  $15,32 \pm 2,88$ \\ 
+        $15$&  $24,87$ &  $21,64 \pm 1,68$ \\ 
+        $20$&  $21,64$ &  $40,39 \pm 0,15$ \\ 
     \bottomrule
     \end{tabular}
     \end{table}
@@ -36,25 +32,25 @@ Die Halbwertsbreite wurde mithilfe eines Polynoms des 8. Grades bestimmt. Die Re
 \begin{figure}[H] 
     \centering
     \includegraphics[width=.8\textwidth]{build/Kalibrierung_Koinzidenz_10.pdf}
-    \caption{Aufgenommene Zählrate bei Änderung der Verzögerungsleitung für eine Koinzidenz von $t_\text{Koin} = 10 \, \unit{\nano\second}$ sowie Bestimmung der Halbwertsbreite.}
+    \caption{Aufgenommene Zählrate bei Änderung der Verzögerungsleitung für eine Pulsdauer von $t_\text{Koin} = 10 \, \unit{\nano\second}$.}
     \label{fig:koin_10}
 \end{figure}
 
 \begin{figure}[H] 
     \centering
     \includegraphics[width=.8\textwidth]{build/Kalibrierung_Koinzidenz_15.pdf}
-    \caption{Aufgenommene Zählrate bei Änderung der Verzögerungsleitung für eine Koinzidenz von $t_\text{Koin} = 15 \, \unit{\nano\second}$ sowie Bestimmung der Halbwertsbreite.}
+    \caption{Aufgenommene Zählrate bei Änderung der Verzögerungsleitung für eine Pulsdauer von $t_\text{Koin} = 15 \, \unit{\nano\second}$.}
     \label{fig:koin_15}
 \end{figure}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=.8\textwidth]{build/Kalibrierung_Koinzidenz_20.pdf}
-    \caption{Aufgenommene Zählrate bei Änderung der Verzögerungsleitung für eine Koinzidenz von $t_\text{Koin} = 20 \, \unit{\nano\second}$ sowie Bestimmung der Halbwertsbreite.}
+    \caption{Aufgenommene Zählrate bei Änderung der Verzögerungsleitung für eine Pulsdauer von $t_\text{Koin} = 20 \, \unit{\nano\second}$.}
     \label{fig:koin_20}
 \end{figure}
 
-Als Verzögerungszeit der Verzögerungsleitung wurde $\Delta t = 3 \,\unit{\nano\second}$ bei $t_\text{Koin} = 15 \, \unit{\nano\second}$ gewählt.
+Als Verzögerungszeit der Verzögerungsleitung wird $\Delta t = 3 \,\unit{\nano\second}$ bei $t_\text{Koin} = 15 \, \unit{\nano\second}$ gewählt.
 
 %\begin{table}[H]
 %    \centering
