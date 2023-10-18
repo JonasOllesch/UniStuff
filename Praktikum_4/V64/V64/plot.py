@@ -1,0 +1,65 @@
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.optimize import curve_fit
+from uncertainties import ufloat
+from uncertainties import correlated_values
+import uncertainties.unumpy as unp
+
+from multiprocessing  import Process
+
+def berechne_Kontrast(Imax,Imin):
+    return (Imax-Imin)/(Imax+Imin)
+    
+
+def pol_fit(x,a,b,c,d):
+    return np.absolute(a*np.sin(b*x + c)) + d
+
+Messreihe_Druck = np.genfromtxt('Messdaten/Druck.txt', encoding='unicode-escape')
+Messreihe_Druck[:,0] = Messreihe_Druck[:,0]/1000 #von mbar in bar
+#print(Messreihe_Druck[0,:])
+
+Messreihe_Glas  = np.genfromtxt('Messdaten/Glas.txt', encoding='unicode-escape')
+Messreihe_Pol   = np.genfromtxt('Messdaten/Pol.txt', encoding='unicode-escape')
+
+
+Pol_max_mean = np.zeros_like(Messreihe_Pol[:,0])
+Pol_max_std = np.zeros_like(Messreihe_Pol[:,0])
+
+Pol_min_mean = np.zeros_like(Messreihe_Pol[:,0])
+Pol_min_std = np.zeros_like(Messreihe_Pol[:,0])
+
+for i in range(0,len(Messreihe_Pol[:,0])):
+    Pol_max_mean[i] = np.mean(Messreihe_Pol[i,1:4])
+    Pol_max_std[i] = np.std(Messreihe_Pol[i,1:4])
+
+    Pol_min_mean[i] = np.mean(Messreihe_Pol[i,4:7])
+    Pol_min_std[i] = np.std(Messreihe_Pol[i,4:7])
+
+Pol_max = unp.uarray(Pol_max_mean,Pol_max_std)
+Pol_min = unp.uarray(Pol_min_mean,Pol_min_std)
+
+Kontrast = berechne_Kontrast(Pol_max,Pol_min)
+
+
+
+
+
+def plote_Kontrast(Winkel, Kontrast):
+    x = np.linspace(0,180,20000)
+    y = np.absolute(np.sin(x*(2*np.pi)/(180)))
+
+    plt.errorbar(Winkel,unp.nominal_values(Kontrast),yerr=unp.std_devs(Kontrast), fmt ='x', color='darkorange', label='Data')
+    plt.plot(x, y, color='navy', label = 'Theorie')
+    plt.xlabel(r"$ \theta \mathbin{/} \unit{\degree} $")
+    plt.ylabel(r"$K$")
+    plt.grid(linestyle = ":")
+    plt.tight_layout()
+    plt.legend()
+    plt.savefig('build/Kontrast.pdf')
+    plt.clf()
+
+
+
+p = Process(target=plote_Kontrast, args=(Messreihe_Pol[:,0],Kontrast))
+p.start()
+p.join()
