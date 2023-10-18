@@ -50,13 +50,13 @@ wobei
 die Oszillationslänge und $\theta_m$ den Mischungswinkel der Neutrinos in Materie, die sie auf einer Distanz $d$ in der Erde bis zum Detektor durchdringen, beschreibt.
 Wir gehen davon aus, dass es nur zu einer Mischung zwischen Elektron- und Myonneutrinos kommt, der Mischungswinkel $\theta_m$ lässt sich also mit $\theta_\odot$ identifizieren.
 So lassen sich, wenn wir, wie in \cite{supernovaboundsdasandere} gezeigt, die entsprechenden, fehlenden Größen in \eqref{eq:osziwkeit} einsetzen, die Kopplungsparameter $g_1$ und $g_2$ auf einige $10^{-4}$ einschränken.
-Wir werden später sehen, dass die so gefolgerten Grenzen auf $g_1$ für den Großteil unserer Betrachtung keine wirkliche Relevanz hat, uns aber erlaubt, die erstellten Plots unbesorgt auf $g_1 < 10^{-4}$ zu begrenzen. 
+Wir werden später sehen, dass die so gefolgerten Grenzen auf $g_1$ für den Großteil unserer Betrachtung keine wirkliche Relevanz hat, uns aber erlaubt, die erstellten Plots auf $g_1 < 10^{-4}$ zu begrenzen, ohne wichtige Informationen zu verlieren. 
 
 \section{Grenzen aus der Luminosität von SN1987A}
 
 Die bekannteste und für die Astrophysik wichtigste Kernkollaps-Supernova ist die Supernova SN1987A.
 Sie ist mit nur $157$ Lichtjahren Entfernung die erdnächste Supernova, die seit einigen Jahrhunderten beobachtet werden konnte und bietet mit ihrer großen Helligkeit die Möglichkeit, zum ersten Mal Supernovae näher zu untersuchen.
-Mithilfe der Cherenkov-Detektoren Kamiokande II und Irvine-Michigan-Brookhaven gelang es, einige Events der SN1987A zu detektieren und so Grenzen auf die Luminosität emittierter Teilchen simulieren zu können.
+Mithilfe der Cherenkov-Detektoren Kamiokande II und Irvine-Michigan-Brookhaven gelang es, einige Neutrinos der SN1987A zu detektieren und so Grenzen auf die Luminosität emittierter Teilchen simulieren zu können.
 Wie in \cite{neutrinolumi} gezeigt ergibt sich unter der Annahme, dass die Rate des Energieverlusts $\epsilon_a$ durch $\epsilon_a \lesssim 1 \cdot 10^{19} \,\text{erg} \,\text{g}^{-1} \,\si{\second}^{-1}$ beschränkt ist,
 eine Neutrinoluminosität von
 \begin{equation}
@@ -70,7 +70,8 @@ Mithilfe eines numerisch ermittelten Majoronenspektrums lässt sich die Luminosi
     L_J (1 \,\si{\second}) = \num{6.46} \cdot 10^{68} \left(|g_{i j}| m_J \,\si{\mega\eV}^{-1} \right) \,\text{erg} \si{\second}^{-1}
 \end{equation}
 bestimmen, wobei $m_J$ die kinetische Energie der Majoronen beschreibt.
-Als sinnvoller Majoronenenergiebereich kann $\SI{100}{\eV} \lesssim m_J \lesssim \SI{100}{\mega\eV}$ gefunden werden.
+Unter der Voraussetzung, dass entstehende Majoronen erst außerhalb des Supernovakerns zerfallen und dass die Majoronenmasse groß gegen die Neutrinomasse ist, kann, 
+wie in \cite{newlimit} erläutert, ein sinnvoller Majoronenmassebereich von $\SI{100}{\eV} \lesssim m_J \lesssim \SI{100}{\mega\eV}$ gefunden werden.
 Da wir hier Zerfälle $J \rightarrow \nu \bar{\nu}$ annehmen, setzen wir voraus, dass die Majoronenluminosität nicht niedriger als die Neutrinoluminosität werden kann und erhalten so
 \begin{equation*}
     |g_{i j}| m_J < \num{0.83} \cdot 10^{-8} \,\si{\mega\eV}
@@ -112,18 +113,21 @@ Somit ist es uns möglich, anschließend wahlweise $g_1$ in Abhängigkeit von $m
 Hier entscheiden wir uns für $g_1 (m_1)$, da ein analytisches Umstellen unter Berücksichtigung von $\theta_{1 3} \neq 0$ nicht mehr möglich ist.
 Für alle folgenden Plots werden die LMA-MSW-Werte
 \begin{align}
-    \sin^2\theta_\odot &= \num{0.307}\,, && \sin^2\theta_{13} &= \num{0.020}\,, \\ \Delta m^2_\odot &= \num{7.53} \cdot 10^{-5} \si{eV}^2\,, && \Delta m^2_\text{atm} &= \num{2.453} \cdot 10^{-3} \si{\eV}^2
+    \Delta m^2_\odot   &= \num{7.53} \cdot 10^{-5} \si{eV}^2\,, && \Delta m^2_\text{atm} = \num{2.453}\,, \cdot 10^{-3} \si{\eV}^2\,, \\ 
+    \sin^2\theta_\odot &= \num{0.307}                       \,, && \sin^2\theta_{13}     = \num{0.020}\,, && \sin^2\theta_\text{atm} = \num{0.539}
     \label{eq:LMAMSW}
 \end{align}
-und die maximal als sinnvoll erachtete Majoronenmasse von 
+verwendet.
+Als Majoronenmasse wählen wir hier die nach \cite{neutrinospdg, newlimit}  maximal als sinnvoll erachtete Majoronenmasse von 
 \begin{equation*}
-    m_J = \SI{100}{\mega\eV}
+    m_J = \SI{100}{\mega\eV} \,,
 \end{equation*}
-\cite{neutrinospdg, newlimit} verwendet, die nach \eqref{eq:gijlimit} einer oberen Grenze von
+die nach \eqref{eq:gijlimit} einer oberen Grenze von
 \begin{equation*}
     |g_{ij}| < \num{0.83} \cdot 10^{-6}
 \end{equation*}
 entspricht.
+Niedrigere Massen betrachten wir hier nicht, da die entstehende Ausschlussregion nur zu geringeren Kopplungen hin wachsen würden und wir uns hier mit der konservativsten Wahl der Ausschlussregion befassen.
 
 Beginnen wir zunächst mit der Kopplung $g_{ee}$.
 Hier gehen wir die Rechnung einmal Schritt für Schritt durch, da die Rechenschritte allerdings nur aus Umformungen und trivialen Operationen besteht und für alle Kopplungen dem gleichen Schema folgen, werden wir auf die Berechnungen der anderen
@@ -215,7 +219,8 @@ Wählen wir für jeden Parameter $g_{ij}$ einzeln die konservativste Ausschlussr
     \label{fig:g_ijfinal}
 \end{figure}
 
-Um die finale Ausschlussregion zu erhalten, bleibt uns nun keine andere Wahl, als $g_1(m_1,g_{\tau'\tau'})$ als Grenze zu wählen, sodass sich die in \autoref{fig:exclusionregionfinal} eingefärbte, simple Fläche ergibt.
+\newpage
+Um die finale Ausschlussregion zu erhalten, wählen wir nun $g_1(m_1,g_{\tau'\tau'})$ als Grenze, sodass sich die in \autoref{fig:exclusionregionfinal} eingefärbte, simple Fläche ergibt.
 
 \begin{figure}[H]
     \centering

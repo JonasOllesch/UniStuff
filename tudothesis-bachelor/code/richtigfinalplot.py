@@ -89,21 +89,21 @@ def g_tautau_g1_pha0_90(g_tautau, m1, theta_sun, theta_13, delm_sunsqua, delm_at
 
 def g_etau_g1_pha0_0(g_etau, m1, theta_sun, theta_13, delm_sunsqua, delm_atmsqua):
     denom1 = - 1/2 * np.cos(theta_sun)**2 * np.sin(2*theta_sun)
-    denom2 = np.sqrt(1 + delm_sunsqua/m1**2) * np.sin(theta_sun)**2 * np.cos(theta_13)**2
+    denom2 = np.sqrt(1 + delm_sunsqua/m1**2) * np.sin(theta_sun)**2 * np.sin(theta_13) * np.cos(theta_13)
     denom3 = 1/2 * np.sqrt(1 + (delm_atmsqua + delm_sunsqua) / m1**2) * np.sin(2*theta_13)
     return g_etau / (denom1 + denom2 + denom3)
 
 
 def g_etau_g1_pha90_0(g_etau, m1, theta_sun, theta_13, delm_sunsqua, delm_atmsqua):
     denom1 = - 1/2 * np.cos(theta_sun)**2 * np.sin(2*theta_sun)
-    denom2 = np.sqrt(1 + delm_sunsqua/m1**2) * np.sin(theta_sun)**2 * np.cos(theta_13)**2
+    denom2 = np.sqrt(1 + delm_sunsqua/m1**2) * np.sin(theta_sun)**2 * np.sin(theta_13) * np.cos(theta_13)
     denom3 = 1/2 * np.sqrt(1 + (delm_atmsqua + delm_sunsqua) / m1**2) * np.sin(2*theta_13)
     return g_etau / (denom1 - denom2 + denom3)
 
 
 def g_etau_g1_pha90_90(g_etau, m1, theta_sun, theta_13, delm_sunsqua, delm_atmsqua):
     denom1 = - 1/2 * np.cos(theta_sun)**2 * np.sin(2*theta_sun)
-    denom2 = np.sqrt(1 + delm_sunsqua/m1**2) * np.sin(theta_sun)**2 * np.cos(theta_13)**2
+    denom2 = np.sqrt(1 + delm_sunsqua/m1**2) * np.sin(theta_sun)**2 * np.sin(theta_13) * np.cos(theta_13)
     denom3 = 1/2 * np.sqrt(1 + (delm_atmsqua + delm_sunsqua) / m1**2) * np.sin(2*theta_13)
     return g_etau / (denom1 - denom2 - denom3)
 
@@ -139,7 +139,7 @@ theta_13  = np.arcsin(np.sqrt(2.2*10**(-2)))
 
 print('Chooz-Winkel Theta_13: ', theta_13)
 
-m1 = np.logspace(start = -9, stop = np.log10(0.8), num = 2 * 10**6, base = 10.0)      
+m1 = np.logspace(start = -9, stop = np.log10(0.8), num = 5 * 10**6, base = 10.0)      
 
 # upper limit on m1
 
@@ -168,12 +168,12 @@ plt.plot(g_mumu_g1_pha90(-g_upper, m1, theta_13, delm_sunsqua), m1, color='purpl
 plt.plot(g_tautau_g1_pha0_90(-g_upper, m1, theta_sun, theta_13, delm_sunsqua, delm_atmsqua), m1, color='red',linestyle = 'dashdot', label = r'bounds on   $g_{\tau \tau}$ with $\delta_1=0, \delta_2 = \frac{\pi}{2}$')
 
 #### g_etau
-###
+
 ###plt.plot(g_etau_g1_pha90_0(g_upper, m1, theta_sun, theta_13, delm_sunsqua, delm_atmsqua), m1, color='black', linestyle='dashdot', label = r'bounds on $g_{e \tau}$ with $\delta_1=\frac{\pi}{2}, \delta_2=0$')
 ###plt.plot(g_etau_g1_pha90_0(-g_upper, m1, theta_sun, theta_13, delm_sunsqua, delm_atmsqua), m1, color='black', linestyle = 'dashdot', label = r'bounds on $g_{e \tau}$ with $\delta_1=\frac{\pi}{2}, \delta_2=0$')
-###
+
 #### g_mutau
-###
+
 ###plt.plot(m1_col, g_mutau_g1_pha90(-g_upper, m1_col, theta_sun, theta_13, delm_sunsqua), m1, color='orange', linestyle = 'dashdot', label = r'bounds on $g_{\mu \tau}$ with $\delta_1=\frac{\pi}{2}$')
 
 plt.fill_between(g1_col, np.full_like(g1_col, m1_lim), np.full_like(g1_col, 1), color='red', alpha=0.5, linewidth=0)

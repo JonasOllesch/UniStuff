@@ -137,7 +137,7 @@ delta2 = np.pi/2
 theta_sun = np.arcsin(np.sqrt(0.307))
 theta_13  = np.arcsin(np.sqrt(2.2*10**(-2))) 
 
-m1 = np.logspace(start = -9, stop = np.log10(0.8), num = 2 * 10**6, base = 10.0)      
+m1 = np.logspace(start = -9, stop = np.log10(0.8), num = 5 * 10**6, base = 10.0)      
 
 # upper limit on m1
 

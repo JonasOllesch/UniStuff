@@ -18,7 +18,7 @@ gemeinsam mit dem Elektron emittiert wird, allerdings nicht detektierbar ist. \\
 Diese Annahme Paulis wurde lange kritisch betrachtet, bis Neutrinos in den $50$er Jahren in Atomreaktoren zweifellos nachgewiesen werden konnten \cite{zuber}.
 
 Im Standardmodell der Teilchen sind Neutrinos als einzige masselose, elektrisch neutrale Leptonen vertreten.
-Theoretisch lassen sie sich durch die Wellenfunktionen $\psi$ als lorentzinvariante Lösung der relativistischen Diracgleichung
+Theoretisch lassen sie sich durch die Wellenfunktionen $\psi$ als lorentzkovariante Lösung der relativistischen Diracgleichung
 \begin{equation}
     \left(i \gamma_\mu \frac{\partial}{\partial x_\mu} - m \right) \psi = 0
     \label{eq:dirac}
@@ -61,9 +61,9 @@ Neutrinos sind somit die einzigen Leptonen, die nicht nur nicht stark wechselwir
 Tatsächlich ist ihre Wechselwirkung mit Materie so gering, dass die $7 \cdot 10^{10}$  Neutrinos, die pro $\si{\centi\meter}^2$ und pro Sekunde auf die Erde treffen, keinerlei Auswirkung
 auf das Leben ihrer Bewohner haben \cite[S. ~133]{grupen}. 
 
-Sie treten korrespondierend zu den drei Leptongenerationen, sprich Elektronen, Myonen und Tauonen in drei verschiedenen Arten auf.
+Sie treten den drei Leptongenerationen, sprich Elektronen, Myonen und Tauonen entsprechend, in drei verschiedenen Arten auf.
 Dieser sogenannte Neutrinoflavour ist dabei nicht fest, sondern kann sich zeitlich und räumlich periodisch ändern.
-Die Entdeckung dieser sogenannten Neutrinooszillationen erhielt im Jahre $2015$ den Nobelpreis \cite[S. ~19]{oberauer}.
+Für die Entdeckung dieser sogenannten Neutrinooszillationen erhielten Arthur McDonald und Takaaki Kajita im Jahre $2015$ den Nobelpreis der Physik \cite[S. ~19]{oberauer}.
 
 
 
@@ -84,9 +84,7 @@ Unter globale Transformationen fallen beispielsweise die Multiplikation der Lös
 
 \subsection{Spontane Symmetriebrechung} %\cite{kleingrot}
 
-
-Der Mechanismus der spontanen Symmetriebrechung erlaubt uns, Eichbosonen einzuführen, ohne die Eichinvarianz der Lagrangedichte durch explizite Massenterme zu verlieren.
-Konkret sprechen wir von einer spontanen Symmetriebrechung, wenn die grundlegenden Gleichungen eines Systems über eine Symmetrie verfügen, der der Grundzustand nicht folgt.
+Wir sprechen dann von einer spontanen Symmetriebrechung, wenn die grundlegenden Gleichungen eines Systems über eine Symmetrie verfügen, der der Grundzustand nicht folgt.
 
 Das Majoronenfeld, also auch die Majoronen als dazugehörige Eichbosonen, lässt sich durch ein Potential einführen, dessen Vakuumerwartungswert (VEV), also der Zustand niedrigster Energie $E_\text{min}$ verschieden von null ist. \\
 Wir fordern, dass unser System, beschrieben durch den Hamiltonian $H$, invariant unter einer Transformation $U$ bleibt, sprich der Kommutator $[H, U]$ verschwindet.
@@ -103,7 +101,7 @@ Die Transformation $U$ lässt das Vakuum $\ket{0}$ nicht notwendigerweise invari
 
 Das einfachste Potential mit diesen Eigenschaften besitzt die Form
 \begin{equation*}
-    V(x) \propto x^2 + x^4 \,.
+    V(x) \propto -x^2 + x^4 \,.
 \end{equation*}
 Dieses, auch Mexico-Hut-Potential genannte Potential ist offensichtlich radialsymmetrisch.
 Konkret wählen wir hier zur Beschreibung des Potentials ein komplexes Feld
@@ -134,13 +132,15 @@ Die eingeführten Majoronen stellen eben genau so ein Goldstone-Boson dar.
     \label{fig:mexicohutpot}
 \end{figure}
 Anschaulich stellen wir uns vor, dass wir uns zunächst im Zentrum des Potentials befinden.
-Von diesem Punkt aus besitzt das Potential eine globale Symmetrie, egal in welche Richtung wir schauen.
-Betrachten wir das ganze aber von einem der Vakua, existiert diese Symmetrie unter der Transformation $x \rightarrow -x$ nicht länger.
+Das Potential besitzt eine globale Symmetrie, egal in welche Richtung wir schauen.
+Das System wählt nun einen der beiden Grundzustände aus.
+Für das gewählte Vakuum besteht jetzt allerdings die genannte Symmetrie nicht länger, da sich die Position des Grundzustandes bei Rotation des Potentials ändert.
+
 
 \section{Ursprung der Neutrinomasse} %\cite{kleingrot}
 \label{sec:neutrinomasse}
 
-Als nur schwach wechselwirkende Teilchen ist zum jetzigen Zeitpunkt nur die Existenz linkshändiger Neutrinos $\nu_L$ und rechtshändiger Antineutrinos $\bar{\nu}_R$ bewiesen.
+Als nur schwach wechselwirkende Teilchen ist zum jetzigen Zeitpunkt nur die Existenz linkshändiger Neutrinos $\nu_L$ und rechtshändiger Antineutrinos $\bar{\nu}_R$ nachgewiesen.
 Diese sind über die Ladungs- und Paritätskonjugation $C P$ durch 
 \begin{equation}
     (\nu_L)^{C P} = \bar{\nu}_R
@@ -166,8 +166,9 @@ sind ihre eigenen Antiteilchen und bilden gemeinsam den Massenterm der Lagranged
 \end{equation}
 Dabei stellen $m^M_L$ bzw. $m^M_R$ als Massen die Kopplungsstärken zwischen $\nu_L$ und $\bar{\nu}_R$ bzw. $\nu_R$ und $\bar{\nu}_L$ dar.
 
-Im Standardmodell ordnet der Leptonenzahloperator $L$ jedem Lepton die Leptonenzahl $+1$ und jedem Antilepton die Leptonenzahl $-1$.
-So erhalten auch Neutrinos im Standardmodell eine Leptonenzahl zu. 
+Im Standardmodell lassen sich jedem Lepton die Leptonenzahl $+1$ und jedem Antilepton die Leptonenzahl $-1$ zuordnen. 
+Über das Standardmodell hinaus wird die Leptonenzahl zur Beschreibung der Leptonenzahlsymmetrie oft über den sogenannten Leptonenzahloperator $L$ zugewiesen.
+So erhalten auch Neutrinos als Leptonen eine Leptonenzahl.
 Sind jedoch, wie oben beschrieben, Neutrinos und Antineutrino als Majoranateilchen identisch, ergibt die Zuordnung einer Leptonenzahl keinen Sinn mehr.
 Die globale Leptonenzahlsymmetrie ist also, wenn auch nur sehr geringfügig, spontan gebrochen.
 

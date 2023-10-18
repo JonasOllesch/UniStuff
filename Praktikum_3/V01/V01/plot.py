@@ -1,3 +1,4 @@
+
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy.optimize import curve_fit
@@ -5,7 +6,6 @@ from uncertainties import ufloat
 from uncertainties import correlated_values
 import uncertainties.unumpy as unp
 from matplotlib.legend_handler import (HandlerLineCollection,HandlerTuple)
-
 
 output = ("build/Auswertung")   
 my_file = open(output + '.txt', "w") 
@@ -194,7 +194,7 @@ labels = ['Messwerte', 'lin. Fit','FWHM']
 plt.legend(handles, labels, handler_map={tuple: HandlerTuple(ndivide=None)}, loc='best')
 
 plt.ylabel(r"$\text{Zählung} \mathbin{/} \unit{\second}$")
-plt.xlabel(r"$\text{Verzögerungszeit} \, \text{in} \, \unit{\nano\second}$")
+plt.xlabel(r"$\text{Verzögerungszeit} \mathbin{/} \unit{\nano\second}$")
 plt.grid(linestyle = ":")
 plt.ylim(0,30)
 plt.tight_layout()
@@ -235,7 +235,7 @@ plt.legend(handles, labels, handler_map={tuple: HandlerTuple(ndivide=None)}, loc
 
 plt.ylim(0,30)
 plt.ylabel(r"$\text{Zählung} \mathbin{/} \unit{\second}$")
-plt.xlabel(r"$\text{Verzögerungszeit} \, \text{in} \, \unit{\nano\second}$")
+plt.xlabel(r"$\text{Verzögerungszeit} \mathbin{/} \unit{\nano\second}$")
 plt.grid(linestyle = ":")
 plt.tight_layout()
 plt.savefig('build/Kalibrierung_Koinzidenz_15')
@@ -276,7 +276,7 @@ plt.legend(handles, labels, handler_map={tuple: HandlerTuple(ndivide=None)}, loc
 
 plt.ylim(0,25)
 plt.ylabel(r"$\text{Zählung} \mathbin{/} \unit{\second}$")
-plt.xlabel(r"$\text{Verzögerungszeit} \, \text{in} \, \unit{\nano\second}$")
+plt.xlabel(r"$\text{Verzögerungszeit} \mathbin{/} \unit{\nano\second}$")
 plt.grid(linestyle = ":")
 plt.tight_layout()
 plt.savefig('build/Kalibrierung_Koinzidenz_20')
