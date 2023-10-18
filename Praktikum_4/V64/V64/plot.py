@@ -5,6 +5,7 @@ from uncertainties import ufloat
 from uncertainties import correlated_values
 import uncertainties.unumpy as unp
 
+
 from multiprocessing  import Process
 
 def berechne_Kontrast(Imax,Imin):
@@ -20,7 +21,7 @@ Messreihe_Druck[:,0] = Messreihe_Druck[:,0]/1000 #von mbar in bar
 
 Messreihe_Glas  = np.genfromtxt('Messdaten/Glas.txt', encoding='unicode-escape')
 Messreihe_Pol   = np.genfromtxt('Messdaten/Pol.txt', encoding='unicode-escape')
-
+Messreihe_Pol[:,0] = Messreihe_Pol[:,0]*(2*np.pi)/180
 
 Pol_max_mean = np.zeros_like(Messreihe_Pol[:,0])
 Pol_max_std = np.zeros_like(Messreihe_Pol[:,0])
@@ -41,15 +42,20 @@ Pol_min = unp.uarray(Pol_min_mean,Pol_min_std)
 Kontrast = berechne_Kontrast(Pol_max,Pol_min)
 
 
+popt, pcov = curve_fit(pol_fit, xdata=Messreihe_Pol[:,0],ydata=unp.nominal_values(Kontrast),sigma =unp.std_devs(Kontrast), absolute_sigma=True)
+para_pol = correlated_value(popt, pcov)
+s(popt,pcov)
 
 
 
-def plote_Kontrast(Winkel, Kontrast):
-    x = np.linspace(0,180,20000)
-    y = np.absolute(np.sin(x*(2*np.pi)/(180)))
+def plote_Kontrast(Winkel, Kontrast, para_pol):
+    x = np.linspace(0,2*np*pi,20000)
+    y = np.absolute(np.sin(x))
+
 
     plt.errorbar(Winkel,unp.nominal_values(Kontrast),yerr=unp.std_devs(Kontrast), fmt ='x', color='darkorange', label='Data')
     plt.plot(x, y, color='navy', label = 'Theorie')
+    plt.plot(x,pol_fit(x,*para),color='forestgreen',label='Fit')
     plt.xlabel(r"$ \theta \mathbin{/} \unit{\degree} $")
     plt.ylabel(r"$K$")
     plt.grid(linestyle = ":")
@@ -60,6 +66,6 @@ def plote_Kontrast(Winkel, Kontrast):
 
 
 
-p = Process(target=plote_Kontrast, args=(Messreihe_Pol[:,0],Kontrast))
+p = Process(target=plote_Kontrast, args=(Messreihe_Pol[:,0], Kontrast ,para_pol))
 p.start()
 p.join()
