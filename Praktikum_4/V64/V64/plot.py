@@ -69,3 +69,6 @@ def plote_Kontrast(Winkel, Kontrast, para_pol):
 p = Process(target=plote_Kontrast, args=(Messreihe_Pol[:,0], Kontrast ,para_pol))
 p.start()
 p.join()
+
+
+#asdf
