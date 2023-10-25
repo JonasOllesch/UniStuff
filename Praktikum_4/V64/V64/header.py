@@ -39,11 +39,9 @@ def numpy_array_to_latex_table(arr, header='Generischer Header', caption=None, l
     Returns:
         str: LaTeX code for the table.
     """
-    if arr.ndim != 2:
-        raise ValueError("Input array must be 2D.")
+    num_cols = len(arr)
+    num_rows = len(arr[0])
 
-    num_rows, num_cols = arr.shape
-    middle = num_rows // 2  # Calculate the middle row index
 
     table = "\\begin{table}\n"
     table += "\\centering\n"
@@ -60,9 +58,15 @@ def numpy_array_to_latex_table(arr, header='Generischer Header', caption=None, l
     table += header + '\\\\\n'
     table += "\\midrule \n"
     
-
+    #arr[col, row]
     for i in range(num_rows):
-        formatted_row = " & ".join(map(format_value, arr[i, :]))
+        formatted_row = ''
+        for j in range(num_cols):
+            formatted_row += f'{arr[j][i]} &'
+
+#       formatted_row = " & ".join(map(format_value, arr[i, :]))
+        
+        formatted_row = formatted_row[:-1]
         table += f"{formatted_row} \\\\\n"
         
     table = table.replace('+/-', r' \pm ')

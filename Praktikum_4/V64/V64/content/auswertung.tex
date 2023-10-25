@@ -2,6 +2,26 @@
 \label{sec:auswertung}
 
 
-The error propagation is performed using $uncertainties$ \cite{uncertainties}. The linear interpolation is performed using $scipy.curve\_fit$ \cite{scipy}.
-Figures are compiled using $matplotlib$\cite{matplotlib}. 
+The error propagation is performed using  \textsc{uncertainties} \cite{uncertainties}. The linear interpolation is performed using \textsc{scipy.curve\_fit} \cite{scipy}.
+Figures are compiled using \textsc{matplotlib} \cite{matplotlib}. 
 %\input{./build/my_table.tex}
+
+\subsection{Contrast}
+
+With the first measurement the contrast of the stepup get determent as described in \autoref{subsec:DurchführungKontras}.
+For this the contrast is calculated with \autoref{eq:contrast} for three different measurement series. 
+The resulting contrasts and the theoretical course are plotted in \autoref{fig:contrast}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{build/Kontrast.pdf}
+    \caption{Comparison between the measurement contrasts and the expected course.}
+    \label{fig:contrast}
+\end{figure}
+
+The maximum of the contrast is measured at $K¹_{\text{max}} = \SI{140}{\degree},K²_{\text{max}} = \SI{130}{\degree}$ and $K³_{\text{max}} = \SI{50}{\degree}$.
+
+\subsection{Refractive index of glass}
+
+
+\input{./build/glas.tex}
