@@ -19,9 +19,50 @@ The resulting contrasts and the theoretical course are plotted in \autoref{fig:c
     \label{fig:contrast}
 \end{figure}
 
-The maximum of the contrast is measured at $K¹_{\text{max}} = \SI{140}{\degree},K²_{\text{max}} = \SI{130}{\degree}$ and $K³_{\text{max}} = \SI{50}{\degree}$.
+The maximas of each series is measured at $K¹_{\text{max}} = \SI{140}{\degree},K²_{\text{max}} = \SI{130}{\degree}$ and $K³_{\text{max}} = \SI{50}{\degree}$.
+The highest average contrast is $\overline{K} =  \SI{0.910 \pm 0.014}{}$ at a angle of $\theta = \SI{130}{\degree}$.
 
-\subsection{Refractive index of glass}
+\subsection{Refractive Index of Glass}
 
-
+The setup is modified according to \autoref{subsec:DruchführungGlass}. 
+The refractive index of the inserted glass plate can be calculated from the examine angle and the zero passes at the diode according to \eqref{eq:refractiveindexglass}.
+Vacuum wavelength is given as $\lambda_\text{vac} = \SI{632.990}{\nano\meter}$ \cite{v64} and the thickness of the glass plate as $T = \SI{1}{\milli\meter}$.
+The measured zero passes and the calculated refractive index of the plate can be seen in \autoref{tab:glas}. The average value is $n = \SI{1.506 \pm 0.047}{}$.
 \input{./build/glas.tex}
+
+
+\subsection{Refractive Index of Air}
+
+For this setup is changed to match \autoref{subsec:DurchführungLuft}.
+To determent the refractive index of air at a temperature of $T = \SI{15}{\degree}$ and $p = \SI{1}{\bar}$ with the Lorentz-Lorenz relation, 
+the polarizability of the air is calculated first. 
+The refractive index is calculated via \eqref{eq:refractiveindexairExp}.
+The length of the pressure chamber $L = \SI{100 \pm 0.1}{\milli\meter}$.
+A plot between the calculated refractive index and the pressure and the linear approximation of the Lorentz-Lorenz relation can be seen in \autoref{fig:n_ns_p}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{build/Brechungsindex.pdf}
+    \caption{The refractive index is plotted against the pressure. In addition, the linear regression of the approximation of the Lorentz-Lorenz relation is shown.}
+    \label{fig:n_ns_p}
+\end{figure}
+
+The calculated polarizabilities and the resulting refractive indices are shown in \autoref{tab:Air}.
+
+\begin{table}
+    \centering
+    \caption{Polarizability and the refractive indices calculated with the Lorentz-Lorenz relation at $T = \SI{15}{\degree}$ and $p = \SI{1}{\bar}$ for four measurement series.}
+    \label{tab:Air}
+    \begin{tabular}{c c}
+        \toprule
+        Polarizability $ \mathbin{/} \unit{\frac{\ampere²\second⁴}{\kilo\gram}}$ & Refractive index \\
+        \midrule 
+        ${\left( 254.5   \pm  3.7 \right) \cdot 10^{-37}}$ & {$1.000367  \pm 0.000053$} \\
+        ${\left( 254.8   \pm  5.3 \right) \cdot 10^{-37}}$ & {$1.000367  \pm 0.000077$} \\
+        ${\left( 239.5   \pm  1.8 \right) \cdot 10^{-37}}$ & {$1.000344  \pm 0.000026$} \\
+        ${\left( 206.2   \pm  2.9 \right) \cdot 10^{-37}}$ & {$1.000296  \pm 0.000041$} \\        
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+Therefore the mean index is $\overline{n} = \SI{1.000343 \pm 0.000028}{}\,.$

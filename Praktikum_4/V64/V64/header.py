@@ -85,5 +85,8 @@ def numpy_array_to_latex_table(arr, header='Generischer Header', caption=None, l
 
 
 def uzeros(shape):
+    """
+    This function takes an tuple and returns an array with the shape of the given values
+    """
     arr = np.array([[ufloat(0.0, 0.0) for _ in range(shape[1])] for _ in range(shape[0])])
     return arr
