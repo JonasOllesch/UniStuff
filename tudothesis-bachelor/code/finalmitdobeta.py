@@ -1,3 +1,7 @@
+# This file pretty much does the same as richtigfinalplot.py, and additionally includes the possible exclusion region
+# from the dobeta-decay
+
+
 import numpy as np
 import matplotlib.pyplot as plt
 plt.rcParams['text.usetex'] = True
@@ -154,7 +158,7 @@ m1_col = np.logspace(start = -9, stop = np.log10(0.8), num = 1000)
 
 g1_cut = np.logspace(np.log10(g_tautau_g1_pha0_90(-g_upper, m1_lim, theta_sun, theta_13, delm_sunsqua, delm_atmsqua)), -3, 1000)
 
-# g_ee plots, d1=pi/2, d2=0 ist der gute Ast
+# g_ee plots, d1=pi/2, d2=0 ist der gute Ast (double beta decay)
 
 plt.plot(g_ee_g1_pha90_0(dobetag_ee_upper_left, m1, theta_sun, theta_13, delm_sunsqua, delm_atmsqua), m1,  color='blue', label = r'lower limit on $g_{ee}$ with $\delta_1=\frac{\pi}{2}, \delta_2=0$ from double beta decay')
 plt.plot(g_ee_g1_pha90_0(-dobetag_ee_upper_left, m1, theta_sun, theta_13, delm_sunsqua, delm_atmsqua), m1, color='blue')
@@ -162,11 +166,19 @@ plt.plot(g_ee_g1_pha90_0(dobetag_ee_upper_right, m1, theta_sun, theta_13, delm_s
 plt.plot(g_ee_g1_pha90_0(-dobetag_ee_upper_right, m1, theta_sun, theta_13, delm_sunsqua, delm_atmsqua), m1, color='green')
 
 
+# our exclusion region
+
 plt.plot(g_tautau_g1_pha0_90(-g_upper, m1, theta_sun, theta_13, delm_sunsqua, delm_atmsqua), m1, color='red',linestyle = 'dashdot', label = r'bounds on   $g_{\tau \tau}$ with $\delta_1=0, \delta_2 = \frac{\pi}{2}$')
+
+
+# colouring
 
 plt.fill_between(g1_col, np.full_like(g1_col, m1_lim), np.full_like(g1_col, 1), color='red', alpha=0.5, linewidth=0)
 plt.fill_between(g_tautau_g1_pha0_90(-g_upper, m1_col, theta_sun, theta_13, delm_sunsqua, delm_atmsqua), m1_col, np.full_like(m1_col, 10**(-7)), color='purple', alpha=0.5, linewidth=0)
 plt.fill_between(g1_cut, np.full_like(g1_cut, m1_lim), 0, color='purple', alpha=0.5, linewidth=0)
+
+
+# labels
 
 plt.xlabel(r'$g_1$')
 plt.xlim(10**(-16), 10**(-3))

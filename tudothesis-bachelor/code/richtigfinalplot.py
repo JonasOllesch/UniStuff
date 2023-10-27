@@ -150,7 +150,9 @@ g_upper = g_lim(100)
 g1_col = np.logspace(start = -16, stop = -3, num = 1000, base = 10.0)
 m1_col = np.logspace(start = -9, stop = np.log10(0.8), num = 1000)
 
-# g_ee plots, d1=pi/2, d2=0 ist der gute Ast
+# Plots for g_ij. Here, the most conservative branch is already chosen
+
+# g_ee plots
 
 plt.plot(g_ee_g1_pha90_0(g_upper, m1, theta_sun, theta_13, delm_sunsqua, delm_atmsqua), m1,  color='blue', label = r'bounds on $g_{ee}$ with $\delta_1=\frac{\pi}{2}, \delta_2=0$')
 plt.plot(g_ee_g1_pha90_0(-g_upper, m1, theta_sun, theta_13, delm_sunsqua, delm_atmsqua), m1, color='blue')
@@ -167,6 +169,8 @@ plt.plot(g_mumu_g1_pha90(-g_upper, m1, theta_13, delm_sunsqua), m1, color='purpl
 
 plt.plot(g_tautau_g1_pha0_90(-g_upper, m1, theta_sun, theta_13, delm_sunsqua, delm_atmsqua), m1, color='red',linestyle = 'dashdot', label = r'bounds on   $g_{\tau \tau}$ with $\delta_1=0, \delta_2 = \frac{\pi}{2}$')
 
+# the plots for g_etau and g_mutau are excluded here since they do not further restrict the exclusion region
+
 #### g_etau
 
 ###plt.plot(g_etau_g1_pha90_0(g_upper, m1, theta_sun, theta_13, delm_sunsqua, delm_atmsqua), m1, color='black', linestyle='dashdot', label = r'bounds on $g_{e \tau}$ with $\delta_1=\frac{\pi}{2}, \delta_2=0$')
@@ -176,7 +180,11 @@ plt.plot(g_tautau_g1_pha0_90(-g_upper, m1, theta_sun, theta_13, delm_sunsqua, de
 
 ###plt.plot(m1_col, g_mutau_g1_pha90(-g_upper, m1_col, theta_sun, theta_13, delm_sunsqua), m1, color='orange', linestyle = 'dashdot', label = r'bounds on $g_{\mu \tau}$ with $\delta_1=\frac{\pi}{2}$')
 
+# limit on m1 as constant function
+
 plt.fill_between(g1_col, np.full_like(g1_col, m1_lim), np.full_like(g1_col, 1), color='red', alpha=0.5, linewidth=0)
+
+# labels
 
 plt.xlabel(r'$g_1$')
 plt.xlim(10**(-13), 10**(-4))
@@ -193,6 +201,7 @@ plt.savefig('build/g_ijfinal.pdf')
 plt.clf()
 
 
+# colouring
 
 # g_tautau
 
@@ -203,6 +212,8 @@ plt.plot(g_tautau_g1_pha0_90(-g_upper, m1, theta_sun, theta_13, delm_sunsqua, de
 plt.fill_between(g1_col, np.full_like(g1_col, m1_lim), np.full_like(g1_col, 1), color='red', alpha=0.5, linewidth=0)
 plt.fill_between(g_tautau_g1_pha0_90(-g_upper, m1_col, theta_sun, theta_13, delm_sunsqua, delm_atmsqua), m1_col, np.full_like(m1_col, 10**(-7)), color='purple', alpha=0.5, linewidth=0)
 plt.fill_between(g1_cut, np.full_like(g1_cut, m1_lim), 0, color='purple', alpha=0.5, linewidth=0)
+
+# again just labels
 
 plt.xlabel(r'$g_1$')
 plt.xlim(10**(-16), 10**(-4))
@@ -218,6 +229,7 @@ plt.legend()
 plt.savefig('build/exclusionregionfinal.pdf')
 plt.clf()
 
+# additional code plotting the other g_ij individually (like in g_eefinal.py, if needed)
 
 ## g_emu plots, pos d=0 ist der gute
 #
