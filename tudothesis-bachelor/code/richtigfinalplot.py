@@ -139,7 +139,7 @@ theta_13  = np.arcsin(np.sqrt(2.2*10**(-2)))
 
 print('Chooz-Winkel Theta_13: ', theta_13)
 
-m1 = np.logspace(start = -9, stop = np.log10(0.8), num = 2 * 10**6, base = 10.0)      
+m1 = np.logspace(start = -9, stop = np.log10(0.8), num = 5 * 10**6, base = 10.0)      
 
 # upper limit on m1
 

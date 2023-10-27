@@ -1,0 +1,51 @@
+\section{Execution}
+\label{sec:execution}
+
+\subsection{Alignment}
+\label{subsec:alignment}
+
+Before starting the measurements, the Sagnac Interferometer first has to be thoroughly aligned.
+The mirrors and other elements of the aperture are named as seen in \autoref{fig:sagnac}.
+First, mirror $M_2$ is adjusted so that the beam coming from $M_1$ hits it right in the middle.
+Adjustment plates are used to ensure the beam passes through the center of both mirror $M_a$ as well as $M_b$, using the two screws on $M_2$ to correct misalignment.
+Then, using the same adjustment plates, the split beams are centered on $M_b$.
+If the beams pass right through the center of the adjustment plates on their way away from $M_b$ as well, they should now overlap on the screen behind the interferometer.
+Fine adjustments on $M_b$ are necessary to overlap the two beams. \\
+For further alignment, as the two overlapping beams are polarised perpendicular to each other, a polarisation filter that is rotated by $45°$ is needed.
+As soon as it is installed, an interference pattern can be observed on the screen, as seen in \autoref{fig:fringes}.
+This interference pattern should be without any fringes, requiring further alignment until both beams are perfectly parallel to each other.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics{figures/V64_komisch.pdf}
+    \caption{Resulting interference pattern on the screen behind the interferometer, including fringes caused by slight misalignment of the beams \cite{v64}.}
+    \label{fig:fringes}
+\end{figure}
+
+
+\subsection{Measurement}
+\label{subsec:measurement}
+
+\subsubsection{Contrast}
+\label{subsec:DurchführungKontras}
+Using $M_2$, one of the beams is offset horizontally, creating two beams that still converge into one outside the interferometer.
+A glass holder is introduced between the PBSC and mirror $M_4$ and the screen is removed so that the beam passes into the photo diodes placed behind.
+By rotating the screw on the glass holder, it is possible to vary the measured voltage on the oscilloscope and voltmeter.
+Now, for different polarisations between $0°$ and $180°$, adjusted via the polarisation filter in front of the PBSC, the interference minimum and maximum is measured,
+taking three measurements for each maximum and minimum. \\
+
+\subsubsection{Refractive index of glass}
+\label{subsec:DruchführungGlass}
+Now, the number of interference maxima is to be measured.
+For that, the glass holder with a thickness of $T = \SI{1}{\milli\meter}$ is rotated for angles between $-8°$ and $2°$.
+The number of maxima is displayed on a controller below the oscilloscope.
+This measurement is repeated ten times, paying close attention to a constant appropriate rotation speed, as even small variations can cause oscillations that impact the measurement quality. \\
+
+\subsubsection{Refractive index of air}
+\label{subsec:DurchführungLuft}
+Finally, the gas cell with a length of $\SI{100.0 \pm 0.1}{\milli\meter}$ is installed in one of the two beams.
+It is evacuated using the vacuum pump until it reaches a pressure of around $\SI{5}{\milli\bar}$.
+Then, air is slowly added back in.
+The number of interference maxima, as seen on the oscilloscope is then documented as a function of pressure in steps of $\SI{50}{\milli\bar}$.
+This measurement is repeated three times.
+

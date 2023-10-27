@@ -1,4 +1,4 @@
-all: build/example.pdf
+all: build/bavortrag.pdf
 
 texoptions = \
 	     --lualatex \
@@ -6,11 +6,11 @@ texoptions = \
 	     --halt-on-error \
 	     --output-directory=build
 
-build/example.pdf: FORCE | build
-	latexmk $(texoptions) example.tex
+build/bavortrag.pdf: FORCE | build
+	latexmk $(texoptions) bavortrag.tex
 
 preview: FORCE | build
-	latexmk $(texoptions) -pvc example.tex
+	latexmk $(texoptions) -pvc bavortrag.tex
 
 FORCE:
 
