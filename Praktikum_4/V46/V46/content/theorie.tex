@@ -1,2 +1,52 @@
-\section{Theory}
+\section{Theorie}
 \label{sec:theorie}
+
+Bevor wir mit der Erläuterung des Faraday-Effekts beginnen, wiederholen wir zunächst einige Grundlagen der Festkörperphysik.
+
+\subsection{Bandstruktur kristalliner Festkörper}
+
+In kristallinen Festkörpern liegen die Gitteratome in einem periodischen Gitter.
+Die dazugehörigen Elektronen sind dabei in der Lage, sich mehr oder weniger frei durch das Gitter zu bewegen.
+Jedes Elektron jedes einzelnes Atoms besetzt dabei sein eigenes diskretes Energieniveau, sodass sich insgesamt eine überlappende Struktur
+aus Energieniveaus bildet, die ein Band genannt wird.
+So gibt es unterschiedliche Bänder, die meist nicht überlappen, sondern durch eine diskrete Bandlücke getrennt sind.
+Hier sind insbesondere das Valenz- und das Leitungsband relevant.
+Als Valenzband wird dabei das höchste auch bei $T=\SI{0}{\kelvin}$ besetzte Band bezeichnet; Leitungsband heißt dagegen das Band,
+das bei Besetzung für die elektrische Leitfähigkeit des Festkörpers sorgt. \\
+
+Je nachdem, wie groß die Bandlücke zwischen Valenz- und Leitungsband sind, lassen sich Festkörper in drei verschiedene Klassen einteilen.
+Ist die Bandlücke so groß, dass sie auch bei thermischer Anregung nur schwer überwunden werden kann, sprich der Festkörper auch bei großen
+Temperaturen nicht leitfähig wird, wird von einem Isolator gesprochen.
+Die typische Bandlücke von Isolatoren liegt typischerweise im Bereich oberhalb von $\SI{3}{\eV}$.
+Bei einer Bandlücke zwischen $\SI{1}{\eV}$ und $\SI{3}{\eV}$ wird der Festkörper als Halbleiter bezeichnet.
+Hier ist es möglich, durch vergleichsweise geringe thermische Anregung eine deutliche Steigerung der Leitfähigkeit möglich.
+Metalle dagegen besitzen keinerlei Bandlücke; das Valenzband und das Leitungsband überlappen sich zumindest teilweise, sodass auch ohne
+thermische Anregung Strom fließt. \\
+
+Hier interessieren uns insbesondere Halbleiter, insbesondere dotierte Halbleiter.
+Der Prozess der Dotierung, also der Einführung von Fremdatomen in ein Material, wird bei Halbleitern genutzt, um die Eigenschaften der
+elektrischen Leitfähigkeit zu verändern.
+Dabei unterscheiden wir p- und n-Dotierung.
+Die p-Dotierung beschreibt dabei die Einführung sogenannter Akzeptoren, also Fremdatomen,
+die weniger Elektronen als das ersetzte Ursprungsatom besitzt und so zu einem Loch innerhalb des Valenzbandes.
+
+Bei der n-Dotierung werden dagegen Donatoren, also Atome mit Überschusselektronen in den Halbleiter eingeführt.
+Die Fremdatome bei der  n-Dotierung sind dabei so gewählt, dass ihr Energieniveau knapp unter dem des Leitungsbands,
+aber deutlich über dem des Valenzbandes liegt.
+So erhöht die n-Dotierung die elektrische Leitfähigkeit des Festkörpers.
+
+
+\subsection{Effektive Masse}
+
+Das Konzept der effektiven Masse, hier von den Elektronen im Festkörper, beschreibt die Ersetzung der Masse $m$ durch eine veränderte Masse
+
+\begin{equation}
+    m^*_i = \frac{\hbar^2}{\left[\frac{\partial^2 E}{\partial k^2_i} \right]_{k_i=0}} \,,
+    \label{eq:effektivemasse}
+\end{equation}
+wobei $i = x,y,z$ mit den Komponenten $k_i$ des Wellenvektors der Elektronen.
+Diese effektive Masse $m^*$ folgt aus einer Taylorentwicklung der Energie $E(\vec{k})$ bis zur zweiten Ordnung um $k=0$ und berücksichtigt das Gitterpotential,
+die bei der quasifreien Bewegung der Elektronen durch das Gitter mit ihnen wechselwirken.
+Da bei den hier verwendeten GaAs-Proben eine hinreichend hohe Gittersymmetrie gegeben ist, ist die effektive Masse nicht richtungsabhängig.
+
+
