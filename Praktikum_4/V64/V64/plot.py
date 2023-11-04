@@ -17,7 +17,7 @@ def berechne_Brechungsindex_Glas(Maxima):
     #return  ((1 - (632.816*10**-9)*Maxima)/(2*(1*10**3)*(10*np.pi/180)**2))**(-1)
 
 def berechne_Kontrast(Imax,Imin):
-    return (Imax-Imin)/(Imax+Imin)
+    return np.abs((Imax-Imin)/(Imax+Imin))
     
 
 def pol_fit(x,a,b,c,d):
