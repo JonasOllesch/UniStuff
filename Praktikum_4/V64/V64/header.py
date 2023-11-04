@@ -3,12 +3,16 @@ import numpy as np
 from uncertainties import ufloat
 import uncertainties.unumpy as unp
 
-def format_value(value):
-    if hasattr(value, 's'):
-        return f"${value:.1u}$"
-    return str(value)
+def format_value(value, col, format):
+    if format == "": 
+        return str(value)
+    if format[col] == 'int':
+        return str(int(value))
+    if format[col] == 'float':
+        return f"${value:.2f}$"
+    return str("NaN")
 
-def save_latex_table_to_file(arr, header, caption=None, label=None):
+def save_latex_table_to_file(arr, header, caption=None, label=None, format=""):
     """
     Save a 2D NumPy array as a LaTeX table to a .tex file with the specified label.
 
@@ -21,12 +25,12 @@ def save_latex_table_to_file(arr, header, caption=None, label=None):
     if not label:
         raise ValueError("Label must be provided for file naming.")
 
-    table = numpy_array_to_latex_table(arr, header, caption, label)
+    table = numpy_array_to_latex_table(arr, header, caption, label, format)
 
     with open(f"./build/{label}.tex", "w") as file:
         file.write(table)
 
-def numpy_array_to_latex_table(arr, header='Generischer Header', caption=None, label=None):
+def numpy_array_to_latex_table(arr, header='Generischer Header', caption=None, label=None, format=""):
     """
     Convert a 2D NumPy array into LaTeX table code.
 
@@ -62,7 +66,11 @@ def numpy_array_to_latex_table(arr, header='Generischer Header', caption=None, l
     for i in range(num_rows):
         formatted_row = ''
         for j in range(num_cols):
-            formatted_row += f'{arr[j][i]} &'
+            print(f'arr[j][i]: {arr[j][i]}')
+
+            value = format_value(arr[j][i], j, format)
+            print(f'value: {value}')
+            formatted_row += f'{value} &'
 
 #       formatted_row = " & ".join(map(format_value, arr[i, :]))
         

@@ -176,11 +176,26 @@ p1.join()
 #print(type(Brechungsindex_Glas_arr[0]))
 #list = [Messreihe_Glas[:,1],np.round(Brechungsindex_Glas_arr, decimals = 2)]
 
-Brechungsindex_Glas_arr = ["{:.2f}".format(x) for x in Brechungsindex_Glas_arr]
+
+#Brechungsindex_Glas_arr = ["{:.2f}".format(x) for x in Brechungsindex_Glas_arr]
 list = [Messreihe_Glas[:,1].astype(int),Brechungsindex_Glas_arr]
-h.save_latex_table_to_file(list, header="Zero passes & Refractive index ", caption="The zero passes and the calculated refractive index of glass", label="glas")
+format = ['int', 'float']
+h.save_latex_table_to_file(list, header="Zero passes & Refractive index ", caption="The zero passes and the calculated refractive index of glass", label="glas", format = format)
 #h.save_latex_table_to_file(np.array(Messreihe_Pol[:,1],Brechungsindex_Glas_arr), header="Zero passes & Refractive index", caption="The zero passes and the calculated refractive index of glass", label="tab:glas")
 
+
+
+Messreihe_Pol_list = np.genfromtxt('Messdaten/Pol.txt', encoding='unicode-escape')
+list2 = [Messreihe_Pol_list[:,0],Messreihe_Pol_list[:,1],Messreihe_Pol_list[:,2],Messreihe_Pol_list[:,3],Messreihe_Pol_list[:,4],Messreihe_Pol_list[:,5],Messreihe_Pol_list[:,6], Kontraste[:,0], Kontraste[:,1], Kontraste[:,2]]
+
+caption = "Measured voltages of two diodes and the resulting contrast. The voltage ist measured with a amplification of $10⁵$ "
+label = 'contrast'
+
+
+header = 'Winkel $\\mathbin{/} \\unit{\\degree}$ & $U_{\\text{max}}^{1}$ & $U_{\\text{max}}^{2}$ & $U_{\\text{max}}^{3}$ & $U_{\\text{min}}^{1}$ & $U_{\\text{min}}^{2}$ & $U_{\\text{min}}^{3}$ & $K^1$ & $K^2$ & $K^3$'
+
+format = ['int', 'float', "float", 'float', "float", 'float', "float" , 'float', "float", 'float']
+h.save_latex_table_to_file(list2,header= header, caption = caption, label = label, format = format)
 quartz = 1.457
 lime = 1.522
 Air = 1.00027654
