@@ -26,12 +26,11 @@ N = N*10**3
 
 plt.scatter(Magnetfeld[:,0]*1000, Magnetfeld[:,1]*1000,label = 'Flussdichte',  c='navy', marker = 'x', s = 20)
 plt.hlines(405,xmin=85, xmax=112, colors='navy', linestyles='dotted')
-plt.legend(loc='upper left')
 plt.xlim(85,112)
 plt.xlabel(r"$ z \mathbin{/} \unit{\milli\meter} $")
 plt.ylabel(r"$B \mathbin{/} \unit{\milli\tesla}$")
 plt.grid(linestyle = ":")
 plt.tight_layout()
-plt.legend()
+plt.legend(loc='upper left')
 plt.savefig('build/BFeld.pdf')
 plt.clf()
