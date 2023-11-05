@@ -50,3 +50,48 @@ die bei der quasifreien Bewegung der Elektronen durch das Gitter mit ihnen wechs
 Da bei den hier verwendeten GaAs-Proben eine hinreichend hohe Gittersymmetrie gegeben ist, ist die effektive Masse nicht richtungsabhängig.
 
 
+\section{Der Faraday-Effekt}
+
+Der Faraday-Effekt, auch zirkulare Doppelbrechung genannt, beschreibt, wie in \autoref{fig:doppelbrechung} schematisch dargestellt,
+die Drehung der Polarisationsebene linear polarisierten Lichts beim Einfall in ein Kristallmedium.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=.6\textwidth]{figures/doppelbrechung.pdf}
+    \caption{Schematische Darstellung der Drehung der Polarisationsebene einfallenden linear polarisierten Lichts in einem kristallinen Medium um den Winkel $\theta$ \cite{doppbre}.}
+    \label{fig:doppelbrechung}
+\end{figure}
+
+Um den Effekt anschaulich zu erklären, sei angenommen, dass linear polarisiertes Licht aus einer Überlagerung zweier zirkular polarisierten
+entgegengesetzter Umlaufrichtungen besteht.
+
+Ist in dem betrachteten Medium die Phasengeschwindigkeit links und rechts polarisierter Wellen unterschiedlich, verschiebt sich das Gleichgewicht zwischen
+den beiden zirkular polarisierten Wellen, sodass effektiv eine Drehung der Polarisationsebene zu beobachten ist.
+Ein solches Medium wird auch als aktives Medium bezeichnet. \\
+
+Die Diskrepanz in den Phasengeschwindigkeiten zwischen Licht unterschiedlicher Polarisationsrichtungen lässt sich auf im Medium induzierte Dipole zurückführen.
+Konkret entstehen diese induzierten Dipole durch elektrische Dipolmomente der Gitteratome und durch die Wechselwirkung der Bandelektronen mit den Atomrümpfen.
+
+Insgesamt entsteht so eine makroskopische Polarisation
+\begin{equation}
+    \vec{P} = \varepsilon_0 \chi \vec{E}
+    \label{eq:polarisation} 
+\end{equation}
+mit der Influenzkonstante $\varepsilon$ für hinreichend geringe E-Felder $\vec{E}$.
+Die dielektrische Suszeptibilität $\chi$ ist in doppelbrechenden Medien ein Tensor mit nicht-diagonalen komplex-konjugierten Koeffizienten der Form
+\begin{equation*}
+    \chi = \left( \begin{matrix}
+        \chi_{xx}     & i\chi_{xy}    & 0 \\
+        - i \chi_{xy} & \chi_{yy}     & 0 \\
+        0             & 0             & \chi_{zz}
+    \end{matrix}\right) \,,
+\end{equation*}
+sodass sich mit dem Rotationswinkel 
+\begin{align*}
+    \theta &= \frac{L}{2} (k_R - k_L) \\
+           &= \frac{L \omega}{2} \left(\frac{1}{v_{\text{ph},R}} - \frac{1}{v_{\text{ph},L}}\right) \\
+           &= \frac{L \omega}{2 c} (n_R - n_L)
+\end{align*}
+
+
+
