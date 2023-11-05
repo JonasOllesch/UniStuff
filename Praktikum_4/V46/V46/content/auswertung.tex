@@ -1,9 +1,34 @@
 \section{Auswertung}
 \label{sec:auswertung}
 
+Die Fehlerfortpflanzung wird mithilfe des Paketes \textsc{uncertainties} \cite{uncertainties} durchgeführt.
+Für die lineare Regression wird \textsc{scipy.curve\_fit} \cite{scipy} verwendet.
+Grafiken werden mit \textsc{matplotlib} \cite{matplotlib} erstellt,.
+
+\subsection{Stärke des Magnetfeldes}
+
+Zunächst wird die Stärke des Magnetfeldes untersucht, welches durch den verwendeten Elektromagneten erzeugt wird.
+Diese Messung wurde zwar zuletzt durchgeführt, jedoch ist maximale magnetische Flussdichte für die weitere Auswertung entscheidend.
+Die gemessenen Flussdichten sind in \autoref{fig:BFeld}.
+Der maximale Werte beläuft sich auf $B_{max} = \SI{405}{\milli\tesla}$. 
+Vor dieser Messung wurde am Gleichstromnetzteil eine Stromstärke $\SI{10}{\ampere}$ eingestellt, jedoch fiel die Stromstärke für diese Messung auf $\SI{9.8}{\ampere}$
+und der vorherige Wert konnte nicht erneut erreicht werden.
+Aus diesem Grund wird die Stärke des Magnetfeldes im folgenden um einem Faktor von $1.02$ korrigiert.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics{build/BFeld.pdf}
+    \caption{Gemessene Stärke des verwendeten Magnetfeldes in Abhängigkeit der Sondenposition.}
+    \label{fig:BFeld}
+\end{figure}
+
+\subsection{Faraday-Effekt}
+
+Die entscheidenen Eigenschaften der untersuchten Proben sind in \autoref{tab:Probeneigenschaften} dargestellt.
+
 \begin{table}[H]
     \centering
-    \caption{Dicke und Dotierungsstärke der verwendeten Probe.}
+    \caption{Dicke und Dotierungsstärke der verwendeten Proben.}
     \label{tab:Probeneigenschaften}
     \begin{tabular}{c c c c}
     \toprule
@@ -15,25 +40,60 @@
     \end{tabular}
 \end{table}
 
+Die gemessenen Rotationswinkel für alle drei Proben sind in \autoref{tab:Winkeldaten} dargestellt.
+Zunächst wird der normierte Drehwinkel nach  $\theta_{\text{frei}} = \frac{1}{2 L}\left(\theta_1 - \theta_2\right)$ 
+und gegen das Quadrat der untersuchte Wellenlänge aufgetragen.
+Dieser Grafik ist in \autoref{fig:Winkel_nom} dargestellt. 
+Die lineare hat die Form
+
+\begin{equation*}
+    \theta_{frei} = \alpha \cdot \lambda^2 \cdot \frac{N B}{n} + \beta \cdot \frac{N B}{n}\, .
+\end{equation*}
+
+Die freien Parametern werden zu 
+\begin{align*}
+    \alpha_1 = \SI{8.31 \pm 0.48}\cdot 10^{-13} \unit{\frac{1}{\meter²\tesla}} & \beta_1 = \SI{216.1 \pm 2.1}\cdot 10^{-24} \unit{\frac{1}{\tesla}} \, \text{und}\\ 
+    \alpha_2 = \SI{-34.9 \pm 1.1}\cdot 10^{-12} \unit{\frac{1}{\meter²\tesla}} & \beta_2 = \SI{166.6  \pm 4.9}\cdot 10^{-24} \unit{\frac{1}{\tesla}} \.  \\
+\end{align*}
+
+Diese Gleichung wird nun mit \eqref{eq:theta_frei} verglichen.
+Aus dem Parameter $\alpha$ kann nun die effektiv Masse freier Ladungsträger nach der Gleichung
+\begin{equation*}
+    \sqrt{\frac{8 \pi² \epsilon_0 c³}{e³}} = m^*
+\end{equation*} 
+berechnet werden.
+
+Die berechnete Masse beläuft sich somit auf 
+\begin{equation*}
+    m^*_1 = \SI{2.873 \pm 0.084}{\kilo\gram} \cdot 10^{-31} \, \text{und} \\
+    m^*_2 = \SI{1.403 \pm 0.023}{\kilo\gram} \cdot 10^{-31} \,.   \\
+\end{equation*}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics{build/winkelnom.pdf}
+    \caption{Normierter Rotationswinkel gegen das Quadrat zusammen mit einer linearen Regression der untersuchten Wellen..}
+    \label{fig:Winkel_nom}
+\end{figure}
 
 
 \begin{table}[H]
     \centering
-    \caption{Messwerte für die gemessenen Rotationwinkel für bei Polrichtungen des Magnetfeldes für drei verschiedene Proben Galliumarsenid.}
+    \caption{Messwerte für die gemessenen Rotationswinkel für beide Polrichtungen des Magnetfeldes für drei verschiedene Proben Galliumarsenid.}
     \label{tab:Winkeldaten}
-    \begin{tabular}{S[table-format=1.3] c c c c c c}
+    \begin{tabular}{S[table-format=1.3] | c c |c c | c c}
     \toprule
       {$\lambda \mathbin{/} \unit{\micro\meter}$ } & {$\theta^1_1$} & {$\theta^1_2$} & {$\theta^2_1$} & {$\theta^2_2$} & {$\theta^3_1$} & {$\theta^3_2$} \\
     \midrule
-    {$1.06$}    & $\ang{61;00}$&   $\ang{82;54}$&   $\ang{78;32}$&   $\ang{83;45}$&   $\ang{69;30}$&  $\ang{32;59}$ \\
-    {$1.24$}    & $\ang{86;45}$&   $\ang{84;52}$&   $\ang{19;06}$&   $\ang{62;38}$&   $\ang{69;06}$&  $\ang{29;54}$ \\
-    {$1.45$}    & $\ang{71;20}$&   $\ang{85;03}$&   $\ang{77;09}$&   $\ang{40;05}$&   $\ang{44;55}$&  $\ang{23;52}$ \\
-    {$1.72$}    & $\ang{70;30}$&   $\ang{83;16}$&   $\ang{60;30}$&   $\ang{80;06}$&   $\ang{27;28}$&  $\ang{31;36}$ \\
-    {$1.96$}    & $\ang{67;28}$&   $\ang{81;50}$&   $\ang{69;40}$&   $\ang{39;11}$&   $\ang{29;11}$&  $\ang{29;08}$ \\
-    {$2.156$}   & $\ang{64;45}$&   $\ang{79;00}$&   $\ang{72;13}$&   $\ang{58;08}$&   $\ang{19;21}$&  $\ang{22;50}$ \\
-    {$2.34$}    & $\ang{44;10}$&   $\ang{53;38}$&   $\ang{16;40}$&   $\ang{20;46}$&   $\ang{20;55}$&  $\ang{24;11}$ \\
-    {$2.510$}   & $\ang{20;00}$&   $\ang{35;15}$&   $\ang{16;40}$&   $\ang{25;15}$&   $\ang{19;36}$&  $\ang{21;53}$ \\
-    {$2.65$}    & $\ang{61;20}$&   $\ang{76;01}$&   $\ang{57;44}$&   $\ang{64;45}$&   $\ang{11;30}$&  $\ang{35;03}$ \\
+    {$1.06$}    & {$61°00'$}&   {$82°54'$}&   {$78°32'$}&   {$83°45'$}&   {$69°30'$}&  {$32°59'$} \\
+    {$1.24$}    & {$86°45'$}&   {$84°52'$}&   {$19°06'$}&   {$62°38'$}&   {$69°06'$}&  {$29°54'$} \\
+    {$1.45$}    & {$71°20'$}&   {$85°03'$}&   {$77°09'$}&   {$40°05'$}&   {$44°55'$}&  {$23°52'$} \\
+    {$1.72$}    & {$70°30'$}&   {$83°16'$}&   {$60°30'$}&   {$80°06'$}&   {$27°28'$}&  {$31°36'$} \\
+    {$1.96$}    & {$67°28'$}&   {$81°50'$}&   {$69°40'$}&   {$39°11'$}&   {$29°11'$}&  {$29°08'$} \\
+    {$2.156$}   & {$64°45'$}&   {$79°00'$}&   {$72°13'$}&   {$58°08'$}&   {$19°21'$}&  {$22°50'$} \\
+    {$2.34$}    & {$44°10'$}&   {$53°38'$}&   {$16°40'$}&   {$20°46'$}&   {$20°55'$}&  {$24°11'$} \\
+    {$2.510$}   & {$20°00'$}&   {$35°15'$}&   {$16°40'$}&   {$25°15'$}&   {$19°36'$}&  {$21°53'$} \\
+    {$2.65$}    & {$61°20'$}&   {$76°01'$}&   {$57°44'$}&   {$64°45'$}&   {$11°30'$}&  {$35°03'$} \\
     \bottomrule
     \end{tabular}
 \end{table}
