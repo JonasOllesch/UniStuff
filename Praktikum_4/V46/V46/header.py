@@ -8,7 +8,7 @@ def format_value(value):
         return f"${value:.1u}$"
     return str(value)
 
-def save_latex_table_to_file(arr, header, caption=None, label=None):
+def save_latex_table_to_file(arr, header, caption=None, label=None, columnstyle = "0"):
     """
     Save a 2D NumPy array as a LaTeX table to a .tex file with the specified label.
 
@@ -21,12 +21,12 @@ def save_latex_table_to_file(arr, header, caption=None, label=None):
     if not label:
         raise ValueError("Label must be provided for file naming.")
 
-    table = numpy_array_to_latex_table(arr, header, caption, label)
+    table = numpy_array_to_latex_table(arr, header, caption, label, columnstyle)
 
     with open(f"./build/{label}.tex", "w") as file:
         file.write(table)
 
-def numpy_array_to_latex_table(arr, header='Generischer Header', caption=None, label=None):
+def numpy_array_to_latex_table(arr, header='Generischer Header', caption=None, label=None, columnstyle="0"):
     """
     Convert a 2D NumPy array into LaTeX table code.
 
@@ -53,7 +53,12 @@ def numpy_array_to_latex_table(arr, header='Generischer Header', caption=None, l
         label = 'tab:'+label 
         table += f"\\label{{{label}}}\n"
 
-    table += "\\begin{tabular}{" + "c " * num_cols + "}\n"
+    if columnstyle == '0':
+        table += "\\begin{tabular}{" + "c " * num_cols + "}\n"
+    else:
+        table += "\\begin{tabular}"
+        table += columnstyle+"\n"
+
     table += "\\toprule\n"
     table += header + '\\\\\n'
     table += "\\midrule \n"
