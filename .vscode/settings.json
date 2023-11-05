@@ -23,6 +23,7 @@
         "Fermische",
         "geplottet",
         "geplotteten",
+        "Glan",
         "hadronischen",
         "halbzahligem",
         "heruntergeregelt",
@@ -33,8 +34,10 @@
         "Kathodentemperatur",
         "Kondensatorplatten",
         "Kondensatorspannungen",
+        "Kondensorlinse",
         "Konstantspannungsgerät",
         "korr",
+        "Lichtzerhacker",
         "Luminosität",
         "Majoronen",
         "Maximadifferenzen",
@@ -64,6 +67,8 @@
         "Relaxationszeit",
         "Sagnac",
         "Schwankungsfreudigkeit",
+        "Selektivverstärker",
+        "Selektivverstärkers",
         "Sinkmethode",
         "Spektrallampe",
         "Stokes'sche",
@@ -73,6 +78,8 @@
         "Theoriewerten",
         "Theoriewerts",
         "Tröpfchenradius",
-        "Untersetzungsfaktor"
+        "Untersetzungsfaktor",
+        "Verschiebungspolarisation",
+        "Zerhacker"
     ]
 }
