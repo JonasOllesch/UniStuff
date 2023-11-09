@@ -76,21 +76,33 @@ diffWinkel_nom[:,0] = 1/(2*d[0]) *(Winkel1[:,1] -Winkel1[:,0])
 diffWinkel_nom[:,1] = 1/(2*d[1]) *(Winkel2[:,1] -Winkel2[:,0])
 diffWinkel_nom[:,2] = 1/(2*d[2]) *(Winkel3[:,1] -Winkel3[:,0])
 
-
 popt1, pcov1 = curve_fit(linReg1, Wellenlänge, diffWinkel_nom[:,0], absolute_sigma=True)
 print(popt1)
 print(pcov1)
 para1 = correlated_values(popt1, pcov1)
 
+
 popt2, pcov2 = curve_fit(linReg2, Wellenlänge, diffWinkel_nom[:,1], absolute_sigma=True)
 para2 = correlated_values(popt2, pcov2)
 
 
-print(para1)
-print(para2)
+print(f'Parameter aus dem 1. Fit {para1}')
+print(f'Parameter aus dem 2. Fit {para2}')
 
-print(repr(berechneEffektiveMasse(para1[0])))
-print(repr(berechneEffektiveMasse(para2[0])))
+
+m_eff1 = berechneEffektiveMasse(para1[0])
+m_eff2 = berechneEffektiveMasse(para2[0])
+print(f' 1. Die effektiven Massen der Elektronen {repr(berechneEffektiveMasse(para1[0]))}')
+print(f' 2. Die effektiven Massen der Elektronen {repr(berechneEffektiveMasse(para2[0]))}')
+
+print(repr(m_eff1))
+print(repr(m_eff2))
+me = constants.m_e
+print(f'1.m_eff/me {repr(m_eff1/me)}')
+print(f'2.m_eff/me {repr(m_eff2/me)}')
+
+print(f'relative Abweichungen in Prozent {repr((m_eff1/me-0.063)/0.063*100)}')
+print(f'relative Abweichungen in Prozent {repr((m_eff2/me-0.063)/0.063*100)}')
 
 plt.scatter(Magnetfeld[:,0]*1000, Magnetfeld[:,1]*1000,label = 'Flussdichte',  c='navy', marker = 'x', s = 20)
 plt.hlines(405,xmin=85, xmax=112, colors='navy', linestyles='dotted')
