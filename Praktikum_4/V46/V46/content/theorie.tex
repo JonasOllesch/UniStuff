@@ -7,31 +7,31 @@ Bevor wir mit der Erläuterung des Faraday-Effekts beginnen, wiederholen wir zun
 
 In kristallinen Festkörpern liegen die Gitteratome in einem periodischen Gitter.
 Die dazugehörigen Elektronen sind dabei in der Lage, sich mehr oder weniger frei durch das Gitter zu bewegen.
-Jedes Elektron jedes einzelnes Atoms besetzt dabei sein eigenes diskretes Energieniveau, sodass sich insgesamt eine überlappende Struktur
-aus Energieniveaus bildet, die ein Band genannt wird.
-So gibt es unterschiedliche Bänder, die meist nicht überlappen, sondern durch eine diskrete Bandlücke getrennt sind.
+Jedes Elektron jedes einzelnen Atoms besetzt dabei ein diskretes Energieniveau, sodass sich insgesamt eine überlappende Struktur
+aus Energieniveaus bildet, die Band genannt werden.
+So gibt es unterschiedliche Bänder, die sich meist nicht überlappen, sondern durch eine diskrete Bandlücke getrennt sind.
 Hier sind insbesondere das Valenz- und das Leitungsband relevant.
 Als Valenzband wird dabei das höchste auch bei $T=\SI{0}{\kelvin}$ besetzte Band bezeichnet; Leitungsband heißt dagegen das Band,
 das bei Besetzung für die elektrische Leitfähigkeit des Festkörpers sorgt. \\
 
-Je nachdem, wie groß die Bandlücke zwischen Valenz- und Leitungsband sind, lassen sich Festkörper in drei verschiedene Klassen einteilen.
+Je nachdem, wie groß die Bandlücke zwischen Valenz- und Leitungsband ist, lässt sich ein Festkörper in drei verschiedene Klassen einteilen.
 Ist die Bandlücke so groß, dass sie auch bei thermischer Anregung nur schwer überwunden werden kann, sprich der Festkörper auch bei großen
 Temperaturen nicht leitfähig wird, wird von einem Isolator gesprochen.
-Die typische Bandlücke von Isolatoren liegt typischerweise im Bereich oberhalb von $\SI{3}{\eV}$.
+Die typische Bandlücke von Isolatoren liegt im Bereich oberhalb von $\SI{3}{\eV}$.
 Bei einer Bandlücke zwischen $\SI{1}{\eV}$ und $\SI{3}{\eV}$ wird der Festkörper als Halbleiter bezeichnet.
-Hier ist es möglich, durch vergleichsweise geringe thermische Anregung eine deutliche Steigerung der Leitfähigkeit möglich.
+Hier ist es möglich, durch vergleichsweise geringe thermische Anregung eine deutliche Steigerung der Leitfähigkeit zu erreichen.
 Metalle dagegen besitzen keinerlei Bandlücke; das Valenzband und das Leitungsband überlappen sich zumindest teilweise, sodass auch ohne
 thermische Anregung Strom fließt. \\
 
-Hier interessieren uns insbesondere Halbleiter, insbesondere dotierte Halbleiter.
+Hier interessieren uns Halbleiter, insbesondere dotierte Halbleiter.
 Der Prozess der Dotierung, also der Einführung von Fremdatomen in ein Material, wird bei Halbleitern genutzt, um die Eigenschaften der
 elektrischen Leitfähigkeit zu verändern.
-Dabei unterscheiden wir p- und n-Dotierung.
+Dabei unterscheiden wir zwischen p- und n-Dotierung.
 Die p-Dotierung beschreibt dabei die Einführung sogenannter Akzeptoren, also Fremdatomen,
-die weniger Elektronen als das ersetzte Ursprungsatom besitzt und so zu einem Loch innerhalb des Valenzbandes.
+die weniger Elektronen als das ersetzte Ursprungsatom besitzt und so ein Loch innerhalb des Valenzbandes erzeugen.
 
 Bei der n-Dotierung werden dagegen Donatoren, also Atome mit Überschusselektronen in den Halbleiter eingeführt.
-Die Fremdatome bei der  n-Dotierung sind dabei so gewählt, dass ihr Energieniveau knapp unter dem des Leitungsbands,
+Die Fremdatome bei der n-Dotierung sind dabei so gewählt, dass ihr Energieniveau knapp unter dem des Leitungsbands,
 aber deutlich über dem des Valenzbandes liegt.
 So erhöht die n-Dotierung die elektrische Leitfähigkeit des Festkörpers.
 
@@ -44,9 +44,9 @@ Das Konzept der effektiven Masse, hier von den Elektronen im Festkörper, beschr
     m^*_i = \frac{\hbar^2}{\left[\frac{\partial^2 E}{\partial k^2_i} \right]_{k_i=0}} \,,
     \label{eq:effektivemasse}
 \end{equation}
-wobei $i = x,y,z$ mit den Komponenten $k_i$ des Wellenvektors der Elektronen.
+wobei $i = x,y,z$ mit den Komponenten $k_i$ des Wellenvektors der Elektronen identifiziert wird.
 Diese effektive Masse $m^*$ folgt aus einer Taylorentwicklung der Energie $E(\vec{k})$ bis zur zweiten Ordnung um $k=0$ und berücksichtigt das Gitterpotential,
-die bei der quasifreien Bewegung der Elektronen durch das Gitter mit ihnen wechselwirken.
+welches bei der quasifreien Bewegung der Elektronen durch das Gitter mit ihnen wechselwirkt.
 Da bei den hier verwendeten GaAs-Proben eine hinreichend hohe Gittersymmetrie gegeben ist, ist die effektive Masse nicht richtungsabhängig.
 
 
@@ -77,7 +77,7 @@ Insgesamt entsteht so eine makroskopische Polarisation
     \vec{P} = \varepsilon_0 \chi \vec{E}
     \label{eq:polarisation} 
 \end{equation}
-mit der Influenzkonstante $\varepsilon$ für hinreichend geringe E-Felder $\vec{E}$.
+mit der Influenzkonstante $\varepsilon_0$ für hinreichend geringe E-Felder $\vec{E}$.
 Die dielektrische Suszeptibilität $\chi$ ist in doppelbrechenden Medien ein Tensor mit nicht-diagonalen komplex-konjugierten Koeffizienten der Form
 \begin{equation*}
     \chi = \left( \begin{matrix}
@@ -111,7 +111,7 @@ Nach einiger Rechnung folgt näherungsweise
 \begin{equation*}
     \theta = \frac{2 \pi^2 e^3_0 c}{\varepsilon_0 m^2} \frac{1}{ \lambda^2 \omega_0^4} \frac{N B L}{n}
 \end{equation*}
-für den Rotationswinkel $\theta$ bei Durchqueren des Mediums der Dicke $L$ und anliegender Magnetfeldstärke $B$ für Licht der Wellenlänge $\lambda$.
+für den Rotationswinkel $\theta$ beim Durchqueren des Mediums der Dicke $L$ und anliegender Magnetfeldstärke $B$ für Licht der Wellenlänge $\lambda$.
 Die Resonanzfrequenz der Elektronen wird dabei durch $\omega_0$ beschrieben. \\
 
 Im Limes $\omega_0 \rightarrow 0$ finden wir mit der effektiven Masse der Elektronen $m^*$

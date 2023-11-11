@@ -3,14 +3,14 @@
 
 Die Fehlerfortpflanzung wird mithilfe des Paketes \textsc{uncertainties} \cite{uncertainties} durchgeführt.
 Für die lineare Regression wird \textsc{scipy.curve\_fit} \cite{scipy} verwendet.
-Grafiken werden mit \textsc{matplotlib} \cite{matplotlib} erstellt,.
+Grafiken werden mit \textsc{matplotlib} \cite{matplotlib} erstellt.
 
 \subsection{Stärke des Magnetfeldes}
 
 Zunächst wird die Stärke des Magnetfeldes untersucht, welches durch den verwendeten Elektromagneten erzeugt wird.
-Diese Messung wurde zwar zuletzt durchgeführt, jedoch ist maximale magnetische Flussdichte für die weitere Auswertung entscheidend.
-Die gemessenen Flussdichten sind in \autoref{fig:BFeld}.
-Der maximale Werte beläuft sich auf $B_{\text{max}} = \SI{405}{\milli\tesla}$. 
+Diese Messung wurde zwar zuletzt durchgeführt, jedoch ist die maximale magnetische Flussdichte für die weitere Auswertung entscheidend.
+Die gemessenen Flussdichten sind in \autoref{fig:BFeld} dargestellt.
+Der maximale Wert beläuft sich auf $B_{\text{max}} = \SI{405}{\milli\tesla}$. 
 Vor dieser Messung wurde am Gleichstromnetzteil eine Stromstärke $\SI{10}{\ampere}$ eingestellt, jedoch fiel die Stromstärke für diese Messung auf $\SI{9.8}{\ampere}$
 und der vorherige Wert konnte nicht erneut erreicht werden.
 Aus diesem Grund wird die Stärke des Magnetfeldes im folgenden um einem Faktor von $1.02$ korrigiert.
@@ -43,21 +43,21 @@ Die entscheidenen Eigenschaften der untersuchten Proben sind in \autoref{tab:Pro
 Die gemessenen Rotationswinkel für alle drei Proben sind in \autoref{tab:Winkeldaten} dargestellt.
 Zunächst wird der normierte Drehwinkel nach  $\theta_{\text{frei}} = \frac{1}{2 L}\left(\theta_1 - \theta_2\right)$ 
 und gegen das Quadrat der untersuchte Wellenlänge aufgetragen.
-Dieser Grafik ist in \autoref{fig:Winkel_nom} dargestellt. 
-Die lineare hat die Form
+Diese Grafik ist in \autoref{fig:Winkel_nom} dargestellt. 
+Die lineare Regression hat die Form
 
 \begin{equation*}
-    \theta_{frei} = \alpha \cdot \lambda^2 \cdot \frac{N B}{n} + \beta \cdot \frac{N B}{n}\, .
+    \theta_{\text{frei}} = \alpha \cdot \lambda^2 \cdot \frac{N B}{n} + \beta \cdot \frac{N B}{n}\, .
 \end{equation*}
 
-Die freien Parametern werden zu 
+Die freien Parametern werden zu %Zeilenumbruch
 \begin{align*}
     \alpha_1 = \SI{6.81 \pm 0.48}\cdot 10^{-12} \unit{\frac{1}{\meter²\tesla}} \, \, & \beta_1 = \SI{224.1 \pm 2.1}\cdot 10^{-24} \, \unit{\frac{1}{\tesla}} \, \text{und}\\ 
     \alpha_2 = \SI{-81.1 \pm 1.1}\cdot 10^{-12} \unit{\frac{1}{\meter²\tesla}} \, \, & \beta_2 = \SI{230.1  \pm 4.9}\cdot 10^{-24} \, \unit{\frac{1}{\tesla}} \.  \\
 \end{align*}
 
 Diese Gleichung wird nun mit \eqref{eq:theta_frei} verglichen.
-Aus dem Parameter $\alpha$ kann nun die effektiv Masse freier Ladungsträger nach der Gleichung
+Aus dem Parameter $\alpha$ kann nun die effektive Masse freier Ladungsträger nach der Gleichung
 \begin{equation*}
     \sqrt{\frac{8 \pi² \epsilon_0 c³}{e³}} = m^*
 \end{equation*} 
@@ -65,7 +65,10 @@ berechnet werden.
 
 Die berechnete Masse beläuft sich somit auf 
 \begin{equation*}
-    m^*_1 = \SI{3.17 \pm 0.11}{\kilo\gram} \cdot 10^{-31} \, \text{und} \\
+    m^*_1 = \SI{3.17 \pm 0.11}{\kilo\gram} \cdot 10^{-31} \, \\
+\end{equation*}
+und
+\begin{equation*}
     m^*_2 = \SI{9.19 \pm 00.64}{\kilo\gram} \cdot 10^{-32} \,.   \\
 \end{equation*}
 
