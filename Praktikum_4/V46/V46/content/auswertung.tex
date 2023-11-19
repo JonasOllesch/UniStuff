@@ -41,38 +41,48 @@ Die entscheidenen Eigenschaften der untersuchten Proben sind in \autoref{tab:Pro
 \end{table}
 
 Die gemessenen Rotationswinkel für alle drei Proben sind in \autoref{tab:Winkeldaten} dargestellt.
-Zunächst wird der normierte Drehwinkel nach  $\theta_{\text{frei}} = \frac{1}{2 L}\left(\theta_1 - \theta_2\right)$ 
-und gegen das Quadrat der untersuchte Wellenlänge aufgetragen.
+Diese Winkel werden mit $\alpha_{\text{rad}} = \alpha_{\text{deg}} \cdot \frac{\pi}{\SI{180}{\degree}}$ vom Gradmaß in das dimensionslose Bogenmaß umgerechnet.
+Die umgerechneten Winkel sind in \autoref{tab:WinkelinBogenmaß} abgebildet.
+Zunächst wird der normierte Drehwinkel nach  
+\begin{equation*}
+    \theta_{\text{frei}} = \frac{1}{2 L}\left(\theta_1 - \theta_2\right) 
+\end{equation*}
+berechnet, wobei $L$ die Länge der Probe ist und $\theta_1$ und $\theta_2$ die Drehwinkel repräsentieren.
 Diese Grafik ist in \autoref{fig:Winkel_nom} dargestellt. 
-Die lineare Regression hat die Form
+
+Nun wird der normierte Winkel der Faraday-Rotation der undotierten Probe von den normierten Winkel der dotierten Proben abgezogen, um  das Signal der quasi freien Elektronen zu erhalten.
+Die Differenz in zwischen der undotierten und der dotierten Probe ist in \autoref{fig:Winkel_nom_diff} aufgetragen.\\
+
+Jetzt wird die x-Achse um den Faktor $\lambda$ skaliert, damit einer lineare Regression nach der Form 
 
 \begin{equation*}
     \theta_{\text{frei}} = \alpha \cdot \lambda^2 \cdot \frac{N B}{n} + \beta \cdot \frac{N B}{n}\, .
 \end{equation*}
+durchgeführt werden kann.
 
 Die freien Parametern werden zu %Zeilenumbruch
 \begin{equation*}
-    \alpha_1 = \SI{6.81 \pm 0.48}\cdot 10^{-12} \unit{\frac{1}{\meter²\tesla}} \,, \, \beta_1 = \SI{224.1 \pm 2.1}\cdot 10^{-24} \, \unit{\frac{1}{\tesla}} \\ 
+    \alpha_1 = \SI{-36.45 \pm 0.48}\cdot 10^{-12} \unit{\frac{1}{\meter³\tesla}} \,, \, \beta_1 = \SI{426.6 \pm 2.1}\cdot 10^{-24} \, \unit{\frac{1}{\meter\tesla}} \\ 
 \end{equation*}
 und
 \begin{equation*}
-    \alpha_2 = \SI{-81.1 \pm 1.1}\cdot 10^{-12} \unit{\frac{1}{\meter²\tesla}} \,, \,  \beta_2 = \SI{230.1  \pm 4.9}\cdot 10^{-24} \, \unit{\frac{1}{\tesla}}\, .  \\
+    \alpha_2 = \SI{-213.6 \pm 1.1}\cdot 10^{-12} \unit{\frac{1}{\meter³\tesla}} \,, \,  \beta_2 = \SI{1764.6  \pm 4.9}\cdot 10^{-24} \, \unit{\frac{1}{\meter\tesla}}\, .  \\
 \end{equation*}
 
 Diese Gleichung wird nun mit \eqref{eq:theta_frei} verglichen.
 Aus dem Parameter $\alpha$ kann nun die effektive Masse freier Ladungsträger nach der Gleichung
 \begin{equation*}
-    \sqrt{\frac{8 \pi² \epsilon_0 c³}{e³}} = m^*
+    \sqrt{\frac{8 \pi² \epsilon_0 c³}{e³}} \cdot \frac{1}{\sqrt{\alpha}} = m^*
 \end{equation*} 
 berechnet werden.
 
 Die berechnete Masse beläuft sich somit auf 
 \begin{equation*}
-    m^*_1 = \SI{3.17 \pm 0.11}{\cdot 10^{-31}}\,\si{\kilo\gram}\, \\
+    m^*_1 = \SI{773.8 \pm 5.1}{\cdot 10^{-34}}\,\si{\kilo\gram}\, \\
 \end{equation*}
 und
 \begin{equation*}
-    m^*_2 = \SI{9.19 \pm 0.64}{\cdot 10^{-32}}\,\si{\kilo\gram} \,.   \\
+    m^*_2 = \SI{3196.5 \pm 8.4}{\cdot 10^{-35}}\,\si{\kilo\gram} \,.   \\
 \end{equation*}
 
 \begin{figure}[H]
@@ -83,13 +93,29 @@ und
 \end{figure}
 
 
+\begin{figure}[H]
+    \centering
+    \includegraphics{build/diffwinkelnom.pdf}
+    \caption{Differenz zwischen dem Faraday-Winkel der undotierten und dotierten Probe gegen eine lineare x-Achse.}
+    \label{fig:Winkel_nom_diff}
+\end{figure}
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics{build/diffwinkelnom2.pdf}
+    \caption{Differenz zwischen dem Faraday-Winkel der undotierten und dotierten Probe gegen eine skalierte x-Achse.}
+    \label{fig:Winkel_nom_diff2}
+\end{figure}
+
+
 \begin{table}[H]
     \centering
-    \caption{Messwerte für die gemessenen Rotationswinkel für beide Polrichtungen des Magnetfeldes für drei verschiedene Proben Galliumarsenid.}
+    \caption{Messwerte für die gemessenen Rotationswinkel für beide Polrichtungen des Magnetfeldes für drei verschiedene Proben Galliumarsenid im Gradmaß.}
     \label{tab:Winkeldaten}
     \begin{tabular}{S[table-format=1.3] | c c |c c | c c}
     \toprule
-      {$\lambda \mathbin{/} \unit{\micro\meter}$ } & {$\theta^1_1$} & {$\theta^1_2$} & {$\theta^2_1$} & {$\theta^2_2$} & {$\theta^3_1$} & {$\theta^3_2$} \\
+      {$\lambda \mathbin{/} \unit{\micro\meter}$ } & {$\theta^{1_\text{deg}}_1$} & {$\theta^{1_\text{deg}}_2$} & {$\theta^{2_\text{deg}}_1$} & {$\theta^{2_\text{deg}}_2$} & {$\theta^{3_\text{deg}}_1$} & {$\theta^{3_\text{deg}}_2$} \\
     \midrule
     {$1.06$}    & {$61°00'$}&   {$83°54'$}&   {$78°32'$}&   {$83°45'$}&   {$69°30'$}&  {$32°58'$} \\
     {$1.24$}    & {$86°45'$}&   {$84°52'$}&   {$19°06'$}&   {$62°38'$}&   {$69°06'$}&  {$29°54'$} \\
@@ -103,3 +129,26 @@ und
     \bottomrule
     \end{tabular}
 \end{table}
+
+
+\begin{table}[H]
+    \centering
+    \caption{Werte für die Rotationswinkel für beide Polrichtungen des Magnetfeldes für drei verschiedene Proben Galliumarsenid im Bogenmaß.}
+    \label{tab:WinkelinBogenmaß}
+    \begin{tabular}{S[table-format=1.3] | c c |c c | c c}
+    \toprule
+    {$\lambda \mathbin{/} \unit{\micro\meter}$ } & {$\theta^{1_\text{rad}}_1$} & {$\theta^{1_\text{rad}}_2$} & {$\theta^{2_\text{rad}}_1$} & {$\theta^{2_\text{rad}}_2$} & {$\theta^{3_\text{rad}}_1$} & {$\theta^{3_\text{rad}}_2$} \\
+    \midrule
+    {$1.06$}    & {1.0647}&   {1.4643}&   {1.3707}&   {1.4617}&   {1.2130}&  {0.5754} \\
+    {$1.24$}    & {1.5141}&   {1.4812}&   {0.3334}&   {1.0932}&   {1.2060}&  {0.5219} \\
+    {$1.45$}    & {1.2450}&   {1.4844}&   {1.3465}&   {0.6996}&   {0.7839}&  {0.4166} \\
+    {$1.72$}    & {1.2305}&   {1.4533}&   {1.0559}&   {1.3980}&   {0.4794}&  {0.5515} \\
+    {$1.96$}    & {1.1775}&   {1.4283}&   {1.2159}&   {0.6839}&   {0.5093}&  {0.4736} \\
+    {$2.156$}   & {1.1301}&   {1.3788}&   {1.2604}&   {1.0146}&   {0.3377}&  {0.3985} \\
+    {$2.34$}    & {0.7709}&   {0.9361}&   {0.7138}&   {0.3624}&   {0.3651}&  {0.4221} \\
+    {$2.510$}   & {0.3491}&   {0.6152}&   {0.2909}&   {0.4407}&   {0.3421}&  {0.3819} \\
+    {$2.65$}    & {1.0705}&   {1.3267}&   {1.0076}&   {1.1301}&   {0.2007}&  {0.6117} \\
+    \bottomrule
+    \end{tabular}
+\end{table}
+
