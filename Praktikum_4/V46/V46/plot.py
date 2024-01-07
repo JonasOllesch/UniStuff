@@ -171,12 +171,12 @@ y1 = linRegPol1(x1, a = unp.nominal_values(para1[0]), b = unp.nominal_values(par
 x2 = np.linspace(Wellenlänge[0]**2,Wellenlänge[-1]**2,2)
 y2 = linRegPol2(x2, a = unp.nominal_values(para2[0]), b = unp.nominal_values(para2[1]))
 
-plt.plot(x1, y1, c = 'darkorange')
-plt.plot(x2, y2, c = 'firebrick')
+plt.plot(x1/10**(-12), y1, c = 'darkorange')
+plt.plot(x2/10**(-12), y2, c = 'firebrick')
 
 
-plt.scatter(Wellenlänge**2, dff_Winkel_nom[:,0], label ="effektive Faraday Rotation 1. Probe", c = 'darkorange', marker='x' ,s = 20)
-plt.scatter(Wellenlänge**2, dff_Winkel_nom[:,1], label ="effektive Faraday Rotation 2. Probe", c = 'firebrick', marker='x' ,s = 20)
+plt.scatter(Wellenlänge**2/10**(-12), dff_Winkel_nom[:,0], label ="effektive Faraday Rotation 1. Probe", c = 'darkorange', marker='x' ,s = 20)
+plt.scatter(Wellenlänge**2/10**(-12), dff_Winkel_nom[:,1], label ="effektive Faraday Rotation 2. Probe", c = 'firebrick', marker='x' ,s = 20)
 
 
 #plt.scatter((Wellenlänge**2)*10**12, dff_Winkel_nom[:,0], label ="effektive Faraday Rotation 1. Probe", c = 'darkorange', marker='x' ,s = 20)
