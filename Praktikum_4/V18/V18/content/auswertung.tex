@@ -1,3 +1,31 @@
 \section{Auswertung}
 \label{sec:auswertung}
 
+\subsection{Bestimmung des Hintergrund}
+
+Zunächst wird die Hintergrundrate des Versuchsaufbaus bestimmt. Dafür wird eine Messung durchgeführt, bei der sich keine Probe in der Apertur befindet.
+Die Länge dieser Messung beträgt $\approx \SI{24.15}{\hour}$, hat insgesamt $294337$ Signale registriert und ist in \autoref{fig:Hintergrund} abgebildet. 
+Es ist zu erkennen, dass bei sehr hohen Kanälen der Hintergrund dauerhaft ansteigt. Da dies unabhängig von der verwendeten Probe ist werden im folgenden alle Kanäle über $8000$ auf null gesetzt.
+Der gemessene Hintergrund wird bei den untersuchten Proben auf die jeweiligen Messzeiten umgerechnet und von den gemessenen Signalen abgezogen.  
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{build/Hintergrund.pdf}
+    \caption{Hintergrund gemessen über einen längeren Zeitraum.}
+    \label{fig:Hintergrund}
+\end{figure}
+
+
+\subsection{Kalibrierung der Energie}
+
+Den Kanälen wird eine Energie zugeordnet, indem ein Strahler in die Apertur eingesetzt wird, der bei bekannten Energien strahlt. 
+Danach wird aus den Abständen zwischen den Emissionslinien die Energie der einzelnen Kanälen bestimmt.  
+Zur Kalibrierung wird $\text{Eu}-152$ verwendet.
+Ein Histogram der Messung ist in \autoref{fig:Europium} abgebildet.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{build/Hintergrund.pdf}
+    \caption{Histogram der Europiumsignalen.}
+    \label{fig:Europium}
+\end{figure}
