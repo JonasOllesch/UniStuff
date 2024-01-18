@@ -8,6 +8,8 @@ import uncertainties.unumpy as unp
 import scipy.constants as constants
 from scipy.signal import find_peaks
 
+def linReg(x,a,b):
+    return a*x +b
 #from matplotlib.legend_handler import (HandlerLineCollection,HandlerTuple)
 #from multiprocessing  import Process
 class Messreihe:
@@ -18,6 +20,10 @@ class Messreihe:
         self.Daten  = 0
         self.Peaks = None
         self.Peaks_widths = None
+        self.LineContentN = None
+        self.LineContentU = None
+        self.LineContent = None
+
 #        self.Effektive_Signale = 0
 
         
@@ -28,11 +34,11 @@ HUranophan = np.genfromtxt('Messdaten/Uranophan.Spe', skip_header = 12, skip_foo
 HHintergrund = np.genfromtxt('Messdaten/Hintergrund.Spe', skip_header = 12, skip_footer = 15, encoding = 'unicode-escape') 
 
 
-print(f'Summe der Caesium-Signale: {np.sum(HCaesium)}')
-print(f'Summe der Cobalt60-Signale: {np.sum(HCobalt)}')
-print(f'Summe der Europium-Signale: {np.sum(HEuropium)}')
-print(f'Summe der Uranophan-Signale: {np.sum(HUranophan)}')
-print(f'Summe der Hintergrund-Signale: {np.sum(HHintergrund)}')
+print(f'Summe der Caesium-Signale mit Hintergrund: {np.sum(HCaesium)}')
+print(f'Summe der Cobalt60-Signale mit Hintergrund: {np.sum(HCobalt)}')
+print(f'Summe der Europium-Signale mit Hintergrund: {np.sum(HEuropium)}')
+print(f'Summe der Uranophan-Signale mit Hintergrund: {np.sum(HUranophan)}')
+print(f'Summe der Hintergrund-Signale mit Hintergrund: {np.sum(HHintergrund)}')
 
 Bin = np.arange(0, len(HCaesium))
 
@@ -60,7 +66,6 @@ Hintergrund = Messreihe("Hintergrund", np.sum(HHintergrund), 86960)
 
 
 #Globalen Hintergrund abziehen
-
 
 
 Caesium.Daten = HCaesium - HHintergrund*Caesium.Messzeit/Hintergrund.Messzeit 
@@ -93,21 +98,66 @@ plt.clf()
 
 #Europium line Content
 
-Europium.Peaks_widths = _['width_heights']
+Europium.Peaks_widths = _['widths']
+Europium.LineContentN = np.zeros(len(Europium.Peaks_widths))
+Europium.LineContentU = np.zeros(len(Europium.Peaks_widths))
 
 for i in range(0,len(Europium.Peaks)):
-    UnterGrenze = Europium.Peaks[i] -int(Europium.Peaks_widths[i]*3)
-    ObereGrenze = Europium.Peaks[i] +int(Europium.Peaks_widths[i]*3) 
-    plt.scatter(Bin[UnterGrenze :ObereGrenze], Europium.Daten[UnterGrenze: ObereGrenze], label = f"{i}. Peak", c = "midnightblue", marker='x', s = 10)
+    LinRegOffset = 10
+
+
+    UnterGrenzeP = Europium.Peaks[i] -int(Europium.Peaks_widths[i])
+    ObereGrenzeP = Europium.Peaks[i] +int(Europium.Peaks_widths[i])
+    
+    UnterGrenzeF = UnterGrenzeP -LinRegOffset
+    ObereGrenzeF = ObereGrenzeP +LinRegOffset 
+
+
+
+    FitDataX = np.append(Bin[UnterGrenzeF :UnterGrenzeP], Bin[ObereGrenzeP :ObereGrenzeF])
+    FitDataY = np.append(Europium.Daten[UnterGrenzeF :UnterGrenzeP], Europium.Daten[ObereGrenzeP :ObereGrenzeF])
+    
+
+    para, pcov = curve_fit(linReg, FitDataX, FitDataY)
+    HintergrundF = linReg(FitDataX, *para)
+    HintergrundP = linReg(Bin[UnterGrenzeP :ObereGrenzeP], *para)
+
+#    print(HintergrundP)
+#    print(Europium.Daten[UnterGrenzeP: ObereGrenzeP])
+#    print(Bin[UnterGrenzeP :ObereGrenzeP])
+#
+
+    plt.scatter(Bin[UnterGrenzeP :ObereGrenzeP], Europium.Daten[UnterGrenzeP: ObereGrenzeP], label = f"{i}. Peak", c = "midnightblue", marker='x', s = 10)
+    plt.scatter(FitDataX, FitDataY, label = f"{i}. Linfit?", c = "red", marker='x', s = 10)
+    plt.plot(FitDataX, HintergrundF, label='Hintergrund', color='r')
+#    plt.yscale('log')
     plt.xlabel("Kanal")
     plt.ylabel("Signale")
     plt.grid(linestyle = ":")
     plt.tight_layout()
     plt.legend()
-    plt.savefig(f'build/Europium_Peak{i}.pdf')
+    plt.savefig(f'build/Europium_Peak{i}mit_Hintergrund.pdf')
     plt.clf()
 
+    Europium.LineContentN[i] = np.sum(np.abs(Europium.Daten[UnterGrenzeP: ObereGrenzeP]-HintergrundP))
+    Europium.LineContentU[i] = np.sum(np.sqrt(np.abs(Europium.Daten[UnterGrenzeP: ObereGrenzeP]-HintergrundP)))
 
+
+#    plt.scatter(Bin[UnterGrenzeP :ObereGrenzeP], Europium.Daten[UnterGrenzeP: ObereGrenzeP]-HintergrundP, label = f"{i}. Peak", c = "midnightblue", marker='x', s = 10)
+#    plt.scatter(FitDataX, FitDataY-HintergrundF, label = f"{i}. Linfit?", c = "red", marker='x', s = 10)
+#
+#
+##    plt.yscale('log')
+#    plt.xlabel("Kanal")
+#    plt.ylabel("Signale")
+#    plt.grid(linestyle = ":")
+#    plt.tight_layout()
+#    plt.legend()
+#    plt.savefig(f'build/Europium_Peak{i}ohne_Hintergrund.pdf')
+#    plt.clf()
+Europium.LineContent = unp.uarray(Europium.LineContentN , Europium.LineContentU)
+print(f'Europium LineContent {Europium.LineContent}')
+print(f'Summe der Europiums ohne Hintergrund {sum(Europium.Daten)}')
 
 
 Bin = np.arange(0, len(HCaesium))

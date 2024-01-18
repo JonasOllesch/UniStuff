@@ -22,6 +22,10 @@ Den Kanälen wird eine Energie zugeordnet, indem ein Strahler in die Apertur ein
 Danach wird aus den Abständen zwischen den Emissionslinien die Energie der einzelnen Kanälen bestimmt.  
 Zur Kalibrierung wird $\text{Eu}-152$ verwendet.
 Ein Histogram der Messung ist in \autoref{fig:Europium} abgebildet.
+Dafür werden die Peaks im Spektrum über $scipy.signal.find_peaks$\cite{scipy} bestimmt.
+Der locale Hintergrund wird über eine lineare Regression bestimmt, die durch nächsten zehn Kanäle, die jeweils links und rechts vom Peak liegen, bestimmt.
+Danach wird über alle Kanäle die den Peak bilden summiert.
+
 
 \begin{figure}[H]
     \centering
