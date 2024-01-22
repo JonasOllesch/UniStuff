@@ -191,7 +191,7 @@ print(f'Die Parameter der linearen Regression zwischen Energie und Kanälen {par
 x = np.linspace(0, 8000, 2)
 y = linReg(x, *unp.nominal_values(para_EK))
 
-plt.plot(x, y, label = "Lineare Regression", color = 'darkorange')
+plt.plot(x, y, label = "Lineare Regression", color = 'midnightblue')
 plt.scatter(Europium.Peaks[1:], Europium.PeakEnergie, label ="Energie der Peaks", c = 'firebrick',marker='x', s = 10)
 
 
@@ -224,12 +224,13 @@ print(f'Die Detektoreffizienz an den Peaks in Prozent {Europium.PeakEffizienz*10
 
 popt_QE, pcov_QE = curve_fit(berechne_Detektoreffizienz_Regression, unp.nominal_values(Europium.PeakEnergie), unp.nominal_values(Europium.PeakEffizienz))
 para_QE = correlated_values(popt_QE, pcov_QE)
+print(f'Die Parameter der exponentiellen Regression zwischen Effizienz und Energie {para_QE}')
 x = np.linspace(50, 1500, 2000)
 y = berechne_Detektoreffizienz_Regression(x, *unp.nominal_values(para_QE))
 
-plt.plot(x,y, label = 'Regression', color = 'darkorange')
+plt.plot(x,y, label = 'Regression', color = 'midnightblue')
 plt.scatter(unp.nominal_values(Europium.PeakEnergie), unp.nominal_values(Europium.PeakEffizienz), label ="Detektoreffizenz", c = 'firebrick', marker='x', s = 8)
-plt.xlabel(r"$E \mathbin{/} \unit{\kilo\eV}")
+plt.xlabel(r"$E \mathbin{/} \unit{\kilo\eV}$")
 plt.ylabel(r"$Q$")
 plt.grid(linestyle = ":")
 plt.tight_layout()
@@ -237,7 +238,8 @@ plt.legend()
 plt.savefig('build/EffizienzKanal.pdf')
 plt.clf()
 
-
+del x
+del y
 
 
 
