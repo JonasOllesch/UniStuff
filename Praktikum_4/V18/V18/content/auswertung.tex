@@ -20,16 +20,122 @@ Der gemessene Hintergrund wird bei den untersuchten Proben auf die jeweiligen Me
 
 Den Kanälen wird eine Energie zugeordnet, indem ein Strahler in die Apertur eingesetzt wird, der bei bekannten Energien strahlt. 
 Danach wird aus den Abständen zwischen den Emissionslinien die Energie der einzelnen Kanälen bestimmt.  
-Zur Kalibrierung wird $\text{Eu}-152$ verwendet.
+Zur Kalibrierung wird Eu-152 verwendet.
 Ein Histogram der Messung ist in \autoref{fig:Europium} abgebildet.
-Dafür werden die Peaks im Spektrum über $scipy.signal.find_peaks$\cite{scipy} bestimmt.
-Der locale Hintergrund wird über eine lineare Regression bestimmt, die durch nächsten zehn Kanäle, die jeweils links und rechts vom Peak liegen, bestimmt.
+Dafür werden die Peaks im Spektrum über \texttt{scipy.signal.find\_peaks} \cite{scipy} bestimmt.
+Der lokale Hintergrund wird über eine lineare Regression bestimmt, die durch nächsten zehn Kanäle, die jeweils links und rechts vom Peak liegen, bestimmt.
 Danach wird über alle Kanäle die den Peak bilden summiert.
+
+Um die Energie des Spektrums zu bestimmen werden die gemessenen Emissionslinien den aus der Literatur \cite{LNHB} bekannten Linien zugeordnet.
+Die den Peaks zugeordneten Kanäle können in \autoref{tab:EmissionsAlignment}.
+Das Maximum mit der Kanalnummer 594 hat mit Abstand den größten Linieninhalt und deswegen wird diesem die Emissionsenergie $\SI{121.7817 \pm 0.0003}{}$ mit der größten Emissionswahrscheinlichkeit zugeordnet.
+Daraus folgt, dass dem Peak mit der Kanalnummer 201 keine Spektrallinie zugeordnet werden kann, da Europium keine Emissionen mit weniger Energie besitzt.
+
+Um die Energie der anderen Kanäle zu bestimmen wird eine lineare Regression $\text{Energie} = \alpha \cdot \text{Kanal} + \beta$ zwischen den Kanälen und der dazugehörigen Energie durchgeführt.
+Diese Regression ist in \autoref{fig:EnergieKanal} zu sehen und die Parameter werden als
+
+\begin{equation*}
+    \alpha = \SI{0.207306 \pm 0.000049}{\frac{\kilo\eV}{\text{Kanal}}} \quad  \text{und} 
+\end{equation*}
+\begin{equation*}
+    \beta = \SI{-1.17 \pm 0.18}{\kilo\eV}
+\end{equation*}
+bestimmt.
 
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\textwidth]{build/Hintergrund.pdf}
+    \includegraphics[width=\textwidth]{build/Europium.pdf}
     \caption{Histogram der Europiumsignalen.}
     \label{fig:Europium}
+\end{figure}
+
+
+
+\begin{table}
+    \centering
+    \caption{Kanalnummer, Energie, Emissionswahrscheinlichkeit $W$, Spektrallinieninhalt $Z$ und der Detektoreffizienz $Q$ von Europium.}
+    \label{tab:EmissionsAlignment}
+    \begin{tabular}{c S[table-format=4.4(2), separate-uncertainty] S[table-format=2.3(2)] S[table-format=4.0(3)] S[table-format=2.2(4)]}
+        \toprule
+        Kanalnummer & {$E \mathbin{/} \si{\kilo\eV}$} & {$W \mathbin{/} \%$} & {Linieninhalt} & {$Q \mathbin{/} \%$ }\\
+        \midrule 
+        594  & 121.7817(3) & 28.41(13) & 7736(351)  & {48.67 (22.39)} \\ 
+        1187 & 244.6974(8) & 7.55(4)   & 1376(151)  & {32.59 (17.64)} \\ 
+        1666 & 344.2785(12)& 26.59(12) & 3134(238)  & {21.07 (9.65)} \\ 
+        1780 & 367.7891(20)& 0.862(5)  & 153 (63)   & {31.84 (185.13)} \\ 
+        1987 & 411.1165(12)& 2.238(10) & 206 (63)   & {16.46 (73.71)} \\ 
+        2146 & 443.965(3)  & 2.80(2)   & 294 (81)   & {18.83 (14.42)} \\ 
+        3763 & 778.9045(24)& 12.97(6)  & 709 (159)  & {9.77 (5.03)} \\ 
+        4190 & 867.380(3)  & 4.243(23) & 217 (85)   & {9.18 (49.90)} \\ 
+        4656 & 964.079(18) & 14.50(6)  & 626 (149)  & {7.72 (3.69)} \\ 
+        5247 & 1085.837(10)& 10.13(6)  & 419 (122)  & {7.41 (4.89)} \\ 
+        5368 & 1112.076(30)& 13.41(6)  & 468 (130)  & {6.25 (3.30)} \\ 
+        6797 & 1408.013(30)& 20.85(8)  & 611 (160)  & {5.25 (2.44)} \\            
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{build/EnergieKanäle.pdf}
+    \caption{Die Energieabhängigkeit der Messkanäle.}
+    \label{fig:EnergieKanal}
+\end{figure}
+
+
+\subsection{Bestimmung der Detektoreffizienz}
+
+Die Effizienz des Germaniumsdetektors kann über die Gleichung 
+
+\begin{equation*}
+    Q = \frac{Z}{A \cdot W \cdot t \cdot \Omega}\,,
+\end{equation*}
+wobei $Z$ der Spektrallinieninhalt, $A$ die Aktivität, $W$ die Emissionswahrscheinlichkeit, $t$ die Messzeit und $\Omega$ der Raumwinkel.
+Der Raumwinkel kann mit der Gleichung
+
+\begin{equation*}
+    \Omega = 2 \pi\left(1 - \frac{a}{\sqrt{a² + r²}}\right)   \,,
+\end{equation*}
+
+wobei $a$ der Abstand zwischen Quelle und Detektor ist und $r$ der Radius des Detektors.
+Der Radius des Detektors beträgt $\SI{22.5}{\milli\meter}$. 
+Der Abstand $a$ setzt sich aus dem Abstand zwischen der Quelle und der Aluminiumhülle und dem Abstand zwischen Aluminiumhülle und Detektor, der mit $\SI{15}{\milli\meter}$ gegeben ist, zusammen.
+Daraus ergibt sich ein Gesamtabstand von $a = \SI{86}{\milli\meter} = \SI{71}{\milli\meter} + \SI{15}{\milli\meter}$ und ein Raumwinkel von 
+
+\begin{equation*}
+    \Omega = 0.2046
+\end{equation*}
+
+
+Die Aktivität der Quelle ist mit $\SI{4130 \pm 60}{\becquerel}$ am 01.10.2000 gegeben.
+Diese Aktivität folgt dem Zerfallsgesetz, was zusammen mit einer Halbwertszeit von $T_{1/2} = \SI{13.522(16)}{\year}$, eine Aktivität von $\SI{1211(17)}$ am Tage des Experimentes bedeutet.
+Die berechnete Detektoreffizienz kann in \autoref{tab:EmissionsAlignment} abgelesen werden.
+
+
+Die Effizienz für die anderen Kanäle kann über eine Exponentialfunktion der Form $Q(E) = \alpha \cdot E^{\beta}$ bestimmt werden.
+Die freien Parameter wurden zu 
+
+\begin{equation*}
+    \alpha = \SI{0.6666 \pm 0.66666}{\frac{\kilo\eV}{\text{Kanal}}} \quad  \text{und} 
+\end{equation*}
+\begin{equation*}
+    \beta = \SI{-1.88888 \pm 0.8888}{\kilo\eV}
+\end{equation*}
+
+bestimmt.
+Der zugehörige Graph kann in \autoref{fig:EffKanal} betrachtet werden.
+
+
+
+
+
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{build/EffizienzKanal.pdf}
+    \caption{Berechnete Detektoreffizienz für den betrachten Energiebereich.}
+    \label{fig:EffKanal}
 \end{figure}
