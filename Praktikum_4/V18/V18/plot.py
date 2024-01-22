@@ -241,7 +241,7 @@ plt.clf()
 del x
 del y
 
-
+#Untersuchung es monochromatisches Gammastrahlers 
 
 Bin = np.arange(0, len(HCaesium))
 #plt.scatter(Bin, HHintergrund, label ="Hintergrund", c = 'midnightblue',marker='x', s = 5)
