@@ -137,3 +137,55 @@ Der zugehörige Graph kann in \autoref{fig:EffKanal} betrachtet werden.
 \end{figure}
 
 \subsection{Untersuchung eines monochromatischen Gammastrahlers}
+
+Der untersuchte $\gamma$-Strahler ist $Cs$-137.
+Das gemessene Spektrum ohne Hintergrund ist in \autoref{fig:CeasiumSpektrum} dargestellt.\\
+Zunächst wird der Photopeak untersucht.
+Die Spitze des Peaks liegt im Kanal $3196$, was einer Energie von $\SI{661.383 \pm 0.093}{\kilo\eV}$ entspricht.
+Der Photopeak ist näher in \autoref{fig:CaesiumPhotopeak} abgebildet.
+Dieser Photopeak wird mit einer Gaußverteilung der Form
+
+\begin{equation*}
+    f(E) = \frac{\alpha}{\sqrt{2 \pi \sigma²}} \cdot e^{-\frac{(E-\mu)²}{2 \sigma²}}
+\end{equation*}
+genähert, wobei die Parameter als 
+
+\begin{align*}
+    \alpha  &= \SI{1878.3 \pm 1.0}{\frac{1}{\kilo\eV}} \,, \\
+    \mu     &= \SI{661.23702 \pm 0.00062}{\kilo\eV}   \quad  \text{und}             \\
+    \sigma  &= \SI{0.97609 \pm 0.00062}{\kilo\eV}\\
+\end{align*}
+bestimmt.
+
+Die volle Breite bei halber Höhe wird als
+
+\begin{equation*}
+    E_{\text{FWHM}} =  \SI{2.30}{\kilo\eV}
+\end{equation*}
+
+und die volle Breite bei zehntel Höhe als
+
+\begin{equation*}
+    E_{\text{FWZM}} =  \SI{4.19}{\kilo\eV}
+\end{equation*}
+
+bestimmt.
+
+Das bedeutet in Verhältnis von 
+\begin{equation*}
+    \frac{E_{\text{FWZM}}}{E_{\text{FWHM}}} = 1.82\,.
+\end{equation*}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{build/Caesium.pdf}
+    \caption{Spektrum eines $Cs$-137 Strahlers.}
+    \label{fig:CeasiumSpektrum}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{build/Caesium_Photopeak.pdf}
+    \caption{Photopeak der Cs-137 Quelle.}
+    \label{fig:CaesiumPhotopeak}
+\end{figure}

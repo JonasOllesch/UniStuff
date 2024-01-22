@@ -7,6 +7,7 @@ from uncertainties import correlated_values
 import uncertainties.unumpy as unp
 import scipy.constants as constants
 from scipy.signal import find_peaks
+from scipy.signal import peak_widths
 
 def linReg(x,a,b):
     return a*x +b
@@ -21,6 +22,9 @@ def berechne_Detektoreffizienz(Linieninhalt, Aktivität, Messzeit, Raumwinkel, E
 
 def berechne_Detektoreffizienz_Regression(Energie, alpha, beta):
     return alpha*Energie**beta
+
+def Gaus(x, a, mu, sigma):
+    return a/(sigma * np.sqrt(2 * np.pi)) *np.exp( - (x - mu)**2 / (2 * sigma**2) )
 
 #from matplotlib.legend_handler import (HandlerLineCollection,HandlerTuple)
 #from multiprocessing  import Process
@@ -94,8 +98,8 @@ Uranophan.Daten = HUranophan - HHintergrund*Uranophan.Messzeit/Hintergrund.Messz
 #Europium.Peaks, _ = find_peaks(Europium.Daten,  width=8, rel_height=0.34, height=10, prominence=2)
 Europium.Peaks, _ = find_peaks(np.log(Europium.Daten+1), prominence=1.6, width=8, rel_height=0.34, height=3)
 
-print(f'Peaks Position {Europium.Peaks}')
-print(f'Unterstrich:{_}')
+print(f'Europium Peaks Position {Europium.Peaks}')
+print(f'Europium Unterstrich:{_}')
 
 plt.scatter(Bin, Europium.Daten, label ="Europium", c = 'midnightblue',marker='x', s = 5)
 print(f'Peaks bei Europium: {Europium.Peaks}')
@@ -242,29 +246,119 @@ del x
 del y
 
 #Untersuchung es monochromatisches Gammastrahlers 
-
 Bin = np.arange(0, len(HCaesium))
-#plt.scatter(Bin, HHintergrund, label ="Hintergrund", c = 'midnightblue',marker='x', s = 5)
-#plt.yscale('log')
-#plt.xlabel("Kanal")
-#plt.ylabel("Signale")
-#plt.grid(linestyle = ":")
-#plt.tight_layout()
-#plt.legend()
-#plt.savefig('build/Hintergrund.pdf')
-#plt.clf()
+
+Caesium.Peaks, _ = find_peaks(np.log(Caesium.Daten+1), prominence=1.6, width=8, rel_height=0.34, height=3)
+
+print(f'Caesium Peaks Position {Caesium.Peaks}')
+print(f'Caesium Unterstrich:{_}')
+
+
 
 plt.scatter(Bin, Caesium.Daten, label ="Caesium", c = 'midnightblue',marker='x', s = 5)
+plt.scatter(Caesium.Peaks, Caesium.Daten[Caesium.Peaks], label = "Peaks", c = "firebrick", marker='x', s = 10)
 plt.yscale('log')
 plt.xlabel("Kanal")
 plt.ylabel("Signale")
+plt.ylim(bottom=1)
 plt.grid(linestyle = ":")
 plt.tight_layout()
 plt.legend()
 plt.savefig('build/Caesium.pdf')
 plt.clf()
 
+#Untersuchung des Photopeaks
+print(f'Energie des Photopeaks {repr(linReg(Caesium.Peaks[-1],*para_EK))}')
 
+
+Caesium.Peaks_widths = _['widths']
+Caesium.LineContentN = np.zeros(len(Caesium.Peaks_widths))
+Caesium.LineContentU = np.zeros(len(Caesium.Peaks_widths))
+
+
+
+
+Caesium.Peaks_widths = _['widths']
+Caesium.LineContentN = np.zeros(len(Caesium.Peaks_widths))
+Caesium.LineContentU = np.zeros(len(Caesium.Peaks_widths))
+
+
+LinRegOffset = 10
+UnterGrenzeP = Caesium.Peaks[-1] -int(Caesium.Peaks_widths[-1])
+ObereGrenzeP = Caesium.Peaks[-1] +int(Caesium.Peaks_widths[-1])
+
+UnterGrenzeF = UnterGrenzeP -LinRegOffset
+ObereGrenzeF = ObereGrenzeP +LinRegOffset 
+
+
+
+FitDataX = np.append(Bin[UnterGrenzeF :UnterGrenzeP], Bin[ObereGrenzeP :ObereGrenzeF])
+FitDataY = np.append(Caesium.Daten[UnterGrenzeF :UnterGrenzeP], Caesium.Daten[ObereGrenzeP :ObereGrenzeF])
+
+para, pcov = curve_fit(linReg, FitDataX, FitDataY)
+HintergrundF = linReg(FitDataX, *para)
+HintergrundP = linReg(Bin[UnterGrenzeP :ObereGrenzeP], *para)
+Caesium.LineContentN[-1] = np.sum(np.abs(Caesium.Daten[UnterGrenzeP: ObereGrenzeP]-HintergrundP))
+Caesium.LineContentU[-1] = np.sum(np.sqrt(np.abs(Caesium.Daten[UnterGrenzeP: ObereGrenzeP]-HintergrundP)))
+    
+Caesium.LineContent = unp.uarray(Caesium.LineContentN , Caesium.LineContentU)
+print(f'Line content vom Caesium {Caesium.LineContent}')
+
+Caesium_Photopeak_Bins_in_Energie = unp.nominal_values(linReg(Bin[UnterGrenzeP :ObereGrenzeP], *para_EK))
+Caesium_Photopeak_Signal_ohne_Hintergrund = Caesium.Daten[UnterGrenzeP: ObereGrenzeP]-HintergrundP
+Caesium_Photopeak_Hintergrund_Bin_in_Energie = unp.nominal_values(linReg(FitDataX, *para_EK))
+
+popt_GA, pcov_GA = curve_fit(Gaus,unp.nominal_values(Caesium_Photopeak_Bins_in_Energie), unp.nominal_values(Caesium_Photopeak_Signal_ohne_Hintergrund), absolute_sigma=True, p0=[2000, 661.5, 1])
+para_GA = correlated_values(popt_GA, pcov_GA)
+print(f'Parameter des Gaußfits {para_GA}')
+
+GausFitx = unp.nominal_values(np.linspace(np.min(Caesium_Photopeak_Bins_in_Energie), np.max(Caesium_Photopeak_Bins_in_Energie), 10000))
+GausFity = Gaus(GausFitx, *unp.nominal_values(para_GA))
+#Bestimmung der halben Höhe und der zehntel Höhe
+
+
+tmp = np.array([np.argmax(unp.nominal_values(GausFity))])
+
+print(tmp)
+Caesium_FWHM, Hh ,Hl, Hr = peak_widths(unp.nominal_values(GausFity), tmp, rel_height=0.5)
+Caesium_FWZM, Zh ,Zl, Zr = peak_widths(unp.nominal_values(GausFity), tmp, rel_height=0.9)
+Caesium_FWHM_Rand = np.array([int(Hl), int(Hr)])
+Caesium_FWZM_Rand = np.array([int(Zl), int(Zr)])
+
+
+plt.plot(GausFitx[Caesium_FWHM_Rand], GausFity[Caesium_FWHM_Rand], label ='FWHM', color = 'lightseagreen')
+plt.plot(GausFitx[Caesium_FWZM_Rand], GausFity[Caesium_FWZM_Rand], label ='FWZM', color = 'darkcyan')
+print(f'Caesium FWHM {GausFitx[Caesium_FWHM_Rand][1] -GausFitx[Caesium_FWHM_Rand][0]}')
+print(f'Caesium FWZM {GausFitx[Caesium_FWZM_Rand][1] -GausFitx[Caesium_FWZM_Rand][0]}')
+
+
+plt.plot(GausFitx, unp.nominal_values(GausFity), label ='Gaußfit', color = 'forestgreen')
+plt.scatter(Caesium_Photopeak_Bins_in_Energie, Caesium.Daten[UnterGrenzeP: ObereGrenzeP]-HintergrundP, label = f"Photopeak", c = "midnightblue", marker='x', s = 10)
+plt.scatter(Caesium_Photopeak_Hintergrund_Bin_in_Energie, FitDataY-HintergrundF, label = f"Hintergrund", c = "firebrick", marker='x', s = 10)
+plt.xlabel(r"$E \mathbin{/} \unit{\kilo\eV}$")
+plt.ylabel("Signale")
+plt.grid(linestyle = ":")
+plt.tight_layout()
+plt.legend()
+plt.savefig(f'build/Caesium_Photopeak.pdf')
+plt.clf()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#Plotting
 plt.scatter(Bin, Cobalt.Daten, label ="Cobalt", c = 'midnightblue',marker='x', s = 5)
 plt.yscale('log')
 plt.xlabel("Kanal")
@@ -276,10 +370,6 @@ plt.savefig('build/Cobalt60.pdf')
 plt.clf()
 
 
-
-
-
-
 plt.scatter(Bin, Uranophan.Daten, label ="Uranophan", c = 'midnightblue',marker='x', s = 5)
 plt.yscale('log')
 plt.xlabel("Kanal")
@@ -289,5 +379,3 @@ plt.tight_layout()
 plt.legend()
 plt.savefig('build/Uranophan.pdf')
 plt.clf()
-
-
