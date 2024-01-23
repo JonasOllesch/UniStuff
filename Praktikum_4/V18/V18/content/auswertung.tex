@@ -86,12 +86,14 @@ bestimmt.
 
 
 \subsection{Bestimmung der Detektoreffizienz}
+\label{subsec:DetektorEffiSec}
 
 Die Effizienz des Germaniumsdetektors kann über die Gleichung 
 
-\begin{equation*}
+\begin{equation}
     Q = \frac{Z}{A \cdot W \cdot t \cdot \Omega}\,,
-\end{equation*}
+    \label{eq:DetektorEffi}
+\end{equation}
 wobei $Z$ der Spektrallinieninhalt, $A$ die Aktivität, $W$ die Emissionswahrscheinlichkeit, $t$ die Messzeit und $\Omega$ der Raumwinkel.
 Der Raumwinkel kann mit der Gleichung
 
@@ -142,7 +144,8 @@ Der untersuchte $\gamma$-Strahler ist $Cs$-137.
 Das gemessene Spektrum ohne Hintergrund ist in \autoref{fig:CeasiumSpektrum} dargestellt.\\
 Zunächst wird der Photopeak untersucht.
 Die Spitze des Peaks liegt im Kanal $3196$, was einer Energie von $\SI{661.383 \pm 0.093}{\kilo\eV}$ entspricht.
-Der Photopeak ist näher in \autoref{fig:CaesiumPhotopeak} abgebildet.
+insgesamt werden $\num{9139 \pm 476}$ Signale dem Photopeak zugeordnet.
+Der Photopeak ist näher in \autoref{fig:CaesiumPhotopeak} abgebildet. 
 Dieser Photopeak wird mit einer Gaußverteilung der Form
 
 \begin{equation*}
@@ -169,7 +172,7 @@ und die volle Breite bei zehntel Höhe als
     E_{\text{FWZM}} =  \SI{4.19}{\kilo\eV}
 \end{equation*}
 
-bestimmt.
+bestimmt. 
 
 Das bedeutet in Verhältnis von 
 \begin{equation*}
@@ -177,7 +180,8 @@ Das bedeutet in Verhältnis von
 \end{equation*}
 
 Im weiteren wird das Comptonkontinuum näher untersucht.
-Aus dem breits experimentell bestimmten Comptonpeak kann num mit \autoref{eq:Comptonpeak} und \autoref{eq:Rückstreupeak}  die Comptenkante und der Rückstreupeak berechnet werden.
+Aus dem breits experimentell bestimmten Comptonpeak kann num mit \autoref{eq:Comptonpeak} und \autoref{eq:Rückstreupeak} %Formel in der Theorie einfügen 
+ die Comptonkante und der Rückstreupeak berechnet werden.
 Bei Werte sind zusammen mit den theoretischen Werten in Tabelle \autoref{tab:CaesiumEnergien} angegeben.
 
 \begin{table}
@@ -195,8 +199,35 @@ Bei Werte sind zusammen mit den theoretischen Werten in Tabelle \autoref{tab:Cae
     \end{tabular}
 \end{table}
 
+Das Comptonkontinuum kann über \autoref{eq:Comptonkontinuum} %Auch in der Theorie einfügen.
+genähert werden. 
+Da die Comptonkante verschmiert ist wird die Regression zwischen dem Wendepunkt der Comptonkante und der Energie vor Begin des Rückstreupeaks durchgeführt und dann zu kleineren Energien verlängert.
+Der dazugehörigen Graph ist in \autoref{fig:Comptonplot} abgebildet. 
+Bei einer Energie des Comptonpeak von $\SI{661.6553}{\kilo\eV}$ wurde der Vorfaktor als $\num{3.755 \pm 0.090}$ bestimmt.
+Über diese Ausgleichsfunktion kann auch der Linieninhalt des Comptonkontinuum bestimmt werden.
+Dafür wird über die Funktion von $E = 0$ bis zu $E = \SI{527.46}{\kilo\eV}$ integriert.
+Aus dieser Integration folgt, dass im Comptonkontinuum insgesamt $\num{4369}$ Signale enthalten sind.\\ 
 
+Wie in \autoref{eq:Absorptionswahrscheinlichkeit} kann die Wahrscheinlichkeit $P$ mit der ein $\gamma$-Quant absorbiert wird mit der Gleichung $P(l) = 1- \exp{-\mu \cdot l}$ beschrieben,
+dabei ist $l$ die Länge des Detektors und beträgt $l = \SI{3.9}{\centi\meter}$ \cite{v18}.
+$\mu$ ist der Absorptionskoeffizient, welcher aus \autoref{fig:Absorptionskoeffizient} abgelesen werden kann. 
+Die Absorptionskoeffizient für den Photopeak und die Comptonkante betragen
 
+\begin{equation*}
+   \mu_\text{Photo} = \SI{0.007}{\frac{1}{\centi\meter}} \quad \text{und}
+\end{equation*}
+\begin{equation*}
+    \mu_\text{Compton} = \SI{0.37}{\frac{1}{\centi\meter}}\,. 
+\end{equation*}
+
+Mit \autoref{eq:Absorptionswahrscheinlichkeit} ergeben sich Absorptionswahrscheinlichkeiten von
+
+\begin{equation*}
+    P_\text{Photo} = \num{0.027} \quad \text{und}
+ \end{equation*}
+\begin{equation*}
+     P_\text{Compton} = \num{0.764}\,. 
+\end{equation*}
 
 
 \begin{figure}[H]
@@ -211,4 +242,48 @@ Bei Werte sind zusammen mit den theoretischen Werten in Tabelle \autoref{tab:Cae
     \includegraphics[width=\textwidth]{build/Caesium_Photopeak.pdf}
     \caption{Photopeak der Cs-137 Quelle.}
     \label{fig:CaesiumPhotopeak}
+\end{figure}
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{build/CaesiumE.pdf}
+    \caption{Graph des Comptonkontinuum bei Cs-137.}
+    \label{fig:Comptonplot}
+\end{figure}
+
+\subsection{Bestimmung der Aktivität von Co-60}
+
+Das Energiespektrum einer Co-60 Probe ist in \autoref{fig:Co60} abgebildet.
+Zur Bestimmung der Quellenaktivität wird die \autoref{eq:DetektorEffi} zur Aktivität $A$ umgestellt.
+Daraus ergibt sich
+\begin{equation*}
+    A = \frac{Z}{Q \cdot W \cdot t \cdot \Omega}\,.
+\end{equation*}
+Der Raumwinkel ist beträgt wieder $\Omega = 0.2046$. 
+und die Messzeit beläuft sich auf $\SI{4324}{\second}$.
+Der Linieninhalt analog wie in \autoref{subsec:DetektorEffiSec} berechnet und ist zusammen mit der Emissionswahrscheinlichkeit aus \cite{LNHB} in \autoref{tab:Co60} gegeben.
+Für die Aktivität ergibt sich der Mittelwert von $A_\text{Co60} = \SI{124 \pm 22}{\becquerel}$
+
+\begin{table}
+    \centering
+    \caption{Kanalnummer, Energie, Emissionswahrscheinlichkeit $W$, Spektrallinieninhalt $Z$ und der Detektoreffizienz $Q$ von Co-60.}
+    \label{tab:Co60}
+    \begin{tabular}{c S[table-format=4.3(1), separate-uncertainty] S[table-format=3.4(1)] S[table-format=3.0(3)] S[table-format=2.2(4)]}
+        \toprule
+        Kanalnummer & {$E \mathbin{/} \si{\kilo\eV}$} & {$W \mathbin{/} \%$} & {Linieninhalt} & {$Q \mathbin{/} \%$ }\\
+        \midrule           
+        5662 &  1332.492(4) 	 & 99.9826(6)   & 734(152)  & 124(30) \\ 
+        6430 &  1173.228(3) 	 & 99.85(3)     & 656(153)  & 123(33) \\ 
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{build/Cobalt60.pdf}
+    \caption{Energiespektrum einer Co-60 Probe.}
+    \label{fig:Comptonplot}
 \end{figure}

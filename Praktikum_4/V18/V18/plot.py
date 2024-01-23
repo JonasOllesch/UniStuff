@@ -8,6 +8,7 @@ import uncertainties.unumpy as unp
 import scipy.constants as constants
 from scipy.signal import find_peaks
 from scipy.signal import peak_widths
+from scipy.integrate import quad
 
 def linReg(x,a,b):
     return a*x +b
@@ -43,7 +44,22 @@ def berechne_Rückstreupeak(Photopeak_Energie):
     return Photopeak_Energie/(1+2*epsilon)
 
 
-def ComptonVerlauf(Energie, Photopeak_Energie, a):
+def ComptonVerlauf(Energie, a):
+    Photopeak_Energie = 661.6553
+    t = Energie/Photopeak_Energie#
+    c = 1
+    m_e = 0.51099895*1000
+    epsilon = Photopeak_Energie/(c**2*m_e) 
+    ErsterTerm = 2
+    ZweiterTerm = t**2/(epsilon**2 * (1-t)**2)
+    DritterTerm = t/(1-t) * (t - 2/epsilon)
+    return a*(ErsterTerm + ZweiterTerm + DritterTerm)
+
+
+
+def IntComptonVerlauf(Energie):
+    a = 3.755
+    Photopeak_Energie = 661.6553
     t = Energie/Photopeak_Energie#
     c = 1
     m_e = 0.51099895*1000
@@ -61,6 +77,7 @@ class Messreihe:
         self.Gesamt_Signale = Gesamt_Signale
         self.Messzeit = Messzeit
         self.Daten  = 0
+
         self.Peaks = None
         self.Peaks_widths = None
         self.LineContentN = None
@@ -391,13 +408,98 @@ print(f'Der Experimentelle Rückstreupeak von Cs137 {repr(berechne_Rückstreupea
 
 #Das ComptonKontinumum
 
+BinE = unp.nominal_values(linReg(Bin,*para_EK))
+UnterGrenzeComptonFitB = 1100 #Bin
+ObereGrenzeComptonFitB = 2550 #Bin
+UnterGrenzeComptonFitE = unp.nominal_values(linReg(1100 ,*para_EK))
+ObereGrenzeComptonFitE = unp.nominal_values(linReg(2550 ,*para_EK))
+ComptonkonFitx = np.linspace(0, 510 ,1000)
+print(f'UnterGrenzeComptonFitE: {UnterGrenzeComptonFitE}')
+print(f'ObereGrenzeComptonFitE: {ObereGrenzeComptonFitE}')
+
+plt.scatter(BinE[:3000], Caesium.Daten[:3000], label ="Caesium", c = 'midnightblue',marker='x', s = 5)
+plt.scatter(BinE[1100:2550], Caesium.Daten[1100:2550], c = 'firebrick',marker='x', s = 5)
+
+popt_CK, pcov_CK = curve_fit(ComptonVerlauf, BinE[1100:2550], Caesium.Daten[1100:2550])
+para_CK = correlated_values(popt_CK, pcov_CK)
+print(f'Die Parameter des Comptonkontinuumsfit {para_CK}')
+ComptonkonFity = ComptonVerlauf(ComptonkonFitx, unp.nominal_values(*para_CK))
+
+#Berechnung des Linieninhalt des Comptonkontinuums
+print(f'Linieninhalt des Caesium-Comptonkontinuums {quad(IntComptonVerlauf, 0, ObereGrenzeComptonFitE)}')
+
+#
+plt.plot(ComptonkonFitx, ComptonkonFity, color = 'firebrick', label='Fit')
+
+
+plt.yscale('log')
+plt.xlim(right = 655, left = 0)
+#plt.xlim(left = 0)
+
+plt.ylim(bottom=1)
+plt.xlabel(r"$E \mathbin{/} \unit{\kilo\eV}$")
+plt.ylabel("Signale")
+plt.grid(linestyle = ":")
+plt.tight_layout()
+plt.legend()
+plt.savefig('build/CaesiumE.pdf')
+plt.clf()
 
 
 
 
 
-#Plotting
+#Bestimmung der Aktivität von Co-60
+Cobalt.Peaks, _ = find_peaks(np.log(Cobalt.Daten+1), prominence=1.6, width=8, rel_height=0.34, height=3)
+
+print(f'Cobalt Peaks Position {Cobalt.Peaks}')
+print(f'Cobalt Unterstrich:{_}')
+
+
+Cobalt.Peaks_widths = _['widths']
+Cobalt.LineContentN = np.zeros(len(Cobalt.Peaks_widths))
+Cobalt.LineContentU = np.zeros(len(Cobalt.Peaks_widths))
+
+for i in range(0,len(Cobalt.Peaks)):
+    LinRegOffset = 10
+
+    UnterGrenzeP = Cobalt.Peaks[i] -int(Cobalt.Peaks_widths[i])
+    ObereGrenzeP = Cobalt.Peaks[i] +int(Cobalt.Peaks_widths[i])
+    
+    UnterGrenzeF = UnterGrenzeP -LinRegOffset
+    ObereGrenzeF = ObereGrenzeP +LinRegOffset 
+
+
+    FitDataX = np.append(Bin[UnterGrenzeF :UnterGrenzeP], Bin[ObereGrenzeP :ObereGrenzeF])
+    FitDataY = np.append(Cobalt.Daten[UnterGrenzeF :UnterGrenzeP], Cobalt.Daten[ObereGrenzeP :ObereGrenzeF])
+    
+
+    para, pcov = curve_fit(linReg, FitDataX, FitDataY)
+    HintergrundF = linReg(FitDataX, *para)
+    HintergrundP = linReg(Bin[UnterGrenzeP :ObereGrenzeP], *para)
+
+
+    Cobalt.LineContentN[i] = np.sum(np.abs(Cobalt.Daten[UnterGrenzeP: ObereGrenzeP]-HintergrundP))
+    Cobalt.LineContentU[i] = np.sum(np.sqrt(np.abs(Cobalt.Daten[UnterGrenzeP: ObereGrenzeP]-HintergrundP)))
+
+    
+Cobalt.LineContent = unp.uarray(Cobalt.LineContentN , Cobalt.LineContentU)
+print(f'Cobalt LineContent {Cobalt.LineContent}')
+print(f'Summe der Cobalts ohne Hintergrund {sum(Cobalt.Daten)}')
+
+Cobalt.PeakEnergie = linReg(Cobalt.Peaks, *para_EK)
+Cobalt.Emissionswahrscheinlichkeit = np.array([ufloat(0.999826, 0.000006), ufloat(0.9985, 0.0003)])
+print(f'Die PeakEnergie von Cobalt {Cobalt.PeakEnergie}')
+
+Cobalt.PeakEffizienz = berechne_Detektoreffizienz_Regression(Cobalt.PeakEnergie, *para_QE)
+print(f'Aktivität von Cobalt60 {4*np.pi*Cobalt.LineContent/(Cobalt.PeakEffizienz * Cobalt.Emissionswahrscheinlichkeit * Cobalt.Messzeit * Raumwinkel)}')
+CobaltAktivität = 4*np.pi*Cobalt.LineContent/(Cobalt.PeakEffizienz * Cobalt.Emissionswahrscheinlichkeit * Cobalt.Messzeit * Raumwinkel)
+
+
 plt.scatter(Bin, Cobalt.Daten, label ="Cobalt", c = 'midnightblue',marker='x', s = 5)
+plt.scatter(Cobalt.Peaks, Cobalt.Daten[Cobalt.Peaks], label = "Peaks", c = "firebrick", marker='x', s = 10)
+
+plt.ylim(bottom = 1)
 plt.yscale('log')
 plt.xlabel("Kanal")
 plt.ylabel("Signale")
@@ -408,6 +510,21 @@ plt.savefig('build/Cobalt60.pdf')
 plt.clf()
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#Plotting
 plt.scatter(Bin, Uranophan.Daten, label ="Uranophan", c = 'midnightblue',marker='x', s = 5)
 plt.yscale('log')
 plt.xlabel("Kanal")
