@@ -60,18 +60,18 @@ bestimmt.
         \toprule
         Kanalnummer & {$E \mathbin{/} \si{\kilo\eV}$} & {$W \mathbin{/} \%$} & {Linieninhalt} & {$Q \mathbin{/} \%$ }\\
         \midrule 
-        594  & 121.7817(3) & 28.41(13) & 7736(351)  & {48.67 (22.39)} \\ 
-        1187 & 244.6974(8) & 7.55(4)   & 1376(151)  & {32.59 (17.64)} \\ 
-        1666 & 344.2785(12)& 26.59(12) & 3134(238)  & {21.07 (9.65)} \\ 
-        1780 & 367.7891(20)& 0.862(5)  & 153 (63)   & {31.84 (185.13)} \\ 
-        1987 & 411.1165(12)& 2.238(10) & 206 (63)   & {16.46 (73.71)} \\ 
-        2146 & 443.965(3)  & 2.80(2)   & 294 (81)   & {18.83 (14.42)} \\ 
-        3763 & 778.9045(24)& 12.97(6)  & 709 (159)  & {9.77 (5.03)} \\ 
-        4190 & 867.380(3)  & 4.243(23) & 217 (85)   & {9.18 (49.90)} \\ 
-        4656 & 964.079(18) & 14.50(6)  & 626 (149)  & {7.72 (3.69)} \\ 
-        5247 & 1085.837(10)& 10.13(6)  & 419 (122)  & {7.41 (4.89)} \\ 
-        5368 & 1112.076(30)& 13.41(6)  & 468 (130)  & {6.25 (3.30)} \\ 
-        6797 & 1408.013(30)& 20.85(8)  & 611 (160)  & {5.25 (2.44)} \\            
+        594  & 121.7817(3) & 28.41(13) & 7736(351)  & 48.67 (22.39) \\ 
+        1187 & 244.6974(8) & 7.55(4)   & 1376(151)  & 32.59 (17.64) \\ 
+        1666 & 344.2785(12)& 26.59(12) & 3134(238)  & 21.07 (9.65) \\ 
+        1780 & 367.7891(20)& 0.862(5)  & 153 (63)   & 31.84 (185.13) \\ 
+        1987 & 411.1165(12)& 2.238(10) & 206 (63)   & 16.46 (73.71) \\ 
+        2146 & 443.965(3)  & 2.80(2)   & 294 (81)   & 18.83 (14.42) \\ 
+        3763 & 778.9045(24)& 12.97(6)  & 709 (159)  & 9.77 (5.03) \\ 
+        4190 & 867.380(3)  & 4.243(23) & 217 (85)   & 9.18 (49.90) \\ 
+        4656 & 964.079(18) & 14.50(6)  & 626 (149)  & 7.72 (3.69) \\ 
+        5247 & 1085.837(10)& 10.13(6)  & 419 (122)  & 7.41 (4.89) \\ 
+        5368 & 1112.076(30)& 13.41(6)  & 468 (130)  & 6.25 (3.30) \\ 
+        6797 & 1408.013(30)& 20.85(8)  & 611 (160)  & 5.25 (2.44) \\            
         \bottomrule
     \end{tabular}
 \end{table}
@@ -176,19 +176,21 @@ Das bedeutet in Verhältnis von
     \frac{E_{\text{FWZM}}}{E_{\text{FWHM}}} = 1.82\,.
 \end{equation*}
 
-
+Im weiteren wird das Comptonkontinuum näher untersucht.
+Aus dem breits experimentell bestimmten Comptonpeak kann num mit \autoref{eq:Comptonpeak} und \autoref{eq:Rückstreupeak}  die Comptenkante und der Rückstreupeak berechnet werden.
+Bei Werte sind zusammen mit den theoretischen Werten in Tabelle \autoref{tab:CaesiumEnergien} angegeben.
 
 \begin{table}
     \centering
-    \caption{Theoretisch und experimentell bestimmte Energien des Photopeak, der Comptonkante und des Rückstreupeaks von Cs-137.}
+    \caption{Theoretisch und experimentell bestimmte Energien des Photopeak, der Comptonkante und des Rückstreupeaks von Cs-137. Die theoretischen Werte wurde mithilfe von \cite{LNHB} bestimmt.}
     \label{tab:CaesiumEnergien}
-    \begin{tabular}{l c c}
+    \begin{tabular}{l S[table-format=3.2(4), separate-uncertainty] S[table-format=3.4(4), separate-uncertainty]}
         \toprule
         {-} & {Experiment} & {Theorie}\\
         \midrule 
-        Rückstreupeaks  & $\SI{ \pm }{\kilo\eV}$ & $\SI{477.332 \pm 0.028}{\kilo\eV}$  \\ 
-        Comptonkante    & $\SI{ \pm }{\kilo\eV}$ & $\SI{184.3228 \pm 0.0023}{\kilo\eV}$    \\ 
-        Photopeak       & $\SI{ \pm }{\kilo\eV}$ & $\SI{661.6553 \pm 0.030}{\kilo\eV}$  \\ 
+        Photopeak       & $\SI{661.23 \pm 0.23 }{\kilo\eV}$ & $\SI{661.6553 \pm 0.030}{\kilo\eV}$  \\ 
+        Comptonkante    & $\SI{476.95 \pm 0.39 }{\kilo\eV}$ & $\SI{477.332 \pm 0.028}{\kilo\eV}$    \\ 
+        Rückstreupeaks  & $\SI{184.290 \pm 0.033 }{\kilo\eV}$ & $\SI{184.3228 \pm 0.0023}{\kilo\eV}$  \\ 
         \bottomrule
     \end{tabular}
 \end{table}

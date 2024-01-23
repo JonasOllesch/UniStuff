@@ -42,6 +42,17 @@ def berechne_Rückstreupeak(Photopeak_Energie):
     epsilon = Photopeak_Energie/(c**2*m_e) 
     return Photopeak_Energie/(1+2*epsilon)
 
+
+def ComptonVerlauf(Energie, Photopeak_Energie, a):
+    t = Energie/Photopeak_Energie#
+    c = 1
+    m_e = 0.51099895*1000
+    epsilon = Photopeak_Energie/(c**2*m_e) 
+    ErsterTerm = 2
+    ZweiterTerm = t**2/(epsilon**2 * (1-t)**2)
+    DritterTerm = t/(1-t) * (t - 2/epsilon)
+    return a*(ErsterTerm + ZweiterTerm + DritterTerm)
+
 #from matplotlib.legend_handler import (HandlerLineCollection,HandlerTuple)
 #from multiprocessing  import Process
 class Messreihe:
@@ -372,13 +383,13 @@ print(f'Theoretische Photopeak Cs137 {Caesium.Photopeak_Energie_Theorie}')
 print(f'Die theoretische Comptonkante von Cs137 {berechne_Comptonkante(Caesium.Photopeak_Energie_Theorie)} in keV')
 print(f'Der theoretische Rückstreupeak von Cs137 {berechne_Rückstreupeak(Caesium.Photopeak_Energie_Theorie)} in keV')
 
-print(Caesium.Photopeak_Energie_Experiment)
+
 print(f'Experiemnteller Photopeak Cs137 {repr(Caesium.Photopeak_Energie_Experiment)}')
-print(f'Die Experimentelle Comptonkante von Cs137 {berechne_Comptonkante(repr(Caesium.Photopeak_Energie_Experiment))} in keV')
-print(f'Der Experimentelle Rückstreupeak von Cs137 {berechne_Rückstreupeak(repr(Caesium.Photopeak_Energie_Experiment))} in keV')
+print(f'Die Experimentelle Comptonkante von Cs137 {repr(berechne_Comptonkante(Caesium.Photopeak_Energie_Experiment))} in keV')
+print(f'Der Experimentelle Rückstreupeak von Cs137 {repr(berechne_Rückstreupeak(Caesium.Photopeak_Energie_Experiment))} in keV')
 
 
-
+#Das ComptonKontinumum
 
 
 
