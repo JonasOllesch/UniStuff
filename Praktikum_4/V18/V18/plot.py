@@ -26,6 +26,22 @@ def berechne_Detektoreffizienz_Regression(Energie, alpha, beta):
 def Gaus(x, a, mu, sigma):
     return a/(sigma * np.sqrt(2 * np.pi)) *np.exp( - (x - mu)**2 / (2 * sigma**2) )
 
+def uGaus(x, a, mu, sigma):
+    return a/(sigma * unp.sqrt(2 * np.pi)) *unp.exp( - (x - mu)**2 / (2 * sigma**2) )
+
+
+def berechne_Comptonkante(Photopeak_Energie):
+    c = 1#in natürlichen Einheiten
+    m_e = 0.51099895*1000
+    epsilon = Photopeak_Energie/(c**2*m_e) 
+    return Photopeak_Energie*(2*epsilon)/(1+2*epsilon)
+
+def berechne_Rückstreupeak(Photopeak_Energie):
+    c = 1
+    m_e = 0.51099895*1000
+    epsilon = Photopeak_Energie/(c**2*m_e) 
+    return Photopeak_Energie/(1+2*epsilon)
+
 #from matplotlib.legend_handler import (HandlerLineCollection,HandlerTuple)
 #from multiprocessing  import Process
 class Messreihe:
@@ -43,6 +59,11 @@ class Messreihe:
         self.PeakEffizienz = None
         self.Zerfallskonstante = None
         self.Emissionswahrscheinlichkeit = None
+
+        self.Photopeak_Energie_Theorie = None
+        self.Photopeak_Energie_Experiment = None
+#        self.Comptonkante = None
+#        self.Rückstreupeak  = None
 
 #        self.Effektive_Signale = 0
 
@@ -318,6 +339,7 @@ GausFity = Gaus(GausFitx, *unp.nominal_values(para_GA))
 
 
 tmp = np.array([np.argmax(unp.nominal_values(GausFity))])
+Caesium.Photopeak_Energie_Experiment = ufloat(GausFitx[np.argmax(GausFity)], unp.std_devs(uGaus(GausFitx[np.argmax(GausFity)], *para_GA)))
 
 print(tmp)
 Caesium_FWHM, Hh ,Hl, Hr = peak_widths(unp.nominal_values(GausFity), tmp, rel_height=0.5)
@@ -343,12 +365,17 @@ plt.legend()
 plt.savefig(f'build/Caesium_Photopeak.pdf')
 plt.clf()
 
+#Theoretische Berechung vom Rückstreupeak und Comptonkante
 
+Caesium.Photopeak_Energie_Theorie = ufloat(661.6553,0.030)
+print(f'Theoretische Photopeak Cs137 {Caesium.Photopeak_Energie_Theorie}')
+print(f'Die theoretische Comptonkante von Cs137 {berechne_Comptonkante(Caesium.Photopeak_Energie_Theorie)} in keV')
+print(f'Der theoretische Rückstreupeak von Cs137 {berechne_Rückstreupeak(Caesium.Photopeak_Energie_Theorie)} in keV')
 
-
-
-
-
+print(Caesium.Photopeak_Energie_Experiment)
+print(f'Experiemnteller Photopeak Cs137 {repr(Caesium.Photopeak_Energie_Experiment)}')
+print(f'Die Experimentelle Comptonkante von Cs137 {berechne_Comptonkante(repr(Caesium.Photopeak_Energie_Experiment))} in keV')
+print(f'Der Experimentelle Rückstreupeak von Cs137 {berechne_Rückstreupeak(repr(Caesium.Photopeak_Energie_Experiment))} in keV')
 
 
 
