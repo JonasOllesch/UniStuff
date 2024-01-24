@@ -132,7 +132,7 @@ Cobalt = Messreihe("Cobalt", np.sum(HCobalt), 4324)
 Europium = Messreihe("Europium", np.sum(HEuropium), 2836)
 Uranophan = Messreihe("Uranophan", np.sum(HUranophan), 2737)
 Hintergrund = Messreihe("Hintergrund", np.sum(HHintergrund), 86960)
-
+print(np.sum(Uranophan))
 
 #Globalen Hintergrund abziehen
 
@@ -511,6 +511,15 @@ plt.clf()
 
 
 
+Uranophan.Peaks, _ = find_peaks(np.log(Uranophan.Daten+1), prominence=1.3, width=5, rel_height=0.34, height=3)
+Uranophan.PeakEnergie = linReg(Uranophan.Peaks, *para_EK)
+
+
+print(f'Uranophan Peaks Position {Uranophan.Peaks}')
+print(f'Uranophan Unterstrich:{_}')
+
+for i in range(0,len(Uranophan.Peaks)):
+    print(f'{i}, {Uranophan.Peaks[i]}, {Uranophan.PeakEnergie[i]}')
 
 
 
@@ -518,19 +527,80 @@ plt.clf()
 
 
 
+#Uranophan
+Uranophan.Peaks_widths = _['widths']
+Uranophan.LineContentN = np.zeros(len(Uranophan.Peaks_widths))
+Uranophan.LineContentU = np.zeros(len(Uranophan.Peaks_widths))
+
+for i in range(0,len(Uranophan.Peaks)):
+    LinRegOffset = 10
+
+    UnterGrenzeP = Uranophan.Peaks[i] -int(Uranophan.Peaks_widths[i])
+    ObereGrenzeP = Uranophan.Peaks[i] +int(Uranophan.Peaks_widths[i])
+    
+    UnterGrenzeF = UnterGrenzeP -LinRegOffset
+    ObereGrenzeF = ObereGrenzeP +LinRegOffset 
+
+    FitDataX = np.append(Bin[UnterGrenzeF :UnterGrenzeP], Bin[ObereGrenzeP :ObereGrenzeF])
+    FitDataY = np.append(Uranophan.Daten[UnterGrenzeF :UnterGrenzeP], Uranophan.Daten[ObereGrenzeP :ObereGrenzeF])
+    
+    para, pcov = curve_fit(linReg, FitDataX, FitDataY)
+    HintergrundF = linReg(FitDataX, *para)
+    HintergrundP = linReg(Bin[UnterGrenzeP :ObereGrenzeP], *para)
+
+    Uranophan.LineContentN[i] = np.sum(np.abs(Uranophan.Daten[UnterGrenzeP: ObereGrenzeP]-HintergrundP))
+    Uranophan.LineContentU[i] = np.sum(np.sqrt(np.abs(Uranophan.Daten[UnterGrenzeP: ObereGrenzeP]-HintergrundP)))
+
+    
+Uranophan.LineContent = unp.uarray(Uranophan.LineContentN , Uranophan.LineContentU)
+print(f'Uranophan LineContent {Uranophan.LineContent}')
+
+
+#Uranophan.PeakEnergie = linReg(Uranophan.Peaks, *para_EK)
+Uranophan.Emissionswahrscheinlichkeit = np.array([ufloat(np.nan,np.nan ), ufloat(4.33, 0.29), ufloat(1.78,0.19), ufloat(7.268,0.022), ufloat(18.414,0.036), ufloat(35.60,0.07 ), ufloat(45.49,0.19), ufloat(1.530,0.007 ), ufloat(np.nan,np.nan ), ufloat(np.nan,np.nan ), ufloat(4.892,0.016), ufloat(1.064,0.013), ufloat(2.5,0.3 ), ufloat(3.10,0.01 ), ufloat(np.nan,np.nan ), ufloat(14.91,0.03 ), ufloat(1.635,0.007 ), ufloat(np.nan,np.nan ), ufloat(5.831,0.014), ufloat(1.435,0.06 ), ufloat(np.nan,np.nan ), ufloat(3.968,0.011), ufloat(np.nan,np.nan ), ufloat(2.389,0.008 ), ufloat(2.128,0.010), ufloat(np.nan,np.nan ), ufloat(np.nan,np.nan )])/100
+#print(f'Die PeakEnergie von Uranophan {Uranophan.PeakEnergie}')
+print(f'Die Emsissionswahrschinlichkeiten von Uranophan {Uranophan.Emissionswahrscheinlichkeit}')
+Uranophan.PeakEffizienz = berechne_Detektoreffizienz_Regression(Uranophan.PeakEnergie, *para_QE)
+#print(f'Aktivität von Uranophan {}')
+print(f'Die Detektoreffizienz an den Uranophanpeaks{Uranophan.PeakEffizienz}') 
+Aktivität = 4*np.pi*Uranophan.LineContent/(Uranophan.PeakEffizienz * Uranophan.Emissionswahrscheinlichkeit * Uranophan.Messzeit * Raumwinkel)
+print(f'Die Aktivität von Uranophan {Aktivität}')
+
+Sonstiges = np.array([0,8,9,14,17,20,22,25,26])
+Th = np.array([1])
+Ra = np.array([2])
+Pb = np.array([3,4,5,11])
+Bi = np.array([6,7,10,11,13,15,16,18,19,21,23,24])
+Pa = np.array([12])
+plt.scatter(BinE, Uranophan.Daten, label ="Uranophan", c = 'midnightblue',marker='x', s = 5)
 
 
 
+plt.scatter(unp.nominal_values(Uranophan.PeakEnergie[Sonstiges]), unp.nominal_values(Uranophan.Daten[Uranophan.Peaks[Sonstiges]]), label = "Sonstige", c = "firebrick", marker='x', s = 10)
+plt.scatter(unp.nominal_values(Uranophan.PeakEnergie[Th]), unp.nominal_values(Uranophan.Daten[Uranophan.Peaks[Th]]), label = "Th-234", c = "sienna", marker='x', s = 10)
+plt.scatter(unp.nominal_values(Uranophan.PeakEnergie[Ra]), unp.nominal_values(Uranophan.Daten[Uranophan.Peaks[Ra]]), label = "Ra-226", c = "yellow", marker='x', s = 10)
+plt.scatter(unp.nominal_values(Uranophan.PeakEnergie[Pb]), unp.nominal_values(Uranophan.Daten[Uranophan.Peaks[Pb]]), label = "Pb-214", c = "forestgreen", marker='x', s = 10)
+plt.scatter(unp.nominal_values(Uranophan.PeakEnergie[Bi]), unp.nominal_values(Uranophan.Daten[Uranophan.Peaks[Bi]]), label = "Bi-214", c = "cyan", marker='x', s = 10)
+plt.scatter(unp.nominal_values(Uranophan.PeakEnergie[Pa]), unp.nominal_values(Uranophan.Daten[Uranophan.Peaks[Pa]]), label = "Pa-234", c = "purple", marker='x', s = 10)
 
-
-
-#Plotting
-plt.scatter(Bin, Uranophan.Daten, label ="Uranophan", c = 'midnightblue',marker='x', s = 5)
 plt.yscale('log')
-plt.xlabel("Kanal")
+plt.ylim(bottom = 1)
+plt.xlabel(r"$E \mathbin{/} \unit{\kilo\eV}$")
 plt.ylabel("Signale")
 plt.grid(linestyle = ":")
 plt.tight_layout()
 plt.legend()
 plt.savefig('build/Uranophan.pdf')
 plt.clf()
+
+print(Aktivität[Th])
+
+print(f'die Aktivitäten von Th {np.mean(unp.nominal_values(Aktivität[Th]))} \pm {(unp.std_devs(Aktivität[Th]))}')
+print(f'die Aktivitäten von Ra {np.mean(unp.nominal_values(Aktivität[Ra]))} \pm {(unp.std_devs(Aktivität[Ra]))}')
+print(f'die Aktivitäten von Pb {np.mean(unp.nominal_values(Aktivität[Pb]))} \pm {np.std(unp.nominal_values(Aktivität[Pb]))}')
+print(f'die Aktivitäten von Bi {np.mean(unp.nominal_values(Aktivität[Bi]))} \pm {np.std(unp.nominal_values(Aktivität[Bi]))}')
+print(f'die Aktivitäten von Pa {np.mean(unp.nominal_values(Aktivität[Pa]))} \pm {(unp.std_devs(Aktivität[Pa]))}')
+
+
+
+
