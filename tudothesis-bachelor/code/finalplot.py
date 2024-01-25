@@ -148,6 +148,7 @@ num = 2 * 10**6  # Number of elements in the logspace array
 g1_ee_low_pha0 = np.logspace(-12, np.log10(g1_g_ee_cutoff_pha0(g_ee_low, m1_lim, delm_sunsqua, theta_sun)), num)
 
 # lower phase 90 cutoff
+#####
 g1_ee_low_pha90 = np.logspace(np.log10(g1_g_ee_cutoff_pha90(g_ee_low, m1_lim, delm_sunsqua, theta_sun)), -3, num)
 
 

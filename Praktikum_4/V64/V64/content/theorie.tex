@@ -74,7 +74,7 @@ Here, we are particularly interested in how the contrast depends on the polarisa
 
 Take
 \begin{align*}
-    I &\propto \langle | E_1 \cos(\omega t) + E_2 \cos(\omega t + \delta) | \rangle \\
+    I &\propto \langle | E_1 \cos(\omega t) + E_2 \cos(\omega t + \delta) |^2 \rangle \\
       &= \langle E^2_1 \cos^2(\omega t) + E^2_2 \cos^2(\omega t + \delta) + 2 E_1 E_2 \cos(\omega t) \cos(\omega t + \delta) \rangle \\
       &= \frac{E^2_1 + E^2_2}{2} + E_1E_2 \cos(\delta)
 \end{align*}
@@ -84,7 +84,7 @@ with
     \langle \cos(\omega t) \cos(\omega t +\delta) \rangle &= \frac{1}{2} \cos(\delta)
 \end{align*}
 and $I_\text{Laser} \propto E^2_1 + E^2_2$ to derive a proportionality for $I_\text{min}$ and $I_\text{max}$
-by plugging in the minimum and maximum values for $\cos(\delta)$ at $\delta=0$ and $\delta=\frac{\pi}{2}$ respectively. \\
+by plugging in the minimum and maximum values for $\cos(\delta)$ at $\cos(\delta=0) = 1$ and $\cos(\delta=\frac{\pi}{2}) = -1$ respectively. \\
 
 We get
 \begin{align*}
@@ -94,7 +94,7 @@ We get
 with $\cos(\varphi) = \frac{E_1}{\sqrt{E^2_1 + E^2_2}}$ and $\sin(\varphi) = \frac{E_2}{\sqrt{E^2_1 + E^2_2}}$ from geometric consideration,
 leading to
 \begin{align}
-    K &\propto \left| \frac{1 + 2 \sin(\varphi) \cos(\varphi) - 1 - 2 \sin(\varphi) \cos(\varphi)}{1 + 2 \sin(\varphi) \cos(\varphi) + 1 - 2 \sin(\varphi) \cos(\varphi)}\right| \nonumber\\
+    K &\propto \left| \frac{1 + 2 \sin(\varphi) \cos(\varphi) - (1 - 2 \sin(\varphi) \cos(\varphi))}{1 + 2 \sin(\varphi) \cos(\varphi) + 1 - 2 \sin(\varphi) \cos(\varphi)}\right| \nonumber\\
       &\propto |\sin(2 \varphi)| \,.
       \label{eq:contrastprop}
 \end{align}
@@ -134,6 +134,7 @@ an refractive index of
     n = \frac{1}{1 - \frac{M \lambda_\text{vac}}{2 \, T \, \theta \cdot 10°}}
     \label{eq:refractiveindexglass}
 \end{equation}
+if $\theta$ is in radians.
 
 \subsubsection{Refractive Index of Air}
 
