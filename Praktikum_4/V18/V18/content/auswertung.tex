@@ -1,11 +1,11 @@
 \section{Auswertung}
 \label{sec:auswertung}
 
-\subsection{Bestimmung des Hintergrund}
+\subsection{Bestimmung des Hintergrundes}
 
-Zunächst wird die Hintergrundrate des Versuchsaufbaus bestimmt. Dafür wird eine Messung durchgeführt, bei der sich keine Probe in der Apertur befindet.
+Zunächst wird die Hintergrundrate des Versuchsaufbaus bestimmt. Dafür wird eine Messung durchgeführt, bei der sich keine Probe in der Apparatur befindet.
 Die Länge dieser Messung beträgt $\approx \SI{24.15}{\hour}$, hat insgesamt $294337$ Signale registriert und ist in \autoref{fig:Hintergrund} abgebildet. 
-Es ist zu erkennen, dass bei sehr hohen Kanälen der Hintergrund dauerhaft ansteigt. Da dies unabhängig von der verwendeten Probe ist werden im folgenden alle Kanäle über $8000$ auf null gesetzt.
+Es ist zu erkennen, dass bei sehr hohen Kanälen der Hintergrund dauerhaft ansteigt. Da dies unabhängig von der verwendeten Probe ist werden im Folgenden alle Kanäle über $8000$ auf null gesetzt.
 Der gemessene Hintergrund wird bei den untersuchten Proben auf die jeweiligen Messzeiten umgerechnet und von den gemessenen Signalen abgezogen.  
 
 \begin{figure}[H]
@@ -18,20 +18,20 @@ Der gemessene Hintergrund wird bei den untersuchten Proben auf die jeweiligen Me
 
 \subsection{Kalibrierung der Energie}
 
-Den Kanälen wird eine Energie zugeordnet, indem ein Strahler in die Apertur eingesetzt wird, der bei bekannten Energien strahlt. 
+Den Kanälen wird eine Energie zugeordnet, indem ein Strahler in die Apparatur eingesetzt wird, der bei bekannten Energien strahlt. 
 Danach wird aus den Abständen zwischen den Emissionslinien die Energie der einzelnen Kanälen bestimmt.  
 Zur Kalibrierung wird Eu-152 verwendet.
-Ein Histogram der Messung ist in \autoref{fig:Europium} abgebildet.
+Ein Histogramm der Messung ist in \autoref{fig:Europium} abgebildet.
 Dafür werden die Peaks im Spektrum über \texttt{scipy.signal.find\_peaks} \cite{scipy} bestimmt.
 Der lokale Hintergrund wird über eine lineare Regression bestimmt, die durch nächsten zehn Kanäle, die jeweils links und rechts vom Peak liegen, bestimmt.
-Danach wird über alle Kanäle die den Peak bilden summiert.
+Danach wird über alle Kanäle, die den Peak bilden, summiert.
 
 Um die Energie des Spektrums zu bestimmen werden die gemessenen Emissionslinien den aus der Literatur \cite{LNHB} bekannten Linien zugeordnet.
-Die den Peaks zugeordneten Kanäle können in \autoref{tab:EmissionsAlignment}.
+Die den Peaks zugeordneten Kanäle sind in \autoref{tab:EmissionsAlignment} eingetragen.
 Das Maximum mit der Kanalnummer 594 hat mit Abstand den größten Linieninhalt und deswegen wird diesem die Emissionsenergie $\SI{121.7817 \pm 0.0003}{}$ mit der größten Emissionswahrscheinlichkeit zugeordnet.
 Daraus folgt, dass dem Peak mit der Kanalnummer 201 keine Spektrallinie zugeordnet werden kann, da Europium keine Emissionen mit weniger Energie besitzt.
 
-Um die Energie der anderen Kanäle zu bestimmen wird eine lineare Regression $\text{Energie} = \alpha \cdot \text{Kanal} + \beta$ zwischen den Kanälen und der dazugehörigen Energie durchgeführt.
+Um die Energie der anderen Kanäle zu bestimmen, wird eine lineare Regression $\text{Energie} = \alpha \cdot \text{Kanal} + \beta$ zwischen den Kanälen und der dazugehörigen Energie durchgeführt.
 Diese Regression ist in \autoref{fig:EnergieKanal} zu sehen und die Parameter werden als
 
 \begin{equation*}
@@ -91,10 +91,10 @@ bestimmt.
 Die Effizienz des Germaniumsdetektors kann über die Gleichung 
 
 \begin{equation}
-    Q = \frac{4 \pi \cdot Z}{A \cdot W \cdot t \cdot \Omega}\,,
+    Q = \frac{4 \pi \cdot Z}{A \cdot W \cdot t \cdot \Omega}\,
     \label{eq:DetektorEffi}
 \end{equation}
-wobei $Z$ der Spektrallinieninhalt, $A$ die Aktivität, $W$ die Emissionswahrscheinlichkeit, $t$ die Messzeit und $\Omega$ der Raumwinkel.
+bestimmt werden, wobei $Z$ der Spektrallinieninhalt, $A$ die Aktivität, $W$ die Emissionswahrscheinlichkeit, $t$ die Messzeit und $\Omega$ der Raumwinkel.
 Der Raumwinkel kann mit der Gleichung
 
 \begin{equation*}
@@ -144,7 +144,7 @@ Der untersuchte $\gamma$-Strahler ist $Cs$-137.
 Das gemessene Spektrum ohne Hintergrund ist in \autoref{fig:CeasiumSpektrum} dargestellt.\\
 Zunächst wird der Photopeak untersucht.
 Die Spitze des Peaks liegt im Kanal $3196$, was einer Energie von $\SI{661.383 \pm 0.093}{\kilo\eV}$ entspricht.
-insgesamt werden $\num{9139 \pm 476}$ Signale dem Photopeak zugeordnet.
+Insgesamt werden $\num{9139 \pm 476}$ Signale dem Photopeak zugeordnet.
 Der Photopeak ist näher in \autoref{fig:CaesiumPhotopeak} abgebildet. 
 Dieser Photopeak wird mit einer Gaußverteilung der Form
 
@@ -179,14 +179,14 @@ Das bedeutet in Verhältnis von
     \frac{E_{\text{FWZM}}}{E_{\text{FWHM}}} = 1.82\,.
 \end{equation*}
 
-Im weiteren wird das Comptonkontinuum näher untersucht.
-Aus dem breits experimentell bestimmten Comptonpeak kann num mit \autoref{eq:Comptonpeak} und \autoref{eq:Rückstreupeak} %Formel in der Theorie einfügen 
+Im Weiteren wird das Comptonkontinuum näher untersucht.
+Aus dem bereits experimentell bestimmten Comptonpeak kann num mit \autoref{eq:Comptonpeak} und \autoref{eq:Rückstreupeak} %Formel in der Theorie einfügen 
  die Comptonkante und der Rückstreupeak berechnet werden.
-Bei Werte sind zusammen mit den theoretischen Werten in Tabelle \autoref{tab:CaesiumEnergien} angegeben.
+Beide Werte sind zusammen mit den theoretischen Werten in \autoref{tab:CaesiumEnergien} angegeben.
 
 \begin{table}
     \centering
-    \caption{Theoretisch und experimentell bestimmte Energien des Photopeak, der Comptonkante und des Rückstreupeaks von Cs-137. Die theoretischen Werte wurde mithilfe von \cite{LNHB} bestimmt.}
+    \caption{Theoretisch und experimentell bestimmte Energien des Photopeak, der Comptonkante und des Rückstreupeaks von Cs-137. Die theoretischen Werte werden mithilfe von \cite{LNHB} bestimmt.}
     \label{tab:CaesiumEnergien}
     \begin{tabular}{l S[table-format=3.2(4), separate-uncertainty] S[table-format=3.4(4), separate-uncertainty]}
         \toprule
@@ -201,7 +201,7 @@ Bei Werte sind zusammen mit den theoretischen Werten in Tabelle \autoref{tab:Cae
 
 Das Comptonkontinuum kann über \autoref{eq:Comptonkontinuum} %Auch in der Theorie einfügen.
 genähert werden. 
-Da die Comptonkante verschmiert ist wird die Regression zwischen dem Wendepunkt der Comptonkante und der Energie vor Begin des Rückstreupeaks durchgeführt und dann zu kleineren Energien verlängert.
+Da die Comptonkante verschmiert ist, wird die Regression zwischen dem Wendepunkt der Comptonkante und der Energie vor Beginn des Rückstreupeaks durchgeführt und dann zu kleineren Energien verlängert.
 Der dazugehörigen Graph ist in \autoref{fig:Comptonplot} abgebildet. 
 Bei einer Energie des Comptonpeak von $\SI{661.6553}{\kilo\eV}$ wurde der Vorfaktor als $\num{3.755 \pm 0.090}$ bestimmt.
 Über diese Ausgleichsfunktion kann auch der Linieninhalt des Comptonkontinuum bestimmt werden.
@@ -260,10 +260,10 @@ Daraus ergibt sich
 \begin{equation*}
     A = \frac{4\pi \cdot Z}{Q \cdot W \cdot t \cdot \Omega}\,.
 \end{equation*}
-Der Raumwinkel ist beträgt wieder $\Omega = 0.2046$. 
+Der Raumwinkel beträgt wieder $\Omega = 0.2046$. 
 und die Messzeit beläuft sich auf $\SI{4324}{\second}$.
 Der Linieninhalt analog wie in \autoref{subsec:DetektorEffiSec} berechnet und ist zusammen mit der Emissionswahrscheinlichkeit aus \cite{LNHB} in \autoref{tab:Co60} gegeben.
-Für die Aktivität ergibt sich der Mittelwert von $A_\text{Co60} = \SI{124 \pm 22}{\becquerel}$
+Für die Aktivität ergibt sich ein Mittelwert von $A_\text{Co60} = \SI{124 \pm 22}{\becquerel}$
 
 \begin{table}
     \centering
@@ -293,9 +293,9 @@ Für die Aktivität ergibt sich der Mittelwert von $A_\text{Co60} = \SI{124 \pm 
 In dieser Messung wird ein Gestein als Quelle verwendet, welches das Mineral Uranophan $\ce{Ca[UO2|SiO3OH]2 5H2O}$ enthält.
 Das aufgenommene Spektrum ist in \autoref{fig:Uranophan} zu sehen.
 Alle Peaks, die identifiziert werden konnten, sind in \autoref{tab:Uranophan} aufgelistet.
-Daneben sind die Isotope eingetragen, zu denen diese Linie zugeordnet werden konnte, dabei wurde ausschließlich Isotope aus der Zerfallskette von U-238 betrachtet.  
-Es werden auch Peaks im Maxima gefunden, die keinen Isotopen zugeordnet werden können.
-Zusätzlich besitzt Th-234 zwei Emissionslinien $E_1 = \SI{92.38 \pm 0.01}{\kilo\eV}$ und $E_2 = \SI{92.80 \pm 0.02}{\kilo\eV}$, die bei der Analyse des Spektrum nicht voneinander getrennt werden können.
+Daneben sind die Isotope eingetragen, zu denen diese Linie zugeordnet wird, dabei werden ausschließlich Isotope aus der Zerfallskette von U-238 betrachtet.  
+Es werden auch Peaks im Spektrum gefunden, die keinen Isotopen zugeordnet werden können.
+Zusätzlich besitzt Th-234 zwei Emissionslinien $E_1 = \SI{92.38 \pm 0.01}{\kilo\eV}$ und $E_2 = \SI{92.80 \pm 0.02}{\kilo\eV}$, die bei der Analyse des Spektrums nicht voneinander getrennt werden können.
 Aus diesem Grund werden beide Emissionswahrscheinlichkeit zusammengerechnet.
 %Außerdem treten in der Untersuchten Zerfallsreihe zwei Emissionslinien auf die nahe beieinander liegen und zu unterschiedlichen Isotopen gehören.
 %Dazu gehören $ \SI{186.211 \pm 0.013}{\kilo\eV}$ von Ra-226 und $\SI{186.15 \pm 0.02}{\kilo\eV}$ von Pa-234.
