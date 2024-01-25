@@ -87,6 +87,7 @@ y_test = pdf(x_test,36.24,0.01256,1.217)
 
 plt.plot(x_test,y_test,color='red')
 plt.fill_between(Channel,gefüllte_Kanäle,step="pre",alpha=0.6,label="Histogram der Myonenzerfälle")
+
 plt.ylabel("Zählung")
 plt.xlabel("Kanalnummer")
 plt.xlim(0,len(gefüllte_Kanäle))

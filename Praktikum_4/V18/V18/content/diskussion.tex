@@ -1,0 +1,63 @@
+\section{Diskussion}
+\label{sec:Diskussion}
+
+
+\subsection{Energiekalibrierung}
+
+Die lineare Regression ergab den Zusammenhang $E(Kanal) = \SI{0.207306 \pm 0.000049}{\frac{\kilo\eV}{\text{Kanal}}} \cdot Kanal + \SI{-1.17 \pm 0.18}{\kilo\eV}$.
+Diese Funktion hat einen negativen y-Achsenabschnitt, der nicht physikalisch ist, da der Detektor im negativen Bereich der Funktion Energie an die Umgebung abgeben würde.
+Jedoch ist der Detektor nur für $\gamma$-Quanten mit einer Energie von über $\SI{50}{\kilo\eV}$ sensitiv \cite{v18}.
+Aus diesem Grund wird der negative Bereich vernachlässigt.
+
+
+\subsection{Detektoreffizienz}
+
+Die Funktion für die Detektoreffizienz divergiert für kleine Energien.
+Bei Energie, die kleiner als $\approx \SI{53.12}{\kilo\eV}$ ist die Detektoreffizienz größer als $1$, 
+da solch kleine Energien in diesem Versuch nicht beachtet werden, sollte dieser Effekt die Messung nicht beeinflussen.
+
+
+\subsection{Monochromatischen Gammastrahlers}
+
+Der Peak der monochromatischen Gammastrahlers Cs-137 wird mit einer Gaußverteilung genähert.
+Bei einer Gaußverteilung hat die volle Breite bei halber Höhe ein festes Verhältnis zur vollen Breite bei zehntel Höhe von 1.823.
+Für den Caesiumpeak wurde ein Verhältnis von $\frac{E_{\text{FWZM}}}{E_{\text{FWHM}}} = 1.82\,.$ berechnet.
+Bei Werte stimmen angemessen überein. Somit wird bestätigt, dass es sich um eine Gaußverteilung handelt.
+
+
+Es wird die experimentell bestimmten und theoretische berechneten Eigenschaften des Caesiumspektrum verglichen.
+Die Werte sind in \autoref{tab:CaesiumEnergienVergleich} aufgetragen. Daraus ist zu erkennen, dass die experimentell bestimmten Werte sehr gut mit den Theoriewerten übereinstimmen.
+
+\begin{table}
+    \centering
+    \caption{Theoretisch und experimentell bestimmte Energien des Photopeak sowie ihre relative Abweichungen, der Comptonkante und des Rückstreupeaks von Cs-137. Die theoretischen Werte wurde mithilfe von \cite{LNHB} bestimmt.}
+    \label{tab:CaesiumEnergienVergleich}
+    \begin{tabular}{l S[table-format=3.2(4), separate-uncertainty] S[table-format=3.4(4), separate-uncertainty]  S[table-format=1.3(4)]}
+        \toprule
+        {-} & {Experiment} & {Theorie} & {Relative Abweichung $ mathbin{/} \%$}\\
+        \midrule 
+        Photopeak       & $\SI{661.23 \pm 0.23 }{\kilo\eV}$ & $\SI{661.6553 \pm 0.030}{\kilo\eV}$      & 0.064(0.035) \\ 
+        Comptonkante    & $\SI{476.95 \pm 0.39 }{\kilo\eV}$ & $\SI{477.332 \pm 0.028}{\kilo\eV}$       & 0.08(0.08) \\ 
+        Rückstreupeaks  & $\SI{184.290 \pm 0.033 }{\kilo\eV}$ & $\SI{184.3228 \pm 0.0023}{\kilo\eV}$   & 0.018(0.018) \\ 
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+Aus dem Verhältnis der Absorptionswahrscheinlichkeiten $P_\text{Photo} = \num{0.027}$ und $P_\text{Compton} = \num{0.764}$ 
+ist ein Verhältnis zwischen Comptonkontinuum und Photopeak von $\frac{P_\text{Compton}}{P_\text{Photo}} \approx 28.30$ zu erwarten.
+Es wurde jedoch ein Verhältnis von $\frac{P^{\text{Exp}}_\text{Compton}}{P^{\text{Exp}}_\text{Photo}} \approx 0.48$ bestimmt.
+Für diese Diskrepanz kann keine Erklärung gefunden werden.
+
+
+\subsection{Zerfallskette von Uranophan}
+
+Im Spektrum der  Zerfallskette von Uranophan werden viele Maxima gefunden, die nicht eindeutig einem Isotop zugeordnet werden können,
+jedoch ist deren Linieninhalt deutlich kleiner als bei den anderen Peaks, die zugeordnet werden können.
+Das lässt den Schluss zu, dass es sich um Hintergrund handelt, der nicht herausgerechnet werden konnte.
+Diese Erklärung ist nicht direkt für das Maximum bei $\SI{77.40 \pm 0.17}{\kilo\eV}$, da der Linieninhalt mit $\num{22 922 \pm 822}$ signifikant ist.
+
+Weiter handelt es sich beim der Zerfallskette von U-238 im Vergleich zu den anderen Zerfallsketten um eine lange Kette.
+Es konnte nicht alle Isotope der Zerfallskette identifiziert werden, da sie beim Zerfall keine $\gamma$-Emissionen erzeugen.
+Das ist zum Beispiel bei u-238 selbst der Fall \cite{LNHB}. 
+Anders aus bei den anderen Proben handelt es sich bei dem Uranophan um ein natürliches Gestein.
+In diesem Gestein könnten auch andere radioaktive Elemente enthalten sein, die nicht identifiziert werden konnten. 

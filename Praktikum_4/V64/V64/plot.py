@@ -101,14 +101,14 @@ print("Parameter der Luftnäherung:", para_Luft)
 #Brechungsindex_Raum = LorentzLorenz_Naecherung(p=1.013, alpha=para_Luft[0], T = 15+constants.zero_Celsius)
 
 #print(f'Mittelwert der Fitparameter {repr(para_Luft_mean)}')
-print(f"Brechungsindices der Standardatmosphäre 1.: {repr(LorentzLorenz_Naecherung(p=1.013, alpha=para_Luft[0], T = 15+constants.zero_Celsius))}")
-print(f"Brechungsindices der Standardatmosphäre 2.: {repr(LorentzLorenz_Naecherung(p=1.013, alpha=para_Luft[1], T = 15+constants.zero_Celsius))}")
-print(f"Brechungsindices der Standardatmosphäre 3.: {repr(LorentzLorenz_Naecherung(p=1.013, alpha=para_Luft[2], T = 15+constants.zero_Celsius))}")
-print(f"Brechungsindices der Standardatmosphäre 4.: {repr(LorentzLorenz_Naecherung(p=1.013, alpha=para_Luft[3], T = 15+constants.zero_Celsius))}")
+print(f"Brechungsindices der Standardatmosphäre 1.: {repr(LorentzLorenz_Naecherung(p=1.013, alpha=para_Luft[0], T = 20 + constants.zero_Celsius))}")
+print(f"Brechungsindices der Standardatmosphäre 2.: {repr(LorentzLorenz_Naecherung(p=1.013, alpha=para_Luft[1], T = 20 + constants.zero_Celsius))}")
+print(f"Brechungsindices der Standardatmosphäre 3.: {repr(LorentzLorenz_Naecherung(p=1.013, alpha=para_Luft[2], T = 20 + constants.zero_Celsius))}")
+print(f"Brechungsindices der Standardatmosphäre 4.: {repr(LorentzLorenz_Naecherung(p=1.013, alpha=para_Luft[3], T = 20 + constants.zero_Celsius))}")
 
 Brechungsindex_Raum_arr = h.uzeros((4,1))
 for i in range(0,4):
-    Brechungsindex_Raum_arr[i] = LorentzLorenz_Naecherung(p=1.013, alpha=para_Luft[i], T = 15+constants.zero_Celsius)
+    Brechungsindex_Raum_arr[i] = LorentzLorenz_Naecherung(p=1.013, alpha=para_Luft[i], T = 20 + constants.zero_Celsius)
 
 print(f'Brechungsindex bei Raumbeingungen {np.mean(unp.nominal_values(Brechungsindex_Raum_arr))} \pm {np.std(unp.nominal_values(Brechungsindex_Raum_arr))}')
 Brechungsindex_Raum = ufloat(np.mean(unp.nominal_values(Brechungsindex_Raum_arr)),np.std(unp.nominal_values(Brechungsindex_Raum_arr)))
@@ -198,8 +198,11 @@ format = ['int', 'float', "float", 'float', "float", 'float', "float" , 'float',
 h.save_latex_table_to_file(list2,header= header, caption = caption, label = label, format = format)
 quartz = 1.457
 lime = 1.522
-Air = 1.00027654
+Air = 1.00027653
 
 print(f'Quartz rel deviation{(quartz-Brechungsindex_Glas)/Brechungsindex_Glas*100}')
 print(f'Lime rel deviation {(lime-Brechungsindex_Glas)/Brechungsindex_Glas*100}')
 print(f'Raum rel deviation {(Brechungsindex_Raum-Air)/Air*100}')
+
+
+

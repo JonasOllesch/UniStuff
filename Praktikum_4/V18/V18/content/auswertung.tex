@@ -1,0 +1,372 @@
+\section{Auswertung}
+\label{sec:auswertung}
+
+\subsection{Bestimmung des Hintergrund}
+
+Zunächst wird die Hintergrundrate des Versuchsaufbaus bestimmt. Dafür wird eine Messung durchgeführt, bei der sich keine Probe in der Apertur befindet.
+Die Länge dieser Messung beträgt $\approx \SI{24.15}{\hour}$, hat insgesamt $294337$ Signale registriert und ist in \autoref{fig:Hintergrund} abgebildet. 
+Es ist zu erkennen, dass bei sehr hohen Kanälen der Hintergrund dauerhaft ansteigt. Da dies unabhängig von der verwendeten Probe ist werden im folgenden alle Kanäle über $8000$ auf null gesetzt.
+Der gemessene Hintergrund wird bei den untersuchten Proben auf die jeweiligen Messzeiten umgerechnet und von den gemessenen Signalen abgezogen.  
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{build/Hintergrund.pdf}
+    \caption{Hintergrund gemessen über einen längeren Zeitraum.}
+    \label{fig:Hintergrund}
+\end{figure}
+
+
+\subsection{Kalibrierung der Energie}
+
+Den Kanälen wird eine Energie zugeordnet, indem ein Strahler in die Apertur eingesetzt wird, der bei bekannten Energien strahlt. 
+Danach wird aus den Abständen zwischen den Emissionslinien die Energie der einzelnen Kanälen bestimmt.  
+Zur Kalibrierung wird Eu-152 verwendet.
+Ein Histogram der Messung ist in \autoref{fig:Europium} abgebildet.
+Dafür werden die Peaks im Spektrum über \texttt{scipy.signal.find\_peaks} \cite{scipy} bestimmt.
+Der lokale Hintergrund wird über eine lineare Regression bestimmt, die durch nächsten zehn Kanäle, die jeweils links und rechts vom Peak liegen, bestimmt.
+Danach wird über alle Kanäle die den Peak bilden summiert.
+
+Um die Energie des Spektrums zu bestimmen werden die gemessenen Emissionslinien den aus der Literatur \cite{LNHB} bekannten Linien zugeordnet.
+Die den Peaks zugeordneten Kanäle können in \autoref{tab:EmissionsAlignment}.
+Das Maximum mit der Kanalnummer 594 hat mit Abstand den größten Linieninhalt und deswegen wird diesem die Emissionsenergie $\SI{121.7817 \pm 0.0003}{}$ mit der größten Emissionswahrscheinlichkeit zugeordnet.
+Daraus folgt, dass dem Peak mit der Kanalnummer 201 keine Spektrallinie zugeordnet werden kann, da Europium keine Emissionen mit weniger Energie besitzt.
+
+Um die Energie der anderen Kanäle zu bestimmen wird eine lineare Regression $\text{Energie} = \alpha \cdot \text{Kanal} + \beta$ zwischen den Kanälen und der dazugehörigen Energie durchgeführt.
+Diese Regression ist in \autoref{fig:EnergieKanal} zu sehen und die Parameter werden als
+
+\begin{equation*}
+    \alpha = \SI{0.207306 \pm 0.000049}{\frac{\kilo\eV}{\text{Kanal}}} \quad  \text{und} 
+\end{equation*}
+\begin{equation*}
+    \beta = \SI{-1.17 \pm 0.18}{\kilo\eV}
+\end{equation*}
+bestimmt.
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{build/Europium.pdf}
+    \caption{Histogram der Europiumsignalen.}
+    \label{fig:Europium}
+\end{figure}
+
+
+
+\begin{table}
+    \centering
+    \caption{Kanalnummer, Energie, Emissionswahrscheinlichkeit $W$, Spektrallinieninhalt $Z$ und der Detektoreffizienz $Q$ von Europium.}
+    \label{tab:EmissionsAlignment}
+    \begin{tabular}{c S[table-format=4.4(2), separate-uncertainty] S[table-format=2.3(2)] S[table-format=4.0(3)] S[table-format=2.2(4)]}
+        \toprule
+        Kanalnummer & {$E \mathbin{/} \si{\kilo\eV}$} & {$W \mathbin{/} \%$} & {Linieninhalt} & {$Q \mathbin{/} \%$ }\\
+        \midrule           
+        594  & 121.7817(3) & 28.41(13) & 7736(351)  & 48.67(2239) \\ 
+        1187 & 244.6974(8) & 7.55(4)   & 1376(151)  & 32.59(1764) \\ 
+        1666 & 344.2785(12)& 26.59(12) & 3134(238)  & 21.07(965) \\ 
+        1780 & 367.7891(20)& 0.862(5)  & 153 (63)   & 31.84(18513) \\ 
+        1987 & 411.1165(12)& 2.238(10) & 206 (63)   & 16.46(7371) \\ 
+        2146 & 443.965(3)  & 2.80(2)   & 294 (81)   & 18.83(1442) \\ 
+        3763 & 778.9045(24)& 12.97(6)  & 709 (159)  & 9.77(503) \\ 
+        4190 & 867.380(3)  & 4.243(23) & 217 (85)   & 9.18(4990) \\ 
+        4656 & 964.079(18) & 14.50(6)  & 626 (149)  & 7.72(369) \\ 
+        5247 & 1085.837(10)& 10.13(6)  & 419 (122)  & 7.41(489) \\ 
+        5368 & 1112.076(30)& 13.41(6)  & 468 (130)  & 6.25(330) \\ 
+        6797 & 1408.013(30)& 20.85(8)  & 611 (160)  & 5.25(244) \\ 
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{build/EnergieKanäle.pdf}
+    \caption{Die Energieabhängigkeit der Messkanäle.}
+    \label{fig:EnergieKanal}
+\end{figure}
+
+
+\subsection{Bestimmung der Detektoreffizienz}
+\label{subsec:DetektorEffiSec}
+
+Die Effizienz des Germaniumsdetektors kann über die Gleichung 
+
+\begin{equation}
+    Q = \frac{4 \pi \cdot Z}{A \cdot W \cdot t \cdot \Omega}\,,
+    \label{eq:DetektorEffi}
+\end{equation}
+wobei $Z$ der Spektrallinieninhalt, $A$ die Aktivität, $W$ die Emissionswahrscheinlichkeit, $t$ die Messzeit und $\Omega$ der Raumwinkel.
+Der Raumwinkel kann mit der Gleichung
+
+\begin{equation*}
+    \Omega = 2 \pi\left(1 - \frac{a}{\sqrt{a² + r²}}\right)   \,,
+\end{equation*}
+
+wobei $a$ der Abstand zwischen Quelle und Detektor ist und $r$ der Radius des Detektors.
+Der Radius des Detektors beträgt $\SI{22.5}{\milli\meter}$. 
+Der Abstand $a$ setzt sich aus dem Abstand zwischen der Quelle und der Aluminiumhülle und dem Abstand zwischen Aluminiumhülle und Detektor, der mit $\SI{15}{\milli\meter}$ gegeben ist, zusammen.
+Daraus ergibt sich ein Gesamtabstand von $a = \SI{86}{\milli\meter} = \SI{71}{\milli\meter} + \SI{15}{\milli\meter}$ und ein Raumwinkel von 
+
+\begin{equation*}
+    \Omega = 0.2046
+\end{equation*}
+
+
+Die Aktivität der Quelle ist mit $\SI{4130 \pm 60}{\becquerel}$ am 01.10.2000 gegeben.
+Diese Aktivität folgt dem Zerfallsgesetz, was zusammen mit einer Halbwertszeit von $T_{1/2} = \SI{13.522 \pm 0.016}{\year}$, eine Aktivität von $A = \SI{1211 \pm 17}{\becquerel}$ am Tage des Experimentes bedeutet.
+Die berechnete Detektoreffizienz kann in \autoref{tab:EmissionsAlignment} abgelesen werden.
+
+
+Die Effizienz für die anderen Kanäle kann über eine Exponentialfunktion der Form $Q(E) = \alpha \cdot {\frac{E}{\unit{\kilo\eV}}}^{\beta}$ bestimmt werden.
+Die freien Parameter wurden zu 
+
+\begin{align*}
+    \alpha &= \SI{24 \pm 10}{\frac{1}{\kilo\eV}} \quad  \text{und} \\
+    \beta  &= \num{-0.799 \pm 0.078}\\
+\end{align*}
+%\begin{equation*}
+%
+%\end{equation*}
+
+bestimmt.
+Der zugehörige Graph kann in \autoref{fig:EffKanal} betrachtet werden.
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{build/EffizienzKanal.pdf}
+    \caption{Berechnete Detektoreffizienz für den betrachten Energiebereich.}
+    \label{fig:EffKanal}
+\end{figure}
+
+\subsection{Untersuchung eines monochromatischen Gammastrahlers}
+
+Der untersuchte $\gamma$-Strahler ist $Cs$-137.
+Das gemessene Spektrum ohne Hintergrund ist in \autoref{fig:CeasiumSpektrum} dargestellt.\\
+Zunächst wird der Photopeak untersucht.
+Die Spitze des Peaks liegt im Kanal $3196$, was einer Energie von $\SI{661.383 \pm 0.093}{\kilo\eV}$ entspricht.
+insgesamt werden $\num{9139 \pm 476}$ Signale dem Photopeak zugeordnet.
+Der Photopeak ist näher in \autoref{fig:CaesiumPhotopeak} abgebildet. 
+Dieser Photopeak wird mit einer Gaußverteilung der Form
+
+\begin{equation*}
+    f(E) = \frac{\alpha}{\sqrt{2 \pi \sigma²}} \cdot e^{-\frac{(E-\mu)²}{2 \sigma²}}
+\end{equation*}
+genähert, wobei die Parameter als 
+
+\begin{align*}
+    \alpha  &= \SI{1878.3 \pm 1.0}{\frac{1}{\kilo\eV}} \,, \\
+    \mu     &= \SI{661.23702 \pm 0.00062}{\kilo\eV}   \quad  \text{und}             \\
+    \sigma  &= \SI{0.97609 \pm 0.00062}{\kilo\eV}\\
+\end{align*}
+bestimmt.
+
+Die volle Breite bei halber Höhe wird als
+
+\begin{equation*}
+    E_{\text{FWHM}} =  \SI{2.30}{\kilo\eV}
+\end{equation*}
+
+und die volle Breite bei zehntel Höhe als
+
+\begin{equation*}
+    E_{\text{FWZM}} =  \SI{4.19}{\kilo\eV}
+\end{equation*}
+
+bestimmt. 
+
+Das bedeutet in Verhältnis von 
+\begin{equation*}
+    \frac{E_{\text{FWZM}}}{E_{\text{FWHM}}} = 1.82\,.
+\end{equation*}
+
+Im weiteren wird das Comptonkontinuum näher untersucht.
+Aus dem breits experimentell bestimmten Comptonpeak kann num mit \autoref{eq:Comptonpeak} und \autoref{eq:Rückstreupeak} %Formel in der Theorie einfügen 
+ die Comptonkante und der Rückstreupeak berechnet werden.
+Bei Werte sind zusammen mit den theoretischen Werten in Tabelle \autoref{tab:CaesiumEnergien} angegeben.
+
+\begin{table}
+    \centering
+    \caption{Theoretisch und experimentell bestimmte Energien des Photopeak, der Comptonkante und des Rückstreupeaks von Cs-137. Die theoretischen Werte wurde mithilfe von \cite{LNHB} bestimmt.}
+    \label{tab:CaesiumEnergien}
+    \begin{tabular}{l S[table-format=3.2(4), separate-uncertainty] S[table-format=3.4(4), separate-uncertainty]}
+        \toprule
+        {-} & {Experiment} & {Theorie}\\
+        \midrule 
+        Photopeak       & $\SI{661.23 \pm 0.23 }{\kilo\eV}$ & $\SI{661.6553 \pm 0.030}{\kilo\eV}$  \\ 
+        Comptonkante    & $\SI{476.95 \pm 0.39 }{\kilo\eV}$ & $\SI{477.332 \pm 0.028}{\kilo\eV}$    \\ 
+        Rückstreupeaks  & $\SI{184.290 \pm 0.033 }{\kilo\eV}$ & $\SI{184.3228 \pm 0.0023}{\kilo\eV}$  \\ 
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+Das Comptonkontinuum kann über \autoref{eq:Comptonkontinuum} %Auch in der Theorie einfügen.
+genähert werden. 
+Da die Comptonkante verschmiert ist wird die Regression zwischen dem Wendepunkt der Comptonkante und der Energie vor Begin des Rückstreupeaks durchgeführt und dann zu kleineren Energien verlängert.
+Der dazugehörigen Graph ist in \autoref{fig:Comptonplot} abgebildet. 
+Bei einer Energie des Comptonpeak von $\SI{661.6553}{\kilo\eV}$ wurde der Vorfaktor als $\num{3.755 \pm 0.090}$ bestimmt.
+Über diese Ausgleichsfunktion kann auch der Linieninhalt des Comptonkontinuum bestimmt werden.
+Dafür wird über die Funktion von $E = 0$ bis zu $E = \SI{527.46}{\kilo\eV}$ integriert.
+Aus dieser Integration folgt, dass im Comptonkontinuum insgesamt $\num{4369}$ Signale enthalten sind.\\ 
+
+Wie in \autoref{eq:Absorptionswahrscheinlichkeit} kann die Wahrscheinlichkeit $P$ mit der ein $\gamma$-Quant absorbiert wird mit der Gleichung $P(l) = 1- \exp{(-\mu \cdot l)}$ beschrieben,
+dabei ist $l$ die Länge des Detektors und beträgt $l = \SI{3.9}{\centi\meter}$ \cite{v18}.
+$\mu$ ist der Absorptionskoeffizient, welcher aus \autoref{fig:Absorptionskoeffizient} abgelesen werden kann. 
+Die Absorptionskoeffizient für den Photopeak und die Comptonkante betragen
+
+\begin{equation*}
+   \mu_\text{Photo} = \SI{0.007}{\frac{1}{\centi\meter}} \quad \text{und}
+\end{equation*}
+\begin{equation*}
+    \mu_\text{Compton} = \SI{0.37}{\frac{1}{\centi\meter}}\,. 
+\end{equation*}
+
+Mit \autoref{eq:Absorptionswahrscheinlichkeit} ergeben sich Absorptionswahrscheinlichkeiten von
+
+\begin{equation*}
+    P_\text{Photo} = \num{0.027} \quad \text{und}
+ \end{equation*}
+\begin{equation*}
+     P_\text{Compton} = \num{0.764}\,. 
+\end{equation*}
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{build/Caesium.pdf}
+    \caption{Spektrum eines $Cs$-137 Strahlers.}
+    \label{fig:CeasiumSpektrum}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{build/Caesium_Photopeak.pdf}
+    \caption{Photopeak der Cs-137 Quelle.}
+    \label{fig:CaesiumPhotopeak}
+\end{figure}
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{build/CaesiumE.pdf}
+    \caption{Graph des Comptonkontinuum bei Cs-137.}
+    \label{fig:Comptonplot}
+\end{figure}
+
+\subsection{Bestimmung der Aktivität von Co-60}
+
+Das Energiespektrum einer Co-60 Probe ist in \autoref{fig:Co60} abgebildet.
+Zur Bestimmung der Quellenaktivität wird die \autoref{eq:DetektorEffi} zur Aktivität $A$ umgestellt.
+Daraus ergibt sich
+\begin{equation*}
+    A = \frac{4\pi \cdot Z}{Q \cdot W \cdot t \cdot \Omega}\,.
+\end{equation*}
+Der Raumwinkel ist beträgt wieder $\Omega = 0.2046$. 
+und die Messzeit beläuft sich auf $\SI{4324}{\second}$.
+Der Linieninhalt analog wie in \autoref{subsec:DetektorEffiSec} berechnet und ist zusammen mit der Emissionswahrscheinlichkeit aus \cite{LNHB} in \autoref{tab:Co60} gegeben.
+Für die Aktivität ergibt sich der Mittelwert von $A_\text{Co60} = \SI{124 \pm 22}{\becquerel}$
+
+\begin{table}
+    \centering
+    \caption{Kanalnummer, Energie, Emissionswahrscheinlichkeit $W$, Spektrallinieninhalt $Z$ und die Aktivität von Co-60.}
+    \label{tab:Co60}
+    \begin{tabular}{c S[table-format=4.3(1), separate-uncertainty] S[table-format=3.4(1)] S[table-format=3.0(3)] S[table-format=2.0(4)]}
+        \toprule
+        Kanalnummer & {$E \mathbin{/} \si{\kilo\eV}$} & {$W \mathbin{/} \%$} & {Linieninhalt} & {$A \mathbin{/} \unit{\becquerel}$ }\\
+        \midrule           
+        5662 &  1332.492(4) 	 & 99.9826(6)   & 734(152)  & 124(30) \\ 
+        6430 &  1173.228(3) 	 & 99.85(3)     & 656(153)  & 123(33) \\ 
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{build/Cobalt60.pdf}
+    \caption{Energiespektrum einer Co-60 Probe.}
+    \label{fig:Comptonplot}
+\end{figure}
+
+\subsection{Untersuchung der Zerfallskette von Uranophan}
+
+In dieser Messung wird ein Gestein als Quelle verwendet, welches das Mineral Uranophan $\ce{Ca[UO2|SiO3OH]2 5H2O}$ enthält.
+Das aufgenommene Spektrum ist in \autoref{fig:Uranophan} zu sehen.
+Alle Peaks, die identifiziert werden konnten, sind in \autoref{tab:Uranophan} aufgelistet.
+Daneben sind die Isotope eingetragen, zu denen diese Linie zugeordnet werden konnte, dabei wurde ausschließlich Isotope aus der Zerfallskette von U-238 betrachtet.  
+Es werden auch Peaks im Maxima gefunden, die keinen Isotopen zugeordnet werden können.
+Zusätzlich besitzt Th-234 zwei Emissionslinien $E_1 = \SI{92.38 \pm 0.01}{\kilo\eV}$ und $E_2 = \SI{92.80 \pm 0.02}{\kilo\eV}$, die bei der Analyse des Spektrum nicht voneinander getrennt werden können.
+Aus diesem Grund werden beide Emissionswahrscheinlichkeit zusammengerechnet.
+%Außerdem treten in der Untersuchten Zerfallsreihe zwei Emissionslinien auf die nahe beieinander liegen und zu unterschiedlichen Isotopen gehören.
+%Dazu gehören $ \SI{186.211 \pm 0.013}{\kilo\eV}$ von Ra-226 und $\SI{186.15 \pm 0.02}{\kilo\eV}$ von Pa-234.
+%Der Linieninhalt der $\SI{186.03 \pm 0.15}{\kilo\eV}$ wird nach dem Verhältnis der Emissionswahrscheinlichkeiten aufgeteilt.
+Die Mittelwerte der Aktivitäten sind in \autoref{tab:Aktivitäten} dargestellt.
+
+
+\begin{table}
+    \centering
+    \caption{Experimentelle und theoretische Energien, Emissionswahrscheinlichkeiten, Isotop, Linieninhalt und Aktivität Emissionslinien aus dem Uranophanspektrum.}
+    \label{tab:Uranophan}
+    \begin{tabular}{S[table-format=4.3(4), separate-uncertainty] S[table-format=4.3(1), separate-uncertainty] S[table-format=3.4(1)] c S[table-format=5.0(3)] S[table-format=5.0(4)]}
+        \toprule
+        {$E_\text{Exp} \mathbin{/} \si{\kilo\eV}$} & {$E_\text{Theo} \mathbin{/} \si{\kilo\eV}$} & {$W \mathbin{/} \%$} & {Isotop} & {Linieninhalt} & {$A \mathbin{/} \unit{\becquerel}$ }\\
+        \midrule           
+        77.40(0.17)     &   {-}          & {-}          & {-}         &  22922(822)  & {-}           \\
+        92.74(0.17)     &   92.80 (2)    & 4.33 (29)    & {Th-234}    &  6939(284)   & 5637(670)   \\
+        186.03(0.15)    &   186.211 (13) & 1.78 (19)    & {Ra-226}    &  12247(404)  & 42215(5278)   \\
+        242.00(0.14)    &   241.997 (3)  & 7.268 (22)   & {Pb-214}    &  11466(390)  & 11944(759)    \\
+        295.07(0.13)    &   295.224 (2)  & 18.414 (36)  & {Pb-214}    &  23016(591)  & 11087(691)    \\
+        351.876(0.120)  &    351.932 (2) &  35.60 (7)   & {Pb-214}    &  38556(866)  & 11058(738)    \\
+        608.728(0.094)  &    609.312 (7) & 45.49(19)    & {Bi-214}    &  23906(719)  & 8315(811)     \\
+        664.700(0.092)  &   665.453 (22) & 1.530 (7)    & {Bi-214}    &  629(104)    & 6989(1345)    \\
+        701.808(0.092)  &         {-}    &   {-}        &   {-}       &  176(53)     & {-}           \\
+        741.196(0.093)  &        {-}     &   {-}        &   {-}       &  241(73)     & {-}           \\
+        767.109(0.094)  &   768.356 (10) & 4.892 (16)   &  {Bi-214}   &  2117(234)   & 8238(1275)    \\
+        784.938(0.095)  &    785.96 (9)  &  1.064 (13)  &   {Pb-214}  &  440(86)     & 8030(1812)    \\
+        805.66(0.10)    &   805.80 (5)   &   2.5 (3)    &   {Pa-234}  &  471(98)     & 3735(992)     \\
+        933.16(0.11)    &    934.061 (12)&   3.10 (1)   &   {Bi-214}  &  997(154)    & 7161(1408)    \\
+        999.29(0.12)    &     {-}        &    {-}       &      {-}    &  247(71)     & {-}           \\
+        1119.32(0.14)   & 1 120.287 (10) &  14.91 (3)   &   {Bi-214}  &  4201(366)   & 7255(1162)    \\
+        1154.56(0.14)   & 1 155.19 (2)   &   1.635 (7)  &   {Bi-214}  &  402(101)    & 6497(1866)    \\
+        1180.89(0.15)   &      {-}       &    {-}       &       {-}   &  59(27)      & {-}           \\
+        1237.28(0.16)   &1 238.111 (12)  &  5.831 (14)  &   {Bi-214}  &  1426(210)   & 6822(1397)    \\
+        1278.74(0.17)   &1 280.96 (2)    & 1.435 (6)    &   {Bi-214}  &  266(77)     & 5325(1746)    \\
+        1334.71(0.18)   &    {-}         &       {-}    &      {-}    &  50(20)      & {-}           \\
+        1376.38(0.19)   & 1 377.669 (12) &3.968 (11)    &   {Bi-214}  &  958(184)    & 7337(1790)    \\
+        1385.29(0.19)   &      {-}       &      {-}     &      {-}    &  62(22)      & {-}           \\
+        1406.65(0.19)   & 1 407.98 (4)   & 2.389 (8)    &  {Bi-214}   &  384(110)    & 4973(1619)    \\
+        1509.06(0.22)   &1 509.228 (15)  & 2.128 (10)   &  {Bi-214}   &  479(138)    & 7360(2417)    \\
+        1536.42(0.22)   &      {-}       &      {-}     &    {-}      &  30(19)      & {-}           \\
+        1582.24(0.23)   &      {-}       &    {-}       &      {-}    &  66(30)      & {-}           \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+
+\begin{table}
+    \centering
+    \caption{Bestimmte Isotope und ihre Aktivitäten.}
+    \label{tab:Aktivitäten}
+    \begin{tabular}{c S[table-format=5.0(4)]}
+        \toprule
+        {Isotop} & {$A \mathbin{/} \unit{\becquerel}$}\\
+        \midrule           
+                {Th-234} & 5637(670)\\
+                {Ra-226} & 42214(5279)\\
+                {Pb-214} & 10530(1486)\\
+                {Bi-214} & 7025(994)\\
+                {Pa-234} & 3735(992)\\
+                \bottomrule
+    \end{tabular}
+\end{table}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{build/Uranophan.pdf}
+    \caption{Energiespektrum einer Uranophanquelle.}
+    \label{fig:Uranophan}
+\end{figure}
+
+
+
+
