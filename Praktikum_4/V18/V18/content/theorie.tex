@@ -13,7 +13,7 @@ Verständnis wichtige Grundlagen wiederholt werden.
     \label{fig:ems}
 \end{figure}
 
-Als Gammastrahlung werden Photonen, also elektromagnetische Strahlung, mit einer Energie zwischen circa $\SI{10}{\kilo\eV}$ und $\SI{10000}{\kilo\eV}$ bezeichnet.
+Als Gammastrahlen werden Photonen, also elektromagnetische Strahlung, mit einer Energie zwischen circa $\SI{10}{\kilo\eV}$ und $\SI{10000}{\kilo\eV}$ bezeichnet.
 Anders als bei $\alpha$- und $\beta$-Strahlung handelt es sich bei $\gamma$-Strahlung um ungeladene Strahlung mit hoher Reichweite und Eindringtiefe.
 Gammastrahlung kann durch unterschiedliche Prozesse, darunter z.B. der Zerfall von Positronen und anderen Teilchen oder Bremsstrahlung entstehen.
 Da hier aber das Gammaspektrum von Atomkernen betrachtet werden soll, sind insbesondere Photonen, die in Kernzerfällen entstehen, wichtig.
@@ -82,13 +82,6 @@ Da hier ein Paar mit einer Ruhemasse von etwa $\SI{1000}{\kilo\eV}$ erzeugt wird
 Um zu beschreiben, wie tief die enstandenen Gammaphotonen in ein Medium eindringen können, ist der Absorptionskoeffizient $\mu$ hilfreich.
 Wie in \autoref{fig:Absorptionskoeffizient} zu erkennen ist, tragen bei unterschiedlichen Energien die bereits erläuterten Prozesse zur Gesamtextinktion bei.
 
-\begin{figure}[H]
-    \centering
-    \includegraphics{figures/extinction_coefficient.pdf}
-    \caption{Gesamter Absorptionskoeffizient $\mu$ sowie Einzelbeiträge aus dem Photo- und Comptoneffekt sowie der Paarerzeugung am Beispiel von Germanium-32 \cite{ap704}.} 
-    \label{fig:Absorptionskoeffizient}   
-\end{figure}
-
 Wie bereits in der Beschreibung der Paarbildung angerissen ist diese nur für die höchsten Energien der dominierende Prozess.
 Im Bereich unterhalb etwa $\SI{8}{\mega\eV}$ dominieren Photo- und Comptoneffekt.
 Der Photoeffekt trägt unterhalb etwa $\SI{0.15}{\mega\eV}$ stärker als der Comptoneffekt bei. \\
@@ -100,6 +93,13 @@ die Absorptionswahrscheinlichkeit von Photonen unterschiedlicher Energie in eine
     \label{eq:Absorptionswahrscheinlichkeit}
 \end{equation}
 zu beschreiben.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics{figures/extinction_coefficient.pdf}
+    \caption{Gesamter Absorptionskoeffizient $\mu$ sowie Einzelbeiträge aus dem Photo- und Comptoneffekt sowie der Paarerzeugung am Beispiel von Germanium-32 \cite{ap704}.} 
+    \label{fig:Absorptionskoeffizient}   
+\end{figure}
 
 \subsection{Der Germaniumdetektor}
 
@@ -139,7 +139,7 @@ Nach dem Sammeln aller nötigen Grundlagen wird jetzt auf das Spektrum eines mon
 
 \begin{figure}[H]
     \centering
-    \includegraphics{figures/Gammaspektrum.pdf}
+    \includegraphics[width=.9\textwidth]{figures/Gammaspektrum.pdf}
     \caption{Monochromatisches Gammasprektrum am Beispiel von Cs-137. Hervorgehoben sind der Full Energy Peak, auch Photopeak,
     der Rückstreupeak und die Comptonkante sowie die K-Linien von Blei, die hier nicht relevant sind \cite{gammaspektrum}.}
     \label{fig:gammaspektrum}
