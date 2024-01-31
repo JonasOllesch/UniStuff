@@ -7,5 +7,4 @@ from uncertainties import correlated_values
 import uncertainties.unumpy as unp
 import scipy.constants as constants
 
-from matplotlib.legend_handler import (HandlerLineCollection,HandlerTuple)
 from multiprocessing  import Process
