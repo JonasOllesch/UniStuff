@@ -15,10 +15,12 @@ def Gaus(x, a, mu, sigma):
 
 
 Detektorscann = np.genfromtxt('Messdaten/GaussScan.UXD', skip_header = 56, skip_footer = 0, encoding = 'unicode-escape') 
-ZScann1 = np.genfromtxt('Messdaten/Z1Scan.UXD', skip_header = 56, skip_footer = 0, encoding = 'unicode-escape')
-RockingCurve1 = np.genfromtxt('Messdaten/RockingCurve2_1.UXD', skip_header = 56, skip_footer = 0, encoding = 'unicode-escape')
+ZScann1 = np.genfromtxt('Messdaten/Z2raw.UXD', skip_header = 56, skip_footer = 0, encoding = 'unicode-escape')
+RockingCurve = np.genfromtxt('Messdaten/RockingCurve1raw.UXD', skip_header = 56, skip_footer = 0, encoding = 'unicode-escape')
 Omega2Theta = np.genfromtxt('Messdaten/Omega2Theta.UXD', skip_header = 56, skip_footer = 0, encoding = 'unicode-escape')
 Diffus = np.genfromtxt('Messdaten/Diffus.UXD', skip_header = 56, skip_footer = 0, encoding = 'unicode-escape')
+
+
 
 
 
@@ -82,7 +84,7 @@ def plotte_Diffus(Diffus):
 Processe = []
 Processe.append(Process(target=plotte_Detektorscan, args=([Detektorscann])))
 Processe.append(Process(target=plotte_Z1Scan, args=([ZScann1])))
-Processe.append(Process(target=plotte_RockingCurve, args=([RockingCurve1])))
+Processe.append(Process(target=plotte_RockingCurve, args=([RockingCurve])))
 Processe.append(Process(target=plotte_Omega2Theta, args=([Omega2Theta])))
 Processe.append(Process(target=plotte_Diffus, args=([Diffus])))
 
@@ -95,11 +97,3 @@ for p in Processe:
 
 for p in Processe:
     p.join()
-
-
-#p1 = Process(target=plotte_Detektorscan, args=([Detektorscann]))
-##p2 = Process(target=plote_n_vs_p, args=(Messreihe_Druck[:,0], Brechungsindex_Luft_arr))
-#p2.start()
-#p1.start()
-##p2.join()
-#p1.join()
