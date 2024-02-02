@@ -1,7 +1,67 @@
 \section{Evaluation}
 \label{sec:auswertung}
 
-
+\sisetup{round-mode = places, round-precision = 2}%
 The following regression are performed with the method \texttt{curve\_fit} from the python \cite{py}-package \textit{scipy} \cite{scipy}.
 Propagation of the uncertainties are done with the package \textit{uncertainties} \cite{uncertainties}.
 Plots are created with \textit{matplotlib} \cite{matplotlib}.
+
+\subsection{Alignment}
+
+\subsubsection{Detector scan}
+
+To adjust the primary beam a detector scan is performed.
+The recorded data and the Gaussian-fit in depicted in \autoref{fig:Detectorscan}.
+The resulting reflectivity should represent a Gaussian distribution of the shape
+
+\begin{equation*}
+    R\left(\alpha\right) = \frac{a}{\sqrt{2\pi\sigma²}} \cdot e^{-\frac{\left(x -\mu\right)^2}{2\sigma^2}} + b \,.
+\end{equation*}
+
+The parameter $a$, $b$, $\mu$ and $\sigma$ are determined as 
+\begin{align*}
+    a &=  \SI{118153.296 \pm 0.070}{\degree}\,, \\
+    b & = \num{11647.81 \pm 0.16}\,, \\
+    \mu    &= \SI{ -0.1087117 \pm   0.0000023}{\degree}\quad \text{and} \\
+    \sigma &= \SI{  3.706477 \pm  0.0000024}{\degree}\,. \\
+\end{align*}
+
+The $\text{FWHM}$ and the maximum of the reflectivity $I_\text{max}$ are established as 
+
+\begin{equation*}
+    \text{FWHM} = \SI{0.087}{\degree} \quad \text{and}
+\end{equation*}
+\begin{equation*}
+    I_{\text{max}} = \num{1283375.91 \pm 0.68}\,.
+\end{equation*}
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[]{build/Detectorscan.pdf}
+    \caption{The reflectivity of the detector scan in dependence on the incidence angle $\alpha \mathbin{/} \unit{\degree}$.}
+    \label{fig:Detectorscan}
+\end{figure}
+
+\subsubsection{Z-Scan}
+
+During the Z-Scan the z-position of the sample is changed. 
+The sample is moved from below the into the primary beam until it is completely block reducing the reflectivity to nearly zero.
+This measurement is shown in \autoref{fig:Z-Scan}.
+The width of the beam is 
+\begin{equation*}
+    Z = \SI{0.2 \pm 0.02}{\milli\meter}.
+\end{equation*}
+
+The uncertainty of the width is the distance between two measurement point.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[]{build/Z1Scann.pdf}
+    \caption{The measurement intensity for different positions of the probe. In addition the width of the beam is included.} 
+    \label{fig:Z-Scan}
+\end{figure}
+
+
+
+\subsubsection{Rockingscan}

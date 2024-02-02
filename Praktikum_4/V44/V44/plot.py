@@ -16,6 +16,11 @@ def Gaus(x, a, mu, sigma, b):
     return a/(sigma * np.sqrt(2 * np.pi)) *np.exp( - (x - mu)**2 / (2 * sigma**2) ) + b
 
 
+def uGaus(x, a, mu, sigma, b):
+    return a/(sigma * unp.sqrt(2 * np.pi)) * unp.exp( - (x - mu)**2 / (2 * sigma**2) ) + b
+
+
+
 Detektorscann = np.genfromtxt('Messdaten/GaussScan.UXD', skip_header = 56, skip_footer = 0, encoding = 'unicode-escape') 
 ZScann1 = np.genfromtxt('Messdaten/Z2raw.UXD', skip_header = 56, skip_footer = 0, encoding = 'unicode-escape')
 RockingCurve = np.genfromtxt('Messdaten/RockingCurve1raw.UXD', skip_header = 56, skip_footer = 0, encoding = 'unicode-escape')
@@ -24,46 +29,68 @@ Diffus = np.genfromtxt('Messdaten/Diffus.UXD', skip_header = 56, skip_footer = 0
 
 #Detektorscan
 #Fit der Gauskurve
-x_fit_Dek = np.linspace(-0.5,0.5, 100)
-"""
-popt, pcov = curve_fit(Gaus, Detektorscann[:,0], Detektorscann[:,1])
-print(popt)
+x_fit_Dek = np.linspace(-0.5,0.5, 10000)
 
-#para_Detektorscan = correlated_values(popt, pcov)
-para_Detektorscan = popt  
+popt, pcov = curve_fit(Gaus, Detektorscann[:,0], Detektorscann[:,1], absolute_sigma = True ,p0=[1.5e05, 0, 0.05,  200])
 
-print(para_Detektorscan)
+para_Detektorscan = correlated_values(popt, pcov)
+
+
 #Brechnung von FWHM
-
-#print(x_fit_Dek)
 y_fit_Dek = Gaus(x_fit_Dek, *popt)
 
-print(x_fit_Dek)
-print(y_fit_Dek)
 
 Gaus_Peak_idx = np.array([np.argmax(unp.nominal_values(y_fit_Dek))])
-print(Gaus_Peak_idx)
-Gaus_Peak_FWHM, tmp = peak_widths(unp.nominal_values(y_fit_Dek), Gaus_Peak_idx, rel_height=0.5)
+
+Gaus_Peak_FWHM_in_idx, tmp, tmp1, tmp2 = peak_widths(unp.nominal_values(y_fit_Dek), Gaus_Peak_idx, rel_height=0.5)
+Gaus_Peak_FWHM = x_fit_Dek[int(Gaus_Peak_FWHM_in_idx)] - x_fit_Dek[0]
+
+
 
 print(f'Die Parameter des Gaus Detektorscan a, mu, sigma, b {para_Detektorscan}')
 print(f'Die FWHM des Detektorscan {Gaus_Peak_FWHM} in Grad')
-"""
+print(f'Das Maximum des Fits: {uGaus(x_fit_Dek[Gaus_Peak_idx], *para_Detektorscan)}')
 
-def plotte_Z1Scan(Z1Scan):
-    plt.scatter(Z1Scan[:,0], Z1Scan[:,1], label = "Data", c = "midnightblue", marker='x', s = 10)
+
+#der Z-Scan
+lineOffset = 56
+SampleStart = 87
+SampleEnd = 97
+Z_Scan_width = ZScann1[SampleEnd-lineOffset, 0] - ZScann1[SampleStart-lineOffset, 0]
+Z_Scan_width = ufloat(Z_Scan_width/1000, 0.02/1000)
+
+def plotte_Z1Scan(Z1Scan1, SampleStart, SampleEnd):
+    lineOffset = 56
+    plt.scatter(Z1Scan1[:,0], Z1Scan1[:,1], label = "Data", c = "midnightblue", marker='x', s = 10)
+
+    plt.scatter(Z1Scan1[SampleStart-lineOffset, 0], Z1Scan1[SampleStart-lineOffset ,1], c = "firebrick", marker='x', s = 10)
+    plt.scatter(Z1Scan1[SampleEnd-lineOffset, 0], Z1Scan1[SampleEnd-lineOffset ,1], c = "firebrick", marker='x', s = 10)
+
+
+    print(f'Die Breite des Beams in z-scan {Z1Scan1[SampleEnd-lineOffset, 0] - Z1Scan1[SampleStart-lineOffset, 0]} +- 0.02 / mm ')
+
+
+    plt.vlines(Z1Scan1[SampleStart-lineOffset, 0], 0, 1.25e6, colors='firebrick', label = "Beam boundaries", linestyles='dashed')
+    plt.vlines(Z1Scan1[SampleEnd-lineOffset, 0], 0, 1.25e6, colors='firebrick', linestyles='dashed')
+
+
+
     plt.xlabel(r"$z \mathbin{/} \unit{\milli\meter}$")
     plt.ylabel("Reflectivity")
     plt.grid(linestyle = ":")
     plt.tight_layout()
-    plt.legend()
+    plt.legend(loc='lower left')
     plt.savefig('build/Z1Scann.pdf')
     plt.clf()
 
-y_fit_Dek = 0
-def plotte_Detektorscan(Detektorscann, x_fit_Dek, y_fit_Dek=0):
+def plotte_Detektorscan(Detektorscann, x_fit_Dek, y_fit_Dek, Gaus_Peak_idx, Gaus_Peak_FWHM_in_idx):
+    tmp_x = np.array([(Gaus_Peak_idx-Gaus_Peak_FWHM_in_idx/2), (Gaus_Peak_idx+Gaus_Peak_FWHM_in_idx/2)])
+    tmp_x = tmp_x.astype(int)
+    tmp_y = y_fit_Dek[tmp_x]
+    
+    plt.plot(x_fit_Dek[tmp_x], tmp_y, label = 'FWHM', color = 'black')
+    plt.plot(x_fit_Dek, y_fit_Dek, color = 'firebrick' , label = 'Gaussfit')
 
-    plt.plot(x_fit_Dek, Gaus(x_fit_Dek, 2.34481573e+05, 0, 0.5,  200))
-    #plt.plot(x_fit_Dek, y_fit_Dek, color = 'firebrick' , label = 'Gaussfit')
     plt.scatter(Detektorscann[:,0], Detektorscann[:,1], label = "Data", c = "midnightblue", marker='x', s = 10)
     plt.xlabel(r"$\alpha \mathbin{/} \unit{\degree}$")
     plt.ylabel("Reflectivity")
@@ -110,8 +137,8 @@ def plotte_Diffus(Diffus):
 
 
 Processe = []
-Processe.append(Process(target=plotte_Detektorscan, args=([Detektorscann, x_fit_Dek, y_fit_Dek])))
-Processe.append(Process(target=plotte_Z1Scan, args=([ZScann1])))
+Processe.append(Process(target=plotte_Detektorscan, args=([Detektorscann, x_fit_Dek, y_fit_Dek, Gaus_Peak_idx, Gaus_Peak_FWHM_in_idx])))
+Processe.append(Process(target=plotte_Z1Scan, args=([ZScann1, SampleStart, SampleEnd])))
 Processe.append(Process(target=plotte_RockingCurve, args=([RockingCurve])))
 Processe.append(Process(target=plotte_Omega2Theta, args=([Omega2Theta])))
 Processe.append(Process(target=plotte_Diffus, args=([Diffus])))
