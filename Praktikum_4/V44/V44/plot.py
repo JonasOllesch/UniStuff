@@ -20,7 +20,18 @@ def uGaus(x, a, mu, sigma, b):
     return a/(sigma * unp.sqrt(2 * np.pi)) * unp.exp( - (x - mu)**2 / (2 * sigma**2) ) + b
 
 
+def Geometriefactor_berechnen(SampleWidth, Incidence_angle, BeamWidth, Intensity, Geometrie_angle):
+    if Incidence_angle == 0:
+        return 1
 
+    if Incidence_angle < Geometrie_angle:
+#        print(SampleWidth*np.sin(Incidence_angle)/BeamWidth)
+        return SampleWidth*np.sin(Incidence_angle*np.pi/180)/BeamWidth
+    
+    if Incidence_angle > Geometrie_angle:
+        return 1
+
+    
 Detektorscann = np.genfromtxt('Messdaten/GaussScan.UXD', skip_header = 56, skip_footer = 0, encoding = 'unicode-escape') 
 ZScann1 = np.genfromtxt('Messdaten/Z2raw.UXD', skip_header = 56, skip_footer = 0, encoding = 'unicode-escape')
 RockingCurve = np.genfromtxt('Messdaten/RockingCurve1raw.UXD', skip_header = 56, skip_footer = 0, encoding = 'unicode-escape')
@@ -49,7 +60,8 @@ Gaus_Peak_FWHM = x_fit_Dek[int(Gaus_Peak_FWHM_in_idx)] - x_fit_Dek[0]
 
 print(f'Die Parameter des Gaus Detektorscan a, mu, sigma, b {para_Detektorscan}')
 print(f'Die FWHM des Detektorscan {Gaus_Peak_FWHM} in Grad')
-print(f'Das Maximum des Fits: {uGaus(x_fit_Dek[Gaus_Peak_idx], *para_Detektorscan)}')
+I_max = uGaus(x_fit_Dek[Gaus_Peak_idx], *para_Detektorscan)
+print(f'Das Maximum des Fits: {I_max}')
 
 
 #der Z-Scan
@@ -59,29 +71,63 @@ SampleEnd = 97
 Z_Scan_width = ZScann1[SampleEnd-lineOffset, 0] - ZScann1[SampleStart-lineOffset, 0]
 Z_Scan_width = ufloat(Z_Scan_width/1000, 0.02/1000)
 
-def plotte_Z1Scan(Z1Scan1, SampleStart, SampleEnd):
+print(f'Die Breite des Beams in z-scan {ZScann1[SampleEnd-lineOffset, 0] - ZScann1[SampleStart-lineOffset, 0]} +- 0.02 / mm ')
+BeamWidth = ufloat(ZScann1[SampleEnd-lineOffset, 0] - ZScann1[SampleStart-lineOffset, 0], 0.02)
+
+#Rockingscan
+RockingCurve_Left = 69 - lineOffset
+RockingCurve_Right = 95 - lineOffset 
+
+
+Geometrie_angle_in_Grad = ufloat((RockingCurve[RockingCurve_Right, 0] - RockingCurve[RockingCurve_Left, 0])/2, 0.02)
+print(f'Der Geometriewinkel beträgt {Geometrie_angle_in_Grad} grad')
+Geometrie_angle = Geometrie_angle_in_Grad*np.pi/180
+print(f'Der Geometriewinkel {Geometrie_angle}')
+
+#Berechnung des theoretischen Geometriefakors
+SampleWidth = 20 #in mm
+EffectivBeamWidth = unp.arcsin(BeamWidth/SampleWidth)
+
+print(f'Effektive Breite des Beams {repr(EffectivBeamWidth)}')
+print(f'Effektive Breite des Beams {repr(EffectivBeamWidth*180/np.pi)} in degree')
+
+
+#Die Reflectivity berechnen und Sachenmachen
+Reflectivity_y = Omega2Theta[:, 1]/(5 * I_max)
+Reflectivity_x = Omega2Theta[: ,0]
+Reflectivity_y_tmp = np.copy(Reflectivity_y)
+
+
+GeometryFactors = np.copy(Reflectivity_x)
+print(f'sample width {SampleWidth}')
+print(f'BeamWidth {BeamWidth}')
+for i in range(0, len(Reflectivity_x)):
+    GeometryFactors[i] = unp.nominal_values(Geometriefactor_berechnen(SampleWidth/1000, Reflectivity_x[i], Z_Scan_width, Reflectivity_y[i], Geometrie_angle_in_Grad))
+
+print(GeometryFactors)
+Reflectivity_y_tmp = Reflectivity_y_tmp*1/unp.nominal_values(GeometryFactors)
+
+
+
+def plotte_Z1Scan(ZScann1, SampleStart, SampleEnd):
     lineOffset = 56
-    plt.scatter(Z1Scan1[:,0], Z1Scan1[:,1], label = "Data", c = "midnightblue", marker='x', s = 10)
+    plt.scatter(ZScann1[:,0], ZScann1[:,1], label = "Data", c = "midnightblue", marker='x', s = 10)
 
-    plt.scatter(Z1Scan1[SampleStart-lineOffset, 0], Z1Scan1[SampleStart-lineOffset ,1], c = "firebrick", marker='x', s = 10)
-    plt.scatter(Z1Scan1[SampleEnd-lineOffset, 0], Z1Scan1[SampleEnd-lineOffset ,1], c = "firebrick", marker='x', s = 10)
+    plt.scatter(ZScann1[SampleStart-lineOffset, 0], ZScann1[SampleStart-lineOffset ,1], c = "firebrick", marker='x', s = 10)
+    plt.scatter(ZScann1[SampleEnd-lineOffset, 0], ZScann1[SampleEnd-lineOffset ,1], c = "firebrick", marker='x', s = 10)
 
-
-    print(f'Die Breite des Beams in z-scan {Z1Scan1[SampleEnd-lineOffset, 0] - Z1Scan1[SampleStart-lineOffset, 0]} +- 0.02 / mm ')
-
-
-    plt.vlines(Z1Scan1[SampleStart-lineOffset, 0], 0, 1.25e6, colors='firebrick', label = "Beam boundaries", linestyles='dashed')
-    plt.vlines(Z1Scan1[SampleEnd-lineOffset, 0], 0, 1.25e6, colors='firebrick', linestyles='dashed')
-
-
+    plt.vlines(ZScann1[SampleStart-lineOffset, 0], 0, 1.25e6, colors='firebrick', label = "Beam boundaries", linestyles='dashed')
+    plt.vlines(ZScann1[SampleEnd-lineOffset, 0], 0, 1.25e6, colors='firebrick', linestyles='dashed')
 
     plt.xlabel(r"$z \mathbin{/} \unit{\milli\meter}$")
-    plt.ylabel("Reflectivity")
+    plt.ylabel("Intensity")
     plt.grid(linestyle = ":")
     plt.tight_layout()
     plt.legend(loc='lower left')
     plt.savefig('build/Z1Scann.pdf')
     plt.clf()
+
+
 
 def plotte_Detektorscan(Detektorscann, x_fit_Dek, y_fit_Dek, Gaus_Peak_idx, Gaus_Peak_FWHM_in_idx):
     tmp_x = np.array([(Gaus_Peak_idx-Gaus_Peak_FWHM_in_idx/2), (Gaus_Peak_idx+Gaus_Peak_FWHM_in_idx/2)])
@@ -93,38 +139,67 @@ def plotte_Detektorscan(Detektorscann, x_fit_Dek, y_fit_Dek, Gaus_Peak_idx, Gaus
 
     plt.scatter(Detektorscann[:,0], Detektorscann[:,1], label = "Data", c = "midnightblue", marker='x', s = 10)
     plt.xlabel(r"$\alpha \mathbin{/} \unit{\degree}$")
-    plt.ylabel("Reflectivity")
+    plt.ylabel("Intensity")
     plt.grid(linestyle = ":")
     plt.tight_layout()
     plt.legend()
     plt.savefig('build/Detectorscan.pdf')
     plt.clf()
 
-def plotte_RockingCurve(RockingCurve):
+
+
+from matplotlib.ticker import FuncFormatter
+def format_ticks(x, pos):
+    if x == 0:
+        return '0'
+    else:
+        return f'{int(x/1000)}k'
+
+def plotte_RockingCurve(RockingCurve, RockingCurve_Left, RockingCurve_Right):
+    plt.gca().yaxis.set_major_formatter(FuncFormatter(format_ticks))
+
     plt.scatter(RockingCurve[:,0], RockingCurve[:,1], label = "Data", c = "midnightblue", marker='x', s = 10)
+
+    plt.scatter(RockingCurve[RockingCurve_Left, 0], RockingCurve[RockingCurve_Left, 1], label = "Geometrie angle", c = "firebrick", marker='x', s = 10)
+    plt.scatter(RockingCurve[RockingCurve_Right, 0], RockingCurve[RockingCurve_Right, 1], c = "firebrick", marker='x', s = 10)
+
+    plt.vlines(RockingCurve[RockingCurve_Left, 0], -1e4, 480e3, colors='firebrick', linestyles='dashed')
+    plt.vlines(RockingCurve[RockingCurve_Right, 0], -1e4, 480e3, colors='firebrick', linestyles='dashed')
+
+    plt.ylim(-1e4,490e3)
+    plt.xlim(-1, 1)
     plt.xlabel(r"$\alpha \mathbin{/} \unit{\degree}$")
-    plt.ylabel("Reflectivity")
+    plt.ylabel("Intensity")
     plt.grid(linestyle = ":")
     plt.tight_layout()
     plt.legend()
     plt.savefig('build/Rockingcurve.pdf')
     plt.clf()
 
-def plotte_Omega2Theta(Omega2Theta):
-#    plt.scatter(Omega2Theta[:,0], Omega2Theta[:,1], label = "Data", c = "midnightblue", marker='x', s = 10)
-    plt.plot(Omega2Theta[:,0], Omega2Theta[:,1], label = "Data", c = "midnightblue")
+
+
+def plotte_Omega2Theta(Omega2Theta, Diffus):
+
+    plt.scatter(Omega2Theta[:,0], Omega2Theta[:,1], label = "Compact Reflectivity", c = "midnightblue", marker='.', s = 1)
+    plt.scatter(Diffus[:,0], Diffus[:,1], label = "Diffuse Reflectivity", c = "cornflowerblue", marker='.', s = 1)
+
+#    plt.plot(Omega2Theta[:,0], Omega2Theta[:,1], label = "Data", c = "midnightblue")
     plt.yscale('log')
     plt.xlabel(r"$\alpha \mathbin{/} \unit{\degree}$")
-    plt.ylabel("Reflectivity")
+    plt.ylabel("Intensity")
     plt.grid(linestyle = ":")
     plt.tight_layout()
     plt.legend()
     plt.savefig('build/Omega2Theta.pdf')
     plt.clf()
 
-def plotte_Diffus(Diffus):
-#    plt.scatter(Diffus[:,0], Diffus[:,1], label = "Data", c = "midnightblue", marker='x', s = 10)
-    plt.plot(Diffus[:,0], Diffus[:,1], label = "Data", c = "midnightblue")
+
+
+def plotte_Reflectivity(Reflectivity_x, Reflectivity_y, Reflectivity_y_tmp):
+
+    plt.scatter(unp.nominal_values(Reflectivity_x), unp.nominal_values(Reflectivity_y), label = "Intensity", c = "midnightblue", marker='.', s = 1)
+    plt.scatter(unp.nominal_values(Reflectivity_x), unp.nominal_values(Reflectivity_y_tmp), label = "Corrected Intensity", c = "firebrick", marker='.', s = 1)
+
 
     plt.yscale('log')
     plt.xlabel(r"$\alpha \mathbin{/} \unit{\degree}$")
@@ -132,16 +207,33 @@ def plotte_Diffus(Diffus):
     plt.grid(linestyle = ":")
     plt.tight_layout()
     plt.legend()
-    plt.savefig('build/Diffus.pdf')
+    plt.savefig('build/Reflectivity.pdf')
     plt.clf()
 
+
+#"""
+#def plotte_Diffus(Diffus):
+##    plt.scatter(Diffus[:,0], Diffus[:,1], label = "Data", c = "midnightblue", marker='x', s = 10)
+#    plt.plot(Diffus[:,0], Diffus[:,1], label = "Data", c = "midnightblue")
+#
+#    plt.yscale('log')
+#    plt.xlabel(r"$\alpha \mathbin{/} \unit{\degree}$")
+#    plt.ylabel("Reflectivity")
+#    plt.grid(linestyle = ":")
+#    plt.tight_layout()
+#    plt.legend()
+#    plt.savefig('build/Diffus.pdf')
+#    plt.clf()
+#"""
 
 Processe = []
 Processe.append(Process(target=plotte_Detektorscan, args=([Detektorscann, x_fit_Dek, y_fit_Dek, Gaus_Peak_idx, Gaus_Peak_FWHM_in_idx])))
 Processe.append(Process(target=plotte_Z1Scan, args=([ZScann1, SampleStart, SampleEnd])))
-Processe.append(Process(target=plotte_RockingCurve, args=([RockingCurve])))
-Processe.append(Process(target=plotte_Omega2Theta, args=([Omega2Theta])))
-Processe.append(Process(target=plotte_Diffus, args=([Diffus])))
+Processe.append(Process(target=plotte_RockingCurve, args=([RockingCurve, RockingCurve_Left, RockingCurve_Right])))
+Processe.append(Process(target=plotte_Omega2Theta, args=([Omega2Theta, Diffus])))
+Processe.append(Process(target=plotte_Reflectivity, args=([Reflectivity_x, Reflectivity_y, Reflectivity_y_tmp])))
+
+#Processe.append(Process(target=plotte_Diffus, args=([Diffus])))
 
 
 #p1 = Process(target=plotte_Detektorscan, args=([Detektorscann]))

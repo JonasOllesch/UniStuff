@@ -39,7 +39,7 @@ The $\text{FWHM}$ and the maximum of the reflectivity $I_\text{max}$ are establi
 \begin{figure}[H]
     \centering
     \includegraphics[]{build/Detectorscan.pdf}
-    \caption{The reflectivity of the detector scan in dependence on the incidence angle $\alpha \mathbin{/} \unit{\degree}$.}
+    \caption{The intensity of the detector scan in dependence on the incidence angle $\alpha \mathbin{/} \unit{\degree}$.}
     \label{fig:Detectorscan}
 \end{figure}
 
@@ -50,7 +50,8 @@ The sample is moved from below the into the primary beam until it is completely 
 This measurement is shown in \autoref{fig:Z-Scan}.
 The width of the beam is 
 \begin{equation*}
-    Z = \SI{0.2 \pm 0.02}{\milli\meter}.
+    d_0 = \SI{0.20 \pm 0.02}{\milli\meter}.
+    \label{eq:BeamWidth}
 \end{equation*}
 
 The uncertainty of the width is the distance between two measurement point.
@@ -65,3 +66,46 @@ The uncertainty of the width is the distance between two measurement point.
 
 
 \subsubsection{Rockingscan}
+
+A Rockingscan is used to determine the geometry angle $\alpha_\text{g}$. 
+For this the \autoref{fig:Rockingscan} is evaluated, where $\alpha_\text{g}$ is half the base of the triangle.
+In this measurement $\alpha_\text{g}$ is measurement as 
+\begin{equation*}
+    \alpha_\text{g} = \SI{0.520 \pm 0.020}{\degree} = \num{0.00908 \pm 0.00035}\,.
+\end{equation*}
+
+Together with the width of the sample $D = \SI{20}{\milli\meter}$ \cite{v44}, the width of the beam from \autoref{eq:BeamWidth} and \autoref{eq:GeometryFactor} the theoretical value is calculated to be 
+
+\begin{equation*}
+    \alpha_\text{Theo}  = \SI{0.573 \pm 0.057}{\degree} = \num{0.0100 \pm 0.0010}\,.
+\end{equation*}
+
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[]{build/Rockingcurve.pdf}
+    \caption{Intensity of the Rockingscan with $2\alpha = 0$ and the corresponding geometry angle.} 
+    \label{fig:Rockingscan}
+\end{figure}
+
+\subsection{Omega/2Theta}
+
+The results of the Omega/2Theta scan can be seen in \autoref{fig:Omega2Theta1}. 
+The setup records data for $ \SI{5}{\second}$.
+To gain the true reflectivity the diffuse reflectivity is subtracted from the compact scan and modified by
+
+\begin{equation*}
+    R(I) =   \frac{I}{5 \cdot I_\text{max}}\,.
+\end{equation*}
+
+The factor 5 is included because the maximum intensity is only measured for $\SI{1}{\second}$.
+
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics{build/Omega2Theta.pdf}
+    \caption{Intensity of the two Omega/Theta scans, where the incidence angle of the diffuse scan is shifted by $\SI{0.2}{\degree}$.} 
+    \label{fig:Omega2Theta1}
+\end{figure}
