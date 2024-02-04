@@ -244,3 +244,32 @@ for p in Processe:
 
 for p in Processe:
     p.join()
+
+
+
+#der Parratt-Algorithmus 
+#Wir betrachten 11 Layers
+
+#Gesuchte Parameter delta_sample, delta_substrate, beta_sample, beta_substrate, sigma_sample, sigma_substrate
+def Parratt_Algorithmus(angle, delta_sample, delta_substrate, beta_sample, beta_substrate, sigma_sample, sigma_substrate):
+    Lambda = 1.54e-10
+    k = 2*np.pi/Lambda
+
+    Layers = 12
+    layer_thickness = 666
+
+    n = np.zeros(Layers, dtype=complex)
+    kz = np.zeros(Layers, dtype=complex)
+    r = np.zeros(Layers, dtype=complex)
+    X = np.zeros(Layers, dtype=complex)
+
+
+    n[0] = 1 -delta_substrate -1j*beta_substrate
+    n[0:] = 1- delta_sample-1j*beta_sample
+
+    for i in range(1, Layers):
+        kz[i]= k*np.sqrt(n[i]**2 -np.cos(np.deg2rad(angle))**2)
+        r[i] = (k[i-1]- k[i])/(k[i-1]+ k[i])*np.exp(-2*k[i-1]*k[i]*sigma_sample**2)
+        X[i] = np.exp(-2j*kz[i]*layer_thickness)*((r[i] + X[i-1])/(1+r[i]*X[i-1]))
+    return abs(X[-1])**2
+
