@@ -10,6 +10,7 @@ from uncertainties import correlated_values
 import uncertainties.unumpy as unp
 
 from multiprocessing  import Process
+from tqdm import tqdm
 
 
 def Gaus(x, a, mu, sigma, b):
@@ -104,8 +105,66 @@ print(f'BeamWidth {BeamWidth}')
 for i in range(0, len(Reflectivity_x)):
     GeometryFactors[i] = unp.nominal_values(Geometriefactor_berechnen(SampleWidth/1000, Reflectivity_x[i], Z_Scan_width, Reflectivity_y[i], Geometrie_angle_in_Grad))
 
-print(GeometryFactors)
+#print(GeometryFactors)
 Reflectivity_y_tmp = Reflectivity_y_tmp*1/unp.nominal_values(GeometryFactors)
+
+#Schichtdicke berechnen
+
+Lambda = 1.54e-10
+Ozi_Minima_idx = np.array([118, 126, 136, 145, 155, 166, 176, 187, 197, 207, 218, 228, 239]) - lineOffset
+Ozi_Minima = Reflectivity_x[Ozi_Minima_idx]
+
+delta_alpha = np.zeros(len(Ozi_Minima)-1)
+for i in range(0, len(delta_alpha)):
+    delta_alpha[i] = np.deg2rad(Ozi_Minima[i+1] - Ozi_Minima[i])
+layer_thickness = (Lambda/2)/ufloat(np.mean(delta_alpha), np.std(delta_alpha))
+
+print(f'Die Dicke einer Schicht in Meter {layer_thickness}')
+
+
+
+#der Parratt-Algorithmus 
+#Wir betrachten 11 Layers
+
+#Gesuchte Parameter delta_sample, delta_substrate, beta_sample, beta_substrate, sigma_sample, sigma_substrate
+def Parratt_Algorithmus(angle, delta_sample, delta_substrate, beta_sample, beta_substrate, sigma_sample, sigma_substrate):
+    Lambda = 1.54e-10
+    k = 2*np.pi/Lambda
+    layer_thickness = 8.8e-08
+
+    Layers = 12
+
+    n = np.zeros(Layers, dtype=complex)
+    kz = np.zeros(Layers, dtype=complex)
+    r = np.zeros(Layers, dtype=complex)
+    X = np.zeros(Layers, dtype=complex)
+
+
+    n[0] = 1 -delta_substrate - 1j*beta_substrate
+    n[0:] = 1 - delta_sample - 1j*beta_sample
+
+    kz[:] = k*np.sqrt(n[:]**2 - np.cos(np.deg2rad(angle))**2)
+
+#    print(kz)
+
+    r[0] = ((kz[1]-kz[0])/(kz[1]+kz[0])) * np.exp(-2*kz[0]*kz[1]*sigma_substrate**2)
+    X[1] = np.exp(-2j * kz[1] * layer_thickness) * ((r[0] + X[0]) / (1 + r[0] * X[0] ))
+ 
+
+    for i in range(1, Layers-1):
+#        kz[i]= k*np.sqrt(n[i]**2 -np.cos(np.deg2rad(angle))**2)
+#        r[i] = (k[i-1]- k[i])/(k[i-1]+ k[i])*np.exp(-2*k[i-1]*k[i]*sigma_sample**2)
+#        X[i] = np.exp(-2j*kz[i]*layer_thickness)*((r[i] + X[i-1])/(1+r[i]*X[i-1]))
+        
+        r[i] = ((kz[i+1]-kz[i])/(kz[i+1]+kz[i])) * np.exp(-2*kz[i]*kz[i+1]*sigma_sample**2)
+        X[i+1] = np.exp(-2j * kz[i+1] * layer_thickness) * ((r[i] + X[i]) / (1 + r[i] * X[i] ))
+ 
+    return abs(X[-1])**2
+
+#print(np.deg2rad(Reflectivity_x))
+Reflectivity_y_Parratt = np.zeros(len(Reflectivity_x))
+for i in tqdm(range(0, len(Reflectivity_x))):
+    Reflectivity_y_Parratt[i] = Parratt_Algorithmus(np.deg2rad(Reflectivity_x[i]), 6e-7, 6e-6, 6e-7/200 ,6e-6/40 ,5.5e-10, 6.5e-10)
 
 
 
@@ -211,6 +270,24 @@ def plotte_Reflectivity(Reflectivity_x, Reflectivity_y, Reflectivity_y_tmp):
     plt.clf()
 
 
+
+def plotte_Parratt_Algorithmus(Reflectivity_x, Reflectivity_y, Reflectivity_y_Parratt):
+
+    plt.scatter(unp.nominal_values(Reflectivity_x), unp.nominal_values(Reflectivity_y), label = "Intensity", c = "midnightblue", marker='.', s = 1)
+    plt.scatter(unp.nominal_values(Reflectivity_x), unp.nominal_values(Reflectivity_y_Parratt), label = "Parrattfit", c = "firebrick", marker='.', s = 1)
+
+
+    plt.yscale('log')
+    plt.xlabel(r"$\alpha \mathbin{/} \unit{\degree}$")
+    plt.ylabel("Reflectivity")
+    plt.grid(linestyle = ":")
+    plt.tight_layout()
+    plt.legend()
+    plt.savefig('build/Reflectivity_Parratt.pdf')
+    plt.clf()
+
+
+
 #"""
 #def plotte_Diffus(Diffus):
 ##    plt.scatter(Diffus[:,0], Diffus[:,1], label = "Data", c = "midnightblue", marker='x', s = 10)
@@ -232,6 +309,7 @@ Processe.append(Process(target=plotte_Z1Scan, args=([ZScann1, SampleStart, Sampl
 Processe.append(Process(target=plotte_RockingCurve, args=([RockingCurve, RockingCurve_Left, RockingCurve_Right])))
 Processe.append(Process(target=plotte_Omega2Theta, args=([Omega2Theta, Diffus])))
 Processe.append(Process(target=plotte_Reflectivity, args=([Reflectivity_x, Reflectivity_y, Reflectivity_y_tmp])))
+Processe.append(Process(target=plotte_Parratt_Algorithmus, args=([Reflectivity_x, Reflectivity_y, Reflectivity_y_Parratt])))
 
 #Processe.append(Process(target=plotte_Diffus, args=([Diffus])))
 
@@ -245,31 +323,4 @@ for p in Processe:
 for p in Processe:
     p.join()
 
-
-
-#der Parratt-Algorithmus 
-#Wir betrachten 11 Layers
-
-#Gesuchte Parameter delta_sample, delta_substrate, beta_sample, beta_substrate, sigma_sample, sigma_substrate
-def Parratt_Algorithmus(angle, delta_sample, delta_substrate, beta_sample, beta_substrate, sigma_sample, sigma_substrate):
-    Lambda = 1.54e-10
-    k = 2*np.pi/Lambda
-
-    Layers = 12
-    layer_thickness = 666
-
-    n = np.zeros(Layers, dtype=complex)
-    kz = np.zeros(Layers, dtype=complex)
-    r = np.zeros(Layers, dtype=complex)
-    X = np.zeros(Layers, dtype=complex)
-
-
-    n[0] = 1 -delta_substrate -1j*beta_substrate
-    n[0:] = 1- delta_sample-1j*beta_sample
-
-    for i in range(1, Layers):
-        kz[i]= k*np.sqrt(n[i]**2 -np.cos(np.deg2rad(angle))**2)
-        r[i] = (k[i-1]- k[i])/(k[i-1]+ k[i])*np.exp(-2*k[i-1]*k[i]*sigma_sample**2)
-        X[i] = np.exp(-2j*kz[i]*layer_thickness)*((r[i] + X[i-1])/(1+r[i]*X[i-1]))
-    return abs(X[-1])**2
-
+#plotte_Parratt_Algorithmus(Reflectivity_x, Reflectivity_y, Reflectivity_y_Parratt)
