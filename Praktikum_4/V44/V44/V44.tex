@@ -24,4 +24,38 @@
 
 \printbibliography{}
 
+\newpage
+
+\section*{Appendix}
+\addcontentsline{toc}{section}{Appendix}
+\begin{lstlisting}[language=python, caption=Parrat\_Algorithm]
+def Parratt_Algorithmus(angle, delta_poli, 
+    delta_Si, sigma_poli, 
+    sigma_Si,beta_poli, beta_si):
+Wellenlänge = 1.54e-10
+k = 2*np.pi / Wellenlänge
+layer_thickness = 8.8e-8
+x_Air_arr = np.zeros(len(angle))
+n_Air = 1
+n_poly = 1 - delta_poli + 1j*beta_poli
+n_Si = 1 - delta_Si + 1j*beta_si
+
+for i in range(0 , len(angle)):
+
+k_Air =     k * np.sqrt((n_Air**2 -np.cos(angle[i])**2))
+    k_poly =    k * np.sqrt((n_poly**2 -np.cos(angle[i])**2))
+    k_Si =      k * np.sqrt((n_Si**2 -np.cos(angle[i])**2))
+
+    r_Air_poly = (k_Air - k_poly)/ (k_Air + k_poly)
+      * np.exp(-2*k_Air*k_poly*sigma_poli**2)
+    r_poly_Si = (k_poly - k_Si)  / (k_poly + k_Si) 
+      * np.exp(-2*k_poly*k_Si*sigma_Si**2)
+
+    x_poly = np.exp(-2j * k_poly * layer_thickness) * r_poly_Si
+    x_Air = (r_Air_poly + x_poly)/(1 + r_Air_poly  *x_poly)
+    x_Air_arr[i] = (np.abs(x_Air))**2
+
+    return x_Air_arr
+\end{lstlisting}
+
 \end{document}

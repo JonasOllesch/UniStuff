@@ -91,7 +91,7 @@ Together with the width of the sample $D = \SI{20}{\milli\meter}$ \cite{v44}, th
 
 \subsection{Omega/2Theta}
 
-The results of the Omega/2Theta scan can be seen in \autoref{fig:Omega2Theta1}. 
+The results of the Omega/2Theta scan can be seen in \autoref{fig:Omega2Theta2}. 
 The setup records data for $ \SI{5}{\second}$.
 To gain the true reflectivity the diffuse reflectivity is subtracted from the compact scan and modified by
 
@@ -100,6 +100,41 @@ To gain the true reflectivity the diffuse reflectivity is subtracted from the co
 \end{equation*}
 
 The factor 5 is included because the maximum intensity is only measured for $\SI{1}{\second}$.
+In the following the measurement data is corrected by the geometry factor and is plotted in \autoref{fig:Reflectivity_Parratt}.
+In the same plot is also the best fit of the Parratt algorithm.
+
+To determine this the layer thickness is calculate via \autoref{eq:layerthickness} and its value is
+\begin{equation*}
+    d = \SI{8.8 \pm 0.7e-08}{\meter}\,.
+\end{equation*}
+
+The best fit of the Parratt algorithm is achieved with $iminuit$\cite{iminuit}.
+The parameters are in \autoref{tab:Values}.
+
+
+\begin{table}[H]
+    \centering
+    \caption{Best fit values}
+    \label{tab:Values}
+    \begin{tabular}{c  c}
+    \midrule
+          {Layer thickness}         &  $\SI{8.49e-8}{\meter}$  \\    
+          {$\delta_{\text{SI}}$}    &  $\num{6.93e-6}$          \\    
+          {$\delta_\text{Poly}$}    &  $\num{9.70e-7}$          \\    
+          {$\beta_\text{SI}$}        &  $\num{1.73e-7}$          \\    
+          {$\beta_\text{Poly}$}     &  $\num{4.85e-9}$          \\    
+          {$\sigma_\text{Si}$}      &  $\SI{7.90e-10}{\meter}$  \\    
+          {$\sigma_{\text{Poly}}$}   &  $\SI{6.17e-10}{\meter}$  \\    
+    \bottomrule
+    \end{tabular}
+\end{table}
+
+
+The critical angle of Silicon and Polystyrene is calculate with \autoref{eq:critangle} and are
+\begin{align*}
+    \alpha_{\text{Poly}, \text{c}}  &=    0.080 \, \unit{\degree}   \quad \text{and} \\
+    \alpha_{\text{Si}, \text{c}}    &=     0.213\, \unit{\degree} \,.    \\
+\end{align*}
 
 
 
@@ -108,4 +143,11 @@ The factor 5 is included because the maximum intensity is only measured for $\SI
     \includegraphics{build/Omega2Theta.pdf}
     \caption{Intensity of the two Omega/Theta scans, where the incidence angle of the diffuse scan is shifted by $\SI{0.2}{\degree}$.} 
     \label{fig:Omega2Theta1}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics{build/Reflectivity_Parratt.pdf}
+    \caption{Intensity of the two Omega/Theta corrected by the geometry factor, the ideal fresnel reflectivity and the best fit.} 
+    \label{fig:Omega2Theta2}
 \end{figure}

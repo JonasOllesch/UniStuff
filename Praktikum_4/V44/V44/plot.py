@@ -12,6 +12,11 @@ import uncertainties.unumpy as unp
 from multiprocessing  import Process
 from tqdm import tqdm
 
+from numba_progress import ProgressBar
+import numba as nb
+from numba import njit, prange, objmode
+import math
+
 
 def Gaus(x, a, mu, sigma, b):
     return a/(sigma * np.sqrt(2 * np.pi)) *np.exp( - (x - mu)**2 / (2 * sigma**2) ) + b
@@ -22,17 +27,20 @@ def uGaus(x, a, mu, sigma, b):
 
 
 def Geometriefactor_berechnen(SampleWidth, Incidence_angle, BeamWidth, Intensity, Geometrie_angle):
+
     if Incidence_angle == 0:
         return 1
 
+
     if Incidence_angle < Geometrie_angle:
-#        print(SampleWidth*np.sin(Incidence_angle)/BeamWidth)
+
+
         return SampleWidth*np.sin(Incidence_angle*np.pi/180)/BeamWidth
     
     if Incidence_angle > Geometrie_angle:
         return 1
+    return 1
 
-    
 Detektorscann = np.genfromtxt('Messdaten/GaussScan.UXD', skip_header = 56, skip_footer = 0, encoding = 'unicode-escape') 
 ZScann1 = np.genfromtxt('Messdaten/Z2raw.UXD', skip_header = 56, skip_footer = 0, encoding = 'unicode-escape')
 RockingCurve = np.genfromtxt('Messdaten/RockingCurve1raw.UXD', skip_header = 56, skip_footer = 0, encoding = 'unicode-escape')
@@ -80,10 +88,17 @@ RockingCurve_Left = 69 - lineOffset
 RockingCurve_Right = 95 - lineOffset 
 
 
+#print(RockingCurve[RockingCurve_Right, 0] - RockingCurve[RockingCurve_Left, 0])
+
+
+
 Geometrie_angle_in_Grad = ufloat((RockingCurve[RockingCurve_Right, 0] - RockingCurve[RockingCurve_Left, 0])/2, 0.02)
 print(f'Der Geometriewinkel beträgt {Geometrie_angle_in_Grad} grad')
 Geometrie_angle = Geometrie_angle_in_Grad*np.pi/180
 print(f'Der Geometriewinkel {Geometrie_angle}')
+
+
+
 
 #Berechnung des theoretischen Geometriefakors
 SampleWidth = 20 #in mm
@@ -105,68 +120,139 @@ print(f'BeamWidth {BeamWidth}')
 for i in range(0, len(Reflectivity_x)):
     GeometryFactors[i] = unp.nominal_values(Geometriefactor_berechnen(SampleWidth/1000, Reflectivity_x[i], Z_Scan_width, Reflectivity_y[i], Geometrie_angle_in_Grad))
 
-#print(GeometryFactors)
+
+
 Reflectivity_y_tmp = Reflectivity_y_tmp*1/unp.nominal_values(GeometryFactors)
 
 #Schichtdicke berechnen
 
-Lambda = 1.54e-10
+Wellenlänge = 1.54e-10
 Ozi_Minima_idx = np.array([118, 126, 136, 145, 155, 166, 176, 187, 197, 207, 218, 228, 239]) - lineOffset
+
 Ozi_Minima = Reflectivity_x[Ozi_Minima_idx]
 
 delta_alpha = np.zeros(len(Ozi_Minima)-1)
 for i in range(0, len(delta_alpha)):
     delta_alpha[i] = np.deg2rad(Ozi_Minima[i+1] - Ozi_Minima[i])
-layer_thickness = (Lambda/2)/ufloat(np.mean(delta_alpha), np.std(delta_alpha))
+layer_thickness = Wellenlänge/(2*ufloat(np.mean(delta_alpha), np.std(delta_alpha)))
+
 
 print(f'Die Dicke einer Schicht in Meter {layer_thickness}')
 
 
 
 #der Parratt-Algorithmus 
-#Wir betrachten 11 Layers
 
-#Gesuchte Parameter delta_sample, delta_substrate, beta_sample, beta_substrate, sigma_sample, sigma_substrate
-def Parratt_Algorithmus(angle, delta_sample, delta_substrate, beta_sample, beta_substrate, sigma_sample, sigma_substrate):
-    Lambda = 1.54e-10
-    k = 2*np.pi/Lambda
-    layer_thickness = 8.8e-08
+def Parratt_Algorithmus(angle, delta_poli, delta_Si, sigma_poli, sigma_Si,beta_poli, beta_si):
 
-    Layers = 12
+    Wellenlänge = 1.54e-10
+    k = 2*np.pi / Wellenlänge
+    layer_thickness = 8.8e-8
+    x_Air_arr = np.zeros(len(angle))
+    n_Air = 1
+    n_poly = 1 - delta_poli + 1j*beta_poli
+    n_Si = 1 - delta_Si + 1j*beta_si
 
-    n = np.zeros(Layers, dtype=complex)
-    kz = np.zeros(Layers, dtype=complex)
-    r = np.zeros(Layers, dtype=complex)
-    X = np.zeros(Layers, dtype=complex)
+    for i in range(0 , len(angle)):
+
+        k_Air =     k * np.sqrt((n_Air**2 -np.cos(angle[i])**2))
+        k_poly =    k * np.sqrt((n_poly**2 -np.cos(angle[i])**2))
+        k_Si =      k * np.sqrt((n_Si**2 -np.cos(angle[i])**2))
+
+        r_Air_poly = (k_Air - k_poly)/ (k_Air + k_poly)* np.exp(-2*k_Air*k_poly*sigma_poli**2)
+        r_poly_Si = (k_poly - k_Si)  / (k_poly + k_Si) * np.exp(-2*k_poly*k_Si*sigma_Si**2)
+
+        x_poly = np.exp(-2j * k_poly * layer_thickness) * r_poly_Si
+        x_Air = (r_Air_poly + x_poly)/(1 + r_Air_poly  *x_poly)
+
+        x_Air_arr[i] = (np.abs(x_Air))**2
+
+    return x_Air_arr
 
 
-    n[0] = 1 -delta_substrate - 1j*beta_substrate
-    n[0:] = 1 - delta_sample - 1j*beta_sample
+def fit_Parratt_Algorithmus(angle, layer_thickness, delta_poli, delta_Si, sigma_poli, sigma_Si):
 
-    kz[:] = k*np.sqrt(n[:]**2 - np.cos(np.deg2rad(angle))**2)
+    beta_poli=  delta_poli/200
+    beta_si=  delta_Si/40
+    Wellenlänge = 1.54e-10
+    k = 2*np.pi / Wellenlänge
+#    layer_thickness = 8.8e-8
+#    layer_thickness = 5e-6
+    x_Air_arr = np.zeros(len(angle))
+#    print(sigma_poli)
+    n_Air = 1
+    n_poly = 1 - delta_poli + 1j*beta_poli
+    n_Si = 1 - delta_Si + 1j*beta_si
 
-#    print(kz)
+    for i in range(0 , len(angle)):
 
-    r[0] = ((kz[1]-kz[0])/(kz[1]+kz[0])) * np.exp(-2*kz[0]*kz[1]*sigma_substrate**2)
-    X[1] = np.exp(-2j * kz[1] * layer_thickness) * ((r[0] + X[0]) / (1 + r[0] * X[0] ))
- 
+        k_Air =     k * np.sqrt((n_Air**2 -np.cos(angle[i])**2))
+        k_poly =    k * np.sqrt((n_poly**2 -np.cos(angle[i])**2))
+        k_Si =      k * np.sqrt((n_Si**2 -np.cos(angle[i])**2))
 
-    for i in range(1, Layers-1):
-#        kz[i]= k*np.sqrt(n[i]**2 -np.cos(np.deg2rad(angle))**2)
-#        r[i] = (k[i-1]- k[i])/(k[i-1]+ k[i])*np.exp(-2*k[i-1]*k[i]*sigma_sample**2)
-#        X[i] = np.exp(-2j*kz[i]*layer_thickness)*((r[i] + X[i-1])/(1+r[i]*X[i-1]))
-        
-        r[i] = ((kz[i+1]-kz[i])/(kz[i+1]+kz[i])) * np.exp(-2*kz[i]*kz[i+1]*sigma_sample**2)
-        X[i+1] = np.exp(-2j * kz[i+1] * layer_thickness) * ((r[i] + X[i]) / (1 + r[i] * X[i] ))
- 
-    return abs(X[-1])**2
+        r_Air_poly = (k_Air - k_poly)/ (k_Air + k_poly)* np.exp(-2*k_Air*k_poly*sigma_poli**2)
+        r_poly_Si = (k_poly - k_Si)  / (k_poly + k_Si) * np.exp(-2*k_poly*k_Si*sigma_Si**2)
+
+        x_poly = np.exp(-2j * k_poly * layer_thickness) * r_poly_Si
+        x_Air = (r_Air_poly + x_poly)/(1 + r_Air_poly  *x_poly)
+
+        x_Air_arr[i] = (np.abs(x_Air))**2
+
+#    return x_Air_arr, err_func(x_Air_arr)
+    return x_Air_arr
+
+
+
+
 
 #print(np.deg2rad(Reflectivity_x))
-Reflectivity_y_Parratt = np.zeros(len(Reflectivity_x))
-for i in tqdm(range(0, len(Reflectivity_x))):
-    Reflectivity_y_Parratt[i] = Parratt_Algorithmus(np.deg2rad(Reflectivity_x[i]), 6e-7, 6e-6, 6e-7/200 ,6e-6/40 ,5.5e-10, 6.5e-10)
+Reflectivity_x_rad = np.deg2rad(Reflectivity_x)
+Reflectivity_y = unp.nominal_values(Reflectivity_y)
 
 
+Best_combi = np.array([6e-7, 6e-6, 5.5e-10, 6.45e-10, 6e-7/40 ,6e-6/200])
+
+Reflectivity_y_Parratt_vor_Suche = Parratt_Algorithmus(Reflectivity_x_rad, *Best_combi)
+
+
+from iminuit import Minuit
+from iminuit.cost import UnbinnedNLL, BinnedNLL
+from iminuit.cost import LeastSquares
+
+
+#Best_combi = np.array([6e-7, 6e-6, 5.5e-10, 6.45e-10, 6e-7/40 ,6e-6/200])
+#Best_combi = np.array([8.8e-10,6.029982544217072e-07, 5.879718970707921e-06, 5.527500513536649e-10, 6.482225492181412e-10, 3.014991272108536e-10 ,1.4699297426769803e-08])
+Best_combi = np.array([0.856e-7 ,0.62e-6, 0.752e-5, 0.512e-9, 0.620e-9])
+
+
+
+#cost = LeastSquares(x=Reflectivity_x_rad, y=unp.nominal_values(Reflectivity_y_tmp), yerror=np.ones(len(Reflectivity_y)), model= fit_Parratt_Algorithmus)
+cost = UnbinnedNLL(np.append(Reflectivity_x_rad[10:], unp.nominal_values(Reflectivity_y_tmp[10:])), fit_Parratt_Algorithmus, log=True)
+
+m = Minuit(cost, *Best_combi)
+
+m.limits['layer_thickness']  = (1e-8    ,1e-7)
+m.limits['delta_poli']       = (1e-7    ,1e-6)
+m.limits['delta_Si']         = (1e-6    ,1e-5)
+m.limits['sigma_poli']       = (1e-10   ,1e-9)
+m.limits['sigma_Si']         = (1e-10   ,1e-9)
+#m.limits['beta_poli']   = (1e-10,1e-6)
+#m.limits['beta_si']     = (1e-10,1e-6)
+print(m.migrad())  # find minimum
+
+
+Best_combi = m.values
+
+print(Best_combi)
+Best_combi = np.array([0.849e-7 ,0.970e-6, 0.693e-5, 0.617e-9, 0.790e-9])
+#para, pcov = curve_fit(fit_Parratt_Algorithmus, Reflectivity_x_rad, unp.nominal_values(Reflectivity_y_tmp), p0 = [0.856e-7 ,1.1e-6, 0.752e-5, 0.348e-9, 0.802e-9], maxfev = 5000, method='trf')
+#Best_combi = para
+#print(Reflectivity_x_rad)
+
+Reflectivity_y_Parratt_nach_Suche = fit_Parratt_Algorithmus(Reflectivity_x_rad, *Best_combi)
+
+
+#print(para)
 
 def plotte_Z1Scan(ZScann1, SampleStart, SampleEnd):
     lineOffset = 56
@@ -257,8 +343,7 @@ def plotte_Omega2Theta(Omega2Theta, Diffus):
 def plotte_Reflectivity(Reflectivity_x, Reflectivity_y, Reflectivity_y_tmp):
 
     plt.scatter(unp.nominal_values(Reflectivity_x), unp.nominal_values(Reflectivity_y), label = "Intensity", c = "midnightblue", marker='.', s = 1)
-    plt.scatter(unp.nominal_values(Reflectivity_x), unp.nominal_values(Reflectivity_y_tmp), label = "Corrected Intensity", c = "firebrick", marker='.', s = 1)
-
+    plt.scatter(unp.nominal_values(Reflectivity_x), unp.nominal_values(unp.nominal_values(Reflectivity_y_tmp)), label = "Corrected Intensity", c = "firebrick", marker='.', s = 1)
 
     plt.yscale('log')
     plt.xlabel(r"$\alpha \mathbin{/} \unit{\degree}$")
@@ -271,10 +356,12 @@ def plotte_Reflectivity(Reflectivity_x, Reflectivity_y, Reflectivity_y_tmp):
 
 
 
-def plotte_Parratt_Algorithmus(Reflectivity_x, Reflectivity_y, Reflectivity_y_Parratt):
-
-    plt.scatter(unp.nominal_values(Reflectivity_x), unp.nominal_values(Reflectivity_y), label = "Intensity", c = "midnightblue", marker='.', s = 1)
-    plt.scatter(unp.nominal_values(Reflectivity_x), unp.nominal_values(Reflectivity_y_Parratt), label = "Parrattfit", c = "firebrick", marker='.', s = 1)
+def plotte_Parratt_Algorithmus(Reflectivity_x, Reflectivity_y_tmp,  Reflectivity_y_Parratt_nach_Suche):
+    #print(Reflectivity_y_Parratt)
+#    plt.scatter(unp.nominal_values(Reflectivity_x), unp.nominal_values(Reflectivity_y_Parratt_vor_Suche), label = "Parrattfit vor", c = "firebrick", marker='.', s = 1)
+    plt.scatter(unp.nominal_values(Reflectivity_x), unp.nominal_values(Reflectivity_y_Parratt_nach_Suche), label = "Parrattfit", c = "orange", marker='.', s = 1)
+    plt.scatter(unp.nominal_values(Reflectivity_x), unp.nominal_values(Reflectivity_y_tmp), label = "Reflectivity", c = "midnightblue", marker='.', s = 1)
+    plt.plot(Reflectivity_x[Reflectivity_x > 3*0.134], (0.134/(2*Reflectivity_x[Reflectivity_x>3*0.134]))**4, label="Ideal Fresnel Reflectivity")
 
 
     plt.yscale('log')
@@ -288,20 +375,6 @@ def plotte_Parratt_Algorithmus(Reflectivity_x, Reflectivity_y, Reflectivity_y_Pa
 
 
 
-#"""
-#def plotte_Diffus(Diffus):
-##    plt.scatter(Diffus[:,0], Diffus[:,1], label = "Data", c = "midnightblue", marker='x', s = 10)
-#    plt.plot(Diffus[:,0], Diffus[:,1], label = "Data", c = "midnightblue")
-#
-#    plt.yscale('log')
-#    plt.xlabel(r"$\alpha \mathbin{/} \unit{\degree}$")
-#    plt.ylabel("Reflectivity")
-#    plt.grid(linestyle = ":")
-#    plt.tight_layout()
-#    plt.legend()
-#    plt.savefig('build/Diffus.pdf')
-#    plt.clf()
-#"""
 
 Processe = []
 Processe.append(Process(target=plotte_Detektorscan, args=([Detektorscann, x_fit_Dek, y_fit_Dek, Gaus_Peak_idx, Gaus_Peak_FWHM_in_idx])))
@@ -309,13 +382,7 @@ Processe.append(Process(target=plotte_Z1Scan, args=([ZScann1, SampleStart, Sampl
 Processe.append(Process(target=plotte_RockingCurve, args=([RockingCurve, RockingCurve_Left, RockingCurve_Right])))
 Processe.append(Process(target=plotte_Omega2Theta, args=([Omega2Theta, Diffus])))
 Processe.append(Process(target=plotte_Reflectivity, args=([Reflectivity_x, Reflectivity_y, Reflectivity_y_tmp])))
-Processe.append(Process(target=plotte_Parratt_Algorithmus, args=([Reflectivity_x, Reflectivity_y, Reflectivity_y_Parratt])))
-
-#Processe.append(Process(target=plotte_Diffus, args=([Diffus])))
-
-
-#p1 = Process(target=plotte_Detektorscan, args=([Detektorscann]))
-#p2 = Process(target=plotte_Detektorscan, args=([ZScann1]))
+Processe.append(Process(target=plotte_Parratt_Algorithmus, args=([Reflectivity_x, Reflectivity_y_tmp, Reflectivity_y_Parratt_nach_Suche])))
 
 for p in Processe:
     p.start()
@@ -323,4 +390,79 @@ for p in Processe:
 for p in Processe:
     p.join()
 
-#plotte_Parratt_Algorithmus(Reflectivity_x, Reflectivity_y, Reflectivity_y_Parratt)
+
+
+#Best_combi = np.array([8.8e-10, 6.029982544217072e-07, 5.879718970707921e-06, 5.527500513536649e-10, 6.482225492181412e-10, 3.014991272108536e-10 ,1.4699297426769803e-08])
+Best_combi = np.array([8.8e-10, 6.029982544217072e-07, 5.879718970707921e-06, 5.527500513536649e-10, 6.482225492181412e-10])
+
+
+import matplotlib.pyplot as plt
+from matplotlib.widgets import Slider
+import numpy as np
+
+# Generate some data
+x = Reflectivity_x_rad
+y = unp.nominal_values(fit_Parratt_Algorithmus(Reflectivity_x_rad, *Best_combi))
+
+# Create a figure and axis
+fig, ax = plt.subplots()
+plt.subplots_adjust(bottom=0.5)  # Adjust layout to make room for slider
+
+# Plot the data
+line, = ax.plot(x, y)
+
+# Create a slider widget
+ax_layer = plt.axes([0.25, 0.05, 0.65, 0.03], facecolor='lightgoldenrodyellow')
+ax_delta_poli = plt.axes([0.25, 0.1, 0.65, 0.03], facecolor='lightgoldenrodyellow')
+ax_delta_Si = plt.axes([0.25, 0.15, 0.65, 0.03], facecolor='lightgoldenrodyellow')
+ax_sigma_poli = plt.axes([0.25, 0.2, 0.65, 0.03], facecolor='lightgoldenrodyellow')
+ax_sigma_Si = plt.axes([0.25, 0.25, 0.65, 0.03], facecolor='lightgoldenrodyellow')
+#ax_beta_poli = plt.axes([0.25, 0.3, 0.65, 0.03], facecolor='lightgoldenrodyellow')
+#ax_beta_si = plt.axes([0.25, 0.35, 0.65, 0.03], facecolor='lightgoldenrodyellow')
+
+slider_layer = Slider(ax_layer, 'layer', 8.8e-9, 8.8e-7, valinit=1.0)
+slider_delta_poli = Slider(ax_delta_poli, 'delta_poli', 6.029982544217072e-08, 6.029982544217072e-06, valinit=1.0)
+slider_delta_Si = Slider(ax_delta_Si, 'delta_Si', 5.879718970707921e-07, 5.879718970707921e-05, valinit=1.0)
+slider_sigma_poli = Slider(ax_sigma_poli, 'sigma_poli', 5.527500513536649e-11, 5.527500513536649e-9, valinit=1.0)
+slider_sigma_Si = Slider(ax_sigma_Si, 'sigma_Si', 6.482225492181412e-11, 6.482225492181412e-9, valinit=1.0)
+#slider_beta_poli = Slider(ax_beta_poli, 'beta_poli', 3.014991272108536e-11,  3.014991272108536e-9, valinit=1.0)
+#slider_beta_si = Slider(ax_beta_si, 'beta_si', 1.4699297426769803e-09, 1.4699297426769803e-07, valinit=1.0)
+
+
+ax.scatter(Reflectivity_x_rad, unp.nominal_values(Reflectivity_y_tmp), color='firebrick', alpha=0.5)
+
+# Define an update function
+def update(val):
+    # Get the slider value
+    layer = slider_layer.val
+    delta_poli = slider_delta_poli.val
+    delta_Si = slider_delta_Si.val
+    sigma_poli = slider_sigma_poli.val
+    sigma_Si = slider_sigma_Si.val
+#    beta_poli = slider_beta_poli.val
+#    beta_si = slider_beta_si.val
+
+    # Update the data
+#    y_new = fit_Parratt_Algorithmus(Reflectivity_x_rad, layer, delta_poli, delta_Si, sigma_poli, sigma_Si, beta_poli, beta_si)
+    y_new = fit_Parratt_Algorithmus(Reflectivity_x_rad, layer, delta_poli, delta_Si, sigma_poli, sigma_Si)
+   
+    line.set_ydata(y_new)
+    
+    # Redraw the plot
+    fig.canvas.draw_idle()
+
+
+# Register the update function with the slider
+slider_layer.on_changed(update)
+slider_delta_poli.on_changed(update)
+slider_delta_Si.on_changed(update)
+slider_sigma_poli.on_changed(update)
+slider_sigma_Si.on_changed(update)
+#slider_beta_poli.on_changed(update)
+#slider_beta_si.on_changed(update)
+
+ax.grid(True)
+
+# Set y-axis scale to logarithmic
+ax.set_yscale('log')
+plt.show()
