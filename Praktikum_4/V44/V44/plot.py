@@ -10,11 +10,11 @@ from uncertainties import correlated_values
 import uncertainties.unumpy as unp
 
 from multiprocessing  import Process
-from tqdm import tqdm
+#from tqdm import tqdm
 
-from numba_progress import ProgressBar
-import numba as nb
-from numba import njit, prange, objmode
+#from numba_progress import ProgressBar
+#import numba as nb
+#from numba import njit, prange, objmode
 import math
 
 
