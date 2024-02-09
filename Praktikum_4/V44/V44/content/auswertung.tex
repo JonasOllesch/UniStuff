@@ -2,7 +2,7 @@
 \label{sec:auswertung}
 
 \sisetup{round-mode = places, round-precision = 2}%
-The following regression are performed with the method \texttt{curve\_fit} from the python \cite{py}-package \textit{scipy} \cite{scipy}.
+The following regressions are performed with the method \textit{curve\_fit} from the python \cite{py} package \textit{scipy} \cite{scipy}.
 Propagation of the uncertainties are done with the package \textit{uncertainties} \cite{uncertainties}.
 Plots are created with \textit{matplotlib} \cite{matplotlib}.
 
@@ -11,7 +11,7 @@ Plots are created with \textit{matplotlib} \cite{matplotlib}.
 \subsubsection{Detector scan}
 
 To adjust the primary beam a detector scan is performed.
-The recorded data and the Gaussian-fit in depicted in \autoref{fig:Detectorscan}.
+The recorded data and the Gaussian fit are depicted in \autoref{fig:Detectorscan}.
 The resulting reflectivity should represent a Gaussian distribution of the shape
 
 \begin{equation*}
@@ -45,8 +45,8 @@ The $\text{FWHM}$ and the maximum of the reflectivity $I_\text{max}$ are establi
 
 \subsubsection{Z-Scan}
 
-During the Z-Scan the z-position of the sample is changed. 
-The sample is moved from below the into the primary beam until it is completely block reducing the reflectivity to nearly zero.
+During the Z-scan, the z-position of the sample is changed. 
+The sample is moved from below into the primary beam until it is completely blocked, reducing the reflectivity to nearly zero.
 This measurement is shown in \autoref{fig:Z-Scan}.
 The width of the beam is 
 \begin{equation*}
@@ -68,7 +68,7 @@ The uncertainty of the width is the distance between two measurement point.
 \subsubsection{Rockingscan}
 
 A Rockingscan is used to determine the geometry angle $\alpha_\text{g}$. 
-For this the \autoref{fig:Rockingscan} is evaluated, where $\alpha_\text{g}$ is half the base of the triangle.
+For this, the \autoref{fig:Rockingscan} is evaluated, where $\alpha_\text{g}$ is half the base of the triangle.
 In this measurement $\alpha_\text{g}$ is measured as 
 \begin{equation*}
     \alpha_\text{g} = \SI{0.520 \pm 0.020}{\degree} = \num{0.00908 \pm 0.00035}\,.
@@ -148,6 +148,6 @@ The critical angle of Silicon and Polystyrene is calculate with \autoref{eq:crit
 \begin{figure}[H]
     \centering
     \includegraphics{build/Reflectivity_Parratt.pdf}
-    \caption{Intensity of the two Omega/Theta corrected by the geometry factor, the ideal fresnel reflectivity and the best fit.} 
+    \caption{The intensity of the two Omega/Theta corrected by the geometry factor, the ideal fresnel reflectivity and the best fit.} 
     \label{fig:Omega2Theta2}
 \end{figure}

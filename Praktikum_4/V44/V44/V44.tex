@@ -5,7 +5,7 @@
 \date{%
   Excution: 29.01.2024
   \hspace{3em}
-  Hand-In: 
+  Hand-In: 09.02.2024
 }
 
 \begin{document}
@@ -32,17 +32,18 @@
 def Parratt_Algorithmus(angle, delta_poli, 
     delta_Si, sigma_poli, 
     sigma_Si,beta_poli, beta_si):
-Wellenlänge = 1.54e-10
-k = 2*np.pi / Wellenlänge
-layer_thickness = 8.8e-8
-x_Air_arr = np.zeros(len(angle))
-n_Air = 1
-n_poly = 1 - delta_poli + 1j*beta_poli
-n_Si = 1 - delta_Si + 1j*beta_si
 
-for i in range(0 , len(angle)):
+  Wellenlänge = 1.54e-10
+  k = 2*np.pi / Wellenlänge
+  layer_thickness = 8.8e-8
+  x_Air_arr = np.zeros(len(angle))
+  n_Air = 1
+  n_poly = 1 - delta_poli + 1j*beta_poli
+  n_Si = 1 - delta_Si + 1j*beta_si
 
-k_Air =     k * np.sqrt((n_Air**2 -np.cos(angle[i])**2))
+  for i in range(0 , len(angle)):
+
+    k_Air =     k * np.sqrt((n_Air**2 -np.cos(angle[i])**2))
     k_poly =    k * np.sqrt((n_poly**2 -np.cos(angle[i])**2))
     k_Si =      k * np.sqrt((n_Si**2 -np.cos(angle[i])**2))
 
