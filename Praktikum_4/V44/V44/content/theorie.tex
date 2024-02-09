@@ -18,7 +18,40 @@ As shown in \autoref{fig:xraytube}, one possibility of producing such radiation 
 A wire is heated by a voltage $U_\text{heat}$ until it becomes incandescent.
 Thus, it emits electrons which are then accelerated towards the anode through a high voltage between cathode C and anode A.
 When they hit the anode material, they lose energy through interaction, namely through bremsstrahlung and ionisation.
-While bremsstrahlung is emitted as a continuous spectrum, the X-rays created by ionisation posses a characteristic and discrete wavelength. \\
+Bremsstrahlung describes radiation that is emitted when electrons interact with the Coulomb field of an atomic nucleus and lose energy in the form of photons.
+Ionisation happens if the incoming electron hits another electron inside the anode and transfers enough energy for the anode electron to leave its atom.
+The free space inside the atomic shell is then refilled by electrons of higher energy levels which in turn emit their energy in the form of photons.
+These photons posses exactly the energy between the levels, so
+\begin{equation*}
+    E_\gamma = \Delta E = E' - E
+\end{equation*}
+for energy level $E'$ on the higher and energy $E$ on the lower level.
+This means that the characteristic spectrum and thus the photon energy is dependent on the anode material since different materials posses different binding energies.
+Approximately,
+\begin{equation*}
+    E_n \propto \frac{Z^2}{n^2}
+\end{equation*}
+holds for the energy of level $n$ with atomic number $Z$.
+While bremsstrahlung is emitted as a continuous spectrum, the X-rays created by ionisation posses a characteristic and discrete wavelength depending
+on the energy level of the ionised electron as seen in \autoref{fig:röntgenspektrum}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics{figures/röntgenspektrum.pdf}
+    \caption{Schematic view of the X-ray spectrum of a material showing the continuous spectrum of the bremsstrahlung as well as the characteristic peaks for ionisation \cite{röntgenspektrum}.}
+    \label{fig:röntgenspektrum}
+\end{figure}
+
+It can also be seen that the bremsspectrum only begins at a certain wavelength $\lambda_\text{min}$.
+This wavelength can be derived from
+\begin{equation*}
+    E = h f = \frac{h c}{\lambda}
+\end{equation*}
+to be
+\begin{equation*}
+    \lambda_\text{min} = \frac{h c}{e U_\text{A}}
+\end{equation*}
+with energy $E$, frequency $f$, the Planck constant $h$, light speed $c$, elementary charge $e$ and acceleration voltage $U_\text{A}$. \\
 
 X-rays behave differently when passing through and being reflected by different materials.
 
@@ -29,15 +62,22 @@ When hitting a single flat surface, the refractive index for X-rays can be descr
     n = 1 - \delta + i\beta \,.
     \label{eq:refractiveindex}
 \end{equation}
-The terms $\delta$ and $\beta$ describe a dispersion an absorption term with $\delta > 0$ and $\beta \propto \mu$ where $\mu$ is the linear
-absorption coefficient. \\
-The process of Refraction and reflection is shown in \autoref{fig:singleinterface}.
+The terms
+\begin{equation*}
+    \delta(r) = \frac{\lambda^2}{2 \pi} r_\text{e} \rho(r) \sum_{j=1}^N \frac{f_j^0 + f_j'}{Z}
+\end{equation*} and
+\begin{equation*}
+    \beta(r) =  \frac{\lambda^2}{2 \pi} r_\text{e} \rho(r) \sum_{j=1}^N \frac{f_j''}{Z} = \frac{\lambda}{4 \pi} \mu(r)
+\end{equation*} describe a dispersion an absorption term with $\delta > 0$ and $\beta \propto \mu(r)$ where $\mu(r)$ is the linear
+absorption coefficient, where $f_j = f_j^0 + f_j'(E) + if_j''(E)$ describes forced oscillation strengths with dispersion and absorption corrections $f_j'$ and $f_j''$.
+The classical electron radius is denoted by $r_\text{e}$ and the electron density is given by $\rho(r)$ with electron number $Z$ \cite{tolan}. \\
+The process of refraction and reflection is shown in \autoref{fig:singleinterface}.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=.9\textwidth]{figures/scattering.png}
     \caption{Refraction and reflection of a plane electromagnetic wave on a flat surface with grazing angle $\alpha_\text{i}$, 
-    reflection angle $\alpha_\text{f} = \alpha_\text{i}$ and transmission angle $\alpha_\text{t}$ \cite{tolan}.}
+    reflection angle $\alpha_\text{f} = \alpha_\text{i}$, transmission angle $\alpha_\text{t}$ and incoming, transmitted and reflected wave vectors $k_\text{i}$, $k_\text{t}$ and $k_\text{f}$ \cite{tolan}.}
     \label{fig:singleinterface}
 \end{figure}
 
@@ -72,6 +112,8 @@ These formulae allow us to calculate the so-called Fresnel reflectivity $R_\text
     \label{eq:fresnelreflectivity}
 \end{equation}
 for incident angles $\alpha_i > 3 \alpha_\text{c}$ \cite{tolan}.
+For angles smaller than the critical angle, the Fresnel reflectivity is of $\mathcal{O}(1)$, then quickly drops at $\frac{\alpha_\text{i}}{\alpha_\text{c}} = 1$
+and converges against zero for $\frac{\alpha_\text{i}}{\alpha_\text{c}} > 1$, comparable to the Fermi-Dirac-distribution for electrons.
 
 
 \subsection{Multi-interface Refraction}
@@ -141,7 +183,7 @@ For system with greater roughness, the smaller even surfaces must be treated as 
 \subsection{Geometry Factor}
 
 It must also be noted that the beam used in this experiment still has a width $b_\text{i}$.
-Especially for small angles, it will cover more are than the sample with length $l$ (shown in \autoref{fig:geometryfactor}), 
+Especially for small angles, it will cover more are than the sample with width $D$ (shown in \autoref{fig:geometryfactor}), 
 which has to be corrected by
 \begin{equation}
     G = \begin{cases}

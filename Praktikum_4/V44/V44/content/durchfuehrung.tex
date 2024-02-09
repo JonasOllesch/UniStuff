@@ -1,6 +1,15 @@
 \section{Execution}
 \label{sec:execution}
 
+A picture of the setup can be seen in \autoref{fig:setup}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = .8\textwidth]{figures/aufbau.jpg}
+    \caption{A photograph of the setup used in this experiment. On the left is the X-ray source and on the right the detector with the sample in the middle.}
+    \label{fig:setup}
+\end{figure}
+
 To perform the experiment, a D8 laboratory diffractometer from Bruker-AXS is used.
 The measurements themselves as well as drive control is being taken care of by the software XRD Command.
 As explained, the X-rays are created in an X-ray tube and then hit the Göbel mirror, 
@@ -19,11 +28,19 @@ In order to do that, a multitude of scans is performed as shown in \autoref{fig:
 \end{figure}
 
 As can be seen from the number of scans that need to be performed, it is important that the sample is aligned just right with the detector.
-First the z-coordinate is aligned by moving the sample through the X-ray until it blocks half the intensity.
+Before beginning the sample alignment, the primary beam is adjusted.
+To do that, the sample is moved out of the beam by changing the z-coordinate and a detector scan is performed.
+This moves the detector in a small angular range, yielding a scan in the form of a Gaussian.
+the Gausssian's maximum is then chosen to be the new zero position of the detector. \\
+Now, the sample alignment can begin.
+The z-coordinate is aligned by moving the sample through the X-ray until it blocks half the intensity.
 When adjusting the x-coordinate a plateau should show in the X-Scan.
-the middle of the plateau is chosen and the sample is moved there via the diffractometer's drives.
-The Rockingscans are performed to adjust the y-coordinate, which, as well as the Z-Scans, are performed multiple times at
-different angles to ensure high precision. \\
+The middle of the plateau is chosen and the sample is moved there via the diffractometer's drives.
+After that, aRockingscan is performed to adjust the y-coordinate, which, as well as the Z-Scan, is performed multiple times at
+different angles to ensure high precision.
+The Rockingscan gives information about the tilt of the sample relative to the X-ray beam.
+A correctly performed Rockingscan should yield a symmetrical triangle.
+This means that both the z-coordinate is aligned properly and that the sample is hit directly in its center of rotation of the diffractometer. \\
 
 After the alignment, the measurements are performed.
 First, an \textbf{Omega/2Theta}-type scan with a range of $0°$ to $\SI{2.5}{\degree}$ and a step size of $\SI{0.005}{\degree}$ with $\SI{5}{\second}$ per step is performed.
