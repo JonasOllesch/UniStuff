@@ -29,7 +29,7 @@ The parameter $a$, $b$, $\mu$ and $\sigma$ are determined as
 The $\text{FWHM}$ and the maximum of the reflectivity $I_\text{max}$ are established as 
 
 \begin{equation*}
-    \text{FWHM} = \SI{0.087}{\degree} \quad \text{and}
+    \text{FWHM} = \SI{0.08728089 \pm 0.00000006}{\degree} \quad \text{and}
 \end{equation*}
 \begin{equation*}
     I_{\text{max}} = \num{1283375.91 \pm 0.68}\,.
@@ -71,14 +71,26 @@ A Rockingscan is used to determine the geometry angle $\alpha_\text{g}$.
 For this, the \autoref{fig:Rockingscan} is evaluated, where $\alpha_\text{g}$ is half the base of the triangle.
 In this measurement $\alpha_\text{g}$ is measured as 
 \begin{equation*}
-    \alpha_\text{g} = \SI{0.520 \pm 0.020}{\degree} = \num{0.00908 \pm 0.00035}\,.
+    \alpha_\text{g} = \SI{0.520 \pm 0.020}{\degree} = \SI{0.00908 \pm 0.00035}{\radian}\,.
 \end{equation*}
 
 Together with the width of the sample $D = \SI{20}{\milli\meter}$ \cite{v44}, the width of the beam from \autoref{eq:BeamWidth} and \autoref{eq:GeometryFactor} the theoretical value is calculated to be 
 
 \begin{equation*}
-    \alpha_\text{Theo}  = \SI{0.573 \pm 0.057}{\degree} = \num{0.0100 \pm 0.0010}\,.
+    \alpha_\text{Theo}  = \SI{0.573 \pm 0.057}{\degree} = \SI{0.0100 \pm 0.0010}{\radian}\,.
 \end{equation*}
+For these angles the geometry factor is calculate, which results in 
+\begin{equation*}
+    \text{G}_\text{g} = \num{0.0158 \pm 0.0017}
+\end{equation*}
+and
+\begin{equation*}
+    \text{G}_\text{Theo}  = \num{0.01745358 \pm 0.00000006}\,.
+\end{equation*}
+
+
+
+
 
 
 
@@ -90,8 +102,7 @@ Together with the width of the sample $D = \SI{20}{\milli\meter}$ \cite{v44}, th
 \end{figure}
 
 \subsection{Omega/2Theta}
-
-The results of the Omega/2Theta scan can be seen in \autoref{fig:Omega2Theta2}. 
+ 
 The setup records data for $ \SI{5}{\second}$.
 To gain the true reflectivity the diffuse reflectivity is subtracted from the compact scan and modified by
 
@@ -100,8 +111,13 @@ To gain the true reflectivity the diffuse reflectivity is subtracted from the co
 \end{equation*}
 
 The factor 5 is included because the maximum intensity is only measured for $\SI{1}{\second}$.
-In the following the measurement data is corrected by the geometry factor and is plotted in \autoref{fig:Omega2Theta2}.
-In the same plot is also the best fit of the Parratt algorithm.
+The true reflectivity is plotted in \autoref{fig:Omega2Theta1} along with the background scan.
+In the following the measurement data is corrected by the measured geometry factor and is plotted in \autoref{fig:Omega2Theta1_2}.
+The \autoref{fig:Omega2Theta2} shows the fit of the Parratt algorithm to the true reflectivity.
+As a comparison, the ideal reflectivity that the pure silicon wafer would produce is included.
+
+
+
 
 To determine this the layer thickness is calculate via \autoref{eq:layerthickness} and its value is
 \begin{equation*}
@@ -114,20 +130,29 @@ The parameters are in \autoref{tab:Values}.
 
 \begin{table}[H]
     \centering
-    \caption{Best fit values}
+    \caption{Best parameters established by fitting the Parratt algorithm.}
     \label{tab:Values}
     \begin{tabular}{c  c}
     \midrule
           {Layer thickness}         &  $\SI{8.49e-8}{\meter}$  \\    
-          {$\delta_{\text{SI}}$}    &  $\num{6.93e-6}$          \\    
+          {$\delta_{\text{Si}}$}    &  $\num{6.93e-6}$          \\    
           {$\delta_\text{Poly}$}    &  $\num{9.70e-7}$          \\    
-          {$\beta_\text{SI}$}        &  $\num{1.73e-7}$          \\    
+          {$\beta_\text{Si}$}        &  $\num{1.73e-7}$          \\    
           {$\beta_\text{Poly}$}     &  $\num{4.85e-9}$          \\    
           {$\sigma_\text{Si}$}      &  $\SI{7.90e-10}{\meter}$  \\    
           {$\sigma_{\text{Poly}}$}   &  $\SI{6.17e-10}{\meter}$  \\    
     \bottomrule
     \end{tabular}
 \end{table}
+
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics{build/Reflectivity.pdf}
+    \caption{Reflectivity of the two Omega/2Theta scans, where the incidence angle of the diffuse scan is shifted by $\SI{0.2}{\degree}$. In addition with the Omega/2Theta, where the diffused scan is subtracted.} 
+    \label{fig:Omega2Theta1}
+\end{figure}
 
 
 The critical angle of Silicon and Polystyrene is calculate with \autoref{eq:critangle} and are
@@ -140,14 +165,16 @@ The critical angle of Silicon and Polystyrene is calculate with \autoref{eq:crit
 
 \begin{figure}[H]
     \centering
-    \includegraphics{build/Omega2Theta.pdf}
-    \caption{Intensity of the two Omega/Theta scans, where the incidence angle of the diffuse scan is shifted by $\SI{0.2}{\degree}$.} 
-    \label{fig:Omega2Theta1}
+    \includegraphics{build/Reflectivity_corrected.pdf}
+    \caption{The Omega/2Theta scan with and without the geometry factor correction, and without any background.} 
+    \label{fig:Omega2Theta1_2}
 \end{figure}
+
+
 
 \begin{figure}[H]
     \centering
     \includegraphics{build/Reflectivity_Parratt.pdf}
-    \caption{The intensity of the two Omega/Theta corrected by the geometry factor, the ideal fresnel reflectivity and the best fit.} 
+    \caption{The background-free Omega/2Theta scan corrected by the geometry factor. Alongside the ideal fresnel reflectivity for a smooth silicon surface and the best Parratt-fit.} 
     \label{fig:Omega2Theta2}
 \end{figure}

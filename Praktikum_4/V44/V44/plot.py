@@ -10,12 +10,12 @@ from uncertainties import correlated_values
 import uncertainties.unumpy as unp
 
 from multiprocessing  import Process
-#from tqdm import tqdm
 
-#from numba_progress import ProgressBar
-#import numba as nb
-#from numba import njit, prange, objmode
 import math
+
+from iminuit import Minuit
+from iminuit.cost import UnbinnedNLL, BinnedNLL
+from iminuit.cost import LeastSquares
 
 
 def Gaus(x, a, mu, sigma, b):
@@ -26,7 +26,7 @@ def uGaus(x, a, mu, sigma, b):
     return a/(sigma * unp.sqrt(2 * np.pi)) * unp.exp( - (x - mu)**2 / (2 * sigma**2) ) + b
 
 
-def Geometriefactor_berechnen(SampleWidth, Incidence_angle, BeamWidth, Intensity, Geometrie_angle):
+def Geometriefactor_berechnen(SampleWidth, Incidence_angle, BeamWidth, Geometrie_angle):
 
     if Incidence_angle == 0:
         return 1
@@ -71,6 +71,11 @@ print(f'Die Parameter des Gaus Detektorscan a, mu, sigma, b {para_Detektorscan}'
 print(f'Die FWHM des Detektorscan {Gaus_Peak_FWHM} in Grad')
 I_max = uGaus(x_fit_Dek[Gaus_Peak_idx], *para_Detektorscan)
 print(f'Das Maximum des Fits: {I_max}')
+print(f'Gaus Detektorscan sigma {para_Detektorscan[2]}')
+print(f'Gaus Detektorscan sigma nv{unp.nominal_values(para_Detektorscan[2])}')
+print(f'Gaus Detektorscan sigma std {unp.std_devs(para_Detektorscan[2])}')
+
+print(f'FWHM with formular {2*np.sqrt(2*np.log(2))*para_Detektorscan[2]}')
 
 
 #der Z-Scan
@@ -104,8 +109,12 @@ print(f'Der Geometriewinkel {Geometrie_angle}')
 SampleWidth = 20 #in mm
 EffectivBeamWidth = unp.arcsin(BeamWidth/SampleWidth)
 
-print(f'Effektive Breite des Beams {repr(EffectivBeamWidth)}')
-print(f'Effektive Breite des Beams {repr(EffectivBeamWidth*180/np.pi)} in degree')
+print(f'Geometry angle theo. {repr(EffectivBeamWidth)}')
+print(f'Geometry angle theo. {repr(EffectivBeamWidth*180/np.pi)} in degree')
+
+
+print(f'Geometriefaktor exp.  : {SampleWidth/BeamWidth*unp.sin(Geometrie_angle*np.pi/180)}')
+print(f'Geometriefaktor Theo. : {SampleWidth/BeamWidth*unp.sin(EffectivBeamWidth*np.pi/180)}')
 
 
 #Die Reflectivity berechnen und Sachenmachen
@@ -118,7 +127,89 @@ GeometryFactors = np.copy(Reflectivity_x)
 print(f'sample width {SampleWidth}')
 print(f'BeamWidth {BeamWidth}')
 for i in range(0, len(Reflectivity_x)):
-    GeometryFactors[i] = unp.nominal_values(Geometriefactor_berechnen(SampleWidth/1000, Reflectivity_x[i], Z_Scan_width, Reflectivity_y[i], Geometrie_angle_in_Grad))
+    GeometryFactors[i] = unp.nominal_values(Geometriefactor_berechnen(SampleWidth/1000, Reflectivity_x[i], Z_Scan_width, Geometrie_angle_in_Grad))
+
+R_Diffus = Diffus[0:,1]/(5*unp.nominal_values(I_max))
+R_Omega2Theta = Omega2Theta[:,1]/(5*unp.nominal_values(I_max))
+R_without_Background = (Omega2Theta[:,1] - Diffus[:,1])/(5*unp.nominal_values(I_max))
+Omega2Theta_angle = np.copy(Omega2Theta[:,0])
+
+R_without_Background_corrected = np.copy(R_without_Background)
+for i in range(0, len(R_without_Background)):
+    R_without_Background_corrected[i] = R_without_Background[i] / (unp.nominal_values(Geometriefactor_berechnen(SampleWidth/1000, Omega2Theta_angle[i], Z_Scan_width,  Geometrie_angle_in_Grad)))
+
+
+
+"""
+
+def fit_Parratt_Algorithmus2(angle, layer_thickness, delta_poli, delta_Si, sigma_poli, sigma_Si):
+
+    beta_poli=  delta_poli/200
+    beta_si=  delta_Si/40
+    Wellenlänge = 1.54e-10
+    k = 2*np.pi / Wellenlänge
+#    layer_thickness = 8.8e-8
+#    layer_thickness = 5e-6
+    x_Air_arr = np.zeros(len(angle))
+#    print(sigma_poli)
+    n_Air = 1
+    n_poly = 1 - delta_poli - 1j*beta_poli
+    n_Si = 1 - delta_Si - 1j*beta_si
+
+    for i in range(0 , len(angle)):
+
+        k_Air =     k * np.sqrt((n_Air**2 -np.cos(angle[i])**2))
+        k_poly =    k * np.sqrt((n_poly**2 -np.cos(angle[i])**2))
+        k_Si =      k * np.sqrt((n_Si**2 -np.cos(angle[i])**2))
+
+        r_Air_poly = (k_Air - k_poly)/ (k_Air + k_poly)* np.exp(-2*k_Air*k_poly*sigma_poli**2)
+        r_poly_Si = (k_poly - k_Si)  / (k_poly + k_Si) * np.exp(-2*k_poly*k_Si*sigma_Si**2)
+
+        x_poly = np.exp(-2j * k_poly * layer_thickness) * r_poly_Si
+        x_Air = (r_Air_poly + x_poly)/(1 + r_Air_poly  *x_poly)
+
+        x_Air_arr[i] = (np.abs(x_Air))**2
+
+#    return x_Air_arr, err_func(x_Air_arr)
+    return x_Air_arr
+
+
+
+
+#print(Omega2Theta_angle)
+Best_combi = np.array([0.849e-7 ,0.970e-6, 0.693e-5, 5.12e-10, 0.790e-9])
+
+#cost2 = LeastSquares(x = np.deg2rad(Omega2Theta_angle[15:]), y = R_without_Background_corrected[15:], yerror=np.ones(len(Reflectivity_y[15:])), model= fit_Parratt_Algorithmus2)
+cost2 = UnbinnedNLL(np.append(Omega2Theta_angle[15:180], R_without_Background_corrected[15:180]), fit_Parratt_Algorithmus2)
+
+m2 = Minuit(cost2, *Best_combi)
+
+m2.limits['layer_thickness']  = (85.03e-9   ,85.03e-9)
+m2.limits['delta_poli']       = (0.970e-6   ,0.970e-6)
+m2.limits['delta_Si']         = (0.693e-5   ,0.693e-5)
+m2.limits['sigma_poli']       = (5.12e-10   ,5.12e-10)
+m2.limits['sigma_Si']         = (0.790e-9   ,0.790e-9)
+print(m2.migrad())  # find minimum
+
+
+Best_combi2 = m2.values
+Reflectivity_y_Parratt_nach_Suche2 = fit_Parratt_Algorithmus2(np.deg2rad(Omega2Theta_angle), *Best_combi2)
+print(Best_combi2)
+
+plt.plot(Omega2Theta_angle, unp.nominal_values(Reflectivity_y_Parratt_nach_Suche2), label = "Parrattfit 2", color = "orange")
+plt.scatter(Omega2Theta_angle, unp.nominal_values(R_without_Background_corrected), label = "Reflectivity", c = "midnightblue", marker='.', s = 1)
+
+
+plt.yscale('log')
+plt.xlabel(" alpha \ degree")
+plt.ylabel("Reflectivity")
+plt.grid(linestyle = ":")
+plt.tight_layout()
+plt.legend()
+plt.savefig('build/Reflectivity_Parratt2.pdf')
+plt.clf()
+
+"""
 
 
 
@@ -150,8 +241,8 @@ def Parratt_Algorithmus(angle, delta_poli, delta_Si, sigma_poli, sigma_Si,beta_p
     layer_thickness = 8.8e-8
     x_Air_arr = np.zeros(len(angle))
     n_Air = 1
-    n_poly = 1 - delta_poli + 1j*beta_poli
-    n_Si = 1 - delta_Si + 1j*beta_si
+    n_poly = 1 - delta_poli - 1j*beta_poli
+    n_Si = 1 - delta_Si - 1j*beta_si
 
     for i in range(0 , len(angle)):
 
@@ -181,8 +272,8 @@ def fit_Parratt_Algorithmus(angle, layer_thickness, delta_poli, delta_Si, sigma_
     x_Air_arr = np.zeros(len(angle))
 #    print(sigma_poli)
     n_Air = 1
-    n_poly = 1 - delta_poli + 1j*beta_poli
-    n_Si = 1 - delta_Si + 1j*beta_si
+    n_poly = 1 - delta_poli - 1j*beta_poli
+    n_Si = 1 - delta_Si - 1j*beta_si
 
     for i in range(0 , len(angle)):
 
@@ -215,9 +306,6 @@ Best_combi = np.array([6e-7, 6e-6, 5.5e-10, 6.45e-10, 6e-7/40 ,6e-6/200])
 Reflectivity_y_Parratt_vor_Suche = Parratt_Algorithmus(Reflectivity_x_rad, *Best_combi)
 
 
-from iminuit import Minuit
-from iminuit.cost import UnbinnedNLL, BinnedNLL
-from iminuit.cost import LeastSquares
 
 
 #Best_combi = np.array([6e-7, 6e-6, 5.5e-10, 6.45e-10, 6e-7/40 ,6e-6/200])
@@ -227,7 +315,7 @@ Best_combi = np.array([0.856e-7 ,0.62e-6, 0.752e-5, 0.512e-9, 0.620e-9])
 
 
 #cost = LeastSquares(x=Reflectivity_x_rad, y=unp.nominal_values(Reflectivity_y_tmp), yerror=np.ones(len(Reflectivity_y)), model= fit_Parratt_Algorithmus)
-cost = UnbinnedNLL(np.append(Reflectivity_x_rad[10:], unp.nominal_values(Reflectivity_y_tmp[10:])), fit_Parratt_Algorithmus, log=True)
+cost = UnbinnedNLL(np.append(Reflectivity_x_rad[10:], unp.nominal_values(Reflectivity_y_tmp[10:])), fit_Parratt_Algorithmus)
 
 m = Minuit(cost, *Best_combi)
 
@@ -238,7 +326,7 @@ m.limits['sigma_poli']       = (1e-10   ,1e-9)
 m.limits['sigma_Si']         = (1e-10   ,1e-9)
 #m.limits['beta_poli']   = (1e-10,1e-6)
 #m.limits['beta_si']     = (1e-10,1e-6)
-print(m.migrad())  # find minimum
+#print(m.migrad())  # find minimum
 
 
 Best_combi = m.values
@@ -272,8 +360,6 @@ def plotte_Z1Scan(ZScann1, SampleStart, SampleEnd):
     plt.savefig('build/Z1Scann.pdf')
     plt.clf()
 
-
-
 def plotte_Detektorscan(Detektorscann, x_fit_Dek, y_fit_Dek, Gaus_Peak_idx, Gaus_Peak_FWHM_in_idx):
     tmp_x = np.array([(Gaus_Peak_idx-Gaus_Peak_FWHM_in_idx/2), (Gaus_Peak_idx+Gaus_Peak_FWHM_in_idx/2)])
     tmp_x = tmp_x.astype(int)
@@ -290,8 +376,6 @@ def plotte_Detektorscan(Detektorscann, x_fit_Dek, y_fit_Dek, Gaus_Peak_idx, Gaus
     plt.legend()
     plt.savefig('build/Detectorscan.pdf')
     plt.clf()
-
-
 
 from matplotlib.ticker import FuncFormatter
 def format_ticks(x, pos):
@@ -321,8 +405,6 @@ def plotte_RockingCurve(RockingCurve, RockingCurve_Left, RockingCurve_Right):
     plt.savefig('build/Rockingcurve.pdf')
     plt.clf()
 
-
-
 def plotte_Omega2Theta(Omega2Theta, Diffus):
 
     plt.scatter(Omega2Theta[:,0], Omega2Theta[:,1], label = "Compact Reflectivity", c = "midnightblue", marker='.', s = 1)
@@ -339,11 +421,12 @@ def plotte_Omega2Theta(Omega2Theta, Diffus):
     plt.clf()
 
 
+def plotte_Reflectivity(Omega2Theta_angle, R_Diffus, R_Omega2Theta, R_without_Background):
 
-def plotte_Reflectivity(Reflectivity_x, Reflectivity_y, Reflectivity_y_tmp):
+    plt.scatter(Omega2Theta_angle, unp.nominal_values(R_Diffus), label = "Refectivity of background scan", c = "firebrick", marker='.', s = 1)
+    plt.scatter(Omega2Theta_angle, unp.nominal_values(R_without_Background), label = "Refectivity without background", c = "darkorange", marker='.', s = 1)
+    plt.scatter(Omega2Theta_angle, unp.nominal_values(R_Omega2Theta), label = r"Refectivity of $\Omega\mathbin{/} 2\theta$", c = "midnightblue", marker='.', s = 1)
 
-    plt.scatter(unp.nominal_values(Reflectivity_x), unp.nominal_values(Reflectivity_y), label = "Intensity", c = "midnightblue", marker='.', s = 1)
-    plt.scatter(unp.nominal_values(Reflectivity_x), unp.nominal_values(unp.nominal_values(Reflectivity_y_tmp)), label = "Corrected Intensity", c = "firebrick", marker='.', s = 1)
 
     plt.yscale('log')
     plt.xlabel(r"$\alpha \mathbin{/} \unit{\degree}$")
@@ -355,13 +438,34 @@ def plotte_Reflectivity(Reflectivity_x, Reflectivity_y, Reflectivity_y_tmp):
     plt.clf()
 
 
+def plotte_Reflectivity_corrected(Omega2Theta_angle, R_without_Background, R_without_Background_corrected):
 
-def plotte_Parratt_Algorithmus(Reflectivity_x, Reflectivity_y_tmp,  Reflectivity_y_Parratt_nach_Suche):
+    plt.scatter(Omega2Theta_angle, unp.nominal_values(R_without_Background), label = "Refectivity without background", c = "darkorange", marker='.', s = 1)
+    plt.scatter(Omega2Theta_angle, unp.nominal_values(R_without_Background_corrected), label = "Refectivity corrected", c = "teal", marker='.', s = 1)
+
+
+    plt.yscale('log')
+    plt.xlabel(r"$\alpha \mathbin{/} \unit{\degree}$")
+    plt.ylabel("Reflectivity")
+    plt.grid(linestyle = ":")
+    plt.tight_layout()
+    plt.legend()
+    plt.savefig('build/Reflectivity_corrected.pdf')
+    plt.clf()
+
+
+
+def plotte_Parratt_Algorithmus(Omega2Theta_angle, R_without_Background_corrected,  Reflectivity_y_Parratt_nach_Suche):
     #print(Reflectivity_y_Parratt)
 #    plt.scatter(unp.nominal_values(Reflectivity_x), unp.nominal_values(Reflectivity_y_Parratt_vor_Suche), label = "Parrattfit vor", c = "firebrick", marker='.', s = 1)
-    plt.scatter(unp.nominal_values(Reflectivity_x), unp.nominal_values(Reflectivity_y_Parratt_nach_Suche), label = "Parrattfit", c = "orange", marker='.', s = 1)
-    plt.scatter(unp.nominal_values(Reflectivity_x), unp.nominal_values(Reflectivity_y_tmp), label = "Reflectivity", c = "midnightblue", marker='.', s = 1)
-    plt.plot(Reflectivity_x[Reflectivity_x > 3*0.134], (0.134/(2*Reflectivity_x[Reflectivity_x>3*0.134]))**4, label="Ideal Fresnel Reflectivity")
+
+    plt.scatter(unp.nominal_values(Omega2Theta_angle), unp.nominal_values(R_without_Background_corrected), label = "Reflectivity", c = "midnightblue", marker='.', s = 1)
+    plt.scatter(unp.nominal_values(Omega2Theta_angle), unp.nominal_values(Reflectivity_y_Parratt_nach_Suche), label = "Parratt-fit", c = "orange", marker='.', s = 1)
+    plt.plot(Omega2Theta_angle[Omega2Theta_angle > 1*0.213], (0.213/(2*Omega2Theta_angle[Omega2Theta_angle>1*0.213]))**4, label="Ideal Fresnel Reflectivity",color='teal')
+
+    tmp = np.copy(Omega2Theta)
+    tmp[:] = np.max((0.213/(2*Omega2Theta_angle[Omega2Theta_angle>1*0.213]))**4)
+    plt.plot(Omega2Theta_angle[Omega2Theta_angle < 1*0.213], tmp[Omega2Theta_angle < 1*0.213] ,color='teal')
 
 
     plt.yscale('log')
@@ -374,21 +478,25 @@ def plotte_Parratt_Algorithmus(Reflectivity_x, Reflectivity_y_tmp,  Reflectivity
     plt.clf()
 
 
-
-
 Processe = []
 Processe.append(Process(target=plotte_Detektorscan, args=([Detektorscann, x_fit_Dek, y_fit_Dek, Gaus_Peak_idx, Gaus_Peak_FWHM_in_idx])))
 Processe.append(Process(target=plotte_Z1Scan, args=([ZScann1, SampleStart, SampleEnd])))
 Processe.append(Process(target=plotte_RockingCurve, args=([RockingCurve, RockingCurve_Left, RockingCurve_Right])))
 Processe.append(Process(target=plotte_Omega2Theta, args=([Omega2Theta, Diffus])))
-Processe.append(Process(target=plotte_Reflectivity, args=([Reflectivity_x, Reflectivity_y, Reflectivity_y_tmp])))
+Processe.append(Process(target=plotte_Reflectivity, args=([Omega2Theta_angle, R_Diffus, R_Omega2Theta, R_without_Background])))
 Processe.append(Process(target=plotte_Parratt_Algorithmus, args=([Reflectivity_x, Reflectivity_y_tmp, Reflectivity_y_Parratt_nach_Suche])))
+Processe.append(Process(target=plotte_Reflectivity_corrected, args=([Omega2Theta_angle, R_without_Background, R_without_Background_corrected])))
 
 for p in Processe:
     p.start()
 
 for p in Processe:
     p.join()
+
+
+
+
+
 
 
 
