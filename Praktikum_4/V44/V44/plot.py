@@ -296,6 +296,11 @@ def fit_Parratt_Algorithmus(angle, layer_thickness, delta_poli, delta_Si, sigma_
 
 
 
+
+
+
+
+
 #print(np.deg2rad(Reflectivity_x))
 Reflectivity_x_rad = np.deg2rad(Reflectivity_x)
 Reflectivity_y = unp.nominal_values(Reflectivity_y)
@@ -454,19 +459,40 @@ def plotte_Reflectivity_corrected(Omega2Theta_angle, R_without_Background, R_wit
     plt.clf()
 
 
+def berechne_pp2(angle, ac, beta):
+    wurzel = np.sqrt((angle**2 - ac**2)**2 + 4*beta**2)
+    ZweiterTerm = (angle**2 - ac**2)
+    return 1/2*(wurzel + ZweiterTerm)
+
+def berechne_pm2(angle, ac, beta):
+    wurzel = np.sqrt((angle**2 - ac**2)**2 + 4*beta**2)
+    ZweiterTerm = (angle**2 - ac**2)
+    return 1/2*(wurzel - ZweiterTerm)
+
+
+
+def Ideal_fresnel(angle, ac):
+    beta = 1.73e-7
+    pp = np.sqrt(berechne_pp2(angle, ac, beta))
+    pm = np.sqrt(berechne_pm2(angle, ac, beta))
+    return ((angle - pp)**2 + pm**2)/((angle + pp)**2 + pm**2)
+
 
 def plotte_Parratt_Algorithmus(Omega2Theta_angle, R_without_Background_corrected,  Reflectivity_y_Parratt_nach_Suche):
-    #print(Reflectivity_y_Parratt)
-#    plt.scatter(unp.nominal_values(Reflectivity_x), unp.nominal_values(Reflectivity_y_Parratt_vor_Suche), label = "Parrattfit vor", c = "firebrick", marker='.', s = 1)
-
     plt.scatter(unp.nominal_values(Omega2Theta_angle), unp.nominal_values(R_without_Background_corrected), label = "Reflectivity", c = "midnightblue", marker='.', s = 1)
     plt.scatter(unp.nominal_values(Omega2Theta_angle), unp.nominal_values(Reflectivity_y_Parratt_nach_Suche), label = "Parratt-fit", c = "orange", marker='.', s = 1)
-    plt.plot(Omega2Theta_angle[Omega2Theta_angle > 1*0.213], (0.213/(2*Omega2Theta_angle[Omega2Theta_angle>1*0.213]))**4, label="Ideal Fresnel Reflectivity",color='teal')
 
-    tmp = np.copy(Omega2Theta)
-    tmp[:] = np.max((0.213/(2*Omega2Theta_angle[Omega2Theta_angle>1*0.213]))**4)
-    plt.plot(Omega2Theta_angle[Omega2Theta_angle < 1*0.213], tmp[Omega2Theta_angle < 1*0.213] ,color='teal')
+    x = np.linspace(0+1e-10, 2.5, 1000)
+    y = Ideal_fresnel(np.deg2rad(x), np.deg2rad(0.213))# 0.213 is the measured critical angle of silicon
+    plt.plot(x,y, label = 'Ideal Fresnel Tolan ', color ='purple')
 
+#    tmp = np.copy(x)
+#
+#    tmp[x > 1*0.213] = (0.213/(2*x[x > 1*0.213]))**4
+#    tmp[x < 1*0.213] = np.max((0.213/(2*x[x > 1*0.213]))**4)
+#    plt.plot(x, tmp, label="Ideal Fresnel Reflectivity", color='teal')
+#    plt.plot(Omega2Theta_angle[Omega2Theta_angle < 1*0.213], tmp[Omega2Theta_angle < 1*0.213] ,color='teal')   #The old way
+#    plt.plot(Omega2Theta_angle[Omega2Theta_angle > 1*0.213], (0.213/(2*Omega2Theta_angle[Omega2Theta_angle>1*0.213]))**4, label="Ideal Fresnel Reflectivity",color='teal') #The old way
 
     plt.yscale('log')
     plt.xlabel(r"$\alpha \mathbin{/} \unit{\degree}$")
