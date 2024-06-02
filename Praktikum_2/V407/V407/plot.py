@@ -35,7 +35,7 @@ pyplot.scatter(Messung_2[:,0]*(180/np.pi),Messung_2[:,1],s=8, c='blue',marker='+
 
 
 pyplot.ylabel(r'$I\mathbin{/} \unit{\ampere}$')
-pyplot.xlabel(r'$alpha$')
+pyplot.xlabel(r'$\alpha$')
 pyplot.tight_layout()
 pyplot.legend()
 pyplot.grid()
