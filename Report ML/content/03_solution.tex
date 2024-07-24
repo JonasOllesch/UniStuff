@@ -1,8 +1,30 @@
 \chapter{Using a CNN to solve the Problem}
 \label{ch:solution}
 
-Our approach was to use a $3$-layered convolutional neural network to classify the images.
+As it is one of the most conventional approaches, we tried using a convolutional neural network to classify the images.
 This, while not overly creative, seemed to be the safest approach to get good results. \\
 
 Considering the amount of data available to us and that the dataset is indeed quite balanced, we chose accuracy as our metric.
-For our model itself we utilised two? dropout layers in addition to the three convolutional layers.
+We arbitrarily chose a set of parameters for the network, so that, once we had a relatively well-working model,
+we could start optimising the hyperparameters. \\
+
+The first model we used consisted $3$ convolutional layers, each followed by a max-pooling layer, with an ascending number of filters,
+as well as two dropout layers.
+While we considered whether a model with three layers was too powerful for the task at hand, we still wanted to test it out.
+The increasing number of filters was chosen in order to allow the network to learn more complex features deeper into the model,
+with the max-pooling layers picking out the most prominent features.
+From the start, we tried avoiding overfitting as much as possible, thus the dropout layers.
+The dropout we chose was in the region of around $50 \,\%$, as it seemed inefficient to throw away even more weights and insufficient to choose a lower dropout. \\
+
+After each layer, we normalised the data using batch normalisation, hoping this would cut down on the rather substantial training time.
+We used the ReLU activation function for the convolutional layers and the adam optimiser function for the output layer.
+Again, these are the most common choices, with the adam optimiser drastically cutting down on training time, 
+while the activation function was later used as a part of the hyperparameter optimisation. \\
+
+And while is not yet time to talk about the results in depth, this did in fact not produce the results we hoped it would.
+Even though the accuracy was quite high at around $95 \,\%$, a closer look at the loss and accuracy curves showed that the model was greatly unstable
+with jumps of over $20 \,\%$ in accuracy between epochs.
+Still, we tried performing a hyperparameter optimisation as it might just have been an unlucky choice of parameters, yet every single model showed this problem,
+most of them performing even worse than our initial one (refer to \autoref{sec:results} for more on the hyperparameter optimisation). \\
+
+This lead us to adapt our approach, but even with fewer layers, no batch normalisation and lower learning rates, the problem persisted.
