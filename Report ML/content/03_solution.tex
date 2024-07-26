@@ -29,22 +29,23 @@ The dropout we chose was in the region of around $50 \,\%$, as it seemed ineffic
 After each layer, we normalised the data using batch normalisation, hoping this would cut down on the rather substantial training time.
 We used the ReLU activation function for the convolutional layers and the adam optimiser function for the output layer.
 Again, these are the most common choices, with the adam optimiser drastically cutting down on training time, 
-while the activation function was later used as a part of the hyperparameter optimisation. \\
+while the activation function was later used as a part of the hyperparameter optimisation.
+In a further effort to save time, we utilised \texttt{EarlyStopping} to stop the learning process early if the model did not improve for a certain number of epochs
+and \texttt{ReduceLROnPlateau}, which reduced the learning rate if necessary, both from the \texttt{keras.callback} library \cite{keras}.  \\
 
 And while is not yet time to talk about the results in depth, this did in fact not exactly produce the results we hoped it would.
 Even though the accuracy was quite high at around $95 \,\%$, a closer look at the loss and accuracy curves showed that the model was greatly unstable
 with jumps of over $20 \,\%$ in accuracy between epochs.
 
 
-\section{Hyperparameter Optimisation}
+\section{A First Hyperparameter Optimisation}
 \label{sec:results}
 
 We still decided to perform a simple grid search, hoping that the instability arose from simply a poor choice of parameters.
 The parameters we chose to optimise were the number of convolutional layers as well as the \texttt{max\_filters} within them, the dropout rate, the number of dense nodes
 and the activation function.
 Changing the learning rate did not seem necessary as, at the time, we used an adaptive learning rate in our model. 
-Shown in \autoref{tab:gridparameters} are the different parameter values used in the grid search, while \autoref{fig:hyperparameter_optimisation_1} 
-shows an excerpt of the $15$ best combinations. \\
+Shown in \autoref{tab:hyperparameters} are the different parameter values used in the grid search. \\
 
 \begin{table}[H]
     \centering
@@ -57,26 +58,29 @@ shows an excerpt of the $15$ best combinations. \\
         Dropout rate                                 & {$0.4, 0.5$}\\
         Number of nodes in dense layers              & {$128, 256, 512$}\\
         Activation function for convolutional layers & {LeakyReLU, ReLU}\\
+        Total number of combinations                 & $72$\\
         \bottomrule
     \end{tabular}
     \caption{Chosen Hyperparameters for Model Optimization}
     \label{tab:hyperparameters}
 \end{table}
 
-While this might not seem like a great amount of variation, this still provided $71$ different combinations and took multiple days to compute.
-
-
-
-\begin{figure}
+\begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{images/hyperparameter_optimisation_1.png}
-    \caption{The $15$ best combinations of hyperparameters for the first approach.}
+    \includegraphics[width=0.8\textwidth]{images/hyperparameter_optimisation_1.png}
+    \caption{The $10$ best combinations of hyperparameters for the first approach.}
     \label{fig:hyperparameter_optimisation_1}
 \end{figure}
 
+Here, we encountered another problem: this selection of parameters was already very limited and yet took multiple days to compute even though we
+had already reduced the image size to $128 \times 128$ pixels.
+While the general accuracy was in fact quite high, as can be seen in \autoref{fig:hyperparameter_optimisation_1},
+the same instability, if not worse most of the time, could still be seen when taking a look at the accuracy and loss curves.
+Still, the model did not necessarily appear to be overfitting, meaning we could still learn something from the hyperparameter optimisation.
+The best combinations generally consisted of the models with three convolutional layers and ReLU as the activation function.
+Also, a dropout rate of $0.5$ seemed to perform better. \\
 
-most of them performing even worse than our initial one (refer to \autoref{sec:results} for more on the hyperparameter optimisation). \\
-
+We concluded that the instability did not come from a poor choice of parameters but instead hinted at a more fundamental problem in our model.
 This lead us to adapt our approach, but even with fewer layers, and without batch normalisation, the problem persisted.
 As the activation function was also already changed during our hyperparameter optimisation, this didn't seem to be the cause of our problem either.
 After more consideration, we arrived at three possible solutions to our problem: we could either lower the learning rate even more, train our model using cross-validation,
