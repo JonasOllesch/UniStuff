@@ -2,28 +2,28 @@
 \label{ch:intro}
 
 Over the last few years, the quality of AI generated content has improved unfathomably.
-Be it the appearance of generative model like \textit{Chat-GPT}, an almost human chatbot seemingly able to answer every question,
+Be it the appearance of generative models like \textit{Chat-GPT}, an almost human chatbot seemingly able to answer every question,
 or methods such as \textit{Stable Diffusion} which can be used to generate almost convincingly real images, 
 AI has by now taken a hold in almost every field. 
 The average consumer thus gains access to an entirely new level of convenience. \\
 
 Still, this creates perhaps as many dangers as it provides merits.
-One of those dangers can be seen every while just writing this report - as GitHub's \textit{Copilot} is always eager to provide a "helpful" suggestion,
-luring the author to just stop thinking and let the AI do the work. \\
+One of those dangers can be seen even while just writing this report - as GitHub's \textit{Copilot} is always eager to provide a "helpful" suggestion,
+luring the author into just stopping thinking and let the AI do the work. \\
 
 Here, however, we will deal with a different kind of problem: how can it be ensured that AI generated images are correctly identified?
 As of now, it is still possible, at least for the more-informed, to differentiate between generated and real images, but considering the rapid progress over the last years,
 it is unlikely to remain that way for much longer. \\ %maybe reference the generated videos from earlier this year here
 
-Apart from the risks it poses concerning the spreading of misinformation in the form of e.g. deepfakes, this also creates issues regarding copyright and intellectual property.
-Since the generative AI models need to be trained on a large dataset of real art in order to create images on their own, it is likely that at least a portion of the training images
+Apart from the risks it poses concerning the spreading of misinformation in the form of, e.g., deepfakes, this also creates issues regarding copyright and intellectual property.
+Since generative AI models need to be trained on a large dataset of real art in order to create images on their own, it is likely that at least a portion of the training images
 were taken without the artists' consent. \\
 
-To mitigate these problems, it is useful to develop methods of recognizing AI generated content.
-The obvious, and somewhat ironic approach is to train a neural network on a dataset of real and generated art, 
-as it is unrealistic to apply more conventional, non-machine learning methods to such a large amount of data. \\
+To mitigate these problems, it is useful to develop methods of recognizing AI-generated content.
+The obvious, and somewhat ironic, approach is to train a neural network on a dataset of real and generated art
+since it is unrealistic to apply more conventional, non-machine learning methods to such a large amount of data. \\
 
-So, in this report, we will answer a couple of questions: Can a convolutional neural network (CNN) confidently differentiate between real and AI generated art compared to a classic logarithmic regression?
+So, in this report, we will answer a couple of questions: Can a convolutional neural network (CNN) reliably differentiate between real and AI generated art compared to a random forest?
 And more specifically, how well can it differentiate between real and AI generated art of the same epoch? \\
 
 
