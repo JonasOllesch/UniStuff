@@ -22,7 +22,7 @@ Additionally, some images had to be resized, as, contrary to what the dataset's 
 but rectangular instead.
 Those images were cropped to $256 \times 256$ pixels and, together with the square images, randomly transformed in order to counteract overfitting later.
 These transformations included horizontal flipping, rotation, zooming, shifting as well as shearing. 
-Lastly, the transformed images were randomly shuffled into training and validation data and normalised by the number of pixels to avoid possible issues with numerical stability.
+Before applying the transformations, the images were randomly shuffled into training and validation data and normalised by the number of pixels to avoid possible issues with numerical stability.
 
 \begin{figure}[H]
     \centering
