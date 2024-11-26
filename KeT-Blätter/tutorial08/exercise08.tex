@@ -10,6 +10,9 @@
 \release{Mittwoch, 20.11.2024}
 \submission{Mittwoch, 27.11.2024, 14 Uhr}
 
+
+\DeclareMathOperator\arctanh{arctanh}
+
 \begin{document}
 
 \clearpage
@@ -18,7 +21,7 @@
 \exercise{Fragen (2P)}
 Stellen Sie \emph{pro Person} zwei relevante Fragen zu den Inhalten der Vorlesung \enquote{Einf\"uhrung in die Kern- und Elementarteilchenphysik}.
 
-\exercise{Lorentztransformationen ()}
+\exercise{Lorentztransformationen (7P)}
 
 Die Lorentzgruppe ist die Gruppe an Transformationen auf Vierervektoren, unter denen die Minkowskimetrik (die Metrik des flachen Raumes) invariant bleibt:
 \begin{equation}
@@ -66,7 +69,7 @@ Diese sind über Parit\"at und/oder Zeitumkehr mit der Untergruppe der eigentlic
         \begin{align*}
             \det(\Lambda^T) \det(g) \det(\Lambda) &= \det(g) \\
             \det(\Lambda^T) \det(\Lambda) &= 1 \\
-            \det^2(\Lambda) &= 1 \\
+            \det(\Lambda)^2 &= 1 \\
             \det(\Lambda) &= \pm 1 \,.
         \end{align*}
         \textit{1 Punkt}
@@ -74,6 +77,7 @@ Diese sind über Parit\"at und/oder Zeitumkehr mit der Untergruppe der eigentlic
 
     \item Betrachten Sie einen Lorentzboost in $x$-Richtung mit
     \begin{equation}
+        \label{eq:BoostsMatrix}
         \Lambda = \begin{pmatrix}
             \gamma & -\beta \gamma & 0 & 0 \\
             -\beta \gamma & \gamma & 0 & 0 \\
@@ -153,5 +157,50 @@ Diese sind über Parit\"at und/oder Zeitumkehr mit der Untergruppe der eigentlic
         \end{enumerate}
         \textit{2 Punkte}
     }
+    \item Drücken sie \autoref{eq:BoostsMatrix} durch die Rapidität $\eta = \arctanh\left(\beta\right)$ aus. Welchen Vorteil kann es haben mit $\eta$ zu rechnen?
+    \solution{Ein möglicher Weg wäre: 
+        \begin{align*}
+            \beta           &= \tanh(\eta)\\
+            \gamma          &= \dfrac{1}{\sqrt{1 - \tanh^2(\eta)}}\\
+                            &= \dfrac{1}{\sqrt{ \dfrac{\cosh^2(\eta)}{\cosh^2(\eta)} - \dfrac{\sinh^2(\eta)}{\cosh^2(\eta)}}} \, \text{mit}\, \cosh^2(\eta) - \sinh^2(\eta) = 1\\
+                            &= \cosh(\eta) \\
+            \Rightarrow  \beta \gamma   &= \tanh(\eta)\cosh(\eta) = \sinh(\eta)
+        \end{align*}
+        Zusammen gilt:
+        \begin{align*}
+               \Lambda &= \begin{pmatrix}
+                \cosh(\eta) & -\sinh(\eta) & 0 & 0 \\
+                -\sinh(\eta) & \cosh(\eta) & 0 & 0 \\
+                0 & 0 & 1 & 0 \\
+                0 & 0 & 0 & 1 \\
+            \end{pmatrix} \\
+        \end{align*}
+        Die Rapidität geht über den gesamten Wertebereich $\eta \in \left(-\infty, \infty\right)$, was in­tu­i­tiver sein kann als $v \in \left(-c, c\right)$.
+        Außderdem ist $\eta$ additiv $\eta_\text{ges} = \eta_1 + \eta_2$\,.
+        Es muss nicht die Formel für die relativistische Geschwindigkeitaddition verwendet werden.\\
+        \textit{1 Punkt}
+        }
+        \item Für einen kovarianten Vektor $x^{\mu}$ gilt unter einer LT $x^{\mu} \rightarrow x'^{\mu} = \Lambda_{\phantom{\nu} \nu}^\mu x^{\nu}\,.$
+        Bestimmen Sie das allgemein Transformationverhalten eines kontravarianten Vektors $x_{\mu}$.
+        \solution{
+           $x_{\mu} \rightarrow x'_{\mu} = g_{\mu \nu} x'^{\nu} = g_{\mu \nu} \Lambda_{\phantom{\rho} \rho}^\nu x^{\rho} = \Lambda_{\mu \rho} x^{\rho} = \Lambda_{ \mu}^{\phantom{\nu} \nu} g_{\nu \rho} x^\rho = \Lambda_{ \mu}^{\phantom{\nu} \nu} x_\nu$ \\
+           \textit{0,5 Punkte}
+           }
+        \item Bestimmen Sie das Transformationenverhalten der kovarianten Ableitung $\partial_\mu = \dfrac{\partial}{\partial x^\mu}$.\\
+        \textit{Hinweis: Nutzen Sie, dass eine LT auch als $\dfrac{\partial x^\beta}{\partial x'^\alpha} = \Lambda^{\phantom{\beta} \beta}_\alpha$ geschrieben werden kann.}
+        \solution{
+            \begin{align}
+                \dfrac{\partial}{\partial x^\mu} \rightarrow \dfrac{\partial}{\partial x'^\mu} = \dfrac{\partial x^\nu}{\partial x'^\mu}\dfrac{1}{\partial x^\nu} = \Lambda^{\phantom{\nu} \nu}_\mu \dfrac{1}{\partial x^\nu} = \Lambda^{\phantom{\nu} \nu}_\mu \partial_\nu\\
+            \end{align}
+            Die kovariante Ableitung transformiert wie eine kontravarianter Vektor.
+            \textit{1 Punkt}
+        }
+        \item Zeigen Sie, dass eine Größe $x^\mu x_\mu$ tatsächlich invariant unter einer LT $x^\mu \rightarrow x'^\mu$ ist.
+        \solution{
+            \begin{align}
+                x^\mu x_\mu = g_{\mu \nu} x^\mu x^\nu \rightarrow g_{\mu \nu} \Lambda_{\phantom{\rho} \rho}^\mu x^{\rho}  \Lambda_{\phantom{\sigma} \sigma}^\nu x^{\sigma} = \Lambda_{\phantom{\rho} \rho}^\mu g_{\mu \nu} \Lambda_{\phantom{\sigma} \sigma}^\nu  x^{\rho} x^{\sigma} = g_{\sigma \rho} x^{\rho} x^{\sigma} = x^{\rho} x_{\rho} = x^{\mu} x_{\mu}
+            \end{align}
+            \textit{0,5 Punkte}
+        }
 \end{enumerate}
 \end{document}
