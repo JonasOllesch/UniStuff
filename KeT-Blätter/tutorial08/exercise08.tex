@@ -1,0 +1,157 @@
+\documentclass{exercise}
+\usepackage{global-settings}
+\usepackage{multicol}
+\usepackage{subcaption}
+\usepackage[version=4]{mhchem}
+\def\modelsolution{1}
+
+\setcounter{tutorial}{8}
+\setcounter{exercise}{1}
+\release{Mittwoch, 20.11.2024}
+\submission{Mittwoch, 27.11.2024, 14 Uhr}
+
+\begin{document}
+
+\clearpage
+\makeheader
+
+\exercise{Fragen (2P)}
+Stellen Sie \emph{pro Person} zwei relevante Fragen zu den Inhalten der Vorlesung \enquote{Einf\"uhrung in die Kern- und Elementarteilchenphysik}.
+
+\exercise{Lorentztransformationen ()}
+
+Die Lorentzgruppe ist die Gruppe an Transformationen auf Vierervektoren, unter denen die Minkowskimetrik (die Metrik des flachen Raumes) invariant bleibt:
+\begin{equation}
+    L := O(3,1) =  \left\{ \Lambda \in \mathbb{R}^{4 \times 4} \, | \, \Lambda_{\phantom{\mu} \mu}^\alpha \, g_{\alpha \beta} \, \Lambda_{\phantom{\nu} \nu}^\beta   = g_{\mu \nu} \right\} \,.
+\end{equation} 
+
+Eine wichtige Untergruppe der Lorentztransformationen (LTs) sind die eigentlich-orthochronen Lorentztransformationen
+\begin{equation}
+    L_+^\uparrow := \left\{ \Lambda \in L \, | \, \det \Lambda = 1 \, \wedge \, \text{sgn} \Lambda^0_{\phantom{0} 0} = 1 \right\} \,,
+\end{equation} 
+die ausschließlich Boosts und Rotationen umfasst.
+Neben den eigentlich-orthochronen LTs existieren drei weitere Komponenten, die zusammen die Lorentzgruppe bilden.
+Diese sind über Parit\"at und/oder Zeitumkehr mit der Untergruppe der eigentlich-orthochronen LTs verbunden.
+
+\begin{enumerate}
+    \item Geben Sie die Matrixformen der Paritäts- und Zeitumkehrtransformationen $P$ und $T$ an.
+    
+    \solution{
+    \begin{align*}
+        P &= \begin{pmatrix}
+            1 & 0 & 0 & 0 \\
+            0 & -1 & 0 & 0 \\
+            0 & 0 & -1 & 0 \\
+            0 & 0 & 0 & -1
+        \end{pmatrix}
+    \end{align*}
+    \begin{align*}
+        T &= \begin{pmatrix}
+            -1 & 0 & 0 & 0 \\
+            0 & 1 & 0 & 0 \\
+            0 & 0 & 1 & 0 \\
+            0 & 0 & 0 & 1
+        \end{pmatrix}
+    \end{align*}
+    \textit{1 Punkt}
+    }
+
+    \item Zeigen Sie, dass $\det \Lambda = \pm 1$ gilt. 
+    \solution{
+        Wir starten mit
+        \begin{equation}
+            \Lambda^T g \Lambda = g \,.
+        \end{equation}
+        Dann folgt
+        \begin{align*}
+            \det(\Lambda^T) \det(g) \det(\Lambda) &= \det(g) \\
+            \det(\Lambda^T) \det(\Lambda) &= 1 \\
+            \det^2(\Lambda) &= 1 \\
+            \det(\Lambda) &= \pm 1 \,.
+        \end{align*}
+        \textit{1 Punkt}
+    }
+
+    \item Betrachten Sie einen Lorentzboost in $x$-Richtung mit
+    \begin{equation}
+        \Lambda = \begin{pmatrix}
+            \gamma & -\beta \gamma & 0 & 0 \\
+            -\beta \gamma & \gamma & 0 & 0 \\
+            0 & 0 & 1 & 0 \\
+            0 & 0 & 0 & 1
+        \end{pmatrix}
+    \end{equation}
+    und dem bekannten $\gamma = 1/\sqrt{1-\beta^2}$.
+    Zeigen Sie, dass $\Lambda \in L_+^\uparrow$ gilt.
+
+    \solution{
+        Wir teilen den Beweis in drei Schritte auf:
+        \begin{enumerate}
+            \item  $\Lambda \in L$
+            
+            Offensichtlich ist $\Lambda$ eine reelle $4 \times 4$ da $\gamma \,, \beta \in \mathbb{R}$.
+            Des Weiteren gilt:
+            \begin{align*}
+                \Lambda^T g \Lambda &= \begin{pmatrix}
+                    \gamma & -\beta \gamma & 0 & 0 \\
+                    -\beta \gamma & \gamma & 0 & 0 \\
+                    0 & 0 & 1 & 0 \\
+                    0 & 0 & 0 & 1
+                    \end{pmatrix}^T
+                    \begin{pmatrix}
+                    1 & 0 & 0 & 0 \\
+                    0 & -1 & 0 & 0 \\
+                    0 & 0 & -1 & 0 \\
+                    0 & 0 & 0 & -1
+                    \end{pmatrix}
+                    \begin{pmatrix}
+                    \gamma & -\beta \gamma & 0 & 0 \\
+                    -\beta \gamma & \gamma & 0 & 0 \\
+                    0 & 0 & 1 & 0 \\
+                    0 & 0 & 0 & 1
+                    \end{pmatrix} \\
+                    &= \begin{pmatrix}
+                    \gamma & +\beta \gamma & 0 & 0 \\
+                    -\beta \gamma & -\gamma & 0 & 0 \\
+                    0 & 0 & -1 & 0 \\
+                    0 & 0 & 0 & -1
+                    \end{pmatrix}
+                    \begin{pmatrix}
+                    \gamma & -\beta \gamma & 0 & 0 \\
+                    -\beta \gamma & \gamma & 0 & 0 \\
+                    0 & 0 & 1 & 0 \\
+                    0 & 0 & 0 & 1  
+                    \end{pmatrix} \\
+                    &= \begin{pmatrix}
+                    1 & 0 & 0 & 0 \\
+                    0 & -1 & 0 & 0 \\
+                    0 & 0 & -1 & 0 \\
+                    0 & 0 & 0 & -1
+                    \end{pmatrix} = g \, 
+            \end{align*}
+            wobei wir $\gamma^2 = 1 - \beta^2$ nutzen.
+
+            \item  $\text{sgn} \Lambda^0_{\phantom{0} 0} = 1$
+
+            Das stimmt offensichtlich, weil $\Lambda^0_{\phantom{0} 0} = \gamma > 0$ immer gilt.
+
+            \item  $\det \Lambda = 1$ 
+            \begin{align*}
+                \det \Lambda &= \det \begin{pmatrix}
+                    \gamma & -\beta \gamma & 0 & 0 \\
+                    -\beta \gamma & \gamma & 0 & 0 \\
+                    0 & 0 & 1 & 0 \\
+                    0 & 0 & 0 & 1 \\
+                \end{pmatrix} \\
+                &= 1 \cdot \begin{vmatrix}
+                    \gamma & -\beta \gamma & 0 \\
+                    -\beta \gamma & \gamma & 0 \\
+                    0 & 0 & 1 \\
+                    \end{vmatrix} \\
+                &= \gamma^2 - \beta^2 \gamma^2 = 1 \,.
+            \end{align*}
+        \end{enumerate}
+        \textit{2 Punkte}
+    }
+\end{enumerate}
+\end{document}
