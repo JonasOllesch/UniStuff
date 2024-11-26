@@ -1,0 +1,109 @@
+\section{Notes}
+\label{sec:notes}
+
+\subsection{Total Antisymmetry of the VVV-Coupling in the Z-Penguin Lagrangian}
+
+We want to see why the Z-Penguin paper writes the VVV-term from the 3-point Lagrangian $\mathcal{L}_3$ as
+\begin{align}
+    \mathcal{L} \supset \frac{i}{6} \sum{v_1 v_2 v_3} 
+    g_{v_1v_2v_3}^{abc} \left( V_{v_1,\mu}^a V_{v_2,\nu}^b
+    \, \partial_{\vphantom{v_3}}^{[\mu} V_{v_3}^{c,\nu]} + V_{v_3,\mu}^c V_{v_1,\nu}^a  
+    \, \partial_{\vphantom{v_2}}^{[\mu} V_{v_2}^{b,\nu]} + V_{v_2,\mu}^b
+    V_{v_3,\nu}^c \, \partial_{\vphantom{v_1}}^{[\mu} V_{v_1}^{a,\nu]}
+    \right) 
+\end{align}
+and whether the coupling $c_{v_1v_2v_3}$ in the most-general VVV-vertex (summation implied)
+\begin{equation}
+    \mathcal{L}_3 = c_{v_i v_j v_k} (\partial^{\mu} V_{v_i}^{\nu}) V_{v_j, \mu} V_{v_k, \nu}
+\end{equation}
+is the same as the coupling used in the paper.
+
+For that consider that we can always separate our derivative term into a fully symmetric and fully antisymmetric part so that
+\begin{align}
+    \partial^{\mu} V_{v_i}^{\nu} = \frac{1}{2} \left(\partial_{\vphantom{v_i}}^{[\mu} V_{v_i}^{c,\nu]} + \partial_{\vphantom{v_i}}^{\{ \mu} V_{v_i}^{c,\nu \}} \right)
+\end{align}
+with the curly brackets denoting the symmetrisation 
+\begin{equation}
+    \partial_{\vphantom{v_i}}^{\{ \mu} V_{v_i}^{c,\nu \}} = \partial^\mu V_{v_i}^{c,\nu} + \partial^\nu V_{v_i}^{c,\mu}
+\end{equation}
+and the square brackets the antisymmetrisation
+\begin{equation}
+    \partial_{\vphantom{v_i}}^{[\mu} V_{v_i}^{c,\nu]} = \partial^\mu V_{v_i}^{c,\nu} - \partial^\nu V_{v_i}^{c,\mu} \,.
+\end{equation}
+
+We also know that for unitarity reasons, \cite{unitarity}, the coupling $c_{v_i v_j v_k}$ must be totally antisymmetric in the indices $v_i, v_j, v_k$.
+This however means that in the product with the coupling, the totally symmetric part cannot contribute, which leads to
+\begin{align}
+    \mathcal{L}_3 = \frac{1}{2}c_{v_i v_j v_k} \partial_{\vphantom{v_i}}^{[\mu} V_{v_i}^{c,\nu]} V_{v_j, \mu} V_{v_k, \nu} \,.
+\end{align}
+
+Nothing is stopping us from just writing the right hand term thrice and compensating it by dividing by 3.
+Then, by renaming and swapping indices and using the total antisymmetry of $c_{v_i v_j v_k}$, we get the form used in \cite{penguin}.
+It should look something like this
+\begin{align*}
+    \mathcal{L}_3 &= \frac{1}{2}c_{v_i v_j v_k} \partial_{\vphantom{v_i}}^{[\mu} V_{v_i}^{c,\nu]} V_{v_j, \mu} V_{v_k, \nu} \\
+                  &= \frac{1}{6}c_{v_i v_j v_k} \left( \partial_{\vphantom{v_i}}^{[\mu} V_{v_i}^{c,\nu]} V_{v_j, \mu} V_{v_k, \nu} 
+                    + \partial_{\vphantom{v_i}}^{[\mu} V_{v_i}^{c,\nu]} V_{v_j, \mu} V_{v_k, \nu} 
+                    + \partial_{\vphantom{v_i}}^{[\mu} V_{v_i}^{c,\nu]} V_{v_j, \mu} V_{v_k, \nu} \right) \\
+                  &= \frac{1}{6} \left( c_{v_i v_j v_k} \partial_{\vphantom{v_i}}^{[\mu} V_{v_i}^{c,\nu]} V_{v_j, \mu} V_{v_k, \nu} 
+                    + c_{v_j v_i v_k} \partial_{\vphantom{v_j}}^{[\mu} V_{v_j}^{c,\nu]} V_{v_i, \mu} V_{v_k, \nu} 
+                    + c_{v_k v_j v_i} \partial_{\vphantom{v_k}}^{[\mu} V_{v_k}^{c,\nu]} V_{v_j, \mu} V_{v_i, \nu} \right) \\
+                  &= \frac{1}{6} \left( c_{v_i v_j v_k} \partial_{\vphantom{v_i}}^{[\mu} V_{v_i}^{c,\nu]} V_{v_k, \mu} V_{v_j, \nu} 
+                    + c_{v_i v_j v_k} \partial_{\vphantom{v_j}}^{[\mu} V_{v_j}^{c,\nu]} V_{v_k, \mu} V_{v_i, \nu} 
+                    + c_{v_i v_j v_k} \partial_{\vphantom{v_k}}^{[\mu} V_{v_k}^{c,\nu]} V_{v_i, \mu} V_{v_j, \nu} \right) \,, \\
+\end{align*}
+where in the last step we not only rearranged the $i,j,k$ inside the $c_{v_i v_j v_k}$, but also renamed the indices in the last two terms 
+and swapped an additional time. This is exactly the form used in the paper, albeit in reversed order.
+Our coupling $c_{v_i v_j v_k}$ is thus the same up to a factor of $i$, which we very well just might have forgotten.
+
+
+\subsection{Complex Vector Bosons}
+
+While it is stated in \cite{penguin} that they deal with only real vector bosons in their Lagrangian, the later used vector boson masses suggest otherwise,
+instead implying that we are in the mass basis, in which it is well known that at least our charged standard model vector bosons are complex with
+\begin{equation}
+    W^{\pm} = \frac{1}{\sqrt{2}}(W_1 \mp i W_2) \,.
+\end{equation}
+This confused us.
+We decided to have another closer look, this time taking the standard model Lagrangian, more explicitly all terms that include an interaction of the form
+\begin{equation}
+    \partial_{\vphantom{v_i}}^{[\mu} V_{v_i}^{c,\nu]} V_{v_j, \mu} V_{v_k, \nu} \,, \qquad v_i, v_j, v_k \in {W^{\pm}, Z\,, A} \,.
+\end{equation}
+The desired terms of the (symmetry-broken) standard model Lagrangian are as follows:
+\begin{equation}\begin{aligned}
+    \mathcal{L}_\text{SM} &\supset -\frac14\left|\partial_\mu A_\nu-\partial_\nu A_\mu-\mathrm{i}e(W_\mu^-W_\nu^+-W_\nu^-W_\mu^+)\right|^2 \\
+    &-\frac14\left|\partial_\mu Z_\nu-\partial_\nu Z_\mu+\mathrm{i}e\frac{c_\mathrm{w}}{s_\mathrm{w}}(W_\mu^-W_\nu^+-W_\nu^-W_\mu^+)\right|^2 \\
+    &-\frac12\left|\partial_\mu W_\nu^+-\partial_\nu W_\mu^+-\mathrm{i}e(W_\mu^+A_\nu-W_\nu^+A_\mu) +\mathrm{i}e\frac{c_\mathrm{w}}{s_\mathrm{w}}(W_\mu^+Z_\nu-W_\nu^+Z_\mu)\right|^2
+\end{aligned}
+\label{eq:SMVVV}
+\end{equation}
+To see now how the standard model couplings correspond to the coupling $g_{VVV}$ in \cite{penguin}, we simply need to expand the terms in \eqref{eq:SMVVV}
+and collect the terms.
+This would have been a lot easier to do in Mathematica, but someone decided to do it by hand, yielding the following result:
+\begin{align*}
+    \mathcal{L}_\text{SM}^{VVV} = &- i \, \text{e} \, \partial^{[ \mu} \, A^{\nu ]} \, W_\mu^- \, W_\nu^+ + i \, \text{e} \frac{c_\text{W}}{s_\text{W}} \, \partial^{[ \mu} \, Z^{\nu ]} \, W_\mu^- \, W_\nu^+ \\
+                                  &+ i \, \text{e} \, \partial^{[ \mu} \, W^{+ \nu]} \, A_\mu \, W_\nu^-  - i \, \text{e} \frac{c_\text{W}}{s_\text{W}} \, \partial^{[ \mu} \, W^{+ \nu]} \, Z_\mu \, W_\nu^-  \\
+                                  &- i \, \text{e} \, \partial^{[ \mu} \, W^{- \nu]} \, A_\mu \, W_\nu^+  + i \, \text{e} \frac{c_\text{W}}{s_\text{W}} \, \partial^{[ \mu} \, W^{- \nu]} \, Z_\mu \, W_\nu^+  \\
+\end{align*}
+We already see that, if we decide to not absorb the $i$ into it, the couplings are real.
+Now, our hope is to compare this to the terms in the Z-Penguin paper and find the exact same structure.
+So, as before, I senselessly expanded the sum in the paper for our standard model case of vector bosons and collected the terms.
+This allows us to write the exact same terms as in our standard model Lagrangian, but in terms of the coupling $g_{VVV}$.
+To get a grasp on what exactly these terms look like, here is one of them:
+\begin{align*}
+    \mathcal{L}^3_\text{Z-Peng} \supset &\frac{i}{6} \left(g_{A W^+ W^-} - g_{W^+ A W^-} + g_{W^+ W^- A} - g_{W^- W^+ A} + g_{W^- A W^+} - g_{A W^- W^+} \right) \\
+                                        &A_\mu W_\nu^+ \partial^{[ \mu} W^{- \nu ]}
+\end{align*}
+
+Every single of the resulting terms shares the same factor in the form of the alternating sum of the permutations of the couplings. pümmün :)
+What we can also see that, for a totally antisymmetric coupling
+\begin{equation}
+    g_{V_i V_j V_k} = - g_{P \{V_i V_j V_k \}(1)} \,,
+\end{equation} 
+the terms in the Z-Penguin paper are exactly the same as in the standard model Lagrangian.
+And while this does not prove that the coupling NEEDS to be totally antisymmetric, it is nice to see that for the case of a totally antisymmetric coupling, everything works out perfectly,
+with
+\begin{align}
+    g_{A W^+ W^-} &= - \text{e} \\
+    g_{Z W^+ W^-} &= - \text{e} \frac{c_\text{W}}{s_\text{W}}
+\end{align}
