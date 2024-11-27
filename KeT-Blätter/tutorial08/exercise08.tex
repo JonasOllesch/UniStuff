@@ -3,15 +3,16 @@
 \usepackage{multicol}
 \usepackage{subcaption}
 \usepackage[version=4]{mhchem}
+
 \def\modelsolution{1}
 
 \setcounter{tutorial}{8}
 \setcounter{exercise}{1}
-\release{Mittwoch, 20.11.2024}
-\submission{Mittwoch, 27.11.2024, 14 Uhr}
+\release{Mittwoch, 04.12.2024}
+\submission{Mittwoch, 11.12.2024, 14 Uhr}
 
 
-\DeclareMathOperator\arctanh{arctanh}
+\DeclareMathOperator\artanh{artanh}
 
 \begin{document}
 
@@ -157,7 +158,7 @@ Diese sind über Parit\"at und/oder Zeitumkehr mit der Untergruppe der eigentlic
         \end{enumerate}
         \textit{2 Punkte}
     }
-    \item Drücken sie \autoref{eq:BoostsMatrix} durch die Rapidität $\eta = \arctanh\left(\beta\right)$ aus. Welchen Vorteil kann es haben mit $\eta$ zu rechnen?
+    \item Drücken sie \eqref{eq:BoostsMatrix} durch die Rapidität $\eta = \artanh\left(\beta\right)$ aus. Welchen Vorteil kann es haben mit $\eta$ zu rechnen?
     \solution{Ein möglicher Weg wäre: 
         \begin{align*}
             \beta           &= \tanh(\eta)\\
@@ -202,5 +203,163 @@ Diese sind über Parit\"at und/oder Zeitumkehr mit der Untergruppe der eigentlic
             \end{align}
             \textit{0,5 Punkte}
         }
+
 \end{enumerate}
+
+\exercise{Gamma-Matrizen (4 Punkte)}
+
+Sie haben Gamma-Matrizen betreits im Zuge der Dirac-Gleichung kennengelernt, wo eingesetzt wurden, um die verschiedenen Komponenten der Gleichung aneinander zu koppeln.
+Diese $4 \times 4$-Matrizen treten, aber auch an anderer Stelle auf. 
+So kann durch diese zum Beispiel ein konjugierter Spinor als $\bar{\psi} = \psi^\dagger \gamma^0$ geschrieben werden.
+Ihr Verhalten wird durch den Antikommuator
+\begin{equation}
+    \label{eq:AntiKom}
+    \left\{\gamma^\mu, \gamma^\nu \right\} = 2 g^{\mu \nu} \mathbb{1}_{4 \times 4}
+\end{equation}
+Bestimmt. 
+$g^{\mu \nu}$ ist die Minkowskimetrik des flachen Raumes und $\gamma^\mu $ ein Vektor mit vier Dimensionen dessen Elemente die Gamma-Matrixen sind.
+Die Wahl von $\gamma^\mu$ ist nicht eindeutig.
+Eine mögliche Wahl ist die sogennate Dirac-Darstellung
+\begin{align}
+    \label{Gamma}
+    \gamma^0 =   \begin{pmatrix}
+                \mathbb{1}_{2 \times 2} & 0 \\
+                0 & \text{-}\mathbb{1}_{2 \times 2} \\
+    \end{pmatrix}\,, \qquad
+    \gamma^\text{i} =   \begin{pmatrix}
+        0 & \sigma^i \\
+       \text{-} \sigma^i & 0 \\
+    \end{pmatrix}
+\end{align} 
+mit $i = 1, 2, 3$ und den $2\times2$ Pauli-Matrixen $\sigma^i$.
+\begin{enumerate}
+    \item Zeigen sie durch eine explizite Rechnung, dass die Gamma-Matrizen \eqref{eq:AntiKom} erfüllen.
+    \solution{
+    Eine Fallunterscheindung
+    \begin{enumerate}
+        \item $\mu = \nu = 0$
+        \begin{align}    
+            \left\{ \gamma^0, \gamma^0\right\} = 2 
+            \begin{pmatrix}
+            \mathbb{1} & 0 \\
+            0       & \text{-}\mathbb{1} \\
+            \end{pmatrix}
+            \begin{pmatrix}
+                \mathbb{1} & 0 \\
+                0       & \text{-}\mathbb{1} \\
+            \end{pmatrix}  
+            = 2 
+            \begin{pmatrix}
+                \mathbb{1} & 0 \\
+                0       & \mathbb{1} \\
+            \end{pmatrix}  
+        \end{align}
+        \item $\mu = 0, \nu = i$
+        \begin{align}
+            \left\{ \gamma^0, \gamma^i\right\} &=
+            \begin{pmatrix}
+            \mathbb{1} & 0 \\
+            0       & \text{-}\mathbb{1} \\
+            \end{pmatrix}
+            \begin{pmatrix}
+                0 & \sigma^i \\
+                -\text{-}\sigma^i & 0 \\
+            \end{pmatrix} 
+            +
+            \begin{pmatrix}
+                0 & \sigma^i \\
+                -\text{-}\sigma^i & 0 \\
+            \end{pmatrix} 
+            \begin{pmatrix}
+                \mathbb{1} & 0 \\
+                0       & \text{-}\mathbb{1} \\
+            \end{pmatrix}
+            &=    \begin{pmatrix}
+                0 & \sigma^i \\
+                \sigma^i & 0 \\
+            \end{pmatrix}
+            +
+            \begin{pmatrix}
+                0 & \text{-}\sigma^i \\
+                \text{-}\sigma^i & 0 \\
+            \end{pmatrix} = 0
+        \end{align}
+        \item $\mu = i, \nu = j$
+        \begin{align}
+            \left\{ \gamma^i, \gamma^j\right\} &= \begin{pmatrix}
+                0 & \sigma^i \\
+                \text{-}\sigma^i & 0 \\
+            \end{pmatrix}
+            \begin{pmatrix}
+                0 & \sigma^j \\
+                \text{-}\sigma^j & 0 \\
+            \end{pmatrix} +
+            \begin{pmatrix}
+                0 & \sigma^j \\
+                \text{-}\sigma^j & 0 \\
+            \end{pmatrix}
+            \begin{pmatrix}
+                0 & \sigma^i \\
+                \text{-}\sigma^i & 0 \\
+            \end{pmatrix}\\
+             &= \begin{pmatrix}
+                -\sigma^i \sigma^j& 0 \\
+                0 & -\sigma^i \sigma^j \\
+            \end{pmatrix} +
+            \begin{pmatrix}
+                -\sigma^j \sigma^j& 0 \\
+                0 & -\sigma^j \sigma^i \\
+            \end{pmatrix}\\
+              &= \begin{pmatrix}
+                \text{-} \left\{ \sigma^i, \sigma^i \right\}& 0 \\
+                0 & \text{-}\left\{ \sigma^i, \sigma^i \right\} \\
+            \end{pmatrix} = \text{-}2 \delta_{ij}
+            \begin{pmatrix}
+                \mathbb{1} 0 \\
+                0 & \mathbb{1} \\
+            \end{pmatrix} = 2 g_{ij} \mathbb{1}_{4 \times 4}
+         \end{align}
+        \end{enumerate}
+        \textit{2 Punkte}}
+         \item Zeigen Sie ohne explizites Einsezten $\gamma^\mu \gamma_\mu = 4 \cdot \mathbb{1}_{4 \times 4}$ und $\gamma^\mu \gamma^\nu \gamma_\mu = \text{-} 2 \gamma^\nu $.
+         \solution{
+            \begin{align*}
+                \gamma^\mu \gamma_\mu &= g_{\mu \nu} \gamma^\mu \gamma^\nu \\
+                &= \frac{1}{2} \left( g_{\mu \nu} \gamma^\mu \gamma^\nu + g_{\mu \nu} \gamma^\mu \gamma^\nu \right) 
+                \quad &\text{ (Benenne um } \mu \rightarrow \nu \text{ im rechten Term)} \\
+                &= \frac{1}{2} \left( g_{\mu \nu} \gamma^\mu \gamma^\nu + g_{\nu \mu} \gamma^\nu \gamma^\mu \right) \\
+                &= \frac{1}{2} \left( g_{\mu \nu} \gamma^\mu \gamma^\nu + g_{\mu \nu} \gamma^\nu \gamma^\mu \right) \\
+                &= \frac{1}{2} g_{\mu \nu} \cdot 2 g^{\mu \nu} \, 1_{4 \times 4} \\
+                &= g_{\mu \nu} g^{\mu \nu} \, 1_{4 \times 4} = 4 \cdot 1_{4 \times 4}.
+            \end{align*}
+            \begin{align*}
+                \gamma^\mu \gamma^\nu \gamma_\mu &= \gamma^\mu \left( \gamma^\nu \gamma_\mu + \gamma_\mu \gamma^\nu - \gamma_\mu \gamma^\nu \right) \\
+                &= \gamma^\mu \left( 2 \delta^\nu_\mu \cdot \mathbb{1}_{4 \times 4} - \gamma_\mu \gamma^\nu \right) 
+                \quad &\text{(mit } \gamma^\mu \gamma_\mu = 4 \cdot \mathbb{1}_{4 \times 4}\text{)} \\
+                &= 2 \gamma^\nu \cdot \mathbb{1}_{4 \times 4} - 4 \gamma^\nu \cdot \mathbb{1}_{4 \times 4} \\
+                &= -2 \gamma^\mu \cdot \mathbb{1}_{4 \times 4}.
+            \end{align*}
+            \textit{1 Punkte}
+            }
+            \item Zeigen sie zusätzlich $(\gamma^\mu)^\dagger = \gamma^0 \gamma^\mu \gamma^0$.
+            \solution{
+                Da $\gamma^0$ reell und symmetrisch ist gilt offensichtlich $(\gamma^0)^\dagger = \gamma^0$ \\
+                $\gamma^i$ ist entweder antisymmetrisch oder imaginär $(\gamma^i)^\dagger = \text{-}\gamma^i$\\
+                \begin{align}
+                    (\gamma^0)^\dagger &= \gamma^0 \gamma^0 \gamma^0 \quad \text{und}\\
+                    (\gamma^i)^\dagger &= \text{-}\gamma^i = - \gamma^i \gamma^0 \gamma^0 = \gamma^0 \gamma^i \gamma^0
+                \end{align}
+                \textit{0,5 Punkte}}
+            \item Es kann eine weitere Gamma-Matrix $\gamma^5 = i \gamma^0 \gamma^1 \gamma^2 \gamma^3$ definiert werden.\\
+            Zeigen Sie, dass $\left\{\gamma^\mu, \gamma^5\right\} = 0$ gilt.
+            \solution{
+                \begin{align*}
+                     \gamma^0 \gamma^5 &= i \gamma^0 \gamma^0 \gamma^1 \gamma^2 \gamma^3 
+                    = -i \gamma^0 \gamma^1 \gamma^2 \gamma^3 \gamma^0 = -\gamma^5 \gamma^0. \\
+                     \gamma^i \gamma^5 &= i \gamma^i \gamma^0 \gamma^1 \gamma^2 \gamma^3 = i  \gamma^0 \gamma^1 \gamma^2 \gamma^3 \gamma^i 
+                    = -\gamma^5 \gamma^i \quad \text{(mit } i = 1, 2, 3) 
+                \end{align*}
+                \textit{0,5 Punkte}}
+\end{enumerate}
+
 \end{document}
