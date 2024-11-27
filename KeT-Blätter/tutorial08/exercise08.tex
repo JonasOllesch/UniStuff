@@ -158,7 +158,7 @@ Diese sind über Parit\"at und/oder Zeitumkehr mit der Untergruppe der eigentlic
         \end{enumerate}
         \textit{2 Punkte}
     }
-    \item Drücken sie \eqref{eq:BoostsMatrix} durch die Rapidität $\eta = \artanh\left(\beta\right)$ aus. Welchen Vorteil kann es haben mit $\eta$ zu rechnen?
+    \item Drücken Sie \eqref{eq:BoostsMatrix} durch die Rapidität $\eta = \artanh\left(\beta\right)$ aus. Welchen Vorteil kann es haben, mit $\eta$ zu rechnen?
     \solution{Ein möglicher Weg wäre: 
         \begin{align*}
             \beta           &= \tanh(\eta)\\
@@ -176,24 +176,25 @@ Diese sind über Parit\"at und/oder Zeitumkehr mit der Untergruppe der eigentlic
                 0 & 0 & 0 & 1 \\
             \end{pmatrix} \\
         \end{align*}
-        Die Rapidität geht über den gesamten Wertebereich $\eta \in \left(-\infty, \infty\right)$, was in­tu­i­tiver sein kann als $v \in \left(-c, c\right)$.
-        Außderdem ist $\eta$ additiv $\eta_\text{ges} = \eta_1 + \eta_2$\,.
-        Es muss nicht die Formel für die relativistische Geschwindigkeitaddition verwendet werden.\\
+        Die Rapidität spannt den gesamten Wertebereich $\eta \in \left(-\infty, \infty\right)$, was intuitiver sein als $v \in \left(-c, c\right)$ kann.
+        Außerdem ist $\eta$ additiv $\eta_\text{ges} = \eta_1 + \eta_2$\,.
+        Es muss nicht die Formel für die relativistische Geschwindigkeitsaddition verwendet werden.\\
         \textit{1 Punkt}
         }
-        \item Für einen kovarianten Vektor $x^{\mu}$ gilt unter einer LT $x^{\mu} \rightarrow x'^{\mu} = \Lambda_{\phantom{\nu} \nu}^\mu x^{\nu}\,.$
-        Bestimmen Sie das allgemein Transformationverhalten eines kontravarianten Vektors $x_{\mu}$.
+        \item Für einen kontravarianten Vektor $x^{\mu}$ gilt unter einer LT $x^{\mu} \rightarrow x'^{\mu} = \Lambda_{\phantom{\nu} \nu}^\mu x^{\nu}\,.$
+        Bestimmen Sie das allgemeine Transformationsverhalten eines kovarianten Vektors $x_{\mu}$.
         \solution{
            $x_{\mu} \rightarrow x'_{\mu} = g_{\mu \nu} x'^{\nu} = g_{\mu \nu} \Lambda_{\phantom{\rho} \rho}^\nu x^{\rho} = \Lambda_{\mu \rho} x^{\rho} = \Lambda_{ \mu}^{\phantom{\nu} \nu} g_{\nu \rho} x^\rho = \Lambda_{ \mu}^{\phantom{\nu} \nu} x_\nu$ \\
            \textit{0,5 Punkte}
            }
-        \item Bestimmen Sie das Transformationenverhalten der kovarianten Ableitung $\partial_\mu = \dfrac{\partial}{\partial x^\mu}$.\\
+        \item Bestimmen Sie das Transformationsverhalten der kovarianten Ableitung $\partial_\mu = \dfrac{\partial}{\partial x^\mu}$.\\
         \textit{Hinweis: Nutzen Sie, dass eine LT auch als $\dfrac{\partial x^\beta}{\partial x'^\alpha} = \Lambda^{\phantom{\beta} \beta}_\alpha$ geschrieben werden kann.}
         \solution{
             \begin{align}
                 \dfrac{\partial}{\partial x^\mu} \rightarrow \dfrac{\partial}{\partial x'^\mu} = \dfrac{\partial x^\nu}{\partial x'^\mu}\dfrac{1}{\partial x^\nu} = \Lambda^{\phantom{\nu} \nu}_\mu \dfrac{1}{\partial x^\nu} = \Lambda^{\phantom{\nu} \nu}_\mu \partial_\nu\\
             \end{align}
             Die kovariante Ableitung transformiert wie eine kontravarianter Vektor.
+            
             \textit{1 Punkt}
         }
         \item Zeigen Sie, dass eine Größe $x^\mu x_\mu$ tatsächlich invariant unter einer LT $x^\mu \rightarrow x'^\mu$ ist.
@@ -208,18 +209,19 @@ Diese sind über Parit\"at und/oder Zeitumkehr mit der Untergruppe der eigentlic
 
 \exercise{Gamma-Matrizen (4 Punkte)}
 
-Sie haben Gamma-Matrizen betreits im Zuge der Dirac-Gleichung kennengelernt, wo eingesetzt wurden, um die verschiedenen Komponenten der Gleichung aneinander zu koppeln.
+Sie haben Gamma-Matrizen bereits im Zuge der Dirac-Gleichung kennengelernt, wo sie eingesetzt wurden, um die verschiedenen Komponenten der Gleichung aneinander zu koppeln.
 Diese $4 \times 4$-Matrizen treten, aber auch an anderer Stelle auf. 
 So kann durch diese zum Beispiel ein konjugierter Spinor als $\bar{\psi} = \psi^\dagger \gamma^0$ geschrieben werden.
-Ihr Verhalten wird durch den Antikommuator
+Ihr Verhalten wird durch den Antikommutator
 \begin{equation}
     \label{eq:AntiKom}
     \left\{\gamma^\mu, \gamma^\nu \right\} = 2 g^{\mu \nu} \mathbb{1}_{4 \times 4}
 \end{equation}
-Bestimmt. 
-$g^{\mu \nu}$ ist die Minkowskimetrik des flachen Raumes und $\gamma^\mu $ ein Vektor mit vier Dimensionen dessen Elemente die Gamma-Matrixen sind.
-Die Wahl von $\gamma^\mu$ ist nicht eindeutig.
-Eine mögliche Wahl ist die sogennate Dirac-Darstellung
+bestimmt.
+
+Dabei ist $g^{\mu \nu}$ die Minkowskimetrik des flachen Raumes und $\gamma^\mu $ ein kontravarianter Vierervektor, in dessen Elemente die Gamma-Matrizen stehen.
+Die Wahl der Gamma-Matrizen $\gamma^\mu$ ist nicht eindeutig.
+Eine mögliche Wahl ist die sogenannte Dirac-Darstellung
 \begin{align}
     \label{Gamma}
     \gamma^0 =   \begin{pmatrix}
@@ -233,9 +235,9 @@ Eine mögliche Wahl ist die sogennate Dirac-Darstellung
 \end{align} 
 mit $i = 1, 2, 3$ und den $2\times2$ Pauli-Matrixen $\sigma^i$.
 \begin{enumerate}
-    \item Zeigen sie durch eine explizite Rechnung, dass die Gamma-Matrizen \eqref{eq:AntiKom} erfüllen.
+    \item Zeigen Sie durch eine explizite Rechnung, dass die Gamma-Matrizen \eqref{eq:AntiKom} erfüllen.
     \solution{
-    Eine Fallunterscheindung
+    Eine Fallunterscheidung
     \begin{enumerate}
         \item $\mu = \nu = 0$
         \begin{align}    
@@ -321,7 +323,7 @@ mit $i = 1, 2, 3$ und den $2\times2$ Pauli-Matrixen $\sigma^i$.
          \end{align}
         \end{enumerate}
         \textit{2 Punkte}}
-         \item Zeigen Sie ohne explizites Einsezten $\gamma^\mu \gamma_\mu = 4 \cdot \mathbb{1}_{4 \times 4}$ und $\gamma^\mu \gamma^\nu \gamma_\mu = \text{-} 2 \gamma^\nu $.
+         \item Zeigen Sie ohne explizites Einsetzen $\gamma^\mu \gamma_\mu = 4 \cdot \mathbb{1}_{4 \times 4}$ und $\gamma^\mu \gamma^\nu \gamma_\mu = \text{-} 2 \gamma^\nu $.
          \solution{
             \begin{align*}
                 \gamma^\mu \gamma_\mu &= g_{\mu \nu} \gamma^\mu \gamma^\nu \\
@@ -339,15 +341,15 @@ mit $i = 1, 2, 3$ und den $2\times2$ Pauli-Matrixen $\sigma^i$.
                 &= 2 \gamma^\nu \cdot \mathbb{1}_{4 \times 4} - 4 \gamma^\nu \cdot \mathbb{1}_{4 \times 4} \\
                 &= -2 \gamma^\mu \cdot \mathbb{1}_{4 \times 4}.
             \end{align*}
-            \textit{1 Punkte}
+            \textit{1 Punkt}
             }
-            \item Zeigen sie zusätzlich $(\gamma^\mu)^\dagger = \gamma^0 \gamma^\mu \gamma^0$.
+            \item Zeigen Sie zusätzlich $(\gamma^\mu)^\dagger = \gamma^0 \gamma^\mu \gamma^0$.
             \solution{
-                Da $\gamma^0$ reell und symmetrisch ist gilt offensichtlich $(\gamma^0)^\dagger = \gamma^0$ \\
+                Da $\gamma^0$ reell und symmetrisch ist, gilt offensichtlich $(\gamma^0)^\dagger = \gamma^0$ \\
                 $\gamma^i$ ist entweder antisymmetrisch oder imaginär $(\gamma^i)^\dagger = \text{-}\gamma^i$\\
                 \begin{align}
                     (\gamma^0)^\dagger &= \gamma^0 \gamma^0 \gamma^0 \quad \text{und}\\
-                    (\gamma^i)^\dagger &= \text{-}\gamma^i = - \gamma^i \gamma^0 \gamma^0 = \gamma^0 \gamma^i \gamma^0
+                    (\gamma^i)^\dagger &= \text{-}\gamma^i = - \gamma^i \gamma^0 \gamma^0 = \gamma^0 \gamma^i \gamma^0 \,.
                 \end{align}
                 \textit{0,5 Punkte}}
             \item Es kann eine weitere Gamma-Matrix $\gamma^5 = i \gamma^0 \gamma^1 \gamma^2 \gamma^3$ definiert werden.\\
