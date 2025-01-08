@@ -1,0 +1,227 @@
+\documentclass[11pt,a4paper,headings=standardclasses]{scrartcl}
+%%%%%%%%%%%%%%%%%%
+%%Switch on and of solutions with (un-)commenting
+%%the following line
+%%%%%%%%%%%%%%%%%%
+%\def\modelsolution{1}
+
+\newcommand{\solution}[1]{
+  \ifx\modelsolution\undefined
+  \else
+    \par{\bfseries\em Lösung: } #1
+  \fi
+}
+
+\usepackage{scrlayer-scrpage}
+\usepackage{anysize}
+%\usepackage[final]{graphicx}
+\usepackage{float} 
+\setlength{\parindent}{0em}
+\setlength{\parskip}{1ex plus 1pt}
+
+
+\usepackage[compat=1.1.0]{tikz-feynman}
+\usetikzlibrary{calc}
+\newcommand{\XA}{3}
+\newcommand{\YA}{1}
+
+\usepackage{booktabs}
+  \usepackage[
+    locale=DE,
+    separate-uncertainty=true,
+    per-mode=symbol-or-fraction,
+  ]{siunitx}
+
+\DeclareSIUnit\barn{b}
+
+\ofoot[\pagemark]{\pagemark}
+\cfoot[\bfseries Klausur zur KET-Vorlesung im WS~2022/23, TU Dortmund]{\bfseries Klausur zur KET-Vorlesung im WS~2022/23, TU Dortmund}
+\lohead[{Name: \rule[0em]{15em}{1pt}}]{Name: \rule[0em]{15em}{1pt}}
+\rohead[{Matrikelnr: \rule[0em]{8em}{1pt}}]{Matrikelnr: \rule[0em]{8em}{1pt}}
+
+\setkomafont{pageheadfoot}{%
+  \normalfont\normalcolor
+}
+\setkomafont{pagenumber}{\normalfont\bfseries}
+
+
+  
+\usepackage[ngerman]{babel}
+
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{amssymb}
+\usepackage{braket}
+\usepackage{icomma}
+\usepackage{csquotes}
+\usepackage{cancel}
+\usepackage{enumerate}
+\usepackage{enumitem}
+
+%\usepackage{epsfig}
+\usepackage[final]{pdfpages}
+\usepackage{ifthen}
+
+\usepackage{helvet}
+\usepackage{palatino}
+\usepackage{mathpazo}
+\usepackage{feynmf}\unitlength=1mm
+\usepackage{isotope}
+\usepackage{polyglossia}
+\usepackage[version=4]{mhchem}
+\setmainlanguage{german}
+
+\usepackage{fontspec}
+\defaultfontfeatures{Ligatures=TeX}
+\usepackage{placeins}
+\usepackage{version}
+
+\pagestyle{scrheadings}
+
+\clubpenalty = 10000
+\widowpenalty = 10000
+
+
+\input{Macros}
+
+\begin{document}
+  \begin{titlepage}
+    \titlehead{\Large TU Dortmund \hfill WS~2022/23}
+    \subject{Klausur}
+    \title{Einführung in die Kern- und Elementarteilchenphysik}
+    \author{Prof.~Dr.~Johannes Albrecht}
+    \date{15. Februar 2023}
+    \maketitle
+    {
+      \thispagestyle{empty}
+      \centering
+      \large
+      \begin{tabular}{lp{0.7\linewidth}}
+        Name:           & \dotfill \\[1em]
+        Matrikelnummer: & \dotfill \\[1em]
+        Übungsgruppe:   & \dotfill \\[1em]
+        Studiengang:    & \dotfill \\[1em]
+      \end{tabular}
+      \textbf{Schreiben Sie Ihren Namen und Ihre Matrikelnummer auf jedes Blatt!} \\[8mm]
+      {
+        \large
+        \begin{tabular}{|l|c|c|c|c|c|c|c|c|c|c|c|}
+          \hline
+          Aufgabe & 1 & 2 & 3 & 4 & 5 & 6 & 7 & $\Sigma$& Ausweiskontr.
+          \parbox[0pt][2em][c]{0cm}{} \\
+          \hline
+          Punkte & \hspace*{0.05\linewidth}
+                 & \hspace*{0.05\linewidth}
+                 & \hspace*{0.05\linewidth}
+                 & \hspace*{0.05\linewidth}
+                 & \hspace*{0.05\linewidth}
+                 & \hspace*{0.05\linewidth}
+                 & \hspace*{0.05\linewidth}
+                 & \hspace*{0.05\linewidth}
+                 & \parbox[0pt][2em][c]{0cm}{} \\
+          \hline
+        \end{tabular}
+      } \\[1em]
+      \begin{tabular}{ll}
+        Voraussetzung: & erfolgreiche Teilnahme an den Übungen \\
+        Punktzahl:     & max. 80 Punkte, 70 Punkte entsprechen 100\%, \\
+                       & die Klausur gilt ab 28 erreichten Punkten als sicher bestanden. \\
+        Dauer:         & 3 Stunden
+      \end{tabular}
+    }
+    \vfill
+    \textbf{\sffamily Zugelassene Hilfsmittel:}
+    \begin{itemize}
+      \item gewöhnlicher, nicht grafikfähiger Taschenrechner
+      \item ein einseitig beschriebenes DIN-A4-Blatt mit handgeschriebenen Formeln
+    \end{itemize}
+    \begin{center}
+      \textbf{Viel Erfolg!}
+    \end{center}
+    \vfill
+    \begin{center}
+      \fbox{\parbox[c]{0.95\textwidth}{
+        \textbf{Bitte lesen und unterschreiben Sie die Erklärung auf Seite 2  des Titelblattes.}
+      }}
+    \end{center}
+    \newpage
+    \begin{center}
+      \fbox{\parbox[c]{1\textwidth}{
+        \textbf{Die folgende Erklärung bitte \emph{vor Klausurbeginn} lesen und unterschreiben:} \\[0.5em]
+        Ich habe zur Kenntnis genommen, dass die Fakultät Physik diese Klausur nur bis zum 15.5.2023 aufbewahrt,
+        falls ich sie nicht nach der Klausureinsicht persönlich in Empfang nehme.
+        Nach diesem Zeitpunkt wird nur dieses Deckblatt mit persönlichen Angaben,
+        Klausurergebnis und Note archiviert, die Aufgabenblätter werden vernichtet. \\[2ex]
+        Ich habe zur Kenntnis genommen, dass eine nicht bestandene
+        Modulprüfung in einem Pflichtmodul des Studiengangs Medizinphysik/Physik
+        spätestens nach 13 Monaten wiederholt werden muss. \\[2ex]
+        $\Box$ Ich bin \textbf{NICHT} damit einverstanden, dass meine Note unter
+        Angabe meiner Matrikelnummer online im moodle veröffentlicht wird (falls zutreffend: ankreuzen). \\[5ex]
+        (Unterschrift)\ \hrulefill
+      }}
+      
+      
+      \fbox{\parbox[c]{1\textwidth}{
+      \textbf{Identitätsprüfung:} Ich versichere an Eides statt, dass ich durch ordnungsgemäße Anmeldung berechtigt bin, die nachfolgende Prüfung zu absolvieren, und dass ich sie selbst ablegen werde. Mir ist bewusst, dass eine Verletzung dieser eidesstattlichen Versicherung strafrechtliche Konsequenzen hat. \\
+      
+    \textbf{Eigenständigkeitserklärung: }Ich versichere an Eides statt, dass ich die nachfolgende Prüfung selbstständig und ohne Hilfe Dritter absolvieren sowie keine anderen als die genannten und explizit zugelassenen Hilfsmittel verwenden und mich im Allgemeinen prüfungskonform verhalten werde. Mir ist bewusst, dass Täuschungsversuche nach der für mich geltenden Prüfungsordnung geahndet werden.\\
+    
+    \textbf{Prüfungsfähigkeit: }Ich versichere an Eides statt, dass ich prüfungsfähig bin.
+\\[5ex]
+        (Unterschrift)\ \hrulefill
+      }}
+
+\vfill
+      
+      \fbox{\parbox[c]{1\textwidth}{
+        \textbf{Die folgende Erklärung bitte \emph{bei Klausurrückgabe} lesen und unterschreiben:} \\[0.5em]
+        Hiermit bestätige ich den Erhalt meiner vollständigen Klausur. Ich erkenne das Ergebnis und die Note an. \\[2ex]
+        (Unterschrift)\ \hrulefill
+      }}
+    \end{center}
+  \end{titlepage}
+
+%\include{Formelsammlung}
+
+\cleardoubleemptypage
+\setcounter{page}{1}
+\pagestyle{scrheadings}
+
+\input{Kurzfragen.tex}
+\newpage
+\null\newpage
+\input{task02}
+\newpage
+\null\newpage
+\null\newpage
+\input{task03}
+\newpage
+\null\newpage
+\null\newpage
+\input{task04}
+\newpage
+\null\newpage
+\null\newpage
+\input{task05}
+\newpage
+\null\newpage
+\null\newpage
+\input{task06}
+\newpage
+\null\newpage
+\null\newpage
+\input{task07}
+\newpage
+\null\newpage
+\null\newpage
+\cleardoubleplainpage
+\input{teilchen_neu.tex}
+
+
+%\cleardoubleplainpage
+%\include{teilchen_neu}
+%\clearpage
+\include{Formelsammlung}
+\includepdf[offset=0.0cm 0, scale=0.98]{clebsch.pdf}
+
+\end{document}

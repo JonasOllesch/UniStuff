@@ -1,0 +1,59 @@
+\thispagestyle{empty}
+\section*{Formeln, Konstanten}
+Neben den hier aufgef\"uhrten Gr\"o{\ss}en finden Sie am Ende der Klausur eine Clebsch-Gordan-Tabelle und eine Liste von Teilchen und ihren Eigenschaften.
+
+\begin{align*}
+ c &= \SI{3e8}{m/s} \\
+ \hbar &= \SI{1.055e-34}{Js} \\ &= \SI{6.582e-22}{MeV s}\\
+ e &= \SI{1.6022e-19}{C} \\ 
+ \frac{G_F}{(\hbar c)^3} &= \SI{1.166e-5}{GeV^{-2}} \\
+ \alpha &= 1/137 \\
+ N_A &= \SI{6.022e23}{mol^{-1}} \\
+ \theta_C &= 0.22 \, {\text{ rad}} \\
+ \epsilon_0 &= \SI{8.8541e-22}{\farad \metre^{-1}} \\ &= \SI{55.263}{e^2 eV^{-1} \micro m^{-1}} \\
+\end{align*}
+Die Einträge der CKM-Matrix lauten:
+\begin{align*}
+    V_\text{CKM} &= 
+      \begin{pmatrix}
+      V_{ud} & V_{us} & V_{ub} \\
+      V_{cd} & V_{cs} & V_{cb} \\
+      V_{td} & V_{ts} & V_{tb}
+  \end{pmatrix}
+\end{align*}
+mit
+\begin{align*}
+ (|V_{ij}|) \approx
+  \begin{pmatrix}
+      1         & 0,2   & 0,008 \\
+      0,2     & 1       & 0,04 \\
+      0,008 & 0,04 & 1
+  \end{pmatrix}
+\end{align*}
+Die Bethe-Weizs\"acker-Formel lautet:
+\begin{align*}
+E_\text{Bindung}\approx15,67\,\text{MeV}\cdot A - 17,23\,\text{MeV}\cdot A^{\frac 2 3} - 0,71\,\text{MeV}\cdot Z\cdot(Z-1) \cdot A^{-\frac 1 3} -  93,15\,\text{MeV}\cdot \frac{(N-Z)^2}{4A} + E_\text{Paar}
+\end{align*}
+mit
+\begin{align*}
+E_\text{Paar} = 
+   \begin{cases}
+     +11,2\,\text{MeV}\cdot A^{-\frac 1 2} & \text{f\"ur gg-Kerne}\\
+     0  & \text{f\"ur ug- und gu-Kerne}\\
+     -11,2\,\text{MeV} \cdot A^{-\frac 1 2} & \text{f\"ur uu-Kerne} 
+   \end{cases}
+\end{align*}
+
+Einige Land\'e-Faktoren:\\
+\centerline{\begin{tabular}{lc}\hline
+Teilchen & $g$ \\ \hline
+Elektron & -2.0023 \\
+Myon     & -2.0023 \\
+Neutron  & -3.8261 \\
+Proton   & +5.5857 \\ \hline
+\end{tabular}}
+
+Abgestrahlte Leistung eines Teilchens: 
+\begin{equation}
+    P = \frac{e^2c}{6\pi\epsilon_0(m_0c^2)^4}\frac{E^4}{R^2}
+\end{equation}

@@ -1,0 +1,57 @@
+\section{Energieverlust und Bethe-Bloch-Gleichung (10P)}
+
+Die Bethe-Bloch-Gleichung beschreibt den Energieverlust schwerer Teilchen auf ihrem Weg durch Materie. Vernachlässigt man die Dichte- und Schalenkorrektur, ist sie gegeben durch
+  \begin{equation*}
+    -\frac{\text{d}E}{\text{d}x}=\underbrace{\frac{4\pi\,N_\text{A}\,r_e^2\,m_e c^2}{M_u}}_{\approx\SI{0.3}{\mega\electronvolt\,\centi\meter^2\per\gram}}\frac{Z\rho}{A}\,\frac{z^2}{\beta^2}\left(\ln\left[\frac{2\gamma^2\beta^2m_ec^2}{I}\right]-\beta^2\right)
+  \end{equation*}
+  dabei ist $N_\text{A}$ die Avogadro-Konstante, $r_e$ der klassische Elektronenradius, $M_u$ die molare Massenkonstante,
+  $Z$ die Ordnungszahl des Target-Mediums, $A$ seine Massenzahl, $I$ sein mittleres Ionisationspotential, $\rho$ seine Dichte
+  und $z$ die Ladungszahl des Projektilteilchens.
+
+  Rechnen Sie nichtrelativistisch.
+  Zudem können Sie den nur schwach geschwindigkeitsabhängigen Term durch
+  \begin{equation*}
+	  \ln\left[\frac{2\gamma^2\beta^2m_ec^2}{I}\right]-\beta^2\approx 5
+  \end{equation*}
+  nähern.
+  Die Dichte von Silizium beträgt ungefähr $\SI{2}{\gram\per\centi\meter^{3}}$, die Ordnungszahl $\num{14}$ und die Massenzahl des am häufigsten auftretenden Isotops ist $\num{28}$.
+
+  \begin{enumerate}
+  \item Welcher Prozess trägt hauptsächlich zum Energieverlust nach der Bethe-Bloch-Gleichung bei? (1P)
+  \solution{(1P)
+  Schnell geladene Teilchen, die sich durch Materie bewegen, wechselwirken mit den Elektronen der Atome im Material (inelastischen Stößen mit Hüllenelektronen).
+  Durch die Wechselwirkung werden die Atome angeregt oder ionisiert, was zu einem Energieverlust des sich bewegenden Teilchens führt.
+  }
+
+  \item Lässt sich die Bethe-Bloch-Gleichung auch für den Durchgang von Elektronen durch Materie verwenden? Begründen Sie Ihre Antwort. (1P)
+  \solution{(1P)
+  Für Elektronen ist der Energieverlust aus zwei Gründen anders:
+  Die Ununterscheidbarkeit von den Hüllenelektronen und der starke Energieverlust durch Bremsstrahlung.
+  }
+
+  \item Bestimmen Sie den Energieverlust von Kaonen (\mbox{$m_{K^+}\approx\SI{500}{MeV/c^2}$}) mit einer kinetischen Energie von $\SI{25}{MeV}$ beim Durchdringen einer dünne Siliziumschicht von $\SI{1}{mm}$ Dicke.
+  Der Energieverlust ist hierbei klein gegenüber der kinetischen Energie des Teilchens. (3P)
+  \solution{(3P)
+  $\Delta E<<E \Rightarrow \beta , \gamma \approx const:$
+  \begin{align}
+    \Delta E &\approx -\frac{\mathrm{d}E}{\mathrm{d}x} \Delta x = \SI{0.3}{\mega\electronvolt\,\centi\meter^2\per\gram} \cdot \frac{14}{28} \cdot \SI{2}{\gram\per\centi\meter\cubed} \cdot 5 \cdot \frac{1}{\beta^2} \cdot \SI{1}{mm}
+    \intertext{Aus $E_{\text{kin}}=\frac{1}{2}mv^2=\frac{1}{2}m\beta^2\mathrm{c}^2$ folgt $\beta^2=\frac{2\,E_{\text{kin}}}{m\mathrm{c}^2}$ und somit}
+    \Delta E &\approx \frac{3}{2} \cdot \frac{500}{2 \cdot 25} \cdot 0.1 \si{MeV} = \frac{3}{2} \si{MeV} = \SI{1.5}{MeV}
+  \end{align}
+  }
+
+  \item Wie dick müsste die Siliziumschicht sein, damit die Kaonen komplett absorbiert werden? Beachten Sie, dass sich hier die kinetische Energie des Teilchens und damit seine Geschwindigkeit ändert. \textbf{Tipp:} Integrieren Sie den Kehrwert der Bethe-Bloch-Gleichung über die Energie. (3P) 
+  \solution{(3P)
+  Um die maximale Eindringtiefe $R$ und damit die Dicke zu bestimmen, muss über $\frac{dx}{dE}$ integriert werden.
+  \begin{align}
+    R&=-\int_{E_{\text{max}}}^0\frac{dx}{dE}dE=\frac{1}{\num{0.3}}\cdot\frac{\si{\gram}}{\si{\mega\electronvolt\centi\meter\squared}}\cdot\frac{28}{14}\cdot\frac{1}{\num{2}}\frac{\si{\centi\meter\cubed}}{\si{\gram}}\cdot\frac{1}{5}\int_{0}^{\SI{25}{MeV}}\beta^2dE
+    \intertext{Aus $E_{\text{kin}}=\frac{1}{2}mv^2=\frac{1}{2}m\beta^2\mathrm{c}^2$ folgt $\beta^2=\frac{2\,E_{\text{kin}}}{m\mathrm{c}^2}$ und somit}
+    R&=\frac{2}{3}\cdot\frac{2}{mc^2}\int_0^{\SI{25}{MeV}}E\,dE\cdot\frac{\si{\centi\meter}}{\si{\mega\electronvolt}}=\frac{2}{3}\cdot\frac{2}{500}\cdot\frac{1}{2}\cdot25^2\,\si{\centi\meter}=\frac{5}{6} \si{\milli\meter} \approx \SI{8.33}{\milli\meter}
+  \end{align}
+  }
+
+  \item Skizzieren Sie die Bethe-Bloch-Gleichung in Abhängigkeit von $\beta\gamma$ und erklären Sie in diesem Zusammenhang den Begriff des minimal ionisierenden Teilchens (MIP). (2P)
+  \solution{(2P)
+  Ein minimal ionisierendes Teilchen (MIP) ist ein Teilchen, dessen Energieverlustrate durch Materie nahe dem Minimum der (Bethe-Bloch-Formel) liegt.
+  }
+  \end{enumerate}
