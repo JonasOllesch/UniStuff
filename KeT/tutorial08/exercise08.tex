@@ -4,6 +4,9 @@
 \usepackage{subcaption}
 \usepackage[version=4]{mhchem}
 
+\usepackage{tikz}
+\usepackage{tikz-feynman} % For Feynman diagrams
+
 \def\modelsolution{1}
 
 \setcounter{tutorial}{8}
@@ -363,4 +366,125 @@ mit $i = 1, 2, 3$ und den $2\times2$ Pauli-Matrixen $\sigma^i$.
                 \end{align*}
                 \textit{0,5 Punkte}}
 \end{enumerate}
+
+section{Schwache Wechselwirkung (10P)}
+
+\begin{enumerate}
+    \item Erklären Sie was die V-A Struktur der schwachen Wechselwirkung beschreibt.
+    \solution{Vektor - Aktialvektor bedeuted, dass die schwache WW nur an linkshändigen Teilchen koppelt. Mathematische ist $1 - \gamma^5$ linkshändige Prjektor, der dazu führt. dass Parität maximal gebrochen wird.}
+
+    \item Der Übergang $\Gamma_{i \to f}$ von einem Anfangszustand zu einem Endzustand kann durch Fermis Goldene Regel beschrieben werden.
+    Geben Sie diese an und beschreiben Sie ihre Komponenten.
+    \solution{
+        $\Gamma_{i \to f} = \dfrac{2\pi}{\hbar} \left| M_{f,i}\right|^2 \mathrm{d} \Pi_\text{LIPS}$ Das Matrixelement $M_{f,i}$ beschreibt die Amplitude des Übergang und  $\mathrm{d} \Pi_\text{LIPS}$ beschreibt die Anzahl der möglichen Endzustände.
+    }
+    \item Zeichen Sie das Feynman-Diagramm, welches den Zerfall des $\mu^-$ auf Tree-Level beschreibt.
+    \begin{tikzpicture}
+        \begin{feynman}
+          \vertex (a) {\(\mu^{-}(p_1)\)};
+          \vertex [right=of a] (b);
+          \vertex [above right=of b] (f1) {\(\nu_{\mu}(p_3)\)};
+          \vertex [below right=of b] (c);
+          \vertex [above right=of c] (f2) {\(\overline \nu_{e}(p_2)\)};
+          \vertex [below right=of c] (f3) {\(e^{-}(p_4)\)};
+      
+          \diagram* {
+            (a) -- [fermion] (b) -- [fermion] (f1),
+            (b) -- [boson, edge label'=\(W^{-}\)] (c),
+            (c) -- [anti fermion] (f2),
+            (c) -- [fermion] (f3),
+          };
+        \end{feynman}
+      \end{tikzpicture}
+    \item Wenden Sie die Feynman-Regel an, um das Matrixelement $M$ zu bestimmen.\\
+    \textit{Hinweis: Eine explizite Berechnung von $M$ ist nicht notwendig.} 
+    \solution{
+        $M = \dfrac{g_\text{w}^2}{8\left(M_\text{W} c \right)^2} \left[\overline{u}(p_3) \gamma^\mu \left( 1 - \gamma^5\right) u\left( p_1\right)\right]  \left[\overline{u}(p_4) \gamma_\mu \left( 1 - \gamma^5\right) v\left( p_2\right)\right]$
+    }
+
+    Die Zerfallsrate in Abhängigkeit der Elektronenenergie ist gegeben durch 
+    \begin{equation}
+        \dfrac{\mathrm{d} \Gamma}{\mathrm{d} E_\text{e}} = \left(\dfrac{g_\text{w}}{M_\text{W}c}\right)^4 \cdot \left(1 - \dfrac{4 E_e}{3 m_\mu c²}\right) \,.
+    \end{equation}
+    \item Bestimmen Sie die totale Zerfallsrate und geben sie eine Gleichung für die Lebenszeit eines $\mu^-$.
+    \solution{
+        \begin{align}
+            \Gamma =& \left(\dfrac{g_\text{w}}{M_\text{W}c}\right)^4 \dfrac{m_\mu^2}{2\hbar \left( 8 \pi\right)^3}
+            \int_{0}^{1/2 m_\mu c^2} E^2\left( 1 - \dfrac{4E}{3m_\mu c^2}\right) \, \mathrm{d}E \\
+                =& \left(\dfrac{m_\mu g_\text{w}}{M_\text{W}}\right)^4 \dfrac{m_\mu c^2}{12 \hbar \left(8 \pi \right)^3}
+        \end{align}
+        Für die Lebenszeit gilt $\tau = \dfrac{1}{\Gamma}$\,.
+    }
+
+    \item Vergleichen Sie das Ergebnis mit dem Literaturwert. Erklären Sie mögliche Abweichungen.
+    \solution{
+        Es entstehen Abweichungen, weil hier nur Tree-Level Diagramme betrachtet werden.
+    }
+    \item Welcher der beiden Zerfälle $\pi^- \to e^- \bar{\nu}_{\text{e}}$ und $\pi^- \to \mu^- \bar{\nu}_{\mu}$ tritt häufiger auf? Begründen Sie.
+    \solution{Der erste Zerfall tritt seltener auf, da dieser Helizitätsunterdrückt ist.}
+
+    \item Betrachten Sie nun den Prozess $e^+ e^- \to \mu^+ \mu^-$ auf Tree-Level. Zeichen Sie alle möglichen Diagramme. Bei welchen Energien tritt dieser Prozess besonders häufig auf? 
+    \solution{
+        s-Kanal der elektromagnetischen WW und s-Kanal über das $Z^0$.
+        Besonders häufig bei niedrigen Energien über die elektromagnetische WW und am $Z^0$ Pol.
+    }
+\end{enumerate}
+
+
+\section{Starke Wechselwirkung (10P)}
+
+\begin{enumerate}
+\item An welche Ladung koppelt die starke Wechselwirkung? Wie kann man sie messen?%Exam 22/23
+\solution{
+    Sie koppelt an die Farbladung. Da messbare Zustände immer farbneutral sind, lässt sich die Farbladung nicht messen.%Exam 22/23
+}
+\item Was wird durch asymptotische Freiheit und Confinement in Bezug auf die starke Wechselwirkung beschrieben?%Exam 22/23
+\solution{Asymptotische Freiheit und Confinement beschreiben das Verhalten der Kopplungskonstante der starken Wechselwirkung. Im Niedrig-Energie-Limes ist diese sehr groß, während sie für große Energieskalen sich asymptotisch null nähert.}
+\end{enumerate}
+Das Quark-Parton-Modell erlaubt es, tiefinelastische Streuung von Leptonen an Nukleonen bei hohen Impulsüberträgen anschaulich zu deuten.
+\begin{enumerate}
+
+\item Was sind Partonen? Warum kann in der tiefinelastischen Streuung angenommen werden, dass Streuung an Partonen elastisch stattfindet? Zeichnen sie dazu eine Skizze.
+\solution{ Partonen wurden eingeführt, um die Substruktur von Hadronen zu beschreiben. Sie sind heute mit Quarks und Gluonen identifizierbar. Partonen werden als punktförmig angenommen, sodass elastische Streuung möglich ist.}
+
+\item Was passiert, wenn Sie zu niedrigeren Elektron-Energien übergehen?
+\solution{
+    tiefinelastische Streuung kann nicht mehr stattfinden, wir erwarten dann inelastische Streuprozesse, und bei noch niedrigeren Energien elastische e-p Streuung
+}
+\item Gluonen sind masselose Austauschteilchen. Photonen sind ebenfalls masselos. Könnte es sich also bei Photonen um das neunte farblose Gluon handeln  %Griffiths
+\item Schätzen Sie das Verzweigungsverhältnisse $\frac{\text{BR}(B^0 \to \pi^+ \pi^-)}{\text{BR}(B^0 \to \pi^0 \pi^0)}$ ab.%Exam 20/21 Nr.4 d2)
+\solution{Es wird $\frac{\text{BR}(B^0 \to \pi^+ \pi^-)}{\text{BR}(B^0 \to \pi^0 \pi^0)} \approx 3$ erwartet, da bei $\text{BR}(B^0 \to \pi^0 \pi^0)$ alle vier Quarks die gleich Farbladung tragen müssen.
+    \begin{tikzpicture}
+        \begin{feynman}
+            \vertex (a) {\(B^0 (d\bar{b})\)};
+            \vertex [right=2cm of a] (b);
+            \vertex [above right=1.5cm and 2cm of b] (f1) {\(\pi^+ (u\bar{d})\)};
+            \vertex [below right=1.5cm and 2cm of b] (f2) {\(\pi^- (d\bar{u})\)};
+            
+            \diagram*{
+                (a) -- [fermion] (b) -- [fermion] (f1),
+                (b) -- [anti fermion] (f2),
+                (b) -- [boson, edge label=\(W^-\)] (f2),
+            };
+            
+        \end{feynman}
+    \end{tikzpicture}
+            \begin{tikzpicture}
+                \begin{feynman}
+                    \vertex (a) {\(B^0 (d\bar{b})\)};
+                    \vertex [right=2cm of a] (b);
+                    \vertex [above right=1.5cm and 2cm of b] (f1) {\(\pi^0 (u\bar{u})\)};
+                    \vertex [below right=1.5cm and 2cm of b] (f2) {\(\pi^0 (d\bar{d})\)};
+                    
+                    \diagram*{
+            (a) -- [fermion] (b) -- [fermion] (f1),
+            (b) -- [anti fermion] (f2),
+            (b) -- [boson, edge label=\(W^-\)] (f2),
+            };
+        \end{feynman}
+    \end{tikzpicture}
+}
+        
+\end{enumerate}
+
 \end{document}
