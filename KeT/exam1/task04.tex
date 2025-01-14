@@ -1,0 +1,46 @@
+\section{Schwache Wechselwirkung (10P)}
+
+\begin{enumerate}
+    \item Erklären Sie was die V-A Struktur der schwachen Wechselwirkung beschreibt.
+    \solution{Vektor - Aktialvektor bedeuted, dass die schwache WW nur an linkshändigen Teilchen koppelt. Mathematische ist $1 - \gamma^5$ linkshändige Prjektor, der dazu führt. dass Parität maximal gebrochen wird.}
+
+    \item Der Übergang $\Gamma_{i \to f}$ von einem Anfangszustand zu einem Endzustand kann durch Fermis Goldene Regel beschrieben werden.
+    Geben Sie diese an und beschreiben Sie ihre Komponenten.
+    \solution{
+        $\Gamma_{i \to f} = \dfrac{2\pi}{\hbar} \left| M_{f,i}\right|^2 \mathrm{d} \Pi_\text{LIPS}$ Das Matrixelement $M_{f,i}$ beschreibt die Amplitude des Übergang und  $d \Pi_\text{LIPS}$ beschreibt die Anzahl der möglichen Endzustände.
+    }
+    \item Zeichen Sie das Feynman-Diagramm, welches den Zerfall des $\mu^-$ auf Tree-Level beschreibt.
+    \begin{solution}
+        {\begin{tikzpicture}
+            \begin{feynman}
+              \vertex (i1) {\(\mu^-\)};
+              \vertex[right=of i1] (w) [dot] {};
+              \vertex[below right=of w] (f1) {\(e^-\)};
+              \vertex[above right=of w] (f2) {\(\overline{\nu}_e\)};
+              \vertex[above left=of w] (f3) {\(\nu_\mu\)};
+              
+              \diagram* {
+                (i1) -- [fermion] (w),
+                (w) -- [boson, edge label=\(W^-\)] (f2),
+                (w) -- [fermion] (f1),
+                (i1) -- [fermion] (f3),
+              };
+            \end{feynman}
+          \end{tikzpicture}}
+    \end{solution}
+    \item Wenden Sie die Feynman-Regel an, um das Matrixelement $M$ zu bestimmen.
+    
+    \textit{Hinweis: Eine explizite Berechnung von $M$ ist nicht notwendig.} 
+
+    Die Zerfallsrate in Abhängigkeit der Elektronenenergie ist gegeben durch 
+    \begin{equation}
+        \dfrac{d \Gamma}{\mathrm{d} E_\text{e}} = \left(\dfrac{g_\text{W}}{M_\text{W}c}\right)^4 \cdot \left(1 - \dfrac{4 E_e}{3 m_\mu c²}\right) \,.
+    \end{equation}
+    \item Bestimmen Sie die totale Zerfallsrate und geben sie eine Gleichung für die Lebenszeit eines $\mu^-$.
+    \item Vergleichen Sie das Ergebnis mit dem Literaturwert. Erklären Sie mögliche Abweichungen.
+
+    \item Welcher der beiden Zerfälle $\pi^- \to e^- \bar{\nu}_{\text{e}}$ und $\pi^- \to \mu^- \bar{\nu}_{\mu}$ tritt häufiger auf? Begründen Sie.
+
+    \item Betrachten Sie den Prozess $e^+ e^- \to \mu^+ \mu^-$ auf Tree-Level. Bei welchen Energien tritt dieser Prozess besonders häufig auf? 
+
+\end{enumerate}

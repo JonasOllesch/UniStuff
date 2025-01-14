@@ -1,0 +1,99 @@
+
+\section{Beschleuniger und Detektoren (10P)}
+
+\begin{enumerate}
+\item Beschreiben Sie \textit{kurz} die Vor- und Nachteile von Elektron- und Protonbeschleunigern. Welche Beschleunigerarten werden für gewöhnlich für die beiden Teilchenarten genutzt? Begründen Sie Ihre Antwort. (2P)
+\solution{
+\textit{2 Punkte.}
+      \begin{itemize}
+          \item Protonen
+          \begin{itemize}
+              \item Pro
+              \begin{itemize}
+                  \item Hohe Masse, wenig Synchrotronstrahlung
+              \end{itemize}
+              \item Contra
+              \begin{itemize}
+                  \item Zusammengesetztes Teilchen, einzelne Partonen haben geringere Energie
+              \end{itemize}
+              \item Beschleuniger
+              \begin{itemize}
+                  \item Im Prinzip alle, jedoch bieten sich Kreisbeschleuniger an, da Protonen wenig Energie über Synchrotronstrahlung verlieren
+              \end{itemize}
+          \end{itemize}
+          \item Elektron
+          \begin{itemize}
+              \item Pro
+              \begin{itemize}
+                  \item Stabiles Elementarteilchen
+              \end{itemize}
+              \item Contra
+              \begin{itemize}
+                  \item Geringe Masse, viel Synchrotronstrahlung
+              \end{itemize}
+              \item Beschleuniger
+              \begin{itemize}
+                  \item An sich ist auch hier alles möglich, jedoch bieten sich für Colliderexperimente am ehesten Linearbeschleuniger an, da hier keine Energie durch Synchrotronstrahlung verloren wird.
+              \end{itemize}
+          \end{itemize}
+      \end{itemize}
+  }
+
+  \item Gegeben sei nun ein - natürlich nur rein hypothetischer - Kreisbeschleuniger mit einem Radius von $R = \SI{16}{\kilo \metre}$, der mit einer Strahlenergie von $E =\SI{50}{\tera \electronvolt}$ betrieben wird. Bei einem Durchlauf durch den Beschleuniger verlieren die beschleunigten Teilchen durch Synchrotronstrahlung $\SI{2.6(1.0)}{\tera \electronvolt}$ Energie. Berechnen Sie mit diesen Informationen die untere und obere Massengrenze des beschleunigten Teilchens. Um welches Teilchen handelt es sich? (3P) 
+  \solution{
+  \textit{3 Punkte.} \\
+  Es gilt der Zusammenhang:
+              \begin{equation}
+                  P = \frac{e^2c}{6\pi\epsilon_0(m_0c^2)^4}\frac{E^4}{R^2}
+              \end{equation}
+              Daher ergibt sich die Energie für einen Umlauf durch:
+              \begin{eqnarray}
+                  E_{\text{syn}} = \int Pdt = Pt = P\frac{2\pi R}{c} &= \frac{e^2}{3\epsilon_0(m_oc^2)^4}\frac{E^4}{R} \\
+                  &= C \cdot (\frac{(m_oc^2)}{E})^4 \cdot \frac{1}{R}
+              \end{eqnarray}
+              Die Konstante $C$ ergibt sich zu
+              \begin{eqnarray}
+                  C = \frac{e^2}{3\epsilon_0} &=& 9.66\cdot10^{-28}\,\frac{\mathrm{C^2Vm}}{\mathrm{As}}\\
+                  &=& 6.031\cdot 10^{-9}\,\mathrm{eVm}
+              \end{eqnarray}
+              Damit ergibt sich für die Masse der folgende Zusammenhang:
+              \begin{equation}
+                  m = \left( \frac{C}{R \cdot E_{\text{syn}}} \right)^\frac{1}{4} E.
+              \end{equation}
+              Mit eingesetzten Werten erhält man ein Massenspektrum von ca. ${900-1100} \,\si{\mega \electronvolt}$. Es handelt sich daher um Protonen oder Neutronen. Neutronen können aufgrund ihrer Ladung jedoch ausgeschlossen werden.
+  }
+\end{enumerate}
+Sie wollen nun einen Detektor für den potentiellen Zerfall $X\rightarrow \Sigma^0 \ell^+ \ell^-?$ bauen, wobei das $\Sigma^0$-Teilchen in $\Lambda^0 \gamma\gamma$ zerfällt und das $\Lambda^0$ weiter mit $\Lambda^0\rightarrow p\pi^-$. Für Ihren Detektor stehen Ihnen folgende Subdetektoren zur Verfügung: hadronisches Kalorimeter, Myonkammern, Spurdetektor im Magnetfeld, elektromagnetisches Kalorimeter.
+\begin{enumerate}
+\setcounter{enumi}{2}
+    \item In welcher Reihenfolge würden Sie den Detektor konstruieren? Begründen Sie \textit{kurz} auf physikalischer Grundlage. Erläutern Sie  dabei auch, welche Zerfallsprodukte Sie in welchen Detektorkomponenten erwarten zu messen. (2P)
+    \solution{
+    \textit{2 Punkte.}\\
+    \begin{enumerate}
+        \item Spurdetektor im Magnetfeld (Spur geladener Teilchen)
+        \item Elektromagnetisches Kalorimeter ($\gamma, e^+, e^- (\text{falls \ell = e})$)
+        \item Hadronisches Kalorimeter ($p\pi^-$)
+        \item Myonkammern ( $\mu^+, \mu^- (\text{falls \ell = \mu})$ )
+    \end{enumerate}
+    Falls es sich bei den Leptonen um Taus handelt, kommt es darauf an, wie diese Zerfallen. Ein leptonisch zerfallenes Tau wird entweder als Elektron im Elektromagnetischen Kalorimeter detektiert, oder als Myon in der Myonkammer. Zerfällt es hadronisch, werden zwei Jets im Hadronischen Kalorimeter gemessen. \\
+    Begründung der Reihenfolge: Zuerst Spurkammer, um Spuren aller geladenen Teilchen zu messen. Dann im elektromagnetischen Kalorimeter Leptonen und Photonen rausfiltern, um im Hadronischen Kalorimeter nur Schauer von Hadronen zu messen. So werden alle Teilchen bis auf Neutrinos und Myonen bis dorthin absorbiert. Die Myonen können dann in den Myonkammern vermessen werden.
+    }
+    \item Erläutern Sie \textit{kurz} die Funktionsweise eines hadronischen Kalorimeters. (1P)
+    \solution{
+    \textit{1 Punkt.} \\
+    Das Hadronische Kalorimeter ist ein Sampling Kalorimeter mit vielen Schichten. Es gibt abwechselnd Schichten mit hohen Kernladungszahlen, um die starke Wechselwirkungen mit den Hadronen zu begünstigen und Schauer zu erzwingen. Die dadurch entstehenden Photonen und Leptonen werden durch Szintillationsschichten gemessen.
+    }
+\end{enumerate}
+Aus Theorieberechnungen erwarten Sie, dass der Zerfall $X \to \Sigma^0 \ell^+ \ell^-$ einen Wirkungsquerschnitt von \SI{753}{\micro\barn} aufweist. Die erwartete Luminosit\"at bel\"auft sich auf \SI{0.1}{\pico\barn^{-1}}.
+\begin{enumerate}
+\setcounter{enumi}{4}
+\item Wie hoch muss das Produkt von Akzeptanz und Effizienz des Detektors sein, um $150.000$ Ereignisse zu messen? (2P)
+\solution{
+\textit{2 Punkte.} \\
+Es gilt:
+\begin{eqnarray}
+    N = L \cdot \sigma \cdot \epsilon \cdot A  \stackrel{!}{=} 129.000 \\
+    \longleftrightarrow \epsilon \cdot A = \frac{N}{L \cdot \sigma} = 0.002
+\end{eqnarray}
+}
+\end{enumerate}

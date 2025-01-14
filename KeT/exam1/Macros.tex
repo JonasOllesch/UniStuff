@@ -1,0 +1,54 @@
+\renewcommand{\labelenumi}{(\alph{enumi})}
+\renewcommand{\theenumi}{(\alph{enumi})}%
+\renewcommand{\labelenumii}{\arabic{enumii}.}
+
+\newcommand{\del}{\partial}
+\newcommand{\rot}{\mathop{\rm rot}\nolimits}
+\newcommand{\grad}{\mathop{\rm grad}\nolimits}
+\renewcommand{\Re}{\mathop{\rm Re}\nolimits}
+\renewcommand{\Im}{\mathop{\rm Im}\nolimits}
+
+
+%Aufgabenumgebung
+\newcounter{punkte}
+\newcounter{aufgabenr}
+\setcounter{aufgabenr}{1}
+
+\newcounter{loopcounter}
+\newcommand{\forloop}[5][1]% 
+{% 
+  \setcounter{#2}{#3}% 
+  \ifthenelse{#4}% 
+  {% 
+    #5% 
+    \addtocounter{#2}{#1}% 
+    \forloop[#1]{#2}{\value{#2}}{#4}{#5}% 
+  }% 
+  % Else 
+  {% 
+  }% 
+}% 
+
+\newcounter{endcounter}
+\newboolean{Musterlsg}
+
+
+\newenvironment{aufgabe}[3]{ %\aufgabe{#freieSeiten}{Titel}{Punkte}
+  {\cleardoubleoddplainpage 
+   \vspace*{1em}
+   \Large{\bfseries \sffamily Aufgabe \arabic{aufgabenr}: #2
+  \hfill (#3 Punkte)}} \par
+  \setcounter{endcounter}{#1}
+}{
+  \stepcounter{aufgabenr}
+  \ifthenelse{\boolean{Musterlsg}}{
+  }
+  { 
+    %Keine Musterlsg
+    \forloop{loopcounter}{0}{\value{loopcounter} < \value{endcounter}}{\clearpage\mbox{}}
+  }
+}
+
+\newenvironment{loesung}{
+   \vspace{2em} {\large \sffamily \bfseries L\"osung:} \nopagebreak[4]
+}{}

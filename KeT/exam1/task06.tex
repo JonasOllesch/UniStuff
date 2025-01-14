@@ -1,0 +1,125 @@
+\section{Mandelstam-Variablen (10P)}
+Die sogenannten Mandelstam-Variablen $s,\,t$ und $u$ werden in der Teilchenphysik bei der Beschreibung von Streuprozessen von zwei Körpern nach dem Schema $1 + 2 \rightarrow 3 + 4$ verwendet und sollen im Folgenden näher betrachtet werden.
+%
+\begin{align*}
+ s &= \left(P_1 + P_2 \right)^2 \\
+ t &= \left(P_1 - P_3 \right)^2 \\
+ u &= \left(P_1 - P_4 \right)^2
+\end{align*}
+%
+Hierbei werden die Viererimpulse der Teilchen mit $P_1$ bis $P_4$ beschrieben.
+%
+\begin{enumerate}[label=\alph*)]
+ \item Leiten sie die Beziehung $s+t+u = \sum_{i=1}^4 m_i^2$ her, wobei $m_i$ die Massen der Teilchen 1-4 sind. (2P) \\(\textit{Hinweis: }Beachten Sie die Viererimpulserhaltung!)
+ \solution{
+ Viererimpulserhaltung: $P_1 + P_2 = P_3 + P_4$
+ \begin{align*}
+  s + t + u &=  \left(P_1 + P_2 \right)^2 +  \left(P_1 - P_3 \right)^2 +  \left(P_1 - P_4 \right)^2 \\
+            &= m_1^2 + m_2^2 +2\,P_1\,P_2 +m_1^2 + m_3^2 -2\,P_1\,P_3+ m_1^2 + m_4^2 -2\,P_1\,P_4 \\
+            &= 3\,m_1^2 + m_2^2 + m_3^2+m_4^2 + 2\,P_1\,\left(P_2 - P_3 - P_4 \right) \\
+            &= 3\,m_1^2 + m_2^2 +m_3^2+m_4^2 - 2\,P_1\,P_1 \\
+            &= m_1^2 + m_2^2+m_3^2+m_4^2 =\sum_{i=1}^4 m_i^2
+ \end{align*}
+ }
+ \item Drücken Sie nun die Energie $E_1$ des Teilchens 1 im Schwerpunktssystem der eingehenden Teilchen durch $s$, sowie die Massen $m_1$ und $m_2$ aus. (3P)
+ \solution{
+ Im Schwerpunktssystem heben sich die Impulse der einlaufenden Teilchen auf, also  $\vec{p}_1 - \vec{p}_2 = \vec{0}$. Sie sind also betragsmäßig gleich und entgegengesetzt orientiert. Damit vereinfacht sich die Formel für die Mandelstam-Variable $s$ zu:
+ \begin{align*}
+     s &= (p_1 + p_2)^2\\
+       &= (E_1 + E_2)^2\\
+       &= E^2_1 + E^2_2 + 2E_1E_2
+ \end{align*}
+ Nutzen wir nun das $|\vec{p}_2| = |\vec{p}_1| = |\vec{p}|$ ist, können wir die Energie-Impuls-Beziehung des zweiten Teilchens umschreiben zu
+ \begin{align*}
+ E^2_2 &= m^2_2 + |\vec{p}_2|^2\\
+       &= m^2_2 + |\vec{p}|^2\\
+       &= m^2_2 + E^2_1 - m^2_1
+ \end{align*}
+ Einsetzen in unsere Rechnung:
+ \begin{align*}
+     s = 2E^2_1 + m^2_2 - m^2_1 + 2E_1\sqrt{E^2_1 + m^2_2 - m^2_1}
+ \end{align*}
+ und nach einigen Umformungen
+ \begin{align*}
+     E_1 = \frac{s + m^2_1 - m^2_2}{2\sqrt(s)}
+ \end{align*}
+ }
+\end{enumerate}
+%
+Betrachten Sie im Folgenden die M\o ller-Streuung $e^- + e^- \rightarrow e^- + e^-$ und berücksichtigen Sie nur die elektromagnetische Wechselwirkung.
+%
+\begin{enumerate}[label=\alph*),resume]
+ \item  Zeichnen Sie die möglichen Feynman-Diagramme erster Ordnung zu diesem Prozess. Mit welcher Mandelstam-Variable können diese jeweils in Verbindung gebracht werden? Was ist der Unterschied zur Elektron-Positron-Streuung? (2P)
+ \solution{
+ \begin{figure}[!h]
+ \begin{tikzpicture}
+  \begin{feynman}
+   \vertex (a1) {\(e^-\)};
+   \vertex[right=4cm of a1] (a3) {\(e^-\)};
+   \vertex at ($(a1)!0.5!(a3) - (0, 1cm)$) (a2);
+   \vertex[below=4cm of a1] (b1) {\(e^-\)};
+      \vertex[right=4cm of b1] (b3) {\(e^-\)};
+   \vertex at ($(b1)!0.5!(b3) + (0, 1cm)$) (b2);
+   \diagram*{
+
+   (a1) -- [fermion] (a2) -- [fermion] (a3);
+   (b1) -- [fermion] (b2) -- [fermion] (b3);
+   (a2) -- [boson, edge label=\(\gamma\)] (b2);
+   };
+  \end{feynman}
+ \end{tikzpicture}
+\hspace*{2cm}
+ \begin{tikzpicture}
+  \begin{feynman}
+   \vertex (a1) {\(e^-\)};
+   \vertex[right=4cm of a1] (a3) {\(e^-\)};
+   \vertex at ($(a1)!0.5!(a3) - (0, 1cm)$) (a2);
+   \vertex[below=4cm of a1] (b1) {\(e^-\)};
+      \vertex[right=4cm of b1] (b3) {\(e^-\)};
+   \vertex at ($(b1)!0.5!(b3) + (0, 1cm)$) (b2);
+   \diagram*{
+
+   (a1) -- [fermion] (a2) -- [fermion] (b3);
+   (b1) -- [fermion] (b2) -- [fermion] (a3);
+   (a2) -- [boson, edge label=\(\gamma\)] (b2);
+   };
+  \end{feynman}
+ \end{tikzpicture}
+\end{figure}
+Das linke Feynman-Diagram kann mit der Mandelstam-Variable $t$, das rechte Feynman-Diagram mit der Mandelstam-Variable $u$ identifiziert werden. Ein $s$-Kanal liegt hier nicht vor. Bei der Bhabha-Streuung liegen keine identischen Teilchen im Endzustand vor, sodass kein $u$-Kanal möglich ist. Dafür gibt es aber ein Anihilations-Diagramm.
+ }
+ \item  Berechnen Sie im Folgenden die Größen $s$, $t$ und $u$ im Schwerpunktssystem der einlaufenden Elektronen als Funktion der Dreier-Impulse und des Streuwinkels $\theta$. Nehmen Sie hierfür eine elastische Streuung an. (2P)
+\solution{
+          Zunächst wird $s$ im Schwerpunktssystem berechnet.
+          \begin{align*}
+           s = \left(P_1 + P_2 \right)^2 = m_1^2 + m_2^2 + 2\,E_1\,E_2 - 2\,\vec{p}_1\,\vec{p}_2
+          \end{align*}
+
+          Da Elektronen sind identische Teilchen und besitzen die Masse $m_e$, also demnach auch dieselbe Energie $E_e$ im Schwerpunktssystem. Im Schwerpunktssystem sind die Impulse zudem entgegengesetzt gleich groß.
+
+          \begin{align*}
+           \sqrt{s} &= m_1^2 + m_2^2 + 2\,E_1\,E_2 - 2\,\vec{p}_1\,\vec{p}_2 \\
+           \sqrt{s} &= 2\,m_e^2 + 2\,E_e^2 + 2|\,p_e|^2 \\
+           \sqrt{s} &= 4\,(m_e^2 + |\vec{p}_e|^2)\\
+           \sqrt{s} &= 4\,E_e^2
+          \end{align*}
+
+          Im letzten Schritt wurde wieder die Energie-Impuls-Beziehung ausgenutzt.\\
+          Da es sich um einen elastischen Streuprozess handelt sind sowohl die Energien und Impulsbeträge des ein- und auslaufenden Elektrons identisch $E_i = E_e$ und $|vec{p}_i| = |vec{p}_e|$. Dies soll nun im $t$-Kanal betrachtet werden.
+
+           \begin{align*}
+            t &= \left(P_1 - P_3 \right)^2 = m_1^2 +m_2^2 - 2\,E_1\,E_3 + 2\,\vec{p}_1\,\vec{p}_2 \\
+              &= 2\,m_e^2 - 2\,E_e^2 + 2\,|vec{p}_e|^2\,\cos\theta \\
+              &= -2\,|vec{p}_e|^2 (1 - \cos\theta)
+            \end{align*}
+          Eine analoge Rechnung liefert
+            \begin{align*}
+             u = -2\,|vec{p}_e|^2 (1 + \cos\theta)
+            \end{align*}
+}
+          
+ \item  Wie hängt die Schwerpunktsenergie mit den Mandelstam-Variablen zusammen? (1P)
+ \solution{
+ $E_S = \sqrt{s}$
+ }
+\end{enumerate}

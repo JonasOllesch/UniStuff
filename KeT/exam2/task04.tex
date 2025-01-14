@@ -1,0 +1,55 @@
+\section{Starke Wechselwirkung (10P)}
+
+\begin{enumerate}
+\item An welche Ladung koppelt die starke Wechselwirkung? Wie kann man sie messen?%Exam 22/23
+\solution{
+    Sie koppelt an die Farbladung. Da messbare Zustände immer farbneutral sind, lässt sich die Farbladung nicht messen.%Exam 22/23
+}
+\item Was wird durch asymptotische Freiheit und Confinement in Bezug auf die starke Wechselwirkung beschrieben?%Exam 22/23
+\solution{Asymptotische Freiheit und Confinement beschreiben das Verhalten der Kopplungskonstante der starken Wechselwirkung. Im Niedrig-Energie-Limes ist diese sehr groß, während sie für große Energieskalen sich asymptotisch null nähert.}
+\end{enumerate}
+Das Quark-Parton-Modell erlaubt es, tiefinelastische Streuung von Leptonen an Nukleonen bei hohen Impulsüberträgen anschaulich zu deuten.
+\begin{enumerate}
+
+\item Was sind Partonen? Warum kann in der tiefinelastischen Streuung angenommen werden, dass Streuung an Partonen elastisch stattfindet? Zeichnen sie dazu eine Skizze.
+\solution{ Partonen wurden eingeführt, um die Substruktur von Hadronen zu beschreiben. Sie sind heute mit Quarks und Gluonen identifizierbar. Partonen werden als punktförmig angenommen, sodass elastische Streuung möglich ist.}
+
+\item Was passiert, wenn Sie zu niedrigeren Elektron-Energien übergehen?
+\solution{
+    tiefinelastische Streuung kann nicht mehr stattfinden, wir erwarten dann inelastische Streuprozesse, und bei noch niedrigeren Energien elastische e-p Streuung
+}
+\item Gluonen sind masselose Austauschteilchen. Photonen sind ebenfalls masselos. Könnte es sich also bei Photonen um das neunte farblose Gluon handeln  %Griffiths
+\item Schätzen Sie das Verzweigungsverhältnisse $\frac{\text{BR}(B^0 \to \pi^+ \pi^-)}{\text{BR}(B^0 \to \pi^0 \pi^0)}$ ab.%Exam 20/21 Nr.4 d2)
+\solution{Es wird $\frac{\text{BR}(B^0 \to \pi^+ \pi^-)}{\text{BR}(B^0 \to \pi^0 \pi^0)} \approx 3$ erwartet, da bei $\text{BR}(B^0 \to \pi^0 \pi^0)$ alle vier Quarks die gleich Farbladung tragen müssen.
+    \begin{tikzpicture}
+        \begin{feynman}
+            \vertex (a) {\(B^0 (d\bar{b})\)};
+            \vertex [right=2cm of a] (b);
+            \vertex [above right=1.5cm and 2cm of b] (f1) {\(\pi^+ (u\bar{d})\)};
+            \vertex [below right=1.5cm and 2cm of b] (f2) {\(\pi^- (d\bar{u})\)};
+            
+            \diagram*{
+                (a) -- [fermion] (b) -- [fermion] (f1),
+                (b) -- [anti fermion] (f2),
+                (b) -- [boson, edge label=\(W^-\)] (f2),
+            };
+            
+        \end{feynman}
+    \end{tikzpicture}
+            \begin{tikzpicture}
+                \begin{feynman}
+                    \vertex (a) {\(B^0 (d\bar{b})\)};
+                    \vertex [right=2cm of a] (b);
+                    \vertex [above right=1.5cm and 2cm of b] (f1) {\(\pi^0 (u\bar{u})\)};
+                    \vertex [below right=1.5cm and 2cm of b] (f2) {\(\pi^0 (d\bar{d})\)};
+                    
+                    \diagram*{
+            (a) -- [fermion] (b) -- [fermion] (f1),
+            (b) -- [anti fermion] (f2),
+            (b) -- [boson, edge label=\(W^-\)] (f2),
+            };
+        \end{feynman}
+    \end{tikzpicture}
+}
+        
+\end{enumerate}
