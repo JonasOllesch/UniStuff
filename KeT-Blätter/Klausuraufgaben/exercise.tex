@@ -24,6 +24,8 @@
 \exercise{Fragen (2P)}
 Stellen Sie \emph{pro Person} zwei relevante Fragen zu den Inhalten der Vorlesung \enquote{Einf\"uhrung in die Kern- und Elementarteilchenphysik}.
 
+
+\newpage
 \exercise{Quarksalat(2P)}
 
     In einem Kollisions-Experiment werden durch Protonkollisionen verschiedene Teilchen erzeugt. Dabei gilt besondere Aufmerksamkeit dem $\Lambda_c^+$ sowie dem $\overline{\Xi^{0}_{b}}$ in Verbindung mit anderen Teilchen, zusammengefasst als $X$, im Endzustand:
@@ -141,25 +143,21 @@ Stellen Sie \emph{pro Person} zwei relevante Fragen zu den Inhalten der Vorlesun
 
 \section{Schwache Wechselwirkung (10P)}
 
-In dieser Aufgabe untersuchen Sie den Zerfall eines Myon $\mu^- \to e^- \overline{\nu}_{e} \nu_\mu$. 
-Da die Bestimmung Berechnung der Übergangswahrscheinlichkeit nicht Teil dieser Vorlesung ist, beschränkt sich diese Aufgabe auf den Beginn und das Ende der notwendigen Berechnung.
+In dieser Aufgabe untersuchen Sie den Zerfall eines Myons $\mu^- \to e^- \overline{\nu}_{e} \nu_\mu$. 
+Da die Bestimmung der Übergangsrate nicht Teil dieser Vorlesung ist, beschränkt sich diese Aufgabe auf den Beginn und das Ende der notwendigen Berechnung.
 
 \begin{enumerate}
     \item Erklären Sie kurz, was die V-A Struktur der schwachen Wechselwirkung beschreibt und was dies für die Teilchen bedeutet, die schwach wechselwirken.
-    \solution{Vektor - Axialvektor bedeutet, dass die schwache WW nur an linkshändigen Teilchen koppelt. Mathematisch ist $\left( 1 - \gamma^5 \right)$ der linkshändige Projektor, welcher dazu führt, dass Parität maximal gebrochen wird.}
+    \solution{Vektor-Axialvektor bedeutet, dass die schwache Wechselwirkung nur an linkshändigen Teilchen koppelt. Mathematisch ist $\left( 1 - \gamma^5 \right)$ der linkshändige Projektor, der dazu führt, dass Parität maximal gebrochen wird.}
 
 
     \item Der Übergang $\Gamma_{i \to f}$ von einem Anfangszustand $\mu^- $ zu einem Endzustand $e^- \overline{\nu}_{e} \nu_\mu $ kann durch Fermis Goldene Regel beschrieben werden.
     Geben Sie diese an und beschreiben Sie ihre Komponenten.
     \solution{
-        $\Gamma_{i \to f} = \dfrac{2\pi}{\hbar} \left| M_{f,i}\right|^2 \mathrm{d} \Pi_\text{LIPS}$ Das Matrixelement $M_{f,i}$ beschreibt die Amplitude des Übergangs, und $\mathrm{d} \Pi_\text{LIPS}$ beschreibt die Anzahl der möglichen Endzustände.
+        $\Gamma_{i \to f} = \dfrac{2\pi}{\hbar} \left| M_{f,i}\right|^2 \mathrm{d} \Pi_\text{LIPS}$ Das Matrixelement $M_{f,i}$ beschreibt die Übergangsamplitude, die mit der Wahrscheinlichkeit des Übergangs verknüpft ist. $\mathrm{d} \Pi_\text{LIPS}$ beschreibt die Anzahl der möglichen Endzustände.
     }
 
-
-
-
-
-    \item Zeichnen Sie das Feynman-Diagramm, welches den Zerfall des $\mu^-$ auf Tree-Level beschreibt.
+    \item Zeichnen Sie das Feynman-Diagramm, das den Zerfall des $\mu^-$ auf Tree-Level beschreibt.
     \solution{
     \begin{tikzpicture}
         \begin{feynman}
@@ -181,8 +179,8 @@ Da die Bestimmung Berechnung der Übergangswahrscheinlichkeit nicht Teil dieser 
     }
 
 \end{enumerate}
-Der nächste Schritt ist es das Matrixelement über die Feynman-Regeln zu bestimmen und den Phasenraum über Integrale der Vierervektoren zu bestimmen.
-Diese Rechung wurde Ihnen bereits abgenommen, sodass nur ein letztes Integral verbleit. 
+Der nächste Schritt besteht darin, das Matrixelement über die Feynman-Regeln zu bestimmen und den Phasenraum über Integrale der Vierervektoren zu berechnen.
+Diese Rechnung wurde Ihnen bereits abgenommen, sodass nur ein letztes Integral verbleibt. 
 Die Zerfallsrate in Abhängigkeit der Elektronenenergie $E_\text{e}$ ist gegeben durch 
 \begin{equation}
     \dfrac{\mathrm{d} \Gamma}{\mathrm{d} E_\text{e}} = \left(\dfrac{g_\text{w}}{M_\text{W}c}\right)^4 \dfrac{m_\mu^2 E^2_\text{e}}{2\hbar \left( 4 \pi\right)^3} \cdot \left(1 - \dfrac{4 E_e}{3 m_\mu c^2}\right) \,.
@@ -190,13 +188,26 @@ Die Zerfallsrate in Abhängigkeit der Elektronenenergie $E_\text{e}$ ist gegeben
 Zunächst müssen die Integrationsgrenzen bestimmt werden. Vernachlässigen Sie die Ruhemassen der Produkte.
 \begin{enumerate}[resume] 
     \item Bestimmen Sie die obere Integrationsgrenze von $E_\text{e}$. 
-    \item Argumentieren Sie, dass für die untere Grenze, dass das Elektron in Ruhe $E_\text{e} = 0$ erzeugt werden kann.  
+    \solution{
+        Der Zerfall muss im Ruhesystem des Myons $E_\mu = m_\mu$ möglich sein. 
+        \begin{align*}
+            -\vec{p_e} &= \vec{p}_{\nu_\mu} + \vec{p}_{\overline{\nu}_e} \qquad| \left( \dots\right)^2\\
+            p^2_e  &= \vec{p}^2_{\nu_\mu} + \vec{p}^2_{\overline{\nu}_e} + 2 \left|\vec{p}^2_{\nu_\mu}\right| \left|\vec{p}^2_{\overline{\nu}_e} \right| \cos(\theta) p_e \text{wird maximiert, wenn} \vec{p}^2_{\nu_\mu} = \vec{p}^2_{\overline{\nu}_e}  \text{gilt}\\
+              \Rightarrow E^\text{max}_e &= \frac{m_\mu}{2}
+        \end{align*}
+    }
+    \item Argumentieren Sie für die untere Grenze, dass das Elektron in Ruhe $E_\text{e} = 0$ erzeugt werden kann.  
+    \solution{
+        Man wähle $\vec{p}_{\nu_\mu} = -\vec{p}_{\overline{\nu}_e} \rightarrow \vec{p_e} = 0$\\
+        Daraus folgt für die Energie $m_\mu = 0 + {E}_{\nu_\mu} + {E}_{\overline{\nu}_e} \rightarrow \frac{m_\mu}{2} = E_\nu$.
+        Es ist also möglich, das Elektron in Ruhe zu erzeugen.
+    }
 
     \item Führen Sie nun die Integration aus und geben Sie eine Gleichung für die Lebenszeit eines $\mu^-$ an.
     \solution{
         \begin{align}
             \Gamma =& \left(\dfrac{g_\text{w}}{M_\text{W}c}\right)^4 \dfrac{m_\mu^2}{2\hbar \left( 4 \pi\right)^3}
-            \int_{0}^{1/2 m_\mu c^2} E^2\left( 1 - \dfrac{4E}{3m_\mu c^2}\right) \, \mathrm{d}E \\
+            \int_{0}^{\frac{ m_\mu c^2}{2}} E^2\left( 1 - \dfrac{4E}{3m_\mu c^2}\right) \, \mathrm{d}E \\
                 =& \left(\dfrac{m_\mu g_\text{w}}{M_\text{W}}\right)^4 \dfrac{m_\mu c^2}{12 \hbar \left(8 \pi \right)^3}
         \end{align}
         Für die Lebenszeit gilt $\tau = \dfrac{1}{\Gamma}$\,.
@@ -205,7 +216,7 @@ Zunächst müssen die Integrationsgrenzen bestimmt werden. Vernachlässigen Sie 
     \item Vergleichen Sie das Ergebnis mit dem Literaturwert. Erklären Sie mögliche Abweichungen.
     \solution{
         Es entstehen Abweichungen, weil hier nur Tree-Level Diagramme betrachtet werden.
-        Es werden die Ruehmassen vernachlässigt.
+        Es werden die Ruhemassen der Produkte vernachlässigt.
     }
 \end{enumerate}
     
