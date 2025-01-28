@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1737014574 "/home/lukas/Dokumente/Code/UniStuff/KeT-Blätter/Klausuraufgaben/exercise.tex" "exercise.pdf" "exercise" 1737014575 2
+["pdflatex"] 1738067971 "/home/lukas/Dokumente/Code/UniStuff/KeT-Blätter/Klausuraufgaben/exercise.tex" "exercise.pdf" "exercise" 1738067974 2
   "/home/lukas/.local/texlive/2023/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/home/lukas/.local/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmr10.tfm" 1136768653 1296 45809c5a464d5f32c8f98ba97c1bb47f ""
   "/home/lukas/.local/texlive/2023/texmf-dist/tex/generic/atbegshi/atbegshi.sty" 1575674566 24708 5584a51a7101caf7e6bbf1fc27d8f7b1 ""
@@ -71,10 +71,10 @@
   "/home/lukas/.local/texlive/2023/texmf-dist/web2c/texmf.cnf" 1697057529 41009 84b61f42d16d06bedb915f57aa2374cf ""
   "/home/lukas/.local/texlive/2023/texmf-var/web2c/pdftex/pdflatex.fmt" 1701778963 8213648 54c4c43098fbd8266b562b687e2f40ff ""
   "/home/lukas/.local/texlive/2023/texmf.cnf" 1701778587 455 5b996dcaa0eb4ef14a83b026bc0a008c ""
-  "/home/lukas/Dokumente/Code/UniStuff/KeT-Blätter/Klausuraufgaben/exercise.tex" 1737014569 12547 bb0f7ca6d0c982e23d035d497aec7621 ""
-  "exercise.aux" 1737014574 32 3985256e7290058c681f74d7a3565a19 "pdflatex"
+  "/home/lukas/Dokumente/Code/UniStuff/KeT-Blätter/Klausuraufgaben/exercise.tex" 1738067967 13186 9d808f87f7059033cb4820c1233603c4 ""
+  "exercise.aux" 1738067963 32 3985256e7290058c681f74d7a3565a19 "pdflatex"
   "exercise.cls" 1736778549 3132 34b1caa444dbc51532eff6ad6b0e507b ""
-  "exercise.tex" 1737014569 12547 bb0f7ca6d0c982e23d035d497aec7621 ""
+  "exercise.tex" 1738067967 13186 9d808f87f7059033cb4820c1233603c4 ""
   (generated)
   "exercise.aux"
   "exercise.log"

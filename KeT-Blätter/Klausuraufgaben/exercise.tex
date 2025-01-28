@@ -148,17 +148,18 @@ Stellen Sie \emph{pro Person} zwei relevante Fragen zu den Inhalten der Vorlesun
     
     \begin{enumerate}
         \item Erklären Sie kurz, was die V-A Struktur der schwachen Wechselwirkung beschreibt und was dies für die Teilchen bedeutet, die schwach wechselwirken.
-        \solution{Vektor-Axialvektor bedeutet, dass die schwache Wechselwirkung nur an linkshändigen Teilchen koppelt. Mathematisch ist $\left( 1 - \gamma^5 \right)$ der linkshändige Projektor, der dazu führt, dass Parität maximal gebrochen wird.}
+        \solution{(1P)
+            Vektor-Axialvektor bedeutet, dass die schwache Wechselwirkung nur an linkshändigen Teilchen koppelt. Mathematisch ist $\left( 1 - \gamma^5 \right)$ der linkshändige Projektor, der dazu führt, dass Parität maximal gebrochen wird.}
     
     
         \item Der Übergang $\Gamma_{i \to f}$ von einem Anfangszustand $\mu^- $ zu einem Endzustand $e^- \overline{\nu}_{e} \nu_\mu $ kann durch Fermis Goldene Regel beschrieben werden.
         Geben Sie diese an und beschreiben Sie ihre Komponenten.
-        \solution{
+        \solution{(1P)
             $\Gamma_{i \to f} = \dfrac{2\pi}{\hbar} \left| M_{f,i}\right|^2 \mathrm{d} \Pi_\text{LIPS}$ Das Matrixelement $M_{f,i}$ beschreibt die Übergangsamplitude, die mit der Wahrscheinlichkeit des Übergangs verknüpft ist. $\mathrm{d} \Pi_\text{LIPS}$ beschreibt die Anzahl der möglichen Endzustände.
         }
     
-        \item Zeichnen Sie das Feynman-Diagramm, das den Zerfall des $\mu^-$ auf Tree-Level beschreibt.
-        \solution{
+        \item Zeichnen Sie das Feynman-Diagramm, das den Zerfall des $\mu^-$ in niedrigster Ordnung beschreibt.
+        \solution{(1P)
         \begin{tikzpicture}
             \begin{feynman}
               \vertex (a) {\(\mu^{-}(p_1)\)};
@@ -188,7 +189,7 @@ Stellen Sie \emph{pro Person} zwei relevante Fragen zu den Inhalten der Vorlesun
     Zunächst müssen die Integrationsgrenzen bestimmt werden. Vernachlässigen Sie die Ruhemassen der Produkte.
     \begin{enumerate}[resume] 
         \item Bestimmen Sie die obere Integrationsgrenze von $E_\text{e}$. 
-        \solution{
+        \solution{(1P)
             Der Zerfall muss im Ruhesystem des Myons $E_\mu = m_\mu$ möglich sein. 
             \begin{align*}
                 -\vec{p_e} &= \vec{p}_{\nu_\mu} + \vec{p}_{\overline{\nu}_e} \qquad| \left( \dots\right)^2\\
@@ -197,24 +198,25 @@ Stellen Sie \emph{pro Person} zwei relevante Fragen zu den Inhalten der Vorlesun
             \end{align*}
         }
         \item Argumentieren Sie für die untere Grenze, dass das Elektron in Ruhe $E_\text{e} = 0$ erzeugt werden kann.  
-        \solution{
+        \solution{(1P)
             Man wähle $\vec{p}_{\nu_\mu} = -\vec{p}_{\overline{\nu}_e} \rightarrow \vec{p_e} = 0$\\
             Daraus folgt für die Energie $m_\mu = 0 + {E}_{\nu_\mu} + {E}_{\overline{\nu}_e} \rightarrow \frac{m_\mu}{2} = E_\nu$.
             Es ist also möglich, das Elektron in Ruhe zu erzeugen.
         }
     
-        \item Führen Sie nun die Integration aus und geben Sie eine Gleichung für die Lebenszeit eines $\mu^-$ an.
-        \solution{
+        \item Führen Sie nun die Integration aus und geben Sie eine Gleichung für die Lebenszeit eines $\mu^-$ an. Benutzen Sie dafür die Fermi-Konstante $G_\text{F}\mathbin{/} \left(\hbar c\right)^3 = \dfrac{\sqrt{2}}{8} \left(\dfrac{g_\text{w}}{{M_\text{W} c^2}}\right)^2 = \num{1.1663787e-5}\,\si{\giga\electronvolt^{-2}} $.
+
+        \solution{(4P)
             \begin{align}
                 \Gamma =& \left(\dfrac{g_\text{w}}{M_\text{W}c}\right)^4 \dfrac{m_\mu^2}{2\hbar \left( 4 \pi\right)^3}
                 \int_{0}^{\frac{ m_\mu c^2}{2}} E^2\left( 1 - \dfrac{4E}{3m_\mu c^2}\right) \, \mathrm{d}E \\
                     =& \left(\dfrac{m_\mu g_\text{w}}{M_\text{W}}\right)^4 \dfrac{m_\mu c^2}{12 \hbar \left(8 \pi \right)^3}
             \end{align}
-            Für die Lebenszeit gilt $\tau = \dfrac{1}{\Gamma}$\,.
+            Für die Lebenszeit gilt $\tau = \dfrac{1}{\Gamma} = \dfrac{192\pi^3\hbar^7}{G_\text{F}^2 m_\mu^5 c^4}$ .
         }
     
-        \item Vergleichen Sie das Ergebnis mit dem Literaturwert. Erklären Sie mögliche Abweichungen.
-        \solution{
+        \item Vergleichen Sie Ihr Ergebnis in Sekunden mit dem Literaturwert. Erklären Sie mögliche Abweichungen.
+        \solution{(1P)
             Es entstehen Abweichungen, weil hier nur Tree-Level Diagramme betrachtet werden.
             Es werden die Ruhemassen der Produkte vernachlässigt.
         }
