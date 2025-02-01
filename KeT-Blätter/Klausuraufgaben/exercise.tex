@@ -6,7 +6,7 @@
 \usepackage{enumitem}
 \usepackage[compat=1.1.0]{tikz-feynman}
 \usepackage[version=4]{mhchem}
-
+\usepackage{siunitx}
 \def\modelsolution{1}
 
 \setcounter{exercise}{1}
@@ -217,8 +217,17 @@ Stellen Sie \emph{pro Person} zwei relevante Fragen zu den Inhalten der Vorlesun
     
         \item Vergleichen Sie Ihr Ergebnis in Sekunden mit dem Literaturwert. Erklären Sie mögliche Abweichungen.
         \solution{(1P)
+            \begin{equation*}
+                \tau = \dfrac{192 \pi^3}{G^2_\text{F} m^5_\mu} \approx  \SI{3.36}{\giga\electronvolt},
+            \end{equation*}
+            und in SI-Einheiten
+            \begin{equation*}
+                \SI{3.36}{\giga\electronvolt} \cdot \dfrac{\hbar}{\SI{1}{\eV}} \approx\SI{2.09e-6}{\second} 
+            \end{equation*}
+            
+            Der berechnete Wert liegt nah an dem Literaturwert von $\SI{2.197 e-6}{\second}$ mit einer Abweichungen von ungefähr $4.87\, \%$.
             Es entstehen Abweichungen, weil hier nur Tree-Level Diagramme betrachtet werden.
-            Es werden die Ruhemassen der Produkte vernachlässigt.
+            Es werden auch zusätzlich die Ruhemassen der Produkte vernachlässigt.
         }
     \end{enumerate}
     
